@@ -28,9 +28,9 @@ class Connection
 {
 	# Variables privadas
 	private static $connections = array(
-		'default' => ['localhost', 'root', 'root', 'app_unlimited'],
-		'world' => ['localhost', 'root', 'root', 'apps_world'],
-		'blockchain' => ['localhost', 'root', 'root', 'app_blockchain_site']
+		'default' => ['localhost', 'root', 'root', 'app_universo'],
+		// 'world' => ['localhost', 'root', 'root', 'apps_world'],
+		// 'blockchain' => ['localhost', 'root', 'root', 'app_blockchain_site']
 	);
 
 	private static $instances;
@@ -42,7 +42,7 @@ class Connection
 	private $mysqli;
 	const protocol = 'http';
 	// const $proyect_url = '192.168.100.237:8888/mizuum';
-	const proyect_url = 'localhost:8888/Universo';
+	const proyect_url = 'localhost:8888/universo';
 	const proyect_name = 'Site';
 
 	public function getConnectioName()
