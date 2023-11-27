@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="<?php echo JFStudio\Layout::PROYECT_NAME; ?> | Site trading platform" name="author" />
-    <meta content="Site trading platform" name="description" />
+    <meta content="<?php echo JFStudio\Layout::PROYECT_NAME; ?> | Tu espacio seguro" name="author" />
+    <meta content="Tu espacio seguro" name="description" />
 
     <meta name="theme-color" content="#2D2250">
 
@@ -15,9 +15,9 @@
     <meta name="googlebot" content="index, follow">
     <meta name="googlebot-news" content="index, follow">
 
-    <meta property="og:site_name" content="<?php echo JFStudio\Layout::PROYECT_NAME; ?> | Site trading platform">
-    <meta property="og:title" content="<?php echo JFStudio\Layout::PROYECT_NAME; ?> | Site trading platform" />
-    <meta property="og:description" content="Site trading platform" />
+    <meta property="og:site_name" content="<?php echo JFStudio\Layout::PROYECT_NAME; ?> | Tu espacio seguro">
+    <meta property="og:title" content="<?php echo JFStudio\Layout::PROYECT_NAME; ?> | Tu espacio seguro" />
+    <meta property="og:description" content="Tu espacio seguro" />
     <meta property="og:image" itemprop="image" content="<?php echo HCStudio\Connection::getMainPath() ?>/src/img/logo.png">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="300">
