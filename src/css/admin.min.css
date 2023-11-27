@@ -1,0 +1,21 @@
+.navbar-vertical .navbar-nav>.nav-item .nav-link .nav-link-text,
+.navbar-vertical .navbar-nav>.nav-item .nav-link i {
+   color: #222 !important;
+}
+.navbar-vertical .navbar-nav>.nav-item .nav-link.active i {
+    color: #fff !important;
+}
+.navbar-vertical .navbar-nav>.nav-item .nav-link.active .nav-link-text {
+    color: #222 !important;
+}
+
+td span {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+.navbar-vertical .navbar-nav>.nav-item .nav-link.active
+{
+    padding: 12px 16px;
+    border-radius: 0.5rem;
+}

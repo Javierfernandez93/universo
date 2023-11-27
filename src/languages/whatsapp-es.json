@@ -1,0 +1,24 @@
+{
+    "welcome" : [
+        "😁 Hola *{{name}}*, estamos muy felices de que te hayas unido a *Site*.\n\n👉 Aprende más en el siguiente link:\nzuum.link/BienvenidoSite",
+        "🥳 Gracias por unirte a *Site*, *{{name}}*.\n\n👉 Aprende más en:\nzuum.link/BienvenidoSite",
+        "😎 *{{name}}* Enhorabuena queremos darte la bienvenida en *Site*.\n\n👉 Aprende más en el siguiente link:\n zuum.link/BienvenidoSite",
+        "👏🏻 Genial *{{name}}* te has unido a *Site*.\n\n👉 Aprende más en:\nzuum.link/BienvenidoSite",
+        "👋🏻 Increíble *{{name}}* te has unido a *Site*.\n\n👉 Aprende más en:\nzuum.link/BienvenidoSite"
+    ],
+    "incomplete_invoice" : [
+        "🧾 Hola *{{name}}* por paga el monto restante de $ {{amount}} USDT.TRC20 de la factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite",
+        "🧾 *{{name}}* aún tienes que pagar el monto restante de $ {{amount}} USDT.TRC20 de tu factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite",
+        "🧾 *{{name}}* por favor paga el monto restante de $ {{amount}} USDT.TRC20 de tu factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite",
+        "🧾 Hola *{{name}}* tu pago esta incompleto, por favor paga $ {{amount}} USDT.TRC20 de tu factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite",
+        "🧾 Hola *{{name}}* todavía pago esta incompleto, por favor paga $ {{amount}} USDT.TRC20 de tu factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite"
+    ],
+    "invoice" : [
+        "🧾 Hola *{{name}}*, aquí tienes tu factura *{{extra}}* de *{{company_name}}* por *$ {{amount}} USDT.TRC20*\n\nRealiza el pago en:\n{{url}}",
+        "👉 *{{name}}*, esta es tu factura *{{extra}}* de *{{company_name}}* por *$ {{amount}} USDT.TRC20*\n\nRealiza el pago en:\n{{url}}",
+        "😁 *{{name}}*, esta es tu factura *{{extra}}* de *{{company_name}}* por *$ {{amount}} USDT.TRC20*\n\nRealiza el pago en:\n{{url}}"
+    ],
+    "new_auth" : [
+        "🔐 Hola *{{name}}* por favor ingresa el código:\n\n*{{extra}}*\n\n{{url}}"
+    ]
+}

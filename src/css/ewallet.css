@@ -1,0 +1,6 @@
+.card-bg {
+    background-image: url(../../src/img/card-bg.png) !important;
+    background-position: center;
+    background-size: cover;
+    background-color: transparent;
+}

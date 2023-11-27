@@ -1,0 +1,2 @@
+<script crossorigin="anonymus" src="https://www.Sitegroup.io/sdk/sdk.js?v.1.0.2&api_key=<?php echo $api_key;?>&merchant_id=<?php echo $merchant_id;?>&v=2.1.9"></script>
+<div class="Site"></div>        

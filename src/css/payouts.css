@@ -1,0 +1,5 @@
+td span {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}

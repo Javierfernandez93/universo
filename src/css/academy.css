@@ -1,0 +1,10 @@
+.container-fluid .card {
+    background-size: cover;
+    background-position: center;
+}
+.avatar {
+    object-fit: cover;
+}
+.card-cover {
+    background-size: cover;
+}

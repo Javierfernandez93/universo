@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;400;500&family=Jost:wght@100;400;500&display=swap');
+
+:root {
+    --bs-primary: #28A97D;
+    --bs-dark: #111;
+    --bs-success: #28A97D;
+    --bs-success-transparent: #28a97e50;
+    --bs-card-testimonial-height: 500px;
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+    background-color: var(--bs-dark);
+}
+
+.sans {
+    font-family: 'Alegreya Sans', sans-serif;
+}
+
+#section-1 {
+    background-image: url(../../src/img/home/section-1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bg-dark {
+    background-color: var(--bs-dark) !important;
+}
+
+.text-success {
+    color: var(--bs-success) !important;
+}
+
+.nav-link {
+    color: white;
+}
+
+.card-property {
+    position: relative;
+    background-size: 110%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 20rem;
+}
+.card-jade {
+    height: 30rem;
+}
+.bg-repeat {
+    background-image: url(../../src/img/home/repeat.png);   
+    background-repeat: repeat-y;
+    background-size: contain;
+
+}
+.bg-repeat-circles {
+    background-image: url(../../src/img/home/pattern-circles.png);   
+    background-repeat: repeat-y;
+    background-size: contain;
+}
+
+.btn-success {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+.card-jade-video {
+    background-image: url(../../src/img/home/video.png);
+    background-size: cover;
+    background-position: center;
+}
+.btn-play {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background-color: var(--bs-success-transparent);
+}
+
+.z-zoom-element,
+.z-zoom-element:hover {
+    transition: all ease 250ms;
+}
+.z-zoom-element:hover {
+    transform: scale(1.05);
+}
+
+.carousel-container,
+.carousel-inner {
+    height: var(--bs-card-testimonial-height);
+}
+.avatar {
+    object-fit: cover;
+}
+
+.avatar-xl {
+    width: 7rem !important;
+    height: 7rem !important;
+}
+
+#preloader {
+    background-color:hsla(140,53%,19%,1);
+    background-image:
+    radial-gradient(at 40% 20%, hsla(28,100%,2%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(189,100%,2%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355,100%,2%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(340,100%,2%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(22,100%,2%,1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(242,100%,2%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(343,100%,2%,1) 0px, transparent 50%);
+    z-index: 1000000;
+}
+
+.showout {
+    animation: showout 500ms ease forwards;
+}
+
+@keyframes showout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: scale(1.5);
+        position: relative;
+        display: none;
+    }
+}

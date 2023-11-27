@@ -1,0 +1,12 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.6",
+        "php-curl-class/php-curl-class": "^9.14",
+        "capitalpayments/sdk": "dev-main",
+        "phpoffice/phpspreadsheet": "^1.29",
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.0",
+        "dummytrader/sdk": "dev-main",
+        "php-ai/php-ml": "^0.10.0"
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "welcome" : [
+      "😁 Hello *{{name}}*, congratulations to join to *Site*.\n\n👉 Learn more about us here:\nzuum.link/BienvenidoSite",
+      "🥳 Thanks for joining to *Site*, *{{name}}*.\n\n👉 Learn more about us here:\nzuum.link/BienvenidoSite",
+      "😎 *{{name}}* congratulations, you're now signed in *Site*.\n\n👉 Learn more about us:\n zuum.link/BienvenidoSite",
+      "👏🏻 Great *{{name}}* you're now signed in *Site*.\n\n👉 Learn more about us here:\nzuum.link/BienvenidoSite",
+      "👋🏻 Amazing *{{name}}* welcome to *Site*.\n\n👉 Learn more about us:\nzuum.link/BienvenidoSite"
+  ],
+  "incomplete_invoice" : [
+      "🧾 Hello *{{name}}* por paga el monto restante de $ {{amount}} USDT.TRC20 de la factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite",
+      "🧾 *{{name}}* aún tienes que pagar el monto restante de $ {{amount}} USDT.TRC20 de tu factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite",
+      "🧾 *{{name}}* por favor paga el monto restante de $ {{amount}} USDT.TRC20 de tu factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite",
+      "🧾 Hello *{{name}}* tu pago esta incompleto, por favor paga $ {{amount}} USDT.TRC20 de tu factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite",
+      "🧾 Hello *{{name}}* todavía pago esta incompleto, por favor paga $ {{amount}} USDT.TRC20 de tu factura *{{extra}}*:\n\n👉 {{url}}\n\nEs importante para que tu pago se acrédite"
+  ],
+  "invoice" : [
+      "🧾 Hello *{{name}}*, here's your invoice *{{extra}}* from *{{company_name}}*, *$ {{amount}} USDT.TRC20*\n\nPay now:\n{{url}}",
+      "👉 *{{name}}*, this is your invoice id *{{extra}}* from *{{company_name}}*, *$ {{amount}} USDT.TRC20*\n\nPay now:\n{{url}}",
+      "😁 *{{name}}*, your invoice id is *{{extra}}* from *{{company_name}}*, *$ {{amount}} USDT.TRC20*\n\nPay now:\n{{url}}"
+  ],
+  "new_auth" : [
+      "🔐 Hello *{{name}}* please set the auth code:\n\n*{{extra}}*\n\n{{url}}"
+  ]
+}

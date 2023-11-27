@@ -1,0 +1,8 @@
+import { HomeViewer } from '../../src/js/homeViewer.vue.js?v=2.3.4'
+import { BlogwidgetViewer } from '../../src/js/blogwidgetViewer.vue.js?v=2.3.4'
+
+Vue.createApp({
+    components : { 
+        HomeViewer, BlogwidgetViewer
+    },
+}).mount('#app')
