@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.3.4'   
+import { User } from '../../src/js/user.module.js?v=2.3.5'   
 import { Api } from '../../src/js/api.module.js'  
 
 const CounterViewer = {

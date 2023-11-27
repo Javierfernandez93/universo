@@ -1,6 +1,6 @@
 
-import { MultilevelViewer } from '../../src/js/multilevelViewer.vue.js?v=2.3.4'
-import { WidgetlandingViewer } from '../../src/js/widgetlandingViewer.vue.js?v=2.3.4'
+import { MultilevelViewer } from '../../src/js/multilevelViewer.vue.js?v=2.3.5'
+import { WidgetlandingViewer } from '../../src/js/widgetlandingViewer.vue.js?v=2.3.5'
 
 Vue.createApp({
     components : { 

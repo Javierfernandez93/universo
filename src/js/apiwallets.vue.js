@@ -1,5 +1,5 @@
-import { ApiwalletsViewer } from './apiwalletsViewer.vue.js?v=2.3.4'
-import { AuthViewer } from './authViewer.vue.js?v=2.3.4'
+import { ApiwalletsViewer } from './apiwalletsViewer.vue.js?v=2.3.5'
+import { AuthViewer } from './authViewer.vue.js?v=2.3.5'
 
 Vue.createApp({
     components : { 

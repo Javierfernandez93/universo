@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.3.4'   
+import { User } from '../../src/js/user.module.js?v=2.3.5'   
 
 const ApilistViewer = {
     name : 'apilist-viewer',

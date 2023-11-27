@@ -1,4 +1,4 @@
-import { Http } from '../../src/js/http.module.js?v=2.3.4';
+import { Http } from '../../src/js/http.module.js?v=2.3.5';
 
 class Banner extends Http {
     constructor() {
