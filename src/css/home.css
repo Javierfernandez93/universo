@@ -122,5 +122,6 @@ body {
         transform: scale(1.5);
         position: relative;
         display: none;
+        z-index: -1;
     }
 }
