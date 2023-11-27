@@ -48,7 +48,7 @@ const HomeViewer = {
         <section id="section-1" class="d-flex vh-100 align-items-center">
             <div class="container">
                 <div class="row align-items-center v-100">
-                    <div class="col-10 col-xl-4 text-center text-dark">
+                    <div class="col-10 col-md-6 col-xl-4 text-center text-dark">
                         <img src="../../src/img/logo.svg" class="w-100" alt="logo" title="logo" />
                     </div>
                 </div>
@@ -58,18 +58,18 @@ const HomeViewer = {
         <section class="bg-repeat py-5" id="section-2">
             <div class="container">
                 <div class="row justify-content-center py-5">
-                    <div class="col-12 col-md-7">
+                    <div class="col-12 col-md-7 mb-3 mb-md-0">
                         <div class="card cursor-pointer z-zoom-element card-body card-jade card-jade-video d-flex justify-content-center align-items-center">
                             <span class="btn-play d-flex justify-content-center align-items-center"><i class="bi fs-1 bi-play-fill text-white"></i></span>
                         </div>
                     </div>
                     <div class="col-12 col-md-5">
-                        <div class="card card-body bg-dark bg-repeat-circles p-5 card-jade">
+                        <div class="card card-body bg-dark bg-repeat-circles p-0 p-md-5 card-jade">
                             <div class="d-flex h-100 justify-content-center align-items-center">
                                 <div class="row w-1000">
                                     <div class="col-12">
                                         <div class="text-uppercase text-white h2">Conoce <strong class="text-success">Nuestra Visión</strong></div>
-                                        <p class="text-white my-5">No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset".</p>
+                                        <p class="text-white my-xl-5 my-2">No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset".</p>
 
                                         <button class="btn btn-success px-5 py-3">SOMOS</button>
                                     </div>
@@ -154,47 +154,47 @@ const HomeViewer = {
                         <div class="card card-body px-5 bg-dark text-center text-white">
                             <div class="row align-items-center border-bottom">
                                 <div class="col-6 col-md-3">
-                                    <div class="card card-body bg-transparent p-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div class="display-2 sans fw-bold">+5</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <div class="card card-body bg-transparent p-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div class="display-2 sans fw-bold">7</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <div class="card card-body bg-transparent p-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div class="display-2 sans fw-bold">5k+</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <div class="card card-body bg-transparent p-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div class="display-2 sans fw-bold">2k+</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-6 col-md-3">
-                                    <div class="card card-body bg-transparent p-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div>Años de </div>
                                         <div>Experiencia</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <div class="card card-body bg-transparent p-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div>Desarrollos</div> 
                                         <div>Inmobiliarios</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <div class="card card-body bg-transparent p-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div>Terrenos</div> 
                                         <div>Vendidos</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <div class="card card-body bg-transparent p-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div>Familias</div>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@ const HomeViewer = {
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="row carousel-container align-items-center justify-content-center">
-                                    <div class="col-12 col-xl-6">   
+                                    <div class="col-10 col-md-6">   
                                         <div class="d-flex justify-content-center mb-5">
                                             <div class="avatar avatar-xl">
                                                 <img src="https://mx.web.img2.acsta.net/pictures/17/02/08/16/50/452749.jpg" class="avatar border-3 border border-white avatar-xl rounded-circle"/>
@@ -255,58 +255,6 @@ const HomeViewer = {
                 </div>
             </div>
         </section>
-        
-        <footer class="bg-dark py-5">
-            <div class="pb-4 mb-4 border-bottom border-secondary">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-12 col-md-8">
-                            <div class="h1 text-white pb-5">
-                                <div class="">Sumérgete en nuestro universo y</div>
-                                <div class="">descubre la magia del jade.</div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 text-end">
-                            <button class="btn btn-success px-5 py-3">SOMOS</button>
-                        </div>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-12 col-md-8">
-                            <div class="row gx-5">
-                                <div class="col-12 col-md-auto">
-                                    <div class="text-secondary text-xs">CONTACTO </div>
-                                    <div class="text-white">+52 999 999 99 99</div>
-                                </div>
-                                <div class="col-12 col-md">
-                                    <div class="text-secondary text-xs">EMAIL</div>
-                                    <div class="text-white">INFO@UNIVERSODEJADE.COM</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 text-end">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-8">
-                        <div class="row gx-5">
-                            <div class="col-12 col-md-auto">
-                                <div class="text-white">CONTÁCTANOS</div>
-                            </div>
-                            <div class="col-12 col-md">
-                                <div class="text-white">POLITICA DE PRIVACIDAD</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 text-end text-white">
-                        Universo de Jade <n class="text-secondary">- Todos los derechos reservados</n>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
     `
 }

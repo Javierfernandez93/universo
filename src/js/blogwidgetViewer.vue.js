@@ -80,10 +80,10 @@ const BlogwidgetViewer = {
                         <ul class="list-group bg-transparent list-group-flush">
                             <li v-for="(entry,index) in entries" :class="index < entries.length-1 ? 'border-bottom border-secondary' : ''" class="list-group-item bg-transparent list-item-entry py-3">
                                 <div class="row align-items-center">
-                                    <div class="col-12 col-xl-auto">
+                                    <div class="col-12 col-md-auto">
                                         <img :src="entry.image" :alt="entry.title" :alt="entry.title" class="w-100"/>
                                     </div>
-                                    <div class="col-12 col-xl">
+                                    <div class="col-12 col-md">
                                         <h3 class="text-white fw-semibold">{{entry.title}}</h3>
 
                                         <div class="mt-3">
@@ -95,7 +95,7 @@ const BlogwidgetViewer = {
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-xl-auto">
+                                    <div class="col-12 col-md-auto">
                                         <button class="btn shadow-none mb-0 text-success">Leer Más</button>
                                     </div>
                                 </div>
