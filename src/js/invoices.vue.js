@@ -1,4 +1,4 @@
-import { InvoicesViewer } from '../../src/js/invoicesViewer.vue.js?v=2.3.5'
+import { InvoicesViewer } from '../../src/js/invoicesViewer.vue.js?v=2.3.6'
 
 Vue.createApp({
     components: {

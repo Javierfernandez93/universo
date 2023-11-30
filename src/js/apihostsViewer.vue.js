@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.3.5'   
+import { User } from '../../src/js/user.module.js?v=2.3.6'   
 
 const ApihostsViewer = {
     name : 'apihosts-viewer',

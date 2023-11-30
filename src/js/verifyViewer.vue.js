@@ -1,5 +1,5 @@
 import { User } from './user.module.js?t=4'
-import { Translator } from '../../src/js/translator.module.js?v=2.3.5'   
+import { Translator } from '../../src/js/translator.module.js?v=2.3.6'   
 
 const VerifyViewer = {
     name: 'verify-viewer',

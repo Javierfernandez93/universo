@@ -1,4 +1,4 @@
-import { NewpasswordViewer } from '../../src/js/newpasswordViewer.vue.js?v=2.3.5'   
+import { NewpasswordViewer } from '../../src/js/newpasswordViewer.vue.js?v=2.3.6'   
 
 Vue.createApp({
     components : { 

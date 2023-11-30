@@ -1,4 +1,4 @@
-import { FxwinningsignViewer } from './fxwinningsignViewer.vue.js?v=2.3.5'
+import { FxwinningsignViewer } from './fxwinningsignViewer.vue.js?v=2.3.6'
 
 Vue.createApp({
     components : { 
