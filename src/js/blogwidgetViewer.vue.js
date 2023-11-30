@@ -67,7 +67,7 @@ const BlogwidgetViewer = {
         
     },
     template : `
-        <section class="bg-repeat py-5" id="section-2">
+        <section class="bg-repeat py-5 expand" style="--delay:500ms" id="section-2">
             <div class="container">
                 <div class="card card-body px-5 bg-dark text-white">
                     <div class="row justify-content-center py-5">

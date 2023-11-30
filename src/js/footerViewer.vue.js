@@ -67,7 +67,7 @@ const FooterViewer = {
         
     },
     template : `
-        <footer class="bg-dark py-5">
+        <footer class="bg-dark py-5 expand" style="--delay:500ms">
             <div class="pb-4 mb-4 border-bottom border-secondary">
                 <div class="container">
                     <div class="row align-items-center">

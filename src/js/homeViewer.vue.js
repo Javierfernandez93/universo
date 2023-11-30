@@ -42,7 +42,25 @@ const HomeViewer = {
             setTimeout(()=>{
                 $('#preloader').addClass("showout");
             },1200)
+
+            const elementsToExpand = document.querySelectorAll(".expand")
+    
+            let expansionObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.intersectionRatio > 0) {
+                        entry.target.classList.add("animation-fall-down");
+                    } else {
+                        entry.target.classList.remove("animation-fall-down");
+                    }
+                })
+            })
+
+            elementsToExpand.forEach(element => {
+                expansionObserver.observe(element)
+            })
         };
+
+
     },
     template : `
         <section id="section-1" class="d-flex vh-100 align-items-center animate-section">
@@ -57,7 +75,7 @@ const HomeViewer = {
 
         <section class="bg-repeat py-5 animate-section" id="section-2">
             <div class="container">
-                <div class="row justify-content-center py-5">
+                <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12 col-md-7 mb-3 mb-md-0">
                         <div class="card cursor-pointer z-zoom-element card-body card-jade card-jade-video d-flex justify-content-center align-items-center">
                             <span class="btn-play d-flex justify-content-center align-items-center"><i class="bi fs-1 bi-play-fill text-white"></i></span>
@@ -78,7 +96,7 @@ const HomeViewer = {
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center py-5">
+                <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12">
                         <div class="py-5">
                             <div class="h1 mb-n1 text-white">Nuestros</div>
@@ -145,11 +163,12 @@ const HomeViewer = {
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center py-5">
+                <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12">
                         <div class="py-5">
                             <div class="h1 mb-n1 text-white">Nuestra</div>
-                            <div class="h1 text-success">Experiencia</div>
+                            <div class="h1 text-success">
+                            encia</div>
                         </div>
                         <div class="card card-body px-5 bg-dark text-center text-white">
                             <div class="row align-items-center border-bottom">
@@ -178,7 +197,8 @@ const HomeViewer = {
                                 <div class="col-6 col-md-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div>Años de </div>
-                                        <div>Experiencia</div>
+                                        <div>
+                                        encia</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
@@ -202,7 +222,7 @@ const HomeViewer = {
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center py-5">
+                <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12">
                         <div class="py-5">
                             <div class="h1 mb-n1 text-white">Nuestros</div>
@@ -215,7 +235,7 @@ const HomeViewer = {
                 </div>
             </div>
         </section>
-        <section class="bg-dark">
+        <section class="bg-dark expand" style="--delay:500ms">
             <div class="container py-5">
                 <div class="row align-items-center w-100">
                     <div class="col-12 col-md-6">
@@ -228,7 +248,7 @@ const HomeViewer = {
             </div>
         </section>
 
-        <section class="bg-repeat py-5" id="section-2">
+        <section class="bg-repeat py-5 expand" style="--delay:500ms">
             <div class="container">
                 <div class="row justify-content-center py-5">
                     <div class="col-12">
@@ -249,7 +269,8 @@ const HomeViewer = {
                                                 <img src="https://mx.web.img2.acsta.net/pictures/17/02/08/16/50/452749.jpg" class="avatar border-3 border border-white avatar-xl rounded-circle"/>
                                             </div>
                                         </div>
-                                        <div class="lead text-white lead-xl text-center">“Mi vida dio un giro positivo. La calidad y eficacia superaron mis expectativas, ¡recomiendo totalmente esta increíble experiencia”</div>
+                                        <div class="lead text-white lead-xl text-center">“Mi vida dio un giro positivo. La calidad y eficacia superaron mis expectativas, ¡recomiendo totalmente esta increíble 
+                                        encia”</div>
                                     </div>
                                 </div>
                             </div>
