@@ -58,8 +58,8 @@
         </div>
     </div>
     
-    <nav class="fixed-top py-3 py-xl-5">
-        <header class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-xl-3 mb-0 mb-xl-4">
+    <nav class="fixed-top py-3 py-xl-3">
+        <header class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-xl-3 mb-0">
             <div class="col-md-3 mb-2 mb-md-0">
                 <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
                 <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>

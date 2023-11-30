@@ -23,6 +23,22 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
+}
+
+.animate-section {
+    animation: sectionIncrease linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 100vh;
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+@keyframes sectionIncrease {
+    to {
+        opacity: 0.95;
+        transform: scale(1);
+    }
 }
 
 .bg-dark {

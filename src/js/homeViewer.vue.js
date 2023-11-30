@@ -45,7 +45,7 @@ const HomeViewer = {
         };
     },
     template : `
-        <section id="section-1" class="d-flex vh-100 align-items-center">
+        <section id="section-1" class="d-flex vh-100 align-items-center animate-section">
             <div class="container">
                 <div class="row align-items-center v-100">
                     <div class="col-10 col-md-6 col-xl-4 text-center text-dark">
@@ -55,7 +55,7 @@ const HomeViewer = {
             </div>
         </section>
 
-        <section class="bg-repeat py-5" id="section-2">
+        <section class="bg-repeat py-5 animate-section" id="section-2">
             <div class="container">
                 <div class="row justify-content-center py-5">
                     <div class="col-12 col-md-7 mb-3 mb-md-0">
@@ -155,7 +155,7 @@ const HomeViewer = {
                             <div class="row align-items-center border-bottom">
                                 <div class="col-6 col-md-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">+5</div>
+                                        <div class="display-2 sans fw-bold">+3</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
@@ -165,12 +165,12 @@ const HomeViewer = {
                                 </div>
                                 <div class="col-6 col-md-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">5k+</div>
+                                        <div class="display-2 sans fw-bold">3.4k+</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">2k+</div>
+                                        <div class="display-2 sans fw-bold">3k+</div>
                                     </div>
                                 </div>
                             </div>
@@ -199,6 +199,17 @@ const HomeViewer = {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center py-5">
+                    <div class="col-12">
+                        <div class="py-5">
+                            <div class="h1 mb-n1 text-white">Nuestros</div>
+                            <div class="h1 text-success">Afiliados</div>
+                        </div>
+                        <div class="card card-body px-5 bg-dark text-center text-white">
+                           <img class="w-100" src="../../src/img/home/afilliates.png" alt="afiliados" title="afiliados"/>
                         </div>
                     </div>
                 </div>
