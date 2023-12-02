@@ -1,6 +1,5 @@
-#section-1 {
-    height: 250px;
-}
-#section-2 {
-    min-height: 550px;
+nav {
+    backdrop-filter: blur(55px);
+    background: rgb(237,255,236);
+background: linear-gradient(90deg, rgba(237,255,236,1) 0%, rgba(255,255,255,0.5060399159663865) 50%, rgba(237,255,236,1) 100%);
 }

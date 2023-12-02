@@ -20,29 +20,26 @@ const AboutViewer = {
         this.initScroll()
     },
     template : `
-        <div id="section-1" class="overflow-hidden bg-dark d-flex align-items-end pb-5">
-            <div class="container text-center z-index-1">
-                <h3 class="text-white">Sobre nosotros</h3>
-            </div>
-        </div>
-
-        <div id="section-2" class="bg-light py-5">
-            <div class="container">
-                <h3 class="text-center">Nuestra historia</h3>
-                <div class="row py-5">
-                    <div class="col-12 col-xl-4">
-                        <h3>Noviembre 2022</h3>
-                        <p>Comenzamos a diseñar un sistema de trading para hacer realidad los sueños de los traders</p>
-                    </div>
-                    <div class="col-12 col-xl-4">
-                        <h3>Marzo 2023</h3>
-                        <p>Se inician los trabajos en el desarrollo de Site</p>
-                    </div>
-                    <div class="col-12 col-xl-4">
-                        <h3>Abril 2023</h3>
-                        <p>Lanzamos la única plataforma en latinoamérica para hacer Trading y ganar dinero real</p>
-                    </div>
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-2">
+                    <img src="../../src/img/logo-black.png" alt="logo" title="logo" class="w-100" />
                 </div>
+            </div>
+            <div class="py-5">
+                <div class="h2 text-success">Somos</div>
+                <div class="lead lead-xl">Somos la fusión armoniosa entre la antigua sabiduría maya y la moderna innovación. En cada diseño, llevamos la esencia de la naturaleza y la rica cultura de Yucatán. Nuestro compromiso con la calidad y la sostenibilidad se refleja en cada detalle, creando no solo productos, sino experiencias que cuentan la historia de nuestra conexión con la tierra y sus tradiciones.</div>
+                <img src="../../src/img/about.png" alt="about" title="about" class="w-100 rounded mt-5"/>
+            </div>
+            <div class="py-5">
+                <div class="h2 text-success">Visión</div>
+                <div class="lead lead-xl">Somos la fusión armoniosa entre la antigua sabiduría maya y la moderna innovación. En cada diseño, llevamos la esencia de la naturaleza y la rica cultura de Yucatán. Nuestro compromiso con la calidad y la sostenibilidad se refleja en cada detalle, creando no solo productos, sino experiencias que cuentan la historia de nuestra conexión con la tierra y sus tradiciones.</div>
+                <img src="../../src/img/about.png" alt="about" title="about" class="w-100 rounded mt-5"/>
+            </div>
+            <div class="py-5">
+                <div class="h2 text-success">Nuestra Comunidad</div>
+                <div class="lead lead-xl">Somos la fusión armoniosa entre la antigua sabiduría maya y la moderna innovación. En cada diseño, llevamos la esencia de la naturaleza y la rica cultura de Yucatán. Nuestro compromiso con la calidad y la sostenibilidad se refleja en cada detalle, creando no solo productos, sino experiencias que cuentan la historia de nuestra conexión con la tierra y sus tradiciones.</div>
+                <img src="../../src/img/about.png" alt="about" title="about" class="w-100 rounded mt-5"/>
             </div>
         </div>
     `

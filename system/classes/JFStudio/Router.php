@@ -86,6 +86,8 @@ class Router {
     const Aof = 139;
     const PammyTrading = 140;
     const Team = 145;
+    const RealState = 146;
+    const BLOG = 1478;
     
     /* admin */
     const AdminUsers = 9;
@@ -264,6 +266,8 @@ class Router {
             self::AdminConfig => 'Configuración',
             self::AdminBanner => 'Eventos',
             self::Team => 'Team',
+            self::RealState => 'Desarrollos',
+            self::BLOG => 'Blog',
             default => 'Sin nombre'
         };
     }

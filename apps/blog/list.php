@@ -4,16 +4,17 @@ require_once TO_ROOT . "/system/core.php";
 
 $Layout = JFStudio\Layout::getInstance();
 
-$route = JFStudio\Router::About;
-$Layout->init(JFStudio\Router::getName($route),'about',"about",'',TO_ROOT.'/');
+$route = JFStudio\Router::BLOG;
 
-$Layout->setScriptPath(TO_ROOT . '/src/');
+$Layout->init(JFStudio\Router::getName($route),'list',"simple",'',TO_ROOT.'/');
+
 $Layout->setScript([
-	'about.css',
-	'about.vue.js'
+	'blog.css',
+	'bloglist.vue.js'
 ]);
 
 $Layout->setVar([
+	'UserLogin' => new Site\UserLogin,
 	'route' => $route
 ]);
 $Layout();

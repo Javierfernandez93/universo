@@ -1,8 +1,8 @@
-import { AboutViewer } from '../../src/js/aboutViewer.vue.js?v=2.3.6'
+import { RealstateViewer } from '../../src/js/realstateViewer.vue.js?v=2.3.6'
 import { FooterViewer } from '../../src/js/footerViewer.vue.js?v=2.3.6'
 
 Vue.createApp({
     components : { 
-        AboutViewer, FooterViewer
+        RealstateViewer, FooterViewer
     },
 }).mount('#app')

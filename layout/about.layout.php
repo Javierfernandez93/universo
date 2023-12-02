@@ -47,18 +47,8 @@
     <link rel="stylesheet" href="../../src/css/general.css" />
 </head>
 
-<body>
-    <div id="preloader" class="start-0 top-0 d-flex align-items-center justify-content-center position-fixed vh-100 w-100">
-        <div class="row align-items-center justify-content-center text-center">
-            <div class="col-10 col-md-4 text-center text-dark">
-                <img src="../../src/img/logo.svg" class="w-100 animation-fall-down" style="--delay:300ms" alt="logo" title="logo" />
-            </div>
-            <div class="text-white mb-n3 pt-3 fs-3 animation-fall-down sans" style="--delay:600ms">Bienvenido a</div>
-            <div class="text-white fs-1 fw-bold animation-fall-down sans" style="--delay:700ms">Universo de JADE</div>
-        </div>
-    </div>
-    
-    <nav class="fixed-top py-3 py-xl-3">
+<body class="bg-white">
+    <nav class="sticky py-3 py-xl-3">
         <header class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-xl-3 mb-0">
             <div class="col-md-3 mb-2 mb-md-0">
                 <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
@@ -67,11 +57,12 @@
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="../../apps/home" class="nav-link px-3 link-success">INICIO</a></li>
-                <li><a href="../../apps/realState" class="nav-link px-3">DESARROLLOS</a></li>
-                <li><a href="../../apps/blog" class="nav-link px-3">BLOG</a></li>
-                <li><a href="../../apps/home/about" class="nav-link px-3">SOMOS</a></li>
+                <li><a href="../../apps/home" class="nav-link text-dark px-3 <?php if($route == JFStudio\Router::Home) {?>text-success<?php } ?>">INICIO</a></li>
+                <li><a href="../../apps/realState" class="nav-link text-dark px-3 <?php if($route == JFStudio\Router::RealState) {?>text-success<?php } ?>">DESARROLLOS</a></li>
+                <li><a href="../../apps/blog" class="nav-link text-dark px-3 <?php if($route == JFStudio\Router::BLOG) {?>text-success<?php } ?>">BLOG</a></li>
+                <li><a href="../../apps/home/about" class="nav-link text-dark px-3 <?php if($route == JFStudio\Router::About) {?>text-success<?php } ?>">SOMOS</a></li>
             </ul>
+
 
             <div class="col-md-3 text-end">
                 <button type="button" class="btn shadow-none text-white btn-lg mb-0">Iniciar sesión</button>

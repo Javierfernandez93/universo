@@ -1,4 +1,4 @@
-import { Translator } from '../../src/js/translator.module.js?v=2.3.5'   
+import { Translator } from '../../src/js/translator.module.js?v=2.3.6'   
 
 const FooterViewer = {
     name : 'footer-viewer',
@@ -78,7 +78,7 @@ const FooterViewer = {
                             </div>
                         </div>
                         <div class="col-12 col-md-4 text-end">
-                            <button class="btn btn-success px-5 py-3">SOMOS</button>
+                            <a href="../../apps/home/about" class="btn btn-success px-5 py-3">SOMOS</a>
                         </div>
                     </div>
                     <div class="row align-items-center">

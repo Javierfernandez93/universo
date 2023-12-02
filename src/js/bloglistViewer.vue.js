@@ -1,26 +1,45 @@
 import { User } from '../../src/js/user.module.js?v=2.3.6'   
 
-const BlogwidgetViewer = {
-    name : 'blogwidget-viewer',
+const BloglistViewer = {
+    name : 'bloglist-viewer',
     data() {
         return {
             User: new User,
             entries: null,
+            entriesAux: null,
+            query: null
+        }
+    },
+    watch : {
+        query : {
+            handler() {
+                this.filterData()
+            },
+            deep: true
         }
     },
     methods : {
-        getBlogEntries() {
-            this.User.getBlogEntries({},(response)=>{
-                if(response.s == 1)
-                {
-                    this.entries = response.entries
-                }
+        filterData()
+        {
+            this.entries = this.entriesAux
+            this.entries = this.entries.filter((entry) =>{
+                return entry.title_sanitized.toLowerCase().includes(this.query.toLowerCase())
             })
         },
         goToBlog(entry)
         {
             window.location.href = `../../apps/blog/?bid=${entry.blog_id}`
         },
+        getBlogEntries()
+        {
+            this.User.getBlogEntries({},(response)=>{
+                if(response.s == 1)
+                {
+                    this.entries = response.entries
+                    this.entriesAux = response.entries
+                }
+            })
+        }
     },
     mounted() 
     {       
@@ -31,8 +50,11 @@ const BlogwidgetViewer = {
             <div class="container">
                 <div class="card card-body px-5 bg-dark text-white">
                     <div class="row justify-content-center py-5">
-                        <div class="col-12">
+                        <div class="col-12 col-xl">
                             <div class="h2 mb-n1 text-uppercase text-white">Nuestro <strong class="text-success">blog</strong></div>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <input v-model="query" type="text" class="form-control" placeholder="Buscar...">
                         </div>
                     </div>
 
@@ -67,4 +89,4 @@ const BlogwidgetViewer = {
     `
 }
 
-export { BlogwidgetViewer }
+export { BloglistViewer }

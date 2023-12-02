@@ -747,6 +747,16 @@ class User extends Http {
     getIncome(data, callback) {
         return this.call('../../app/application/getIncome.php', data, callback);
     }
+    /* realState */
+    getRealStateIntros(data, callback) {
+        return this.call('../../app/application/getRealStateIntros.php', data, callback);
+    }
+    getBlog(data, callback) {
+        return this.call('../../app/application/getBlog.php', data, callback);
+    }
+    getBlogEntries(data, callback) {
+        return this.call('../../app/application/getBlogEntries.php', data, callback);
+    }
 }
 
 export { User }

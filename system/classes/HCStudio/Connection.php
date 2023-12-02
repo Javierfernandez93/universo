@@ -42,7 +42,7 @@ class Connection
 	private $mysqli;
 	const protocol = 'http';
 	// const $proyect_url = '192.168.100.237:8888/mizuum';
-	const proyect_url = 'localhost:8888/universo';
+	const proyect_url = 'localhost:8888/Universo';
 	const proyect_name = 'Site';
 
 	public function getConnectioName()

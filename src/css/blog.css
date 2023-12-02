@@ -1,0 +1,36 @@
+.vh-75 {
+  height: 75vh;
+}
+
+.mask-bottom {
+  height: 50vh;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    #0d0e0f 0%,
+    rgba(0, 0, 0, 0.5060399159663865) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+nav {
+  backdrop-filter: blur(55px);
+}
+
+.bg-animated {
+  animation: sectionIncrease linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 500px;
+  background-size: 150%;
+  background-position: center;
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+@keyframes sectionIncrease {
+  to {
+    opacity: 0.95;
+    transform: scale(1);
+    background-size: 100%;
+    transform: translateY(-100px);
+  }
+}
