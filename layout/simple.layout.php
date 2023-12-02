@@ -69,7 +69,7 @@
         </header>
     </nav>
 
-    <div class="">
+    <div class="bg-repeat">
         {{content}}    
     </div>
 
