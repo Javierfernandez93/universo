@@ -46,18 +46,17 @@ const BloglistViewer = {
         this.getBlogEntries()
     },
     template : `
-        <section class="bg-repeat py-5 expand" style="--delay:500ms" id="section-2">
+        <section class="bg-repeat vh-100 py-6 expand" style="--delay:500ms" id="section-2">
             <div class="container">
-                <div class="card card-body px-5 bg-dark text-white">
-                    <div class="row justify-content-center py-5">
-                        <div class="col-12 col-xl">
-                            <div class="h2 mb-n1 text-uppercase text-white">Nuestro <strong class="text-success">blog</strong></div>
-                        </div>
-                        <div class="col-12 col-xl-auto">
-                            <input v-model="query" type="text" class="form-control" placeholder="Buscar...">
-                        </div>
+                <div class="row align-items-center justify-content-center py-5">
+                    <div class="col-12 col-xl">
+                        <div class="h2 mb-n1 text-uppercase text-white">Nuestro <strong class="text-success">blog</strong></div>
                     </div>
-
+                    <div class="col-12 col-xl-4">
+                        <input v-model="query" type="text" class="form-control bg-transparent border-0 lead text-white text-end" placeholder="Buscar por título...">
+                    </div>
+                </div>
+                <div class="card card-body px-5 bg-dark text-white">
                     <div v-if="entries">
                         <ul class="list-group bg-transparent list-group-flush">
                             <li v-for="(entry,index) in entries" :class="index < entries.length-1 ? 'border-bottom border-secondary' : ''" class="list-group-item bg-transparent list-item-entry py-3">
@@ -83,6 +82,10 @@ const BloglistViewer = {
                             </li>
                         </ul>
                     </div>
+                </div>
+
+                <div v-if="entries" class="text-white p-3">
+                    Entradas totales en el blog  {{entries.length}}
                 </div>
             </div>
         </section>
