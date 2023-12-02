@@ -1,4 +1,4 @@
-import { TeamViewer } from '../../src/js/teamViewer.vue.js?v=2.3.6'   
+import { TeamViewer } from '../../src/js/teamViewer.vue.js?v=2.3.7'   
 
 Vue.createApp({
     components : { 

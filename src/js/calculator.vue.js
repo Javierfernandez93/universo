@@ -1,7 +1,7 @@
-import { User } from '../../src/js/user.module.js?v=2.3.6'   
+import { User } from '../../src/js/user.module.js?v=2.3.7'   
 
 /* vue */ 
-import { ProfitViewer } from '../../src/js/profitViewer.vue.js?v=2.3.6'
+import { ProfitViewer } from '../../src/js/profitViewer.vue.js?v=2.3.7'
 
 Vue.createApp({
     components : { 
