@@ -12,7 +12,7 @@ $Translator = JFStudio\Translator::getInstance();
 $Translator->init();
 
 $Layout->setScript([
-	'realstate.css',
+	'realState.css',
 	'realstate.vue.js'
 ]);
 
