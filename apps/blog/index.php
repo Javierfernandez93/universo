@@ -2,7 +2,7 @@
 
 require_once TO_ROOT . "/system/core.php";
 
-if(!$_GET['bid'])
+if(!isset($_GET['bid']))
 {
 	HCStudio\Util::redirectTo(TO_ROOT."/apps/blog/list");
 }
