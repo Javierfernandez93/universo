@@ -1,12 +1,11 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?t=5'
 
 const AdmintoolsViewer = {
-    name: 'admintools-viewer',
     data() {
         return {
             UserSupport : new UserSupport,
-            tools : {},
-            toolsAux : {},
+            tools : null,
+            toolsAux : null,
             query : null,
             columns: { // 0 DESC , 1 ASC 
                 tool_id : {
@@ -58,27 +57,28 @@ const AdmintoolsViewer = {
         goToEdit(tool_id) {
             window.location.href = `../../apps/admin-tools/edit?tid=${tool_id}`
         },
-        publishTool(tool_id) {
-            this.UserSupport.publishTool({tool_id:tool_id},(response)=>{
+        setToolStatus(tool,status) {
+            this.UserSupport.setToolStatus({tool_id:tool.tool_id,status:status},(response)=>{
                 if(response.s == 1)
                 {
-                    this.getAdminTools()
-                }
-            })
-        },
-        unpublishTool(tool_id) {
-            this.UserSupport.unpublishTool({tool_id:tool_id},(response)=>{
-                if(response.s == 1)
-                {
-                    this.getAdminTools()
-                }
-            })
-        },
-        deleteTool(tool_id) {
-            this.UserSupport.deleteTool({tool_id:tool_id},(response)=>{
-                if(response.s == 1)
-                {
-                    this.getAdminTools()
+                    tool.status = status
+
+                    if(status == 1)
+                    {
+                        toastInfo({
+                            message: 'Herramienta publicada',
+                        })
+                    } else if(status == 0) {
+                        toastInfo({
+                            message: 'Herramienta despublicada',
+                        })
+                    } else if(status == -1) {
+                        toastInfo({
+                            message: 'Herramienta eliminada',
+                        })
+
+                        this.getAdminTools()
+                    }
                 }
             })
         },
@@ -93,15 +93,14 @@ const AdmintoolsViewer = {
             this.UserSupport.getAdminTools({},(response)=>{
                 if(response.s == 1)
                 {
+                    this.tools = response.tools
                     this.toolsAux = response.tools
-                    this.tools = this.toolsAux
                 }
             })
         },
     },
     mounted() 
     {
-        this.UserSupport = 
         this.getAdminTools()
     },
     template : `
@@ -110,24 +109,19 @@ const AdmintoolsViewer = {
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="row align-items-center">
-                            <div class="col-auto">
-                                <i class="bi bi-pie-chart-fill"></i>
-                            </div>
                             <div class="col fw-semibold text-dark">
-                                <div class="small">Herramientas</div>
+                                <div><span class="text-xs text-secondary">Total {{Object.keys(tools).length}}</span></div>
+                                <div class="h5">Herramientas</div>
                             </div>
                             <div class="col-auto text-end">
-                                <div><a href="../../apps/admin-tools/add" type="button" class="btn btn-dark shadow-none">Añadir herramienta</a></div>
-                                <div><span class="badge bg-secondary">Total de herramientas {{Object.keys(tools).length}}</span></div>
+                                <div><a href="../../apps/admin-tools/add" type="button" class="btn mb-0 btn-success shadow-none">Añadir herramienta</a></div>
+                            </div>
+                            <div class="col-auto text-end">
+                                <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
                     </div>
-                    <div class="card-header">
-                        <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
-                    </div>
-                    <div
-                        v-if="Object.keys(tools).length > 0" 
-                        class="card-body px-0 pt-0 pb-2">
+                    <div v-if="tools" class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -203,25 +197,20 @@ const AdmintoolsViewer = {
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <button type="button" class="btn btn-dark btn-sm px-3 mb-0 shadow-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
                                                 </button>
                                                 <ul class="dropdown-menu shadow">
-                                                    <?php if($UserSupport->hasPermission('edit_tool')) { ?>
-                                                        <li><button class="dropdown-item" @click="goToEdit(tool.tool_id)">Editar</button></li>
-                                                    <?php } ?>
-                                                    <?php if($UserSupport->hasPermission('publish_tool')) { ?>
-                                                        <li v-if="tool.status == '0'"><button class="dropdown-item" @click="publishTool(tool.tool_id)">Publicar herramienta</button></li>
-                                                    <?php } ?>
-                                                    <?php if($UserSupport->hasPermission('unpublish_tool')) { ?>
-                                                        <li v-if="tool.status == '1'"><button class="dropdown-item" @click="unpublishTool(tool.tool_id)">Despublicar herramienta</button></li>
-                                                    <?php } ?>
-                                                    <?php if($UserSupport->hasPermission('delete_tool')) { ?>
-                                                        <li>
-                                                            <hr class="dropdown-divider">
-                                                        </li>
-                                                        <li><button class="dropdown-item" @click="deleteTool(tool.tool_id)">Eliminar</button></li>
-                                                    <?php } ?>
+                                                    
+                                                    <li><button class="dropdown-item" @click="goToEdit(tool.tool_id)">Editar</button></li>
+                                                    
+                                                    <li v-if="tool.status == '0'"><button class="dropdown-item" @click="setToolStatus(tool,1)">Publicar</button></li>
+                                                    <li v-if="tool.status == '1'"><button class="dropdown-item" @click="setToolStatus(tool,0)">Despublicar</button></li>
+                                                    
+                                                    <li>
+                                                        <hr class="dropdown-divider">
+                                                    </li>
+                                                    <li><button class="dropdown-item" @click="setToolStatus(tool,-1)">Eliminar</button></li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -230,8 +219,7 @@ const AdmintoolsViewer = {
                             </table>
                         </div>
                     </div>
-                    <div v-else
-                        class="card-body">
+                    <div v-else-if="tools == false" class="card-body">
                         <div class="alert alert-secondary text-white text-center">
                             <div>No tenemos herramientas aún</div>
                         </div>

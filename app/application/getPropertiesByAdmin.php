@@ -4,19 +4,18 @@ require_once TO_ROOT. "/system/core.php";
 
 $data = HCStudio\Util::getHeadersForWebService();
 
-$UserLogin = new Site\UserLogin;
 $UserSupport = new Site\UserSupport;
 
-if($UserLogin->logged === true || $UserSupport->logged === true)
+if($UserSupport->logged === true)
 {
-    if($catalog_real_states = (new Site\CatalogRealState)->findAll("status = ?",JFStudio\Constants::AVIABLE))
+    if($properties = (new Site\Property)->getAll())
     {
-        $data["catalog_real_states"] = $catalog_real_states;
+        $data["properties"] = $properties;
         $data["s"] = 1;
         $data["r"] = "DATA_OK";
     } else {
-        $data['r'] = "DATA_ERROR";
-        $data['s'] = 0;
+        $data["s"] = 0;
+        $data["r"] = "NOT_PROPERTIES";
     }
 } else {
 	$data["s"] = 0;

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../../src/css/nucleo-svg.css" />
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../../src/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../src/css/nucleo-svg.css" />
     <!-- CSS Files -->
     
@@ -60,7 +60,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#users" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminUsers,JFStudio\Router::AdminUserAdd,JFStudio\Router::AdminUserEdit])) { ?>active<?php } ?>" aria-controls="users" role="button" aria-expanded="false">
-                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-people"></i></span>
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-person-circle"></i></span>
                             <span class="nav-link-text ms-1">Vendedores</span>
                         </a>
                         <div class="collapse" id="users">
@@ -108,7 +108,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#leads" class="nav-link <?php if (in_array($route, [JFStudio\Router::Lead,JFStudio\Router::AdminLeadAdd])) { ?>active<?php } ?>" aria-controls="leads" role="button" aria-expanded="false">
-                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-people"></i></span>
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-rocket-takeoff-fill"></i></span>
                             <span class="nav-link-text ms-1">Prospectos</span>
                         </a>
                         <div class="collapse" id="leads">
@@ -128,11 +128,35 @@
                         </ul>
                     </ul>
                 <?php } ?>
+                <?php if ($UserSupport->hasPermission('list_tools')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#tools" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTools, JFStudio\Router::AdminToolsAdd, JFStudio\Router::AdminToolsEdit])) { ?>active<?php } ?>" aria-controls="tools" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-toggles2"></i></span>
+                            <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminTools); ?></span>
+                        </a>
+                        <div class="collapse" id="tools">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-tools">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-tools/add">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Añadir </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
                 <?php if ($UserSupport->hasPermission('list_administrators')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#administrators" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminAdministrators, JFStudio\Router::AdminAdministratorsAdd, JFStudio\Router::AdminAdministratorsEdit])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
-                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-people"></i></span>
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-shield-fill-check"></i></span>
                             <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminAdministrators); ?></span>
                         </a>
                         <div class="collapse" id="administrators">
@@ -145,6 +169,30 @@
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link active" href="../../apps/admin-administrators/add">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Añadir </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
+                <?php if ($UserSupport->hasPermission('list_administrators')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#properties" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminProperties, JFStudio\Router::AdminPropertiesAdd, JFStudio\Router::AdminPropertiesEdit])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-building"></i></span>
+                            <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminProperties); ?></span>
+                        </a>
+                        <div class="collapse" id="properties">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-properties">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-properties/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
                                 </a>

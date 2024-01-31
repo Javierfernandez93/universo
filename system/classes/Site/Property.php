@@ -11,6 +11,17 @@ class Property extends Orm {
         parent::__construct();
     }
    
+    public static function add(array $data = null) {
+        if(!$data) {
+            return false;   
+        }   
+        
+        $Property = new self;
+        $Property->loadArray($data);
+        $Property->create_date = time();   
+        
+        return $Property->save();
+    }
     public function getAll() {
         $properties = $this->connection()->rows("
             SELECT 

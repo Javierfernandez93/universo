@@ -112,6 +112,9 @@ class Router {
     const AdminBanner = 144;
     const AdminLeadAdd = 150;
     const AdminClientAdd = 151;
+    const AdminProperties = 155;
+    const AdminPropertiesAdd = 156;
+    const AdminPropertiesEdit = 157;
 
     static function getName(int $route = null)
     {
@@ -223,6 +226,9 @@ class Router {
             self::Clients => 'Clientes',
             self::Commissions => 'Comisiones',
             self::Receipt => 'Recibo',
+            self::AdminProperties => 'Propiedades',
+            self::AdminPropertiesAdd => 'Propiedades',
+            self::AdminPropertiesEdit => 'Propiedades',
             default => 'Sin nombre'
         };
     }

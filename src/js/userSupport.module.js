@@ -86,6 +86,9 @@ class UserSupport extends Http {
     getCatalogTools(data, callback) {
         return this.call('../../app/application/getCatalogTools.php', data, callback);
     }
+    setToolStatus(data, callback) {
+        return this.call('../../app/application/setToolStatus.php', data, callback);
+    }
     getStats(data, callback) {
         return this.call('../../app/application/get_stats.php', data, callback);
     }
@@ -549,6 +552,22 @@ class UserSupport extends Http {
     }
     setFeedbackAs(data, callback) {
         return this.call('../../app/application/setFeedbackAs.php', data, callback);
+    }
+    /* properties */
+    getPropertiesByAdmin(data, callback) {
+        return this.call('../../app/application/getPropertiesByAdmin.php', data, callback);
+    }
+    setPropertyStatus(data, callback) {
+        return this.call('../../app/application/setPropertyStatus.php', data, callback);
+    }
+    getPropertyForEdit(data, callback) {
+        return this.call('../../app/application/getPropertyForEdit.php', data, callback);
+    }
+    saveProperty(data, callback) {
+        return this.call('../../app/application/saveProperty.php', data, callback);
+    }
+    getCatalogRealState(data, callback) {
+        return this.call('../../app/application/getCatalogRealState.php', data, callback);
     }
     /* clients */
     getClients(data, callback) {
