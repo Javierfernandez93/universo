@@ -13,15 +13,12 @@ use HCStudio\Connection;
 
 use World\Country;
 
-use Site\AdviceType;
 use Site\BuyPerUser;
 use Site\UserPlan;
 use Site\Exercise;
 use Site\UserBridgeAccount;
 use Site\UserTradingAccount;
 use Site\ProductPermission;
-use Site\MembershipPerUser;
-use Site\TransactionRequirementPerUser;
 
 class UserLogin extends Orm {
   protected $tblName  = 'user_login';
@@ -462,6 +459,7 @@ class UserLogin extends Orm {
   {
     $UserLogin = new UserLogin(false,false);
     $UserLogin->email = $data['email'];
+    $UserLogin->catalog_user_type_id = isset($data['catalog_user_type_id']) ? $data['catalog_user_type_id'] : CatalogUserType::SELLER;
     $UserLogin->password = sha1($data['password']);
     $UserLogin->signup_date = time();
     $UserLogin->verified_mail = self::VERIFIED_MAIL;
@@ -486,15 +484,13 @@ class UserLogin extends Orm {
           {
             $UserAddress = new UserAddress;
             $UserAddress->user_login_id = $UserLogin->company_id;
-            $UserAddress->address = '';
-            $UserAddress->colony = '';
-            $UserAddress->city = $data['city'] ?? '';
-            $UserAddress->state = '';
-            $UserAddress->country = $data['country'] ?? '';
+            $UserAddress->address = isset($data['address']) ? $data['address'] : '';
+            $UserAddress->colony = isset($data['colony']) ? $data['colony'] : '';
+            $UserAddress->city = isset($data['city']) ? $data['city'] : '';
+            $UserAddress->state = isset($data['state']) ? $data['state'] : '';
+            $UserAddress->country = isset($data['country']) ? $data['country'] : '';
             $UserAddress->country_id = isset($data['country_id']) && !empty($data['country_id']) ? $data['country_id'] : 0;
             
-            // d($UserAddress);
-
             if($UserAddress->save())
             {
               $UserAccount = new UserAccount;
@@ -508,7 +504,7 @@ class UserLogin extends Orm {
                 $UserReferral->referral_id = isset($data['referral']['user_login_id']) && !empty($data['referral']['user_login_id']) ? $data['referral']['user_login_id'] : 1;
                 $UserReferral->user_login_id = $UserLogin->company_id;
                 $UserReferral->catalog_level_id = 0;
-                $UserReferral->status = UserReferral::WAITING_FOR_PAYMENT;
+                $UserReferral->status = UserReferral::ACTIVE;
                 $UserReferral->create_date = time();
                 $UserReferral->save();
               }
@@ -661,14 +657,6 @@ class UserLogin extends Orm {
 
     return 0;
   }
-  
-  public function getLastTransactions()
-  {
-    if($this->getId())
-    {
-      return (new TransactionRequirementPerUser)->getLastTransactions($this->company_id,"LIMIT 5");
-    }
-  }
 
   public function getSignupDate(int $company_id = null)
   {
@@ -702,16 +690,16 @@ class UserLogin extends Orm {
     return false;
   }
 
-  public function getLastSigned(string $limit = null)
+  public function getLastSigned(string $limit = null,string $filter = null)
   {
-    if($users = $this->_getLastSigned($limit))
+    if($users = $this->_getLastSigned($limit,$filter))
     {
       $Country = new Country;
+      $CatalogUserType = new CatalogUserType;
 
-      return array_map(function($user) use($Country){
-        $user['advice_type'] = AdviceType::SIGNUP;
-        $user['showed'] = false;
+      return array_map(function($user) use($Country,$CatalogUserType){
         $user['country'] = $Country->getCountryName($user['country_id']);
+        $user['catalog_user_type'] = $CatalogUserType->findField("catalog_user_type_id = ?",$user['catalog_user_type_id'],"name");
         return $user;
       },$users);
     }
@@ -719,12 +707,13 @@ class UserLogin extends Orm {
     return false;
   }
 
-  public function _getLastSigned(string $limit = null)
+  public function _getLastSigned(string $limit = null,string $filter = null)
   {
     $minSignupDate = strtotime("-".self::SIGNUP_DAYS." days");
   
     $sql = "SELECT
               {$this->tblName}.signup_date,
+              {$this->tblName}.catalog_user_type_id,
               user_data.names,
               user_address.country_id
             FROM
@@ -739,6 +728,7 @@ class UserLogin extends Orm {
               user_address.user_login_id = {$this->tblName}.user_login_id
             WHERE 
               {$this->tblName}.signup_date >= '{$minSignupDate}'
+              {$filter}
               {$limit}";
 
     return $this->connection()->rows($sql);
@@ -950,6 +940,11 @@ class UserLogin extends Orm {
 
   public function isUniqueLanding(string $landing = null) : bool
   {
+    if(!$landing)
+    {
+      return true;
+    }
+
     return (new UserAccount)->isUniqueLanding($landing);
   }
 
@@ -1292,168 +1287,6 @@ class UserLogin extends Orm {
     
     return $this->temporal_permissions[$product_id];
   }
-  
-  public function getBinaryTree()
-  {
-    if (!$this->getId()) {
-      return false;
-    }
-
-    return $this->_getBinaryTree($this->company_id);
-  }
- 
-  
-  public function getTeamPending()
-  {
-    if (!$this->getId()) {
-      return false;
-    }
-
-    $users = (new UserReferral)->findAll("referral_id = ? AND status = ?",[$this->company_id,0]);
-
-    if(!$users)
-    {
-      return false;
-    }
-
-    $UserData = new UserData;
-
-    return array_map(function($user) use($UserData){
-      $user['names'] = $UserData->getNames($user['user_login_id']);
-      return $user;
-    },$users);
-  }
- 
-  public function insertReferralOnSide(array $data = null)
-  {
-    if(in_array($data['side'],[UserReferral::LEFT,UserReferral::RIGHT])) 
-    {
-      $node = $this->getNode($this->company_id,$data['side']);
-
-      if(!$node)
-      {
-        return UserReferral::appendReferral([
-          'side' => $data['side'],
-          'user_login_id' => $data['user_login_id'],
-          'referral_id' => $this->company_id,
-        ]);
-      }
-      
-      $network = $this->getNetworkChild($node['user_login_id']);
-      
-      if(!$network)
-      {
-        return UserReferral::appendReferral([
-          'side' => UserReferral::LEFT,
-          'user_login_id' => $data['user_login_id'],
-          'referral_id' => $node['user_login_id'],
-        ]);
-      } else if(isset($network[0]) && sizeof($network[0]) == 1) {
-        return UserReferral::appendReferral([
-          'side' => UserReferral::RIGHT,
-          'user_login_id' => $data['user_login_id'],
-          'referral_id' => $node['user_login_id'],
-        ]);
-      }
-      
-      foreach($network as $level)
-      {
-        foreach($level as $user_login_id)
-        {
-          $team = $this->_getBinaryTree($user_login_id);
-
-          if(!$team)
-          {
-            UserReferral::appendReferral([
-              'side' => UserReferral::LEFT,
-              'user_login_id' => $data['user_login_id'],
-              'referral_id' => $user_login_id,
-            ]);
-
-          } else if(sizeof($team) == 1) {
-            UserReferral::appendReferral([
-              'side' => UserReferral::RIGHT,
-              'user_login_id' => $data['user_login_id'],
-              'referral_id' => $user_login_id,
-            ]);
-          }
-        }
-      }
-    }
-  }
-
-  public function _getBinaryTree(int $referral_id = null)
-  {
-    if (!isset($referral_id)) {
-      return false;
-    }
-
-    return $this->connection()->rows("SELECT 
-        user_referral.user_login_id,
-        user_account.image,
-        user_data.names
-      FROM
-        user_referral
-      LEFT JOIN 
-        user_data
-      ON 
-        user_data.user_login_id = user_referral.user_login_id
-      LEFT JOIN 
-        user_account
-      ON 
-        user_account.user_login_id = user_referral.user_login_id
-      WHERE
-        user_referral.referral_id = '{$referral_id}'
-      AND 
-        user_referral.status = '1'
-      ORDER BY 
-        user_referral.side
-      ASC 
-    ");
-  }
-  
-  public function getNode(int $referral_id = null,int $side = null)
-  {
-    if (!isset($referral_id)) {
-      return false;
-    }
-
-    return $this->connection()->row("SELECT 
-        user_referral.user_login_id,
-        user_referral.side,
-        user_account.image,
-        user_data.names
-      FROM
-        user_referral
-      LEFT JOIN 
-        user_data
-      ON 
-        user_data.user_login_id = user_referral.user_login_id
-      LEFT JOIN 
-        user_account
-      ON 
-        user_account.user_login_id = user_referral.user_login_id
-      WHERE
-        user_referral.referral_id = '{$referral_id}'
-      AND 
-        user_referral.side = '{$side}'
-      AND 
-        user_referral.status = '1'
-      ORDER BY 
-        user_referral.side
-      ASC 
-    ");
-  }
-
-  public function getCurrentMembership()
-  {
-    if(!$this->getId())
-    {
-      return false;
-    }
-
-    return (new MembershipPerUser)->getCurrentMembership($this->company_id);
-  }
 
   public function getLastMembers()
   {
@@ -1474,80 +1307,252 @@ class UserLogin extends Orm {
       return $member;
     },$members);
   }
-  
-  public function getIncome()
+
+  public static function setAsUserKind(array $data = null)
   {
-    if(!$this->getId())
+    if(!$data)
     {
       return false;
     }
 
-    $members = (new UserReferral)->getLastMembers($this->company_id);
-
-    if(!$members) 
+    $UserLogin = new self(false,false,false);
+    
+    if(!$UserLogin->loadWhere("user_login_id = ?",$data['user_login_id']))
     {
       return false;
     }
 
-    return array_map(function($member){
-      $member['active'] = $this->_hasProductPermission(Product::PAY_BUSINESS,$member['user_login_id']);
-      return $member;
-    },$members);
+    $UserLogin->catalog_user_type_id = $data['catalog_user_type_id'];
+    
+    return $UserLogin->save();
   }
-  
-  public function getTopCountries()
+
+  public function getUsers(int $catalog_user_type_id = null)
   {
-    if(!$this->getId())
+    if(!$this->logged)
     {
       return false;
-    }
-
-    $members = (new UserReferral)->getLastMembersCountries($this->company_id);
-
-    if(!$members) 
-    {
-      return false;
-    }
-
-    $members = array_map(function($member){
-      $member['active'] = $this->_hasProductPermission(Product::PAY_BUSINESS,$member['user_login_id']);
-      return $member;
-    },$members);
-
-    $_members = [];
-
-    foreach($members as $member)
-    {
-      if(!isset($_members[$member['country_id']]['country_id']))
-      {
-        $_members[$member['country_id']]['country_id'] = $member['country_id'];
-      }
-
-      if(!isset($_members[$member['country_id']]['inactives']))
-      {
-        $_members[$member['country_id']]['inactives'] = 0;
-      }
-
-      if(!isset($_members[$member['country_id']]['actives']))
-      {
-        $_members[$member['country_id']]['actives'] = 0;
-      }
-
-      if($member['active'])
-      {
-        $_members[$member['country_id']]['actives'] += 1;
-      } else {
-        $_members[$member['country_id']]['inactives'] += 1;
-      }
-      
-      $_members[$member['country_id']]['total'] =  $_members[$member['country_id']]['inactives'] +  $_members[$member['country_id']]['actives'];
     }
     
-    $Country = new Country;
+    if(isset($catalog_user_type_id))
+    {
+      $filter = "AND user_login.catalog_user_type_id = '{$catalog_user_type_id}' ";
+    }
 
-    return array_map(function($member) use($Country) {
-      $member['country'] = $Country->getCountryNameAndInternet($member['country_id']);
-      return $member;
-    },array_values($_members));
+    $filter .= " AND user_referral.referral_id = '{$this->company_id}'";
+    
+    return $this->connection()->rows("SELECT
+      user_login.user_login_id,
+      user_login.catalog_campaing_id,
+      user_login.signup_date,
+      user_login.company_id,
+      user_login.email,
+      user_account.image,
+      user_data.names,
+      user_address.country_id,
+      user_contact.phone
+    FROM
+      user_login
+    LEFT JOIN 
+      user_data
+    ON 
+      user_data.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_account
+    ON 
+      user_account.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_contact
+    ON 
+      user_contact.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_address
+    ON 
+      user_address.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_referral
+    ON 
+      user_referral.user_login_id = user_login.user_login_id
+    WHERE 
+      user_login.status = '1'
+      {$filter}
+    GROUP BY user_login.user_login_id
+    ORDER BY 
+      user_login.signup_date
+    DESC
+    ");
+  }
+
+  public function getLeadsCount()
+  {
+    if(!$this->getId())
+    {
+      return false;
+    }
+
+    return $this->connection()->field("
+      SELECT 
+        count(user_login.user_login_id) as total
+      FROM 
+        user_login
+      LEFT JOIN 
+        user_referral
+      ON 
+        user_referral.user_login_id = user_login.user_login_id
+      WHERE 
+        user_login.status = '1'
+      AND 
+        user_referral.referral_id = '{$this->company_id}'
+      AND 
+        user_login.catalog_user_type_id = '".CatalogUserType::LEAD."'
+    ");
+  }
+
+  public function getClientsCount()
+  {
+    if(!$this->getId())
+    {
+      return false;
+    }
+
+    return $this->connection()->field("
+      SELECT 
+        count(user_login.user_login_id) as total
+      FROM 
+        user_login
+      LEFT JOIN 
+        user_referral
+      ON 
+        user_referral.user_login_id = user_login.user_login_id
+      WHERE 
+        user_login.status = '1'
+      AND 
+        user_referral.referral_id = '{$this->company_id}'
+      AND 
+        user_login.catalog_user_type_id = '".CatalogUserType::CLIENT."'
+    ");
+  }
+  
+  public function getClientsCountStats()
+  {
+    if(!$this->getId())
+    {
+      return false;
+    }
+
+    $clients = $this->connection()->rows("
+      SELECT 
+        count(user_login.user_login_id) as users,
+        user_login.signup_date,
+        MONTH(FROM_UNIXTIME(user_login.signup_date)) as month
+      FROM 
+        user_login
+      LEFT JOIN 
+        user_referral
+      ON 
+        user_referral.user_login_id = user_login.user_login_id
+      WHERE 
+        user_login.status = '1'
+      AND 
+        user_referral.referral_id = '{$this->company_id}'
+      AND 
+        user_login.catalog_user_type_id = '".CatalogUserType::CLIENT."'
+      GROUP BY 
+        MONTH(FROM_UNIXTIME(user_login.signup_date))
+    ");
+
+    if(!$clients)
+    {
+      return false;
+    }
+
+    return $clients;
+  }
+  
+  public function getUserForEdit(int $user_login_id = null)
+  {
+    if(!$this->getId())
+    {
+      return false;
+    }
+    
+    return $this->connection()->row("
+      SELECT 
+        user_login.email,
+        user_login.password,
+        user_data.names,
+        user_address.address,
+        user_address.colony,
+        user_address.city,
+        user_address.country_id,
+        user_address.state,
+        user_contact.phone
+      FROM 
+        user_login
+      LEFT JOIN 
+        user_data
+      ON 
+        user_data.user_login_id = user_login.user_login_id
+      LEFT JOIN 
+        user_address
+      ON 
+        user_address.user_login_id = user_login.user_login_id
+      LEFT JOIN 
+        user_contact
+      ON 
+        user_contact.user_login_id = user_login.user_login_id
+      WHERE 
+        user_login.status = '1'
+      AND 
+        user_login.user_login_id = '{$user_login_id}'
+    ");
+  }
+
+  public function updateUser(array $data = null)
+  {
+    if(!$data)
+    {
+      return false;
+    }
+
+    $UserLogin = new self(false,false,false);
+    $UserLogin->loadWhere("user_login_id = ?",$data['user_login_id']);
+    $UserLogin->email = $data['email'];
+    $UserLogin->save();
+
+
+    $UserAddress = new UserAddress;
+    $UserAddress->loadWhere("user_login_id = ?",$data['user_login_id']);
+    $UserAddress->address = $data['address'];
+    $UserAddress->country_id = $data['country_id'];
+    $UserAddress->city = $data['city'];
+    $UserAddress->state = $data['state'];
+    $UserAddress->colony = $data['colony'];
+
+    $UserContact = new UserContact;
+    $UserContact->loadWhere("user_login_id = ?",$data['user_login_id']);
+    $UserAddress->phone = $data['phone'];
+    $UserAddress->save();
+
+
+    return true;
+  }
+
+  public function deleteUserFromSeller(int $user_login_id = null)
+  {
+    if(!$user_login_id)
+    {
+      return false;
+    }
+
+    $UserLogin = new self(false,false,false);
+
+    if(!$UserLogin->loadWhere("user_login_id = ?",$user_login_id))
+    {
+      return false;
+    }
+
+    $UserLogin->status = 0;
+    return $UserLogin->save();
   }
 }

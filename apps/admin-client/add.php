@@ -2,23 +2,31 @@
 
 require_once TO_ROOT . "/system/core.php";
 
-$Layout = JFStudio\Layout::getInstance();
-$Layout->init(" » Dar de alta cliente","add","admin","",TO_ROOT."/");
-
 $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-if($UserSupport->hasPermission('add_client') === false) {
+$user_support_id = HCStudio\Util::getVarFromPGS('usid');
+
+if($UserSupport->hasPermission('add_client') === false) 
+{
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }
 
+$route = JFStudio\Router::AdminClientAdd;
+$Layout = JFStudio\Layout::getInstance();
+$Layout->init(JFStudio\Router::getName($route),"add","admin","",TO_ROOT."/");
+
 $Layout->setScriptPath(TO_ROOT . '/src/');
-$Layout->setScript(['jquery.mask.js','signature_pad.min.js','client-object.js','admin-client-add.js','admin-signature.css']);
+$Layout->setScript([
+	'jquery.mask.js',
+	'addclient.vue.js'
+]);
 
 $Layout->setVar([
+	'route' => $route,
 	'UserSupport' => $UserSupport
 ]);
 $Layout();

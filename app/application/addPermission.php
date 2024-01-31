@@ -22,7 +22,7 @@ if($UserSupport->logged === true)
             $data['r'] = 'DATA_OK';
         } else {
             $data['s'] = 0;
-            $data['r'] = 'not_save';
+            $data['r'] = 'NOT_SAVE';
         }
     } else {
         $data['s'] = 0;

@@ -293,9 +293,15 @@ class UserSupport extends Http {
     getClientIptvApi(data, callback) {
         return this.call('../../app/application/getClientIptvApi.php', data, callback);
     }
+    deleteKycValue(data, callback) {
+        return this.call('../../app/application/deleteKycValue.php', data, callback);
+    }
     // callfile
     uploadImageProfile(data, progress, callback) {
         return this.callFile('../../app/application/upload_image_profile.php', data, callback, progress);
+    }
+    uploadImageKycFromAdmin(data, progress, callback) {
+        return this.callFile('../../app/application/uploadImageKycFromAdmin.php', data, callback, progress);
     }
     uploadToolFile(data, progress, callback) {
         return this.callFile('../../app/application/uploadToolFile.php', data, callback, progress);
@@ -497,6 +503,9 @@ class UserSupport extends Http {
     changeCourseStatus(data, callback) {
         return this.call('../../app/application/changeCourseStatus.php', data, callback);
     }
+    getDashStats(data, callback) {
+        return this.call('../../app/application/getDashStats.php', data, callback);
+    }
     uploadCoverCourse(data, progress, callback) {
         return this.callFile('../../app/application/uploadCoverCourse.php', data, callback, progress);
     }
@@ -523,6 +532,30 @@ class UserSupport extends Http {
     }
     saveBanner(data, callback) {
         return this.call('../../app/application/saveBanner.php', data, callback);
+    }
+    /* leads */
+    getLeads(data, callback) {
+        return this.call('../../app/application/getLeads.php', data, callback);
+    }
+    /* sellers */
+    getUser(data, callback) {
+        return this.call('../../app/application/getUser.php', data, callback);
+    }
+    getUserDetail(data, callback) {
+        return this.call('../../app/application/getUserDetail.php', data, callback);
+    }
+    addUserFeedback(data, callback) {
+        return this.call('../../app/application/addUserFeedback.php', data, callback);
+    }
+    setFeedbackAs(data, callback) {
+        return this.call('../../app/application/setFeedbackAs.php', data, callback);
+    }
+    /* clients */
+    getClients(data, callback) {
+        return this.call('../../app/application/getClients.php', data, callback);
+    }
+    setAsUserKind(data, callback) {
+        return this.call('../../app/application/setAsUserKind.php', data, callback);
     }
 }
 

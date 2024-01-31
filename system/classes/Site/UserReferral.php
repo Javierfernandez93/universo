@@ -9,9 +9,8 @@ class UserReferral extends Orm {
   protected $tblName  = 'user_referral';
 
   const WAITING_FOR_PAYMENT = 0;
+  const ACTIVE = 1;
   const DEFAULT_COMMISSION = 30;
-  const LEFT = 0;
-  const RIGHT = 1;
   
   public function __construct() {
     parent::__construct();

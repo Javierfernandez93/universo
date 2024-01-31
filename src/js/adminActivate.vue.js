@@ -93,7 +93,7 @@ Vue.createApp({
         addDeposit: function () {
             const ammount = this.user.ammount - this.user.originalAmmount
 
-            Sitegroup.io = alertCtrl.create({
+            let alert = alertCtrl.create({
                 title: "Alert",
                 subTitle: "¿Estás seguro de añadir éste fondeo?. Se recalculará el plan del usuario",
                 buttons: [
@@ -147,7 +147,7 @@ Vue.createApp({
         updatePlan: function () {
 
             let message = this.user.originalAmmount != this.user.ammount ? '. <br><b>Aviso importante: Monto invertido ha sido modificado por lo cual se actualizará la diferencia como un fondeo</br>' : ''
-            Sitegroup.io = alertCtrl.create({
+            let alert = alertCtrl.create({
                 title: "Alert",
                 html: "¿Estás seguro de guardar/actualizar ésta activación?"+ message,
                 buttons: [

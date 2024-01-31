@@ -1,20 +1,29 @@
-<?php define("TO_ROOT", "../..");new GranCapital
+<?php define("TO_ROOT", "../..");
 
 require_once TO_ROOT . "/system/core.php";
 
-$Layout = JFStudio\Layout::getInstance();
-$Layout->init(" » Visualizar cliente","view","admin","",TO_ROOT."/");
-
-$UserSupport = new FSA\UserSupport;
+$UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
+if($UserSupport->hasPermission('list_clients') === false) {
+	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
+}
+
+$Layout = JFStudio\Layout::getInstance();
+
+$route = JFStudio\Router::Client;
+$Layout->init(JFStudio\Router::getName($route),"view","admin","",TO_ROOT."/");
+
 $Layout->setScriptPath(TO_ROOT . '/src/');
-$Layout->setScript(['comment-object.js','admin-client-view.*']);
+$Layout->setScript([
+	'client.vue.js',
+]);
 
 $Layout->setVar([
+	'route' => $route,
 	'UserSupport' => $UserSupport
 ]);
 $Layout();

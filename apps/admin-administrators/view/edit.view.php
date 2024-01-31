@@ -1,9 +1,9 @@
 <div class="container-fluid py-4" id="app">
     <div class="card mb-3">
         <div class="card-header">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-12 col-xl">
-                    <div class="fw-semibold text-primary fs-4">Editar administrador</div>
+                    <h6>Editar administrador</h6>
                 </div>
                 <div class="col-12 col-xl-auto">
                     <button ref="button" type="submit" class="btn btn-dark shadow-none mb-0" @click="editAdministrator">Editar</button>
@@ -35,9 +35,11 @@
     <?php if($UserSupport->hasPermission('edit_permissions')) { ?>
         <div class="card">
             <div class="card-header">
-                <div class="row">
-                    <div class="col-12 col-xl fs-4 fw-semibold text-primary">
-                        Listado de permisos
+                <div class="row align-items-center">
+                    <div class="col-12 col-xl fw-semibold text-primary">
+                        <h6>
+                            Listado de permisos
+                        </h6>
                     </div>
                     <div class="col-12 col-xl-auto">
                         <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="buscar...">

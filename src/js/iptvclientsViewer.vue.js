@@ -256,7 +256,7 @@ const IptvclientsViewer = {
             </div>
 
             <div class="card-body px-0 pt-0 pb-2">
-                <div class="table-responsive p-0">
+                <div class="table-responsive-sm p-0">
                     <table class="table table-striped table-borderless align-items-center mb-0">
                         <thead>
                             <tr class="font-bold text-center text-dark text-secondary text-uppercase opacity-7">

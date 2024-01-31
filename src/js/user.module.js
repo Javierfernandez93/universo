@@ -211,8 +211,20 @@ class User extends Http {
     getStorageCapacity(data, callback) {
         return this.call('../../app/application/getStorageCapacity.php', data, callback);
     }
+    getCatalogRealState(data, callback) {
+        return this.call('../../app/application/getCatalogRealState.php', data, callback);
+    }
     getCountriesPhones(data, callback) {
         return this.call('../../app/application/getCountriesPhones.php', data, callback);
+    }
+    setFeedbackAsFromSeller(data, callback) {
+        return this.call('../../app/application/setFeedbackAsFromSeller.php', data, callback);
+    }
+    getProperties(data, callback) {
+        return this.call('../../app/application/getProperties.php', data, callback);
+    }
+    pullProperty(data, callback) {
+        return this.call('../../app/application/pullProperty.php', data, callback);
     }
     uploadStorageFile(data,callback,progress){
         return this.callFile('../../app/application/upload_storage_file.php',data,callback,progress);
@@ -220,6 +232,12 @@ class User extends Http {
     // callfile
     uploadImageProfile(data, progress, callback) {
         return this.callFile('../../app/application/upload_image_profile.php', data, callback, progress);
+    }
+    uploadImageProperty(data, progress, callback) {
+        return this.callFile('../../app/application/uploadImageProperty.php', data, callback, progress);
+    }
+    uploadImageKyc(data, progress, callback) {
+        return this.callFile('../../app/application/uploadImageKyc.php', data, callback, progress);
     }
     uploadPaymentImage(data, progress, callback) {
         return this.callFile('../../app/application/uploadPaymentImage.php', data, callback, progress);
@@ -423,9 +441,6 @@ class User extends Http {
     }
     createDummieAccount(data, callback) {
         return this.call('../../app/application/createDummieAccount.php', data, callback, null, null);
-    }
-    getCommissionsPerUser(data, callback) {
-        return this.call('../../app/application/getCommissionsPerUser.php', data, callback, null, null);
     }
     getTradingAccount(data, callback) {
         return this.call('../../app/application/getTradingAccount.php', data, callback, null, null);
@@ -756,6 +771,51 @@ class User extends Http {
     }
     getBlogEntries(data, callback) {
         return this.call('../../app/application/getBlogEntries.php', data, callback);
+    }
+    getSellerClients(data, callback) {
+        return this.call('../../app/application/getSellerClients.php', data, callback);
+    }
+    saveUser(data, callback) {
+        return this.call('../../app/application/saveUser.php', data, callback);
+    }
+    getCommissions(data, callback) {
+        return this.call('../../app/application/getCommissions.php', data, callback);
+    }
+    getSellerStats(data, callback) {
+        return this.call('../../app/application/getSellerStats.php', data, callback);
+    }
+    deleteUserBySeller(data, callback) {
+        return this.call('../../app/application/deleteUserBySeller.php', data, callback);
+    }
+    getUserForEdit(data, callback) {
+        return this.call('../../app/application/getUserForEdit.php', data, callback);
+    }
+    getUser(data, callback) {
+        return this.call('../../app/application/getUser.php', data, callback);
+    }
+    updateUser(data, callback) {
+        return this.call('../../app/application/updateUser.php', data, callback);
+    }
+    getUserDetail(data, callback) {
+        return this.call('../../app/application/getUserDetail.php', data, callback);
+    }
+    getSellerStatsForChart(data, callback) {
+        return this.call('../../app/application/getSellerStatsForChart.php', data, callback);
+    }
+    setAsUserKind(data, callback) {
+        return this.call('../../app/application/setAsUserKind.php', data, callback);
+    }
+    getCatalogTags(data, callback) {
+        return this.call('../../app/application/getCatalogTags.php', data, callback);
+    }
+    addTagToUser(data, callback) {
+        return this.call('../../app/application/addTagToUser.php', data, callback);
+    }
+    deleteUserTag(data, callback) {
+        return this.call('../../app/application/deleteUserTag.php', data, callback);
+    }
+    deleteUserFromSeller(data, callback) {
+        return this.call('../../app/application/deleteUserFromSeller.php', data, callback);
     }
 }
 

@@ -63,7 +63,7 @@ const HomeViewer = {
 
     },
     template : `
-        <section id="section-1" class="d-flex vh-100 align-items-center animate-section">
+        <section id="section-1" class="d-flex vh-100 align-items-center">
             <div class="container">
                 <div class="row align-items-center v-100">
                     <div class="col-10 col-md-6 col-xl-4 text-center text-dark">
@@ -167,8 +167,7 @@ const HomeViewer = {
                     <div class="col-12">
                         <div class="py-5">
                             <div class="h1 mb-n1 text-white">Nuestra</div>
-                            <div class="h1 text-success">
-                            encia</div>
+                            <div class="h1 text-success">Experiencia</div>
                         </div>
                         <div class="card card-body px-5 bg-dark text-center text-white">
                             <div class="row align-items-center border-bottom">

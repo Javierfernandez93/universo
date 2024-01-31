@@ -2,19 +2,29 @@
 
 require_once TO_ROOT . "/system/core.php";
 
-$Layout = JFStudio\Layout::getInstance();
-$Layout->init(" » Editar cliente","edit","admin","",TO_ROOT."/");
-
 $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
+if($UserSupport->hasPermission('edit_user') === false) 
+{
+	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
+}
+
+$route = JFStudio\Router::Client;
+$Layout = JFStudio\Layout::getInstance();
+$Layout->init(JFStudio\Router::getName($route),"edit","admin","",TO_ROOT."/");
+
 $Layout->setScriptPath(TO_ROOT . '/src/');
-$Layout->setScript(['jquery.mask.js','signature_pad.min.js','client-object.js','admin-client-edit.js','admin-signature.css']);
+$Layout->setScript([
+	'jquery.mask.js',
+	'editclient.vue.js'
+]);
 
 $Layout->setVar([
+	'route' => $route,
 	'UserSupport' => $UserSupport
 ]);
 $Layout();

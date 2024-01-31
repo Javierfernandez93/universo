@@ -1272,3 +1272,37 @@ String.prototype.getShortTextFromHtml = function() {
 String.prototype.getFirstName = function() {
   return this.split(" ")[0]
 }
+
+const toastInfo = async (
+  { message: message, bgClass: bgClass },
+  delay = 50
+) => {
+  setTimeout(() => {
+    let toast = toastCtrl.create({
+      message: message,
+      bgClass: bgClass != undefined ? bgClass : "bg-primary",
+    });
+
+    toastCtrl.present(toast);
+  }, delay);
+};
+
+const flashText = (text,target) => {
+  
+}
+
+const startListener = (elementId) => {
+  console.log("startListener")
+  var myOffcanvas = document.getElementById(elementId)
+  console.log(myOffcanvas)
+  
+  myOffcanvas.addEventListener('hidden.bs.offcanvas', function () {
+    $("aside").css("left", "0px") // hide sidebar
+    $("main").css("margin-left", "17.125rem") // hide sidebar
+  })
+  
+  myOffcanvas.addEventListener('show.bs.offcanvas', function () {
+    $("aside").css("left", "-15.625rem") // hide sidebar
+    $("main").css("margin-left", "0") // hide sidebar
+  })
+}

@@ -115,7 +115,7 @@ Vue.createApp({
             });
         },
         deleteDeposit: function (transaction_requirement_per_user_id) {
-            Sitegroup.io = alertCtrl.create({
+            let alert = alertCtrl.create({
                 title: "Alert",
                 subTitle: "¿Estás seguro de eliminar éste depósito?",
                 buttons: [
@@ -144,7 +144,7 @@ Vue.createApp({
            
         },
         reactiveDeposit: function (transaction_requirement_per_user_id) {
-            Sitegroup.io = alertCtrl.create({
+            let alert = alertCtrl.create({
                 title: "Alert",
                 subTitle: "¿Estás seguro de reactivar éste depósito?",
                 buttons: [

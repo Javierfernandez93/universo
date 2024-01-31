@@ -8,11 +8,9 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
-    $filter = "";
-
-    if($users = $UserSupport->getUsers($filter))
+    if($users = $UserSupport->getUsers("AND user_login.catalog_user_type_id = '".Site\CatalogUserType::SELLER."'"))
     {
-        $data["users"] = format($users);
+        $data["users"] = $users;
         $data["s"] = 1;
         $data["r"] = "DATA_OK";
     } else {
@@ -22,17 +20,6 @@ if($UserSupport->logged === true)
 } else {
 	$data["s"] = 0;
 	$data["r"] = "NOT_FIELD_SESSION_DATA";
-}
-
-function format(array $users = null) : array 
-{
-    $Country = new World\Country;
-    
-    return array_map(function($user) use($Country){
-        $user['countryData'] = $Country->getCountryNameAndPhoneArea($user['country_id']);
-
-        return $user;
-    },$users);
 }
 
 echo json_encode(HCStudio\Util::compressDataForPhone($data)); 

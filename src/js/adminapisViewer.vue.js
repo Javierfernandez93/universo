@@ -148,7 +148,7 @@ const AdminapisViewer = {
             <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
         </div>
         <div v-if="apis" class="card-body px-0 pt-0 pb-2">
-            <div class="table-responsive p-0">
+            <div class="table-responsive-sm p-0">
                 <table class="table align-items-center mb-0">
                     <thead>
                         <tr class="align-items-center text-center">

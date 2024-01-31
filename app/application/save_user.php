@@ -17,27 +17,7 @@ if($UserSupport->logged === true)
             if($UserLogin->isUniqueLanding($data['user']['user_account']['landing']))
             {
                 if($user_login_id = $UserLogin->doSignup($data['user']))
-                {
-                    // if(sendEmailUser($data['user']['email'],$data['user']['names']))
-                    // {
-                    //     $data['email_sent'] = true;
-                    // }
-
-                    if(sendPushUser($user_login_id,$data['user']['names']))
-                    {
-                        $data['push_sent'] = true;
-                    }
-
-                    // if(sendEmailSponsor($data['user']['referral']['user_login_id'],$data['user']['names']))
-                    // {
-                    //     $data['email_sponsor_sent'] = true;
-                    // }
-
-                    if(sendPushSponsor($data['user']['referral']['user_login_id'],$data['user']['names']))
-                    {
-                        $data['push_sponsor_sent'] = true;
-                    }
-                    
+                {   
                     $data['s'] = 1;
                     $data['r'] = 'LOGGED_OK';
                 } else {

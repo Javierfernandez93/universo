@@ -176,7 +176,7 @@ const AdmintransactionsViewer = {
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-                <div v-if="transactions" class="table-responsive p-0">
+                <div v-if="transactions" class="table-responsive-sm p-0">
                     <table class="table table-striped table-hover align-items-center mb-0">
                         <thead>
                             <tr>

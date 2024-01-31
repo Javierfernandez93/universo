@@ -55,7 +55,7 @@ const AdminconfigViewer = {
     },
     template : `
         <div v-if="systemVars" class="card">
-            <div class="card-header h4">
+            <div class="card-header h5">
                 {{title}}
             </div>
             <div class="card-body">

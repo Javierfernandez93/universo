@@ -8,28 +8,6 @@ if($UserLogin->logged === false) {
 	HCStudio\Util::redirectTo(TO_ROOT."/apps/login/");
 }
 
-// (new Site\UserReferral)->truncate();
-
-// $UserLogin->insertReferralOnSide([
-// 	'user_login_id' => 2,
-// 	'side' => Site\UserReferral::LEFT
-// ]);
-// // $UserLogin->insertReferralOnSide([
-// // 	'user_login_id' => 3,
-// // 	'side' => Site\UserReferral::RIGHT
-// // ]);
-
-// for($i = 4; $i < 52; $i++) 
-// {
-// 	$UserLogin->insertReferralOnSide([
-// 		'user_login_id' => $i,
-// 		'side' => Site\UserReferral::LEFT
-// 	]);
-// }
-
-// die;
-// d($UserLogin->getBinaryTree());
-
 $UserLogin->checkRedirection();
 
 $Layout = JFStudio\Layout::getInstance();

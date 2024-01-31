@@ -130,7 +130,7 @@ function updateUserReferral($data = null) : bool
         
     if($UserReferral->loadWhere("user_login_id = ?",$data['user_login_id']))
     {
-        $UserReferral->referral_id = $data['referral']['user_login_id'];
+        $UserReferral->referral_id = isset($data['referral']) ? $data['referral']['user_login_id'] : 0;
         
         return $UserReferral->save();
     }

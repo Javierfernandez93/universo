@@ -337,9 +337,13 @@ function navbarBlurOnScroll(id) {
         element.classList.add('text-body')
       });
 
-      navLinksToggler.forEach(element => {
-        element.classList.remove('')
-      });
+      console.log(navLinksToggler.length)
+      if(navLinksToggler.length > 0)
+      {
+        navLinksToggler.forEach(element => {
+          element.classList.remove('')
+        });
+      }
     }
   }
 }

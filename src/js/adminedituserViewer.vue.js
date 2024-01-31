@@ -36,6 +36,10 @@ const AdminedituserViewer = {
             this.UserSupport.updateUser({ user: this.user }, (response) => {
                 if (response.s == 1) {
                     this.$refs.button.innerText = "Actualizado"
+
+                    toastInfo({
+                        message: 'Usuario actualizado',
+                    })
                 }
             })
         },
@@ -96,13 +100,13 @@ const AdminedituserViewer = {
             <div class="card-header"> 
                 <div class="row justify-content-center align-items-center"> 
                     <div class="col-12 col-xl"> 
-                        <div class="fs-4 text-primary fw-sembold">Editar usuario</div>
+                        <div class="h5">Editar vendedor</div>
                     </div>
                     <div class="col-12 col-xl-auto"> 
                         <button 
                             :disabled="!filled"
                             ref="button"
-                            type="submit" class="btn mb-0 shadow-none btn-primary" @click="updateUser">Actualizar usuario</button>
+                            type="submit" class="btn mb-0 shadow-none btn-success px-3 btn.sm" @click="updateUser">Actualizar</button>
                     </div>
                 </div>
             </div>
@@ -149,7 +153,7 @@ const AdminedituserViewer = {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-xl-6">
+                    <div class="col-12 col-xl-6 d-none">
                         <label>Referido por</label>
                         <input 
                             v-model="user.referral.user_login_id"

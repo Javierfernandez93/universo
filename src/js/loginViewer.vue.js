@@ -146,8 +146,8 @@ const LoginViewer = {
             <div class="card bg-transparent shadow-none">
                 <div class="card-header pb-0 bg-transparent text-center">
                     <div class="row justify-content-center">
-                        <div class="col-6 col-md-6 col-xl-3">
-                            <img src="../../src/img/logo.svg" title="logo" alt="logo" class="w-100"/>
+                        <div class="col-6 col-md-10 col-xl-3">
+                            <img src="../../src/img/logo-single-dark.svg" title="logo" alt="logo" class="w-100"/>
                         </div>
                     </div>
                 </div>
@@ -219,7 +219,7 @@ const LoginViewer = {
                     </form>
                 </div>
             </div>
-            <div class="card-footer pt-0 px-lg-2 px-1 mt-3">
+            <div class="card-footer text-center pt-0 px-lg-2 px-1 mt-3">
                 <p class="mb-4 text-sm mx-auto">
                     {{Translator.words.dont_have_account_yet}}
                     <a href="../../apps/signup" class="text-info text-primary font-weight-bold">{{Translator.words.signup_here}}</a>

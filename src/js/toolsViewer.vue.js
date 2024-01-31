@@ -46,12 +46,19 @@ const ToolsViewer = {
                 <div class="card-header">
                     <div class="row justify-content-center align-items-center">
                         <div class="col-12 col-xl">
-                            <div class="h3">Tools</div>
+                            <div class="h3">Herramientas</div>
                         </div>
                         <div class="col-12 col-xl-auto">
                             <input v-model="query" type="text" class="form-control" placeholder="Buscar herramienta..."/>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info text-white text-center">
+                <strong>Importante</strong>
+                <div>
+                    Encuentra tu material de apoyo para el desarrollo de tu negocio
                 </div>
             </div>
             

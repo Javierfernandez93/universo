@@ -741,17 +741,6 @@ class UserSupport extends Orm {
     return $this->connection()->rows($sql);
   }
 
-  public function getUsersCount()
-  {
-    $sql = "SELECT
-              COUNT(user_login.company_id) as c
-            FROM
-              user_login
-            ";
-
-    return $this->connection()->field($sql);
-  }
-
   public function getUnactiveUsers() {
     $time = strtotime("- 2 months");
     $sql = "SELECT
@@ -1125,47 +1114,49 @@ class UserSupport extends Orm {
 
     return false;
   }
-
-  public function getUsers($filter = '')
+  
+  public function getUsers(string $filter = '')
   {
-    $sql = "SELECT
-              user_login.user_login_id,
-              user_login.catalog_campaing_id,
-              user_login.signup_date,
-              user_login.company_id,
-              user_login.email,
-              user_account.image,
-              user_data.names,
-              user_address.country_id,
-              user_contact.phone
-            FROM
-              user_login
-            LEFT JOIN 
-              user_data
-            ON 
-              user_data.user_login_id = user_login.user_login_id
-            LEFT JOIN 
-              user_account
-            ON 
-              user_account.user_login_id = user_login.user_login_id
-            LEFT JOIN 
-              user_contact
-            ON 
-              user_contact.user_login_id = user_login.user_login_id
-            LEFT JOIN 
-              user_address
-            ON 
-              user_address.user_login_id = user_login.user_login_id
-            WHERE 
-              user_login.status = '1'
-              {$filter}
-            GROUP BY user_login.user_login_id
-            ORDER BY 
-              user_login.signup_date
-            DESC
-              ";
-
-    return $this->connection()->rows($sql);
+    return $this->connection()->rows("SELECT
+      user_login.user_login_id,
+      user_login.catalog_campaing_id,
+      user_login.signup_date,
+      user_login.company_id,
+      user_login.email,
+      user_account.image,
+      user_data.names,
+      user_address.country_id,
+      user_contact.phone
+    FROM
+      user_login
+    LEFT JOIN 
+      user_data
+    ON 
+      user_data.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_account
+    ON 
+      user_account.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_contact
+    ON 
+      user_contact.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_address
+    ON 
+      user_address.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_referral
+    ON 
+      user_referral.user_login_id = user_login.user_login_id
+    WHERE 
+      user_login.status = '1'
+      {$filter}
+    GROUP BY user_login.user_login_id
+    ORDER BY 
+      user_login.signup_date
+    DESC
+    ");
   }
   
   public function getUserReferralId(int $user_login_id = null)
@@ -1199,46 +1190,46 @@ class UserSupport extends Orm {
 
   public function getUser(int $user_login_id = null)
   {
-    if(isset($user_login_id) === true)
+    if(!isset($user_login_id))
     {
-      $sql = "SELECT
-                user_login.user_login_id,
-                user_login.company_id,
-                user_login.signup_date,
-                user_login.email,
-                user_account.image,
-                user_data.names,
-                user_contact.phone,
-                user_address.country_id
-              FROM
-                user_login
-              LEFT JOIN 
-                user_data
-              ON 
-                user_data.user_login_id = user_login.user_login_id
-              LEFT JOIN 
-                user_account
-              ON 
-                user_account.user_login_id = user_login.user_login_id
-              LEFT JOIN 
-                user_address
-              ON 
-                user_address.user_login_id = user_login.user_login_id
-              LEFT JOIN 
-                user_contact
-              ON 
-                user_contact.user_login_id = user_login.user_login_id
-              WHERE 
-                user_login.status = '1'
-              AND 
-                user_login.user_login_id = '{$user_login_id}'
-              ORDER BY 
-                user_login.signup_date
-              DESC
-                ";
-
-      return $this->connection()->row($sql);
+      return false;
     }
+    
+    return $this->connection()->row("SELECT
+      user_login.user_login_id,
+      user_login.company_id,
+      user_login.signup_date,
+      user_login.email,
+      user_account.image,
+      user_data.names,
+      user_contact.phone,
+      user_address.country_id
+    FROM
+      user_login
+    LEFT JOIN 
+      user_data
+    ON 
+      user_data.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_account
+    ON 
+      user_account.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_address
+    ON 
+      user_address.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_contact
+    ON 
+      user_contact.user_login_id = user_login.user_login_id
+    WHERE 
+      user_login.status = '1'
+    AND 
+      user_login.user_login_id = '{$user_login_id}'
+    ORDER BY 
+      user_login.signup_date
+    DESC
+      ");
   }
   public function getUserEmail(int $user_login_id = null)
   {
@@ -1419,5 +1410,78 @@ class UserSupport extends Orm {
     }
 
     return $users;
+  }
+
+  public function getUserDetail(int $user_login_id = null)
+  {
+    if(!$user_login_id)
+    {
+      return false;
+    }
+
+    $user = [];
+
+    $user['user_kyc'] = (new CatalogKyc)->findAll("status = ?",1);
+    $user['user_kyc'] = array_map(function($catalog_kyc) use($user_login_id){
+      $catalog_kyc['value'] = (new UserKyc)->getOrCreate([
+        'catalog_kyc_id' => $catalog_kyc['catalog_kyc_id'],
+        'user_login_id' => $user_login_id
+      ]);
+
+      return $catalog_kyc;
+    },$user['user_kyc']);
+
+    $user['user_feedback'] = (new UserFeedback)->findAll("user_login_id = ? AND status != ?",[$user_login_id,-1]);
+
+    return $user;
+  }
+
+  public function getUsersCount(int $catalog_user_type_id = null)
+  {
+    if(!$this->logged)
+    {
+      return false;
+    }
+    
+    if(!$catalog_user_type_id)
+    {
+      return false;
+    }
+
+    return (new UserLogin(false,false))->countWhere("catalog_user_type_id = ?",$catalog_user_type_id);
+  }
+
+  public function getLastUsers(string $limit = null,string $filter = null)
+  {
+    if(!$this->logged)
+    {
+      return false;
+    }
+
+    return (new UserLogin(false,false))->getLastSigned("LIMIT {$limit}",$filter);
+  }
+
+  public function deleteKycValue(array $data = null)
+  {
+    if(!$this->logged)
+    {
+      return false;
+    }
+
+    if(!$data)
+    {
+      return false;
+    }
+
+    $UserKyc = new UserKyc;
+    
+    if(!$UserKyc->loadWhere("user_login_id = ? AND catalog_kyc_id = ?",[$data['user_login_id'],$data['catalog_kyc_id']]))
+    {
+      return false;
+    }
+
+    $UserKyc->value = '';
+    
+    return $UserKyc->save();
   }
 }

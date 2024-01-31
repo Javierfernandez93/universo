@@ -6,12 +6,12 @@
                     <login-viewer></login-viewer>
                 </div>
                 <div class="col-12 col-xl-6 bg-login position-relative overflow-hidden">
-                    <div class="mask bg-primary"></div>
+                    <div class="mask bg-dark"></div>
                     <div class="position-relative z-index-1 h-100 align-items-center justify-content-center">
                         <div class="row h-100 d-flex justify-content-center align-items-center">
                             <div class="col-10 col-xl-10">
-                                <h2 style="--delay:899ms" class="animation-fall-down text-white sans">🚀 Site es lo que buscas</h2>
-                                <div style="--delay:1200ms" class="animation-fall-down lead text-white">Únete a Site y explota tu potencial para hacer negocios</div>
+                                <h2 style="--delay:899ms" class="animation-fall-down text-white sans">Bienvenido a Jade</h2>
+                                <div style="--delay:1200ms" class="animation-fall-down lead text-white">Ingresa a tu portal</div>
                             </div>
                         </div>
                     </div>

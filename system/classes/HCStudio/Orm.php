@@ -211,6 +211,7 @@ abstract class Orm
 			foreach($data as $k => $v) $this->tblFields[$k] = $v;
 			return true;
 		}
+		
 		return false;
 	}
 
@@ -452,11 +453,13 @@ abstract class Orm
 		return $this->findAll($where,$binds,null,['field'=>'create_date','order'=>'desc']);
 	}
 
-	public function findAll(string $where = null,array|string|int|float $binds = null,array $fields = null,array $orderBy = null) : array|bool
+	public function findAll(string $where = null,array|string|int|float $binds = null,array $fields = null,array $orderBy = null,string $limit = null) : array|bool
 	{
 		$fields = isset($fields) ? implode(',',$fields) : implode(",",array_keys($this->getFields()));
 
-		$query = "SELECT {$fields} FROM {$this->tblName} WHERE {$where}";
+		$limit = isset($limit) ? "LIMIT {$limit}" : '';
+
+		$query = "SELECT {$fields} FROM {$this->tblName} WHERE {$where} {$limit}";
 
 		if(isset($orderBy))
 		{
@@ -489,6 +492,18 @@ abstract class Orm
 	public function countWhere(string $where = null,array|string|int|float $binds = null) : int|bool
 	{
 		$query = "SELECT COUNT({$this->tblPrimary}) as c FROM {$this->tblName} WHERE {$where}";
+
+		if($data = $this->db->field($query, $binds))
+		{
+			return $data;
+		}
+
+		return 0;
+	}
+
+	public function sumWhere(string $where = null,array|string|int|float $binds = null,string $field = null) : int|bool
+	{
+		$query = "SELECT SUM({$this->tblName}.{$field}) as c FROM {$this->tblName} WHERE {$where}";
 
 		if($data = $this->db->field($query, $binds))
 		{

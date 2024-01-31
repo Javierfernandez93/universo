@@ -47,6 +47,10 @@ Vue.createApp({
             this.UserSupport.editAdministrator({administrator:this.administrator}, (response) => {
                 if (response.s == 1) {
                     this.$refs.button.innerText = "Actualizado"
+
+                    toastInfo({
+                        message: 'Administrador actualizado',
+                    })
                 } else if (response.r == 'MAIL_ALREADY_EXISTS') {
                     this.feedback = 'El correo proporcionado ya está registrado'
                 }
