@@ -5,6 +5,7 @@ const PropertypullViewer = {
     data() {
         return {
             User: new User,
+            catalog_payment_methods: null,
             user_login_id: null,
             property: null
         }
@@ -58,11 +59,20 @@ const PropertypullViewer = {
                     this.$emit('refresh')
                 }
             })
+        },
+        getCatalogPaymentMethods()
+        {
+            this.User.getCatalogPaymentMethods({},(response)=>{
+                if(response.s == 1)
+                {
+                    this.catalog_payment_methods = response.catalog_payment_methods
+                }
+            })
         }
     },
     mounted() 
     {       
-        
+        this.getCatalogPaymentMethods()
     },
     template : `
         <div class="offcanvas offcanvas-end" tabindex="-1" ref="offcanvasRight3" id="offcanvasRight3" aria-labelledby="offcanvasRightLabel">
@@ -140,6 +150,25 @@ const PropertypullViewer = {
                             </div>
                         </li>
                     </ul>
+
+                    <div v-if="catalog_payment_methods" class="my-3">
+                        <div v-for="catalog_payment_method in catalog_payment_methods">
+                            <div class="row justify-content-center mb-3">
+                                <div class="col-12 col-xl">
+                                    {{catalog_payment_method.payment_method}}
+
+                                    <div class="text-xs text-secondary">{{catalog_payment_method.description}}</div>
+                                </div>
+                            </div>
+
+                            <ul v-for="catalog_payment_method in catalog_payment_methods" class="list-group">
+                                <li v-for="(data,key) in catalog_payment_method.additional_data" class="list-group-item">
+                                    {{key}} {{data}}
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    
                     <div v-if="property.image" class="card-footer">
                         <div class="row">
                             <div class="col-12">

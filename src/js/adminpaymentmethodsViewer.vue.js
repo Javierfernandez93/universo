@@ -1,7 +1,6 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.4'
 
 const AdminpaymentmethodsViewer = {
-    name: 'adminpaymentmethods-viewer',
     data() {
         return {
             UserSupport: new UserSupport,
@@ -51,7 +50,7 @@ const AdminpaymentmethodsViewer = {
         }
     },
     methods: {
-        sortData: function (column) {
+        sortData(column) {
             this.catalogPaymentMethods.sort((a, b) => {
                 const _a = column.desc ? a : b
                 const _b = column.desc ? b : a
@@ -65,17 +64,17 @@ const AdminpaymentmethodsViewer = {
 
             column.desc = !column.desc
         },
-        filterData: function () {
+        filterData() {
             this.catalogPaymentMethods = this.catalogPaymentMethodsAux
 
             this.catalogPaymentMethods = this.catalogPaymentMethods.filter((catalogPaymentMethod) => {
                 return catalogPaymentMethod.code.toLowerCase().includes(this.query.toLowerCase()) || catalogPaymentMethod.currency.toLowerCase().includes(this.query.toLowerCase()) || catalogPaymentMethod.fee.toString().includes(this.query.toLowerCase()) || catalogPaymentMethod.description.includes(this.query.toLowerCase())
             })
         },
-        toggleEditingFee: function (catalogPaymentMethod) {
+        toggleEditingFee(catalogPaymentMethod) {
             catalogPaymentMethod.editingFee = !catalogPaymentMethod.editingFee
         },
-        savePaymentMethodFee: function (catalogPaymentMethod) {
+        savePaymentMethodFee(catalogPaymentMethod) {
             this.UserSupport.savePaymentMethodFee({catalog_payment_method_id: catalogPaymentMethod.catalog_payment_method_id, fee : catalogPaymentMethod.fee},(response)=>{
                 if(response.s == 1)
                 {
@@ -83,7 +82,7 @@ const AdminpaymentmethodsViewer = {
                 }
             })
         },
-        inactivePaymentMethod: function (catalogPaymentMethod) {
+        inactivePaymentMethod(catalogPaymentMethod) {
             this.UserSupport.inactivePaymentMethod({catalog_payment_method_id: catalogPaymentMethod.catalog_payment_method_id},(response)=>{
                 if(response.s == 1)
                 {
@@ -91,7 +90,7 @@ const AdminpaymentmethodsViewer = {
                 }
             })
         },
-        activePaymentMethod: function (catalogPaymentMethod) {
+        activePaymentMethod(catalogPaymentMethod) {
             this.UserSupport.activePaymentMethod({catalog_payment_method_id: catalogPaymentMethod.catalog_payment_method_id},(response)=>{
                 if(response.s == 1)
                 {
@@ -99,7 +98,7 @@ const AdminpaymentmethodsViewer = {
                 }
             })
         },
-        enableRecomendation: function (catalogPaymentMethod) {
+        enableRecomendation(catalogPaymentMethod) {
             this.UserSupport.enableRecomendation({catalog_payment_method_id: catalogPaymentMethod.catalog_payment_method_id},(response)=>{
                 if(response.s == 1)
                 {
@@ -107,7 +106,7 @@ const AdminpaymentmethodsViewer = {
                 }
             })
         },
-        disableRecomendation: function (catalogPaymentMethod) {
+        disableRecomendation(catalogPaymentMethod) {
             this.UserSupport.disableRecomendation({catalog_payment_method_id: catalogPaymentMethod.catalog_payment_method_id},(response)=>{
                 if(response.s == 1)
                 {
@@ -115,7 +114,7 @@ const AdminpaymentmethodsViewer = {
                 }
             })
         },
-        deletePaymentMethod: function (catalogPaymentMethod) {
+        deletePaymentMethod(catalogPaymentMethod) {
             this.UserSupport.deletePaymentMethod({catalog_payment_method_id: catalogPaymentMethod.catalog_payment_method_id},(response)=>{
                 if(response.s == 1)
                 {
@@ -123,7 +122,7 @@ const AdminpaymentmethodsViewer = {
                 }
             })
         },
-        getAllPaymentMethods: function () {
+        getAllPaymentMethods() {
             this.UserSupport.getAllPaymentMethods({}, (response) => {
                 if (response.s == 1) {
                     this.catalogPaymentMethodsAux = response.catalogPaymentMethods
@@ -139,18 +138,20 @@ const AdminpaymentmethodsViewer = {
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
-                    <div class="card-header">
-                        <span v-if="catalogPaymentMethods" class="badge text-secondary p-0">Total {{catalogPaymentMethods.length}}</span>
-                        <div class="fs-4 fw-sembold text-primary">
-                            Métodos de pago
+                    <div class="card-header ">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-xl">
+                                <span v-if="catalogPaymentMethods" class="badge text-secondary p-0">Total {{catalogPaymentMethods.length}}</span>
+                                <div class="h5">
+                                    Métodos de pago
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-auto">
+                                <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                            </div>
                         </div>
                     </div>
-                    <div class="card-header">
-                        <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
-                    </div>
-                    <div
-                        v-if="catalogPaymentMethods" 
-                        class="card-body px-0 pt-0 pb-2">
+                    <div v-if="catalogPaymentMethods" class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -305,7 +306,7 @@ const AdminpaymentmethodsViewer = {
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="btn-group">
-                                                <button type="button" class="btn px-3 btn-outline-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <button type="button" class="btn px-3 btn-dark shadow-none px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
                                                 </button>
                                                 <ul class="dropdown-menu shadow">

@@ -21,28 +21,19 @@ class CatalogPaymentMethod extends Orm {
 		parent::__construct();
 	}
 
-	public function getAll(string $filter = null)
+	public function getAll()
 	{
-		$sql = "SELECT 
-					{$this->tblName}.{$this->tblName}_id,
-					{$this->tblName}.image,
-					{$this->tblName}.description,
-					{$this->tblName}.additional_info,
-					{$this->tblName}.recomend,
-					{$this->tblName}.additional_data,
-					{$this->tblName}.status,
-					{$this->tblName}.create_date,
-					{$this->tblName}.catalog_currency_ids,
-					{$this->tblName}.fee,
-					{$this->tblName}.payment_method
-				FROM 
-					{$this->tblName}
-				WHERE 
-					{$this->tblName}.status != '".Constants::DELETE."'
-					{$filter}
-				";
-				
-		return $this->connection()->rows($sql);
+		$catalog_payment_methods = (new self)->findAll("status = ?",1);
+
+		if(!$catalog_payment_methods)
+		{
+			return false;
+		}
+
+		return array_map(function($catalog_payment_method){
+			$catalog_payment_method['additional_data'] = json_decode($catalog_payment_method['additional_data'],true);
+			return $catalog_payment_method;
+		},$catalog_payment_methods);	
 	}
 
 	public function get(int $catalog_payment_method_id = null)

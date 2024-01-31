@@ -132,7 +132,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#tools" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTools, JFStudio\Router::AdminToolsAdd, JFStudio\Router::AdminToolsEdit])) { ?>active<?php } ?>" aria-controls="tools" role="button" aria-expanded="false">
-                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-toggles2"></i></span>
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-tools"></i></span>
                             <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminTools); ?></span>
                         </a>
                         <div class="collapse" id="tools">
@@ -199,6 +199,24 @@
                             </li>
                         </ul>
                     </ul>
+                <?php } ?>
+
+                
+                <?php if ($UserSupport->hasPermission('list_commissions')) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminDash, JFStudio\Router::AdminStats])) { ?>active<?php } ?>" href="../../apps/admin-payment-methods">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-credit-card"></i></span>
+                            <span class="nav-link-text text-dark ms-1">Métodos de pago</span>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if ($UserSupport->hasPermission('list_payment_methods')) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminDash, JFStudio\Router::AdminStats])) { ?>active<?php } ?>" href="../../apps/admin-payment-methods">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-credit-card"></i></span>
+                            <span class="nav-link-text text-dark ms-1">Métodos de pago</span>
+                        </a>
+                    </li>
                 <?php } ?>
 
                 <?php if ($UserSupport->hasPermission('list_config')) { ?>

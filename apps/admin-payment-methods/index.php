@@ -16,7 +16,6 @@ $route = JFStudio\Router::AdminPaymentMethods;
 $Layout = JFStudio\Layout::getInstance();
 $Layout->init(JFStudio\Router::getName($route),"index","admin","",TO_ROOT."/");
 
-
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
 	'adminpaymentmethods.vue.js'

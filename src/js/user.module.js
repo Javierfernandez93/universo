@@ -805,6 +805,9 @@ class User extends Http {
     setAsUserKind(data, callback) {
         return this.call('../../app/application/setAsUserKind.php', data, callback);
     }
+    getCatalogPaymentMethods(data, callback) {
+        return this.call('../../app/application/getCatalogPaymentMethods.php', data, callback);
+    }
     getCatalogTags(data, callback) {
         return this.call('../../app/application/getCatalogTags.php', data, callback);
     }
