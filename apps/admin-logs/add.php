@@ -8,18 +8,21 @@ if($UserSupport->logged === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-if($UserSupport->hasPermission('list_commissions') === false) {
-	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
+$user_support_id = HCStudio\Util::getVarFromPGS('usid');
+
+if($UserSupport->hasPermission('add_lead') === false) 
+{
+	// HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }
 
+$route = JFStudio\Router::AdminLeadAdd;
 $Layout = JFStudio\Layout::getInstance();
-
-$route = JFStudio\Router::AdminTransactions;
-$Layout->init(JFStudio\Router::getName($route),"index","admin","",TO_ROOT."/");
+$Layout->init(JFStudio\Router::getName($route),"add","admin","",TO_ROOT."/");
 
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
-	'adminTransactions.vue.js',
+	'jquery.mask.js',
+	'addlead.vue.js'
 ]);
 
 $Layout->setVar([

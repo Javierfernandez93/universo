@@ -115,6 +115,7 @@ class Router {
     const AdminProperties = 155;
     const AdminPropertiesAdd = 156;
     const AdminPropertiesEdit = 157;
+    const AdminLoggs = 158;
 
     static function getName(int $route = null)
     {
@@ -229,6 +230,7 @@ class Router {
             self::AdminProperties => 'Propiedades',
             self::AdminPropertiesAdd => 'Propiedades',
             self::AdminPropertiesEdit => 'Propiedades',
+            self::AdminLoggs => 'Logs',
             default => 'Sin nombre'
         };
     }

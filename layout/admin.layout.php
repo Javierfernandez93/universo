@@ -204,12 +204,22 @@
                 
                 <?php if ($UserSupport->hasPermission('list_commissions')) { ?>
                     <li class="nav-item">
-                        <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminDash, JFStudio\Router::AdminStats])) { ?>active<?php } ?>" href="../../apps/admin-payment-methods">
+                        <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTransactions])) { ?>active<?php } ?>" href="../../apps/admin-transactions/">
                             <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-credit-card"></i></span>
-                            <span class="nav-link-text text-dark ms-1">Métodos de pago</span>
+                            <span class="nav-link-text text-dark ms-1">Comisiones</span>
                         </a>
                     </li>
                 <?php } ?>
+
+                <?php if ($UserSupport->hasPermission('list_logger')) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminLoggs])) { ?>active<?php } ?>" href="../../apps/admin-logs/">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-clock-history"></i></span>
+                            <span class="nav-link-text text-dark ms-1">Logs</span>
+                        </a>
+                    </li>
+                <?php } ?>
+
                 <?php if ($UserSupport->hasPermission('list_payment_methods')) { ?>
                     <li class="nav-item">
                         <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminDash, JFStudio\Router::AdminStats])) { ?>active<?php } ?>" href="../../apps/admin-payment-methods">

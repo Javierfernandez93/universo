@@ -1,23 +1,22 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=2.3.7'
 
 const AdmintransactionsViewer = {
-    name : 'admintransactions-viewer',
     data() {
         return {
             UserSupport : new UserSupport,
-            transactions : null,
-            transactionsAux : null,
+            commissions : null,
+            commissionsAux : null,
             filters: [
                 {
                     name: 'Pendientes',
                     status: 1
                 },
                 {
-                    name: 'Procesando',
+                    name: 'Pendientes de firma',
                     status: 2
                 },
                 {
-                    name: 'Transferidas',
+                    name: 'Completadas',
                     status: 3
                 },
             ],
@@ -59,7 +58,7 @@ const AdmintransactionsViewer = {
     watch : {
         status: {
             handler() {
-                this.getUsersTransactions()
+                this.getUsersCommissions()
             },
             deep: true
         }
@@ -88,37 +87,48 @@ const AdmintransactionsViewer = {
                 }
             });
         },
-        sendPayout(transaction) {
-            this.UserSupport.sendPayout(transaction,(response)=>{
-                if(response.s == 1)
-                {
-                    transaction.status = response.status
+        openFileManager(id) 
+        {
+            $(`#${id}`).click()
+        },
+        uploadFile(event,commission) 
+        {
+            let files = $(event.target).prop('files');
+            var form_data = new FormData();
+          
+            form_data.append("file", files[0]);
+            form_data.append("commission_per_user_id", commission.commission_per_user_id);
+            
+            this.UserSupport.uploadCommissionFile(form_data,$(".progress-chat").find(".progress-bar"),(response)=>{
+              if(response.s == 1)
+              {
+                commission.file = response.target_path
 
-                    alertInfo({
-                        icon:'<i class="bi bi-ui-checks"></i>',
-                        message: 'Hemos enviado la información. El pago se procesará pronto',
-                        _class:'bg-gradient-success text-white'
-                    })
-                }
+                toastInfo({
+                    message: "Imagen subida correctamente", 
+                })
+
+                this.getUsersCommissions()
+              }
             });
         },
-        deleteWithdraw(transaction) {
-            console.log(transaction)
+        deleteWithdraw(commission) {
+            console.log(commission)
             let alert = alertCtrl.create({
                 title: "Alert",
                 subTitle: `
                     <div class="text-center">¿Estás seguro de eliminar esta esta transacción?</div>
-                    <div class="text-center mt-3">Regresaremos <b>$ ${transaction.amount} USD </b> a la billetera de <b>${transaction.names}</b></div>`,
+                    <div class="text-center mt-3">Regresaremos <b>$ ${commission.amount} USD </b> a la billetera de <b>${commission.names}</b></div>`,
                 buttons: [
                     {
                         text: "Sí",
                         class: 'btn-success',
                         role: "cancel",
                         handler: (data) => {
-                            this.UserSupport.deleteWithdraw({withdraw_per_user_id:transaction.withdraw_per_user_id},(response)=>{
+                            this.UserSupport.deleteWithdraw({commission_per_user_id:commission.commission_per_user_id},(response)=>{
                                 if(response.s == 1)
                                 {
-                                    transaction.status = response.status
+                                    commission.status = response.status
                                 }
                             })
                         },
@@ -134,41 +144,37 @@ const AdmintransactionsViewer = {
 
             alertCtrl.present(alert.modal)  
         },
-        getUsersTransactions() {
-            this.transactions = null
-            this.transactionsAux = null
+        getUsersCommissions() {
+            this.commissions = null
+            this.commissionsAux = null
 
-            this.UserSupport.getUsersTransactions({status:this.status},(response)=>{
+            this.UserSupport.getUsersCommissions({status:this.status},(response)=>{
                 if(response.s == 1)
                 {
-                    this.transactions = response.transactions
-                    this.transactionsAux = response.transactions
+                    this.commissions = response.commissions
+                    this.commissionsAux = response.commissions
                 }
             })
         },
     },
     mounted() 
     {
-        this.getUsersTransactions()
+        this.getUsersCommissions()
     },
     template: `
         <div class="card mb-4">
             <div class="card-header pb-0">
                 <div class="row align-items-center">
-                    <div class="col-12 col-xl">
-                        <div class="fs-4 fw-sembold text-primary">Pagar comisiones</div>
+                    <div class="col-12 col-xl h5">
+                        Pagar comisiones
                     </div>
                     <div class="col-12 col-xl-auto">
                         <div><span v-if="transactions" class="badge text-secondary">Total de comisiones {{transactions.length}}</span></div>
                     </div>
-                </div>
-            </div>
-            <div class="card-header pb-0">
-                <div class="row">
-                    <div class="col">
+                    <div class="col-12 col-xl-auto">
                         <input :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..." />
                     </div>
-                    <div class="col-auto">
+                    <div class="col-12 col-xl-auto">
                         <select class="form-control" v-model="status">
                             <option v-for="filter in filters" v-bind:value="filter.status">{{filter.name}}</option>
                         </select>
@@ -176,19 +182,10 @@ const AdmintransactionsViewer = {
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-                <div v-if="transactions" class="table-responsive-sm p-0">
+                <div v-if="commissions" class="table-responsive-sm p-0">
                     <table class="table table-striped table-hover align-items-center mb-0">
                         <thead>
                             <tr>
-                                <th @click="sortData(columns.withdraw_per_user_id)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
-                                    <span v-if="columns.withdraw_per_user_id.desc">
-                                        <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                    </span>
-                                    <span v-else>
-                                        <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                    </span>
-                                    <u class="text-sm ms-2">#</u>
-                                </th>
                                 <th @click="sortData(columns.user_support_id)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
                                     <span v-if="columns.user_support_id.desc">
                                         <i class="bi text-primary bi-arrow-up-square-fill"></i>
@@ -214,7 +211,7 @@ const AdmintransactionsViewer = {
                                     <span v-else>
                                         <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                     </span>
-                                    <u class="text-sm ms-2">Monto retirado</u>
+                                    <u class="text-sm ms-2">Comisión</u>
                                 </th>
                                 <th @click="sortData(columns.account)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
                                     <span v-if="columns.account.desc">
@@ -223,7 +220,7 @@ const AdmintransactionsViewer = {
                                     <span v-else>
                                         <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                     </span>
-                                    <u class="text-sm ms-2">Cuenta</u>
+                                    <u class="text-sm ms-2">Motivo</u>
                                 </th>
 
                                 <th @click="sortData(columns.create_date)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
@@ -250,53 +247,44 @@ const AdmintransactionsViewer = {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="transaction in transactions" class="align-middle text-center text-xs">
+                            <tr v-for="(commission,key) in commissions" class="align-middle text-center text-xs">
                                 <td>
-                                    {{transaction.withdraw_per_user_id}}
+                                    {{commission.commission_per_user_id}}
                                 </td>
                                 <td>
-                                    {{transaction.user_login_id}}
+                                    {{commission.names}}
                                 </td>
                                 <td>
-                                    {{transaction.names}}
+                                    {{commission.name}}
                                 </td>
                                 <td>
-                                    <span class="fw-semibold text-dark">$ {{transaction.amount.numberFormat(2)}}</span>
+                                    <span class="fw-semibold text-dark">$ {{commission.amount.numberFormat(2)}}</span>
                                 </td>
                                 <td>
-                                    <div>
-                                        <span class="badge border border-primary text-primary">
-                                            {{transaction.method}} - 
-                                            {{transaction.currency}}
-                                        </span>
-                                    </div>
-                                
-                                    <span class="text-truncate text-xs">{{transaction.wallet}}</span>
+                                    {{commission.create_date.formatDate()}}
                                 </td>
                                 <td>
-                                    {{transaction.create_date.formatDate()}}
-                                </td>
-                                <td>
-                                    <span v-if="transaction.status == 1" class="badge bg-warning">Pendiente</span>
-                                    <span v-else-if="transaction.status == 2" class="badge bg-secondary">Procesando</span>
-                                    <span v-else-if="transaction.status == 3" class="badge bg-success">Transferida</span>
-                                    <span v-else-if="transaction.status == -1" class="badge bg-danger">Eliminada</span>
+                                    <span v-if="commission.status == 1" class="badge bg-warning">Pendiente de voucher</span>
+                                    <span v-else-if="commission.status == 2" class="badge bg-secondary">Pendientes de firma</span>
+                                    <span v-else-if="commission.status == 3" class="badge bg-success">Completado</span>
+                                    <span v-else-if="commission.status == -1" class="badge bg-danger">Eliminada</span>
                                 </td>
                                 <td
                                     v-if="status == 1"
                                     class="align-middle text-center text-sm">
                                     <div class="dropdown">
-                                        <button class="btn btn-outline-primary btn-sm mb-0 px-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn btn-dark mb-0 shadow-none btn-sm mb-0 px-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         
                                         </button>
                                         <ul class="dropdown-menu shadow">
-                                        <li><button class="dropdown-item" @click="sendPayout(transaction)">Enviar</button></li>
-                                            <li><button class="dropdown-item" @click="applyWithdraw(transaction)">Cambiar estatus a aplicada</button></li>
-                                        
+                                            <input class="d-none" @change="uploadFile($event,commission)" :id="commission.commission_per_user_id" capture="filesystem" type="file" accept=".jpg, .png, .jpeg" />
+                                            
+                                            <li><button class="dropdown-item" @click="openFileManager(commission.commission_per_user_id)">Subir comprobante</button></li>    
+
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><button class="dropdown-item" @click="deleteWithdraw(transaction)">Eliminar</button></li>
+                                            <li><button class="dropdown-item" @click="deleteWithdraw(commission)">Eliminar</button></li>
                                         </ul>
                                     </div>
                                 </td>

@@ -13,18 +13,51 @@ class CommissionPerUser extends Orm
 {
 	protected $tblName = 'commission_per_user';
 
-	//** status */
-	const PENDING_FOR_DISPERSION = 1;
-	const COMPLETED = 2;
-	const PROFIT_MAMP_NETWORK = 30;
-	const PROFIT_MAMP_SPONSOR = 3;
-	const DEFAULT_NETWORK_MAM_LEVELS = 10;
+	/* status */
+	const PENDING_FOR_FILE = 1;
+	const PENDING_FOR_SIGNATURE = 2;
+	const COMPLETED = 3;
 
 	public function __construct()
 	{
 		parent::__construct();
 	}
 
+	public function getAllWithData(string $filter = '') {
+		return $this->connection()->rows("SELECT 
+			{$this->tblName}.{$this->tblName}_id,
+			{$this->tblName}.user_login_id,
+			{$this->tblName}.buy_per_user_id,
+			{$this->tblName}.package_id,
+			{$this->tblName}.catalog_currency_id,
+			{$this->tblName}.deposit_date,
+			{$this->tblName}.transaction_per_wallet_id,
+			{$this->tblName}.user_login_id_from,
+			{$this->tblName}.create_date,
+			{$this->tblName}.signature,
+			{$this->tblName}.file,
+			catalog_currency.currency,
+			catalog_commission.name,
+			user_data.names,
+			{$this->tblName}.status,
+			{$this->tblName}.amount
+		FROM 
+			{$this->tblName}
+		LEFT JOIN
+			catalog_currency 
+		ON 
+			catalog_currency.catalog_currency_id = {$this->tblName}.catalog_currency_id 
+		LEFT JOIN
+			catalog_commission 
+		ON 
+			catalog_commission.catalog_commission_id = {$this->tblName}.catalog_commission_id 
+		LEFT JOIN
+			user_data 
+		ON 
+			user_data.user_login_id = {$this->tblName}.user_login_id_from 
+			{$filter}
+		");
+	}
 	public static function attachSignature(array $data = null): bool
 	{
 		if(!$data['commission_per_user_id'] || !$data['signature'])
@@ -195,6 +228,7 @@ class CommissionPerUser extends Orm
 		{
 			return false;
 		}
+
 		$sql = "SELECT 
 					{$this->tblName}.{$this->tblName}_id,
 					{$this->tblName}.user_login_id,

@@ -27,6 +27,16 @@ if($UserSupport->logged === true)
                         $data['permissions_saved'] = true;
                     }
                 }
+
+                Site\Logger::add([
+                    'table' => 'user_support',
+                    'field' => 'all',
+                    'action' => 'update',
+                    'value' => json_encode($UserSupportUpdate->attr()),
+                    'user_support_id' => $UserSupport->getId(),
+                    'create_date' => time(),
+                ]);
+                
                 $data['s'] = 1;
                 $data['r'] = 'SAVE_OK';   
             } else {

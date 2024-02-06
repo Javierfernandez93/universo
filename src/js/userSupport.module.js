@@ -303,6 +303,9 @@ class UserSupport extends Http {
     uploadImageProfile(data, progress, callback) {
         return this.callFile('../../app/application/upload_image_profile.php', data, callback, progress);
     }
+    uploadCommissionFile(data, progress, callback) {
+        return this.callFile('../../app/application/uploadCommissionFile.php', data, callback, progress);
+    }
     uploadImageKycFromAdmin(data, progress, callback) {
         return this.callFile('../../app/application/uploadImageKycFromAdmin.php', data, callback, progress);
     }
@@ -568,6 +571,17 @@ class UserSupport extends Http {
     }
     getCatalogRealState(data, callback) {
         return this.call('../../app/application/getCatalogRealState.php', data, callback);
+    }
+    /* comissions */
+    getUsersCommissions(data, callback) {
+        return this.call('../../app/application/getUsersCommissions.php', data, callback);
+    }
+    /* loggs */
+    getLoggs(data, callback) {
+        return this.call('../../app/application/getLoggs.php', data, callback);
+    }
+    setLoggerStatus(data, callback) {
+        return this.call('../../app/application/setLoggerStatus.php', data, callback);
     }
     /* clients */
     getClients(data, callback) {
