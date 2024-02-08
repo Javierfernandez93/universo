@@ -127,8 +127,7 @@ class Util
 	# Convertimos arreglo en objeto
 	public static function arr2obj(array $array = null)
 	{
-		if(isset($array))
-		{
+		if (isset($array)) {
 			$json = json_encode($array);
 			$object = json_decode($json);
 
@@ -491,17 +490,17 @@ class Util
 		return $timeleft;
 	}
 
-	public static function unixDiff(int $date1 = null,int $date2 = null) : array
+	public static function unixDiff(int $date1 = null, int $date2 = null): array
 	{
-		$diff = $date2 - $date1; 
+		$diff = $date2 - $date1;
 
-		$years = floor($diff / (365*60*60*24)); 
-		$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24)); 
-		$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-		$hours = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24)/ (60*60)); 
-		$minutes = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60)/ 60); 
-		$seconds = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60 - $minutes*60)); 
-		
+		$years = floor($diff / (365 * 60 * 60 * 24));
+		$months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+		$days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+		$hours = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24) / (60 * 60));
+		$minutes = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60) / 60);
+		$seconds = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60 - $minutes * 60));
+
 		return [
 			'years' => $years,
 			'months' => $months,
@@ -511,7 +510,7 @@ class Util
 			'seconds' => $seconds,
 		];
 	}
-	
+
 	public static function timeAgoIO($ptime = false)
 	{
 		$diff = time() - $ptime;
@@ -739,9 +738,18 @@ class Util
 
 		return $bytes;
 	}
-	
+
 	public static function getDateWithYear($date = null)
 	{
 		return date("d", $date) . " de " . self::getMonthById(date("m", $date) - 1) . " del " . date("Y", $date);
+	}
+
+	public static function isJson(string $string = null)
+	{
+		if($string === null) return false;
+		
+		json_decode($string);
+
+		return json_last_error() === JSON_ERROR_NONE;
 	}
 }

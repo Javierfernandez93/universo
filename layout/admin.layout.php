@@ -222,7 +222,7 @@
 
                 <?php if ($UserSupport->hasPermission('list_payment_methods')) { ?>
                     <li class="nav-item">
-                        <a class="nav-link <?php if (in_array($route, [])) { ?>active<?php } ?>" href="../../apps/admin-payment-methods">
+                        <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminPaymentMethods])) { ?>active<?php } ?>" href="../../apps/admin-payment-methods">
                             <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-credit-card"></i></span>
                             <span class="nav-link-text text-dark ms-1">Métodos de pago</span>
                         </a>

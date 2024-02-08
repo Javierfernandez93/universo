@@ -24,7 +24,9 @@ if($UserSupport->logged === true)
 
 function format(array $catalogPaymentMethods = null) : array {
     return array_map(function($catalogPaymentMethod){
-        $catalogPaymentMethod['additional_data'] = json_decode($catalogPaymentMethod['additional_data']);
+
+        
+        $catalogPaymentMethod['additional_data'] = HCStudio\Util::isJson($catalogPaymentMethod['additional_data']) ? json_decode($catalogPaymentMethod['additional_data']) : $catalogPaymentMethod['additional_data']    ;
 
         return $catalogPaymentMethod;
     },$catalogPaymentMethods);
