@@ -1098,6 +1098,20 @@ const alertInfo = async ({message:message, _class:_class, icon:icon, size:size},
   },delay)
 }
 
+const alertImage = async ({image:image, _class:_class, icon:icon, size:size},delay = 500) => {
+  await _closeModal();
+
+  setTimeout(()=>{
+    const mAlert = alertCtrl.create({
+      bgColor: `${_class} text-center border-0`,
+      size : size,
+      html: ` <img class="img-fluid" src="${image}"/>`,
+    });
+  
+    alertCtrl.present(mAlert.modal);
+  },delay)
+}
+
 String.prototype.formatRoute = function()
 {
     return 'https://www.mizuum.com/'+this

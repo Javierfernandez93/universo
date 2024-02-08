@@ -1,13 +1,13 @@
 <div class="container-fluid">
-    <div class="page-content-wrapper">
-		<div class="row d-flex justify-content-center">
-			<div class="col-12 col-xl-10">
-				<div class="card text-center">
-					<div class="card-body">
-						Necesitas permisos especiales para acceder.
-					</div>
-				</div>
+	<div class="card text-center">
+		<div class="card-body">
+			<strong>Lo sentimos</strong>
+			
+			<div>
+				Necesitas permisos especiales para acceder a esta caracteristica de <?php echo Site\SystemVar::_getValue("company_name") ?>.
 			</div>
+
+			<div class="text-danger">El incidente será reportado</div>
 		</div>
-    </div>
+	</div>
 </div>

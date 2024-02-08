@@ -98,6 +98,13 @@
                                 <span  data-translate="menu.start" class="nav-link-text ms-1 fw-semiboldx">Herramientas</span>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link <?php if ($route == JFStudio\Router::Help) { ?>active<?php } ?>" href="../../apps/ticket/">
+                                <i class="bi bi-chat-left"></i>
+                                <span  data-translate="menu.start" class="nav-link-text ms-1 fw-semiboldx">Soporte técnico</span>
+                            </a>
+                        </li>
             
                         <li class="nav-item mt-3">
                             <h6 data-translate="menu.account_settings" class="ps-4 ms-2 text-uppercase text-xs opacity-6 ">Ajustes de cuenta</h6>

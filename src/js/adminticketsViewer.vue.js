@@ -1,11 +1,11 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=2.3.7'
 
 const AdminticketsViewer = {
-    name : 'admintickets-viewer',
     emits : ['maketicket'],
     data() {
         return {
             UserSupport: new UserSupport,
+            busy: false,
             tickets: null,
             ticketsAux: null,
             query: null,
@@ -56,13 +56,20 @@ const AdminticketsViewer = {
             this.$emit('togglemaketicket')
         },
         getAllTickets() {
-            return new Promise((resolve,reject) => {
-                this.UserSupport.getAllTickets({}, (response) => {
-                    if (response.s == 1) {
-                        resolve(response.tickets)   
-                    }
-                    reject()
-                })
+            this.busy = true
+            this.tickets = null
+            this.ticketsAux = null
+
+            this.UserSupport.getAllTickets({}, (response) => {
+                this.busy = false
+
+                if (response.s == 1) {
+                    this.tickets = response.tickets
+                    this.ticketsAux = response.tickets
+                } else {
+                    this.tickets = false
+                    this.ticketsAux = false
+                }
             })
         },
         toggleReplying(ticket,index)
@@ -129,15 +136,26 @@ const AdminticketsViewer = {
         }
     },
     mounted() {
-        this.getAllTickets().then((tickets) => {
-            this.tickets = tickets
-            this.ticketsAux = tickets
-        }).catch(() => this.tickets = false)
+        this.getAllTickets()
     },
     template : `
+        <div v-if="busy" class="d-flex justify-content-center">
+            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
         <div class="card shadow-none mb-3 overflow-hidden">
             <div class="card-header">
-                <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-md">
+                        <div v-if="tickets">total {{tickets.lenght}}</div>
+                        <div class="h5">Soporte técnico</div>
+                    </div>
+                    <div class="col-12 col-md-auto">
+                        <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -283,10 +301,11 @@ const AdminticketsViewer = {
                 </div>
             </div>
         </div>
-        <div v-else class="card">
-            <div class="card-body text-center">
-                <div class="fs-4 fw-sembold">No tenemos tickets</div>
+        <div v-else-if="tickets == false" class="card card-body text-center">
+            <div>
+                <strong>Importante</strong>
             </div>
+            <div class="">No tenemos tickets</div>
         </div>
     `,
 }

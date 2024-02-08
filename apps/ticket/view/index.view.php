@@ -1,4 +1,4 @@
-<div class="container py-5" id="app">
+<div class="container" id="app">
     <div class="row justify-content-center">
         <div class="col-12"
             :class="viewFullFaq ? ' col-xl-8' : ''">

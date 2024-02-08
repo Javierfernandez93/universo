@@ -8,13 +8,17 @@ if($UserSupport->_loaded === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-$route = JFStudio\Router::InvalidPermission;
+if($UserSupport->hasPermission('list_payment_methods') === false) {
+	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
+}
+
+$route = JFStudio\Router::AdminPayments;
 $Layout = JFStudio\Layout::getInstance();
-$Layout->init(JFStudio\Router::getName($route),"invalid_permission","admin","",TO_ROOT."/");
+$Layout->init(JFStudio\Router::getName($route),"view","admin","",TO_ROOT."/");
 
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
-	'adminpaymentmethods.vue.js'
+	'propertypayments.vue.js'
 ]);
 
 $Layout->setVar([

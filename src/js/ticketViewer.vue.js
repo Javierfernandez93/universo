@@ -226,7 +226,7 @@ const TicketViewer = {
                         </div>
                         <div class="col-auto">
                             <div>
-                                <span class="cursor-pointer me-2" @click="ticket.showItems = !ticket.showItems" class="badge border border-primary text-primary"><i class="bi bi-chat-right-text text-xs me-2"></i>{{ticket.items.items.length}}</span>
+                                <span class="cursor-pointer me-2" @click="ticket.showItems = !ticket.showItems" class="badge border border-secondary text-secondary"><i class="bi bi-chat-right-text text-xs me-2"></i>{{ticket.items.items.length}} respuestas</span>
 
                                 <button @click="toggleReplying(ticket)" class="btn btn-dark shadow-none mb-0 btn-sm"
                                     v-text="ticket.replying ? 'Cerrar respuesta' : 'Responder'"></button>

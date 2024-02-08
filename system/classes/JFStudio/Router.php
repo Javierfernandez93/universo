@@ -116,6 +116,8 @@ class Router {
     const AdminPropertiesAdd = 156;
     const AdminPropertiesEdit = 157;
     const AdminLoggs = 158;
+    const AdminPayments = 159;
+    const InvalidPermission = 160;
 
     static function getName(int $route = null)
     {
@@ -231,6 +233,8 @@ class Router {
             self::AdminPropertiesAdd => 'Propiedades',
             self::AdminPropertiesEdit => 'Propiedades',
             self::AdminLoggs => 'Logs',
+            self::AdminPayments => 'Pagos',
+            self::InvalidPermission => 'InvalidPermission',
             default => 'Sin nombre'
         };
     }

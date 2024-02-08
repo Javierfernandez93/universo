@@ -202,11 +202,45 @@
                 <?php } ?>
 
                 
+                <?php if ($UserSupport->hasPermission('list_payments')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#payments" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminPayments])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-list-check"></i></span>
+                            <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminPayments); ?></span>
+                        </a>
+                        <div class="collapse" id="payments">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-payments">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <li class="nav-item active d-none">
+                                <a class="nav-link active" href="../../apps/admin-payments/add">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Añadir </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
+
                 <?php if ($UserSupport->hasPermission('list_commissions')) { ?>
                     <li class="nav-item">
                         <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTransactions])) { ?>active<?php } ?>" href="../../apps/admin-transactions/">
                             <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-credit-card"></i></span>
                             <span class="nav-link-text text-dark ms-1">Comisiones</span>
+                        </a>
+                    </li>
+                <?php } ?>
+
+                <?php if ($UserSupport->hasPermission('list_tickets')) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTicket])) { ?>active<?php } ?>" href="../../apps/admin-tickets/">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-chat-left"></i></span>
+                            <span class="nav-link-text text-dark ms-1">Soporte técnico</span>
                         </a>
                     </li>
                 <?php } ?>

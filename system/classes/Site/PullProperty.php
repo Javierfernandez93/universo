@@ -11,12 +11,79 @@ class PullProperty extends Orm {
         parent::__construct();
     }
    
+    public function getPayments() {
+
+        $payments = $this->connection()->rows("
+            SELECT 
+                {$this->tblName}.user_login_id,
+                {$this->tblName}.property_id,
+                property.title,
+                catalog_real_state.real_state,
+                user_data.names,
+                user_referral.referral_id
+            FROM
+                {$this->tblName} 
+            LEFT JOIN 
+                property 
+            ON 
+                {$this->tblName}.property_id = property.property_id
+            LEFT JOIN 
+                catalog_real_state 
+            ON 
+                catalog_real_state.catalog_real_state_id = property.catalog_real_state_id
+            LEFT JOIN 
+                user_data 
+            ON 
+                user_data.user_login_id = {$this->tblName}.user_login_id
+            LEFT JOIN 
+                user_referral 
+            ON 
+                user_referral.user_login_id = {$this->tblName}.user_login_id
+            WHERE 
+                {$this->tblName}.status = '1'
+            GROUP BY 
+                {$this->tblName}.property_id
+        ");
+
+        if(!$payments) {
+            return false;
+        }
+
+        $UserData = new UserData;
+
+        return array_map(function($payment) use($UserData){
+            if($payment['referral_id'])
+            {
+                $payment['seller'] = $UserData->getNames($payment['referral_id']);
+            }
+            
+            $payment['last_payment_number'] = $this->getLastPaymentNumber([
+                'user_login_id' => $payment['user_login_id'],
+                'property_id' => $payment['property_id'],
+            ]);
+
+            return $payment;
+        }, $payments);
+    }
+
+    public function getLastPaymentNumber(array $data = null) {
+        return $this->connection()->field("
+            SELECT 
+                MAX({$this->tblName}.payment_number) 
+            FROM 
+                {$this->tblName} 
+            WHERE 
+                {$this->tblName}.user_login_id = '{$data['user_login_id']}' 
+            AND 
+                {$this->tblName}.property_id = '{$data['property_id']}'
+        ");
+    }
+
     public static function pull(array $data = null) {
         if(!$data)
         {
             return false;
         }
-
 
         $PullProperty = new self;
         $PullProperty->user_login_id = $data['user_login_id'];
