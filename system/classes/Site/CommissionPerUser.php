@@ -263,7 +263,7 @@ class CommissionPerUser extends Orm
 				WHERE 
 					{$this->tblName}.user_login_id = '{$user_login_id}'
 				AND
-					{$this->tblName}.status IN (" . self::PENDING_FOR_DISPERSION . "," . self::COMPLETED . ")
+					{$this->tblName}.status IN (" . self::PENDING_FOR_FILE . "," . self::COMPLETED . ")
 					{$filter}
 				";
 
