@@ -1553,6 +1553,27 @@ class UserLogin extends Orm {
     }
 
     $UserLogin->status = 0;
+
     return $UserLogin->save();
+  }
+
+  public function addFollowPage(string $code = null)
+  {
+    if(!$this->logged)
+    {
+      return false;
+    }
+    
+    $catalog_page_id = (new CatalogPage)->findField("code = ?",$code,"catalog_page_id");
+
+    if(!$catalog_page_id)
+    {
+      return false;
+    }
+
+    return FollowPage::add([
+      'user_login_id' => $this->company_id,
+      'catalog_page_id' => $catalog_page_id,
+    ]);
   }
 }

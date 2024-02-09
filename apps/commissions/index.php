@@ -8,6 +8,7 @@ if($UserLogin->logged === false) {
 	HCStudio\Util::redirectTo(TO_ROOT."/apps/login/");
 }
 
+$UserLogin->addFollowPage("commissions");
 $UserLogin->checkRedirection();
 
 $Layout = JFStudio\Layout::getInstance();

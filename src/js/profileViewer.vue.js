@@ -179,26 +179,6 @@ const ProfileViewer = {
                                 </div>
                             </div>
                             <div class="col-auto my-auto text-end">
-                                <div class="fs-5">
-                                    <span 
-                                        v-if="user.active"
-                                        class="badge badge-pill bg-success sans">
-                                        Activo 
-                                    </span>
-                                    <span v-else
-                                        class="badge badge-pill bg-secondary sans">
-                                        Usuario inactivo
-                                    </span>
-                                </div>
-
-                                <div v-if="account" class="mt-3">
-                                    <a class="btn btn-primary btn-sm px-3 me-2 mb-0 shadow-none" href="../../apps/bridge/sign">
-                                        Ver cuenta de bridge
-                                    </a>
-                                    <a class="btn btn-primary d-none btn-sm px-3 mb-0 shadow-none" href="../../apps/lpoa">
-                                        Generador de LPOA
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
