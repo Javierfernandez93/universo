@@ -1,3 +1,3 @@
 <div class="container-fluid py-4" id="app">
-    <addproperty-viewer></addproperty-viewer>
+    <addrealstate-viewer></addrealstate-viewer>
 </div>

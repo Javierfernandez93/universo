@@ -106,6 +106,9 @@ const AdminrealstateViewer = {
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
+                                <a href="../../apps/admin-realstate/add" class="btn btn-sm px-3 mb-0 shadow-none btn-success">Agregar desarrolladora</a>
+                            </div>
+                            <div class="col-12 col-xl-auto">
                                 <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
@@ -162,7 +165,7 @@ const AdminrealstateViewer = {
                                                 {{realState.title}} 
                                             </div>
                                         </td>
-                                        <td class="align-middle text-decoration-underline text-primary fw-bold text-capitalize text-center text-sm">
+                                        <td class="align-middle text-decoration-underline text-primary fw-bold text-center text-sm">
                                             {{realState.link}}
                                         </td>
                                         <td class="align-middle text-center text-sm">

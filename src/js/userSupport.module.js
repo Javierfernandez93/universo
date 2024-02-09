@@ -518,6 +518,9 @@ class UserSupport extends Http {
     uploadImageBanner(data, progress, callback) {
         return this.callFile('../../app/application/uploadImageBanner.php', data, callback, progress);
     }
+    uploadImageRealState(data, progress, callback) {
+        return this.callFile('../../app/application/uploadImageRealState.php', data, callback, progress);
+    }
     getCatalogCampaigns(data, callback) {
         return this.call('../../app/application/getCatalogCampaigns.php', data, callback);
     }
@@ -563,6 +566,9 @@ class UserSupport extends Http {
     getRealStates(data, callback) {
         return this.call('../../app/application/getRealStates.php', data, callback);
     }
+    getRealStateForEdit(data, callback) {
+        return this.call('../../app/application/getRealStateForEdit.php', data, callback);
+    }
     setRealStatStatus(data, callback) {
         return this.call('../../app/application/setRealStatStatus.php', data, callback);
     }
@@ -589,6 +595,9 @@ class UserSupport extends Http {
     }
     getCatalogRealState(data, callback) {
         return this.call('../../app/application/getCatalogRealState.php', data, callback);
+    }
+    saveRealState(data, callback) {
+        return this.call('../../app/application/saveRealState.php', data, callback);
     }
     /* comissions */
     getUsersCommissions(data, callback) {

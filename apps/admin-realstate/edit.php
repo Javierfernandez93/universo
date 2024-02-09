@@ -14,11 +14,11 @@ if($UserSupport->hasPermission('update_realstate') === false) {
 
 $Layout = JFStudio\Layout::getInstance();
 
-$route = JFStudio\Router::AdminPropertiesEdit;
+$route = JFStudio\Router::AdminRealStateEdit;
 $Layout->init(JFStudio\Router::getName($route),"edit","admin","",TO_ROOT."/");
 
 $Layout->setScriptPath(TO_ROOT . '/src/');
-$Layout->setScript(['editproperty.vue.js']);
+$Layout->setScript(['addrealstate.vue.js']);
 
 $Layout->setVar([
 	'route' => $route,

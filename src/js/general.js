@@ -1320,3 +1320,9 @@ const startListener = (elementId) => {
     $("main").css("margin-left", "0") // hide sidebar
   })
 }
+
+
+
+String.prototype.isValidLink = function() { 
+  return this.includes("http") || this.includes("https")
+}

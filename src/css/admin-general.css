@@ -45,3 +45,9 @@
     padding-left: 32px !important;
     color: white;
 }
+
+.image-500-x-500 {
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

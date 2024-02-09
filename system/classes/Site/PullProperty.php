@@ -70,7 +70,7 @@ class PullProperty extends Orm {
                 {$this->tblName}.status,
                 {$this->tblName}.property_id,
                 property.title,
-                real_state.title,
+                real_state.title as real_state,
                 user_data.names,
                 user_referral.referral_id
             FROM

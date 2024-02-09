@@ -239,8 +239,8 @@ class Router {
             self::AdminPayments => 'Pagos',
             self::InvalidPermission => 'InvalidPermission',
             self::AdminRealState => 'Desarrolladora',
-            self::AdminRealState => 'Desarrolladora',
-            self::AdminRealState => 'Desarrolladora',
+            self::AdminRealStateAdd => 'Añadir desarrolladora',
+            self::AdminRealStateEdit => 'Editar desarrolladora',
             default => 'Sin nombre'
         };
     }
