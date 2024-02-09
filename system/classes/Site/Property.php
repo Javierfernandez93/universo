@@ -26,15 +26,18 @@ class Property extends Orm {
         $properties = $this->connection()->rows("
             SELECT 
                 {$this->tblName}.*,
-                catalog_real_state.real_state
+                real_state.title as real_state
             FROM
                 {$this->tblName} 
             LEFT JOIN 
-                catalog_real_state 
+                real_state 
             ON 
-                catalog_real_state.catalog_real_state_id = {$this->tblName}.catalog_real_state_id
+                real_state.real_state_id = {$this->tblName}.real_state_id
             WHERE 
                 {$this->tblName}.status = '1'
+            ORDER BY 
+                {$this->tblName}.create_date 
+            DESC
         ");
 
         if(!$properties)

@@ -1,11 +1,11 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.4'
 
-const AdminpaymentsViewer = {
+const AdminrealstateViewer = {
     data() {
         return {
             UserSupport: new UserSupport,
-            payments: null,
-            paymentsAux: null,
+            realStates: null,
+            realStatesAux: null,
             query: null,
             columns: { // 0 DESC , 1 ASC 
                 company_id: {
@@ -43,7 +43,7 @@ const AdminpaymentsViewer = {
     },
     methods: {
         sortData(column) {
-            this.payments.sort((a, b) => {
+            this.realStates.sort((a, b) => {
                 const _a = column.desc ? a : b
                 const _b = column.desc ? b : a
 
@@ -57,25 +57,25 @@ const AdminpaymentsViewer = {
             column.desc = !column.desc
         },
         filterData() {
-            this.payments = this.paymentsAux
-            this.payments = this.payments.filter((payment) => {
+            this.realStates = this.realStatesAux
+            this.realStates = this.realStates.filter((payment) => {
                 return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
             })
         },
-        viewPayments(property_id) {
-            window.location.href = `../../apps/admin-payments/view.php?pid=${property_id}`
+        viewrealStates(property_id) {
+            window.location.href = `../../apps/admin-realStates/view.php?pid=${property_id}`
         },
-        getPaymentsProperties() {
-            this.UserSupport.getPaymentsProperties({}, (response) => {
+        getRealStates() {
+            this.UserSupport.getRealStates({}, (response) => {
                 if (response.s == 1) {
-                    this.paymentsAux = response.payments
-                    this.payments = this.paymentsAux
+                    this.realStatesAux = response.realStates
+                    this.realStates = this.realStatesAux
                 }
             })
         },
     },
     mounted() {
-        this.getPaymentsProperties()
+        this.getRealStates()
     },
     template: `
         <div class="row">
@@ -84,9 +84,9 @@ const AdminpaymentsViewer = {
                     <div class="card-header ">
                         <div class="row justify-content-center align-items-center">
                             <div class="col-12 col-xl">
-                                <span v-if="payments" class="badge text-secondary p-0">Total {{payments.length}}</span>
+                                <span v-if="realStates" class="badge text-secondary p-0">Total {{realStates.length}}</span>
                                 <div class="h5">
-                                    Pagos
+                                    Desarrolladoras
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
@@ -95,9 +95,9 @@ const AdminpaymentsViewer = {
                         </div>
 
 
-                        <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{payments.length}} resultados)</div>
+                        <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{realStates.length}} resultados)</div>
                     </div>
-                    <div v-if="payments" class="card-body px-0 pt-0 pb-2">
+                    <div v-if="realStates" class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -160,7 +160,7 @@ const AdminpaymentsViewer = {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="payment in payments">
+                                    <tr v-for="payment in realStates">
                                         <td class="align-middle text-capitalize text-center text-sm">
                                             {{payment.names}} 
                                         </td>
@@ -184,7 +184,7 @@ const AdminpaymentsViewer = {
                                                 </button>
                                                 <ul class="dropdown-menu shadow">
                                                     <li>
-                                                        <button class="dropdown-item" @click="viewPayments(payment.property_id)">Ver pagos</button>
+                                                        <button class="dropdown-item" @click="viewrealStates(payment.property_id)">Ver pagos</button>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -200,4 +200,4 @@ const AdminpaymentsViewer = {
     `
 }
 
-export { AdminpaymentsViewer }
+export { AdminrealstateViewer }

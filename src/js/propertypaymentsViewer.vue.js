@@ -59,7 +59,9 @@ const PropertypaymentsViewer = {
         filterData() {
             this.payments = this.paymentsAux
             this.payments = this.payments.filter((payment) => {
-                return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
+                return payment.image.toLowerCase().includes(this.query.toLowerCase()) 
+                || payment.create_date.toLowerCase().includes(this.query.toLowerCase()) 
+                || payment.payment_number.toString().includes(this.query.toLowerCase())
             })
         },
         viewPayments(property_id) {
@@ -68,7 +70,10 @@ const PropertypaymentsViewer = {
         getPropertyPayments(property_id) {
             this.UserSupport.getPropertyPayments({property_id:property_id}, (response) => {
                 if (response.s == 1) {
-                    this.paymentsAux = response.payments
+                    this.paymentsAux = response.payments.map((payment) => {
+                        payment.create_date = payment.create_date.formatFullDate()
+                        return payment
+                    })
                     this.payments = this.paymentsAux
                 }
             })
@@ -113,7 +118,7 @@ const PropertypaymentsViewer = {
                             <div class="col-12 col-xl">
                                 <span v-if="payments" class="badge text-secondary p-0">Total {{payments.length}}</span>
                                 <div class="h5">
-                                    Pagos de propiedades
+                                    Todos los pagos
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
@@ -182,7 +187,7 @@ const PropertypaymentsViewer = {
                                             <a :href="payment.image" download class="btn px-3 mb-0 shadow-none btn-sm ms-2 btn-success">Descargar</a>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            {{payment.create_date.formatFullDate()}}
+                                            {{payment.create_date}}
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span v-if="payment.status == '1'" class="badge bg-secondary">

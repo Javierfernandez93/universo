@@ -563,6 +563,9 @@ class UserSupport extends Http {
     setPaymentStatusAs(data, callback) {
         return this.call('../../app/application/setPaymentStatusAs.php', data, callback);
     }
+    getPropertyUserInfo(data, callback) {
+        return this.call('../../app/application/getPropertyUserInfo.php', data, callback);
+    }
     getPaymentsProperties(data, callback) {
         return this.call('../../app/application/getPaymentsProperties.php', data, callback);
     }

@@ -108,8 +108,8 @@ const HomeViewer = {
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
-                                            <div class="text-white">Telchac Pueblo, yucatán.</div>
-                                            <div class="text-white h2">Otoch</div>
+                                            <div class="text-white">Tixkokob, Yucatán.</div>
+                                            <div class="text-white h2">Nayal: Visión entre sueños</div>
                                         </div>
                                     </div>  
                                 </div>
@@ -119,8 +119,8 @@ const HomeViewer = {
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
-                                            <div class="text-white">Telchac Pueblo, yucatán.</div>
-                                            <div class="text-white h2">Otoch</div>
+                                            <div class="text-white">Santa Clara, Yucatán.</div>
+                                            <div class="text-white h2">Playa Clara</div>
                                         </div>
                                     </div>  
                                 </div>
@@ -132,7 +132,7 @@ const HomeViewer = {
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
-                                            <div class="text-white">Telchac Pueblo, yucatán.</div>
+                                            <div class="text-white">Telchac Pueblo, Yucatán.</div>
                                             <div class="text-white h2">Otoch</div>
                                         </div>
                                     </div>
@@ -143,8 +143,8 @@ const HomeViewer = {
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
-                                            <div class="text-white">Telchac Pueblo, yucatán.</div>
-                                            <div class="text-white h2">Otoch</div>
+                                            <div class="text-white">Chicxulub, Yucatán.</div>
+                                            <div class="text-white h2">Pandorah</div>
                                         </div>
                                     </div>
                                 </div>
@@ -154,8 +154,8 @@ const HomeViewer = {
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
-                                            <div class="text-white">Telchac Pueblo, yucatán.</div>
-                                            <div class="text-white h2">Otoch</div>
+                                            <div class="text-white">Chicxulub, Yucatán.</div>
+                                            <div class="text-white h2">Kelaya</div>
                                         </div>
                                     </div>
                                 </div>
@@ -265,11 +265,11 @@ const HomeViewer = {
                                     <div class="col-10 col-md-6">   
                                         <div class="d-flex justify-content-center mb-5">
                                             <div class="avatar avatar-xl">
-                                                <img src="https://mx.web.img2.acsta.net/pictures/17/02/08/16/50/452749.jpg" class="avatar border-3 border border-white avatar-xl rounded-circle"/>
+                                                <img src="../../src/img/testimonial-1.png" class="avatar border-3 border border-white avatar-xl rounded-circle"/>
                                             </div>
                                         </div>
-                                        <div class="lead text-white lead-xl text-center">“Mi vida dio un giro positivo. La calidad y eficacia superaron mis expectativas, ¡recomiendo totalmente esta increíble 
-                                        encia”</div>
+                                        <div class="lead text-white lead-xl text-center">“Gene y yo de Reno NV queremos agradecer a Bridge Makers por mostrarnos nuestras propiedades y explicarnos también sobre las comunidades circundantes. Tuvimos un día muy agradable y apreciamos su profesionalismo su y disposición genuina.
+                                        PD.Gracias”</div>
                                     </div>
                                 </div>
                             </div>

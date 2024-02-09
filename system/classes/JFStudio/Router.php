@@ -118,6 +118,9 @@ class Router {
     const AdminLoggs = 158;
     const AdminPayments = 159;
     const InvalidPermission = 160;
+    const AdminRealState = 161;
+    const AdminRealStateAdd = 162;
+    const AdminRealStateEdit = 163;
 
     static function getName(int $route = null)
     {
@@ -143,7 +146,7 @@ class Router {
             self::AdminAdministratorsEdit => 'Editar administrador',
             self::AdminLogin => 'Iniciar sesión admin',
             self::AdmiActivation => 'Activar en plan',
-            self::AdminTransactions => 'Transacciones',
+            self::AdminTransactions => 'Comisiones',
             self::AdminAddOldComissions => 'Añadir comisiones atrasadas',
             self::AdminTransactionsList => 'Lista de fondeos',
             self::AdminNotices => 'Listar noticias',
@@ -235,6 +238,9 @@ class Router {
             self::AdminLoggs => 'Logs',
             self::AdminPayments => 'Pagos',
             self::InvalidPermission => 'InvalidPermission',
+            self::AdminRealState => 'Desarrolladora',
+            self::AdminRealState => 'Desarrolladora',
+            self::AdminRealState => 'Desarrolladora',
             default => 'Sin nombre'
         };
     }

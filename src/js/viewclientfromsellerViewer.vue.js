@@ -9,7 +9,7 @@ const ViewclientfromsellerViewer = {
             real_state: null,
             query: null,
             user: null,
-            catalog_real_states: null,
+            real_states: null,
             properties: null,
             propertiesAux: null,
         }
@@ -76,7 +76,7 @@ const ViewclientfromsellerViewer = {
             this.User.getCatalogRealState({},(response)=>{
                 if(response.s == 1)
                 {
-                    this.catalog_real_states = response.catalog_real_states
+                    this.real_states = response.real_states
                 }
             })
         },
@@ -158,11 +158,11 @@ const ViewclientfromsellerViewer = {
                                 <div class="col-12 col-xl-auto">
                                     <div class="form-floating">
                                         <select class="form-select" v-model="real_state" id="real_state" aria-label="Gestor">
-                                            <option v-for="catalog_real_state in catalog_real_states" v-bind:value="catalog_real_state.real_state">
-                                                {{ catalog_real_state.real_state }}
+                                            <option v-for="real_state in real_states" v-bind:value="real_state.title">
+                                                {{ real_state.title }}
                                             </option>
                                         </select>
-                                        <label for="catalog_real_state_id">Gestor</label>
+                                        <label for="real_state_id">Gestor</label>
                                     </div>
                                 </div>
                             </div>

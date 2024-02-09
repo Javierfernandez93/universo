@@ -11,14 +11,19 @@ class PullProperty extends Orm {
         parent::__construct();
     }
    
-    public function getPayments() {
+    public function findPropertyUserInfo(int $property_id = null) {
+        if(!$property_id) {
+            return false;
+        }
 
-        $payments = $this->connection()->rows("
+        $property = $this->connection()->row("
             SELECT 
+                {$this->tblName}.{$this->tblName}_id,
                 {$this->tblName}.user_login_id,
+                {$this->tblName}.status,
                 {$this->tblName}.property_id,
                 property.title,
-                catalog_real_state.real_state,
+                real_state.title,
                 user_data.names,
                 user_referral.referral_id
             FROM
@@ -28,9 +33,56 @@ class PullProperty extends Orm {
             ON 
                 {$this->tblName}.property_id = property.property_id
             LEFT JOIN 
-                catalog_real_state 
+                real_state 
             ON 
-                catalog_real_state.catalog_real_state_id = property.catalog_real_state_id
+                real_state.real_state_id = property.real_state_id
+            LEFT JOIN 
+                user_data 
+            ON 
+                user_data.user_login_id = {$this->tblName}.user_login_id
+            LEFT JOIN 
+                user_referral 
+            ON 
+                user_referral.user_login_id = {$this->tblName}.user_login_id
+            WHERE 
+                {$this->tblName}.property_id = '{$property_id}'
+        ");
+
+        if(!$property) {
+            return false;
+        }
+
+
+        $property['last_payment_number'] = $this->getLastPaymentNumber([
+            'user_login_id' => $property['user_login_id'],
+            'property_id' => $property['property_id'],
+        ]);
+
+        return $property;
+    }
+
+    public function getPayments() {
+
+        $payments = $this->connection()->rows("
+            SELECT 
+                {$this->tblName}.{$this->tblName}_id,
+                {$this->tblName}.user_login_id,
+                {$this->tblName}.status,
+                {$this->tblName}.property_id,
+                property.title,
+                real_state.title,
+                user_data.names,
+                user_referral.referral_id
+            FROM
+                {$this->tblName} 
+            LEFT JOIN 
+                property 
+            ON 
+                {$this->tblName}.property_id = property.property_id
+            LEFT JOIN 
+                real_state 
+            ON 
+                real_state.real_state_id = property.real_state_id
             LEFT JOIN 
                 user_data 
             ON 

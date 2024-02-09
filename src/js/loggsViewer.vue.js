@@ -17,6 +17,14 @@ const LoggsViewer = {
         },
     },
     methods: {
+        viewLogData(logg) 
+        {
+            alertAdvise({
+                html: `<div class="lead">json data</div>
+                <div class="text-break">${logg.data.value}</div>`,
+                size: 'modal-fullscreen',
+            })
+        },
         setLoggerStatus(logger,status) 
         { 
             this.loggs = null
@@ -60,14 +68,14 @@ const LoggsViewer = {
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-                <div v-if="loggs" class="table-responsive-sm p-0 overflow-y-scroll h-100">
+                <div v-if="loggs" class="table-responsive-sm p-0">
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr class="align-items-center">
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Usuario
                                 </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Tabla
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -86,7 +94,7 @@ const LoggsViewer = {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="logg in loggs">
+                            <tr v-for="logg in loggs" class="text-center">
                                 <td>
                                     {{logg.names}}
                                 </td>
@@ -100,17 +108,18 @@ const LoggsViewer = {
                                     {{logg.data.action}}
                                 </td>
                                 <td>
-                                    {{logg.data.value}}
+                                    {{logg.data.value.length}} / size
                                 </td>
                                 <td>
                                     {{logg.create_date.formatFullDate()}}
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <div class="dropdown">
-                                        <button type="button" class="btn btn-outline-dark mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button type="button" class="btn btn-dark shadow-none mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
                                         </button>
                                         <ul class="dropdown-menu shadow">
+                                            <li><button class="dropdown-item" @click="viewLogData(logg)">Ver información</button></li>
                                             <li><button class="dropdown-item" @click="setLoggerStatus(logg,-1)">Eliminar</button></li>
                                         </ul>
                                     </div>

@@ -8,19 +8,30 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
-    if($data['property_id'])
+    if($UserSupport->hasPermission("update_property"))
     {
-        if((new Site\Property)->find($data['property_id'])->updateStatus($data['status']))
+        if($data['property_id'])
         {
-            $data["s"] = 1;
-            $data["r"] = "DATA_OK";
+            if((new Site\Property)->find($data['property_id'])->updateStatus($data['status']))
+            {
+                $data["s"] = 1;
+                $data["r"] = "DATA_OK";
+            } else {
+                $data["s"] = 0;
+                $data["r"] = "NOT_UPDATED";
+            }
         } else {
             $data["s"] = 0;
-            $data["r"] = "NOT_UPDATED";
+            $data["r"] = "NOT_PROPERTY_ID";
         }
     } else {
+        $UserSupport->addLog([
+            'data' => $data,
+            'unix_date' => time(),
+        ],Site\LogType::INVALID_TRANSACTION_PERMISSION);
+
         $data["s"] = 0;
-        $data["r"] = "NOT_PROPERTY_ID";
+        $data["r"] = "INVALID_PERMISSION";
     }
 } else {
 	$data["s"] = 0;

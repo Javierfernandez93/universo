@@ -1,7 +1,5 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=2.3.7'
 
-/* vue */
-
 Vue.createApp({
     data() {
         return {

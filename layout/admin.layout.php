@@ -41,9 +41,9 @@
         <div class="collapse navbar-collapse w-auto h-100" id="sidenav-collapse-main">
             <ul class="navbar-nav nav-admin">
                 <li class="nav-item">
-                    <a class="nav-link" href="../../apps/backoffice">
+                    <a class="nav-link" href="../../apps/home">
                         <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-window"></i></span>
-                        <span class="nav-link-text text-dark ms-1">Mi sitio</span>
+                        <span class="nav-link-text text-dark ms-1">Sitio <?php echo Site\SystemVar::_getValue("company_name");?></span>
                     </a>
                 </li>
 
@@ -128,30 +128,7 @@
                         </ul>
                     </ul>
                 <?php } ?>
-                <?php if ($UserSupport->hasPermission('list_tools')) { ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#tools" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTools, JFStudio\Router::AdminToolsAdd, JFStudio\Router::AdminToolsEdit])) { ?>active<?php } ?>" aria-controls="tools" role="button" aria-expanded="false">
-                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-tools"></i></span>
-                            <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminTools); ?></span>
-                        </a>
-                        <div class="collapse" id="tools">
-                        <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
-                                <a class="nav-link active" href="../../apps/admin-tools">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Listar </span>
-                                </a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link active" href="../../apps/admin-tools/add">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Añadir </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </ul>
-                <?php } ?>
+
                 <?php if ($UserSupport->hasPermission('list_administrators')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -176,7 +153,8 @@
                         </ul>
                     </ul>
                 <?php } ?>
-                <?php if ($UserSupport->hasPermission('list_administrators')) { ?>
+
+                <?php if ($UserSupport->hasPermission('list_properties')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#properties" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminProperties, JFStudio\Router::AdminPropertiesAdd, JFStudio\Router::AdminPropertiesEdit])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
@@ -201,7 +179,6 @@
                     </ul>
                 <?php } ?>
 
-                
                 <?php if ($UserSupport->hasPermission('list_payments')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -226,6 +203,55 @@
                         </ul>
                     </ul>
                 <?php } ?>
+                <?php if ($UserSupport->hasPermission('list_tools')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#tools" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTools, JFStudio\Router::AdminToolsAdd, JFStudio\Router::AdminToolsEdit])) { ?>active<?php } ?>" aria-controls="tools" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-tools"></i></span>
+                            <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminTools); ?></span>
+                        </a>
+                        <div class="collapse" id="tools">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-tools">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-tools/add">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Añadir </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
+                <?php if ($UserSupport->hasPermission('list_real_state')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#realstate" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminRealState, JFStudio\Router::AdminRealStateAdd, JFStudio\Router::AdminRealStateEdit])) { ?>active<?php } ?>" aria-controls="realstate" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-tools"></i></span>
+                            <span class="nav-link-text ms-1">Desarrolladoras</span>
+                        </a>
+                        <div class="collapse" id="realstate">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-realstate">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-realstate/add">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Añadir </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
+
 
                 <?php if ($UserSupport->hasPermission('list_commissions')) { ?>
                     <li class="nav-item">
@@ -244,6 +270,7 @@
                         </a>
                     </li>
                 <?php } ?>
+
 
                 <?php if ($UserSupport->hasPermission('list_logger')) { ?>
                     <li class="nav-item">

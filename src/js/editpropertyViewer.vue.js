@@ -4,11 +4,11 @@ const EditpropertyViewer = {
     data() {
         return {
             UserSupport : new UserSupport,
-            catalog_real_states: null,
+            real_states: null,
             filled: false,
             property: {
                 property_id: null,
-                catalog_real_state_id: null,
+                real_state_id: null,
                 down_payment_price: null,
                 title: null,
                 price: null,
@@ -20,7 +20,7 @@ const EditpropertyViewer = {
     watch : {
         property : {
             handler() {
-              this.filled = this.property.catalog_real_state_id && this.property.down_payment_price && this.property.title && this.property.price && this.property.size && this.property.single_price 
+              this.filled = this.property.real_state_id && this.property.down_payment_price && this.property.title && this.property.price && this.property.size && this.property.single_price 
             },
             deep: true
         },
@@ -46,7 +46,7 @@ const EditpropertyViewer = {
             this.UserSupport.getCatalogRealState({},(response)=>{
                 if(response.s == 1)
                 {
-                    this.catalog_real_states = response.catalog_real_states
+                    this.real_states = response.real_states
                 }
             })
         },
@@ -102,12 +102,12 @@ const EditpropertyViewer = {
 
                     <div class="col-12 col-xl-6 mb-3">
                         <div class="form-floating">
-                            <select class="form-select" v-model="property.catalog_real_state_id" id="catalog_real_state_id" aria-label="Gestor">
-                                <option v-for="catalog_real_state in catalog_real_states" v-bind:value="catalog_real_state.catalog_real_state_id">
-                                    {{ catalog_real_state.real_state }}
+                            <select class="form-select" v-model="property.real_state_id" id="real_state_id" aria-label="Gestor">
+                                <option v-for="real_state in real_states" v-bind:value="real_state.real_state_id">
+                                    {{ real_state.title }}
                                 </option>
                             </select>
-                            <label for="catalog_real_state_id">Gestor</label>
+                            <label for="real_state_id">Gestor</label>
                         </div>
                     </div>
                     <div class="col-12 col-xl-6 mb-3">

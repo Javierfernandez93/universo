@@ -204,14 +204,14 @@ const AdministratorsViewer = {
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0">Vendedor</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{administrator.create_date.formatFullDate()}}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0">Vendedor</p>
+                                            <p class="text-xs font-weight-bold mb-0">Activo</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-outline-dark mb-0 px-3 shadow-none btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <button type="button" class="btn btn-dark mb-0 px-3 shadow-none btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                     
                                                 </button>
                                                 <ul class="dropdown-menu shadow">

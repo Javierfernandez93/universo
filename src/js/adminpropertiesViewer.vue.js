@@ -62,6 +62,10 @@ const AdminpropertiesViewer = {
                     }
 
                     property.status = status
+                } else if(response.r == 'INVALID_PERMISSION') {
+                    toastInfo({
+                        message: 'No tienes permisos para realizar esta acción',
+                    })
                 }
             })
         },
@@ -75,7 +79,7 @@ const AdminpropertiesViewer = {
             <div class="card-header pb-0">
                 <div class="row align-items-center">
                     <div class="col fs-4 fw-sembold text-primary">
-                        <div v-if="users" class="mb-n2"><span class="badge p-0 text-secondary text-xxs">Total {{users.length}}</span></div>
+                        <div v-if="properties" class="mb-n2"><span class="badge p-0 text-secondary text-xxs">Total {{properties.length}}</span></div>
                         <h6>Propiedades</h6>
                     </div>
                     <div class="col-auto text-end">
@@ -138,7 +142,7 @@ const AdminpropertiesViewer = {
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <div class="dropdown">
-                                        <button type="button" class="btn btn-outline-dark mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button type="button" class="btn btn-dark mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
                                         </button>
                                         <ul class="dropdown-menu shadow">

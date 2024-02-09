@@ -8,17 +8,17 @@ if($UserSupport->_loaded === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-if($UserSupport->hasPermission('add_property') === false) {
+if($UserSupport->hasPermission('list_cron') === false) {
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }
 
 $Layout = JFStudio\Layout::getInstance();
 
-$route = JFStudio\Router::AdminPropertiesAdd;
-$Layout->init(JFStudio\Router::getName($route),"add","admin","",TO_ROOT."/");
+$route = JFStudio\Router::AdminPropertiesEdit;
+$Layout->init(JFStudio\Router::getName($route),"edit","admin","",TO_ROOT."/");
 
 $Layout->setScriptPath(TO_ROOT . '/src/');
-$Layout->setScript(['addproperty.vue.js']);
+$Layout->setScript(['editproperty.vue.js']);
 
 $Layout->setVar([
 	'route' => $route,

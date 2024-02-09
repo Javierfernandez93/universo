@@ -8,7 +8,7 @@ if($UserSupport->logged === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-if($UserSupport->hasPermission('list_leads') === false) {
+if($UserSupport->hasPermission('list_logger') === false) {
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }
 
