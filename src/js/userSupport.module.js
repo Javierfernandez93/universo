@@ -560,6 +560,12 @@ class UserSupport extends Http {
     getPropertiesByAdmin(data, callback) {
         return this.call('../../app/application/getPropertiesByAdmin.php', data, callback);
     }
+    getRealStates(data, callback) {
+        return this.call('../../app/application/getRealStates.php', data, callback);
+    }
+    setRealStatStatus(data, callback) {
+        return this.call('../../app/application/setRealStatStatus.php', data, callback);
+    }
     setPaymentStatusAs(data, callback) {
         return this.call('../../app/application/setPaymentStatusAs.php', data, callback);
     }

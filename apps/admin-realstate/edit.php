@@ -8,7 +8,7 @@ if($UserSupport->_loaded === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-if($UserSupport->hasPermission('list_cron') === false) {
+if($UserSupport->hasPermission('update_realstate') === false) {
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }
 

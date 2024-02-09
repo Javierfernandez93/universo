@@ -8,26 +8,17 @@ const AdminrealstateViewer = {
             realStatesAux: null,
             query: null,
             columns: { // 0 DESC , 1 ASC 
-                company_id: {
-                    name: 'company_id',
+                title: {
+                    name: 'title',
                     desc: false,
                 },
                 create_date: {
                     name: 'create_date',
                     desc: false,
                 },
-                names: {
-                    name: 'names',
+                link: {
+                    name: 'link',
                     desc: false,
-                },
-                title: {
-                    name: 'title',
-                    desc: false,
-                },
-                real_state: {
-                    name: 'real_state',
-                    desc: false,
-                    alphabetically: true,
                 },
             }
         }
@@ -66,10 +57,35 @@ const AdminrealstateViewer = {
             window.location.href = `../../apps/admin-realStates/view.php?pid=${property_id}`
         },
         getRealStates() {
+            this.realStatesAux = null
+            this.realStates = null
+
             this.UserSupport.getRealStates({}, (response) => {
                 if (response.s == 1) {
                     this.realStatesAux = response.realStates
                     this.realStates = this.realStatesAux
+                }
+            })
+        },
+        editRealState(realState) {
+            window.location.href = `../../apps/admin-realstate/edit.php?rsid=${realState.real_state_id}`
+        },
+        setRealStatStatus(realState,status) {
+            this.UserSupport.setRealStatStatus({real_state_id:realState.real_state_id,status:status}, (response) => {
+                if (response.s == 1) {
+                    realState.status = status
+
+                    if (status == 1) {
+                        toastInfo({
+                            message: 'Desarrolladora habilitada',
+                        })
+                    } else if (status == 0) {
+                        toastInfo({
+                            message: 'Desarrolladora deshabilitada',
+                        })
+                    } else if (status == -1) {
+                        this.getRealStates()
+                    }
                 }
             })
         },
@@ -102,89 +118,73 @@ const AdminrealstateViewer = {
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center">
-                                        <th @click="sortData(columns.company_id)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
+                                        <th @click="sortData(columns.title)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
+                                            <span v-if="columns.title.desc">
                                                 <i class="bi text-primary bi-arrow-up-square-fill"></i>
                                             </span>    
                                             <span v-else>    
                                                 <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                             </span>    
-                                            <u class="text-sm ms-2">Cliente</u>
+                                            <u class="text-sm ms-2">Desarrolladora</u>
                                         </th>
                                         <th 
-                                            @click="sortData(columns.company_id)"
+                                            @click="sortData(columns.link)"
                                             class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
+                                            <span v-if="columns.link.desc">
                                                 <i class="bi text-primary bi-arrow-up-square-fill"></i>
                                             </span>    
                                             <span v-else>    
                                                 <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                             </span>    
-                                            <u class="text-sm ms-2">Vendedor</u>
+                                            <u class="text-sm ms-2">Link</u>
                                         </th>
                                         <th 
-                                            @click="sortData(columns.company_id)"
+                                            @click="sortData(columns.create_date)"
                                             class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
+                                            <span v-if="columns.create_date.desc">
                                                 <i class="bi text-primary bi-arrow-up-square-fill"></i>
                                             </span>    
                                             <span v-else>    
                                                 <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                             </span>    
-                                            <u class="text-sm ms-2">Propiedad</u>
-                                        </th>
-                                        <th 
-                                            @click="sortData(columns.company_id)"
-                                            class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">Número de pago</u>
-                                        </th>
-                                        <th 
-                                            @click="sortData(columns.company_id)"
-                                            class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">Estatus</u>
-                                            <div class="text-xs">(último pago)</div>
+                                            <u class="text-sm ms-2">Ingreso</u>
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="payment in realStates">
+                                    <tr v-for="realState in realStates">
                                         <td class="align-middle text-capitalize text-center text-sm">
-                                            {{payment.names}} 
+                                            <span v-if="realState.status == '1'" class="badge bg-success">Activo</span>
+                                            <span v-if="realState.status == '0'" class="badge bg-secondary">Inactivo</span>
+                                            
+                                            <div>
+                                                {{realState.title}} 
+                                            </div>
                                         </td>
-                                        <td @click="query = payment.seller" class="align-middle text-decoration-underline text-primary fw-bold text-capitalize text-center text-sm">
-                                            {{payment.seller}}
+                                        <td class="align-middle text-decoration-underline text-primary fw-bold text-capitalize text-center text-sm">
+                                            {{realState.link}}
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            {{payment.title}}
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            {{payment.last_payment_number}}
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span v-if="payment.status == 1" class="badge bg-secondary">Pendiente revisión</span>
-                                            <span v-if="payment.status == 2" class="badge bg-success">Aprobado</span>
+                                            {{realState.create_date.formatFullDate()}}
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="btn-group">
-                                                <button type="button" class="btn px-3 btn-dark shadow-none px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <button type="button" class="btn px-3 mb-0 btn-dark shadow-none px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
                                                 </button>
                                                 <ul class="dropdown-menu shadow">
                                                     <li>
-                                                        <button class="dropdown-item" @click="viewrealStates(payment.property_id)">Ver pagos</button>
+                                                        <button class="dropdown-item" @click="editRealState(realState)">Editar</button>
+                                                    </li>
+                                                    <li v-if="realState.status == '1'">
+                                                        <button class="dropdown-item" @click="setRealStatStatus(realState,0)">Inhabilitar</button>
+                                                    </li>
+                                                    <li v-if="realState.status == '0'">
+                                                        <button class="dropdown-item" @click="setRealStatStatus(realState,1)">Habilitar</button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="dropdown-item" @click="setRealStatStatus(realState,-1)">Eliminar</button>
                                                     </li>
                                                 </ul>
                                             </div>

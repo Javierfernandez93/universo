@@ -231,7 +231,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#realstate" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminRealState, JFStudio\Router::AdminRealStateAdd, JFStudio\Router::AdminRealStateEdit])) { ?>active<?php } ?>" aria-controls="realstate" role="button" aria-expanded="false">
-                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-tools"></i></span>
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-building-check"></i></span>
                             <span class="nav-link-text ms-1">Desarrolladoras</span>
                         </a>
                         <div class="collapse" id="realstate">
