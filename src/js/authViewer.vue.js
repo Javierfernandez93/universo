@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=2.3.7'   
-import { Cookie } from '../../src/js/cookie.module.js?v=2.3.7'
+import { User } from '../../src/js/user.module.js?v=2.3.8'   
+import { Cookie } from '../../src/js/cookie.module.js?v=2.3.8'
 
 const AuthViewer = {
     name : 'auth-viewer',

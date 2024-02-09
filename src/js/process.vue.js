@@ -1,4 +1,4 @@
-import { ProcessViewer } from './processViewer.vue.js?v=2.3.7'
+import { ProcessViewer } from './processViewer.vue.js?v=2.3.8'
 
 Vue.createApp({
     components : { 

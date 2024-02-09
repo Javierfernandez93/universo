@@ -1,4 +1,4 @@
-import { UserSupport } from './userSupport.module.js?v=2.3.7'   
+import { UserSupport } from './userSupport.module.js?v=2.3.8'   
 
 const LoggsViewer = {
     data() {

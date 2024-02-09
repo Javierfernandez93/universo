@@ -1,4 +1,4 @@
-import { ApistatsViewer } from './apistatsViewer.vue.js?v=2.3.7'
+import { ApistatsViewer } from './apistatsViewer.vue.js?v=2.3.8'
 
 Vue.createApp({
     components : { 
