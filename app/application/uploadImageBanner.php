@@ -15,7 +15,7 @@ if($UserSupport->logged === true)
             $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
             
 			$source_path = $_FILES['file']['tmp_name'];
-			$target_path = TO_ROOT.'src/files/img/banners/' .time().'.'.$ext;
+			$target_path = TO_ROOT.'src/img/banner/' .time().'.'.$ext;
             
 			if(move_uploaded_file($source_path, $target_path))
 			{

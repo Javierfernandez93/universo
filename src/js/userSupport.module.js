@@ -559,6 +559,13 @@ class UserSupport extends Http {
     setFeedbackAs(data, callback) {
         return this.call('../../app/application/setFeedbackAs.php', data, callback);
     }
+    /* banners */
+    setBannerStatus(data, callback) {
+        return this.call('../../app/application/setBannerStatus.php', data, callback);
+    }
+    getBannerForEdit(data, callback) {
+        return this.call('../../app/application/getBannerForEdit.php', data, callback);
+    }
     /* properties */
     getPropertiesByAdmin(data, callback) {
         return this.call('../../app/application/getPropertiesByAdmin.php', data, callback);

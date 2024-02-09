@@ -109,7 +109,6 @@ class Router {
     const AdminIntent = 128;
     const AdminAcademy = 142;
     const AdminConfig = 143;
-    const AdminBanner = 144;
     const AdminLeadAdd = 150;
     const AdminClientAdd = 151;
     const AdminProperties = 155;
@@ -121,6 +120,9 @@ class Router {
     const AdminRealState = 161;
     const AdminRealStateAdd = 162;
     const AdminRealStateEdit = 163;
+    const AdminBanner = 144;
+    const AdminBannerAdd = 164;
+    const AdminBannerEdit = 165;
 
     static function getName(int $route = null)
     {
@@ -221,7 +223,7 @@ class Router {
             self::PammyTrading => 'PammyTrading',
             self::AdminAcademy => 'Academia',
             self::AdminConfig => 'Configuración',
-            self::AdminBanner => 'Eventos',
+            self::AdminBanner => 'Banners',
             self::Team => 'Team',
             self::RealState => 'Desarrollos',
             self::BLOG => 'Blog',
@@ -241,6 +243,9 @@ class Router {
             self::AdminRealState => 'Desarrolladora',
             self::AdminRealStateAdd => 'Añadir desarrolladora',
             self::AdminRealStateEdit => 'Editar desarrolladora',
+            self::AdminBanner => 'Banner',
+            self::AdminBannerAdd => 'Añadir banner',
+            self::AdminBannerEdit => 'Editar banner',
             default => 'Sin nombre'
         };
     }

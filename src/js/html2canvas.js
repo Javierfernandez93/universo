@@ -3776,7 +3776,7 @@
                     case 'line-through':
                         return 3 /* LINE_THROUGH */;
                     case 'none':
-                        return 4 /* BLINK */;
+                        return 4 /* BLink completo (incluye http/https) */;
                 }
                 return 0 /* NONE */;
             })

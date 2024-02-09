@@ -8,9 +8,9 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
-    if($data['banner'])
+    if($data['banner_id'])
     {
-        if(Site\Banner::add($data['banner']))
+        if((new Site\Banner)->find($data['banner_id'])->updateStatus($data['status']))
         {
             $data["s"] = 1;
             $data["r"] = "DATA_OK";
@@ -20,7 +20,7 @@ if($UserSupport->logged === true)
         }
     } else {
         $data["s"] = 0;
-        $data["r"] = "NOT_BANNER";
+        $data["r"] = "NOT_REAL_STATE_ID";
     }
 } else {
 	$data["s"] = 0;

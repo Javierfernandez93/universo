@@ -116,7 +116,7 @@ const AddrealstateViewer = {
                             type="text" class="form-control" placeholder="Nombre(s)">
                     </div>
                     <div class="col-12 col-xl-6 mb-3">
-                        <label>Link *</label>
+                        <label>Link completo (incluye http/https) *</label>
                         <input 
                             v-model="realState.link"
                             :class="realState.link.isValidLink() > 0 ? 'is-valid' : 'is-invalid'"

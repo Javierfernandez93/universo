@@ -4,7 +4,7 @@ const AdvicewidgetViewer = {
     data() {
         return {
             User: new User,
-            banner: null
+            banners: null
         }
     },
     methods : {
@@ -13,9 +13,7 @@ const AdvicewidgetViewer = {
             this.User.getBanners({blog_id:blog_id},(response)=>{
                 if(response.s == 1)
                 {
-                    const random = Math.floor(Math.random() * response.banners.length);
-
-                    this.banner = response.banners[random]
+                    this.banners = response.banners
                 }
             })
         }
@@ -25,10 +23,20 @@ const AdvicewidgetViewer = {
         this.getBanners()
     },
     template : `
-        <div class="card card-body shadow-none p-0 overflow-hidden">   
-            <a :href="banner.link" target="_blank">   
-                <img :src="banner.image" class="w-100"/>
-            </a>
+        <div v-if="banners" id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div v-for="(banner,index) in banners" :class="index == 0 ? 'active':''" class="carousel-item">
+                    <img :src="banner.image" class="d-block w-100" alt="..." class="item-fixed">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     `
 }
