@@ -77,6 +77,9 @@ const AdminusersViewer = {
         viewClients(company_id) {
             window.location.href = '../../apps/admin-users/clients?ulid=' + company_id
         },
+        viewFollowPages(company_id) {
+            window.location.href = '../../apps/admin-users/followPages?ulid=' + company_id
+        },
         getUsers() {
             this.UserSupport.getUsers({}, (response) => {
                 if (response.s == 1) {
@@ -152,6 +155,7 @@ const AdminusersViewer = {
                                             <li><button class="dropdown-item" @click="goToEdit(user.user_login_id)">Editar</button></li>
                                             <li><button class="dropdown-item" @click="getInBackoffice(user.user_login_id)">Acceder a backoffice</button></li>
                                             <li><button class="dropdown-item" @click="viewClients(user.user_login_id)">Ver clientes</button></li>
+                                            <li><button class="dropdown-item" @click="viewFollowPages(user.user_login_id)">Páginas visitadas</button></li>
                                             
                                             <li><button class="dropdown-item" @click="deleteUser(user.user_login_id)">Eliminar</button></li>
                                         </ul>

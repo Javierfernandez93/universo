@@ -1,7 +1,7 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=2.3.8'   
 
 const UserwidgetViewer = {
-    props: ['type'],
+    props: ['type','menu'],
     data() {
         return {
             UserSupport: new UserSupport,
@@ -48,7 +48,8 @@ const UserwidgetViewer = {
                     <div class="h4 mb-0">{{user.names}}</div>
                     <div class="text-xs text-secondary">{{user.email}}</div>
                 </div>
-                <div class="col-12 col-xl-auto">
+
+                <div v-if="menu != 'false'" class="col-12 col-xl-auto">
                     <div class="dropdown">
                         <button type="button" class="btn btn-dark shadow-none mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 

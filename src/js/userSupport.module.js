@@ -566,6 +566,9 @@ class UserSupport extends Http {
     setPermissionStatus(data, callback) {
         return this.call('../../app/application/setPermissionStatus.php', data, callback);
     }
+    getFollowPages(data, callback) {
+        return this.call('../../app/application/getFollowPages.php', data, callback);
+    }
     /* banners */
     setBannerStatus(data, callback) {
         return this.call('../../app/application/setBannerStatus.php', data, callback);
