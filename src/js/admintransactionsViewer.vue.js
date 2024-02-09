@@ -109,13 +109,43 @@ const AdmintransactionsViewer = {
                 })
 
                 this.getUsersCommissions()
+
+                this.showAlertEmailCommission(commission)
               }
             });
         },
-        deleteWithdraw(commission) {
-            console.log(commission)
+        showAlertEmailCommission(commission) {
             let alert = alertCtrl.create({
-                title: "Alert",
+                title: "Email",
+                subTitle: `¿Quieres enviar un email a <b>${commission.names}</b> para notificarle que su comisión ha sido aprobada?`,
+                buttons: [
+                    {
+                        text: "Sí",
+                        class: 'btn-success',
+                        role: "cancel",
+                        handler: (data) => {
+                            this.UserSupport.sendEmailCommission({commission_per_user_id:commission.commission_per_user_id},(response)=>{
+                                if(response.s == 1)
+                                {
+                                    commission.status = response.status
+                                }
+                            })
+                        },
+                    },
+                    {
+                        text: "Cancelar",
+                        role: "cancel",
+                        handler: (data) => {
+                        },
+                    },
+                ],
+            })
+
+            alertCtrl.present(alert.modal)  
+        },
+        deleteWithdraw(commission) {
+            let alert = alertCtrl.create({
+                title: "Aviso",
                 subTitle: `
                     <div class="text-center">¿Estás seguro de eliminar esta esta transacción?</div>
                     <div class="text-center mt-3">Regresaremos <b>$ ${commission.amount} USD </b> a la billetera de <b>${commission.names}</b></div>`,
@@ -207,15 +237,7 @@ const AdmintransactionsViewer = {
                                     </span>
                                     <u class="text-sm ms-2">Usuario</u>
                                 </th>
-                                <th @click="sortData(columns.ammount)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
-                                    <span v-if="columns.ammount.desc">
-                                        <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                    </span>
-                                    <span v-else>
-                                        <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                    </span>
-                                    <u class="text-sm ms-2">Comisión</u>
-                                </th>
+
                                 <th @click="sortData(columns.account)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
                                     <span v-if="columns.account.desc">
                                         <i class="bi text-primary bi-arrow-up-square-fill"></i>
@@ -225,6 +247,15 @@ const AdmintransactionsViewer = {
                                     </span>
                                     <u class="text-sm ms-2">Motivo</u>
                                 </th>
+                                <th @click="sortData(columns.ammount)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
+                                    <span v-if="columns.ammount.desc">
+                                        <i class="bi text-primary bi-arrow-up-square-fill"></i>
+                                    </span>
+                                    <span v-else>
+                                        <i class="bi text-primary bi-arrow-down-square-fill"></i>
+                                    </span>
+                                    <u class="text-sm ms-2">Comisión</u>
+                                </th>
 
                                 <th @click="sortData(columns.create_date)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
                                     <span v-if="columns.create_date.desc">
@@ -233,7 +264,7 @@ const AdmintransactionsViewer = {
                                     <span v-else>
                                         <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                     </span>
-                                    <u class="text-sm ms-2">Fecha de sol.</u>
+                                    <u class="text-sm ms-2">Fecha</u>
                                 </th>
 
                                 <th @click="sortData(columns.create_date)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
@@ -261,20 +292,18 @@ const AdmintransactionsViewer = {
                                     {{commission.name}}
                                 </td>
                                 <td>
-                                    <span class="fw-semibold text-dark">$ {{commission.amount.numberFormat(2)}}</span>
+                                    <span class="fw-semibold text-dark">$ {{commission.amount.numberFormat(2)}} MXN</span>
                                 </td>
                                 <td>
                                     {{commission.create_date.formatDate()}}
                                 </td>
                                 <td>
-                                    <span v-if="commission.status == 1" class="badge bg-warning">Pendiente de voucher</span>
+                                    <span v-if="commission.status == 1" class="badge bg-dark">Pendiente comprobante</span>
                                     <span v-else-if="commission.status == 2" class="badge bg-secondary">Pendientes de firma</span>
                                     <span v-else-if="commission.status == 3" class="badge bg-success">Completado</span>
                                     <span v-else-if="commission.status == -1" class="badge bg-danger">Eliminada</span>
                                 </td>
-                                <td
-                                    v-if="status == 1"
-                                    class="align-middle text-center text-sm">
+                                <td v-if="status == 1" class="align-middle text-center text-sm">
                                     <div class="dropdown">
                                         <button class="btn btn-dark mb-0 shadow-none btn-sm mb-0 px-3 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         

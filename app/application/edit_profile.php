@@ -124,10 +124,10 @@ function updatePaymentMethodPerUser($data = null,$company_id = null)
         $PaymentMethodPerUser->user_login_id = $company_id;
     }
     
-    $PaymentMethodPerUser->bank = $data['bank'] ? $data['bank'] : $PaymentMethodPerUser->bank;
-    $PaymentMethodPerUser->account = $data['account'] ? $data['account'] : $PaymentMethodPerUser->account;
-    $PaymentMethodPerUser->clabe = $data['clabe'] ? $data['clabe'] : $PaymentMethodPerUser->clabe;
-    $PaymentMethodPerUser->paypal = $data['paypal'] ? $data['paypal'] : $PaymentMethodPerUser->paypal;
+    $PaymentMethodPerUser->bank = isset($data['bank']) ? $data['bank'] : $PaymentMethodPerUser->bank;
+    $PaymentMethodPerUser->account = isset($data['account']) ? $data['account'] : $PaymentMethodPerUser->account;
+    $PaymentMethodPerUser->clabe = isset($data['clabe']) ? $data['clabe'] : $PaymentMethodPerUser->clabe;
+    $PaymentMethodPerUser->paypal = isset($data['paypal']) ? $data['paypal'] : $PaymentMethodPerUser->paypal;
         
     return $PaymentMethodPerUser->save();
 }

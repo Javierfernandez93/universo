@@ -559,6 +559,9 @@ class UserSupport extends Http {
     setFeedbackAs(data, callback) {
         return this.call('../../app/application/setFeedbackAs.php', data, callback);
     }
+    sendEmailCommission(data, callback) {
+        return this.call('../../app/application/sendEmailCommission.php', data, callback);
+    }
     /* permissions */
     getPermissions(data, callback) {
         return this.call('../../app/application/getPermissions.php', data, callback);

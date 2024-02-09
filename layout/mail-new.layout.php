@@ -508,7 +508,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="logo" style="text-align: left;">
-                                            <h1><a href="">Site</a></h1>
+                                            <h1><a href=""><?php echo Site\SystemVar::_getValue("company_name") ?></a></h1>
                                         </td>
                                     </tr>
                                 </tbody>
