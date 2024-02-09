@@ -121,7 +121,7 @@ const IptvclientsViewer = {
                             },
                         },
                         {
-                            text: "Cancel",
+                            text: "Cancelar",
                             role: "cancel",
                             handler: (data) => {
                             },
@@ -167,7 +167,7 @@ const IptvclientsViewer = {
                             },
                         },
                         {
-                            text: "Cancel",
+                            text: "Cancelar",
                             role: "cancel",
                             handler: (data) => {
                             },

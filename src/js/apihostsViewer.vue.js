@@ -89,7 +89,7 @@ const ApihostsViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },
@@ -126,7 +126,7 @@ const ApihostsViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: () => {
                         },

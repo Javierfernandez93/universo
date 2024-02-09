@@ -150,6 +150,12 @@
                                     <span class="sidenav-normal"> Añadir </span>
                                 </a>
                             </li>
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-administrators/permissions">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Permisos </span>
+                                </a>
+                            </li>
                         </ul>
                     </ul>
                 <?php } ?>

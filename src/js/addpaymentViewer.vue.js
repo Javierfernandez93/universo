@@ -87,7 +87,7 @@ const AddpaymentViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },

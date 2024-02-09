@@ -154,7 +154,7 @@ const AdminbridgeViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                             this.busy = false
@@ -187,7 +187,7 @@ const AdminbridgeViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {s
                             this.busy = false
@@ -221,7 +221,7 @@ const AdminbridgeViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                             this.busy = false

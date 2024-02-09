@@ -121,7 +121,7 @@ const ApiwalletsViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },

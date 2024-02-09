@@ -175,7 +175,7 @@ const BridgeusersViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },
@@ -253,7 +253,7 @@ const BridgeusersViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },
@@ -288,7 +288,7 @@ const BridgeusersViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },
@@ -324,7 +324,7 @@ const BridgeusersViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },
@@ -360,7 +360,7 @@ const BridgeusersViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },
@@ -404,7 +404,7 @@ const BridgeusersViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },

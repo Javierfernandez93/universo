@@ -115,7 +115,7 @@ const ApicustomersViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                         },
@@ -199,7 +199,7 @@ const ApicustomersViewer = {
                         },
                     },
                     {
-                        text: "Cancel",
+                        text: "Cancelar",
                         role: "cancel",
                         handler: (data) => {
                             console.log($("#recurring").is(":checked"))
