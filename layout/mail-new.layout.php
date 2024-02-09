@@ -576,10 +576,10 @@
                                                         <td style="text-align: left; padding-left: 10px;">
                                                             <h3 class="heading">Links</h3>
                                                             <ul>
-                                                                <li><a href="https://www.Sitegroup.io/">Inicio</a></li>
-                                                                <li><a href="https://www.Sitegroup.io/apps/login/">Ingresar a tu cuenta</a></li>
-                                                                <li><a href="https://www.Sitegroup.io/apps/signup/">Registro</a></li>
-                                                                <li><a href="https://www.Sitegroup.io/apps/login/forgotPassword">Recuperar contraseña</a></li>
+                                                                <li><a href="<?php echo Site\SystemVar::_getValue("url")?>">Inicio</a></li>
+                                                                <li><a href="<?php echo Site\SystemVar::_getValue("url")?>apps/login/">Ingresar a tu cuenta</a></li>
+                                                                <li><a href="<?php echo Site\SystemVar::_getValue("url")?>apps/signup/">Registro</a></li>
+                                                                <li><a href="<?php echo Site\SystemVar::_getValue("url")?>apps/login/forgotPassword">Recuperar contraseña</a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>
