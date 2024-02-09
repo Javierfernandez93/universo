@@ -548,7 +548,7 @@
                                                     <tr>
                                                         <td style="text-align: left; padding-right: 10px;">
                                                             <h3 class="heading">Nosotros</h3>
-                                                            <p>Somos una comunidad gratuita dedicada al crecimiento financiero y personal.</p>
+                                                            <p><?php echo Site\SystemVar::_getValue("slogan")?></p>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -561,8 +561,8 @@
                                                         <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
                                                             <h3 class="heading">Información de contacto</h3>
                                                             <ul>
-                                                                <li><span class="text">support@Sitegroup.io.co</span></li>
-                                                                <li><span class="text">+57 317 6448832</span></li>
+                                                                <li><span class="text"><?php echo Site\SystemVar::_getValue("company_email")?></span></li>
+                                                                <li><span class="text"><?php echo Site\SystemVar::_getValue("social_whatsapp")?></span></li>
                                                             </ul>
                                                         </td>
                                                     </tr>
