@@ -7,6 +7,9 @@ class Guest extends Http {
     getInvoiceByTx(data, callback) {
         return this.call('../../app/application/getInvoiceByTx.php', data, callback);
     }
+    getConfigVarsStats(data, callback) {
+        return this.call('../../app/application/getConfigVarsStats.php', data, callback);
+    }
 }
 
 export { Guest }

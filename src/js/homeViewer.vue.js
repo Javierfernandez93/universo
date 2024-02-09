@@ -1,11 +1,19 @@
 import { Translator } from '../../src/js/translator.module.js?v=2.3.7'   
+import { Guest } from '../../src/js/guest.module.js?v=2.3.7'   
 
 const HomeViewer = {
     name : 'home-viewer',
     data() {
         return {
+            Guest: new Guest,
             Translator: new Translator,
             language_code: null,
+            stats: {
+                experience: 0,
+                real_state: 0,
+                sales: 0,
+                families: 0,
+            },
             countries : [
                 {
                     'country_id': 226,
@@ -34,7 +42,14 @@ const HomeViewer = {
         }
     },
     methods : {
-        
+        getConfigVarsStats() {
+            this.Guest.getConfigVarsStats({},(response)=>{
+                if(response.s == 1)
+                {
+                    this.stats = response.stats
+                }
+            })
+        }
     },
     mounted() 
     {       
@@ -60,7 +75,7 @@ const HomeViewer = {
             })
         };
 
-
+        this.getConfigVarsStats()
     },
     template : `
         <section id="section-1" class="d-flex vh-100 align-items-center">
@@ -173,31 +188,30 @@ const HomeViewer = {
                             <div class="row align-items-center border-bottom">
                                 <div class="col-6 col-md-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">+3</div>
+                                        <div class="display-2 sans fw-bold">{{stats.experience}}</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">7</div>
+                                        <div class="display-2 sans fw-bold">{{stats.real_state}}</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">3.4k+</div>
+                                        <div class="display-2 sans fw-bold">{{stats.sales}}</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">3k+</div>
+                                        <div class="display-2 sans fw-bold">{{stats.families}}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-6 col-md-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div>Años de </div>
-                                        <div>
-                                        encia</div>
+                                        <div>Años de</div>
+                                        <div>experiencia</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-3">

@@ -74,7 +74,7 @@
             </ul>
 
             <div class="col-md-3 text-end">
-                <button type="button" class="btn shadow-none text-white btn-lg mb-0">Iniciar sesión</button>
+                <a href="../../apps/login" type="button" class="btn shadow-none text-white btn-lg mb-0">Iniciar sesión</a>
             </div>
         </header>
     </nav>
