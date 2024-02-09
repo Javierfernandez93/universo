@@ -51,3 +51,6 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.rounded-circle {
+    object-fit: cover;
+}

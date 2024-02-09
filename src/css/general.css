@@ -55,7 +55,7 @@ body {
 
 .card-property {
   position: relative;
-  background-size: 110%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 20rem;
