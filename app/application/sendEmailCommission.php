@@ -16,8 +16,7 @@ if($UserSupport->logged === true)
                 'view' => 'commission',
                 'subject' => "Felicidades, recibiste una nueva comisión",
                 'vars' => [
-                    // 'email' => (new Site\UserLogin)->getEmail($commission['user_login_id']),
-                    'email' => 'javier.fernandez.pa93@gmail.com',
+                    'email' => (new Site\UserLogin)->getEmail($commission['user_login_id']),
                     'names' => (new Site\UserLogin)->getNames($commission['user_login_id']),
                     'company_name' => Site\SystemVar::_getValue("company_name")
                 ],
