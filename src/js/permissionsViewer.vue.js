@@ -81,9 +81,9 @@ const PermissionsViewer = {
         
             alertCtrl.present(alert.modal);
         },
-        setPermissionStatus(property,status) 
+        setPermissionStatus(permission,status) 
         {
-            this.UserSupport.setPermissionStatus({property_id:property.property_id,status:status},(response)=>{
+            this.UserSupport.setPermissionStatus({catalog_permission_id:permission.catalog_permission_id,status:status},(response)=>{
                 if(response.s == 1)
                 {
                     if(status == 1)
