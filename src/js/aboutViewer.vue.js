@@ -22,7 +22,7 @@ const AboutViewer = {
     template : `
         <div class="container py-5">
             <div class="row justify-content-center">
-                <div class="col-12 col-md-2">
+                <div class="col-9 col-md-2">
                     <img src="../../src/img/logo-black.png" alt="logo" title="logo" class="w-100" />
                 </div>
             </div>
