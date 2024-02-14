@@ -1,4 +1,4 @@
-import { AdminticketsViewer } from '../../src/js/adminticketsViewer.vue.js?v=2.3.8'
+import { AdminticketsViewer } from '../../src/js/adminticketsViewer.vue.js?v=2.3.9'
 
 Vue.createApp({
     components: {

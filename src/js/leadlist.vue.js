@@ -1,4 +1,4 @@
-import { LeadlistViewer } from '../../src/js/leadlistViewer.vue.js?v=2.3.8'
+import { LeadlistViewer } from '../../src/js/leadlistViewer.vue.js?v=2.3.9'
 
 Vue.createApp({
     components : { 

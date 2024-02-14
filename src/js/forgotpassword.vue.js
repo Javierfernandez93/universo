@@ -1,4 +1,4 @@
-import { ForgotpasswordViewer } from '../../src/js/forgotpasswordViewer.vue.js?v=2.3.8'   
+import { ForgotpasswordViewer } from '../../src/js/forgotpasswordViewer.vue.js?v=2.3.9'   
 
 Vue.createApp({
     components : { 

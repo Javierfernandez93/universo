@@ -1,6 +1,6 @@
 /* vue */
-import { EditcourseViewer } from '../../src/js/editcourseViewer.vue.js?v=2.3.8'
-import { EditsessionViewer } from '../../src/js/editsessionViewer.vue.js?v=2.3.8'
+import { EditcourseViewer } from '../../src/js/editcourseViewer.vue.js?v=2.3.9'
+import { EditsessionViewer } from '../../src/js/editsessionViewer.vue.js?v=2.3.9'
 
 Vue.createApp({
     components: {
