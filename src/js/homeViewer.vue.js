@@ -42,6 +42,13 @@ const HomeViewer = {
         }
     },
     methods : {
+        viewVideo(video) {
+            alertHtml(`
+                <div class="ratio ratio-16x9">
+                    <iframe class="embed-responsive-item" src="${video}" allowfullscreen></iframe>
+                </div>`
+            , 'video', 'modal-fullscreen')
+        },
         getConfigVarsStats() {
             this.Guest.getConfigVarsStats({},(response)=>{
                 if(response.s == 1)
@@ -92,7 +99,7 @@ const HomeViewer = {
             <div class="container">
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12 col-md-7 mb-3 mb-md-0">
-                        <div class="card cursor-pointer z-zoom-element card-body card-jade card-jade-video d-flex justify-content-center align-items-center">
+                        <div class="card cursor-pointer z-zoom-element card-body card-jade card-jade-video d-flex justify-content-center align-items-center" @click="viewVideo('../../src/files/video/video.mp4')">
                             <span class="btn-play d-flex justify-content-center align-items-center"><i class="bi fs-1 bi-play-fill text-white"></i></span>
                         </div>
                     </div>

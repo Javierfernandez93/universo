@@ -1,7 +1,6 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=2.3.8'   
 
 const AdminedituserViewer = {
-    name : 'adminedituser-viewer',
     data() {
         return {
             UserSupport: new UserSupport,
