@@ -21,9 +21,9 @@ const AboutViewer = {
     },
     template : `
         <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-9 col-md-2">
-                    <img src="../../src/img/logo-black.png" alt="logo" title="logo" class="w-100" />
+            <div class="row justify-content-center animation-fall-down" style="--delay:300ms">
+                <div class="col-9 col-md-4">
+                    <img src="../../src/img/black-horizontal.png" alt="logo" title="logo" class="w-100" />
                 </div>
             </div>
             <div class="py-5">
