@@ -50,11 +50,9 @@
 <body>
     <div id="preloader" class="start-0 top-0 d-flex align-items-center justify-content-center position-fixed vh-100 w-100">
         <div class="row align-items-center justify-content-center text-center">
-            <div class="col-10 col-md-4 text-center text-dark">
-                <img src="../../src/img/logo.svg" class="w-100 animation-fall-down" style="--delay:300ms" alt="logo" title="logo" />
+            <div class="col-10 col-md-4 text-center text-dark animation-fall-down" style="--delay:300ms">
+                <img src="../../src/img/green-light-vertical.png" class="w-100" alt="logo" title="logo" />
             </div>
-            <div class="text-white mb-n3 pt-3 fs-3 animation-fall-down sans" style="--delay:600ms">Bienvenido a</div>
-            <div class="text-white fs-1 fw-bold animation-fall-down sans" style="--delay:700ms">Universo de JADE</div>
         </div>
     </div>
     

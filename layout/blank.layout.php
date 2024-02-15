@@ -59,7 +59,7 @@
   </head>
   <body>
     <?php if($preloader === true) { ?>
-        <div class="preloader-container bg-dark w-100 h-100 d-flex align-items-center justify-content-center" id="preloader">
+        <div class="preloader-container bg-green w-100 h-100 d-flex align-items-center justify-content-center" id="preloader">
             <div class="preloader-main">
                 <div class="preloader preloader-white">
                     <div class="preloader-logo">
