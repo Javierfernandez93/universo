@@ -474,28 +474,34 @@ class UserLogin extends Orm {
         $UserData->user_login_id = $UserLogin->company_id;
         $UserData->names = trim($data['names']);
         
+        $UserData->nationality = isset($data['user_data']['nationality']) ? $data['user_data']['nationality'] : '';
+        $UserData->curp = isset($data['user_data']['curp']) ? $data['user_data']['curp'] : '';
+        $UserData->rfc = isset($data['user_data']['rfc']) ? $data['user_data']['rfc'] : '';
+        $UserData->reference_1 = isset($data['user_data']['reference_1']) ? $data['user_data']['reference_1'] : '';
+        $UserData->reference_2 = isset($data['user_data']['reference_2']) ? $data['user_data']['reference_2'] : '';
+        
         if($UserData->save())
         {
           $UserContact = new UserContact;
           $UserContact->user_login_id = $UserLogin->company_id;
-          $UserContact->phone = $data['phone'];
+          $UserContact->phone = isset($data['phone']) ? $data['user_contact']['phone'] : '';
           
           if($UserContact->save())
           {
             $UserAddress = new UserAddress;
             $UserAddress->user_login_id = $UserLogin->company_id;
-            $UserAddress->address = isset($data['address']) ? $data['address'] : '';
-            $UserAddress->colony = isset($data['colony']) ? $data['colony'] : '';
-            $UserAddress->city = isset($data['city']) ? $data['city'] : '';
-            $UserAddress->state = isset($data['state']) ? $data['state'] : '';
-            $UserAddress->country = isset($data['country']) ? $data['country'] : '';
-            $UserAddress->country_id = isset($data['country_id']) && !empty($data['country_id']) ? $data['country_id'] : 0;
+            $UserAddress->address = isset($data['user_address']['user_data']['address']) ? $data['user_address']['user_data']['address'] : '';
+            $UserAddress->colony = isset($data['user_address']['colony']) ? $data['user_address']['colony'] : '';
+            $UserAddress->city = isset($data['user_address']['city']) ? $data['user_address']['city'] : '';
+            $UserAddress->state = isset($data['user_address']['state']) ? $data['user_address']['state'] : '';
+            $UserAddress->country = isset($data['user_address']['country']) ? $data['user_address']['country'] : '';
+            $UserAddress->country_id = isset($data['user_address']['country_id']) && !empty($data['user_address']['country_id']) ? $data['user_address']['country_id'] : 0;
             
             if($UserAddress->save())
             {
               $UserAccount = new UserAccount;
               $UserAccount->user_login_id = $UserLogin->company_id;
-              $UserAccount->landing = $data['user_account']['landing'];
+              $UserAccount->landing = isset($data['user_account']['landing']) ? $data['user_account']['landing'] : '';
               $UserAccount->image = UserAccount::DEFAULT_IMAGE;
 
               if(isset($data['referral']))
@@ -1518,22 +1524,54 @@ class UserLogin extends Orm {
     $UserLogin = new self(false,false,false);
     $UserLogin->loadWhere("user_login_id = ?",$data['user_login_id']);
     $UserLogin->email = $data['email'];
+    
+    if(isset($data['password']))
+    {
+      $UserLogin->password = sha1($data['password']);
+    }
     $UserLogin->save();
 
-
     $UserAddress = new UserAddress;
-    $UserAddress->loadWhere("user_login_id = ?",$data['user_login_id']);
-    $UserAddress->address = $data['address'];
-    $UserAddress->country_id = $data['country_id'];
-    $UserAddress->city = $data['city'];
-    $UserAddress->state = $data['state'];
-    $UserAddress->colony = $data['colony'];
+    if(!$UserAddress->loadWhere("user_login_id = ?",$data['user_login_id']))
+    {
+      $UserAddress->user_login_id = $data['user_login_id'];
+    }
+
+    $UserAddress->address = isset($data['user_address']['address']) ? $data['user_address']['address'] : $UserAddress->address;
+    $UserAddress->country_id = isset($data['user_address']['country_id']) ? $data['user_address']['country_id'] : $UserAddress->country_id;
+    $UserAddress->city = isset($data['user_address']['city']) ? $data['user_address']['city'] : $UserAddress->city;
+    $UserAddress->state = isset($data['user_address']['state']) ? $data['user_address']['state'] : $UserAddress->state;
+    $UserAddress->colony = isset($data['user_address']['colony']) ? $data['user_address']['colony'] : $UserAddress->colony;
+    $UserAddress->save();
+    
+    $UserData = new UserData;  
+    if(!$UserData->loadWhere("user_login_id = ?",$data['user_login_id']))
+    {
+      $UserData->user_login_id = $data['user_login_id'];
+    }
+    $UserData->names = isset($data['user_data']['names']) ? $data['user_data']['names'] : $UserData->names;
+    $UserData->rfc = isset($data['user_data']['rfc']) ? $data['user_data']['rfc'] : $UserData->rfc;
+    $UserData->curp = isset($data['user_data']['curp']) ? $data['user_data']['curp'] : $UserData->curp;
+    $UserData->nationality = isset($data['user_data']['nationality']) ? $data['user_data']['nationality'] : $UserData->nationality;
+    $UserData->reference_1 = isset($data['user_data']['reference_1']) ? $data['user_data']['reference_1'] : $UserData->reference_1;
+    $UserData->reference_2 = isset($data['user_data']['reference_2']) ? $data['user_data']['reference_2'] : $UserData->reference_2;
+    $UserData->save();
 
     $UserContact = new UserContact;
-    $UserContact->loadWhere("user_login_id = ?",$data['user_login_id']);
-    $UserAddress->phone = $data['phone'];
-    $UserAddress->save();
-
+    if(!$UserContact->loadWhere("user_login_id = ?",$data['user_login_id']))
+    {
+      $UserContact->user_login_id = $data['user_login_id'];
+    }
+    $UserContact->phone = isset($data['user_contact']['phone']) ? $data['user_contact']['phone'] : $UserContact->phone;
+    $UserContact->save();
+    
+    $UserAccount = new UserAccount;
+    if(!$UserAccount->loadWhere("user_login_id = ?",$data['user_login_id']))
+    {
+      $UserAccount->user_login_id = $data['user_login_id'];
+    }
+    $UserAccount->landing = isset($data['user_account']['landing']) ? $data['user_account']['landing'] : $UserAccount->landing;
+    $UserAccount->save();
 
     return true;
   }

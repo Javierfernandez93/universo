@@ -1,6 +1,6 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=2.3.9'   
 
-const AddleadViewer = {
+const EditleadViewer = {
     data() {
         return {
             UserSupport: new UserSupport,
@@ -36,15 +36,15 @@ const AddleadViewer = {
         }
     },
     methods: {
-        saveUser() {
+        updateUser() {
             this.feedback = null
 
-            this.UserSupport.saveUser({user:this.user}, (response) => {
+            this.UserSupport.updateUser({user:this.user}, (response) => {
                 if (response.s == 1) {
                     this.$refs.button.innerText = "Guardado"
                     
                     toastInfo({
-                        message: 'Usuario guardado correctamente. Redireccionando...',
+                        message: 'Prospecto actualizado correctamente. Redireccionando...',
                     })
 
                     setTimeout(()=>{
@@ -74,6 +74,22 @@ const AddleadViewer = {
                 }
             })
         },500),
+        getUser(user_login_id) {
+            return new Promise( (resolve) => {
+                this.UserSupport.getUser({ user_login_id: user_login_id }, (response) => {
+                    if (response.s == 1) {
+                        this.user = {...this.user,...response.user}
+
+                        this.user.referral.user_login_id = response.user_referral_id
+                        this.user.user_address.country_id = response.user.country_id
+                        this.user.user_account.landing = response.user.landing
+                        this.user.user_contact.phone = response.user.phone
+                    }
+
+                    resolve(response.user_referral_id)
+                })
+            })
+        },
         getCountries() {
             this.UserSupport.getCountries({  }, (response) => {
                 if (response.s == 1) {
@@ -86,20 +102,26 @@ const AddleadViewer = {
         $(this.$refs.phone).mask('(00) 0000-0000');
 
         this.getCountries()
+
+        if (getParam('ulid')) {
+            this.getUser(getParam('ulid')).then((user_login_id) => {
+                
+            })
+        }
     },
     template : `
         <div class="card">
             <div class="card-header"> 
                 <div class="row justify-content-center"> 
                     <div class="col-12 col-xl"> 
-                        <div class="h5">Añadir prospecto</div>
+                        <div class="h5">Editar prospecto</div>
                         <div class="text-xs text-secondary">(* Campos requeridos)</div>
                     </div>
                     <div class="col-12 col-xl-auto"> 
                         <button 
                             :disabled="!filled"
                             ref="button"
-                            type="submit" class="btn shadow-none mb-0 btn-success px-3 btn-sm" @click="saveUser">Guardar usuario</button>
+                            type="submit" class="btn shadow-none mb-0 btn-success px-3 btn-sm" @click="updateUser">Editar</button>
                     </div>
                 </div>
             </div>
@@ -174,7 +196,7 @@ const AddleadViewer = {
                                     <input 
                                         :class="user.user_contact.phone ? 'is-valid' : 'is-invalid'"
                                         ref="phone"
-                                        type="text" ref="phone" v-model="user.user_contact.phone" class="form-control" @keydown.enter.exact.prevent="saveUser" placeholder="Teléfono" aria-label="Teléfono" aria-describedby="basic-addon1">
+                                        type="text" ref="phone" v-model="user.user_contact.phone" class="form-control" @keydown.enter.exact.prevent="updateUser" placeholder="Teléfono" aria-label="Teléfono" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                         </div>
@@ -187,4 +209,4 @@ const AddleadViewer = {
     `,
 }
 
-export { AddleadViewer } 
+export { EditleadViewer } 

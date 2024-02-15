@@ -123,6 +123,7 @@ class Router {
     const AdminBanner = 144;
     const AdminBannerAdd = 164;
     const AdminBannerEdit = 165;
+    const AdminLeadEdit = 166;
 
     static function getName(int $route = null)
     {
@@ -141,6 +142,7 @@ class Router {
             self::AdminDash => 'Home',
             self::AdminUsers => 'Vendedores',
             self::AdminUserEdit => 'Editar usuario',
+            self::AdminLeadEdit => 'Editar prospecto',
             self::AdminUserAdd => 'Añadir vendedor',
             self::AdminActivations => 'Activaciones',
             self::AdminAdministrators => 'Administradores',

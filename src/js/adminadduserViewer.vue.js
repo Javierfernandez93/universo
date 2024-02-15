@@ -12,9 +12,13 @@ const AdminadduserViewer = {
                 names: null,
                 password: null,
                 email: '',
-                phone: null,
                 catalog_user_type_id: 1, // sellter
-                country_id: 159,
+                user_contact : {
+                    phone: null,
+                },
+                user_address : {
+                    country_id: 159,
+                },
                 user_account: {
                     landing: null,
                 },
@@ -159,7 +163,7 @@ const AdminadduserViewer = {
                         <label>Teléfono * </label>
                         <div class="row">
                             <div class="col-auto">
-                                <select class="form-select" v-model="user.country_id" aria-label="Selecciona tu país">
+                                <select class="form-select" v-model="user.user_address.country_id" aria-label="Selecciona tu país">
                                     <option>Selecciona tu país</option>
                                     <option v-for="country in countries" v-bind:value="country.country_id">
                                         {{ country.nicename }} <span v-if="country.phone_code > 0">+ {{ country.phone_code }}</span>
@@ -169,9 +173,9 @@ const AdminadduserViewer = {
                             <div class="col">
                                 <div class="mb-3">
                                     <input 
-                                        :class="user.phone ? 'is-valid' : 'is-invalid'"
+                                        :class="user.user_contact.phone ? 'is-valid' : 'is-invalid'"
                                         ref="phone"
-                                        type="text" ref="phone" v-model="user.phone" class="form-control" @keydown.enter.exact.prevent="saveUser" placeholder="Teléfono" aria-label="Teléfono" aria-describedby="basic-addon1">
+                                        type="text" ref="phone" v-model="user.user_contact.phone" class="form-control" @keydown.enter.exact.prevent="saveUser" placeholder="Teléfono" aria-label="Teléfono" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                         </div>

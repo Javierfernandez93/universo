@@ -21,6 +21,7 @@ const UserwidgetViewer = {
                 if(response.s == 1)
                 {
                     this.user = response.user
+                    this.user.showDetails = false
                 }
             })
         }
@@ -57,12 +58,72 @@ const UserwidgetViewer = {
                         <ul class="dropdown-menu shadow">
                             <li><button class="dropdown-item" @click="goToEdit(user.user_login_id)">Editar</button></li>
                             <li><button class="dropdown-item" @click="getInBackoffice(user.user_login_id)">Acceder a backoffice</button></li>
+                            <li>
+                                <button class="dropdown-item" @click="user.showDetails = !user.showDetails">
+                                    <span v-text="user.showDetails ? 'Ocultar detalles' : 'Ver detalles'"></span>
+                                </button>
+                            </li>
                             <li><button class="dropdown-item" @click="deleteUser(user.user_login_id)">Eliminar</button></li>
                         </ul>
                     </div>
                 </div>
-            </div
+            </div>
+
+            <div v-if="user.showDetails" class="mt-3">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">Nacionalidad</span> 
+                            <span class="text-dark">{{user.nationality}}</span>   
+                        </div>
+                    </li>
+                </li>
+                <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">RFC</span> 
+                            <span class="text-dark">{{user.rfc}}</span>   
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">CURP</span> 
+                            <span class="text-dark">{{user.curp}}</span>   
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">Referencia 1</span> 
+                            <span class="text-dark">{{user.reference_1}}</span>   
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">Referencia 2</span> 
+                            <span class="text-dark">{{user.reference_2}}</span>   
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">Dirección</span> 
+                            <span class="text-dark">{{user.address}} {{user.city}} {{user.state}}</span>   
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">Teléfono</span> 
+                            <span class="text-dark">{{user.phone}}</span>   
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="text-secondary">Email</span> 
+                            <span class="text-dark">{{user.email}}</span>   
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
+
     `
 }
 

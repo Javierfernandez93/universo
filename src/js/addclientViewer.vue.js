@@ -14,13 +14,24 @@ const AddclientViewer = {
                 names: null,
                 password: null,
                 email: '',
-                address: null,
-                colony: null,
-                city: null,
-                state: null,
-                phone: null,
-                catalog_user_type_id: 1, // sellter
-                country_id: 159,
+                catalog_user_type_id: 3, // client
+                user_contact : {
+                    phone: null,
+                },
+                user_address : {
+                    country_id: 159,
+                    address: null,
+                    colony: null,
+                    city: null,
+                    state: null,
+                },
+                user_data: {
+                    nationality: 'Méxicano',
+                    rfc: '',
+                    curp: '',
+                    reference_1: null,
+                    reference_2: null,
+                },
                 user_account: {
                     landing: null,
                 },
@@ -59,11 +70,11 @@ const AddclientViewer = {
                     this.$refs.button.innerText = "Guardado"
                     
                     toastInfo({
-                        message: 'Vendedor guardado correctamente. Redireccionando...',
+                        message: 'Cliente guardado correctamente. Redireccionando...',
                     })
 
                     setTimeout(()=>{
-                        window.location.href = `../../apps/admin-user/`
+                        window.location.href = `../../apps/admin-client/`
                     },3000)
 
                 } else if (response.r == 'MAIL_ALREADY_EXISTS') {
@@ -95,6 +106,12 @@ const AddclientViewer = {
                     this.countries = {...this.countries, ...response.countries}
                 }
             })
+        },
+        showRFCInfo() {
+            alertMessage('Clave del RFC a 13 posiciones si es persona física o 12 posiciones si es persona moral, si se trata de contribuyentes.')
+        },
+        showCurpInfo() {
+            alertMessage('La CURP se integra por 18 caracteres.')
         },
         getSellers() {
             this.UserSupport.getUsers({  }, (response) => {
@@ -139,34 +156,45 @@ const AddclientViewer = {
                         <div class="h5">Añadir cliente</div>
                         <div class="text-xs text-secondary">(* Campos requeridos)</div>
                     </div>
-                    <div class="col-12 col-xl-auto"> 
+                    <div class="col-12 col-md-auto"> 
                         <button  :disabled="!filled" ref="button" type="submit" class="btn shadow-none mb-0 btn-primary px-3 btn-sm" @click="saveUser">Guardar</button>
                     </div>
                 </div>
             </div>
             <div class="card-body">
+                <div class="text-xs text-secondary mb-3">- Información básica</div>
+
                 <div class="row">
-                    <div class="col-12 col-xl-6 mb-3">
-                        <label>Usuario *</label>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label>Nombre completo *</label>
                         <input 
                             :autofocus="true"
                             :class="user.names ? 'is-valid' : 'is-invalid'"
                             @keydown.enter.exact.prevent="$refs.email.focus()"
                             v-model="user.names"
                             ref="names"
-                            type="text" class="form-control" placeholder="Nombre(s)">
+                            type="text" class="form-control" placeholder="Nombre completo">
                     </div>
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <label>Correo *</label>
                         <input 
                             v-model="user.email"
                             :class="user.email.isValidMail() ? 'is-valid' : 'is-invalid'"
-                            @keydown.enter.exact.prevent="$refs.landing.focus()"
+                            @keydown.enter.exact.prevent="$refs.nationality.focus()"
                             ref="email"
                             type="text" class="form-control" placeholder="Email">
                     </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label>Nacionalidad *</label>
+                        <input 
+                            v-model="user.user_data.nationality"
+                            :class="user.user_data.nationality ? 'is-valid' : 'is-invalid'"
+                            @keydown.enter.exact.prevent="$refs.landing.focus()"
+                            ref="nationality"
+                            type="text" class="form-control" placeholder="Nacionalidad">
+                    </div>
                     
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-md-6 mb-3">
                         <label>Nombre de usuario</label>
                         <input 
                             v-model="user.user_account.landing"
@@ -177,62 +205,69 @@ const AddclientViewer = {
                             type="text" class="form-control" placeholder="Nombre de usuario">
                     </div>
                     
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-md-6 mb-3">
                         <label>Dirección</label>
                         <input 
-                            v-model="user.address"
-                            :class="user.address ? 'is-valid' : ''"
+                            v-model="user.user_address.address"
+                            :class="user.user_address.address ? 'is-valid' : ''"
                             @keydown.enter.exact.prevent="$refs.city.focus()"
                             ref="address"
                             type="text" class="form-control" placeholder="Dirección">
                     </div>
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <label>Ciudad</label>
                         <input 
-                            v-model="user.city"
-                            :class="user.city ? 'is-valid' : ''"
+                            v-model="user.user_address.city"
+                            :class="user.user_address.city ? 'is-valid' : ''"
                             @keydown.enter.exact.prevent="$refs.state.focus()"
                             ref="city"
                             type="text" class="form-control" placeholder="Ciudad">
                     </div>
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <label>Estado</label>
                         <input 
-                            v-model="user.state"
-                            :class="user.state ? 'is-valid' : ''"
+                            v-model="user.user_address.state"
+                            :class="user.user_address.state ? 'is-valid' : ''"
                             @keydown.enter.exact.prevent="$refs.colony.focus()"
                             ref="state"
                             type="text" class="form-control" placeholder="Estado">
                     </div>
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <label>Colonia</label>
                         <input 
-                            v-model="user.colony"
-                            :class="user.colony ? 'is-valid' : ''"
+                            v-model="user.user_address.colony"
+                            :class="user.user_address.colony ? 'is-valid' : ''"
                             @keydown.enter.exact.prevent="$refs.colony.focus()"
                             ref="colony"
                             type="text" class="form-control" placeholder="Colonia">
                     </div>
-                    
-                    <div class="col-12 col-xl-6 d-none mb-3">
-                        <label>Referido por</label>
+
+
+                    <div class="col-12 col-md-3 mb-3">
+                        <label>Curp <span class="text-decoration-underline text-primary cursor-pointer" @click="showCurpInfo">(Info)</span></label>
                         <input 
-                            v-model="user.referral.user_login_id"
-                            :class="user.referral.user_login_id ? 'is-valid' : ''"
-                            @keypress="getAdminReferralProfile(this)"
-                            ref="number"
-                            type="text" class="form-control" placeholder="Enter para buscar">
-
-                        <div v-if="user.referral.names" class="alert mb-0 mt-2 alert-info text-center text-white">
-                            {{user.referral.names}}
-                        </div>
+                            v-model="user.user_data.curp"
+                            :class="user.user_data.curp.isValidCurp() ? 'is-valid' : 'is-invalid'"
+                            @keydown.enter.exact.prevent="$refs.curp.focus()"
+                            ref="curp"
+                            type="text" class="form-control" placeholder="CURP">
                     </div>
+                    <div class="col-12 col-md-3 mb-3">
+                        <label>RFC <span class="text-decoration-underline text-primary cursor-pointer" @click="showRFCInfo">(Info)</span></label>
+                        <input 
+                            v-model="user.user_data.rfc"
+                            :class="user.user_data.rfc.isValidRfc() ? 'is-valid' : 'is-invalid'"
+                            @keydown.enter.exact.prevent="$refs.phone.focus()"
+                            ref="rfc"
+                            type="text" class="form-control" placeholder="RFC">
+                    </div>
+                    
 
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-md-6 mb-3">
                         <label>Teléfono * </label>
                         <div class="row">
                             <div class="col-auto">
-                                <select class="form-select" v-model="user.country_id" aria-label="Selecciona tu país">
+                                <select class="form-select" v-model="user.user_address.country_id" aria-label="Selecciona tu país">
                                     <option>Selecciona tu país</option>
                                     <option v-for="country in countries" v-bind:value="country.country_id">
                                         {{ country.nicename }} <span v-if="country.phone_code > 0">+ {{ country.phone_code }}</span>
@@ -242,16 +277,38 @@ const AddclientViewer = {
                             <div class="col">
                                 <div class="mb-3">
                                     <input 
-                                        :class="user.phone ? 'is-valid' : 'is-invalid'"
+                                        :class="user.user_contact.phone ? 'is-valid' : 'is-invalid'"
                                         ref="phone"
-                                        type="text" ref="phone" v-model="user.phone" class="form-control" @keydown.enter.exact.prevent="saveUser" placeholder="Teléfono" aria-label="Teléfono" aria-describedby="basic-addon1">
+                                        type="text" ref="phone" v-model="user.user_contact.phone" class="form-control" @keydown.enter.exact.prevent="saveUser" placeholder="Teléfono" aria-label="Teléfono" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="text-xs text-secondary mb-3">- Referencias personales</div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3">
+                        <label>Referencia 1</label>
+                        <input 
+                            v-model="user.user_data.reference_1"
+                            :class="user.user_data.reference_1 ? 'is-valid' : ''"
+                            @keydown.enter.exact.prevent="$refs.reference_2.focus()"
+                            ref="reference_1"
+                            type="text" class="form-control" placeholder="Nombre completo">
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <label>Referencia 2</label>
+                        <input 
+                            v-model="user.user_data.reference_2"
+                            :class="user.user_data.reference_2 ? 'is-valid' : ''"
+                            ref="reference_2"
+                            type="text" class="form-control" placeholder="Nombre completo">
+                    </div>
+                </div>
                 <div v-if="sellers" class="row">
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-md-6 mb-3">
                         <label>Asignar a vendedor</label>
                         <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
                             <option v-for="seller in sellers" :data-tokens="sellers.names" :data-content="seller.names">{{ seller.user_login_id }}</option>

@@ -84,7 +84,7 @@ const LeadlistViewer = {
             })
         },
         goToEdit(company_id) {
-            window.location.href = '../../apps/admin-users/edit?ulid=' + company_id
+            window.location.href = '../../apps/admin-lead/edit?ulid=' + company_id
         },
         getLeads() {
             this.users = null

@@ -1200,9 +1200,21 @@ class UserSupport extends Orm {
       user_login.company_id,
       user_login.signup_date,
       user_login.email,
+      user_account.landing,
       user_account.image,
       user_data.names,
+      user_data.rfc,
+      user_data.curp,
+      user_data.reference_1,
+      user_data.reference_2,
+      user_data.nationality,
       user_contact.phone,
+      user_address.address,
+      user_address.country,
+      user_address.state,
+      user_address.zip_code,
+      user_address.city,
+      user_address.colony,
       user_address.country_id
     FROM
       user_login

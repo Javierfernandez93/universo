@@ -37,67 +37,65 @@ const AdmindashViewer = {
         initChart(stats) {
             const ctx = document.getElementById("myChart").getContext("2d");
 
-
-            console.logs(stats)
+            console.log(stats)
 
             let datasets = [];
             let labels = [];
             let profits = [];
 
-
-            // stats.reverse().map((stat)=>{
-            //     labels.push(stat.create_date.formatDateTextChart())
-            //     profits.push(stat.users)
-            // })
+            stats.map((stat)=>{
+                labels.push(stat.create_date)
+                profits.push(stat.users)
+            })
             
-            // datasets.push({
-            //     label: "Incoming",
-            //     data: profits,
-            //     borderColor: "#7928CA",
-            //     backgroundColor: "#7928CA",
-            // })
+            datasets.push({
+                label: "Clientes",
+                data: profits,
+                borderColor: "#7928CA",
+                backgroundColor: "#7928CA",
+            })
 
-            // const data = {
-            //     labels: labels,
-            //     datasets: datasets,
-            // };
+            const data = {
+                labels: labels,
+                datasets: datasets,
+            };
 
-            // const config = {
-            //     type: "line",
-            //     data: data,
-            //     options: {
-            //         tension: 0.1,
-            //         responsive: true,
-            //         plugins: {
-            //             legend: {
-            //                 display: false
-            //             },
-            //         },
-            //         scales: {
-            //             x: {
-            //                 display: true,
-            //                 title: {
-            //                     display: true,
-            //                 },
-            //                 grid: {
-            //                     display: false,
-            //                 }                          
-            //             },
-            //             y: {
-            //                 display: false,
-            //                 title: {
-            //                     display: true,
-            //                     text: "($) USD",
-            //                 },
-            //                 grid: {
-            //                     display: false,
-            //                 } 
-            //             },
-            //         },
-            //     },
-            // };
+            const config = {
+                type: "line",
+                data: data,
+                options: {
+                    tension: 0.1,
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                            },
+                            grid: {
+                                display: false,
+                            }                          
+                        },
+                        y: {
+                            display: false,
+                            title: {
+                                display: true,
+                                text: "($) USD",
+                            },
+                            grid: {
+                                display: false,
+                            } 
+                        },
+                    },
+                },
+            };
 
-            // this.myChart = new Chart(ctx, config);
+            this.myChart = new Chart(ctx, config);
         },
         getDashStats() {
             return new Promise((resolve,reject)=> {
@@ -123,15 +121,14 @@ const AdmindashViewer = {
     {     
         this.getDashStats().then((stats) => {
             this.stats = {...this.stats, ...stats}
-            // this.initChart(this.stats.chart)
-
-            // this.getAdminLastInvoices()
+            
+            this.initChart(stats.chart)
         }).catch(() => {
             this.stats = false 
         })
     },
     template : `
-        <div class="row">   
+        <div v-if="stats" class="row">   
             <div class="col-12 col-xl mb-3">   
                 <div class="card">
                     <div class="card-body p-3">

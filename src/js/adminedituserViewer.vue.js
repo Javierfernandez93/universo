@@ -7,24 +7,31 @@ const AdminedituserViewer = {
             filled: false,
             countries: null,
             user: {
-                names: null,
                 signup_date: null,
+                password: null,
+                email: null,
+                user_data : {
+                    names: null,
+                },
+                user_address: {
+                    country_id: 159
+                },
                 user_account: {
                     landing: null,
                 },
                 referral: {
                     user_login_id: null
                 },
-                password: null,
-                email: null,
-                phone: null,
+                user_contact : {
+                    phone: null,
+                }
             },
         }
     },
     watch: {
         user: {
             handler() {
-                this.filled = this.user.names != null && this.user.email != null
+                this.filled = this.user.user_data.names != null && this.user.email != null
 
             },
             deep: true
@@ -37,8 +44,12 @@ const AdminedituserViewer = {
                     this.$refs.button.innerText = "Actualizado"
 
                     toastInfo({
-                        message: 'Usuario actualizado',
+                        message: 'Vendedor actualizado. Redireccionando...',
                     })
+
+                    setTimeout(()=>{
+                        window.location.href = `../../apps/admin-users/`
+                    },3000)
                 }
             })
         },
@@ -58,6 +69,11 @@ const AdminedituserViewer = {
                         this.user = {...this.user,...response.user}
 
                         this.user.referral.user_login_id = response.user_referral_id
+                        
+                        this.user.user_address.country_id = response.user.country_id
+                        this.user.user_contact.phone = response.user.phone
+                        this.user.user_data.names = response.user.names
+                        this.user.user_account.landing = response.user.landing
                     }
 
                     resolve(response.user_referral_id)
@@ -112,14 +128,14 @@ const AdminedituserViewer = {
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-12 col-xl-6">
-                        <label>Usuario</label>
+                        <label>Nombre completo</label>
                         <input 
                             :autofocus="true"
-                            :class="user.names ? 'is-valid' : ''"
+                            :class="user.user_data.names ? 'is-valid' : ''"
                             @keydown.enter.exact.prevent="$refs.email.focus()"
-                            v-model="user.names"
+                            v-model="user.user_data.names"
                             ref="names"
-                            type="text" class="form-control" placeholder="Nombre(s)">
+                            type="text" class="form-control" placeholder="Nombre completo">
                     </div>
                     <div class="col-12 col-xl-6">
                         <label>Correo</label>
@@ -169,7 +185,7 @@ const AdminedituserViewer = {
                         <label>Teléfono</label>
                         <div class="row">
                             <div class="col-auto">
-                                <select class="form-select" v-model="user.country_id" aria-label="Selecciona tu país">
+                                <select class="form-select" v-model="user.user_address.country_id" aria-label="Selecciona tu país">
                                     <option>Selecciona tu país</option>
                                     <option v-for="country in countries" v-bind:value="country.country_id">
                                         {{ country.nicename }} <span v-if="country.phone_code > 0">+ {{ country.phone_code }}</span>
