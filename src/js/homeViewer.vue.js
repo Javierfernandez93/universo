@@ -249,7 +249,73 @@ const HomeViewer = {
                             <div class="h1 text-success">Afiliados</div>
                         </div>
                         <div class="card card-body px-5 bg-dark text-center text-white">
-                           <img class="w-100" src="../../src/img/home/afilliates.png" alt="afiliados" title="afiliados"/>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-4">
+                                    <img class="w-100" src="../../src/img/afilliates/back.png" alt="afiliados" title="afiliados"/>
+                                </div>
+                            </div>
+                            <div class="row g-3 justify-content-center">
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/1.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/2.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/3.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/4.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/5.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/6.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/7.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/8.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/9.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/10.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/11.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/12.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
