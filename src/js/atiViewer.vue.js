@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.3.9'   
+import { User } from '../../src/js/user.module.js?v=2.4.0'   
 
 const AtiViewer = {
     name : 'ati-viewer',

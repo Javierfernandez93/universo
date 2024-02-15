@@ -62,7 +62,9 @@
         <header class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-xl-3 mb-0">
             <div class="col-md-3 mb-2 mb-md-0">
                 <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                    <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+
+                    <img src="../../src/img/white-horizontal.png" class="w-100" alt="logo" title="logo" />
                 </a>
             </div>
 
@@ -89,8 +91,8 @@
     <script src="../../src/js/plugins/chartjs.min.js"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
 
-    <script src="../../src/js/constants.js?v=2.3.9" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=2.3.9" type="text/javascript"></script>
+    <script src="../../src/js/constants.js?v=2.4.0" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=2.4.0" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.5.1.min.js" type="text/javascript"></script>
     <script src="../../src/js/general.js?m=2" type="text/javascript"></script>
 
@@ -108,7 +110,7 @@
 
     <script async defer src="../../src/js/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=2.3.9"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=2.4.0"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../../src/js/vue.js"></script>

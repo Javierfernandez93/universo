@@ -1,5 +1,5 @@
 /* vue */
-import { AdminsignalsViewer } from '../../src/js/adminsignalsViewer.vue.js?v=2.3.9'
+import { AdminsignalsViewer } from '../../src/js/adminsignalsViewer.vue.js?v=2.4.0'
 
 Vue.createApp({
     components: {

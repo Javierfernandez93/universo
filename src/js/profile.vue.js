@@ -1,5 +1,5 @@
-import { ProfileViewer } from '../../src/js/profileViewer.vue.js?v=2.3.9'
-import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=2.3.9'
+import { ProfileViewer } from '../../src/js/profileViewer.vue.js?v=2.4.0'
+import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=2.4.0'
 
 Vue.createApp({
     components : { 

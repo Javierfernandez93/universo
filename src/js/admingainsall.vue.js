@@ -1,5 +1,5 @@
 /* vue */
-import { AdmingainsallViewer } from '../../src/js/admingainsallViewer.vue.js?v=2.3.9'
+import { AdmingainsallViewer } from '../../src/js/admingainsallViewer.vue.js?v=2.4.0'
 
 Vue.createApp({
     components: {

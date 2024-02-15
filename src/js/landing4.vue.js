@@ -1,5 +1,5 @@
 /* vue */
-import { Landing4Viewer } from './landing4Viewer.vue.js?v=2.3.9'
+import { Landing4Viewer } from './landing4Viewer.vue.js?v=2.4.0'
 
 Vue.createApp({
     components: {

@@ -1,5 +1,5 @@
 /* vue */
-import { AdminexerciseViewer } from '../../src/js/adminexerciseViewer.vue.js?v=2.3.9'
+import { AdminexerciseViewer } from '../../src/js/adminexerciseViewer.vue.js?v=2.4.0'
 
 Vue.createApp({
     components: {

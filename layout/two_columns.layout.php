@@ -28,8 +28,8 @@
         {{content}}
         
         
-        <script src="../../src/js/constants.js?v=2.3.9" type="text/javascript"></script>
-        <script src="../../src/js/alertCtrl.js?v=2.3.9" type="text/javascript"></script>
+        <script src="../../src/js/constants.js?v=2.4.0" type="text/javascript"></script>
+        <script src="../../src/js/alertCtrl.js?v=2.4.0" type="text/javascript"></script>
         <script src="../../src/js/jquery-3.5.1.min.js" type="text/javascript"></script>
         <script src="../../src/js/general.js?m=2" type="text/javascript"></script>
         
