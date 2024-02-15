@@ -303,7 +303,7 @@ const HomeViewer = {
                                         <img class="w-100" src="../../src/img/afilliates/10.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-2">
+                                <div class="col-6 col-md-2 d-none">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/11.png" alt="afiliados" title="afiliados"/>
                                     </div>
