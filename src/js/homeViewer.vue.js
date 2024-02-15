@@ -240,7 +240,7 @@ const HomeViewer = {
                         </div>
                     </div>
                 </div>
-                <div class="row d-none justify-content-center py-5 expand" style="--delay:500ms">
+                <div class="row d-nones justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12">
                         <div class="py-5">
                             <div class="h1 mb-n1 text-white">Nuestros</div>
@@ -311,6 +311,16 @@ const HomeViewer = {
                                 <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/12.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/13.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-2">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/14.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
                             </div>
