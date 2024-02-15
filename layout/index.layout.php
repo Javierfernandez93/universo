@@ -18,7 +18,7 @@
     <meta property="og:site_name" content="<?php echo JFStudio\Layout::PROYECT_NAME; ?> | Tu espacio seguro">
     <meta property="og:title" content="<?php echo JFStudio\Layout::PROYECT_NAME; ?> | Tu espacio seguro" />
     <meta property="og:description" content="Tu espacio seguro" />
-    <meta property="og:image" itemprop="image" content="<?php echo HCStudio\Connection::getMainPath() ?>/src/img/logo.png">
+    <meta property="og:image" itemprop="image" content="<?php echo HCStudio\Connection::getMainPath() ?>/src/img/jade-social.png">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="300">
