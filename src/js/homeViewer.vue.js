@@ -86,13 +86,11 @@ const HomeViewer = {
     },
     template : `
         <section id="section-1" class="d-flex vh-100 align-items-center">
-            <div class="container">
-                <div class="row align-items-center v-100">
-                    <div class="col-10 col-md-6 col-xl-4 text-center text-dark">
-                        <img src="../../src/img/logo.svg" class="w-100" alt="logo" title="logo" />
-                    </div>
-                </div>
-            </div>
+            <video width="320" height="240" controls autoplay muted loop>
+                <source src="../../src/files/video/home.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="mask bg-dark-translucid"></div>
         </section>
 
         <section class="bg-repeat py-5 animate-section" id="section-2">
@@ -255,62 +253,62 @@ const HomeViewer = {
                                 </div>
                             </div>
                             <div class="row g-3 justify-content-center">
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/1.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/2.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/3.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/4.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/5.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/6.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/7.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/8.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/9.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/10.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/11.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-2">
+                                <div class="col-6 col-md-2">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/12.png" alt="afiliados" title="afiliados"/>
                                     </div>
