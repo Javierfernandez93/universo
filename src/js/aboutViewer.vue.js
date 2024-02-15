@@ -38,9 +38,9 @@ const AboutViewer = {
                                         <span class="divider bg-success"></span>
                                     </div>
 
-                                    <div class="lead lead-xl mb-3">Nuestra misión en Universo de Jade es proporcionar a nuestros clientes oportunidades de inversión seguras y rentables en desarrollos sustentables. </div>
-                                    <div class="lead lead-xl mb-3">Nos comprometemos a ofrecer un servicio de alta calidad, basado en la transparencia y cumplimiento de las normas legales, garantizando la satisfacción y tranquilidad de nuestros clientes. </div>
-                                    <div class="lead lead-xl">Creemos en la construcción de relaciones a largo plazo, basadas en la confianza y el respeto mutuo.</div>
+                                    <div class="lead lead-xl mb-3">Nuestra <b class="text-dark">misión</b> en <b class="text-dark">Universo de Jade</b> es proporcionar a nuestros clientes <b class="text-dark">oportunidades de inversión seguras</b> y <b class="text-dark">rentables</b> en <b class="text-dark">desarrollos sustentables</b>. </div>
+                                    <div class="lead lead-xl mb-3">Nos comprometemos a <b class="text-dark">ofrecer un servicio de alta calidad</b>, basado en la <b class="text-dark">transparencia</b> y <b class="text-dark">cumplimiento de las normas legales</b>, garantizando la satisfacción y <b class="text-dark">tranquilidad</b> de nuestros clientes. </div>
+                                    <div class="lead lead-xl">Creemos en la construcción de <b class="text-dark">relaciones a largo plazo</b>, basadas en la <b class="text-dark">confianza</b> y el <b class="text-dark">respeto mutuo</b>.</div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <img src="../../src/img/mision.jpg" alt="about" title="about" class="w-100 rounded"/>
@@ -63,9 +63,9 @@ const AboutViewer = {
                                         <span class="divider bg-success"></span>
                                     </div>
 
-                                    <div class="lead mb-3 lead-xl">En Universo de Jade, aspiramos a ser reconocidos a nivel nacional e internacional como líderes en la venta de Bienes Raíces con un concepto de sustentabilidad y conexión.</div>
-                                    <div class="lead mb-3 lead-xl">Queremos ser conocidos por nuestro compromiso con el medio ambiente, la transparencia y la satisfacción del cliente.</div> 
-                                    <div class="lead lead-xl">Nuestra visión es ser un referente en la industria, marcando la pauta en prácticas comerciales éticas y sostenibles.</div>
+                                    <div class="lead mb-3 lead-xl">En <b class="text-dark">Universo de Jade</b>, aspiramos a ser <b class="text-dark">reconocidos a nivel nacional e internacional</b> como <b class="text-dark">líderes en la venta de Bienes Raíces</b> con un concepto de sustentabilidad y conexión.</div>
+                                    <div class="lead mb-3 lead-xl">Queremos ser conocidos por <b class="text-dark">nuestro compromiso con el medio ambiente</b>, la <b class="text-dark">transparencia</b> y la <b class="text-dark">satisfacción del cliente</b>.</div> 
+                                    <div class="lead lead-xl">Nuestra <b class="text-dark">visión</> es <b class="text-dark">ser</b> un <b class="text-dark">referente en la industria</b>, marcando la pauta en prácticas comerciales éticas y sostenibles.</div>
                                 </div>
                             </div>
                         </div>
