@@ -44,7 +44,7 @@
     
     <!-- plugin css -->
     <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?af=1" rel="stylesheet" />
-    <link rel="stylesheet" href="../../src/css/general.css" />
+    <link rel="stylesheet" href="../../src/css/general.css?t=1" />
 </head>
 
 <body>
