@@ -22,9 +22,6 @@
         {{css_scripts}}
     </head>
     <body class="bg-light-dark">
-        <div class="bg-gradient-primary header-Site-signature" style="height: 0.3rem;">
-        </div>
-        
         {{content}}
         
         

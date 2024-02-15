@@ -3,3 +3,11 @@ nav {
     background: rgb(237,255,236);
 background: linear-gradient(90deg, rgba(237,255,236,1) 0%, rgba(255,255,255,0.5060399159663865) 50%, rgba(237,255,236,1) 100%);
 }
+.divider {
+    height: 2px;
+    width: 2rem;
+    display: inline-block;
+}
+.bg-success {
+    background-color: var(--bs-success) !important;
+}
