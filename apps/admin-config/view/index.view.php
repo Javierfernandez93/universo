@@ -23,9 +23,9 @@
             <adminconfig-viewer class="mb-3" title="Configuración del bot" id="7"></adminconfig-viewer>
         </div>
     </div>
-    <div class="row d-none">
+    <div class="row">
         <div class="col-12 col-xl-6">
-            <adminconfig-viewer class="mb-3" title="Configuración de CapitalPayments" id="5"></adminconfig-viewer>
+            <adminconfig-viewer class="mb-3" title="Configuración de metadata" id="9"></adminconfig-viewer>
         </div>
     </div>
 </div>
