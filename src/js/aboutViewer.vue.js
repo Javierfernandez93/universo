@@ -42,7 +42,7 @@ const AboutViewer = {
                                     <div class="lead lead-xl">Creemos en la construcción de <b class="text-dark">relaciones a largo plazo</b>, basadas en la <b class="text-dark">confianza</b> y el <b class="text-dark">respeto mutuo</b>.</div>
                                 </div>
                                 <div class="col-12 col-md-4">
-                                    <img src="../../src/img/mision.jpg" alt="about" title="about" class="w-100 rounded"/>
+                                    <img src="../../src/img/mision.jpg?t=1" alt="about" title="about" class="w-100 rounded"/>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@ const AboutViewer = {
                         <div class="col-12 col-md">
                             <div class="row g-6 justify-content-center align-items-center">
                                 <div class="col-12 col-md-4 order-md-0 order-1">
-                                    <img src="../../src/img/vision.jpg" alt="about" title="about" class="w-100 rounded"/>
+                                    <img src="../../src/img/vision.jpg?t=1" alt="about" title="about" class="w-100 rounded"/>
                                 </div>
                                 <div class="col-12 col-md-8">
                                     <div class="mb-4">
@@ -107,7 +107,7 @@ const AboutViewer = {
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
-                            <img src="../../src/img/valores.jpg" alt="about" title="about" class="w-100 rounded"/>
+                            <img src="../../src/img/valores.jpg?t=1" alt="about" title="about" class="w-100 rounded"/>
                         </div>
                     </div>
                 </div>
