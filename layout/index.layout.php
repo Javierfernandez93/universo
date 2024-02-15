@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | Tu espacio seguro" name="author" />
-    <meta content="Tu espacio seguro" name="description" />
+    <meta content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" name="author" />
+    <meta content="<?php echo Site\SystemVar::_getValue("description"); ?>" name="description" />
 
     <meta name="theme-color" content="#2D2250">
 
@@ -15,9 +15,9 @@
     <meta name="googlebot" content="index, follow">
     <meta name="googlebot-news" content="index, follow">
 
-    <meta property="og:site_name" content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | Tu espacio seguro">
-    <meta property="og:title" content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | Tu espacio seguro" />
-    <meta property="og:description" content="Tu espacio seguro" />
+    <meta property="og:site_name" content="<?php echo Site\SystemVar::_getValue("company_name"); ?>">
+    <meta property="og:title" content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" />
+    <meta property="og:description" content="<?php echo Site\SystemVar::_getValue("description"); ?>" />
     <meta property="og:image" itemprop="image" content="<?php echo HCStudio\Connection::getMainPath() ?>/src/img/jade-social.png">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="300">
