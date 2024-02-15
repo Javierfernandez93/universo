@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.4.0'   
+import { User } from '../../src/js/user.module.js?v=2.4.1'   
 
 const IncomeViewer = {
     name : 'income-viewer',

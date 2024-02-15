@@ -1,5 +1,5 @@
 /* vue */
-import { AdminacademyViewer } from '../../src/js/adminacademyViewer.vue.js?v=2.4.0'
+import { AdminacademyViewer } from '../../src/js/adminacademyViewer.vue.js?v=2.4.1'
 
 Vue.createApp({
     components: {

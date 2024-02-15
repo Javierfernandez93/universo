@@ -1,5 +1,5 @@
 /* vue */
-import { CampaignViewer } from '../../src/js/campaignViewer.vue.js?v=2.4.0'
+import { CampaignViewer } from '../../src/js/campaignViewer.vue.js?v=2.4.1'
 
 Vue.createApp({
     components: {

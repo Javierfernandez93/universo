@@ -1,4 +1,4 @@
-import { PermissionsViewer } from '../../src/js/permissionsViewer.vue.js?v=2.4.0'
+import { PermissionsViewer } from '../../src/js/permissionsViewer.vue.js?v=2.4.1'
 
 Vue.createApp({
     components: {

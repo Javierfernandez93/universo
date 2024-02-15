@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.4.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=2.4.1'
 
 const AdminusersViewer = {
     name : 'adminusers-viewer',

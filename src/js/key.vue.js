@@ -1,4 +1,4 @@
-import { KeyViewer } from './keyViewer.vue.js?v=2.4.0'
+import { KeyViewer } from './keyViewer.vue.js?v=2.4.1'
 
 Vue.createApp({
     components : { 
