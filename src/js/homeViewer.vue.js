@@ -240,7 +240,7 @@ const HomeViewer = {
                         </div>
                     </div>
                 </div>
-                <div class="row d-nones justify-content-center py-5 expand" style="--delay:500ms">
+                <div class="row d-none justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12">
                         <div class="py-5">
                             <div class="h1 mb-n1 text-white">Nuestros</div>
