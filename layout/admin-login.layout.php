@@ -4,8 +4,18 @@
         <meta charset="utf-8" />
         <title>{{title}}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="<?php echo JFStudio\Layout::PROYECT_NAME; ?>" name="description" />
-        <meta content="<?php echo JFStudio\Layout::PROYECT_NAME; ?>" name="author" />
+        
+        <meta content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" name="author" />
+        <meta content="<?php echo Site\SystemVar::_getValue("description"); ?>" name="description" />
+        <meta property="og:site_name" content="<?php echo Site\SystemVar::_getValue("company_name"); ?>">
+        <meta property="og:title" content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" />
+        <meta property="og:description" content="<?php echo Site\SystemVar::_getValue("description"); ?>" />
+        <meta property="og:image" itemprop="image" content="<?php echo HCStudio\Connection::getMainPath() ?>/src/img/jade-social.png">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:width" content="300">
+        <meta property="og:image:height" content="300">
+
+
         <link rel="icon" type="image/x-icon" href="../../src/img/favicon.png">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">

@@ -9,6 +9,17 @@
     <title>
         {{title}}
     </title>
+
+    <meta content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" name="author" />
+    <meta content="<?php echo Site\SystemVar::_getValue("description"); ?>" name="description" />
+    <meta property="og:site_name" content="<?php echo Site\SystemVar::_getValue("company_name"); ?>">
+    <meta property="og:title" content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" />
+    <meta property="og:description" content="<?php echo Site\SystemVar::_getValue("description"); ?>" />
+    <meta property="og:image" itemprop="image" content="<?php echo HCStudio\Connection::getMainPath() ?>/src/img/jade-social.png">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+    
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
