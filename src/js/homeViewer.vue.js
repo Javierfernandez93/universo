@@ -192,7 +192,7 @@ const HomeViewer = {
 
                         <div class="pb-5">
                             <div class="h4 text-center mb-0 text-white text-uppercase">conoce más</div>
-                            <div class="h2 text-center text-success text-uppercase">De imish</div>
+                            <div class="h2 text-center text-success text-uppercase">Del Universo de Jade</div>
                         </div>
                         <div class="card cursor-pointer z-zoom-element card-body card-jade card-imish-video d-flex justify-content-center align-items-center" @click="viewVideo('../../src/files/video/imish.mp4')">
                             <span class="btn-play d-flex justify-content-center align-items-center"><i class="bi fs-1 bi-play-fill text-white"></i></span>
