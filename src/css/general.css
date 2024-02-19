@@ -83,6 +83,11 @@ body {
   background-size: cover;
   background-position: center;
 }
+.card-imish-video {
+  background-image: url(../../src/img/home/video-imish.png);
+  background-size: cover;
+  background-position: center;
+}
 .btn-play {
   width: 6rem;
   height: 6rem;

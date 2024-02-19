@@ -183,6 +183,27 @@ const HomeViewer = {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <section class="bg-dark expand py-5" style="--delay:500ms">
+            <div class="container py-5">
+                <div class="row align-items-center justify-content-center w-100">
+                    <div class="col-12 col-md-7 mb-3 mb-md-0">
+
+                        <div class="pb-5">
+                            <div class="h4 text-center mb-0 text-white text-uppercase">conoce más</div>
+                            <div class="h2 text-center text-success text-uppercase">De imish</div>
+                        </div>
+                        <div class="card cursor-pointer z-zoom-element card-body card-jade card-imish-video d-flex justify-content-center align-items-center" @click="viewVideo('../../src/files/video/imish.mp4')">
+                            <span class="btn-play d-flex justify-content-center align-items-center"><i class="bi fs-1 bi-play-fill text-white"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-repeat py-5 animate-section" id="section-2">
+            <div class="container">
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12">
                         <div class="py-5">
