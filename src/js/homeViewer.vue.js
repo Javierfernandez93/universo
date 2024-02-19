@@ -109,7 +109,7 @@ const HomeViewer = {
                                         <div class="text-uppercase text-white h2">Conoce <strong class="text-success">Nuestra Visión</strong></div>
                                         <p class="text-white my-xl-5 my-2">No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset".</p>
 
-                                        <button class="btn btn-success px-5 py-3">SOMOS</button>
+                                        <a href="../../apps/home/about" class="btn btn-success px-5 py-3">SOMOS</a>
                                     </div>
                                 </div>
                             </div>
