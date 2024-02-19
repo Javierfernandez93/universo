@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.4.2'   
+import { User } from '../../src/js/user.module.js?v=2.4.3'   
 
 const StoreinvoiceViewer = {
     name : 'storeinvoice-viewer',

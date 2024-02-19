@@ -1,4 +1,4 @@
-import { AddrealstateViewer } from '../../src/js/addrealstateViewer.vue.js?v=2.4.2'
+import { AddrealstateViewer } from '../../src/js/addrealstateViewer.vue.js?v=2.4.3'
 
 Vue.createApp({
     components : { 
