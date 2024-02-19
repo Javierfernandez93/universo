@@ -1,4 +1,4 @@
-import { GainsViewer } from '../../src/js/gainsViewer.vue.js?v=2.4.1'
+import { GainsViewer } from '../../src/js/gainsViewer.vue.js?v=2.4.2'
 
 Vue.createApp({
     components: {

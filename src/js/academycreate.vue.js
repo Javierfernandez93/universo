@@ -1,7 +1,7 @@
 /* vue */
-import { AcademycreateViewer } from '../../src/js/academycreateViewer.vue.js?v=2.4.1'
-import { MarketingfeedbackViewer } from '../../src/js/marketingfeedbackViewer.vue.js?v=2.4.1'
-import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=2.4.1'
+import { AcademycreateViewer } from '../../src/js/academycreateViewer.vue.js?v=2.4.2'
+import { MarketingfeedbackViewer } from '../../src/js/marketingfeedbackViewer.vue.js?v=2.4.2'
+import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=2.4.2'
 
 Vue.createApp({
     components: {

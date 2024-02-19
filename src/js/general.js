@@ -200,6 +200,38 @@ async function alertHtml(html,title,size)
     alertCtrl.present(alert.modal);
 }
 
+async function alertVideo(video,title,size)
+{
+    await _closeModal();
+
+    title = (title) ? title : null;
+    size = size ? size : 'modal-fullscreen';
+
+    let alert = alertCtrl.create({
+      title: title,
+      size: size,
+      bgColor: 'bg-dark',
+      html: `
+        <div class="ratio ratio-16x9">
+          <video class="w-100" controls>
+            <source src="${video}" type="video/mp4" />
+          </video>
+        </div>
+      `,
+      buttons: [
+        {
+          text: "Aceptar",
+          role: "cancel",
+          handler: (data) => {
+            
+          },
+        },
+      ],
+    });
+
+    alertCtrl.present(alert.modal);
+}
+
 const _closeModal = function()
 {
   return new Promise((resolve, reject) => {

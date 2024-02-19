@@ -1,4 +1,4 @@
-import { ApihostsViewer } from './apihostsViewer.vue.js?v=2.4.1'
+import { ApihostsViewer } from './apihostsViewer.vue.js?v=2.4.2'
 
 Vue.createApp({
     components : { 

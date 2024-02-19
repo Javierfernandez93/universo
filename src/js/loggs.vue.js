@@ -1,4 +1,4 @@
-import { LoggsViewer } from '../../src/js/LoggsViewer.vue.js?v=2.4.1'
+import { LoggsViewer } from '../../src/js/LoggsViewer.vue.js?v=2.4.2'
 
 Vue.createApp({
     components : { 

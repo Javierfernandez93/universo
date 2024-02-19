@@ -1,5 +1,5 @@
 
-import { User } from '../../src/js/user.module.js?v=2.4.1'   
+import { User } from '../../src/js/user.module.js?v=2.4.2'   
 
 const EwalletqrViewer = {
     name : 'ewalletqr-viewer',
