@@ -1406,3 +1406,6 @@ const startListener = (elementId) => {
 String.prototype.isValidLink = function() { 
   return this.includes("http") || this.includes("https")
 }
+String.removeHtmlTags = function() {
+  return this.replace(/(<([^>]+)>)/gi, "");
+}

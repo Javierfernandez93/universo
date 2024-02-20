@@ -14,13 +14,13 @@ if($UserSupport->hasPermission('add_notice') === false) {
 
 $route = JFStudio\Router::AdminNoticesAdd;
 $Layout = JFStudio\Layout::getInstance();
-$Layout->init(JFStudio\Router::getName($route),"add","admin","",TO_ROOT."/");
+$Layout->init(JFStudio\Router::getName($route),"index","admin","",TO_ROOT."/");
 
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
 	'quill.js',
 	'quill.snow.css',
-	'adminNoticeAdd.vue.js'
+	'adminblog.vue.js'
 ]);
 
 $Layout->setVar([

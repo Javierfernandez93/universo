@@ -46,7 +46,7 @@ const BloglistViewer = {
         this.getBlogEntries()
     },
     template : `
-        <section class="bg-repeat vh-100 py-6 expand" style="--delay:500ms" id="section-2">
+        <section class="bg-repeat py-6 expand" style="--delay:500ms" id="section-2">
             <div class="container">
                 <div class="row align-items-center justify-content-center py-5">
                     <div class="col-12 col-xl">
@@ -56,10 +56,10 @@ const BloglistViewer = {
                         <input v-model="query" type="text" class="form-control bg-transparent border-0 lead text-white text-end" placeholder="Buscar por título...">
                     </div>
                 </div>
-                <div class="card card-body px-5 bg-dark text-white">
+                <div class="card card-body p-0 bg-dark text-white">
                     <div v-if="entries">
                         <ul class="list-group bg-transparent list-group-flush">
-                            <li v-for="(entry,index) in entries" :class="index < entries.length-1 ? 'border-bottom border-secondary' : ''" class="list-group-item bg-transparent list-item-entry py-3">
+                            <li v-for="(entry,index) in entries" :class="index < entries.length-1 ? 'border-bottom border-secondary' : ''" class="list-group-item border-0 bg-transparent list-item-entry mb-3">
                                 <div class="row align-items-center">
                                     <div class="col-12 col-md-2">
                                         <img :src="entry.image" :alt="entry.title_sanitized" :alt="entry.title_sanitized" class="w-100 rounded border border-secondary"/>
@@ -76,7 +76,7 @@ const BloglistViewer = {
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-auto">
-                                        <button @click="goToBlog(entry)" class="btn shadow-none mb-0 text-success">Leer Más</button>
+                                        <button @click="goToBlog(entry)" class="btn shadow-none btn-success mb-0">Leer Más</button>
                                     </div>
                                 </div>
                             </li>

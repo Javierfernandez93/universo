@@ -518,6 +518,9 @@ class UserSupport extends Http {
     uploadImageBanner(data, progress, callback) {
         return this.callFile('../../app/application/uploadImageBanner.php', data, callback, progress);
     }
+    uploadImageBlog(data, progress, callback) {
+        return this.callFile('../../app/application/uploadImageBlog.php', data, callback, progress);
+    }
     uploadImageRealState(data, progress, callback) {
         return this.callFile('../../app/application/uploadImageRealState.php', data, callback, progress);
     }
@@ -636,6 +639,19 @@ class UserSupport extends Http {
     }
     setAsUserKind(data, callback) {
         return this.call('../../app/application/setAsUserKind.php', data, callback);
+    }
+    /* blog */
+    getBlogCategories(data, callback) {
+        return this.call('../../app/application/getBlogCategories.php', data, callback);
+    }
+    saveBlog(data, callback) {
+        return this.call('../../app/application/saveBlog.php', data, callback, null, null, 'POST');
+    }
+    getAdminBlogs(data, callback) {
+        return this.call('../../app/application/getAdminBlogs.php', data, callback);
+    }
+    setEntryStatusAs(data, callback) {
+        return this.call('../../app/application/setEntryStatusAs.php', data, callback);
     }
 }
 

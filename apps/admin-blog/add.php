@@ -20,7 +20,7 @@ $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
 	'quill.js',
 	'quill.snow.css',
-	'adminNoticeAdd.vue.js'
+	'blogadd.vue.js'
 ]);
 
 $Layout->setVar([

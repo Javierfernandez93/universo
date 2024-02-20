@@ -10,6 +10,15 @@ class Blog extends Orm {
   public function __construct() {
     parent::__construct();
   }
+
+  public static function addOrUpdate(array $data = null) : bool
+  {
+    $Blog = new self;
+    $Blog->loadArray($data);
+    
+    return $Blog->save();
+  }
+
   
   public function getAll() {
     $entries = $this->connection()->rows("

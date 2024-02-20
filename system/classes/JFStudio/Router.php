@@ -156,7 +156,7 @@ class Router {
             self::AdminTransactionsList => 'Lista de fondeos',
             self::AdminNotices => 'Listar noticias',
             self::AdminNoticesEdit => 'Editar noticia',
-            self::AdminNoticesAdd => 'Añadir noticia',
+            self::AdminNoticesAdd => 'Añadir blog',
             self::AdminDeposits => 'Ver fondeos',
             self::AdminStats => 'Estadísticas',
             self::AdminReport => 'Reporte',

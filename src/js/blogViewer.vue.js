@@ -28,21 +28,23 @@ const BlogViewer = {
     },
     template : `
         <div v-if="blog" class="pb-5">
-            <section class="d-flex bg-animated position-relative vh-75 align-items-center animate-section" :style="{'background-image':'url('+blog.image+')','--delay':(index*250)+'ms'}">
+            <section class="d-flex bg-animated position-relative vh-75 align-items-center animate-section" :style="{'background-image':'url('+blog.image_bg+')','--delay':(index*250)+'ms'}">
                 <div class="mask-bottom bottom-0 z-index-0 start-0 w-100 position-absolute"></div>
                 <div class="container">
                     <div class="row position-relative z-index-1 align-items-end v-100 justify-content-center">
                         <div class="col-10 col-md-8 col-xl-8 text-center text-dark">
                             <div class="h2 text-white">
-                                <span v-html="blog.title"></span>
-                                <span v-html="blog.sub_title"></span>
+                                <span class="text-white" v-html="blog.title"></span>
+                                <span class="text-white" v-html="blog.sub_title"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             <div class="container mt-n5">
-                <span v-html="blog.content"></span>
+                <div class="card card-body p-5">
+                    <span v-html="blog.content"></span>
+                </div>
             </div>
         </div>
     `
