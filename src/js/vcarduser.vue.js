@@ -1,9 +1,9 @@
-import { Guest } from '../../src/js/guest.module.js?v=2.4.3'   
+import { Guest } from '../../src/js/guest.module.js?v=2.4.4'   
 
 /* vue */
-import { VcardqrViewer } from './vcardqrViewer.vue.js?v=2.4.3'
-import { VcardshareViewer } from './vcardshareViewer.vue.js?v=2.4.3'
-import { VcardsocialViewer } from './vcardsocialiewer.vue.js?v=2.4.3'
+import { VcardqrViewer } from './vcardqrViewer.vue.js?v=2.4.4'
+import { VcardshareViewer } from './vcardshareViewer.vue.js?v=2.4.4'
+import { VcardsocialViewer } from './vcardsocialiewer.vue.js?v=2.4.4'
 
 Vue.createApp({
     components: {

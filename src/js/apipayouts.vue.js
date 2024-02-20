@@ -1,4 +1,4 @@
-import { ApipayoutsViewer } from './apipayoutsViewer.vue.js?v=2.4.3'
+import { ApipayoutsViewer } from './apipayoutsViewer.vue.js?v=2.4.4'
 
 Vue.createApp({
     components : { 

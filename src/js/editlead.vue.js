@@ -1,4 +1,4 @@
-import { EditleadViewer } from '../../src/js/editleadViewer.vue.js?v=2.4.3'
+import { EditleadViewer } from '../../src/js/editleadViewer.vue.js?v=2.4.4'
 
 Vue.createApp({
     components: {

@@ -1,10 +1,10 @@
-import { User } from '../../src/js/user.module.js?v=2.4.3'   
+import { User } from '../../src/js/user.module.js?v=2.4.4'   
 
 /* vue */
-import { StorecreditViewer } from '../../src/js/storecreditViewer.vue.js?v=2.4.3'
-import { StorepaymentmethodsViewer } from '../../src/js/storepaymentmethodsViewer.vue.js?v=2.4.3'
-import { StorecheckoutViewer } from '../../src/js/storecheckoutViewer.vue.js?v=2.4.3'
-import { StoreinvoiceViewer } from '../../src/js/storeinvoiceViewer.vue.js?v=2.4.3'
+import { StorecreditViewer } from '../../src/js/storecreditViewer.vue.js?v=2.4.4'
+import { StorepaymentmethodsViewer } from '../../src/js/storepaymentmethodsViewer.vue.js?v=2.4.4'
+import { StorecheckoutViewer } from '../../src/js/storecheckoutViewer.vue.js?v=2.4.4'
+import { StoreinvoiceViewer } from '../../src/js/storeinvoiceViewer.vue.js?v=2.4.4'
 
 Vue.createApp({
     components: {

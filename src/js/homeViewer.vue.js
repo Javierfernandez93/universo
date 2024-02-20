@@ -1,5 +1,5 @@
-import { Translator } from '../../src/js/translator.module.js?v=2.4.3'   
-import { Guest } from '../../src/js/guest.module.js?v=2.4.3'   
+import { Translator } from '../../src/js/translator.module.js?v=2.4.4'   
+import { Guest } from '../../src/js/guest.module.js?v=2.4.4'   
 
 const HomeViewer = {
     name : 'home-viewer',
@@ -124,7 +124,7 @@ const HomeViewer = {
                         </div>
                         <div class="row g-5 mb-5">
                             <div class="col-12 reveal-item col-md-8">
-                                <div class="card card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/nayal.png);">
+                                <div class="card card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/nayal.png?t=1);">
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
@@ -135,7 +135,7 @@ const HomeViewer = {
                                 </div>
                             </div>
                             <div class="col-12 reveal-item col-md-4">
-                                <div class="card card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/playaClara.png);">
+                                <div class="card card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/playaClara.png?t=1);">
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
@@ -148,7 +148,7 @@ const HomeViewer = {
                         </div>
                         <div class="row g-5">
                             <div class="col-12 reveal-item col-md-4">
-                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/otoch.png);">
+                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/otoch.png?t=1);">
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
@@ -159,7 +159,7 @@ const HomeViewer = {
                                 </div>
                             </div>
                             <div class="col-12 reveal-item col-md-4">
-                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/pandorah.png);">
+                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/pandorah.png?t=1);">
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
@@ -170,7 +170,7 @@ const HomeViewer = {
                                 </div>
                             </div>
                             <div class="col-12 reveal-item col-md-4">
-                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/kelaya.png);">
+                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/kelaya.png?t=1);">
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">

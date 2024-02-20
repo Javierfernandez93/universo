@@ -1,5 +1,5 @@
-import { AboutViewer } from '../../src/js/aboutViewer.vue.js?v=2.4.3'
-import { FooterViewer } from '../../src/js/footerViewer.vue.js?v=2.4.3'
+import { AboutViewer } from '../../src/js/aboutViewer.vue.js?v=2.4.4'
+import { FooterViewer } from '../../src/js/footerViewer.vue.js?v=2.4.4'
 
 Vue.createApp({
     components : { 

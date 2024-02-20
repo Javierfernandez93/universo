@@ -1,4 +1,4 @@
-import { AdminedituserViewer } from '../../src/js/adminedituserViewer.vue.js?v=2.4.3'
+import { AdminedituserViewer } from '../../src/js/adminedituserViewer.vue.js?v=2.4.4'
 
 Vue.createApp({
     components: {

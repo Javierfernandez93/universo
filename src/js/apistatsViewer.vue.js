@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.4.3'   
+import { User } from '../../src/js/user.module.js?v=2.4.4'   
 
 const ApistatsViewer = {
     name : 'apistats-viewer',
