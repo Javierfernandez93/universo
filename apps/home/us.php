@@ -10,6 +10,7 @@ $Layout->init(JFStudio\Router::getName($route),'us',"us",'',TO_ROOT.'/');
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
 	'us.css',
+	'us.vue.js'
 ]);
 
 $Layout->setVar([
