@@ -70,6 +70,7 @@
                 <li><a href="../../apps/home" class="nav-link px-3 link-success">INICIO</a></li>
                 <li><a href="../../apps/realState" class="nav-link px-3">DESARROLLOS</a></li>
                 <li><a href="../../apps/blog" class="nav-link px-3">BLOG</a></li>
+                <li><a href="../../apps/home/us" class="nav-link px-3">NOSOTROS</a></li>
                 <li><a href="../../apps/home/about" class="nav-link px-3">SOMOS</a></li>
             </ul>
 
