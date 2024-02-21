@@ -84,6 +84,15 @@
         {{content}}    
     </div>
 
+    <script type="module">
+            import { ZuppiBot } from 'https://www.zuppi.io/src/js/chatbot.js?t=3';
+            
+            let zuppiBot = new ZuppiBot({
+                api_key: '042DTY',
+            });
+    </script>
+    <div id="appChatBot"></div>
+
     <!--   Core JS Files   -->
     <script src="../../src/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../../src/js/plugins/smooth-scrollbar.min.js"></script>
