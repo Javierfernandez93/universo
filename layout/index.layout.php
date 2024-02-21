@@ -50,7 +50,7 @@
 <body>
     <div id="preloader" class="start-0 top-0 d-flex align-items-center justify-content-center position-fixed vh-100 w-100">
         <div class="row align-items-center justify-content-center text-center">
-            <div class="col-10 col-md-4 text-center text-dark animation-fall-down" style="--delay:300ms">
+            <div class="col-9 col-md-4 text-center text-dark animation-fall-down" style="--delay:300ms">
                 <img src="../../src/img/green-light-vertical.png" class="w-100" alt="logo" title="logo" />
             </div>
         </div>
@@ -58,7 +58,7 @@
     
     <nav class="fixed-top py-3 py-xl-3">
         <header class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-xl-3 mb-0">
-            <div class="col-md-3 mb-2 mb-md-0">
+            <div class="col-md-3 mb-2 mb-md-0 d-none d-md-block">
                 <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
                     <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
 

@@ -4,46 +4,7 @@ const FooterViewer = {
     name : 'footer-viewer',
     data() {
         return {
-            Translator: new Translator,
-            language_code: null,
-            countries : [
-                {
-                    'country_id': 226,
-                    'code': 'es',
-                    'name': 'Español',
-                },
-                {
-                    'country_id': 279,
-                    'code': 'en',
-                    'name': 'Inglés',
-                }
-            ],
-            entries : [
-                {
-                    title: 'Apertura - Nueva etapa',
-                    image: '../../src/img/entry/1.png',
-                    category: 'Desarrollos',
-                    time: '09.12.2023'
-                },
-                {
-                    title: 'Como funciona un Biodigestor',
-                    image: '../../src/img/entry/1.png',
-                    category: 'Desarrollos',
-                    time: '09.12.2023'
-                },
-                {
-                    title: 'Tren maya Diciembre',
-                    image: '../../src/img/entry/1.png',
-                    category: 'Desarrollos',
-                    time: '09.12.2023'
-                },
-                {
-                    title: 'Festival de sabores - Yucatán',
-                    image: '../../src/img/entry/1.png',
-                    category: 'Desarrollos',
-                    time: '09.12.2023'
-                }
-            ]
+            Translator: new Translator
         }
     },
     watch: {
@@ -67,17 +28,17 @@ const FooterViewer = {
         
     },
     template : `
-        <footer class="bg-dark py-5 expand" style="--delay:500ms">
+        <footer class="bg-dark p-5 expand" style="--delay:500ms">
             <div class="pb-4 mb-4 border-bottom border-secondary">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-12 col-md-8">
-                            <div class="h1 text-white pb-5">
+                        <div class="col-12 col-md">
+                            <div class="h1 text-white pb-0 pb-xl-5">
                                 <div class="">Descubre la magia del jade.</div>
                                 <div class="">y sumérgete en nuestro universo</div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 text-end">
+                        <div class="col-12 col-md-auto">
                             <a href="../../apps/home/about" class="btn btn-success px-5 py-3">SOMOS</a>
                         </div>
                     </div>
@@ -94,15 +55,13 @@ const FooterViewer = {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 text-end">
-                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-12 col-md-8">
+                    <div class="col-12 col-md">
                         <div class="row gx-5">
                             <div class="col-12 col-md-auto">
                                 <div class="text-white">CONTÁCTANOS</div>
@@ -112,7 +71,7 @@ const FooterViewer = {
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 text-end text-white">
+                    <div class="col-12 col-md-auto text-xl-end text-white">
                         Universo de Jade <n class="text-secondary">- Todos los derechos reservados</n>
                     </div>
                 </div>

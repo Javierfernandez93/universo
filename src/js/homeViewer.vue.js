@@ -102,7 +102,7 @@ const HomeViewer = {
                         </div>
                     </div>
                     <div class="col-12 col-md-5">
-                        <div class="card card-body bg-dark bg-repeat-circles p-0 p-md-5 card-jade">
+                        <div class="card card-body bg-dark bg-repeat-circles card-jade">
                             <div class="d-flex h-100 justify-content-center align-items-center">
                                 <div class="row w-1000">
                                     <div class="col-12">
@@ -187,7 +187,7 @@ const HomeViewer = {
         </div>
         <section class="bg-dark expand py-5" style="--delay:500ms">
             <div class="container py-5">
-                <div class="row align-items-center justify-content-center w-100">
+                <div class="row align-items-center justify-content-center w-100 mx-0">
                     <div class="col-12 col-md-7 mb-3 mb-md-0">
 
                         <div class="pb-5">
