@@ -1,5 +1,5 @@
 /* vue */ 
-import { ZuumsignupViewer } from '../../src/js/ZuumsignupViewer.vue.js?v=2.4.5'
+import { ZuumsignupViewer } from '../../src/js/ZuumsignupViewer.vue.js?v=2.4.6'
 
 Vue.createApp({
     components : { 

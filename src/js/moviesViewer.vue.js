@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.4.5'   
+import { User } from '../../src/js/user.module.js?v=2.4.6'   
 
 const MoviesViewer = {
     name : 'movies-viewer',
