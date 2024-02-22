@@ -69,3 +69,7 @@ video {
 .carousel-sponsors .carousel-inner {
     height: auto !important;
 }
+
+.rounded-6 {
+    border-radius: 3rem !important;
+}
