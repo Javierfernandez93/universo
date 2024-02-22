@@ -1,4 +1,4 @@
-import { EditpropertyViewer } from '../../src/js/editpropertyViewer.vue.js?v=2.4.4'
+import { EditpropertyViewer } from '../../src/js/editpropertyViewer.vue.js?v=2.4.5'
 
 Vue.createApp({
     components : { 

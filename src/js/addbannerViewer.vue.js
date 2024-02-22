@@ -1,4 +1,4 @@
-import { UserSupport } from './userSupport.module.js?v=2.4.4'   
+import { UserSupport } from './userSupport.module.js?v=2.4.5'   
 
 const AddbannerViewer = {
     data() {

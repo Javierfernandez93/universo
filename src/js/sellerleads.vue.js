@@ -1,6 +1,6 @@
-import { SellerleadsViewer } from '../../src/js/sellerleadsViewer.vue.js?v=2.4.4'
-import { SellerleadsaddViewer } from '../../src/js/sellerleadsaddViewer.vue.js?v=2.4.4'
-import { SellerleadseditViewer } from '../../src/js/sellerleadseditViewer.vue.js?v=2.4.4'
+import { SellerleadsViewer } from '../../src/js/sellerleadsViewer.vue.js?v=2.4.5'
+import { SellerleadsaddViewer } from '../../src/js/sellerleadsaddViewer.vue.js?v=2.4.5'
+import { SellerleadseditViewer } from '../../src/js/sellerleadseditViewer.vue.js?v=2.4.5'
 
 Vue.createApp({
     components : { 

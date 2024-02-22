@@ -1,5 +1,5 @@
-import { Translator } from '../../src/js/translator.module.js?v=2.4.4'   
-import { Guest } from '../../src/js/guest.module.js?v=2.4.4'   
+import { Translator } from '../../src/js/translator.module.js?v=2.4.5'   
+import { Guest } from '../../src/js/guest.module.js?v=2.4.5'   
 
 const HomeViewer = {
     name : 'home-viewer',
@@ -366,35 +366,317 @@ const HomeViewer = {
         <section class="bg-repeat py-5 expand" style="--delay:500ms">
             <div class="container">
                 <div class="row justify-content-center py-5">
-                    <div class="col-12">
+                    <div class="col-11 col-md-12">
                         <div class="py-5">
                             <div class="h1 mb-n1 text-white"><strong class="text-success">Testimonios</strong> de</div>
                             <div class="h1 text-white">nuestros Clientes / Asesores</div>
                         </div>
                     </div>
                 </div>
-                <div class="container bg-dark">
+                <div class="">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="row carousel-container align-items-center justify-content-center">
-                                    <div class="col-10 col-md-6">   
-                                        <div class="d-flex justify-content-center mb-5">
-                                            <div class="avatar avatar-xl">
-                                                <img src="../../src/img/testimonial-1.png" class="avatar border-3 border border-white avatar-xl rounded-circle"/>
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-md-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/1.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">Silvana Julio / Laredo Texas</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">Fueron muy atentos al recogernos en el lugar en el que nos encontrábamos. Y durante el camino me pareció interesante que nos ibas explicando detalles de las zonas en las que íbamos pasando. Además, de dar información de Mérida en general. Llegando al lugar, la explicación fue clara abordando los beneficios de la zona. Siempre muy atentos y amables al llevarnos a la notaría y esperarnos y al final acompañarnos al lugar en dónde nos íbamos a quedar. Muchas gracias</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">1:27 PM - Feb 17</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="lead text-white lead-xl text-center">“Gene y yo de Reno NV queremos agradecer a Bridge Makers por mostrarnos nuestras propiedades y explicarnos también sobre las comunidades circundantes. Tuvimos un día muy agradable y apreciamos su profesionalismo su y disposición genuina.
-                                        PD.Gracias”</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row carousel-container align-items-center justify-content-center">
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-sm-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/2.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">Jocelyn Lopez / Estado de México</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">Hacer este viaje fue una gran experiencia estuvo lleno de aprendizaje y Diversion, Esperamos pronto volvamos a Repetir esta agradable aventura</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">2:23 PM - Feb 16</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row carousel-container align-items-center justify-content-center">
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-sm-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/3.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">Luis Martín Tomas / Guadalajara</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">Una gran experiencia. La explicación de los avances y planes a futuro fue muy detallada, además de un trato muy amable y atento por parte del equipo ZUKUM. La atención fue muy personalizada.</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">2:23 PM - Feb 10</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row carousel-container align-items-center justify-content-center">
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-sm-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/4.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">Gene / Reno Nevada</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">Would like to thank with Bridge Makers for showing us our properties and explaining to us as well about the surrounding communities.We had a very nice day and appreciate her professionalism yet her genuine disposition.</p>
+                                                                    <p>PS.Thank you</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">2:23 PM - Feb 8</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row carousel-container align-items-center justify-content-center">
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-sm-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/5.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">Jack Reader / Reno Nevada</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">Tawnya and I would like to thank with Bridge Makers for showing us our properties and explaining to us as well about the surrounding com-munities.We had a very nice day and appreciate her professionalism yet her genuine disposition.</p>
+                                                                    <p>PS.Thank you</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">2:23 PM - Feb 7</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row carousel-container align-items-center justify-content-center">
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-sm-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/6.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">Jose Antonio Pensamiento / CDMX</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">Ir a conocer el proyecto en persona fue genial! Una cosa es tener un contrato con obligaciones y promesas y dar dinero cada mes para pagar un terreno que nunca has visto, y otra muy diferente verlo en persona.
+                                                                    Enciende la pasión y te anima a seguir adelante. Además de que el recorrido fue muy bonito. Ver la semilla e imaginar el enorme árbol en el que se convertirá es increíble. Gracias por todo!</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">2:23 PM - Feb 5</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row carousel-container align-items-center justify-content-center">
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-sm-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/7.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">Tony y Paola</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">Hermosa experiencia en Yucatán donde recibimos la mejor atención, informacion y sugerencias de nuestros guias en el recorrido de nuestra inversión en Nayal y Playa Clara.
+                                                                    Podimos entender mas afondo los beneficios que se obtentrian de nuestra inversión. Nos quedamos satisfechos y con anticipación de ver florecer nuestra Aventura en Yucatán. Este hermos estado nos dio una Aventura sin igual donde podimos experimentar lo calido del Mar en Puerto Progresso, Las piramides de Chichen Itza, disfrutar de la hermosa cuidad de Merida y ver de primera mano la hermosura de los cenotes! Todo al alcanze de Nayal y Playa Clara! Gracias especiales a Daysi que nos hizo sentir bienvenidos a todo momento y nuestras asesoras Olga y Ofelia de Bridge Makers Reno, NV</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">2:23 PM - Feb 28</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row carousel-container align-items-center justify-content-center">
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-sm-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/8.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">César David Ávila</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">Yo fui a visitar en el mes de septiembre soy de Guanajuato
+                                                                    La explicacion de el recorrido fue muy clara el recorrido estuvo muy bien y Yucatán es muy bonito les recomiendo mucho visitar esta muy bonito.</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">2:23 PM - Feb 25</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row carousel-container align-items-center justify-content-center">
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-sm-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/9.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">Luis Díaz Carbajal / CDMX</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">¡Buen día! en lo referente a mi experiencia en Yucatán le puedo decir que fue una hermosa visión de futuro ya que como capitalismo ver un lugar tan hermoso y saber que pronto podré hacerlo mío, y gracias a su compromiso, guía y supervisión pude disfrutar de mi viaje a ese hermoso lugar de lo cual les estoy muy agradecido espero en algún momento volverlos a contactar gracias y repito buen dia</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">3:44 PM - Feb 15</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row carousel-container align-items-center justify-content-center">
+                                    <div class="col-11">   
+                                        <div class="row justify-content-end">   
+                                            <div class="col-12 col-md-10 position-relative">   
+                                                <div class="position-absolute avatar-floating z-index-1 d-none d-sm-block">
+                                                    <div class="avatar avatar-xxl">
+                                                        <img src="../../src/img/testimonials/10.png" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
+                                                    <div class="row justify-content-end align-items-center">
+                                                        <div class="col-12 col-md-11">
+                                                            <div class="text-center">
+                                                                <h3 class="text-success mb-3">Hiram García / Veracruz</h3>
+                                                                <div class="mb-5 text-white">
+                                                                    <p class="lead">Tuve una visita muy grata a los dos Proyectos, a "NAYAL" y a "PLAYA CLARA", ya que se disiparon muchas dudas de su ubicación y de su plusvalía, confirmando que es buena oportunidad de inversión y que el crecimiento de la zona es hacía esos lugares, dejándome un buen sabor de boca para mis inversiónes</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="text-white">12:47 PM - Ene 12</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <button class="carousel-control-prev w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <button class="carousel-control-next w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
