@@ -571,6 +571,15 @@ const HomeViewer = {
                                                         <img :src="testimonial.image" class="avatar border-6 avatar-floating border border-white rounded-circle"/>
                                                     </div>
                                                 </div>
+                                                <div class="d-none d-sm-block d-md-none mb-n5 position-relative z-index-1">
+                                                    <div class="d-flex justify-content-center">
+                                                        <div class="col-auto">
+                                                            <div class="avatar avatar-xl">
+                                                                <img :src="testimonial.image" class="avatar avatar-xl border border-white boder-5 rounded-circle"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="card card-body bg-dark-image bg-transparent rounded shadow-lg p-5">   
                                                     <div class="row justify-content-end align-items-center">
                                                         <div class="col-12 col-md-11">
