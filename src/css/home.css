@@ -2,6 +2,10 @@ html,
 body {
     overflow-x: hidden;
 }
+.bg-dark-translucid-x {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
 .bg-dark-translucid {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -40,6 +44,11 @@ video {
     background-size: cover;
     background-position: center;
 }
+.bg-sponsor {
+    background-image: url(../../src/img/sponsors/bg.png);
+    background-size: cover;
+    background-position: center;
+}
 
 @media (max-width: 680px) {
     .carousel-item .lead
@@ -50,4 +59,13 @@ video {
         height: auto !important;
 
     }
+}
+
+.carousel-sponsors .lead {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+}
+.carousel-sponsors .carousel-container,
+.carousel-sponsors .carousel-inner {
+    height: auto !important;
 }
