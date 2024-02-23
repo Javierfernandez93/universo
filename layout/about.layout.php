@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="../../src/css/general.css" />
 </head>
 
-<body class="bg-white">
+<body class="">
     <nav class="sticky py-3 py-xl-5">
         <header class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-xl-3 mb-0">
             <div class="col-md-3 mb-2 mb-md-0">
@@ -57,11 +57,11 @@
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="../../apps/home" class="nav-link text-dark px-3 <?php if($route == JFStudio\Router::Home) {?>text-success<?php } ?>">INICIO</a></li>
-                <li><a href="../../apps/realState" class="nav-link text-dark px-3 <?php if($route == JFStudio\Router::RealState) {?>text-success<?php } ?>">DESARROLLOS</a></li>
-                <li><a href="../../apps/blog" class="nav-link text-dark px-3 <?php if($route == JFStudio\Router::BLOG) {?>text-success<?php } ?>">BLOG</a></li>
-                <li><a href="../../apps/home/us" class="nav-link text-dark px-3 <?php if($route == JFStudio\Router::Us) {?>text-success<?php } ?>">NOSOTROS</a></li>
-                <li><a href="../../apps/home/about" class="nav-link text-dark px-3 <?php if($route == JFStudio\Router::About) {?>text-success<?php } ?>">SOMOS</a></li>
+                <li><a href="../../apps/home" class="nav-link text-white px-3 <?php if($route == JFStudio\Router::Home) {?>text-success<?php } ?>">INICIO</a></li>
+                <li><a href="../../apps/realState" class="nav-link text-white px-3 <?php if($route == JFStudio\Router::RealState) {?>text-success<?php } ?>">DESARROLLOS</a></li>
+                <li><a href="../../apps/blog" class="nav-link text-white px-3 <?php if($route == JFStudio\Router::BLOG) {?>text-success<?php } ?>">BLOG</a></li>
+                <li><a href="../../apps/home/us" class="nav-link text-white px-3 <?php if($route == JFStudio\Router::Us) {?>text-success<?php } ?>">NOSOTROS</a></li>
+                <li><a href="../../apps/home/about" class="nav-link text-white px-3 <?php if($route == JFStudio\Router::About) {?>text-success<?php } ?>">SOMOS</a></li>
             </ul>
 
 
@@ -85,16 +85,6 @@
     <script src="../../src/js/alertCtrl.js?v=2.4.6" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.5.1.min.js" type="text/javascript"></script>
     <script src="../../src/js/general.js?v=2.4.6" type="text/javascript"></script>
-
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
 
     <!-- Github buttons -->
 
