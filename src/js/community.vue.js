@@ -1,5 +1,5 @@
-import { CommunityViewer } from '../../src/js/communityViewer.vue.js?v=2.4.6.1'
-import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=2.4.6.1'
+import { CommunityViewer } from '../../src/js/communityViewer.vue.js?v=2.4.6.2'
+import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=2.4.6.2'
 
 Vue.createApp({
     components: {
