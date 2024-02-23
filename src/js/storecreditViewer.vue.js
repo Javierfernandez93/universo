@@ -1,5 +1,5 @@
 
-import { User } from '../../src/js/user.module.js?v=2.4.6'   
+import { User } from '../../src/js/user.module.js?v=2.4.6.1'   
 
 const StorecreditViewer = {
     name : 'storecredit-viewer',

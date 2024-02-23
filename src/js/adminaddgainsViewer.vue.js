@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.4.6'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=2.4.6.1'
 
 const AdminaddgainsViewer = {
     name : 'adminaddgains-viewer',
