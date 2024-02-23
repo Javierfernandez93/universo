@@ -18,7 +18,7 @@
 
             <div class="col-12 col-md animation-fall-down text-white" style="--delay:600ms">
 
-                <h3 class="text-white">Estimado Cliente: </h3>
+                <h3 class="text-white">Querida comunidad Jade: </h3>
 
                 <div class="my-5">
                     <p class="lead">En nombre de todo el equipo UNIVERSO DE JADE, queremos  expresar nuestro mas sincero agradecimiento por habernos elegido, queremos felicitarte, ya que desde este momento formas parte de nuestra familia </p>
