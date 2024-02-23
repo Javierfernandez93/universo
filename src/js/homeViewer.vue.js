@@ -57,14 +57,14 @@ const HomeViewer = {
                     time: '2:23 PM - Feb 5'
                 },
                 {
-                    name: 'Tony y Paola',
+                    name: 'Tony y Paola / Reno Nevada',
                     image : '../../src/img/testimonials/7.png',
                     text : `<p class="lead">Hermosa experiencia en Yucatán donde recibimos la mejor atención, informacion y sugerencias de nuestros guias en el recorrido de nuestra inversión en Nayal y Playa Clara.
                     Podimos entender mas afondo los beneficios que se obtentrian de nuestra inversión. Nos quedamos satisfechos y con anticipación de ver florecer nuestra Aventura en Yucatán. Este hermos estado nos dio una Aventura sin igual donde podimos experimentar lo calido del Mar en Puerto Progresso, Las piramides de Chichen Itza, disfrutar de la hermosa cuidad de Merida y ver de primera mano la hermosura de los cenotes! Todo al alcanze de Nayal y Playa Clara! Gracias especiales a Daysi que nos hizo sentir bienvenidos a todo momento y nuestras asesoras Olga y Ofelia de Bridge Makers Reno, NV</p>`,
                     time: '2:23 PM - Feb 28'
                 },
                 {
-                    name: 'César David Ávila',
+                    name: 'César David Ávila / Guanajuato',
                     image : '../../src/img/testimonials/8.png',
                     text : `<p class="lead">Yo fui a visitar en el mes de septiembre soy de Guanajuato
                     La explicacion de el recorrido fue muy clara el recorrido estuvo muy bien y Yucatán es muy bonito les recomiendo mucho visitar esta muy bonito.</p>`,
