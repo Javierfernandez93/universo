@@ -53,7 +53,7 @@ const ApiitemsViewer = {
         },
         getHtmlPlugin(url,encode) {
             const html = `
-                <a href="${url}" target="_blank"><img src="https://www.Sitegroup.io/src/img/buy-now.svg" alt="Site Quick payments" style="width:10rem;"></a>
+                <a href="${url}" target="_blank"><img src="https://www.universodejade.com/src/img/buy-now.svg" alt="Site Quick payments" style="width:10rem;"></a>
             `
             return encode ? html.replace(/</g, "&lt;").replace(/>/g, "&gt;") : html
         },
@@ -114,7 +114,7 @@ const ApiitemsViewer = {
                                                 </div>
                                             </div>
                                             <div class="col-12 col-xl-2">
-                                                <a href="`+item.short_url.url+`" target="_blank"><img src="https://www.Sitegroup.io/src/img/buy-now.svg" alt="Site Quick payments" style="width:10rem;"></a>
+                                                <a href="`+item.short_url.url+`" target="_blank"><img src="https://www.universodejade.com/src/img/buy-now.svg" alt="Site Quick payments" style="width:10rem;"></a>
                                             </div>
                                         </div>
                                     </li>

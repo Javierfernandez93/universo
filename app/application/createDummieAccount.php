@@ -89,7 +89,7 @@ function createTransactionAirtm(Site\BuyPerUser $BuyPerUser = null,Site\UserLogi
 		'email' => JFStudio\Airtm::CUSTOMER_EMAIL,
 		'unix_time' => time(),
 		// 'checkout_url' => "http://localhost:8888/Site/apps/airtm/process".$UserLogin->getPidQuery()."&txn_id={$BuyPerUser->invoice_id}"
-		'checkout_url' => "https://www.Sitegroup.io/apps/airtm/process".$UserLogin->getPidQuery()."&txn_id={$BuyPerUser->invoice_id}"
+		'checkout_url' => "https://www.universodejade.com/apps/airtm/process".$UserLogin->getPidQuery()."&txn_id={$BuyPerUser->invoice_id}"
 	];
 }
 
@@ -120,7 +120,7 @@ function createTransactionFromCoinPayments(Site\BuyPerUser $BuyPerUser = null,Si
 			'custom' => $BuyPerUser->invoice_id,
 			'item_number' => $BuyPerUser->invoice_id,
 			'address' => '', // leave blank send to follow your settings on the Coin Settings page
-			'ipn_url' => 'https://www.Sitegroup.io/app/cronjob/ipn_coinpayments.php',
+			'ipn_url' => 'https://www.universodejade.com/app/cronjob/ipn_coinpayments.php',
 		];
 						
 		$result = $CoinpaymentsAPI->CreateCustomTransaction($req);

@@ -13,7 +13,7 @@ if(true)
     [
       'ID' => '1',
       'User ID' => 'SiteGroup',
-      'Email' => 'financial@Sitegroup.io.co',
+      'Email' => 'financial@universodejade.com.co',
       'Name' => 'Site Group',
       'Phone' => '(+34) 604104435',
       'Country' => 'Colombia',
@@ -23,7 +23,7 @@ if(true)
     [
       'ID' => '2',
       'User ID' => 'SiteGroup2',
-      'Email' => 'financial2@Sitegroup.io.co',
+      'Email' => 'financial2@universodejade.com.co',
       'Name' => 'Site Group',
       'Phone' => '(+34) 604104435',
       'Country' => 'Colombia',
@@ -33,7 +33,7 @@ if(true)
     [
       'ID' => '3',
       'User ID' => 'SiteGroup3',
-      'Email' => 'financial3@Sitegroup.io.co',
+      'Email' => 'financial3@universodejade.com.co',
       'Name' => 'Site Group',
       'Phone' => '(+34) 604104435',
       'Country' => 'Colombia',

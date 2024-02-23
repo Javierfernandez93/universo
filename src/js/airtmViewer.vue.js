@@ -71,7 +71,7 @@ const AirtmViewer = {
                         </div>
 
                         <div class="alert alert-light text-center fw-semibold">
-                            <strong>¿Quieres saber como realizar el pago?</strong> ve el tutorial de como realizar el pago <a class="text-decoration-underline text-primary" href="https://www.Sitegroup.io/apps/ticket/?fid=10" target="_blank">aquí</a>
+                            <strong>¿Quieres saber como realizar el pago?</strong> ve el tutorial de como realizar el pago <a class="text-decoration-underline text-primary" href="https://www.universodejade.com/apps/ticket/?fid=10" target="_blank">aquí</a>
                         </div>
                     </div>
                 </div>

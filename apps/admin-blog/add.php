@@ -8,7 +8,7 @@ if($UserSupport->logged === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-if($UserSupport->hasPermission('add_notice') === false) {
+if($UserSupport->hasPermission('add_blog') === false) {
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }
 

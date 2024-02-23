@@ -57,7 +57,7 @@ function sendEmail(array $data = null) : bool
             $mail->Port = $CatalogMailController->port; 
 
             //Recipients
-            $mail->setFrom('support@Sitegroup.io', 'Site Support');
+            $mail->setFrom('support@universodejade.com', 'Site Support');
             $mail->addAddress('javier.fernandez.pa93@gmail.com', 'BridgeFunds');     
 
             //Content

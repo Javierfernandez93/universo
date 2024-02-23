@@ -104,16 +104,6 @@
     <script src="../../src/js/jquery-3.5.1.min.js" type="text/javascript"></script>
     <script src="../../src/js/general.js?v=2.4.6" type="text/javascript"></script>
 
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-
     <!-- Github buttons -->
 
     <script async defer src="../../src/js/buttons.js"></script>

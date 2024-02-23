@@ -1,1 +1,1 @@
-const MAIN_PATH = 'https://www.Sitegroup.io/'
+const MAIN_PATH = 'https://www.universodejade.com/'

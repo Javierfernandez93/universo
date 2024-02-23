@@ -43,7 +43,7 @@
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main" data-color="danger">
         <div class="sidenav-header text-center">
             <i class="fas fa-times p-4 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand text-primary pb-3 mb-3 text.center" href=" https://Sitegroup.io" target="_blank">
+            <a class="navbar-brand text-primary pb-3 mb-3 text.center" href="https://www.universodejade.com" target="_blank">
                 <img src="../../src/img/logo-single-dark.svg" alt="logo" class="h-100"/>
             </a>
         </div>
@@ -292,6 +292,30 @@
                         </ul>
                     </ul>
                 <?php } ?>
+                <?php if ($UserSupport->hasPermission('list_blog')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#blog" class="nav-link <?php if (in_array($route, [JFStudio\Router::BLOG,JFStudio\Router::AdminNoticesAdd])) { ?>active<?php } ?>" aria-controls="blog" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-newspaper"></i></span>
+                            <span class="nav-link-text ms-1">Blog</span>
+                        </a>
+                        <div class="collapse" id="blog">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-blog">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="../../apps/admin-blog/add">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Añadir </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
 
 
                 <?php if ($UserSupport->hasPermission('list_commissions')) { ?>
@@ -483,7 +507,7 @@
                                 document.write(new Date().getFullYear())
                             </script>,
                             made with <i class="bi bi-heart"></i> by
-                            <a href="https://www.Sitegroup.io/" class="font-weight-bold" target="_blank">Site - admin site</a>
+                            <a href="https://www.universodejade.com/" class="font-weight-bold" target="_blank">Site - admin site</a>
                             for a better web.
                         </div>
                     </div>

@@ -13,10 +13,10 @@ use BlockChain\Wallet;
 
 class ShortUrl extends Orm {
 	protected $tblName = 'short_url';
-	const SHORT_LINK_URL = "Sitegroup.io";
+	const SHORT_LINK_URL = "universodejade.com";
 	const CODE_LENGHT = 7;
 	const DEFAULT_TITLE = 'Short Link';
-	const DEFAULT_SOURCE = 'Sitegroup.io';
+	const DEFAULT_SOURCE = 'universodejade.com';
 	const DEFAULT_DELAY_TIME = 5;
 	const DEFAULT_MEDIUM = 'página';	
 	const GHOST = 0; // NONTRACKING

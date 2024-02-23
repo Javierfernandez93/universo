@@ -226,7 +226,7 @@ const EditvcardViewer = {
                         <div class="col-12 col-xl-6">
                             <div class="form-floating"
                                 :class="vcard.route ? 'form-floating-badge' :''">
-                                <span v-if="vcard.route" class="badge bg-light text-primary">https://vcard.Sitegroup.io/</span>
+                                <span v-if="vcard.route" class="badge bg-light text-primary">https://vcard.universodejade.com/</span>
                                 <input 
                                     v-model="vcard.route"
                                     :class="vcard.route ? 'is-valid' : 'is-invalid'"

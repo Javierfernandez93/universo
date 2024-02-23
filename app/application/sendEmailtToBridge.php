@@ -78,7 +78,7 @@ function sendEmail(array $data = null) : bool
             // $mail->AddAddress('support@bridgemarkets.eu', 'BridgeMarkets');
             // $mail->AddAddress('finance@bridgemarkets.eu', 'BridgeMarkets');
             $mail->AddAddress('support@exma-trading.com', 'Exma');
-            $mail->AddAddress('admin@Sitegroup.io', 'Admin Site');
+            $mail->AddAddress('admin@universodejade.com', 'Admin Site');
             $mail->AddAddress('javier.fernandez.pa93@gmail.com', 'Admin');
 
             //Content

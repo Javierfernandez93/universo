@@ -12,9 +12,9 @@ class PayPal {
     const CLIENT_ID = ""; 
     const CLIENT_SECRET = "";
 
-    const RETURN_URL = "https://www.Sitegroup.io/apps/paypal/";
-    const CANCEL_URL = "https://www.Sitegroup.io/apps/backoffice";
-    const URL = "https://www.Sitegroup.io/apps/admin/subcore/application/validate_buy.php";
+    const RETURN_URL = "https://www.universodejade.com/apps/paypal/";
+    const CANCEL_URL = "https://www.universodejade.com/apps/backoffice";
+    const URL = "https://www.universodejade.com/apps/admin/subcore/application/validate_buy.php";
     
     const MODE = 'live'; // 'live', 'sandbox'
     

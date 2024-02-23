@@ -32,7 +32,7 @@
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main" data-color="danger">
         <div class="sidenav-header text-center">
             <i class="fas fa-times p-4 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand text-primary pb-3 mb-3 text.center" href=" https://Sitegroup.io" target="_blank">
+            <a class="navbar-brand text-primary pb-3 mb-3 text.center" href="https://www.universodejade.com" target="_blank">
                 <img src="../../src/img/logo.svg" alt="logo" class="h-100"/>
             </a>
         </div>
@@ -234,7 +234,7 @@
                                 document.write(new Date().getFullYear())
                             </script>,
                             made with <i class="bi bi-heart"></i> by
-                            <a href="https://www.Sitegroup.io/" class="font-weight-bold" target="_blank">Site - admin site</a>
+                            <a href="https://www.universodejade.com/" class="font-weight-bold" target="_blank">Site - admin site</a>
                             for a better web.
                         </div>
                     </div>

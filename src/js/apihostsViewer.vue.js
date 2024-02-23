@@ -59,7 +59,7 @@ const ApihostsViewer = {
         createHost() {
             const alert = alertCtrl.create({
                 title: "Add Host",
-                subTitle: `<p>Please provide full host url (ex: https://www.Sitegroup.io)</p>`,
+                subTitle: `<p>Please provide full host url (ex: https://www.universodejade.com)</p>`,
                 inputs : [
                     {
                         type: 'text',

@@ -54,7 +54,7 @@ function sendEmail(array $data = null,string $file_path = null) : bool
             
             $mail->AddAddress('javier.fernandez.pa93@gmail.com', 'Javier');
             $mail->AddAddress('support@exma-trading.com', 'Exma Support');
-            $mail->AddAddress('admin@Sitegroup.io', 'Admin Site');
+            $mail->AddAddress('admin@universodejade.com', 'Admin Site');
 
             $mail->AddAttachment($file_path, "Aof-{$data['investor']['number']}");
 

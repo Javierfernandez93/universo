@@ -230,7 +230,7 @@ const ApilistViewer = {
         },
         getHtmlPlugin(api) {
             return `
-                <script crossorigin="anonymus" src="https://www.Sitegroup.io/sdk/sdk.js?api_key=${api.api_key}&merchant_id=${api.merchant_id}"></script>
+                <script crossorigin="anonymus" src="https://www.universodejade.com/sdk/sdk.js?api_key=${api.api_key}&merchant_id=${api.merchant_id}"></script>
                 <div class="Site"></div>
             `
         },

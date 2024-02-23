@@ -152,7 +152,7 @@ const AdminaddlandingViewer = {
                             <div class="col-12 col-xl">
                                 <div class="form-floating">
                                     <input ref="path" v-model="landing.path" @keydown.enter.exact="$refs.description.focus()" @keydown.space.prevent type="text" class="form-control" id="path" placeholder="Path">
-                                    <label for="path">URL (Sitegroup.iom/{{landing.path}}/LandingUsuario)</label>
+                                    <label for="path">URL (universodejade.comm/{{landing.path}}/LandingUsuario)</label>
                                 </div>
                             </div>
                         </div>

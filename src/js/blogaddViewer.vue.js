@@ -205,6 +205,7 @@ const BlogaddViewer = {
                                         <div class="row justify-content-center w-100">
                                             <div class="col-12">
                                                 <div class="text-muted">
+                                                    <div>Imagen de portada</div>
                                                     <span :class="blog.image ? 'text-white' :'text-dark'" v-text="blog.image ? 'Actualizar imagen' : 'Subir imagen'"></span>
                                                     
                                                     <div class="text-xs">
@@ -224,6 +225,7 @@ const BlogaddViewer = {
                                         <div class="row justify-content-center w-100">
                                             <div class="col-12">
                                                 <div class="text-muted">
+                                                    <div>Imagen de fondo</div>
                                                     <span :class="blog.image_bg ? 'text-white' :'text-dark'" v-text="blog.image_bg ? 'Actualizar imagen' : 'Subir imagen'"></span>
                                                     
                                                     <div class="text-xs">

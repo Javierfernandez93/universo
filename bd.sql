@@ -2,7 +2,7 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: mysql.Sitegroup.io
+-- Host: mysql.universodejade.com
 -- Generation Time: Nov 04, 2023 at 12:32 PM
 -- Server version: 8.0.28-0ubuntu0.20.04.3
 -- PHP Version: 8.1.2-1ubuntu2.14
@@ -1980,7 +1980,7 @@ INSERT INTO `system_var` (`system_var_id`, `catalog_system_var_id`, `name`, `des
 (6, 2, 'social_instagram', 'Instagram', 'URL completa', 'www.instagram.com/', 1663615136, 1),
 (7, 2, 'social_whatsapp', 'WhatsApp', 'Este número de whatsapp se verá para que te contacten (completo)', '+5711111111', 1663615136, 1),
 (9, 3, 'backoffice_background_color_top_behivor', 'Color de fondo en Backoffice (Hex)', '', '#c52791', 1663615136, 1),
-(8, 1, 'company_email', 'Correo de contacto', 'Se mostrará para que te contacten', 'customerservice@Sitegroup.io', 1663615136, 1),
+(8, 1, 'company_email', 'Correo de contacto', 'Se mostrará para que te contacten', 'customerservice@universodejade.com', 1663615136, 1),
 (10, 3, 'backoffice_highlight_color_top_behivor', 'Color de texto en links en Backoffice (Hex)', '', '#ffaeb6', 1663615136, 1),
 (11, 1, 'page_title', 'Título en página', '', 'Site', 1663615136, 1),
 (12, 4, 'api_token', 'Token de Stripe', '', '', 1663615136, 1),
@@ -2293,7 +2293,7 @@ CREATE TABLE `user_login` (
 --
 
 INSERT INTO `user_login` (`user_login_id`, `company_id`, `catalog_campaing_id`, `email`, `password`, `secret`, `signup_date`, `salt`, `last_login_date`, `ip_user_address`, `uuid`, `verified_mail`, `verified`, `update_password`, `status`) VALUES
-(1, 1, 0, 'financial@Sitegroup.io', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '0MrNLlFbT5mHPeiqgKvOxV', 0, 'yJt3I', 1699118363, '201.139.102.30', '0', 1, 0, 0, 1),
+(1, 1, 0, 'financial@universodejade.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '0MrNLlFbT5mHPeiqgKvOxV', 0, 'yJt3I', 1699118363, '201.139.102.30', '0', 1, 0, 0, 1),
 (2, 2, 0, 'javier.fernandez.pa93@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'nZbg6u7lWvtwJIim0EyoUf', 1699075716, 'tuK7Q', 1699126304, '187.189.190.194', '0', 1, 0, 0, 1);
 
 -- --------------------------------------------------------
