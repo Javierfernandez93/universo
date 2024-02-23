@@ -2,13 +2,13 @@ import { Translator } from '../../src/js/translator.module.js?v=2.4.6.2'
 import { Guest } from '../../src/js/guest.module.js?v=2.4.6.2'   
 
 const HomeViewer = {
-    name : 'home-viewer',
     data() {
         return {
             Guest: new Guest,
             Translator: new Translator,
             language_code: null,
             affiliates: null,
+            members: null,
             stats: {
                 experience: 0,
                 real_state: 0,
@@ -229,11 +229,90 @@ const HomeViewer = {
                     this.stats = response.stats
                 }
             })
-        }
+        },
+        getUsersByInternet(internet) {
+            let user = this.members.find((member) => {
+              return member.country.internet == internet;
+            });
+      
+            return user != undefined ? user.total : 0;
+          },
+          getTopCountries() {
+            this.Guest.getTopCountries({}, (response) => {
+              if (response.s == 1) {
+                this.members = response.members;
+                
+                let countries = {}
+        
+                response.members.map((member) => {
+                    countries[member.country.internet] = 'Jade'
+                })
+      
+                this.initMap(countries);
+              } else {
+                this.initMap([]);
+              }
+      
+      
+            });
+          },
+          initMap(_countries) {
+            let _this = this;
+            var countries = {
+              scales: {
+                Jade: "#28A97D",
+              },
+              values: _countries
+            };
+      
+            var map = new jsVectorMap({
+              map: "world",
+              selector: "#map",
+              series: {
+                regions: [
+                  {
+                    attribute: "fill",
+                    scale: countries.scales,
+                    values: countries.values,
+                    legend: {
+                      vertical: true,
+                    },
+                  },
+                ],
+              },
+              regionsSelectable: true,
+              markersSelectable: true,
+              labels: {
+                markers: {
+                  render(marker) {
+                    return marker.name;
+                  },
+                },
+              },
+              onRegionSelected(index, isSelected, selectedRegions) {
+                console.log(index, isSelected, selectedRegions);
+              },
+              onRegionTooltipShow(event, tooltip, index) {
+                let usersTotal = _this.getUsersByInternet(index);
+                console.log(tooltip, index);
+                tooltip
+                  .css({ backgroundColor: "red" })
+                  .text(tooltip.text() + ` territorio Jade`);
+              },
+              onMarkerSelected(code, isSelected, selectedMarkers) {
+                console.log(code, isSelected, selectedMarkers);
+              },
+              onMarkerTooltipShow(event, tooltip, code) {
+                tooltip.text(tooltip.text() + " (Hello World (marker))");
+              },
+            });
+          },
     },
     mounted() 
     {       
         this.testimonials = shuffle(this.testimonialsAux)
+
+        this.getTopCountries();
 
         window.onload = function(){
             setTimeout(()=>{
@@ -569,7 +648,7 @@ const HomeViewer = {
                         <p class="text-white lead">Descubre nuestra presencia global en bienes raíces con un enfoque especial en los cautivadores terrenos de Yucatán.</p>
                     </div>
                     <div class="col-12 col-md-6">
-                        <img src="../../src/img/home/world.png" class="w-100" alt="world" title="world"/>
+                        <div id="map" style="width: 600px; height: 350px"></div>
                     </div>
                 </div>
             </div>

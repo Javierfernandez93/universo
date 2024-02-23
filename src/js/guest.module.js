@@ -10,6 +10,9 @@ class Guest extends Http {
     getConfigVarsStats(data, callback) {
         return this.call('../../app/application/getConfigVarsStats.php', data, callback);
     }
+    getTopCountries(data, callback) {
+        return this.call('../../app/application/getTopCountries.php', data, callback);
+    }
 }
 
 export { Guest }
