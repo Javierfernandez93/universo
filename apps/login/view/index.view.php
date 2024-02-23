@@ -10,8 +10,9 @@
                     <div class="position-relative z-index-1 h-100 align-items-center justify-content-center">
                         <div class="row h-100 d-flex justify-content-center align-items-center">
                             <div class="col-10 col-xl-10">
-                                <h2 style="--delay:899ms" class="animation-fall-down text-white sans">Bienvenido a Jade</h2>
-                                <div style="--delay:1200ms" class="animation-fall-down lead text-white">Ingresa a tu portal</div>
+                                <h2 style="--delay:899ms" class="animation-fall-down mb-n3 text-white sans">Bienvenido a</h2>
+                                <h1 style="--delay:899ms" class="animation-fall-down text-white sans">Universo de Jade</h1>
+                                <div style="--delay:1200ms" class="animation-fall-down lead lead-xxl text-white">Ingresa a tu portal ingresando tus datos</div>
                             </div>
                         </div>
                     </div>
