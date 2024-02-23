@@ -89,6 +89,7 @@
             
             let zuppiBot = new ZuppiBot({
                 api_key: '042DTY',
+                id: '<?php echo session_id();?>',
             });
     </script>
     <div id="appChatBot"></div>
