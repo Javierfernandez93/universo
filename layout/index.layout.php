@@ -67,11 +67,11 @@
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="../../apps/home" class="nav-link px-3 link-success">INICIO</a></li>
-                <li><a href="../../apps/realState" class="nav-link px-3">DESARROLLOS</a></li>
-                <li><a href="../../apps/blog" class="nav-link px-3">BLOG</a></li>
-                <li><a href="../../apps/home/us" class="nav-link px-3">NOSOTROS</a></li>
-                <li><a href="../../apps/home/about" class="nav-link px-3">SOMOS</a></li>
+                <li><a href="../../apps/home" class="nav-link px-2 link-success">INICIO</a></li>
+                <li><a href="../../apps/realState" class="nav-link px-2">DESARROLLOS</a></li>
+                <li><a href="../../apps/blog" class="nav-link px-2">BLOG</a></li>
+                <li><a href="../../apps/home/us" class="nav-link px-2">NOSOTROS</a></li>
+                <li><a href="../../apps/home/about" class="nav-link px-2">SOMOS</a></li>
             </ul>
 
             <div class="col-md-3 text-end">

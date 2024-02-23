@@ -57,10 +57,10 @@
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="../../apps/home" class="nav-link px-3 <?php if($route == JFStudio\Router::Home) {?>text-success<?php } ?>">INICIO</a></li>
-                <li><a href="../../apps/realState" class="nav-link px-3 <?php if($route == JFStudio\Router::RealState) {?>text-success<?php } ?>">DESARROLLOS</a></li>
-                <li><a href="../../apps/blog" class="nav-link px-3 <?php if($route == JFStudio\Router::BLOG) {?>text-success<?php } ?>">BLOG</a></li>
-                <li><a href="../../apps/home/about" class="nav-link px-3 <?php if($route == JFStudio\Router::About) {?>text-success<?php } ?>">SOMOS</a></li>
+                <li><a href="../../apps/home" class="nav-link px-2 <?php if($route == JFStudio\Router::Home) {?>text-success<?php } ?>">INICIO</a></li>
+                <li><a href="../../apps/realState" class="nav-link px-2 <?php if($route == JFStudio\Router::RealState) {?>text-success<?php } ?>">DESARROLLOS</a></li>
+                <li><a href="../../apps/blog" class="nav-link px-2 <?php if($route == JFStudio\Router::BLOG) {?>text-success<?php } ?>">BLOG</a></li>
+                <li><a href="../../apps/home/about" class="nav-link px-2 <?php if($route == JFStudio\Router::About) {?>text-success<?php } ?>">SOMOS</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
