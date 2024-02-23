@@ -237,7 +237,7 @@ const HomeViewer = {
             <div class="mask bg-dark-translucid"></div>
         </section>
 
-        <section class="bg-repeat py-5 animate-section" id="section-2">
+        <section class="py-5 animate-section" id="section-2">
             <div class="container">
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12 col-md-7 mb-3 mb-md-0">
@@ -330,7 +330,8 @@ const HomeViewer = {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
         <section class="bg-dark expand py-5" style="--delay:500ms">
             <div class="container py-5">
                 <div class="row align-items-center justify-content-center w-100 mx-0">
@@ -347,7 +348,7 @@ const HomeViewer = {
             </div>
         </section>
 
-        <section class="bg-repeat py-5 animate-section" id="section-2">
+        <section class="py-5 animate-section" id="section-2">
             <div class="container">
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12">
@@ -550,7 +551,7 @@ const HomeViewer = {
             </div>
         </section>
 
-        <section class="bg-repeat py-5 expand" style="--delay:500ms">
+        <section class="py-5 expand" style="--delay:500ms">
             <div class="container">
                 <div class="row justify-content-center py-5">
                     <div class="col-11 col-md-12">

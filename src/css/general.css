@@ -68,6 +68,17 @@ body {
   background-repeat: repeat-y;
   background-size: contain;
 }
+.bg-repeat-2 {
+  background-image: url(../../src/img/home/repeat-1.png);
+  background-repeat: repeat;
+  background-size: contain;
+}
+.bg-repeat-3 {
+  background-image: url(../../src/img/home/repeat-3.png);
+  background-repeat: repeat;
+  background-size: contain;
+}
+
 .bg-repeat-circles {
   background-image: url(../../src/img/home/pattern-circles.png);
   background-repeat: repeat-y;
