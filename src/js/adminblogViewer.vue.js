@@ -120,17 +120,6 @@ const AdminblogViewer = {
                                             <u class="text-sm ms-2">Título</u>
                                         </th>
                                         <th 
-                                            @click="sortData(columns.notice)"
-                                            class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.notice.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">Tipo</u>
-                                        </th>
-                                        <th 
                                             @click="sortData(columns.create_date)"
                                             class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
                                             <span v-if="columns.create_date">
@@ -162,13 +151,6 @@ const AdminblogViewer = {
                                                     </h6>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span 
-                                                :class="entry.catalog_blog_id == 1 ? 'bg-primary' : 'bg-success'"
-                                                class="badge badge-sm ">
-                                                {{entry.entrie}}
-                                            </span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="text-xs text-dark mb-0">{{entry.create_date.formatDate()}}</span>
