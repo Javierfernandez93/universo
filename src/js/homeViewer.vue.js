@@ -358,47 +358,47 @@ const HomeViewer = {
                         </div>
                         <div class="card card-body px-5 bg-dark text-center text-white">
                             <div class="row align-items-center border-bottom">
-                                <div class="col-6 col-md-3">
+                                <div class="col-6 col-xl-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div class="display-2 sans fw-bold">{{stats.experience}}</div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-6 col-xl-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div class="display-2 sans fw-bold">{{stats.real_state}}</div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-6 col-xl-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div class="display-2 sans fw-bold">{{stats.sales}}</div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-6 col-xl-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div class="display-2 sans fw-bold">{{stats.families}}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row align-items-center">
-                                <div class="col-6 col-md-3">
+                                <div class="col-6 col-xl-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div>Años de</div>
                                         <div>experiencia</div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-6 col-xl-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div>Desarrollos</div> 
                                         <div>Inmobiliarios</div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-6 col-xl-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div>Terrenos</div> 
                                         <div>Vendidos</div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-3">
+                                <div class="col-6 col-xl-3">
                                     <div class="card card-body bg-transparent p-0 p-md-5">
                                         <div>Familias</div>
                                     </div>
