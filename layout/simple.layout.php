@@ -70,7 +70,7 @@
         </header>
     </nav>
 
-    <div class="bg-repeat">
+    <div>
         {{content}}    
     </div>
 

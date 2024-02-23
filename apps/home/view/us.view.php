@@ -1,15 +1,15 @@
-<div class="" id="app">
+<div class="bg-repeat-2" id="app">
     <div class="container py-5">
         <div class="row align-items-center justify-content-center text-center">
             <div class="row align-items-center justify-content-center text-center">
-                <div class="col-10 col-md-2 text-center text-dark animation-fall-down" style="--delay:300ms">
+                <div class="col-4 col-md-2 text-center text-dark animation-fall-down" style="--delay:300ms">
                     <img src="../../src/img/green-light-vertical.png" class="w-100" alt="logo" title="logo" />
                 </div>
             </div>
         </div>
         
         <div class="row g-6 justify-content-center">
-            <div class="col-12 col-md-5 animation-fall-right" style="--delay:1200ms">
+            <div class="col-12 col-md-5 animation-fall-right pt-6" style="--delay:1200ms">
                 <div class="card shadow card-property overflow-hidden z-zoom-element cursor-pointer us">
                     <div class="mask bg-"></div>
                 </div>

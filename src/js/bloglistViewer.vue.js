@@ -46,7 +46,7 @@ const BloglistViewer = {
         this.getBlogEntries()
     },
     template : `
-        <section class="bg-repeat py-6 expand" style="--delay:500ms" id="section-2">
+        <section class="py-6 expand" style="--delay:500ms" id="section-2">
             <div class="container">
                 <div class="row align-items-center justify-content-center py-5">
                     <div class="col-12 col-xl">

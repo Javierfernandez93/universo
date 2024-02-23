@@ -1,6 +1,4 @@
-body {
-    background-color: #010101 !important;
-}
+
 nav {
     backdrop-filter: blur(55px);
     /* background: rgba(255, 255, 255, 0.1); */
@@ -12,7 +10,5 @@ nav {
 }
 .us {
     background-image:url(../../src/img/home/us.png?t=1);
-    height: 40rem; 
-    background-size:cover;
     background-repeat: no-repeat
 }

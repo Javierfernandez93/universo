@@ -1,3 +1,9 @@
+
+nav {
+  backdrop-filter: blur(55px);
+  /* background: rgba(255, 255, 255, 0.1); */
+}
+
 .vh-75 {
   height: 75vh;
 }
@@ -12,10 +18,6 @@
     rgba(0, 0, 0, 0) 100%
   );
 }
-nav {
-  backdrop-filter: blur(55px);
-}
-
 .bg-animated {
   animation: sectionIncrease linear both;
   animation-timeline: scroll(root);
