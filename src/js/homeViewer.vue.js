@@ -84,57 +84,22 @@ const HomeViewer = {
                 },
             ],
             affiliatesList : {
-                bridge : [
+                lets_get_it : [
                     {
-                        name : 'ANGEL GUERRERO',
-                        image : '../../src/img/sponsors/1.png',
-                        text : `<p class="lead">Es una oportunidad que cambio mi forma de ver la vida en todos los sentidos, cuando más necesitaba un cambio de aires llegó la oportunidad y las cosas comenzaron a ser mejores en todos los aspectos. No solo en la parte económica que realmente es buena se puede ganar mucho dinero, pero lo más importante en quien me he convertido a partir de pertenecer a este grupo de seres humanos extraordinarios. Simplemente !GRACIAS!.</p>`,
+                        name : 'KASS Y FER',
+                        image : '../../src/img/sponsors/10.png',
+                        text : `<p class="lead">Afiliadas de LET'S GET IT</p>`,
                     },
+                ],
+                aztek_ : [
                     {
-                        name : 'ALBERTO LÓPEZ',
-                        image : '../../src/img/sponsors/2.png',
-                        text : `
-                            <p class="lead mb-3">Pertenecer a BM ha logrado que no importa cual sea la meta que me proponga, es 100% alcanzable. Me encanta que somos una empresa que se preocupa en el crecimiento personal, individual y en equipo</p>
-                            <p class="lead">El apoyar y servir a mis clientes genera una satisfacción personal porque, como siempre les digo, mi visión es coincidir en un lugar tan hermoso como lo es Yucatán disfrutando del resultado de tantos años de esfuerzo y sacrificio de vivir en Estados Unidos.</p>
-                        `,
+                        name : 'ROBERTO',
+                        image : null,
+                        text : `<p class="lead"></p>`,
                     },
-                    {
-                        name : 'ALEJANDRA BARAJAS',
-                        image : '../../src/img/sponsors/3.png',
-                        text : `
-                            <p class="lead mb-3">Mi experiencia en Bridge Makers ha sido una renovacion total en mi forma de pensar y vivir mi vida. Bridge Makers me guió en el camino para regresar a Mexico y poder compartir lo que para mi es una oportunidad de crecer en mi País.</p>
-                            <p class="lead">Gracias a todos mis clientes por confiar en la vision y saber que estoy aqui para brindarles siempre lo mejor de mi.</p>
-                        `,
-                    },
-                    {
-                        name : 'DIANA JIMENDI',
-                        image : '../../src/img/sponsors/4.png',
-                        text : `
-                            <p class="lead mb-3">Pertenecer a este movimiento transformó por completo mi concepto de lo que era mi concepto de éxito. Normalmente yo venia persiguiendo el éxito representado en dinero, a costa de la verdadera riqueza que es el tiempo. Bridge-makers me enseñó que el éxito es integral y en ese entendimiento puede multiplicar mis ingresos de manera inteligente y no esclavizando mi vida para tener dinero.</p>
-                            <p class="lead">Eres el promedio de las 5 personas más cercanas a ti, Bridgemakers es una comunidad de personas que nos empujamos a romper creencias y desafiar lo imposible juntos.</p>
-                        `,
-                    },
-                    {
-                        name : 'GUSTAVO GONZÁLEZ',
-                        image : '../../src/img/sponsors/5.png',
-                        text : `
-                            <p class="lead">Bridge mackers es una forma de vivir construye do una comunidad conciente de inversión y de posibilidades de un futuro seguro.</p>
-                        `,
-                    },
-                    {
-                        name : 'IRVING GOMEZ',
-                        image : '../../src/img/sponsors/6.png',
-                        text : `
-                            <p class="lead">Pertenecer a Bridge Makers Corp. ha sido transformador. He crecido personalmente, adoptando una perspectiva positiva y enfrentando desafíos que antes consideraba inalcanzables. He aprendido a tomar decisiones conscientes y a disfrutar el proceso de crecimiento. Esta comunidad me ha ayudado a superar miedos y encontrar la felici-dad. Reconozco mi potencial como agente de cambio junto a mis compañeros. Estoy agradecido por esta experiencia.</p>
-                        `,
-                    },
-                    {
-                        name : 'MAYRA ALVARÉZ',
-                        image : '../../src/img/sponsors/7.png',
-                        text : `
-                            <p class="lead">Mi experiencia en Bridge Makers ha sido una renovacion total en mi forma de pensar y vivir mi vida. Bridge Makers me guió en el camino para regresar a Mexico y poder compartir lo que para mi es una oportunidad de crecer en mi País. Gracias a todos mis clientes por confiar en la vision y saber que estoy aqui para brindarles siempre lo mejor de mi.</p>
-                        `,
-                    },
+                ],
+                bm_reno : [
+
                     {
                         name : 'OFELIA ZIESSE',
                         image : '../../src/img/sponsors/8.png',
@@ -143,12 +108,78 @@ const HomeViewer = {
                             <p class="lead">Estoy inmensamente agradecida por la confianza que nuestros clientes depositan en nosotros a través de sus inversiones. Gracias!.</p>
                         `,
                     },
+                ],
+                wayak : [
+                    {
+                        name : 'DIANA JIMENDI',
+                        image : '../../src/img/sponsors/4.png',
+                        text : `
+                            <p class="lead mb-3">Pertenecer a este movimiento transformó por completo mi concepto de lo que era mi concepto de éxito. Normalmente yo venia persiguiendo el éxito representado en dinero, a costa de la verdadera riqueza que es el tiempo. Bridge-makers me enseñó que el éxito es integral y en ese entendimiento puede multiplicar mis ingresos de manera inteligente y no esclavizando mi vida para tener dinero.</p>
+                            <p class="lead">Eres el promedio de las 5 personas más cercanas a ti, Bridgemakers es una comunidad de personas que nos empujamos a romper creencias y desafiar lo imposible juntos.</p>
+                        `,
+                    },
+                ],
+                estrellas_inmobiliarias : [
                     {
                         name : 'PABLO CANTO',
                         image : '../../src/img/sponsors/9.png',
                         text : `
                             <p class="lead mb-3">Ser parte de Bridge Makers ha significado una nueva forma de trabajo en equipo, ofreciendo valor agregado desde el asesoramiento al cliente hasta el desarrollo humano. Garantizamos la seguridad jurídica en la comercialización de propiedades ubicadas en zonas de alto rendimiento en Yucatán, con amenidades disruptivas en el mercado inmobiliario local.</p>
                             <p class="lead">Gracias a cada inversionista que ha confiado y que ha decidido ver su luz en tierras Yucatecas.</p>
+                        `,
+                    },
+                ],
+                bm_california : [
+                    {
+                        name : 'MAYRA ALVARÉZ',
+                        image : '../../src/img/sponsors/7.png',
+                        text : `
+                            <p class="lead">Mi experiencia en Bridge Makers ha sido una renovacion total en mi forma de pensar y vivir mi vida. Bridge Makers me guió en el camino para regresar a Mexico y poder compartir lo que para mi es una oportunidad de crecer en mi País. Gracias a todos mis clientes por confiar en la vision y saber que estoy aqui para brindarles siempre lo mejor de mi.</p>
+                        `,
+                    },
+                ],
+                bm_virtual : [
+                    {
+                        name : 'GUSTAVO GONZÁLEZ',
+                        image : '../../src/img/sponsors/5.png',
+                        text : `
+                            <p class="lead">Bridge mackers es una forma de vivir construye do una comunidad conciente de inversión y de posibilidades de un futuro seguro.</p>
+                        `,
+                    },
+                ],
+                bm_centro : [
+                    {
+                        name : 'IRVING GOMEZ',
+                        image : '../../src/img/sponsors/6.png',
+                        text : `
+                            <p class="lead">Pertenecer a Bridge Makers Corp. ha sido transformador. He crecido personalmente, adoptando una perspectiva positiva y enfrentando desafíos que antes consideraba inalcanzables. He aprendido a tomar decisiones conscientes y a disfrutar el proceso de crecimiento. Esta comunidad me ha ayudado a superar miedos y encontrar la felici-dad. Reconozco mi potencial como agente de cambio junto a mis compañeros. Estoy agradecido por esta experiencia.</p>
+                        `,
+                    },
+                ],
+                flamingo : [
+                    {
+                        name : 'ALBERTO LÓPEZ',
+                        image : '../../src/img/sponsors/2.png',
+                        text : `
+                            <p class="lead mb-3">Pertenecer a BM ha logrado que no importa cual sea la meta que me proponga, es 100% alcanzable. Me encanta que somos una empresa que se preocupa en el crecimiento personal, individual y en equipo</p>
+                            <p class="lead">El apoyar y servir a mis clientes genera una satisfacción personal porque, como siempre les digo, mi visión es coincidir en un lugar tan hermoso como lo es Yucatán disfrutando del resultado de tantos años de esfuerzo y sacrificio de vivir en Estados Unidos.</p>
+                        `,
+                    },
+                ],
+                aa_capital : [
+                    {
+                        name : 'ANGEL GUERRERO',
+                        image : '../../src/img/sponsors/1.png',
+                        text : `<p class="lead">Es una oportunidad que cambio mi forma de ver la vida en todos los sentidos, cuando más necesitaba un cambio de aires llegó la oportunidad y las cosas comenzaron a ser mejores en todos los aspectos. No solo en la parte económica que realmente es buena se puede ganar mucho dinero, pero lo más importante en quien me he convertido a partir de pertenecer a este grupo de seres humanos extraordinarios. Simplemente !GRACIAS!.</p>`,
+                    },
+                ],
+                conexion : [
+                    {
+                        name : 'ALEJANDRA BARAJAS',
+                        image : '../../src/img/sponsors/3.png',
+                        text : `
+                            <p class="lead mb-3">Mi experiencia en Bridge Makers ha sido una renovacion total en mi forma de pensar y vivir mi vida. Bridge Makers me guió en el camino para regresar a Mexico y poder compartir lo que para mi es una oportunidad de crecer en mi País.</p>
+                            <p class="lead">Gracias a todos mis clientes por confiar en la vision y saber que estoy aqui para brindarles siempre lo mejor de mi.</p>
                         `,
                     },
                 ]
@@ -408,66 +439,66 @@ const HomeViewer = {
                     </div>
                 </div>
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms">
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="py-5">
                             <div class="h1 mb-n1 text-white">Nuestros</div>
                             <div class="h1 text-success">Afiliados</div>
                         </div>
-                        <div class="card overflow-hidden position-relative card-body px-5 bg-dark text-center text-white">
+                        <div class="card overflow-hidden position-relative card-body p-5 bg-dark text-center text-white">
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-4">
                                     <img class="w-100" src="../../src/img/afilliates/back.png" alt="afiliados" title="afiliados"/>
                                 </div>
                             </div>
                             <div class="row g-3 justify-content-center mb-3">
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('lets_get_it')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/1.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('aztek')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/2.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bm_reno')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/3.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bm_centro')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/4.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('wayak')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/5.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('estrellas_inmobiliarias')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/6.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="row g-3 justify-content-center mb-3">
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bm_california')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/7.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 d-none z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/8.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bm_virtual')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/9.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bm_centro')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/10.png" alt="afiliados" title="afiliados"/>
                                     </div>
@@ -477,30 +508,23 @@ const HomeViewer = {
                                         <img class="w-100" src="../../src/img/afilliates/11.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('flamingo')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/12.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('aa_capital')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/13.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row g-3 justify-content-center">
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bridge')">
-                                    <div class="card card-body bg-gray">
-                                        <img class="w-100" src="../../src/img/afilliates/14.png" alt="afiliados" title="afiliados"/>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div v-if="affiliates" class="position-absolute d-flex align-items-center top-0 start-0 w-100 h-100 bg-dark-translucid-x text-white">
-                                <div class="position-absolute top-0 end-0 me-2 mt-2">
-                                    <button @click="affiliates = null" class="btn btn-outline-light">Cerrar</button>
+                            <div v-if="affiliates" class="position-absolute animation-fall-down d-flex align-items-center top-0 start-0 w-100 h-100 bg-dark-translucid-x text-white" style="--delay:100ms">
+                                <div class="position-absolute top-0 end-0 me-3 mt-3 z-index-3">
+                                    <button @click="affiliates = null" class="btn btn-outline-light z-index-2">Cerrar</button>
                                 </div>
-                                <div id="carouselExampleControls" class="carousel carousel-sponsors slide" data-bs-ride="carousel">
+                                <div id="carouselExampleControls" class="carousel carousel-sponsors w-100 slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                         <div v-for="(affiliate,index) in affiliates" class="carousel-item" :class="index == 0 ? 'active' : ''">
                                             <div class="row carousel-container align-items-center justify-content-center">

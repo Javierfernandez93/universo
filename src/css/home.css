@@ -74,3 +74,9 @@ video {
 .rounded-6 {
     border-radius: 3rem !important;
 }
+
+.carousel-sponsors .card-img-top {
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+}
