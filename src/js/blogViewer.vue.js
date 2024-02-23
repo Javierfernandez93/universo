@@ -9,6 +9,10 @@ const BlogViewer = {
         }
     },
     methods : {
+        back()
+        {
+            window.history.back()
+        },
         getBlog(blog_id)
         {
             this.User.getBlog({blog_id:blog_id},(response)=>{
@@ -42,8 +46,13 @@ const BlogViewer = {
                 </div>
             </section>
             <div class="container mt-n5">
-                <div class="card card-body p-5">
-                    <span v-html="blog.content"></span>
+                <div class="card">
+                    <div class="card-header">
+                        <button @click="back()" class="btn btn-success shadow-none">Volver</button>
+                    </div>
+                    <div class="card-body p-5">
+                        <span v-html="blog.content"></span>
+                    </div>
                 </div>
             </div>
         </div>
