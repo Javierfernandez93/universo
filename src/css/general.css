@@ -260,3 +260,6 @@ nav {
   height: 500px;
   object-fit: cover;
 }
+#appChatBot {
+  z-index: 1000001;
+}
