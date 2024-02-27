@@ -44,11 +44,11 @@ const PromoViewer = {
         this.init()
     },
     template : `
-        <div ref="promo" class="position-fixed start-0 bottom-0 ms-5 mb-5">
+        <div ref="promo" class="position-fixed start-0 bottom-0 mx-3 mb-5">
             <div :class="showing ? 'd-none' : ''" class="btn rounded-pill btn-primary btn-lg mb-0" @click="toggle">¡Conoce Nayal!</div> 
         </div>
 
-        <div ref="promoContainer" class="position-fixed start-0 bottom-0 ms-5 mb-5 hide-from-bottom">
+        <div ref="promoContainer" class="position-fixed start-0 bottom-0 mx-3 mb-5 hide-from-bottom">
             <div class="card card-body">
                 <img src="../../src/img/promo/nayal.png" alt="Nayal" class="img-fluid img-thumbnail">
             </div>
