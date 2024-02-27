@@ -1,4 +1,4 @@
-import { Translator } from '../../src/js/translator.module.js?v=2.4.6.2'   
+import { Translator } from '../../src/js/translator.module.js?v=2.4.6.3'   
 
 const PromoViewer = {
     data() {
@@ -45,7 +45,7 @@ const PromoViewer = {
     },
     template : `
         <div ref="promo" class="position-fixed start-0 bottom-0 ms-5 mb-5">
-            <div :class="showing ? 'd-none' : ''" class="btn rounded-pill btn-primary btn-lg mb-0" @click="toggle">¡Conoce Nayal! {{showing}}</div> 
+            <div :class="showing ? 'd-none' : ''" class="btn rounded-pill btn-primary btn-lg mb-0" @click="toggle">¡Conoce Nayal!</div> 
         </div>
 
         <div ref="promoContainer" class="position-fixed start-0 bottom-0 ms-5 mb-5 hide-from-bottom">

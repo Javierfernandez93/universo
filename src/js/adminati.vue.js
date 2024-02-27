@@ -1,4 +1,4 @@
-import { AdminatiViewer } from '../../src/js/adminatiViewer.vue.js?v=2.4.6.2'
+import { AdminatiViewer } from '../../src/js/adminatiViewer.vue.js?v=2.4.6.3'
 
 Vue.createApp({
     components : { 

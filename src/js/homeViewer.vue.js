@@ -1,5 +1,5 @@
-import { Translator } from '../../src/js/translator.module.js?v=2.4.6.2'   
-import { Guest } from '../../src/js/guest.module.js?v=2.4.6.2'   
+import { Translator } from '../../src/js/translator.module.js?v=2.4.6.3'   
+import { Guest } from '../../src/js/guest.module.js?v=2.4.6.3'   
 
 const HomeViewer = {
     data() {
