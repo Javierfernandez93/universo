@@ -80,3 +80,14 @@ video {
     object-fit: cover;
     object-position: center;
 }
+
+
+.hide-from-bottom {
+    transform: translateY(50rem);
+    transition: all ease 500ms;
+}
+
+.show-from-bottom {
+    transform: translateY(0);
+    transition: all ease 500ms;
+}

@@ -6,4 +6,5 @@
     <home-viewer></home-viewer>
     <blogwidget-viewer></blogwidget-viewer>
     <footer-viewer></footer-viewer>
+    <promo-viewer></promo-viewer>
 </div>

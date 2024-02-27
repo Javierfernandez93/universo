@@ -88,7 +88,10 @@ const HomeViewer = {
                     {
                         name : 'KASS Y FER',
                         image : '../../src/img/sponsors/10.png',
-                        text : `<p class="lead">Afiliadas de LET'S GET IT</p>`,
+                        text : `<p class="text-sm mb-0">Formar parte de este gran movimiento ha sido toda una aventura, pertenecer a Bridge Makers ha significado en nuestra vida crecimiento, apoyo, certeza y evolución. 
+                        <p class="text-sm mb-0">En esta estructura hemos encontrado a una familia que remamos hacia el mismo lugar sin importar las diferentes opiniones con las que podemos encontrarnos. </p>
+                        <p class="text-sm mb-0">Bridge Makers además de permitirme darle una vuelta al juego de nuestra vida ha representado la oportunidad perfecta para encontrar la forma de brindarle apoyo a miles de personas a través de nuestra fuerza de ventas “Let’s Get It”. </p>
+                        <p class="text-sm mb-0">Hoy nos sentimos agradecidas, no solo del crecimiento personal y laboral que hemos tenido en estos años, sino, también de toda la confianza que cada familia ha puesto en nosotras.</p>`,
                     },
                 ],
                 aztek_ : [
