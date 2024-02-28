@@ -1,5 +1,5 @@
-import { Translator } from '../../src/js/translator.module.js?v=2.4.6.3'   
-import { Guest } from '../../src/js/guest.module.js?v=2.4.6.3'   
+import { Translator } from '../../src/js/translator.module.js?v=2.4.6.4'   
+import { Guest } from '../../src/js/guest.module.js?v=2.4.6.4'   
 
 const HomeViewer = {
     data() {
@@ -270,6 +270,9 @@ const HomeViewer = {
       
             var map = new jsVectorMap({
               map: "world",
+              zoomMax: 1,
+              zoomMin: 1,
+              draggable: false,
               selector: "#map",
               series: {
                 regions: [
@@ -299,7 +302,7 @@ const HomeViewer = {
                 let usersTotal = _this.getUsersByInternet(index);
                 console.log(tooltip, index);
                 tooltip
-                  .css({ backgroundColor: "red" })
+                  .css({ backgroundColor: "#28a97d" })
                   .text(tooltip.text() + ` territorio Jade`);
               },
               onMarkerSelected(code, isSelected, selectedMarkers) {
@@ -393,21 +396,30 @@ const HomeViewer = {
                                     </div>  
                                 </div>
                             </div>
-                            <div class="col-12 reveal-item col-md-4">
-                                <div class="card card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/playaClara.png?t=1);">
+                            <div class="col-12 reveal-item col-md">
+                                <div class="card card-property overflow-hidden z-zoom-element position-relative cursor-pointer" style="background-image:url(../../src/img/home/playaClara.png?t=1);">
+                                    <video width="320" height="240" controls autoplay muted loop>
+                                        <source src="../../src/files/video/bg/playa-clara.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="mask bg-gradient-darkx"></div>
+
+                                    <div class="h-100 d-flex justify-content-center align-items-center w-100 position-absolute">
+
+                                        <img src="../../src/img/playa-clara.png?t=1" style="height:20rem" class="opacity-5" alt="wathermark" title="wathermark"/>
+                                    </div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
-                                            <div class="text-white">Santa Clara, Yucatán.</div>
-                                            <div class="text-white h2">Playa Clara</div>
+                                            <div class="text-white text-xs">Santa Clara, Yucatán.</div>
+                                            <div class="text-white h4">Conoce Playa Clara</div>
                                         </div>
                                     </div>  
                                 </div>
                             </div>
                         </div>
                         <div class="row g-5">
-                            <div class="col-12 reveal-item col-md-4">
-                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/otoch.png?t=1);">
+                            <div class="col-12 reveal-item col-md">
+                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer"  style="background-image:url(../../src/img/home/otoch.png?t=1);">
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
@@ -417,8 +429,8 @@ const HomeViewer = {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 reveal-item col-md-4">
-                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/pandorah.png?t=1);">
+                            <div class="col-12 reveal-item col-md">
+                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer"  style="background-image:url(../../src/img/home/pandorah.png?t=1);">
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
@@ -428,8 +440,8 @@ const HomeViewer = {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 reveal-item col-md-4">
-                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/kelaya.png?t=1);">
+                            <div class="col-12 reveal-item col-md">
+                                <div class="card overflow-hidden card-property z-zoom-element cursor-pointer"  style="background-image:url(../../src/img/home/kelaya.png?t=1);">
                                     <div class="mask bg-gradient-darkx"></div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
@@ -447,12 +459,17 @@ const HomeViewer = {
 
         <section class="bg-dark expand py-5" style="--delay:500ms">
             <div class="container py-5">
-                <div class="row align-items-center justify-content-center w-100 mx-0">
-                    <div class="col-12 col-md-7 mb-3 mb-md-0">
-                        <div class="pb-5">
-                            <div class="h4 text-center mb-0 text-white text-uppercase">conoce más</div>
-                            <div class="h2 text-center text-success text-uppercase">Del Universo de Jade</div>
+                <div class="row g-5 align-items-center justify-content-center w-100 mx-0">
+                    <div class="col-12 col-md-5 mb-3 mb-md-0">
+                        <div class="mb-3">
+                            <div class="h4 mb-0 text-white text-uppercase d-none">conoce más</div>
+                            <div class="h2 text-success text-uppercase">Imish</div>
                         </div>
+                        <p class="text-white lead">A vivir... A mantener viva una voz un recuerdo una memoria.. A compartir. A servir. </p>
+                        <p class="text-white lead">De experiencia humana 42 años. En servicio. Desde los 19 años. Aprendiz del gran espiritu del gran misterio. </p>
+                        <p class="text-white lead">Las experiencias mas llenas de enseñanzas han sido las mas transformadoras algunas dolorosas. Pienso que quien no se equivoca no aprende no crece. He conocido la muerte la enfermedad y la tristeza. Me ha enseñado a valorar y vivir como un ser mortal sensible. He recorrido Argentina, Bolivia, Peru, Ecuador, Colombia, Panama, Costarica, Nicaragua, Salvador, Guatemala, Mexico, Reino unido ( londres escocia edimburgo luxemburgo glasgo).</p>
+                    </div>
+                    <div class="col-12 col-md-7 mb-3 mb-md-0">
                         <div class="card cursor-pointer z-zoom-element rounded-6  shadow-lgcard-body card-jade card-imish-video d-flex justify-content-center align-items-center" @click="viewVideo('../../src/files/video/imish.mp4')">
                             <span class="btn-play d-flex justify-content-center align-items-center"><i class="bi fs-1 bi-play-fill text-white"></i></span>
                         </div>
@@ -527,6 +544,19 @@ const HomeViewer = {
                             <div class="h1 text-success">Afiliados</div>
                         </div>
                         <div class="card overflow-hidden position-relative card-body p-5 bg-dark text-center text-white">
+                            <div class="row align-items-center justify-content-center mb-5">
+                                <div class="col-12 col-md-4 animation-fall-down" style="--delay:500ms">
+                                    <div class="">
+                                        <img src="../../src/img/afilliates/boss.png" class="img-thumbnail rounded" alt="Boss" title="Boss"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-8 animation-fall-down" style="--delay:500ms">
+                                    <div class="text-uppercase mb-3 text-white h3">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
+                                    <p class="text-white lead my-2">En Universo de Jade, nos destacamos por fomentar el desarrollo personal en nuestra comunidad y ofrecer oportunidades de crecimiento dentro de la empresa basadas en resultados extraordinarios.</p>
+                                    <p class="text-white lead my-2">Valoramos el aprendizaje continuo y premiamos el esfuerzo y la dedicación. Además, ofrecemos la posibilidad real de convertirse en un asociado de la empresa para aquellos que demuestran un liderazgo excepcional. </p>
+                                    <p class="text-white lead mb-3">Únete a nosotros y sé parte de una empresa que no solo construye desarrollos inmobiliarios excepcionales, sino que también construye carreras y futuros brillantes.</p>
+                                </div>
+                            </div>
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-4">
                                     <img class="w-100" src="../../src/img/afilliates/back.png" alt="afiliados" title="afiliados"/>
@@ -543,16 +573,6 @@ const HomeViewer = {
                                         <img class="w-100" src="../../src/img/afilliates/2.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bm_reno')">
-                                    <div class="card card-body bg-gray">
-                                        <img class="w-100" src="../../src/img/afilliates/3.png" alt="afiliados" title="afiliados"/>
-                                    </div>
-                                </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bm_centro')">
-                                    <div class="card card-body bg-gray">
-                                        <img class="w-100" src="../../src/img/afilliates/4.png" alt="afiliados" title="afiliados"/>
-                                    </div>
-                                </div>
                                 <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('wayak')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/5.png" alt="afiliados" title="afiliados"/>
@@ -561,6 +581,17 @@ const HomeViewer = {
                                 <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('estrellas_inmobiliarias')">
                                     <div class="card card-body bg-gray">
                                         <img class="w-100" src="../../src/img/afilliates/6.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('flamingo')">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/12.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('aa_capital')">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/13.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
                             </div>
@@ -590,14 +621,15 @@ const HomeViewer = {
                                         <img class="w-100" src="../../src/img/afilliates/11.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('flamingo')">
+
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bm_reno')">
                                     <div class="card card-body bg-gray">
-                                        <img class="w-100" src="../../src/img/afilliates/12.png" alt="afiliados" title="afiliados"/>
+                                        <img class="w-100" src="../../src/img/afilliates/3.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
-                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('aa_capital')">
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('bm_centro')">
                                     <div class="card card-body bg-gray">
-                                        <img class="w-100" src="../../src/img/afilliates/13.png" alt="afiliados" title="afiliados"/>
+                                        <img class="w-100" src="../../src/img/afilliates/4.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
                             </div>

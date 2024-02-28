@@ -1,4 +1,4 @@
-import { Translator } from '../../src/js/translator.module.js?v=2.4.6.3'   
+import { Translator } from '../../src/js/translator.module.js?v=2.4.6.4'   
 
 const FooterViewer = {
     name : 'footer-viewer',

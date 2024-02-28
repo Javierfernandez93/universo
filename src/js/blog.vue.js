@@ -1,5 +1,5 @@
-import { BlogViewer } from '../../src/js/blogViewer.vue.js?v=2.4.6.3'
-import { FooterViewer } from '../../src/js/footerViewer.vue.js?v=2.4.6.3'
+import { BlogViewer } from '../../src/js/blogViewer.vue.js?v=2.4.6.4'
+import { FooterViewer } from '../../src/js/footerViewer.vue.js?v=2.4.6.4'
 
 Vue.createApp({
     components : { 
