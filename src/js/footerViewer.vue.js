@@ -36,7 +36,7 @@ const FooterViewer = {
         this.getConfigVarsStats()
     },
     template : `
-        <footer class="bg-dark p-5 expand" style="--delay:500ms">
+        <footer v-if="stats" class="bg-dark p-5 expand" style="--delay:500ms">
             <div class="pb-4 mb-4 border-bottom border-secondary">
                 <div class="container">
                     <div class="row align-items-center">
