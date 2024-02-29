@@ -1,4 +1,4 @@
-import { ApiitemsViewer } from './apiitemsViewer.vue.js?v=2.4.6.5'
+import { ApiitemsViewer } from './apiitemsViewer.vue.js?v=2.4.6.6'
 
 Vue.createApp({
     components : { 
