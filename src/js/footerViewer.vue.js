@@ -55,7 +55,7 @@ const FooterViewer = {
                             <div class="row gx-5">
                                 <div class="col-12 col-md-auto">
                                     <div class="text-secondary text-xs">CONTACTO </div>
-                                    <div class="text-white">+52 {{stats.social_whatsapp}}</div>
+                                    <div class="text-white">{{stats.social_whatsapp}}</div>
                                 </div>
                                 <div class="col-12 col-md">
                                     <div class="text-secondary text-xs">EMAIL</div>
