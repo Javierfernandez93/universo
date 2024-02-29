@@ -1,5 +1,5 @@
-import { Translator } from '../../src/js/translator.module.js?v=2.4.6.4'   
-import { Guest } from '../../src/js/guest.module.js?v=2.4.6.4'   
+import { Translator } from '../../src/js/translator.module.js?v=2.4.6.5'   
+import { Guest } from '../../src/js/guest.module.js?v=2.4.6.5'   
 
 const HomeViewer = {
     data() {
@@ -386,12 +386,21 @@ const HomeViewer = {
                         </div>
                         <div class="row g-5 mb-5">
                             <div class="col-12 reveal-item col-md-8">
-                                <div class="card card-property z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/nayal.png?t=1);">
+                                <div class="card card-property overflow-hidden z-zoom-element cursor-pointer" style="background-image:url(../../src/img/home/nayal.png?t=1);">
+                                    <video width="320" height="240" controls autoplay muted loop>
+                                        <source src="../../src/files/video/bg/nayal.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                     <div class="mask bg-gradient-darkx"></div>
+
+                                    <div class="h-100 d-flex justify-content-center align-items-center w-100 position-absolute">
+                                        <img src="../../src/img/nayal.png?t=1" style="height:20rem" class="opacity-5" alt="wathermark" title="wathermark"/>
+                                    </div>
+
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
                                         <div class="card-body">
-                                            <div class="text-white">Tixkokob, Yucatán.</div>
-                                            <div class="text-white h2">Nayal: Visión entre sueños</div>
+                                            <div class="text-white text-xs">Tixkokob, Yucatán.</div>
+                                            <div class="text-white h4">Nayal: Visión entre sueños</div>
                                         </div>
                                     </div>  
                                 </div>
@@ -405,7 +414,6 @@ const HomeViewer = {
                                     <div class="mask bg-gradient-darkx"></div>
 
                                     <div class="h-100 d-flex justify-content-center align-items-center w-100 position-absolute">
-
                                         <img src="../../src/img/playa-clara.png?t=1" style="height:20rem" class="opacity-5" alt="wathermark" title="wathermark"/>
                                     </div>
                                     <div class="d-flex align-content-end h-100 z-index-3 position-absolute flex-wrap">
