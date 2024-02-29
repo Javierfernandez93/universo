@@ -820,6 +820,9 @@ class User extends Http {
     deleteUserFromSeller(data, callback) {
         return this.call('../../app/application/deleteUserFromSeller.php', data, callback);
     }
+    getConfigVarsStats(data, callback) {
+        return this.call('../../app/application/getConfigVarsStats.php', data, callback);
+    }
 }
 
 export { User }

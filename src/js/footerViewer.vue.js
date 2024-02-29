@@ -1,10 +1,13 @@
 import { Translator } from '../../src/js/translator.module.js?v=2.4.6.5'   
+import { User } from '../../src/js/user.module.js?v=2.4.6.5'   
 
 const FooterViewer = {
     name : 'footer-viewer',
     data() {
         return {
-            Translator: new Translator
+            Translator: new Translator,
+            User: new User,
+            stats: null,
         }
     },
     watch: {
@@ -21,11 +24,16 @@ const FooterViewer = {
         }
     },
     methods : {
-        
+        getConfigVarsStats()
+        {
+            this.User.getConfigVarsStats({},(response)=>{
+                this.stats = response.stats
+            })
+        }
     },
     mounted() 
     {       
-        
+        this.getConfigVarsStats()
     },
     template : `
         <footer class="bg-dark p-5 expand" style="--delay:500ms">
@@ -47,11 +55,11 @@ const FooterViewer = {
                             <div class="row gx-5">
                                 <div class="col-12 col-md-auto">
                                     <div class="text-secondary text-xs">CONTACTO </div>
-                                    <div class="text-white">+52 999 999 99 99</div>
+                                    <div class="text-white">+52 {{stats.social_whatsapp}}</div>
                                 </div>
                                 <div class="col-12 col-md">
                                     <div class="text-secondary text-xs">EMAIL</div>
-                                    <div class="text-white">INFO@UNIVERSODEJADE.COM</div>
+                                    <div class="text-white">{{stats.company_email}}</div>
                                 </div>
                             </div>
                         </div>
