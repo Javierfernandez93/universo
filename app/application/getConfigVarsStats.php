@@ -7,6 +7,7 @@ $data = HCStudio\Util::getHeadersForWebService();
 if(true)
 {
     $data["stats"] = [
+        'company_email' => Site\SystemVar::_getValue("company_email"),
         'social_whatsapp' => Site\SystemVar::_getValue("social_whatsapp"),
         'experience' => Site\SystemVar::_getValue("experience"),
         'real_state' => Site\SystemVar::_getValue("real_state"),
