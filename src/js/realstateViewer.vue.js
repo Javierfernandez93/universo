@@ -48,7 +48,12 @@ const RealstateViewer = {
                     </div>
                     <div v-else>
                         <a :href="realState.link">
-                            <div class="card cursor-pointer z-zoom-element animation-fall-down card-real card-body" :style="{'background-image':'url('+realState.image+')','--delay':(index*250)+'ms'}">
+                            <div class="card cursor-pointer z-zoom-element animation-fall-down card-real overflow-hidden" :style="{'background-image':'url('+realState.image+')','--delay':(index*250)+'ms'}">
+                                <div class="mask position-relative">
+                                    <div class="position-absolute end-0 bottom-0">
+                                        <span class="sold-out text-uppercase">Sold out</span>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
