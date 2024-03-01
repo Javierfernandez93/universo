@@ -38,7 +38,7 @@ const RealstateViewer = {
                     <div v-if="realState.hasVideo">
                         <span @click="viewVideo(realState)">
                             <div class="card cursor-pointer overflow-hidden z-zoom-element animation-fall-down card-real card-body p-0" :style="{'background-image':'url('+realState.image+')','--delay':(index*250)+'ms'}">
-                                <div class="mask position-relative">
+                                <div v-if="realState.sold_out" class="mask position-relative">
                                     <div class="position-absolute end-0 bottom-0">
                                         <span class="sold-out text-uppercase">Sold out</span>
                                     </div>
@@ -49,7 +49,7 @@ const RealstateViewer = {
                     <div v-else>
                         <a :href="realState.link">
                             <div class="card cursor-pointer z-zoom-element animation-fall-down card-real overflow-hidden" :style="{'background-image':'url('+realState.image+')','--delay':(index*250)+'ms'}">
-                                <div class="mask position-relative">
+                                <div v-if="realState.sold_out" class="mask position-relative">
                                     <div class="position-absolute end-0 bottom-0">
                                         <span class="sold-out text-uppercase">Sold out</span>
                                     </div>
