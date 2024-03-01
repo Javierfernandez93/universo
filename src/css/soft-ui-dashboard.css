@@ -120,6 +120,11 @@ background: linear-gradient(45deg, rgba(225,193,70,1) 0%, rgba(206,158,35,1) 36%
    animation: revealRight 0.5s forwards var(--delay);
 }
 
+.animation-fall-left {
+   opacity: 0;
+   animation: revealLeft 0.5s forwards var(--delay);
+}
+
 @keyframes reveal {
    from {
        translate: 0 20px;
@@ -131,6 +136,14 @@ background: linear-gradient(45deg, rgba(225,193,70,1) 0%, rgba(206,158,35,1) 36%
 @keyframes revealRight {
    from {
        translate: 20px 0;
+   }
+   to {
+       translate: none; opacity: 1;
+   }
+}
+@keyframes revealLeft {
+   from {
+       translate: -20px 0;
    }
    to {
        translate: none; opacity: 1;

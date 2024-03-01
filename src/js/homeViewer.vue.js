@@ -465,86 +465,9 @@ const HomeViewer = {
             </div>
         </section>
 
-        <section class="bg-dark expand py-5" style="--delay:500ms">
-            <div class="container py-5">
-                <div class="row g-5 align-items-center justify-content-center w-100 mx-0">
-                    <div class="col-12 col-md-5 mb-3 mb-md-0">
-                        <div class="mb-3">
-                            <div class="h4 mb-0 text-white text-uppercase d-none">conoce más</div>
-                            <div class="h2 text-success text-uppercase">Imish</div>
-                        </div>
-                        <p class="text-white lead">A vivir... A mantener viva una voz un recuerdo una memoria.. A compartir. A servir. </p>
-                        <p class="text-white lead">De experiencia humana 42 años. En servicio. Desde los 19 años. Aprendiz del gran espiritu del gran misterio. </p>
-                        <p class="text-white lead">Las experiencias mas llenas de enseñanzas han sido las mas transformadoras algunas dolorosas. Pienso que quien no se equivoca no aprende no crece. He conocido la muerte la enfermedad y la tristeza. Me ha enseñado a valorar y vivir como un ser mortal sensible. He recorrido Argentina, Bolivia, Peru, Ecuador, Colombia, Panama, Costarica, Nicaragua, Salvador, Guatemala, Mexico, Reino unido ( londres escocia edimburgo luxemburgo glasgo).</p>
-                    </div>
-                    <div class="col-12 col-md-7 mb-3 mb-md-0">
-                        <div class="card cursor-pointer z-zoom-element rounded-6  shadow-lgcard-body card-jade card-imish-video d-flex justify-content-center align-items-center" @click="viewVideo('../../src/files/video/imish.mp4')">
-                            <span class="btn-play d-flex justify-content-center align-items-center"><i class="bi fs-1 bi-play-fill text-white"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="py-5 animate-section" id="section-2">
+        <section class="animate-section" id="section-2">
             <div class="container">
-                <div class="row justify-content-center py-5 expand" style="--delay:500ms">
-                    <div class="col-12">
-                        <div class="py-5">
-                            <div class="h1 mb-n1 text-white">Nuestra</div>
-                            <div class="h1 text-success">Experiencia</div>
-                        </div>
-                        <div class="card card-body px-5 bg-dark text-center text-white">
-                            <div class="row align-items-center border-bottom">
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">{{stats.experience}}</div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">{{stats.real_state}}</div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">{{stats.sales}}</div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div class="display-2 sans fw-bold">{{stats.families}}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div>Años de</div>
-                                        <div>experiencia</div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div>Desarrollos</div> 
-                                        <div>Inmobiliarios</div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div>Terrenos</div> 
-                                        <div>Vendidos</div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
-                                        <div>Familias</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12 py-5">
                         <div class="py-5">
@@ -682,13 +605,71 @@ const HomeViewer = {
                         </div>
                     </div>
                 </div>
+                <div class="row justify-content-center py-5 expand" style="--delay:500ms">
+                    <div class="col-12">
+                        <div class="py-5">
+                            <div class="h1 mb-n1 text-white">Nuestra</div>
+                            <div class="h1 text-success">Experiencia</div>
+                        </div>
+                        <div class="card card-body px-5 bg-dark text-center text-white">
+                            <div class="row align-items-center border-bottom">
+                                <div class="col-6 col-xl-3">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                        <div class="display-2 sans fw-bold">{{stats.experience}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                        <div class="display-2 sans fw-bold">{{stats.real_state}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                        <div class="display-2 sans fw-bold">{{stats.sales}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                        <div class="display-2 sans fw-bold">{{stats.families}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-6 col-xl-3">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                        <div>Años de</div>
+                                        <div>experiencia</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                        <div>Desarrollos</div> 
+                                        <div>Inmobiliarios</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                        <div>Terrenos</div> 
+                                        <div>Vendidos</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3">
+                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                        <div>Familias</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </section>
         <section class="bg-dark expand" style="--delay:500ms">
             <div class="container py-5">
                 <div class="row align-items-center w-100">
                     <div class="col-12 col-md-6">
-                        <p class="text-white lead">Descubre nuestra presencia global en bienes raíces con un enfoque especial en los cautivadores terrenos de Yucatán.</p>
+                        <p class="text-white h4">Descubre el territorio Jade, nuestra presencia global en Bienes Raíces y los países que han confiado en nosotros.</p>
                     </div>
                     <div class="col-12 col-md-6">
                         <div id="map" style="width: 600px; height: 350px"></div>
@@ -702,8 +683,8 @@ const HomeViewer = {
                 <div class="row justify-content-center py-5">
                     <div class="col-11 col-md-12">
                         <div class="py-5">
-                            <div class="h1 mb-n1 text-white"><strong class="text-success">Testimonios</strong> de</div>
-                            <div class="h1 text-white">nuestros Clientes / Asesores</div>
+                            <div class="h1 mb-n1 text-white"><strong class="text-success">Conoce la opinión</strong> de</div>
+                            <div class="h1 text-white">nuestros Clientes</div>
                         </div>
                     </div>
                 </div>

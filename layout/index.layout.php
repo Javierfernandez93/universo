@@ -70,8 +70,8 @@
                 <li><a href="../../apps/home" class="nav-link px-2 link-success">INICIO</a></li>
                 <li><a href="../../apps/realState" class="nav-link px-2">DESARROLLOS</a></li>
                 <li><a href="../../apps/blog" class="nav-link px-2">BLOG</a></li>
-                <li><a href="../../apps/home/us" class="nav-link px-2">NOSOTROS</a></li>
-                <li><a href="../../apps/home/about" class="nav-link px-2">SOMOS</a></li>
+                <li><a href="../../apps/home/us" class="nav-link px-2">COUMINDAD JADE</a></li>
+                <li><a href="../../apps/home/about" class="nav-link px-2">NOSOTROS</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
