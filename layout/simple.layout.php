@@ -60,8 +60,8 @@
                 <li><a href="../../apps/home" class="nav-link px-2 <?php if($route == JFStudio\Router::Home) {?>text-success<?php } ?>">INICIO</a></li>
                 <li><a href="../../apps/realState" class="nav-link px-2 <?php if($route == JFStudio\Router::RealState) {?>text-success<?php } ?>">DESARROLLOS</a></li>
                 <li><a href="../../apps/blog" class="nav-link px-2 <?php if($route == JFStudio\Router::BLOG) {?>text-success<?php } ?>">BLOG</a></li>
-                <li><a href="../../apps/home/us" class="nav-link px-2 <?php if($route == JFStudio\Router::Us) {?>text-success<?php } ?>">NOSOTROS</a></li>
-                <li><a href="../../apps/home/about" class="nav-link px-2 <?php if($route == JFStudio\Router::About) {?>text-success<?php } ?>">SOMOS</a></li>
+                <li><a href="../../apps/home/us" class="nav-link px-2 <?php if($route == JFStudio\Router::Us) {?>text-success<?php } ?>">COMUNIDAD JADE</a></li>
+                <li><a href="../../apps/home/about" class="nav-link px-2 <?php if($route == JFStudio\Router::About) {?>text-success<?php } ?>">NOSOTROS</a></li>
             </ul>
 
             <div class="col-md-3 text-end">

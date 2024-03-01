@@ -6,7 +6,8 @@ $data = HCStudio\Util::getHeadersForWebService();
 
 if(true)
 {
-    if($realStates = (new Site\RealState)->findAll("status = ?",[1]))
+    // if($realStates = (new Site\RealState)->allByOrdered("status = ?",[1],null,[""]))
+    if($realStates = (new Site\RealState)->findAll("status = ?",[1],null,[""]))
     {
         $data["realStates"] = $realStates;
         $data["s"] = 1;
