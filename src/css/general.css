@@ -263,3 +263,16 @@ nav {
 #appChatBot {
   z-index: 1000001;
 }
+.sold-out {  
+  transform: rotate(305deg);
+  transform-origin: bottom right;
+  position: absolute;
+  width: 10rem;
+  background: red;
+  color: white;
+  color: white;
+  padding: 2px 2rem;
+  transform-origin: left;
+  right: -5rem;
+  text-align: center;
+}
