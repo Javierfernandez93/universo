@@ -4,7 +4,7 @@ require_once TO_ROOT. "/system/core.php";
 
 $data = HCStudio\Util::getHeadersForWebService();
 
-if($realStates = (new Site\RealState)->findAll("status = ?",[1],null,['field'=>'order_id','order'=>'desc']))
+if($realStates = (new Site\RealState)->findAll("status = ?",[1],null,['field'=>'order_id','order'=>'asc']))
 {
     $data["realStates"] = $realStates;
     $data["s"] = 1;
