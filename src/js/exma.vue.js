@@ -1,6 +1,6 @@
 /* vue */
-import { ExmaViewer } from '../../src/js/exmaViewer.vue.js?v=2.4.6.6'
-import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=2.4.6.6'
+import { ExmaViewer } from '../../src/js/exmaViewer.vue.js?v=2.4.7'
+import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=2.4.7'
 
 Vue.createApp({
     components: {

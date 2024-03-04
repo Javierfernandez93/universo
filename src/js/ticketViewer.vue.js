@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.4.6.6'   
+import { User } from '../../src/js/user.module.js?v=2.4.7'   
 
 const TicketViewer = {
     name : 'ticket-viewer',
