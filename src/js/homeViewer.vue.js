@@ -620,50 +620,62 @@ const HomeViewer = {
                             <div class="h1 maldives text-success">Experiencia</div>
                         </div>
                         <div class="card card-body px-5 bg-dark text-center text-white">
-                            <div class="row align-items-center border-bottom">
-                                <div class="col-6 col-xl-3">
+                            <div class="row align-items-center text-center">
+                                <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="display-2 sans fw-bold">{{stats.experience}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{stats.experience}}</div>
+                                        
+                                        <div class="mt-3">
+                                            <div>Años de</div>
+                                            <div>experiencia</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-xl-3">
+                                <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="display-2 sans fw-bold">{{stats.real_state}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{stats.real_state}}</div>
+
+                                        <div class="mt-3">
+                                            <div>Desarrollos</div> 
+                                            <div>Inmobiliarios</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-xl-3">
+                                <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="display-2 sans fw-bold">{{stats.sales}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{stats.sales}}</div>
+
+                                        <div class="mt-3">
+                                            <div>Terrenos</div> 
+                                            <div>Vendidos</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-xl-3">
+                                <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="display-2 sans fw-bold">{{stats.families}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{stats.countries}}</div>
+
+                                        <div class="mt-3">
+                                            <div>Paises</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-6 col-xl-3">
+                                <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div>Años de</div>
-                                        <div>experiencia</div>
+                                        <div class="h1 text-white sans fw-bold">{{stats.families}}</div>
+
+                                        <div class="mt-3">
+                                            <div>Familias</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6 col-xl-3">
+                                <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div>Desarrollos</div> 
-                                        <div>Inmobiliarios</div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div>Terrenos</div> 
-                                        <div>Vendidos</div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div>Familias</div>
+                                        <div class="h1 text-white sans fw-bold">{{stats.people}}</div>
+
+                                        <div class="mt-3">
+                                            <div>Personas impactadas por el movimiento</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

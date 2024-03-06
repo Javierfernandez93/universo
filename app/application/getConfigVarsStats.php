@@ -13,6 +13,8 @@ if(true)
         'real_state' => Site\SystemVar::_getValue("real_state"),
         'sales' => Site\SystemVar::_getValue("sales"),
         'families' => Site\SystemVar::_getValue("families"),
+        'people' => Site\SystemVar::_getValue("people"),
+        'countries' => Site\SystemVar::_getValue("countries"),
     ];
     $data["s"] = 1;
     $data["r"] = "DATA_OK";
