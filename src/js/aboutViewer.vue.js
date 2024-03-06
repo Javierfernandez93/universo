@@ -20,11 +20,15 @@ const AboutViewer = {
     },
     template : `
         <div class="container py-5">
-            <div class="row justify-content-center animation-fall-down" style="--delay:300ms">
-                <div class="col-9 col-md-2">
-                    <img src="../../src/img/green-light-vertical.png" class="w-100" alt="logo" title="logo" />
+
+            <div class="row align-items-center justify-content-center text-center">
+                <div class="row align-items-center justify-content-center text-center">
+                    <div class="col-4 col-md-2 text-center text-dark animation-fall-down" style="--delay:300ms">
+                        <img src="../../src/img/green-light-vertical.png" class="w-100" alt="logo" title="logo" />
+                    </div>
                 </div>
             </div>
+            
             <div class="py-5 text-white">
                 <div class="card card-body shadow-none bg-transparent animation-fall-down" style="--delay:500ms">
                     <div class="row gx-6 justify-content-center mb-5">

@@ -11,10 +11,9 @@
         <div class="row g-6 justify-content-center">
             <div class="col-12 col-md-5 animation-fall-right pt-6" style="--delay:1200ms">
                 <div class="card shadow card-property overflow-hidden z-zoom-element cursor-pointer us">
-                    <div class="mask bg-"></div>
+                    <div class="mask"></div>
                 </div>
             </div>
-
 
             <div class="col-12 col-md animation-fall-down text-white" style="--delay:600ms">
 

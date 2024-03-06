@@ -52,7 +52,7 @@
         <header class="container d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-xl-3 mb-0">
             <div class="col-md-3 mb-2 mb-md-0">
                 <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                    <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
                 </a>
             </div>
 
@@ -63,7 +63,6 @@
                 <li><a href="../../apps/home/us" class="nav-link text-white px-2 <?php if($route == JFStudio\Router::Us) {?>text-success<?php } ?>">COMUNIDAD JADE</a></li>
                 <li><a href="../../apps/home/about" class="nav-link text-white px-2 <?php if($route == JFStudio\Router::About) {?>text-success<?php } ?>">NOSOTROS</a></li>
             </ul>
-
 
             <div class="col-md-3 text-end">
                 <a href="../../apps/login" type="button" class="btn shadow-none text-white btn-lg mb-0">Iniciar sesión</a>
