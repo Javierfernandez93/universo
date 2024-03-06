@@ -1,4 +1,4 @@
-import { AdminwalletViewer } from '../../src/js/adminwalletViewer.vue.js?v=2.4.7'
+import { AdminwalletViewer } from '../../src/js/adminwalletViewer.vue.js?v=2.4.8'
 
 Vue.createApp({
     components: {

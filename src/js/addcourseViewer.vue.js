@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.4.7'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=2.4.8'
 
 const AddcourseViewer = {
     name : 'addcourse-viewer',

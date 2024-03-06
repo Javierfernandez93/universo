@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.4.7'   
+import { User } from '../../src/js/user.module.js?v=2.4.8'   
 import { Api } from '../../src/js/api.module.js'  
 
 const PanelViewer = {

@@ -1,4 +1,4 @@
-import { ApicustomerViewer } from './apicustomerViewer.vue.js?v=2.4.7'
+import { ApicustomerViewer } from './apicustomerViewer.vue.js?v=2.4.8'
 
 Vue.createApp({
     components : { 
