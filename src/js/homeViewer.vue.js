@@ -369,7 +369,7 @@ const HomeViewer = {
                                 <span class="btn-play d-flex justify-content-center align-items-center cursor-pointer z-zoom-element"><i class="bi fs-1 bi-play-fill text-white"></i></span>
                             </div>
                         </div>
-                        <video id="videoBoss" class="rounded" style="width:100%;heigth:30rem" poster="../../src/img/home/video.png" controls>
+                        <video id="videoBoss" class="rounded" style="width:100%;height:30rem" poster="../../src/img/home/video.png" controls>
                             <source src="../../src/files/video/video.mp4" type="video/mp4">
             
                             <object data="../../src/files/video/video.mp4" width="470" height="255">

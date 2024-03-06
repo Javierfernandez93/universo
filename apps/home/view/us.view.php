@@ -64,9 +64,20 @@
             </div>
             
             <div class="row justify-content-center">
-                <div class="col-12 col-md-7 mb-3 mb-md-0">
-                    <div class="card cursor-pointer z-zoom-element rounded-6  shadow-lgcard-body card-jade card-imish-video d-flex justify-content-center align-items-center" @click="viewVideo('../../src/files/video/imish.mp4')">
-                        <span class="btn-play d-flex justify-content-center align-items-center"><i class="bi fs-1 bi-play-fill text-white"></i></span>
+                <div class="col-12 col-md-7">
+                    <div class="card rounded bg-transparent p-0 h-auto overflow-hidden">
+                        <div @click="playVideo" v-show="showing" class="mask cursor-pointer z-zoom-element bg-dark rounded opacity-total z-index-1" style="background-image:url(../../src/img/home/video-imish.png)">
+                            <div class="justify-content-center d-flex align-items-center h-100">
+                                <span class="btn-play d-flex justify-content-center align-items-center cursor-pointer z-zoom-element"><i class="bi fs-1 bi-play-fill text-white"></i></span>
+                            </div>
+                        </div>
+                        <video id="videoBoss" class="rounded overflow-hidden" style="width:100%;height:30rem" poster="../../src/img/home/video-imish.png" controls>
+                            <source src="../../src/files/video/imish.mp4" type="video/mp4">
+
+                            <object data="../../src/files/video/imish.mp4" width="470" height="255">
+                                
+                            </object>
+                        </video>
                     </div>
                 </div>
             </div>
