@@ -41,9 +41,9 @@ const FooterViewer = {
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-12 col-md">
-                            <div class="h1 text-white pb-0 pb-xl-5">
-                                <div class="">Descubre la magia del jade.</div>
-                                <div class="">y sumérgete en nuestro universo</div>
+                            <div class="h3 text-white pb-0 pb-xl-5">
+                                <div class="maldives">Descubre la magia del jade.</div>
+                                <div class="maldives">y sumérgete en nuestro universo</div>
                             </div>
                         </div>
                         <div class="col-12 col-md-auto">

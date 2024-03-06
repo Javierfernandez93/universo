@@ -391,8 +391,8 @@ const HomeViewer = {
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12">
                         <div class="py-5">
-                            <div class="h1 mb-n1 text-white">Nuestros</div>
-                            <div class="h1 text-success">Proyectos</div>
+                            <div class="h1 maldives mb-n1 text-white">Nuestros</div>
+                            <div class="h1 maldives text-success">Proyectos</div>
                         </div>
                         <div class="row g-5 mb-5">
                             <div class="col-12 reveal-item col-md-8">
@@ -483,8 +483,8 @@ const HomeViewer = {
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12 py-5">
                         <div class="py-5">
-                            <div class="h1 mb-n1 text-white">Nuestros</div>
-                            <div class="h1 text-success">Afiliados</div>
+                            <div class="h1 maldives mb-n1 text-white">Nuestros</div>
+                            <div class="h1 maldives text-success">Afiliados</div>
                         </div>
                         <div class="card overflow-hidden position-relative card-body p-5 bg-dark text-center text-white">
                             <div class="row g-5 align-items-center justify-content-center mb-5">
@@ -492,7 +492,7 @@ const HomeViewer = {
                                     <img src="../../src/img/afilliates/boss.png" class="img-thumbnail rounded" alt="Boss" title="Boss"/>
                                 </div>
                                 <div class="col-12 col-md-8 animation-fall-down" style="--delay:500ms">
-                                    <div class="text-uppercase mb-3 text-white h3">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
+                                    <div class="maldives text-uppercase mb-3 text-white h3">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
                                     <p class="text-white lead my-2">En Universo de Jade, nos destacamos por fomentar el desarrollo personal en nuestra comunidad y ofrecer oportunidades de crecimiento dentro de la empresa basadas en resultados extraordinarios.</p>
                                     <p class="text-white lead my-2">Valoramos el aprendizaje continuo y premiamos el esfuerzo y la dedicación. Además, ofrecemos la posibilidad real de convertirse en un asociado de la empresa para aquellos que demuestran un liderazgo excepcional. </p>
                                     <p class="text-white lead mb-3">Únete a nosotros y sé parte de una empresa que no solo construye desarrollos inmobiliarios excepcionales, sino que también construye carreras y futuros brillantes.</p>
@@ -618,8 +618,8 @@ const HomeViewer = {
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms">
                     <div class="col-12">
                         <div class="py-5">
-                            <div class="h1 mb-n1 text-white">Nuestra</div>
-                            <div class="h1 text-success">Experiencia</div>
+                            <div class="h1 maldives mb-n1 text-white">Nuestra</div>
+                            <div class="h1 maldives text-success">Experiencia</div>
                         </div>
                         <div class="card card-body px-5 bg-dark text-center text-white">
                             <div class="row align-items-center border-bottom">
@@ -693,8 +693,8 @@ const HomeViewer = {
                 <div class="row justify-content-center py-5">
                     <div class="col-11 col-md-12">
                         <div class="py-5">
-                            <div class="h1 mb-n1 text-white"><strong class="text-success">Conoce la opinión</strong> de</div>
-                            <div class="h1 text-white">nuestros Clientes</div>
+                            <div class="h1 maldives mb-n1 text-white"><strong class="text-success">Conoce la opinión</strong> de</div>
+                            <div class="h1 maldives text-white">nuestros Clientes</div>
                         </div>
                     </div>
                 </div>

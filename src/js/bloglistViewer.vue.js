@@ -50,7 +50,7 @@ const BloglistViewer = {
             <div class="container">
                 <div class="row align-items-center justify-content-center py-5">
                     <div class="col-12 col-xl">
-                        <div class="h2 mb-n1 text-uppercase text-white">Nuestro <strong class="text-success">blog</strong></div>
+                        <div class="maldives h2 mb-n1 text-uppercase text-white">Nuestro <strong class="text-success">blog</strong></div>
                     </div>
                     <div class="col-12 col-xl-4">
                         <input v-model="query" type="text" class="form-control bg-transparent border-0 lead text-white text-end" placeholder="Buscar por título...">

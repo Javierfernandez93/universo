@@ -13,7 +13,6 @@ $Translator->init();
 
 $Layout->setScript([
 	'entry.css',
-	'scroll-entrace.js',
 	'home.css',
 	'home.vue.js'
 ]);

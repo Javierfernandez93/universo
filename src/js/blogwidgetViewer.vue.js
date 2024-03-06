@@ -32,7 +32,7 @@ const BlogwidgetViewer = {
                 <div class="card card-body px-5 bg-dark text-white">
                     <div class="row justify-content-center py-5">
                         <div class="col-12">
-                            <div class="h2 mb-n1 text-uppercase text-white">Nuestro <strong class="text-success">blog</strong></div>
+                            <div class="h2 maldives mb-n1 text-uppercase text-white">Nuestro <strong class="text-success">blog</strong></div>
                         </div>
                     </div>
 
