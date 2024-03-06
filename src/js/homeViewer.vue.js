@@ -382,7 +382,7 @@ const HomeViewer = {
                             <div class="text-uppercase mb-3 text-white maldives h4">¿Cómo se define <strong class="text-success">Universo de Jade?</strong></div>
                             <p class="text-white lead my-2">Universo de jade es un concepto que abraza una serie de desarrollos con la unión de la naturaleza y lo sustentable creando un entorno amigable con el medio ambiente.</p>
 
-                            <a href="../../apps/home/about" class="btn btn-success px-5 py-3">SOMOS</a>
+                            <a href="../../apps/home/about" class="btn btn-success btn-lg mt-3 mb-0 px-5 py-3">SOMOS</a>
                         </div>
                     </div>
                 </div>
