@@ -1,7 +1,7 @@
-import { HomeViewer } from '../../src/js/homeViewer.vue.js?v=2.4.9'
-import { BlogwidgetViewer } from '../../src/js/blogwidgetViewer.vue.js?v=2.4.9'
-import { FooterViewer } from '../../src/js/footerViewer.vue.js?v=2.4.9'
-import { PromoViewer } from '../../src/js/promoViewer.vue.js?v=2.4.9'
+import { HomeViewer } from '../../src/js/homeViewer.vue.js?v=2.5.0'
+import { BlogwidgetViewer } from '../../src/js/blogwidgetViewer.vue.js?v=2.5.0'
+import { FooterViewer } from '../../src/js/footerViewer.vue.js?v=2.5.0'
+import { PromoViewer } from '../../src/js/promoViewer.vue.js?v=2.5.0'
 
 Vue.createApp({
     components : { 
