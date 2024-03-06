@@ -61,7 +61,7 @@ body {
   height: 20rem;
 }
 .card-jade {
-  height: 30rem;
+  /* height: 30rem; */
 }
 .bg-repeat {
   background-image: url(../../src/img/home/repeat.png);

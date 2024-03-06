@@ -128,78 +128,78 @@ const AdmindashViewer = {
         })
     },
     template : `
-        <div v-if="stats" class="row">   
-            <div class="col-12 col-xl mb-3">   
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Clientes</p>
-                                    <h5 v-if="stats.total.clients" class="font-weight-bolder mb-0">
-                                        {{stats.total.clients.numberFormat(0)}}
-                                        <span class="text-success text-sm font-weight-bolder">+0%</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-xl mb-3">   
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Vendedores</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{stats.total.sellers.numberFormat(0)}}
-                                        <span class="text-success text-sm font-weight-bolder">+0%</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-xl mb-3">   
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Prospectos</p>
-                                    <h5 class="font-weight-bolder mb-0">
-                                        {{stats.total.leads.numberFormat(0)}}
-                                        <span class="text-success text-sm font-weight-bolder">+0%</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="card">
             <div class="card-body">
-                <canvas v-show="stats" ref="myChart" id="myChart"></canvas>
+                <div class="row">       
+                    <div class="col-12 col-md-8">       
+                        <canvas v-show="stats" ref="myChart" id="myChart"></canvas>
+                    </div>
+
+                    <div class="col-12 col-md-4">   
+                        <div v-if="stats" class="row">   
+                            <div class="col-12 mb-3">   
+                                <div class="card card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Clientes</p>
+                                                <h5 v-if="stats.total.clients" class="font-weight-bolder mb-0">
+                                                    {{stats.total.clients.numberFormat(0)}}
+                                                    <span class="text-success text-sm font-weight-bolder">+0%</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3">   
+                                <div class="card card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Vendedores</p>
+                                                <h5 class="font-weight-bolder mb-0">
+                                                    {{stats.total.sellers.numberFormat(0)}}
+                                                    <span class="text-success text-sm font-weight-bolder">+0%</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3">   
+                                <div class="card card-body p-3">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="numbers">
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Prospectos</p>
+                                                <h5 class="font-weight-bolder mb-0">
+                                                    {{stats.total.leads.numberFormat(0)}}
+                                                    <span class="text-success text-sm font-weight-bolder">+0%</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 text-end">
+                                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

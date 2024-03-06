@@ -1,10 +1,10 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=2.4.7'
 
 const AdminusersViewer = {
-    name : 'adminusers-viewer',
     data() {
         return {
             UserSupport: new UserSupport,
+            busy: false,
             users: null,
             usersAux: null,
             query: null,
@@ -81,7 +81,9 @@ const AdminusersViewer = {
             window.location.href = '../../apps/admin-users/followPages?ulid=' + company_id
         },
         getUsers() {
+            this.busy = true
             this.UserSupport.getUsers({}, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     this.users = response.users
                     this.usersAux = response.users
@@ -111,6 +113,12 @@ const AdminusersViewer = {
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
+                <div v-if="busy == true" class="d-flex justify-content-center py-3">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
                 <div v-if="users" class="table-responsive-sm p-0 overflow-y-scroll h-100">
                     <table class="table align-items-center mb-0">
                         <thead>

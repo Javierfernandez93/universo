@@ -378,17 +378,14 @@ const HomeViewer = {
                         </video>
                     </div>
                     <div class="col-12 col-md-5">
-                        <div class="card card-body p-0 p-xl-5 bg-dark bg-repeat-circles card-jade">
-                            <div class="d-flex h-100 justify-content-center align-items-center">
-                                <div class="row w-1000">
-                                    <div class="col-12">
-                                        <div class="text-uppercase mb-3 text-white h4">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
-                                        <p class="text-white my-2">En Universo de Jade, nos destacamos por fomentar el desarrollo personal en nuestra comunidad y ofrecer oportunidades de crecimiento dentro de la empresa basadas en resultados extraordinarios.</p>
-                                        <p class="text-white my-2">Valoramos el aprendizaje continuo y premiamos el esfuerzo y la dedicación. Además, ofrecemos la posibilidad real de convertirse en un asociado de la empresa para aquellos que demuestran un liderazgo excepcional. </p>
-                                        <p class="text-white mb-3">Únete a nosotros y sé parte de una empresa que no solo construye desarrollos inmobiliarios excepcionales, sino que también construye carreras y futuros brillantes.</p>
+                        <div class="card card-body p-0 p-xl-5 bg-dark bg-repeat-circles">
+                                <div class="col-12">
+                                    <div class="text-uppercase mb-3 text-white h4">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
+                                    <p class="text-white my-2">En Universo de Jade, nos destacamos por fomentar el desarrollo personal en nuestra comunidad y ofrecer oportunidades de crecimiento dentro de la empresa basadas en resultados extraordinarios.</p>
+                                    <p class="text-white my-2">Valoramos el aprendizaje continuo y premiamos el esfuerzo y la dedicación. Además, ofrecemos la posibilidad real de convertirse en un asociado de la empresa para aquellos que demuestran un liderazgo excepcional. </p>
+                                    <p class="text-white mb-3">Únete a nosotros y sé parte de una empresa que no solo construye desarrollos inmobiliarios excepcionales, sino que también construye carreras y futuros brillantes.</p>
 
-                                        <a href="../../apps/home/about" class="btn btn-success px-5 py-3">SOMOS</a>
-                                    </div>
+                                    <a href="../../apps/home/about" class="btn btn-success px-5 py-3">SOMOS</a>
                                 </div>
                             </div>
                         </div>
