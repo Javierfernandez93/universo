@@ -36,7 +36,7 @@ const AboutViewer = {
                             <div class="row g-6 justify-content-center align-items-center">
                                 <div class="col-12 col-md-8 text-center text-md-end pb-5 pb-md-0">
                                     <div class="mb-4">
-                                        <div class="h1 mb-n1 text-success">Misión</div>
+                                        <div class="h2 maldives mb-n1 text-success">Misión</div>
 
                                         <span class="divider bg-success"></span>
                                     </div>
@@ -61,7 +61,7 @@ const AboutViewer = {
                                 </div>
                                 <div class="col-12 col-md-8">
                                     <div class="mb-4">
-                                        <div class="h1 mb-n1 text-success">Visión</div>
+                                        <div class="h2 maldives mb-n1 text-success">Visión</div>
 
                                         <span class="divider bg-success"></span>
                                     </div>
@@ -78,7 +78,7 @@ const AboutViewer = {
                     <div class="row g-6 py-5 justify-content-center">
                         <div class="col-12 col-md-8">
                             <div class="mb-4 text-center">
-                                <div class="h1 mb-n1 text-success">Valores</div>
+                                <div class="h2 maldives mb-n1 text-success">Valores</div>
 
                                 <span class="divider bg-success"></span>
                             </div>

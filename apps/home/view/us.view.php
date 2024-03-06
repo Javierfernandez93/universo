@@ -17,7 +17,7 @@
 
             <div class="col-12 col-md animation-fall-down text-white" style="--delay:600ms">
 
-                <h3 class="text-white">Querida comunidad Jade: </h3>
+                <div class="h3 text-white maldives">Querida comunidad Jade: </div>
 
                 <div class="my-5">
                     <p class="lead">En nombre de todo el equipo UNIVERSO DE JADE, queremos  expresar nuestro mas sincero agradecimiento por habernos elegido, queremos felicitarte, ya que desde este momento formas parte de nuestra familia </p>
@@ -49,7 +49,7 @@
                         <div class="col-12 col-md-8 mb-3 mb-md-0 animation-fall-down" style="--delay:250ms">
                             <div class="mb-3">
                                 <div class="h4 mb-0 text-white text-uppercase d-none">conoce más</div>
-                                <div class="h2 text-success text-uppercase">Imish Kuj</div>
+                                <div class="h2 maldives text-success text-uppercase">Imish Kuj</div>
                             </div>
                             <p class="text-white lead">A vivir... A mantener viva una voz un recuerdo una memoria.. A compartir. A servir. </p>
                             <p class="text-white lead">De experiencia humana 42 años. En servicio. Desde los 19 años. Aprendiz del gran espiritu del gran misterio. </p>
