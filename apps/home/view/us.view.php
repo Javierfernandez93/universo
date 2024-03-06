@@ -51,9 +51,10 @@
                                 <div class="h4 mb-0 text-white text-uppercase d-none">conoce más</div>
                                 <div class="h2 maldives text-success text-uppercase">Imish Kuj</div>
                             </div>
-                            <p class="text-white lead">A vivir... A mantener viva una voz un recuerdo una memoria.. A compartir. A servir. </p>
-                            <p class="text-white lead">De experiencia humana 42 años. En servicio. Desde los 19 años. Aprendiz del gran espiritu del gran misterio. </p>
-                            <p class="text-white lead">Las experiencias mas llenas de enseñanzas han sido las mas transformadoras algunas dolorosas. Pienso que quien no se equivoca no aprende no crece. He conocido la muerte la enfermedad y la tristeza. Me ha enseñado a valorar y vivir como un ser mortal sensible. He recorrido Argentina, Bolivia, Peru, Ecuador, Colombia, Panama, Costarica, Nicaragua, Salvador, Guatemala, Mexico, Reino unido ( londres escocia edimburgo luxemburgo glasgo).</p>
+                            <p class="text-white lead">Permítanme presentarles a Imish Kuj, un individuo cuya vida está impregnada de significado y servicio.</p>
+                            <p class="text-white lead">Con 42 años de experiencia humana, Imish ha dedicado su existencia a mantener viva una voz, un recuerdo, una memoria. Su compromiso con compartir y servir ha sido evidente desde una edad temprana, comenzando su viaje de servicio a la edad de 19 años.</p>
+                            <p class="text-white lead">Imish se identifica como aprendiz del gran espíritu del gran misterio, lo que sugiere una profunda conexión con lo trascendental y lo espiritual. Reconoce que las experiencias más llenas de enseñanzas han sido las más transformadoras, incluso las dolorosas. Esta comprensión le ha llevado a la convicción de que cometer errores es esencial para el crecimiento y el aprendizaje.</p>
+                            <p class="text-white lead">En resumen, Imish Kuj personifica la sabiduría adquirida a través de la vida y la voluntad de aprender y crecer a través de todas las experiencias que el camino le presenta. Su historia nos recuerda la importancia de abrazar la totalidad de la existencia, tanto la luz como la oscuridad, con gratitud y humildad.</p>
 
                             <div class="text-white h4 mt-5 fw-sembold">
                                 - Imish : lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante
