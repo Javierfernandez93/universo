@@ -276,3 +276,8 @@ nav {
   right: -5rem;
   text-align: center;
 }
+
+.opacity-total,
+.opacity-100 {
+  opacity: 1 !important;
+}

@@ -66,7 +66,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-md-7">
                     <div class="card rounded bg-transparent p-0 h-auto overflow-hidden">
-                        <div @click="playVideo" v-show="showing" class="mask cursor-pointer z-zoom-element bg-dark rounded opacity-total z-index-1" style="background-image:url(../../src/img/home/video-imish.png)">
+                        <div @click="playVideo" v-show="showing" class="mask cursor-pointer opacity-100 z-zoom-element bg-dark rounded opacity-total z-index-1" style="background-image:url(../../src/img/home/video-imish.png)">
                             <div class="justify-content-center d-flex align-items-center h-100">
                                 <span class="btn-play d-flex justify-content-center align-items-center cursor-pointer z-zoom-element"><i class="bi fs-1 bi-play-fill text-white"></i></span>
                             </div>
