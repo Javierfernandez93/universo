@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.4.8'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=2.4.9'   
 
 const AdminbridgeViewer = {
     name : 'adminbridge-viewer',
