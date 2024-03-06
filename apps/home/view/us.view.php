@@ -56,9 +56,6 @@
                             <p class="text-white lead">Imish se identifica como aprendiz del gran espíritu del gran misterio, lo que sugiere una profunda conexión con lo trascendental y lo espiritual. Reconoce que las experiencias más llenas de enseñanzas han sido las más transformadoras, incluso las dolorosas. Esta comprensión le ha llevado a la convicción de que cometer errores es esencial para el crecimiento y el aprendizaje.</p>
                             <p class="text-white lead">En resumen, Imish Kuj personifica la sabiduría adquirida a través de la vida y la voluntad de aprender y crecer a través de todas las experiencias que el camino le presenta. Su historia nos recuerda la importancia de abrazar la totalidad de la existencia, tanto la luz como la oscuridad, con gratitud y humildad.</p>
 
-                            <div class="text-white h4 mt-5 fw-sembold">
-                                - Imish : lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante
-                            </div>
                         </div>
                     </div>
                 </div>
