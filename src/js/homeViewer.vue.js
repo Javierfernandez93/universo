@@ -362,8 +362,8 @@ const HomeViewer = {
 
         <section class="py-5 animate-section" id="section-2">
             <div class="container">
-                <div class="row align-items-center justify-content-center py-5 expand" style="--delay:500ms">
-                    <div class="col-12 col-md-7 position-relative mb-3 mb-md-0">
+                <div class="row align-items-center justify-content-center g-5 py-5 expand" style="--delay:500ms">
+                    <div class="col-12 col-md-12 col-xl-7 position-relative mb-3 mb-md-0">
                         <div @click="playVideo" v-show="showing" class="mask cursor-pointer z-zoom-element bg-dark rounded opacity-total z-index-1" style="background-image:url(../../src/img/home/video.png)">
                             <div class="justify-content-center d-flex align-items-center h-100">
                                 <span class="btn-play d-flex justify-content-center align-items-center cursor-pointer z-zoom-element"><i class="bi fs-1 bi-play-fill text-white"></i></span>
@@ -377,8 +377,8 @@ const HomeViewer = {
                             </object>
                         </video>
                     </div>
-                    <div class="col-12 col-md-5">
-                        <div class="card card-body p-0 p-xl-5 bg-dark bg-repeat-circles">
+                    <div class="col-12 col-md-12 col-xl-5">
+                        <div class="card card-body p-5 bg-dark bg-repeat-circles">
                             <div class="text-uppercase mb-3 text-white h4">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
                             <p class="text-white my-2">En Universo de Jade, nos destacamos por fomentar el desarrollo personal en nuestra comunidad y ofrecer oportunidades de crecimiento dentro de la empresa basadas en resultados extraordinarios.</p>
                             <p class="text-white my-2">Valoramos el aprendizaje continuo y premiamos el esfuerzo y la dedicación. Además, ofrecemos la posibilidad real de convertirse en un asociado de la empresa para aquellos que demuestran un liderazgo excepcional. </p>
