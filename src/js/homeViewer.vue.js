@@ -379,7 +379,7 @@ const HomeViewer = {
                     </div>
                     <div class="col-12 col-md-12 col-xl-5">
                         <div class="card card-body p-5 bg-dark bg-repeat-circles">
-                            <div class="text-uppercase mb-3 text-white maldives h4">¿Cómo se define el Universo <strong class="text-success">de Jade?</strong></div>
+                            <div class="text-uppercase mb-3 text-white maldives h4">¿Cómo se define Universo <strong class="text-success">de Jade?</strong></div>
                             <p class="text-white my-2">Universo de jade es un concepto que abraza una serie de desarrollos con la unión de la naturaleza y lo sustentable creando un entorno amigable con el medio ambiente.</p>
 
                             <a href="../../apps/home/about" class="btn btn-success px-5 py-3">SOMOS</a>

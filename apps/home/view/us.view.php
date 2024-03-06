@@ -40,7 +40,7 @@
         <div class="container py-5">
             <div class="row g-5 mb-5 align-items-center justify-content-center w-100 mx-0">
                 <div class="col-12 col-md-12">
-                    <div class="row g-5 justify-content-center">
+                    <div class="row g-5 justify-content-center align-items-center">
                         <div class="col-12 col-md-4 animation-fall-left" style="--delay:500ms">
                             <div class="">
                                 <img src="../../src/img/imish.png" class="w-100 rounded" alt="Imish Kuj" title="Imish Kuj"/>
