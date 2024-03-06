@@ -329,7 +329,7 @@ const HomeViewer = {
         window.onload = function(){
             setTimeout(()=>{
                 $('#preloader').addClass("showout");
-            },1200)
+            },1500)
 
             const elementsToExpand = document.querySelectorAll(".expand")
     
@@ -379,7 +379,7 @@ const HomeViewer = {
                     </div>
                     <div class="col-12 col-md-12 col-xl-5">
                         <div class="card card-body p-5 bg-dark bg-repeat-circles">
-                            <div class="text-uppercase mb-3 text-white h4">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
+                            <div class="text-uppercase mb-3 text-white maldives h4">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
                             <p class="text-white my-2">En Universo de Jade, nos destacamos por fomentar el desarrollo personal en nuestra comunidad y ofrecer oportunidades de crecimiento dentro de la empresa basadas en resultados extraordinarios.</p>
                             <p class="text-white my-2">Valoramos el aprendizaje continuo y premiamos el esfuerzo y la dedicación. Además, ofrecemos la posibilidad real de convertirse en un asociado de la empresa para aquellos que demuestran un liderazgo excepcional. </p>
                             <p class="text-white mb-3">Únete a nosotros y sé parte de una empresa que no solo construye desarrollos inmobiliarios excepcionales, sino que también construye carreras y futuros brillantes.</p>
@@ -487,11 +487,9 @@ const HomeViewer = {
                             <div class="h1 text-success">Afiliados</div>
                         </div>
                         <div class="card overflow-hidden position-relative card-body p-5 bg-dark text-center text-white">
-                            <div class="row align-items-center justify-content-center mb-5">
+                            <div class="row g-5 align-items-center justify-content-center mb-5">
                                 <div class="col-12 col-md-4 animation-fall-down" style="--delay:500ms">
-                                    <div class="">
-                                        <img src="../../src/img/afilliates/boss.png" class="img-thumbnail rounded" alt="Boss" title="Boss"/>
-                                    </div>
+                                    <img src="../../src/img/afilliates/boss.png" class="img-thumbnail rounded" alt="Boss" title="Boss"/>
                                 </div>
                                 <div class="col-12 col-md-8 animation-fall-down" style="--delay:500ms">
                                     <div class="text-uppercase mb-3 text-white h3">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
@@ -626,47 +624,47 @@ const HomeViewer = {
                         <div class="card card-body px-5 bg-dark text-center text-white">
                             <div class="row align-items-center border-bottom">
                                 <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
                                         <div class="display-2 sans fw-bold">{{stats.experience}}</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
                                         <div class="display-2 sans fw-bold">{{stats.real_state}}</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
                                         <div class="display-2 sans fw-bold">{{stats.sales}}</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
                                         <div class="display-2 sans fw-bold">{{stats.families}}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
                                         <div>Años de</div>
                                         <div>experiencia</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
                                         <div>Desarrollos</div> 
                                         <div>Inmobiliarios</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
                                         <div>Terrenos</div> 
                                         <div>Vendidos</div>
                                     </div>
                                 </div>
                                 <div class="col-6 col-xl-3">
-                                    <div class="card card-body bg-transparent p-0 p-md-5">
+                                    <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
                                         <div>Familias</div>
                                     </div>
                                 </div>

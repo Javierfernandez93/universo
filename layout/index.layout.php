@@ -27,7 +27,6 @@
     <meta property="og:updated_time" content="1664070388" />
     <meta property="og:url" content="<?php echo HCStudio\Connection::getMainPath() ?>">
 
-
     <!-- App favicon -->
     <link rel="icon" type="image/png" href="../../src/img/favicon.png">
 
@@ -94,10 +93,7 @@
     </script>
     <div id="appChatBot"></div>
 
-    <!--   Core JS Files   -->
-    <script src="../../src/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../../src/js/plugins/smooth-scrollbar.min.js"></script>
-    <script src="../../src/js/plugins/chartjs.min.js"></script>
+    <!-- <script src="../../src/js/plugins/chartjs.min.js"></script> -->
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
 
     <script src="../../src/js/constants.js?v=2.4.7" type="text/javascript"></script>
