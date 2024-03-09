@@ -45,7 +45,9 @@ const PromoViewer = {
     },
     template : `
         <div ref="promo" class="position-fixed start-0 bottom-0 mx-3 mb-5">
-            <div :class="showing ? 'd-none' : ''" class="btn rounded-pill btn-primary btn-lg mb-0" @click="toggle">¡Conoce Nayal!</div> 
+            <div :class="showing ? 'd-none' : ''" class="btn rounded-pill btn-success btn-lg px-3 mb-0" @click="toggle">
+                ¿Quieres conocer Naya? Da clic aquí
+            </div> 
         </div>
 
         <div ref="promoContainer" class="position-fixed start-0 bottom-0 mx-3 mb-5 hide-from-bottom">

@@ -6,6 +6,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 @font-face {
   font-family: "Maldives regular";
   src: url(../../src/fonts/Maldives/Maldives-Regular.ttf);
@@ -101,8 +102,8 @@ body {
 }
 
 .btn-success {
-  background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
 }
 .card-jade-video {
   background-image: url(../../src/img/home/video.png);
