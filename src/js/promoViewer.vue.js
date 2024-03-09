@@ -45,8 +45,8 @@ const PromoViewer = {
     },
     template : `
         <div ref="promo" class="position-fixed start-0 bottom-0 mx-3 mb-5">
-            <div :class="showing ? 'd-none' : ''" class="btn rounded-pill btn-success btn-lg px-3 mb-0" @click="toggle">
-                ¿Quieres conocer Naya? Da clic aquí
+            <div :class="showing ? 'd-none' : ''" @click="toggle">
+                <img src="../../src/img/nayal-thumbnail.png" alt="Nayal" class="img-fluid rounded">
             </div> 
         </div>
 
