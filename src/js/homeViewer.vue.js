@@ -587,8 +587,8 @@ const HomeViewer = {
                                                             <div class="card bg-transparent rounded overflow-hidden shadow-lg">   
                                                                 <img :src="affiliate.image" class="card-img-top"/>
                                                                 
-                                                                <div class="card-body bg-sponsor p-5">   
-                                                                    <h3 class="text-success mb-3">{{affiliate.name}}</h3>
+                                                                <div class="card-body bg-sponsor p-3">   
+                                                                    <h3 class="text-success mb-1">{{affiliate.name}}</h3>
                                                                     <div class="text-white">
                                                                         <span v-html="affiliate.text"></span>
                                                                     </div>
@@ -600,11 +600,11 @@ const HomeViewer = {
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="carousel-control-prev w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <button class="d-none carousel-control-prev w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Previous</span>
                                     </button>
-                                    <button class="carousel-control-next w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <button class="d-none carousel-control-next w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                         <span class="visually-hidden">Next</span>
                                     </button>

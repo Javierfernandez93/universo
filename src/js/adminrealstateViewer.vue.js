@@ -6,6 +6,7 @@ const AdminrealstateViewer = {
             UserSupport: new UserSupport,
             realStates: null,
             realStatesAux: null,
+            busy: false,
             query: null,
             columns: { // 0 DESC , 1 ASC 
                 title: {
@@ -59,11 +60,16 @@ const AdminrealstateViewer = {
         getRealStates() {
             this.realStatesAux = null
             this.realStates = null
-
+            this.busy = true
+            
             this.UserSupport.getRealStates({}, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     this.realStatesAux = response.realStates
                     this.realStates = this.realStatesAux
+                } else {
+                    this.realStatesAux = false
+                    this.realStates = false
                 }
             })
         },
@@ -116,8 +122,13 @@ const AdminrealstateViewer = {
 
                         <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{realStates.length}} resultados)</div>
                     </div>
-                    <div v-if="realStates" class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive-sm p-0">
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div v-if="busy == true" class="d-flex justify-content-center py-3">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <div v-if="realStates" class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center">

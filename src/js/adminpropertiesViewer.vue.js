@@ -5,6 +5,7 @@ const AdminpropertiesViewer = {
         return {
             UserSupport : new UserSupport,
             query: null,
+            busy: false,
             properties: null,
             propertiesAux: null,
         }
@@ -27,11 +28,18 @@ const AdminpropertiesViewer = {
         },
         getPropertiesByAdmin() 
         {
+            this.properties = null
+            this.propertiesAux = null
+            this.busy = true
             this.UserSupport.getPropertiesByAdmin({},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     this.properties = response.properties
                     this.propertiesAux = response.properties
+                } else {
+                    this.properties = false
+                    this.propertiesAux = false
                 }
             })
         },
@@ -91,6 +99,11 @@ const AdminpropertiesViewer = {
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
+                <div v-if="busy == true" class="d-flex justify-content-center py-3">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
                 <div v-if="properties" class="table-responsive-sm p-0 overflow-y-scroll h-100">
                     <table class="table align-items-center mb-0">
                         <thead>

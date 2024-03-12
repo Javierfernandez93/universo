@@ -54,3 +54,15 @@
 .rounded-circle {
     object-fit: cover;
 }
+
+
+.header-sticky {
+    position: sticky; 
+    top:0; 
+  }
+  
+
+  .nav-link:hover {
+    background-color: #dbdddf;
+    border-radius: 0.5rem;
+  }

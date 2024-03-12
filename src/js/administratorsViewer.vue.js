@@ -7,6 +7,7 @@ const AdministratorsViewer = {
         return {
             UserSupport : new UserSupport,
             administrators : null,
+            busy: false,
             columns: { // 0 DESC , 1 ASC 
                 user_support_id : {
                     name: 'user_support_id',
@@ -143,7 +144,9 @@ const AdministratorsViewer = {
             alertCtrl.present(alert.modal);
         },
         getAdministrators() {
+            this.busy = true
             this.UserSupport.getAdministrators({},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     this.administrators = response.administrators
@@ -153,7 +156,6 @@ const AdministratorsViewer = {
     },
     mounted() 
     {
-
         this.getAdministrators()
     },
     template : `
@@ -176,6 +178,11 @@ const AdministratorsViewer = {
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
+                        <div v-if="busy == true" class="d-flex justify-content-center py-3">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
                         <div v-if="administrators" class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>

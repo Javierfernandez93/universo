@@ -7,6 +7,7 @@ const ClientlistViewer = {
         return {
             UserSupport: new UserSupport,
             users: null,
+            busy: false,
             usersAux: null,
             query: null,
             columns: { // 0 DESC , 1 ASC 
@@ -86,8 +87,9 @@ const ClientlistViewer = {
         getClients(user_login_id) {
             this.users = null
             this.usersAux = null
-
+            this.busy = true
             this.UserSupport.getClients({user_login_id:user_login_id}, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     this.users = response.users
                     this.usersAux = response.users
@@ -118,20 +120,26 @@ const ClientlistViewer = {
                 </div>
             </div>
             <div class="card-body">
+                <div v-if="busy == true" class="d-flex justify-content-center py-3">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
                 <div v-if="users" class="table-responsive-sm">
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr class="align-items-center">
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="header-sticky text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     USUARIO
                                 </th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="header-sticky text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     fecha de registro
                                 </th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="header-sticky text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Tipo de usuario
                                 </th>
-                                <th class="text-center text-uppercase text-xxs font-weight-bolder opacity-7"></th>
+                                <th class="header-sticky text-center text-uppercase text-xxs font-weight-bolder opacity-7"></th>
                             </tr>
                         </thead>
                         <tbody>
