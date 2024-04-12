@@ -42,7 +42,6 @@
 </head>
 
 <body class="g-sidenav-show bg-light">
-    
     <aside class="sidenav navbar p-3 navbar-vertical border-end navbar-expand-xs bg-light fixed-start animation-fall-down" style="--delay:50ms" id="sidenav-main">
         <div class="card card-body shadow-none border px-0">
             <div class="sidenav-header">
@@ -57,7 +56,7 @@
                     <li class="nav-item my-3">
                         <div class="row justify-content-center">
                             <div class="col text-center">
-                                <span class="badge bg-primary">Vendedor</span>
+                                <span class="badge bg-primary">asesor</span>
                             </div>
                         </div>
                     </li>

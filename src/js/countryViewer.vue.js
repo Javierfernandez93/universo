@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const CountryViewer = {
     name : 'country-viewer',
@@ -56,7 +56,7 @@ const CountryViewer = {
         <div v-if="countries && viewcountries">
             <div class="card mb-3">
                 <div class="input-group input-group-lg input-group-merge">
-                    <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar país por nombre..." />
+                    <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar país por nombre..." />
                 </div>
             </div>
 

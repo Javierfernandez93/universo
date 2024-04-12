@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const CommissionsViewer = {
     data() {
@@ -147,7 +147,7 @@ const CommissionsViewer = {
         <div class="card card-body mb-3"> 
             <div class="row justify-content-center"> 
                 <div class="col-12 col-md"> 
-                    <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                    <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                 </div>
                 <div class="col-12 col-md-auto"> 
                     <div class="row justify-content-center"> 

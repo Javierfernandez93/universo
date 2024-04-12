@@ -117,7 +117,7 @@ const AdmintoolsViewer = {
                                 <div><a href="../../apps/admin-tools/add" type="button" class="btn mb-0 btn-success shadow-none">Añadir herramienta</a></div>
                             </div>
                             <div class="col-auto text-end">
-                                <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                                <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
                     </div>

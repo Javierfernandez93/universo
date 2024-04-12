@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const ApiitemsViewer = {
     name : 'apiitems-viewer',
@@ -244,7 +244,7 @@ const ApiitemsViewer = {
                         </div>
 
                         <div class="mt-3">
-                            <input v-model="query" type="text" class="form-control" placeholder="Search item..."/>
+                            <input :disabled="busy" v-model="query" type="text" class="form-control" placeholder="Search item..."/>
                         </div>
                     </div>
                 </div>

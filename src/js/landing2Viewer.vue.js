@@ -1,4 +1,4 @@
-import { Guest } from '../../src/js/guest.module.js?v=2.5.0'   
+import { Guest } from '../../src/js/guest.module.js?v=1.0.0'   
 
 const Landing2Viewer = {
     name : 'landing2-viewer',
@@ -307,7 +307,7 @@ const Landing2Viewer = {
                                     <i class="bi bi-patch-check fs-2 text-white"></i>
                                 </div>
                                 <div class="col fs-5 fw-semibold">
-                                    Vendedores
+                                    asesores
                                 </div>
                             </div>
                             <div class="row mb-3 align-items-center">

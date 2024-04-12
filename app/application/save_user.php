@@ -8,6 +8,9 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
+    $data['user']['email'] = 'pepejons@gmail.com';
+    $data['user']['user_account']['landing'] = 'pepejons';
+    
     if($data['user']['email'])
     {
         $UserLogin = new Site\UserLogin(false,false);

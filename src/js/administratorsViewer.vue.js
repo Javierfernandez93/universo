@@ -1,8 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 
-/* vue */
 const AdministratorsViewer = {
-    name: 'administrators-viewer',
     data() {
         return {
             UserSupport : new UserSupport,
@@ -24,8 +22,6 @@ const AdministratorsViewer = {
                 },
             }
         }
-    },
-    watch : {
     },
     methods: {
         sortData: function (column) {
@@ -87,8 +83,8 @@ const AdministratorsViewer = {
           
             alertCtrl.present(alert.modal);
         },
-        goToEdit(company_id) {
-            window.location.href = '../../apps/admin-administrators/edit?usid='+company_id
+        goToEdit(user_support_id) {
+            window.location.href = '../../apps/admin-administrators/edit?usid='+user_support_id
         },
         addPermission() {
             let alert = alertCtrl.create({
@@ -163,17 +159,24 @@ const AdministratorsViewer = {
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <div class="row align-items-center">
+                        <div class="row gx-2 align-items-center">
                             <div class="col fs-4 fw-sembold text-primary">
                                 <div v-if="administrators" class="mb-n2"><span class="badge p-0 text-secondary text-xxs">Total {{administrators.length}}</span></div>
                                 <h6>Administradores</h6>
                             </div>
                             <div class="col-auto text-end">
-                                <div><a href="../../apps/admin-administrators/add" type="button" class="btn shadow-none mb-1 btn-success px-3 btn-sm">Añadir adminstrador</a></div>
-                                <div><button @click="addPermission" type="button" class="btn shadow-none mb-0 btn-success px-3 btn-sm">Añadir permiso</button></div>
+                                <a href="../../apps/admin-administrators/add" type="button" class="btn shadow-none mb-0 btn-success px-3 btn-sm">Añadir adminstrador</a>
                             </div>
                             <div class="col-auto text-end">
-                                <input :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..."/>
+                                <button @click="addPermission" type="button" class="btn shadow-none mb-0 btn-success px-3 btn-sm">Añadir permiso</button>
+                            </div>
+                            <div class="col-auto text-end">
+                                <button @click="getAdministrators" class="btn btn-success btn-sm px-3 mb-0 shadow-none">
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </button>
+                            </div>
+                            <div class="col-auto text-end">
+                                <input :disabled="busy" :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..."/>
                             </div>
                         </div>
                     </div>
@@ -193,7 +196,8 @@ const AdministratorsViewer = {
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Miembro desde
                                         </th>
-                                        <th class="text-center text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                        <th class="text-center text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tipo</th>
+                                        <th class="text-center text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estatus</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
                                     </tr>
                                 </thead>
@@ -214,7 +218,11 @@ const AdministratorsViewer = {
                                             <p class="text-xs font-weight-bold mb-0">{{administrator.create_date.formatFullDate()}}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0">Activo</p>
+                                            <span class="badge bg-primary">{{administrator.name}}</span>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span v-if="administrator.status == 1" class="badge bg-success">activo</span>
+                                            <span v-if="administrator.status == 0" class="badge bg-secondary">inactivo</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="btn-group">

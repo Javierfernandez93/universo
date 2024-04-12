@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const ClientlistViewer = {
     name : 'clientlist-viewer',
@@ -115,7 +115,7 @@ const ClientlistViewer = {
                         <button @click="addClient" type="button" class="btn me-2 shadow-none mb-0 btn-success px-3 btn-sm">Añadir cliente</button>
                     </div>
                     <div class="col-auto text-end">
-                        <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                        <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
                 </div>
             </div>
@@ -178,8 +178,9 @@ const ClientlistViewer = {
                         </tbody>
                     </table>
                 </div>
-                <div v-else-if="users == false" class="alert alert-light text-center mb-0">
-                    <div>No tenemos clientes aún</div>
+                <div v-else-if="users == false" class="alert border border-light text-center mb-0">
+                    <strong>Importante</strong>
+                    <div>No hay información de clientes todavía refresca la página o vuelve más tarde</div>
                 </div>
             </div>
         </div>

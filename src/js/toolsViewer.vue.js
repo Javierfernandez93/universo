@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const ToolsViewer = {
     name : 'tools-viewer',
@@ -49,7 +49,7 @@ const ToolsViewer = {
                             <div class="h3">Herramientas</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <input v-model="query" type="text" class="form-control" placeholder="Buscar herramienta..."/>
+                            <input :disabled="busy" v-model="query" type="text" class="form-control" placeholder="Buscar herramienta..."/>
                         </div>
                     </div>
                 </div>

@@ -8,7 +8,11 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
-    if($administrators = $UserSupport->getAdministrators())
+    $data['catalog_support_type_id'] = isset($data['catalog_support_type_id']) ? $data['catalog_support_type_id'] : 1;
+
+    $filter = " AND user_support.catalog_support_type_id = '{$data['catalog_support_type_id']}'";
+
+    if($administrators = $UserSupport->getAdministrators($filter))
     {
         $data["administrators"] = $administrators;
         $data["s"] = 1;

@@ -38,12 +38,35 @@ class UserSupport extends Orm {
 
   const PID_NAME = 'pidSupport';
   const EXCEL_HEADERS = [
-    'nombre' => 'first_name',
-    'correo' => 'email',
-    '#cuenta' => 'account',
-    'volumen' => 'balance',
-    'profit(100%)' => 'profit',
-    'red(30%)' => 'network',
+    'name' => 'names',
+    'subelementos' => 'subelements',
+    'númerodelote' => 'property_number',
+    'desarrollo' => 'real_state',
+    'desarrolladora' => 'real_state_developer',
+    'afiliado' => 'affiliation',
+    'fechadeapertura' => 'start_date',
+    'fechadecierre' => 'end_date',
+    'díasenproceso' => 'working_days',
+    'estadodeventa' => 'sale_state',
+    'procesorh' => 'rh_state',
+    'operativoap' => 'op_operation',
+    'operativocierre' => 'close_operation',
+    'financiamiento' => 'financing',
+    'monto' => 'amount',
+    'porcentajedeenganche' => 'percentaje',
+    'verificar' => 'verify',
+    'comisión' => 'commission',
+    'gerencia' => 'gerency',
+    'COORDINACIÓN' => 'coordination',
+    'ASESOR' => 'asesor',
+    'correoelectrónico' => 'email',
+    'nacionalidad' => 'nationality',
+    'residencia' => 'residence',
+    'SEXO' => 'gender',
+    'fechadenacimiento' => 'birthdate',
+    'teléfono' => 'phone',
+    'estatus' => 'status',
+    'OBSERVACIÓN' => 'observation',
   ];
 
   public function __construct(bool $save_class = false,bool $autoLoad = true) {
@@ -1117,6 +1140,16 @@ class UserSupport extends Orm {
   
   public function getUsers(string $filter = '')
   {
+    if(!$this->getId())
+    {
+      return false;
+    }
+
+    if($this->affiliation_id)
+    {
+      $filter .= " AND user_support.affiliation_id = '{$this->affiliation_id}'";
+    }
+    
     return $this->connection()->rows("SELECT
       user_login.user_login_id,
       user_login.catalog_campaing_id,
@@ -1126,7 +1159,9 @@ class UserSupport extends Orm {
       user_account.image,
       user_data.names,
       user_address.country_id,
-      user_contact.phone
+      user_contact.phone,
+      affiliation.name as affiliation,
+      user_support.names as sponsor_name
     FROM
       user_login
     LEFT JOIN 
@@ -1149,6 +1184,14 @@ class UserSupport extends Orm {
       user_referral
     ON 
       user_referral.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_support
+    ON 
+      user_support.user_support_id = user_referral.user_support_id
+    LEFT JOIN 
+      affiliation
+    ON 
+      affiliation.affiliation_id = user_support.affiliation_id
     WHERE 
       user_login.status = '1'
       {$filter}
@@ -1259,23 +1302,33 @@ class UserSupport extends Orm {
     }
   }
 
-  public function getAdministrators($filter = '')
+  public function getAdministrators(string $filter = '')
   {
-    $sql = "SELECT
-              {$this->tblName}.{$this->tblName}_id,
-              {$this->tblName}.names,
-              {$this->tblName}.email,
-              {$this->tblName}.create_date
-            FROM
-              {$this->tblName}
-            WHERE 
-              {$this->tblName}.status = '1'
-            ORDER BY 
-              {$this->tblName}.create_date
-            DESC
-              ";
-
-    return $this->connection()->rows($sql);
+    return $this->connection()->rows("SELECT
+      {$this->tblName}.{$this->tblName}_id,
+      {$this->tblName}.names,
+      {$this->tblName}.email,
+      {$this->tblName}.create_date,
+      {$this->tblName}.status,
+      catalog_support_type.name,
+      affiliation.name as affiliation
+    FROM
+      {$this->tblName}
+    LEFT JOIN 
+      catalog_support_type
+    ON 
+      catalog_support_type.catalog_support_type_id = {$this->tblName}.catalog_support_type_id
+    LEFT JOIN 
+      affiliation
+    ON 
+      affiliation.affiliation_id = {$this->tblName}.affiliation_id
+    WHERE 
+      {$this->tblName}.status = '1'
+      {$filter}
+    ORDER BY 
+      {$this->tblName}.create_date
+    DESC
+      ");
   }
   
   public function getCountUsers()
@@ -1349,7 +1402,7 @@ class UserSupport extends Orm {
     {
       if($valueFilter = array_filter($values))
       {
-        if(sizeof($valueFilter) > 0)
+        if(sizeof($valueFilter) > 5)
         {
           $_key = $key;
 
@@ -1382,6 +1435,7 @@ class UserSupport extends Orm {
   public static function getHeaders(array $data = null)
   {
     $key = self::searchFirstHeaders($data);
+
     $whiteSpaces = self::getWitheSpacesCounter($data[$key]);
     
     $keys = array_slice($data[$key],0,sizeof(array_filter($data[$key]))+$whiteSpaces);
@@ -1400,28 +1454,32 @@ class UserSupport extends Orm {
   public static function sanitizeUserDataForImport(array $data = null)
   {
     $headersData = self::getHeaders($data);
-    $users = [];
-    
+    $_data = [];
+
     foreach($data as $key => $value)
     {
       if($key > ($headersData['key']))
       {
-        if(sizeof(array_filter($value)) > 0)
+        if(sizeof(array_filter($value)) > 5)
         {       
           foreach($headersData['headers'] as $header)
           {
             if($header)
             {
-              $user[$header] = $value[self::getIndexHeader($headersData['headers'],$header)];
+
+              $_value[$header] = $value[self::getIndexHeader($headersData['headers'],$header)];
             }
           } 
 
-          $users[] = $user;
+          $_data[] = $_value;
         }
       }
     }
 
-    return $users;
+    return [
+      'headers' => $headersData['headers'],
+      'data' => $_data
+    ];
   }
 
   public function getUserDetail(int $user_login_id = null)

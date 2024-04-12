@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 
 const AdmintransactionsViewer = {
     data() {
@@ -205,7 +205,7 @@ const AdmintransactionsViewer = {
                         <div><span v-if="transactions" class="badge text-secondary">Total de comisiones {{transactions.length}}</span></div>
                     </div>
                     <div class="col-12 col-xl-auto">
-                        <input :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..." />
+                        <input :disabled="busy" :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..." />
                     </div>
                     <div class="col-12 col-xl-auto">
                         <select class="form-control" v-model="status">

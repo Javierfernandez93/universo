@@ -504,10 +504,11 @@ class UserLogin extends Orm {
               $UserAccount->landing = isset($data['user_account']['landing']) ? $data['user_account']['landing'] : '';
               $UserAccount->image = UserAccount::DEFAULT_IMAGE;
 
-              if(isset($data['referral']))
+              if(isset($data['user_referral']))
               {
                 $UserReferral = new UserReferral;
-                $UserReferral->referral_id = isset($data['referral']['user_login_id']) && !empty($data['referral']['user_login_id']) ? $data['referral']['user_login_id'] : 1;
+                $UserReferral->referral_id = isset($data['user_referral']['user_login_id']) && !empty($data['user_referral']['user_login_id']) ? $data['user_referral']['user_login_id'] : 1;
+                $UserReferral->user_support_id = isset($data['user_referral']['user_support_id']) && !empty($data['user_referral']['user_support_id']) ? $data['user_referral']['user_support_id'] : 1;
                 $UserReferral->user_login_id = $UserLogin->company_id;
                 $UserReferral->catalog_level_id = 0;
                 $UserReferral->status = UserReferral::ACTIVE;

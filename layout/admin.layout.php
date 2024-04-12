@@ -72,17 +72,17 @@
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#users" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminUsers,JFStudio\Router::AdminUserAdd,JFStudio\Router::AdminUserEdit])) { ?>active<?php } ?>" aria-controls="users" role="button" aria-expanded="false">
                             <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-person-circle"></i></span>
-                            <span class="nav-link-text ms-1">Vendedores</span>
+                            <span class="nav-link-text ms-1">Asesores</span>
                         </a>
                         <div class="collapse" id="users">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-users">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-users/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
@@ -100,16 +100,22 @@
                         </a>
                         <div class="collapse" id="client">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-client">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-client/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../apps/admin-client/import">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Importar </span>
                                 </a>
                             </li>
                         </ul>
@@ -124,13 +130,13 @@
                         </a>
                         <div class="collapse" id="leads">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-lead">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-lead/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
@@ -149,24 +155,78 @@
                         </a>
                         <div class="collapse" id="administrators">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-administrators">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-administrators/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-administrators/permissions">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Permisos </span>
                                 </a>
                             </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
+                
+                <?php if ($UserSupport->hasPermission('list_sponsor')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#sponsors" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminSponsors, JFStudio\Router::AdminSponsorsAdd, JFStudio\Router::AdminSponsorsEdit])) { ?>active<?php } ?>" aria-controls="sponsors" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-person-fill-up"></i></span>
+                            <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminSponsors); ?></span>
+                        </a>
+                        <div class="collapse" id="sponsors">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../apps/admin-sponsor">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <?php if ($UserSupport->hasPermission('add_sponsor')) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-sponsor/add">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Añadir </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </ul>
+                <?php } ?>
+               
+                <?php if ($UserSupport->hasPermission('list_affiliation')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#affiliation" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminAffilations, JFStudio\Router::AdminAffilationsAdd, JFStudio\Router::AdminAffilationsEdit])) { ?>active<?php } ?>" aria-controls="affiliation" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-stack"></i></span>
+                            <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminAffilations); ?></span>
+                        </a>
+                        <div class="collapse" id="affiliation">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../apps/admin-affiliation">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <?php if ($UserSupport->hasPermission('add_affiliation')) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-affiliation/add">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Añadir </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </ul>
                 <?php } ?>
@@ -180,13 +240,13 @@
                         </a>
                         <div class="collapse" id="properties">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-properties">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-properties/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
@@ -205,13 +265,13 @@
                         </a>
                         <div class="collapse" id="payments">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-payments">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active d-none">
+                            <li class="nav-item d-none">
                                 <a class="nav-link active" href="../../apps/admin-payments/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
@@ -229,13 +289,13 @@
                         </a>
                         <div class="collapse" id="tools">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-tools">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-tools/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
@@ -253,13 +313,13 @@
                         </a>
                         <div class="collapse" id="realstate">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-realstate">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-realstate/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
@@ -277,13 +337,13 @@
                         </a>
                         <div class="collapse" id="banner">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-banner">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-banner/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
@@ -301,13 +361,13 @@
                         </a>
                         <div class="collapse" id="blog">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-blog">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-blog/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
@@ -524,8 +584,9 @@
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
     <script src="../../src/js/general.js?t=3" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=2.5.0" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=2.5.0" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.0.0" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.0.0" type="text/javascript"></script>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
     
@@ -541,7 +602,7 @@
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=2.5.0.6"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.0.6"></script>
 
     <script src="../../src/js/vue.js"></script>
 

@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const ViewuserwidgetViewer = {
     props: ['type','seller'],
@@ -13,7 +13,7 @@ const ViewuserwidgetViewer = {
     methods : {
         goToEdit(user_login_id)
         {
-            const url = this.type == 'vendedor' ? `../../apps/admin-users/edit?ulid=${user_login_id}` : ``
+            const url = this.type == 'asesor' ? `../../apps/admin-users/edit?ulid=${user_login_id}` : ``
             
             window.location.href = url
         },  

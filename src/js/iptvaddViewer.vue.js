@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const IptvaddViewer = {
     name : 'iptvadd-viewer',
@@ -126,7 +126,7 @@ const IptvaddViewer = {
                             <div class="row align-items-center">
                                 <div class="col-12 mb-3">
                                     <div class="form-floating">
-                                        <input :autofocus="true" v-model="client.name" :class="client.name ? 'is-valid' : ''" @keypress.enter.exact="$refs.email.focus()" type="text" class="form-control" id="name" placeholder="name@example.com">
+                                        <input :disabled="busy" :autofocus="true" v-model="client.name" :class="client.name ? 'is-valid' : ''" @keypress.enter.exact="$refs.email.focus()" type="text" class="form-control" id="name" placeholder="name@example.com">
                                         <label for="anme">* Nombre</label>
                                     </div>
                                 </div>

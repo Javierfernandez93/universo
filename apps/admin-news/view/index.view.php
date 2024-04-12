@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="card-header">
-                    <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                    <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                 </div>
                 <div
                     v-if="notices" 

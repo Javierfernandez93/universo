@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const ApihostsViewer = {
     name : 'apihosts-viewer',
@@ -180,7 +180,7 @@ const ApihostsViewer = {
                         </div>
 
                         <div class="mt-3">
-                            <input v-model="query" type="text" class="form-control" placeholder="Search host..."/>
+                            <input :disabled="busy" v-model="query" type="text" class="form-control" placeholder="Search host..."/>
                         </div>
                     </div>
                 </div>

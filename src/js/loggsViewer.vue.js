@@ -1,4 +1,4 @@
-import { UserSupport } from './userSupport.module.js?v=2.5.0'   
+import { UserSupport } from './userSupport.module.js?v=1.0.0'   
 
 const LoggsViewer = {
     data() {
@@ -63,7 +63,7 @@ const LoggsViewer = {
                         <h6>Logs</h6>
                     </div>
                     <div class="col-auto text-end">
-                        <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                        <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@ const LoggsViewer = {
                 </div>
                 <div v-else-if="users == false" class="card-body">
                     <div class="alert alert-warning text-white text-center">
-                        <div>No tenemos vendedores aún</div>
+                        <div>No tenemos asesores aún</div>
                     </div>
                 </div>
             </div>

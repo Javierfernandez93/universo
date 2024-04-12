@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const AdminapisViewer = {
     name : 'adminapis-viewer',
@@ -145,7 +145,7 @@ const AdminapisViewer = {
             </div>
         </div>
         <div class="card-header">
-            <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+            <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
         </div>
         <div v-if="apis" class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive-sm p-0">

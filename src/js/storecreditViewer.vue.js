@@ -1,5 +1,5 @@
 
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const StorecreditViewer = {
     name : 'storecredit-viewer',
@@ -57,7 +57,7 @@ const StorecreditViewer = {
                     <div class="card-body">
                         <div class="text-center mb-3">
                             <div class="text-dark">{{product.title}} - $ {{product.amount.numberFormat(2)}} c/u</div>
-                            <input :autofocus="true" type="number" v-model="product.quantity" class="form-control fs-3 text-center" placeholder="Cantidad aquí" />
+                            <input :disabled="busy" :autofocus="true" type="number" v-model="product.quantity" class="form-control fs-3 text-center" placeholder="Cantidad aquí" />
                         </div>
 
                         <div v-if="product.quantity" class="text-center mb-3">

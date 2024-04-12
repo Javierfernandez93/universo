@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 
 const AdminacademyViewer = {
     name : 'adminacademy-viewer',
@@ -98,7 +98,7 @@ const AdminacademyViewer = {
 
         <div class="row mb-3">
             <div class="col-12 col-xl">
-                <input :autofocus="true" v-model="query" type="text" class="form-control border-0 shadow-lg" placeholder="Buscar curso por nombre o precio...">
+                <input :disabled="busy" :autofocus="true" v-model="query" type="text" class="form-control border-0 shadow-lg" placeholder="Buscar curso por nombre o precio...">
             </div>
 
             <div class="col-12 col-xl-auto">

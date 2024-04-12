@@ -18,7 +18,7 @@
                 <div class="card-header pb-0">
                     <div class="row">
                         <div class="col">
-                            <input :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..." />
+                            <input :disabled="busy" :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..." />
                         </div>
                         <div class="col-auto">
                             <select class="form-control" v-model="status">

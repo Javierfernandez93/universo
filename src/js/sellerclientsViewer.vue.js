@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const SellerclientsViewer = {
     emits : ['add','edit'],
@@ -120,7 +120,7 @@ const SellerclientsViewer = {
         </div>
         
         <div class="card card-body mb-3"> 
-            <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+            <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
         </div>
 
         <div class="card">

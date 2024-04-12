@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 
 const AdminemailstatsViewer = {
     name : 'adminemailstats-viewer',
@@ -43,7 +43,7 @@ const AdminemailstatsViewer = {
                 </div>
             </div>
             <div class="card-header">
-                <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
             </div>
             <div
                 v-if="Object.keys(emails).length > 0" 

@@ -6,7 +6,7 @@
         <div class="card-body">
             <div class="mb-3">
                 <label>Nombre</label>
-                <input :autofocus="true" :class="administrator.names ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.email.focus()" v-model="administrator.names" ref="names" type="text" class="form-control" placeholder="nombre">
+                <input :disabled="busy" :autofocus="true" :class="administrator.names ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.email.focus()" v-model="administrator.names" ref="names" type="text" class="form-control" placeholder="nombre">
             </div>
             <div class="mb-3">
                 <label>Correo electrónico</label>

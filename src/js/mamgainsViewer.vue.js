@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const MamgainsViewer = {
     name : 'mamgains-viewer',
@@ -110,7 +110,7 @@ const MamgainsViewer = {
                             <div class="fs-4 fw-semibold text-primary">Listado de comisiones</div>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <input v-model="query" :autofocus="true" type="seach" class="form-control" placeholder="Buscar comisión por nombre, id o monto"/>
+                            <input :disabled="busy" v-model="query" :autofocus="true" type="seach" class="form-control" placeholder="Buscar comisión por nombre, id o monto"/>
                         </div>
                     </div>
                 </div>

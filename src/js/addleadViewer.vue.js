@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const AddleadViewer = {
     data() {
@@ -21,7 +21,7 @@ const AddleadViewer = {
                 user_account: {
                     landing: null,
                 },
-                referral: {
+                user_referral: {
                     user_login_id: null
                 }
             },
@@ -55,22 +55,17 @@ const AddleadViewer = {
                     toastInfo({
                         message: 'El correo proporcionado ya está registrado',
                     })
-
-                    this.feedback = 'El correo proporcionado ya está registrado'
                 } else if (response.r == 'USER_NAME_EXIST') {
-
                     toastInfo({
                         message: 'El nombre de usuario ya está registrado',
                     })
-
-                    this.feedback = 'El nombre de usuario ya está registrado'
                 }
             })
         },
         getAdminReferralProfile: _debounce((self) => {
-            self.UserSupport.getAdminReferralProfile({referral_id:self.user.referral.user_login_id}, (response) => {
+            self.UserSupport.getAdminReferralProfile({referral_id:self.user.user_referral.user_login_id}, (response) => {
                 if (response.s == 1) {
-                    self.user.referral = {...self.user.referral,...response.profile} 
+                    self.user.user_referral = {...self.user.user_referral,...response.profile} 
                 }
             })
         },500),
@@ -139,7 +134,7 @@ const AddleadViewer = {
                         <input 
                             v-model="user.password"
                             :class="user.password ? 'is-valid' : ''"
-                            @keydown.enter.exact.prevent="$refs.referral.focus()"
+                            @keydown.enter.exact.prevent="$refs.user_referral.focus()"
                             ref="password"
                             type="text" class="form-control" placeholder="Password">
                     </div>
@@ -147,14 +142,14 @@ const AddleadViewer = {
                     <div class="col-12 col-xl-6 d-none mb-3">
                         <label>Referido por</label>
                         <input 
-                            v-model="user.referral.user_login_id"
-                            :class="user.referral.user_login_id ? 'is-valid' : ''"
+                            v-model="user.user_referral.user_login_id"
+                            :class="user.user_referral.user_login_id ? 'is-valid' : ''"
                             @keypress="getAdminReferralProfile(this)"
                             ref="number"
                             type="text" class="form-control" placeholder="Enter para buscar">
 
-                        <div v-if="user.referral.names" class="alert mb-0 mt-2 alert-info text-center text-white">
-                            {{user.referral.names}}
+                        <div v-if="user.user_referral.names" class="alert mb-0 mt-2 alert-info text-center text-white">
+                            {{user.user_referral.names}}
                         </div>
                     </div>
 

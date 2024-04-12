@@ -1,7 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 
 const LoginsupportViewer = {
-    name: 'loginsupport-viewer',
     data() {
         return {
             UserSupport : new UserSupport,

@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const AddclientsellerViewer = {
     data() {
@@ -59,7 +59,7 @@ const AddclientsellerViewer = {
                     this.$refs.button.innerText = "Guardado"
                     
                     toastInfo({
-                        message: 'Vendedor guardado correctamente. Redireccionando...',
+                        message: 'asesor guardado correctamente. Redireccionando...',
                     })
 
                     setTimeout(()=>{

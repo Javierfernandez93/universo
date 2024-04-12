@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 
 const AdminticketsViewer = {
     emits : ['maketicket'],
@@ -153,7 +153,7 @@ const AdminticketsViewer = {
                         <div class="h5">Soporte técnico</div>
                     </div>
                     <div class="col-12 col-md-auto">
-                        <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                        <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
                 </div>
             </div>

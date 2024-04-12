@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const LeadlistViewer = {
     name : 'leadlist-viewer',
@@ -118,7 +118,7 @@ const LeadlistViewer = {
                         <div><a href="../../apps/admin-lead/add" type="button" class="btn shadow-none mb-0 btn-success px-3 btn-sm">Añadir prospecto</a></div>
                     </div>
                     <div class="col-auto text-end">
-                        <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                        <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
                 </div>
             </div>

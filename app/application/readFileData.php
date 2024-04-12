@@ -15,15 +15,15 @@ if($UserSupport->logged === true)
     $spreadsheet = $reader->load($data['file']);
     $spreadsheet = $spreadsheet->getActiveSheet();
     $data_array = $spreadsheet->toArray();
- 
-    if($users = Site\UserSupport::sanitizeUserDataForImport($data_array))
+
+    if($data = Site\UserSupport::sanitizeUserDataForImport($data_array))
     {
-        $data["users"] = $users;
+        $data["data"] = $data;
         $data["s"] = 1;
         $data["r"] = "DATA_OK";
     } else {
         $data["s"] = 0;
-        $data["r"] = "NOT_USERS";
+        $data["r"] = "NOT_DATA";
     }
 } else {
 	$data["s"] = 0;

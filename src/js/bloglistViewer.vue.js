@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const BloglistViewer = {
     name : 'bloglist-viewer',
@@ -53,7 +53,7 @@ const BloglistViewer = {
                         <div class="maldives h2 mb-n1 text-uppercase text-white">Nuestro <strong class="text-success">blog</strong></div>
                     </div>
                     <div class="col-12 col-xl-4">
-                        <input v-model="query" type="text" class="form-control bg-transparent border-0 lead text-white text-end" placeholder="Buscar por título...">
+                        <input :disabled="busy" v-model="query" type="text" class="form-control bg-transparent border-0 lead text-white text-end" placeholder="Buscar por título...">
                     </div>
                 </div>
                 <div class="card card-body p-0 bg-dark text-white">

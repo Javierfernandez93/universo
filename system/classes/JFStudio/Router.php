@@ -125,6 +125,13 @@ class Router {
     const AdminBannerEdit = 165;
     const AdminLeadEdit = 166;
     const Us = 167;
+    const AdminSponsors = 168;
+    const AdminSponsorsEdit = 169;
+    const AdminSponsorsAdd = 170;
+    const AdminAffilations = 171;
+    const AdminAffilationsEdit = 172;
+    const AdminAffilationsAdd = 173;
+    const AddPermission = 174;
 
     static function getName(int $route = null)
     {
@@ -141,10 +148,10 @@ class Router {
             self::Notifications => 'Notifications',
             self::Wallet => 'Billetera Site',
             self::AdminDash => 'Home',
-            self::AdminUsers => 'Vendedores',
+            self::AdminUsers => 'Asesores',
             self::AdminUserEdit => 'Editar usuario',
             self::AdminLeadEdit => 'Editar prospecto',
-            self::AdminUserAdd => 'Añadir vendedor',
+            self::AdminUserAdd => 'Añadir asesor',
             self::AdminActivations => 'Activaciones',
             self::AdminAdministrators => 'Administradores',
             self::AdminAdministratorsAdd => 'Añadir administrador',
@@ -249,6 +256,13 @@ class Router {
             self::AdminBanner => 'Banner',
             self::AdminBannerAdd => 'Añadir banner',
             self::AdminBannerEdit => 'Editar banner',
+            self::AdminSponsorsAdd => 'Añadir líder',
+            self::AdminSponsorsEdit => 'Editar líder',
+            self::AdminSponsors => 'Líderes',
+            self::AdminAffilationsAdd => 'Añadir Afiliación',
+            self::AdminAffilationsEdit => 'Editar Afiliación',
+            self::AdminAffilations => 'Afiliaciones',
+            self::AddPermission => 'Permisos',
             self::Us => 'Nosotros',
             default => 'Sin nombre'
         };

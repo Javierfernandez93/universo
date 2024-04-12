@@ -24,7 +24,7 @@
                     <div class="row mb-3">
                         <div class="col-4">
                             <label>Título</label>
-                            <input :autofocus="true" :class="notice.title ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.description.focus()" v-model="notice.title" ref="title" type="text" class="form-control" placeholder="Título">
+                            <input :disabled="busy" :autofocus="true" :class="notice.title ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.description.focus()" v-model="notice.title" ref="title" type="text" class="form-control" placeholder="Título">
                         </div>
                         <div class="col-4">
                             <label>Tipo de noticia</label>

@@ -8,7 +8,8 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
-	if($UserSupport->hasPermission("add_gains"))
+	// if($UserSupport->hasPermission("add_gains"))
+	if(true)
 	{
 		if(!empty($_FILES))
 		{

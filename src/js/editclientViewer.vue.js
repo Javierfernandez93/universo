@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const EditclientViewer = {
     data() {
@@ -292,7 +292,7 @@ const EditclientViewer = {
                 </div>
                 <div v-if="sellers" class="row">
                     <div class="col-12 col-md-6 mb-3">
-                        <label>Asignar a vendedor</label>
+                        <label>Asignar a asesor</label>
                         <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
                             <option v-for="seller in sellers" :data-tokens="sellers.names" :data-content="seller.names">{{ seller.user_login_id }}</option>
                         </select>

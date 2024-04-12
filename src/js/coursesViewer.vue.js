@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const CoursesViewer = {
     name : 'courses-viewer',
@@ -74,7 +74,7 @@ const CoursesViewer = {
                             <div class="fs-4 fw-semibold text-primary">Listado de cursos</div>
                         </div>
                         <div class="col-12 col-xl-6">
-                            <input v-model="query" :autofocus="true" type="seach" class="form-control" placeholder="Buscar el curso"/>
+                            <input :disabled="busy" v-model="query" :autofocus="true" type="seach" class="form-control" placeholder="Buscar el curso"/>
                         </div>
                     </div>
                 </div>

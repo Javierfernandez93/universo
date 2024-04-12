@@ -90,7 +90,7 @@ const AdminpaymentsViewer = {
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
-                                <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                                <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
 
@@ -120,7 +120,7 @@ const AdminpaymentsViewer = {
                                             <span v-else>    
                                                 <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                             </span>    
-                                            <u class="text-sm ms-2">Vendedor</u>
+                                            <u class="text-sm ms-2">asesor</u>
                                         </th>
                                         <th 
                                             @click="sortData(columns.company_id)"

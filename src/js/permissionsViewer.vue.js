@@ -1,4 +1,4 @@
-import { UserSupport } from './userSupport.module.js?v=2.5.0'   
+import { UserSupport } from './userSupport.module.js?v=1.0.0'   
 
 const PermissionsViewer = {
     data() {
@@ -141,7 +141,7 @@ const PermissionsViewer = {
                         <div><button @click="addPermission" type="button" class="btn shadow-none mb-0 btn-success px-3 btn-sm">Añadir permiso</button></div>
                     </div>
                     <div class="col-auto text-end">
-                        <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                        <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@ const PermissionsViewer = {
                 </div>
                 <div v-else-if="users == false" class="card-body">
                     <div class="alert alert-warning text-white text-center">
-                        <div>No tenemos vendedores aún</div>
+                        <div>No tenemos asesores aún</div>
                     </div>
                 </div>
             </div>

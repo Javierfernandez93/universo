@@ -1,4 +1,4 @@
-import { Http } from '../../src/js/http.module.js?v=2.5.0';
+import { Http } from '../../src/js/http.module.js?v=1.0.0';
 
 class UserSupport extends Http {
     constructor() {
@@ -575,6 +575,9 @@ class UserSupport extends Http {
     getFollowPages(data, callback) {
         return this.call('../../app/application/getFollowPages.php', data, callback);
     }
+    importUserData(data, callback) {
+        return this.call('../../app/application/importUserData.php', data, callback);
+    }
     /* banners */
     setBannerStatus(data, callback) {
         return this.call('../../app/application/setBannerStatus.php', data, callback);
@@ -652,6 +655,19 @@ class UserSupport extends Http {
     }
     setEntryStatusAs(data, callback) {
         return this.call('../../app/application/setEntryStatusAs.php', data, callback);
+    }
+    /* affiliations */
+    getAffiliations(data, callback) {
+        return this.call('../../app/application/getAffiliations.php', data, callback);
+    }
+    setAffiliationStatus(data, callback) {
+        return this.call('../../app/application/setAffiliationStatus.php', data, callback);
+    }
+    saveAffiliation(data, callback) {
+        return this.call('../../app/application/saveAffiliation.php', data, callback);
+    }
+    getAffiliationForEdit(data, callback) {
+        return this.call('../../app/application/getAffiliationForEdit.php', data, callback);
     }
 }
 

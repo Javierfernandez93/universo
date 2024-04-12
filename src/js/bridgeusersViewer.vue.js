@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const BridgeusersViewer = {
     name : 'bridgeusers-viewer',
@@ -475,7 +475,7 @@ const BridgeusersViewer = {
                     <div class="col-12 col-xl-auto">
                         <div class="row">
                             <div class="col">
-                                <input :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..." />
+                                <input :disabled="busy" :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..." />
                             </div>
                             <div class="col-auto">
                                 <button @click="addBridgeAccount" class="btn btn-primary mb-0 shadow-none">Añadir</button>

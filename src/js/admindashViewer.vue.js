@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 
 const AdmindashViewer = {
     name : 'admindash-viewer',
@@ -162,7 +162,7 @@ const AdmindashViewer = {
                                     <div class="row">
                                         <div class="col-8">
                                             <div class="numbers">
-                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Vendedores</p>
+                                                <p class="text-sm mb-0 text-capitalize font-weight-bold">asesores</p>
                                                 <h5 class="font-weight-bolder mb-0">
                                                     {{stats.total.sellers.numberFormat(0)}}
                                                     <span class="text-success text-sm font-weight-bolder">+0%</span>

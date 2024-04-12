@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const AdminedituserViewer = {
     data() {
@@ -44,7 +44,7 @@ const AdminedituserViewer = {
                     this.$refs.button.innerText = "Actualizado"
 
                     toastInfo({
-                        message: 'Vendedor actualizado. Redireccionando...',
+                        message: 'asesor actualizado. Redireccionando...',
                     })
 
                     setTimeout(()=>{
@@ -115,7 +115,7 @@ const AdminedituserViewer = {
             <div class="card-header"> 
                 <div class="row justify-content-center align-items-center"> 
                     <div class="col-12 col-xl"> 
-                        <div class="h5">Editar vendedor</div>
+                        <div class="h5">Editar asesor</div>
                     </div>
                     <div class="col-12 col-xl-auto"> 
                         <button 

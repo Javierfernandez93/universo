@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
-import { Translator } from '../../src/js/translator.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
+import { Translator } from '../../src/js/translator.module.js?v=1.0.0'   
 
 const ApicustomersViewer = {
     name : 'apicustomers-viewer',
@@ -295,7 +295,7 @@ const ApicustomersViewer = {
 
                         <div class="row mt-3">
                             <div class="col-12 col-xl">
-                                <input v-model="query" type="text" class="form-control" placeholder="Search customer..."/>
+                                <input :disabled="busy" v-model="query" type="text" class="form-control" placeholder="Search customer..."/>
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <select class="form-select" v-model="status" aria-label="Filter">

@@ -16,7 +16,7 @@ if($UserLogin->logged === true)
         {
             if($UserLogin->isUniqueLanding($data['user']['user_account']['landing']))
             {
-                $data['user']['referral']['user_login_id'] = $UserLogin->company_id;
+                $data['user']['user_referral']['user_login_id'] = $UserLogin->company_id;
 
                 if($user_login_id = $UserLogin->doSignup($data['user']))
                 {   

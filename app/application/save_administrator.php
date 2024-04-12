@@ -18,7 +18,10 @@ if($UserSupport->logged === true)
         $UserSupportNew = new Site\UserSupport(false,false);
         $UserSupportNew->names = ucwords(strtolower($data['administrator']['names']));
         $UserSupportNew->email = strtolower($data['administrator']['email']);
+        $UserSupportNew->affiliation_id = isset($data['administrator']['affiliation_id']) ? $data['administrator']['affiliation_id'] : 0;
+        $UserSupportNew->catalog_support_type_id = isset($data['administrator']['catalog_support_type_id']) ? $data['administrator']['catalog_support_type_id'] : 1;
         $UserSupportNew->password = sha1($data['administrator']['password']);
+        $UserSupportNew->create_date = time();
         
         if($UserSupportNew->save())
         {

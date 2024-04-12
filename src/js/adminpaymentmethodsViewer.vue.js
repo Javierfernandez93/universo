@@ -147,7 +147,7 @@ const AdminpaymentmethodsViewer = {
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
-                                <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                                <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
                     </div>

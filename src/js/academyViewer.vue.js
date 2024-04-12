@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.5.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const AcademyViewer = {
     name : 'academy-viewer',
@@ -71,7 +71,7 @@ const AcademyViewer = {
                     <h4>Cursos de Business Academy</h4>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <input v-model="query" type="text" class="form-control" placeholder="Buscar curso por nombre"/>
+                    <input :disabled="busy" v-model="query" type="text" class="form-control" placeholder="Buscar curso por nombre"/>
                 </div>
             </div>
         </div>

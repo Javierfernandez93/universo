@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const AdminbridgeViewer = {
     name : 'adminbridge-viewer',
@@ -272,7 +272,7 @@ const AdminbridgeViewer = {
                     <div class="col-12 col-xl-auto">
                         <div class="row">
                             <div class="col">
-                                <input :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..." />
+                                <input :disabled="busy" :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..." />
                             </div>
                             <div class="col-auto">
                                 <select class="form-control" v-model="status">

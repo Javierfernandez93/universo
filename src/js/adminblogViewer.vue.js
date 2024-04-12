@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
 
 const AdminblogViewer = {
     data() {
@@ -90,7 +90,7 @@ const AdminblogViewer = {
                                 <div><a href="../../apps/admin-blog/add" type="button" class="btn shadow-none mb-0 btn-success btn-sm">Añadir entrada</a></div>
                             </div>
                             <div class="col-12 col-xl-auto">
-                                <input v-model="query" :autofocus="true" type="text" class="form-control" placeholder="Buscar..." />
+                                <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
                     </div>

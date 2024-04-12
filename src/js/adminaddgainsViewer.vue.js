@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=2.5.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 
 const AdminaddgainsViewer = {
     name : 'adminaddgains-viewer',
@@ -8,7 +8,6 @@ const AdminaddgainsViewer = {
             done: null,
             query: null,
             users: null,
-            busyButton: false,
             usersAux: null,
             STATES: Object.freeze({
                 DISPERSED: 'dispersado',
@@ -92,7 +91,7 @@ const AdminaddgainsViewer = {
                 })
             })
         },
-        async addAdminUserClientProfits() 
+        async importUsers() 
         {
             for(let user of this.users)
             {
@@ -139,10 +138,10 @@ const AdminaddgainsViewer = {
         <div v-else>
             <div v-if="!users" class="row">
                 <div class="col-12">
-                    <div class="border bg-white rounded-2 p-3 text-center mb-3 shadow position-relative">
-                        <div class="fw-sembold text-primary">
-                            <div v-if="file">Cambiar excel </div>
-                            <div v-else>Subir excel </div>
+                    <div class="card card-body">
+                        <div class="h5">
+                            <div v-if="file">Cambiar EXCEL</div>
+                            <div v-else>Subir EXCEL</div>
                             <div>(Da clic aquí o arrastra el archivo)</div>
                         </div>
                         <input class="opacity-0 cursor-pointer bg-dark w-100 h-100 start-0 top-0 position-absolute" ref="file" @change="uploadFile($event)" capture="filesystem" type="file" accept=".xls, .xlsx, .jpeg" />
@@ -162,10 +161,10 @@ const AdminaddgainsViewer = {
                             <div class="fs-4 fw-sembold text-primary">Usuarios</div>
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <input v-model="query" type="text" class="form-control" placeholder="buscar...">
+                            <input :disabled="busy" v-model="query" type="text" class="form-control" placeholder="buscar...">
                         </div>
                         <div class="col-12 col-xl-auto">
-                            <button :disabled="busyButton" @click="addAdminUserClientProfits" class="btn btn-primary">
+                            <button :disabled="busy" @click="importUsers" class="btn btn-primary">
                                 Dispersar ganancias
                             </button>
                         </div>

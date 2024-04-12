@@ -206,12 +206,11 @@ nav {
   }
 }
 
-
-
 .animation-fall-down {
   opacity: 0;
   animation: reveal 0.5s forwards var(--delay);
 }
+
 .animation-fall-right {
   opacity: 0;
   animation: revealRight 0.5s forwards var(--delay);
