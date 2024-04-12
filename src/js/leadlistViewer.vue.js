@@ -94,7 +94,10 @@ const LeadlistViewer = {
             this.UserSupport.getLeads({}, (response) => {
                 this.busy = false
                 if (response.s == 1) {
-                    this.users = response.users
+                    this.users = response.users.map(user => {
+                        user.phone =user.phone.replace(/\D/g,'')
+                        return user
+                    })
                     this.usersAux = response.users
                 } else {
                     this.users = false
@@ -131,17 +134,20 @@ const LeadlistViewer = {
                 <div v-if="users" class="table-responsives p-0 overflow-y-scrolls h-100s">
                     <table class="table align-items-center mb-0">
                         <thead>
-                            <tr class="align-items-center">
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                            <tr class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="text-start text-uppercase">
                                     USUARIO
                                 </th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="text-uppercase">
+                                    Enviar whatsapp
+                                </th>
+                                <th class="text-uppercase">
                                     fecha de registro
                                 </th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="text-uppercase">
                                     Tipo
                                 </th>
-                                <th class="text-center text-uppercase text-xxs font-weight-bolder opacity-7"></th>
+                                <th class="text-uppercase"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -164,6 +170,12 @@ const LeadlistViewer = {
                                             <h6 class="mb-0 text-sm">{{user.names}}</h6>
                                             <p class="text-xs text-secondary mb-0">{{user.email}}</p>
                                         </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <div v-if="user.phone">
+                                        <img src="../../src/img/icons/whatsapp.svg" class="svg-icon me-2" alt="user1"/>
+                                        <a :href="user.phone.sendWhatsApp('Hola te contacto de Universo de Jade')" class="text-xs font-weight-bold mb-0">+ {{user.phone}}</p>
                                     </div>
                                 </td>
                                 <td class="align-middle text-center text-sm">

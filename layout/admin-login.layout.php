@@ -15,7 +15,6 @@
         <meta property="og:image:width" content="300">
         <meta property="og:image:height" content="300">
 
-
         <link rel="icon" type="image/x-icon" href="../../src/img/favicon.png">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -31,7 +30,7 @@
         <link href="../../src/css/general.css?v=1-3-1" rel="stylesheet" type="text/css">
         {{css_scripts}}
     </head>
-    <body class="bg-dark">
+    <body class="bg-gradient-special">
         
         {{content}}
         

@@ -54,9 +54,6 @@ const AffiliationViewer = {
                 return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
             })
         },
-        viewaffiliations(property_id) {
-            window.location.href = `../../apps/admin-affiliations/view.php?pid=${property_id}`
-        },
         getAffiliations() {
             this.affiliationsAux = null
             this.affiliations = null
@@ -83,11 +80,11 @@ const AffiliationViewer = {
 
                     if (status == 1) {
                         toastInfo({
-                            message: 'Desarrolladora habilitada',
+                            message: 'Afiliación habilitada',
                         })
                     } else if (status == 0) {
                         toastInfo({
-                            message: 'Desarrolladora deshabilitada',
+                            message: 'Afiliación deshabilitada',
                         })
                     } else if (status == -1) {
                         this.getAffiliations()
@@ -132,6 +129,7 @@ const AffiliationViewer = {
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center">
+                                        <th></th>
                                         <th @click="sortData(columns.title)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
                                             <span v-if="columns.title.desc">
                                                 <i class="bi text-primary bi-arrow-up-square-fill"></i>
@@ -156,18 +154,18 @@ const AffiliationViewer = {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="affiliation in affiliations">
-                                        <td class="align-middle text-capitalize text-center text-sm">
+                                    <tr v-for="affiliation in affiliations" class="text-capitalize text-center text-sm">
+                                        <td class="text-center">
                                             <span v-if="affiliation.status == '1'" class="badge bg-success">Activo</span>
                                             <span v-if="affiliation.status == '0'" class="badge bg-secondary">Inactivo</span>
-                                            
-                                            <div>
-                                                {{affiliation.name}} 
-                                            </div>
-                                        </td>                                        <td class="align-middle text-center text-sm">
+                                        </td>
+                                        <td class="align-middle fw-bold text-dark">
+                                            {{affiliation.name}} 
+                                        </td>                                        
+                                        <td class="align-middle">
                                             {{affiliation.create_date.formatFullDate()}}
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td class="align-middle">
                                             <div class="btn-group">
                                                 <button type="button" class="btn px-3 mb-0 btn-dark shadow-none px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 

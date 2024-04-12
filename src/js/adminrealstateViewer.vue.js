@@ -54,9 +54,6 @@ const AdminrealstateViewer = {
                 return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
             })
         },
-        viewrealStates(property_id) {
-            window.location.href = `../../apps/admin-realStates/view.php?pid=${property_id}`
-        },
         getRealStates() {
             this.realStatesAux = null
             this.realStates = null
@@ -119,8 +116,7 @@ const AdminrealstateViewer = {
                             </div>
                         </div>
 
-
-                        <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{realStates.length}} resultados)</div>
+                        <div v-if="query" class="text-xs">Resultados de la búsqueda <b>{{query}}</b> ({{realStates.length}} resultados)</div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div v-if="busy == true" class="d-flex justify-content-center py-3">
@@ -132,6 +128,7 @@ const AdminrealstateViewer = {
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center">
+                                        <th></th>
                                         <th @click="sortData(columns.title)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
                                             <span v-if="columns.title.desc">
                                                 <i class="bi text-primary bi-arrow-up-square-fill"></i>
@@ -167,22 +164,21 @@ const AdminrealstateViewer = {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="realState in realStates">
-                                        <td class="align-middle text-capitalize text-center text-sm">
+                                    <tr v-for="realState in realStates" class="text-center text-sm">
+                                        <td>
                                             <span v-if="realState.status == '1'" class="badge bg-success">Activo</span>
                                             <span v-if="realState.status == '0'" class="badge bg-secondary">Inactivo</span>
-                                            
-                                            <div>
-                                                {{realState.title}} 
-                                            </div>
+                                        </td>    
+                                        <td class="align-middle fw-bold text-dark">
+                                            {{realState.title}} 
                                         </td>
-                                        <td class="align-middle text-decoration-underline text-primary fw-bold text-center text-sm">
+                                        <td class="align-middle text-decoration-underline">
                                             {{realState.link}}
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td class="align-middle">
                                             {{realState.create_date.formatFullDate()}}
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td class="align-middle">
                                             <div class="btn-group">
                                                 <button type="button" class="btn px-3 mb-0 btn-dark shadow-none px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 

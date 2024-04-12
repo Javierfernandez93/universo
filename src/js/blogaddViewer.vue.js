@@ -6,6 +6,7 @@ const BlogaddViewer = {
             UserSupport : new UserSupport,
             editor : null,
             editorPreview : null,
+            busy : false,
             filled : false,
             blog_categories : {},
             blog : {
@@ -37,7 +38,9 @@ const BlogaddViewer = {
     methods: {
         saveBlog()
         {
+            this.busy = true
             this.UserSupport.saveBlog(this.blog,(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     toastInfo({
@@ -45,7 +48,7 @@ const BlogaddViewer = {
                     })
 
                     setTimeout(() => {
-                        window.location.href = '../../apps/admin-blog'
+                        window.history.back()
                     },3000)
                 }
             })
@@ -97,7 +100,9 @@ const BlogaddViewer = {
         getBlogCategories()
         {
             return new Promise((resolve) => {
+                this.busy = true
                 this.UserSupport.getBlogCategories({},(response)=>{
+                    this.busy = false
                     if(response.s == 1)
                     {
                         this.blog_categories = response.blog_categories
@@ -158,7 +163,7 @@ const BlogaddViewer = {
                                 <button @click="viewPreview" class="btn btn-primary mb-0 shadow-none">Previo</button>
                             </div>
                             <div class="col-auto text-muted text-sm">
-                                <button :disabled="!filled" ref="button" class="btn btn-primary mb-0 shadow-none" @click="saveBlog">Guardar</button>
+                                <button :disabled="!filled || busy" ref="button" class="btn btn-primary mb-0 shadow-none" @click="saveBlog">Guardar</button>
                             </div>
                         </div>
                     </div>

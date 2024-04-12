@@ -6,6 +6,7 @@ const AdmintoolsViewer = {
             UserSupport : new UserSupport,
             tools : null,
             toolsAux : null,
+            busy : null,
             query : null,
             columns: { // 0 DESC , 1 ASC 
                 tool_id : {
@@ -90,7 +91,9 @@ const AdmintoolsViewer = {
             })
         },
         getAdminTools() {
+            this.busy = true
             this.UserSupport.getAdminTools({},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     this.tools = response.tools
@@ -114,7 +117,7 @@ const AdmintoolsViewer = {
                                 <div class="h5">Herramientas</div>
                             </div>
                             <div class="col-auto text-end">
-                                <div><a href="../../apps/admin-tools/add" type="button" class="btn mb-0 btn-success shadow-none">Añadir herramienta</a></div>
+                                <div><a href="../../apps/admin-tools/add" type="button" class="btn mb-0 btn-success shadow-none px-3 btn-sm">Añadir herramienta</a></div>
                             </div>
                             <div class="col-auto text-end">
                                 <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
@@ -180,8 +183,8 @@ const AdmintoolsViewer = {
                                             <div class="d-flex px-2 py-1">
                                                 <div>
                                                     <div>
-                                                        <span class="badge bg-gradient-success text-xxs" v-if="tool.status == '1'">Publicada</span>
-                                                        <span class="badge bg-gradient-secondary text-xxs" v-else-if="tool.status == '0'">Sin publicar</span>
+                                                        <span class="badge bg-success text-xxs" v-if="tool.status == '1'">Publicada</span>
+                                                        <span class="badge bg-secondary text-xxs" v-else-if="tool.status == '0'">Sin publicar</span>
                                                     </div>
 
                                                     <h6 class="mb-0 text-sm">{{tool.title}}</h6>
@@ -207,9 +210,6 @@ const AdmintoolsViewer = {
                                                     <li v-if="tool.status == '0'"><button class="dropdown-item" @click="setToolStatus(tool,1)">Publicar</button></li>
                                                     <li v-if="tool.status == '1'"><button class="dropdown-item" @click="setToolStatus(tool,0)">Despublicar</button></li>
                                                     
-                                                    <li>
-                                                        <hr class="dropdown-divider">
-                                                    </li>
                                                     <li><button class="dropdown-item" @click="setToolStatus(tool,-1)">Eliminar</button></li>
                                                 </ul>
                                             </div>

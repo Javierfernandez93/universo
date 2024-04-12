@@ -2,6 +2,19 @@
     --bs-primary: #28a97d;
 }
 
+.svg-icon {
+    width: 16px;
+    height: 16px;
+}
+.bg-gradient-special {
+    background: linear-gradient(
+        155deg,
+        rgba(255, 220, 229, 0.5),
+        rgba(199, 229, 255, 0.5)
+      );
+    background-attachment: fixed;
+  }
+
 .navbar-vertical .navbar-nav .nav-link .icon {
     padding: 14px;
     font-size: 1rem;
