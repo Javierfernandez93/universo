@@ -85,12 +85,12 @@ const AddpropertyViewer = {
 
                     <div class="col-12 col-xl-6 mb-3">
                         <div class="form-floating">
-                            <select class="form-select" v-model="property.real_state_id" id="real_state_id" aria-label="Gestor">
+                            <select class="form-select" v-model="property.real_state_id" id="real_state_id" aria-label="Proyecto">
                                 <option v-for="real_state in real_states" v-bind:value="real_state.real_state_id">
                                     {{ real_state.title }}
                                 </option>
                             </select>
-                            <label for="real_state_id">Gestor</label>
+                            <label for="real_state_id">Proyecto</label>
                         </div>
                     </div>
                     <div class="col-12 col-xl-6 mb-3">

@@ -8,9 +8,9 @@ $UserLogin = new Site\UserLogin;
 
 if($UserLogin->logged === true)
 {
-    if($data['user']['email'])
+    if($data['user']['user_login']['email'])
     {
-        if($UserLogin->isUniqueMail($data['user']['email']))
+        if($UserLogin->isUniqueMail($data['user']['user_login']['email']))
         {
             if($UserLogin->isUniqueLanding($data['user']['user_account']['landing']))
             {
@@ -132,6 +132,5 @@ function sendEmail(string $email = null,string $names = null,string $subject = n
 
     return false;
 }
-
 
 echo json_encode(HCStudio\Util::compressDataForPhone($data)); 

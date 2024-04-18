@@ -47,7 +47,7 @@ const LoginsupportViewer = {
         
     },
     template: `
-        <div class="card shadow-lg border-radius-2xl animate__animated animate__bounceInDown">
+        <div class="card shadow-lg border-radius-2xl">
             <div class="card-header">
                 <div class="row justify-content-center">
                     <div class="col-2">

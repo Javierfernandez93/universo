@@ -12,10 +12,9 @@ if($UserSupport->hasPermission('edit_administrator') === false) {
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }
 
-$route = JFStudio\Router::AdminAdministratorsEdit;
+$route = JFStudio\Router::AdminSponsorsEdit;
 $Layout = JFStudio\Layout::getInstance();
 $Layout->init(JFStudio\Router::getName($route),"edit","admin","",TO_ROOT."/");
-
 
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([

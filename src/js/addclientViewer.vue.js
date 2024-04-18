@@ -11,10 +11,11 @@ const AddclientViewer = {
             feedback: null,
             countries: {},
             user: {
-                names: null,
-                password: null,
-                email: '',
-                catalog_user_type_id: 3, // client
+                user_login: {
+                    password: null,
+                    email: '',
+                    catalog_user_type_id: 3, // client
+                },
                 user_contact : {
                     phone: null,
                 },
@@ -26,6 +27,7 @@ const AddclientViewer = {
                     state: null,
                 },
                 user_data: {
+                    names: null,
                     nationality: 'Méxicano',
                     rfc: '',
                     curp: '',
@@ -50,7 +52,7 @@ const AddclientViewer = {
         },
         user: {
             handler() {
-                this.filled = this.user.names != null && this.user.email.isValidMail() && this.user.phone
+                this.filled = this.user.user_data.names != null && this.user.user_login.email.isValidMail() && this.user.user_contact.phone
             },
             deep: true
         }
@@ -157,7 +159,7 @@ const AddclientViewer = {
                         <div class="text-xs text-secondary">(* Campos requeridos)</div>
                     </div>
                     <div class="col-12 col-md-auto"> 
-                        <button  :disabled="!filled" ref="button" type="submit" class="btn shadow-none mb-0 btn-primary px-3 btn-sm" @click="saveUser">Guardar</button>
+                        <button :disabled="!filled" ref="button" type="submit" class="btn shadow-none mb-0 btn-primary px-3 btn-sm" @click="saveUser">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -169,17 +171,17 @@ const AddclientViewer = {
                         <label>Nombre completo *</label>
                         <input 
                             :autofocus="true"
-                            :class="user.names ? 'is-valid' : 'is-invalid'"
+                            :class="user.user_data.names ? 'is-valid' : 'is-invalid'"
                             @keydown.enter.exact.prevent="$refs.email.focus()"
-                            v-model="user.names"
+                            v-model="user.user_data.names"
                             ref="names"
                             type="text" class="form-control" placeholder="Nombre completo">
                     </div>
                     <div class="col-12 col-md-4 mb-3">
                         <label>Correo *</label>
                         <input 
-                            v-model="user.email"
-                            :class="user.email.isValidMail() ? 'is-valid' : 'is-invalid'"
+                            v-model="user.user_login.email"
+                            :class="user.user_login.email.isValidMail() ? 'is-valid' : 'is-invalid'"
                             @keydown.enter.exact.prevent="$refs.nationality.focus()"
                             ref="email"
                             type="text" class="form-control" placeholder="Email">
@@ -242,7 +244,6 @@ const AddclientViewer = {
                             type="text" class="form-control" placeholder="Colonia">
                     </div>
 
-
                     <div class="col-12 col-md-3 mb-3">
                         <label>Curp <span class="text-decoration-underline text-primary cursor-pointer" @click="showCurpInfo">(Info)</span></label>
                         <input 
@@ -261,7 +262,6 @@ const AddclientViewer = {
                             ref="rfc"
                             type="text" class="form-control" placeholder="RFC">
                     </div>
-                    
 
                     <div class="col-12 col-md-6 mb-3">
                         <label>Teléfono * </label>

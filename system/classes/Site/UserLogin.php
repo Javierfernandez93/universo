@@ -458,75 +458,84 @@ class UserLogin extends Orm {
   public function doSignup(array $data = null) 
   {
     $UserLogin = new UserLogin(false,false);
-    $UserLogin->email = strtolower(Util::sanitizeString(trim($data['email'])));
-    $UserLogin->catalog_user_type_id = isset($data['catalog_user_type_id']) ? $data['catalog_user_type_id'] : CatalogUserType::SELLER;
-    $UserLogin->password = sha1($data['password']);
+    $UserLogin->email = strtolower(Util::sanitizeString(trim($data['user_login']['email'])));
+    $UserLogin->catalog_user_type_id = isset($data['user_login']['catalog_user_type_id']) ? $data['user_login']['catalog_user_type_id'] : CatalogUserType::SELLER;
+    $UserLogin->password = sha1($data['user_login']['password']);
     $UserLogin->signup_date = time();
     $UserLogin->verified_mail = self::VERIFIED_MAIL;
     
-    if($UserLogin->save())
+    if(!$UserLogin->save())
     {
-      $UserLogin->company_id = $UserLogin->getId();
-      
-      if($UserLogin->save())
-      {
-        $UserData = new UserData;
-        $UserData->user_login_id = $UserLogin->company_id;
-        $UserData->names = ucfirst(strtolower(trim($data['names'])));
-        
-        $UserData->nationality = isset($data['user_data']['nationality']) ? $data['user_data']['nationality'] : '';
-        $UserData->curp = isset($data['user_data']['curp']) ? $data['user_data']['curp'] : '';
-        $UserData->rfc = isset($data['user_data']['rfc']) ? $data['user_data']['rfc'] : '';
-        $UserData->reference_1 = isset($data['user_data']['reference_1']) ? $data['user_data']['reference_1'] : '';
-        $UserData->reference_2 = isset($data['user_data']['reference_2']) ? $data['user_data']['reference_2'] : '';
-        
-        if($UserData->save())
-        {
-          $UserContact = new UserContact;
-          $UserContact->user_login_id = $UserLogin->company_id;
-          $UserContact->phone = isset($data['phone']) ? $data['user_contact']['phone'] : '';
-          
-          if($UserContact->save())
-          {
-            $UserAddress = new UserAddress;
-            $UserAddress->user_login_id = $UserLogin->company_id;
-            $UserAddress->address = isset($data['user_address']['user_data']['address']) ? $data['user_address']['user_data']['address'] : '';
-            $UserAddress->colony = isset($data['user_address']['colony']) ? $data['user_address']['colony'] : '';
-            $UserAddress->city = isset($data['user_address']['city']) ? $data['user_address']['city'] : '';
-            $UserAddress->state = isset($data['user_address']['state']) ? $data['user_address']['state'] : '';
-            $UserAddress->country = isset($data['user_address']['country']) ? $data['user_address']['country'] : '';
-            $UserAddress->country_id = isset($data['user_address']['country_id']) && !empty($data['user_address']['country_id']) ? $data['user_address']['country_id'] : 0;
-            
-            if($UserAddress->save())
-            {
-              $UserAccount = new UserAccount;
-              $UserAccount->user_login_id = $UserLogin->company_id;
-              $UserAccount->landing = isset($data['user_account']['landing']) ? $data['user_account']['landing'] : '';
-              $UserAccount->image = UserAccount::DEFAULT_IMAGE;
-
-              if(isset($data['user_referral']))
-              {
-                $UserReferral = new UserReferral;
-                $UserReferral->referral_id = isset($data['user_referral']['user_login_id']) && !empty($data['user_referral']['user_login_id']) ? $data['user_referral']['user_login_id'] : 1;
-                $UserReferral->user_support_id = isset($data['user_referral']['user_support_id']) && !empty($data['user_referral']['user_support_id']) ? $data['user_referral']['user_support_id'] : 1;
-                $UserReferral->user_login_id = $UserLogin->company_id;
-                $UserReferral->catalog_level_id = 0;
-                $UserReferral->status = UserReferral::ACTIVE;
-                $UserReferral->create_date = time();
-                $UserReferral->save();
-              }
-
-              if($UserAccount->save())
-              {
-                return $UserLogin->company_id;
-              }
-            }
-          }
-        }
-      }
+      return false;
     }
 
-    return false;
+    $UserLogin->company_id = $UserLogin->getId();
+    
+    if(!$UserLogin->save())
+    {
+      return false;
+    }
+
+    $UserData = new UserData;
+    $UserData->user_login_id = $UserLogin->company_id;
+    $UserData->names = ucfirst(strtolower(trim($data['user_data']['names'])));
+    $UserData->nationality = isset($data['user_data']['nationality']) ? $data['user_data']['nationality'] : '';
+    $UserData->curp = isset($data['user_data']['curp']) ? $data['user_data']['curp'] : '';
+    $UserData->rfc = isset($data['user_data']['rfc']) ? $data['user_data']['rfc'] : '';
+    $UserData->reference_1 = isset($data['user_data']['reference_1']) ? $data['user_data']['reference_1'] : '';
+    $UserData->reference_2 = isset($data['user_data']['reference_2']) ? $data['user_data']['reference_2'] : '';
+    
+    if(!$UserData->save())
+    {
+      return false;
+    }
+      
+    $UserContact = new UserContact;
+    $UserContact->user_login_id = $UserLogin->company_id;
+    $UserContact->phone = isset($data['phone']) ? $data['user_contact']['phone'] : '';
+    
+    if(!$UserContact->save())
+    {
+      return false;
+    }
+
+    $UserAddress = new UserAddress;
+    $UserAddress->user_login_id = $UserLogin->company_id;
+    $UserAddress->address = isset($data['user_address']['user_data']['address']) ? $data['user_address']['user_data']['address'] : '';
+    $UserAddress->colony = isset($data['user_address']['colony']) ? $data['user_address']['colony'] : '';
+    $UserAddress->city = isset($data['user_address']['city']) ? $data['user_address']['city'] : '';
+    $UserAddress->state = isset($data['user_address']['state']) ? $data['user_address']['state'] : '';
+    $UserAddress->country = isset($data['user_address']['country']) ? $data['user_address']['country'] : '';
+    $UserAddress->country_id = isset($data['user_address']['country_id']) && !empty($data['user_address']['country_id']) ? $data['user_address']['country_id'] : 0;
+    
+    if(!$UserAddress->save())
+    {
+      return false;
+    }
+
+    $UserAccount = new UserAccount;
+    $UserAccount->user_login_id = $UserLogin->company_id;
+    $UserAccount->landing = isset($data['user_account']['landing']) ? $data['user_account']['landing'] : '';
+    $UserAccount->image = UserAccount::DEFAULT_IMAGE;
+
+    if(isset($data['user_referral']))
+    {
+      $UserReferral = new UserReferral;
+      $UserReferral->referral_id = isset($data['user_referral']['user_login_id']) && !empty($data['user_referral']['user_login_id']) ? $data['user_referral']['user_login_id'] : 1;
+      $UserReferral->user_support_id = isset($data['user_referral']['user_support_id']) && !empty($data['user_referral']['user_support_id']) ? $data['user_referral']['user_support_id'] : 1;
+      $UserReferral->user_login_id = $UserLogin->company_id;
+      $UserReferral->catalog_level_id = 0;
+      $UserReferral->status = UserReferral::ACTIVE;
+      $UserReferral->create_date = time();
+      $UserReferral->save();
+    }
+
+    if(!$UserAccount->save())
+    {
+      return false;
+    }
+    
+    return $UserLogin->company_id;
   }
 
   public function getEmail(int $user_login_id = null) 

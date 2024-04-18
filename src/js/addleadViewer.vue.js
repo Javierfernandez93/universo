@@ -8,10 +8,14 @@ const AddleadViewer = {
             feedback: null,
             countries: {},
             user: {
-                names: null,
-                password: null,
-                email: '',
-                catalog_user_type_id: 2, // lead
+                user_data: {
+                    names: null,
+                },
+                user_login : {
+                    password: null,
+                    email: '',
+                    catalog_user_type_id: 2, // lead
+                },
                 user_contact : {
                     phone: '',
                 },
@@ -30,7 +34,7 @@ const AddleadViewer = {
     watch: {
         user: {
             handler() {
-                this.filled = this.user.names != null && this.user.email.isValidMail() && this.user.phone
+                this.filled = this.user.user_data.names != null && this.user.user_login.email.isValidMail() && this.user.user_contact.phone
             },
             deep: true
         }
@@ -104,17 +108,17 @@ const AddleadViewer = {
                         <label>Usuario *</label>
                         <input 
                             :autofocus="true"
-                            :class="user.names ? 'is-valid' : 'is-invalid'"
+                            :class="user.user_data.names ? 'is-valid' : 'is-invalid'"
                             @keydown.enter.exact.prevent="$refs.email.focus()"
-                            v-model="user.names"
+                            v-model="user.user_data.names"
                             ref="names"
                             type="text" class="form-control" placeholder="Nombre(s)">
                     </div>
                     <div class="col-12 col-xl-6 mb-3">
                         <label>Correo *</label>
                         <input 
-                            v-model="user.email"
-                            :class="user.email.isValidMail() ? 'is-valid' : 'is-invalid'"
+                            v-model="user.user_login.email"
+                            :class="user.user_login.email.isValidMail() ? 'is-valid' : 'is-invalid'"
                             @keydown.enter.exact.prevent="$refs.password.focus()"
                             ref="email"
                             type="text" class="form-control" placeholder="Email">
@@ -132,8 +136,8 @@ const AddleadViewer = {
                     <div class="col-12 d-none col-xl-6">
                         <label>Contraseña</label>
                         <input 
-                            v-model="user.password"
-                            :class="user.password ? 'is-valid' : ''"
+                            v-model="user.user_login.password"
+                            :class="user.user_login.password ? 'is-valid' : ''"
                             @keydown.enter.exact.prevent="$refs.user_referral.focus()"
                             ref="password"
                             type="text" class="form-control" placeholder="Password">
