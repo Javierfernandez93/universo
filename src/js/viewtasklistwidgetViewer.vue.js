@@ -42,7 +42,6 @@ const ViewtasklistwidgetViewer = {
     },
     mounted() 
     {       
-        startListener("offcanvasRight")
     },
     template : `
         <div class="offcanvas offcanvas-end overflow-scroll" tabindex="-1" ref="offcanvasRight" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">

@@ -104,7 +104,7 @@ const AddclientsellerViewer = {
     },
     template : `
         <div class="card card-header shadow-none mb-3 bg-transparent"> 
-            <div class="row justify-content-center"> 
+            <div class="row justify-content-center align-items-center"> 
                 <div class="col-12 col-xl"> 
                     <div class="h5 ">Añadir cliente</div>
                     <div class="text-xs">(* Campos requeridos)</div>

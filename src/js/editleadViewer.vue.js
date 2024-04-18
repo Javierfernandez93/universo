@@ -112,7 +112,7 @@ const EditleadViewer = {
     template : `
         <div class="card">
             <div class="card-header"> 
-                <div class="row justify-content-center"> 
+                <div class="row justify-content-center align-items-center"> 
                     <div class="col-12 col-xl"> 
                         <div class="h5">Editar prospecto</div>
                         <div class="text-xs text-secondary">(* Campos requeridos)</div>

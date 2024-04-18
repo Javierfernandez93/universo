@@ -145,12 +145,12 @@ const CommissionsViewer = {
         </div>
 
         <div class="card card-body mb-3"> 
-            <div class="row justify-content-center"> 
+            <div class="row justify-content-center align-items-center"> 
                 <div class="col-12 col-md"> 
                     <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                 </div>
                 <div class="col-12 col-md-auto"> 
-                    <div class="row justify-content-center"> 
+                    <div class="row justify-content-center align-items-center"> 
                         <div class="col-12 col-md"> 
                             <input class="form-control" type="date" v-model="filter.start_date"/>
                         </div>

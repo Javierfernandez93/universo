@@ -19,7 +19,6 @@ const PropertypullViewer = {
             
             setTimeout(()=>{
                 $(this.$refs.offcanvasRight3).offcanvas('show')
-                startListener("offcanvasRight3")
             },500)
         },
         hide()

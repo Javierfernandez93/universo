@@ -1,6 +1,10 @@
 import { UserSupport } from './userSupport.module.js?v=1.0.0'   
+import { BackViewer } from './backViewer.vue.js?v=1.0.0'   
 
 const AddaffiliationViewer = {
+    components : {
+        BackViewer
+    },
     data() {
         return {
             UserSupport : new UserSupport,
@@ -80,7 +84,10 @@ const AddaffiliationViewer = {
     template : `
         <div class="card">
             <div class="card-header"> 
-                <div class="row justify-content-center"> 
+                <div class="row justify-content-center align-items-center"> 
+                    <div class="col-12 col-xl-auto"> 
+                        <BackViewer/>
+                    </div>
                     <div class="col-12 col-xl"> 
                     
                         <p v-if="!loaded" class="placeholder-glow">

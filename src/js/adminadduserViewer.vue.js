@@ -117,7 +117,7 @@ const AdminadduserViewer = {
     template : `
         <div class="card">
             <div class="card-header"> 
-                <div class="row justify-content-center"> 
+                <div class="row justify-content-center align-items-center"> 
                     <div class="col-12 col-xl-auto"> 
                         <backViewer></backViewer>
                     </div>

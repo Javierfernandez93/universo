@@ -91,8 +91,6 @@ const SellerclientsaddViewer = {
     },
     mounted() {
         $(this.$refs.phone).mask('(00) 0000-0000');
-
-        startListener("offcanvasRight")
         
         this.getCountries()
     },

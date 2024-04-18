@@ -1,6 +1,10 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.0'   
 
 const EditclientViewer = {
+    components : {
+        BackViewer
+    },
     data() {
         return {
             UserSupport: new UserSupport,
@@ -134,7 +138,10 @@ const EditclientViewer = {
     template : `
         <div class="card">
             <div class="card-header"> 
-                <div class="row justify-content-center"> 
+                <div class="row justify-content-center align-items-center"> 
+                    <div class="col-12 col-xl-auto"> 
+                        <BackViewer/>
+                    </div>
                     <div class="col-12 col-xl"> 
                         <div class="h5">Editar cliente</div>
                         <div class="text-xs text-secondary">(* Campos requeridos)</div>

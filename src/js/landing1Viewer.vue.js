@@ -62,7 +62,7 @@ const Landing1Viewer = {
 
             <section class="row justify-content-center container section-1 align-items-center">
                 <div class="col-12"> 
-                    <div class="row justify-content-center"> 
+                    <div class="row justify-content-center align-items-center"> 
                         <div class="col-4 col-xl-auto fs-3"> 
                             <div class="">Nuestros</div>
                             <div class="fw-semibold">Números</div>
@@ -155,7 +155,7 @@ const Landing1Viewer = {
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center"> 
+                <div class="row justify-content-center align-items-center"> 
                     <div class="col-12 col-xl-6 fs-3"> 
                         <button class="btn w-100 bg-gradient-warning btn-danger shadow-lg btn-lg fs-2">Comienza Ahora</button>
                     </div>

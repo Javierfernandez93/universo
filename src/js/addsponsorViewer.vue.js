@@ -1,6 +1,10 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.0'
 
 const AddsponsorViewer = {
+    components : {
+        BackViewer
+    },
     data() {
         return {
             UserSupport: new UserSupport,
@@ -79,6 +83,9 @@ const AddsponsorViewer = {
         <div class="card">
             <div class="card-header">
                 <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-md-auto">
+                        <BackViewer/>
+                    </div>
                     <div class="col-12 col-md">
                         <h6 class="mb-0">Añadir Líder</h6>
                     </div>
