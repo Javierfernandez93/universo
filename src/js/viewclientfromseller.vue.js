@@ -1,11 +1,18 @@
 import { ViewclientfromsellerViewer } from '../../src/js/viewclientfromsellerViewer.vue.js?v=1.0.0'
+import { PropertieslistViewer } from '../../src/js/propertieslistViewer.vue.js?v=1.0.0'
 import { ViewuserwidgetfromsellerViewer } from '../../src/js/viewuserwidgetfromsellerViewer.vue.js?v=1.0.0'
 import { ViewtasklistwidgetViewer } from '../../src/js/viewtasklistwidgetViewer.vue.js?v=1.0.0'
+import { FeedbackclientViewer } from '../../src/js/feedbackclientViewer.vue.js?v=1.0.0'
 import { PropertypullViewer } from '../../src/js/propertypullViewer.vue.js?v=1.0.0'
 
 Vue.createApp({
     components : { 
-        ViewclientfromsellerViewer, ViewuserwidgetfromsellerViewer, ViewtasklistwidgetViewer, PropertypullViewer
+        ViewclientfromsellerViewer, 
+        ViewuserwidgetfromsellerViewer, 
+        ViewtasklistwidgetViewer, 
+        PropertieslistViewer,
+        FeedbackclientViewer,
+        PropertypullViewer
     },
     methods: {
         show(user_login_id)

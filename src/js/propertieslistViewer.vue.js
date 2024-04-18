@@ -1,6 +1,6 @@
 import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
-const ViewclientfromsellerViewer = {
+const PropertieslistViewer = {
     props: ['hide'],
     emit: ['pull'],
     data() {
@@ -142,53 +142,88 @@ const ViewclientfromsellerViewer = {
         this.refresh()
     },
     template : `
-        <div v-if="user">
-            <div class="row mb-3">
-                <div class="col-12 col-12 animation-fall-down" style="--delay:600ms">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="h5">Documentos</div>
-                        </div>
-                        <div class="card-body">
-                            <div v-if="user.user_kyc">
-                                <ul v-for="user_kyc in user.user_kyc" class="list-group list-group-flush">
-                                    <li v-if="user_kyc.type == 'file'" class="list-group-item p-3">
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-xl">
-                                                {{user_kyc.title}}
-                                            </div>
-                                            <div class="col-12 col-xl-auto">
-                                                <div class="text-success" v-if="user_kyc.value">
-                                                    Enviado <i class="bi bi-check"></i>
-                                                </div>
-                                                <div v-else>
-                                                    <input class="d-none" @change="uploadFile($event,user_kyc,user.user_login_id)" :id="user_kyc.catalog_kyc_id" capture="filesystem" type="file" accept=".jpg, .png, .jpeg" />
-                                                    <button type class="btn btn-dark shadow-none mb-0 px-3 btn-sm" @click="openFileManager(user_kyc.catalog_kyc_id)">Subir</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li v-if="user_kyc.type == 'text'" class="list-group-item p-3">
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-xl">
-                                                DNI
-                                            </div>
-                                            <div class="col-12 col-xl-auto">
-                                                <input type="text" v-model="user.user_kyc.dni" class="form-control" @keypress.exact.enter="updateKycFields" placeholder="Escribe aquí"/>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div v-else class="alert alert-info text-center text-white mb-0">
-                                Sube los documentos de tu cliente
-                            </div>
+        <div class="card" v-if="properties">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-12 col-xl h4">
+                        <div class="text-xs text-secondary">total {{properties.length}}</div>
+                        Listado de propiedades
+                    </div>
+                    <div class="col-12 col-xl-auto">
+                        <div class="form-floating">
+                            <input type="text" v-model="query" class="form-control" placeholder="Buscar..."/>    
+                            <label for="query">Buscar</label>
                         </div>
                     </div>
+                    <div class="col-12 col-xl-auto">
+                        <div class="form-floating">
+                            <select class="form-select" v-model="real_state" id="real_state" aria-label="Proyecto">
+                                <option v-for="real_state in real_states" v-bind:value="real_state.title">
+                                    {{ real_state.title }}
+                                </option>
+                            </select>
+                            <label for="real_state_id">Filtra por proyecto</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="properties" class="card-body overflow-scroll scroll-y">
+                <ul class="list-group">
+                    <li v-for="property in properties" class="list-group-item">
+                        <div class="row align-items-center">
+
+                            <div class="col-12 col-xl">
+                                <span class="badge bg-primary">Desarrolladora: {{property.real_state}}</span>
+                                <div class="h3">
+                                    {{property.title}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-auto text-xs text-secondary">
+                                Subido hace {{property.create_date.timeSince()}}
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-12 col-xl">
+                                <div class="text-xs text-secondary">Precio (m2)</div>
+                                <div>
+                                    $ {{property.single_price.numberFormat(2)}} MXN
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-auto">
+                                <div class="text-xs text-secondary">Tamaño</div>
+                                <div>
+                                    {{property.size}} m<sup>2</sup>
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-auto">
+                                <div class="text-xs text-secondary">Precio</div>
+                                <div>
+                                    $ {{property.price.numberFormat(2)}} MXN
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-auto">
+                                <div class="text-xs text-secondary">Precio (enganche)</div>
+                                <div>
+                                    $ {{property.down_payment_price.numberFormat(2)}} MXN
+                                </div>
+                            </div>
+                            <div v-if="property.pull" class="col-12 col-xl-auto text-success">
+                                Apartado
+                            </div>
+                            <div v-else class="col-12 col-xl-auto">
+                                <button class="btn btn-dark shadow-none mb-0 px-3 btn-sm" @click="$emit('pull',property,user.user_login_id)">Apartar</button>  
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div v-else-if="properties == false">
+                <div class="alert alert-info">
+                    No tenemos propiedades para mostrar
                 </div>
             </div>
         </div>
     `
 }
 
-export { ViewclientfromsellerViewer }
+export { PropertieslistViewer }

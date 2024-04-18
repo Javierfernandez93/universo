@@ -1,6 +1,6 @@
 import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
-const ViewclientfromsellerViewer = {
+const FeedbackclientViewer = {
     props: ['hide'],
     emit: ['pull'],
     data() {
@@ -143,45 +143,51 @@ const ViewclientfromsellerViewer = {
     },
     template : `
         <div v-if="user">
-            <div class="row mb-3">
-                <div class="col-12 col-12 animation-fall-down" style="--delay:600ms">
+            <div class="row">
+                <div class="col-12 animation-fall-down" style="--delay:800ms">
                     <div class="card">
                         <div class="card-header">
-                            <div class="h5">Documentos</div>
-                        </div>
-                        <div class="card-body">
-                            <div v-if="user.user_kyc">
-                                <ul v-for="user_kyc in user.user_kyc" class="list-group list-group-flush">
-                                    <li v-if="user_kyc.type == 'file'" class="list-group-item p-3">
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-xl">
-                                                {{user_kyc.title}}
-                                            </div>
-                                            <div class="col-12 col-xl-auto">
-                                                <div class="text-success" v-if="user_kyc.value">
-                                                    Enviado <i class="bi bi-check"></i>
-                                                </div>
-                                                <div v-else>
-                                                    <input class="d-none" @change="uploadFile($event,user_kyc,user.user_login_id)" :id="user_kyc.catalog_kyc_id" capture="filesystem" type="file" accept=".jpg, .png, .jpeg" />
-                                                    <button type class="btn btn-dark shadow-none mb-0 px-3 btn-sm" @click="openFileManager(user_kyc.catalog_kyc_id)">Subir</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li v-if="user_kyc.type == 'text'" class="list-group-item p-3">
-                                        <div class="row align-items-center">
-                                            <div class="col-12 col-xl">
-                                                DNI
-                                            </div>
-                                            <div class="col-12 col-xl-auto">
-                                                <input type="text" v-model="user.user_kyc.dni" class="form-control" @keypress.exact.enter="updateKycFields" placeholder="Escribe aquí"/>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-12 col-md">
+                                    <div v-if="user.user_feedback" class="text-xs text-secondary">total {{user.user_feedback.length}}</div>
+                                    <div class="h5">FeedBack de tu cliente</div>
+                                </div>
                             </div>
-                            <div v-else class="alert alert-info text-center text-white mb-0">
-                                Sube los documentos de tu cliente
+                        </div>
+                    
+                        <ul v-if="user.user_feedback" class="list-group list-group-flush">
+                            <div v-for="feedback in user.user_feedback">
+                                <li v-if="feedback.status != -1" class="list-group-item p-3">
+                                    <div class="row align-items-center">
+                                        <div class="col-12 col-xl-auto">
+                                            <span class="avatar avatar-sm bg-dark">FB</span>
+                                        </div>
+                                        <div class="col-12 col-xl">
+                                            <span v-if="feedback.status == 1" class="badge text-xxs bg-primary">Cumplido</span>
+                                            <span v-else-if="feedback.status == 2" class="badge text-xxs bg-warning">Pendiente</span>
+                                            <span v-else-if="feedback.status == 3" class="badge text-xxs bg-secondary">Realizado</span>
+                                            <div class="h5">
+                                                {{feedback.message}}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-xl-auto">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-dark shadow-none mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                                                </button>
+                                                <ul class="dropdown-menu shadow">
+                                                    <li v-if="feedback.status == 2"><button class="dropdown-item" @click="setFeedbackAsFromSeller(feedback,3)">Marcar como realizado</button></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+                        </ul>
+                        <div v-else class="card-body">
+                            <div class="alert alert-info text-white text-center mb-0">
+                                <strong>Importante</strong>
+                                <div>Aquí podrás visualizar todo lo referente a tu cliente, si requerimos algún documento adicional o un comentario sobre el proceso o incluso tu cliente lo haremos por éste medio</div>
                             </div>
                         </div>
                     </div>
@@ -191,4 +197,4 @@ const ViewclientfromsellerViewer = {
     `
 }
 
-export { ViewclientfromsellerViewer }
+export { FeedbackclientViewer }
