@@ -458,7 +458,7 @@ class UserLogin extends Orm {
   public function doSignup(array $data = null) 
   {
     $UserLogin = new UserLogin(false,false);
-    $UserLogin->email = $data['email'];
+    $UserLogin->email = strtolower(Util::sanitizeString(trim($data['email'])));
     $UserLogin->catalog_user_type_id = isset($data['catalog_user_type_id']) ? $data['catalog_user_type_id'] : CatalogUserType::SELLER;
     $UserLogin->password = sha1($data['password']);
     $UserLogin->signup_date = time();
@@ -472,7 +472,7 @@ class UserLogin extends Orm {
       {
         $UserData = new UserData;
         $UserData->user_login_id = $UserLogin->company_id;
-        $UserData->names = trim($data['names']);
+        $UserData->names = ucfirst(strtolower(trim($data['names'])));
         
         $UserData->nationality = isset($data['user_data']['nationality']) ? $data['user_data']['nationality'] : '';
         $UserData->curp = isset($data['user_data']['curp']) ? $data['user_data']['curp'] : '';
@@ -1614,5 +1614,15 @@ class UserLogin extends Orm {
       'user_login_id' => $this->company_id,
       'catalog_page_id' => $catalog_page_id,
     ]);
+  }
+
+  public static function makeEmailFromName(string $names = null)
+  {
+    if(!$names)
+    {
+      return false;
+    }
+
+    return strtolower(str_replace(" ",".",$names))."@".Connection::proyect_name.".com";
   }
 }

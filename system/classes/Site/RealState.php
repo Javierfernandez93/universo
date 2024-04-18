@@ -11,6 +11,23 @@ class RealState extends Orm {
     parent::__construct();
   }
 
+  public static function safeAdd(array $data = null)
+  {
+    if(!$data)
+    {
+      return false;
+    }
+
+    $RealState = new self;
+    
+    if($real_state_id = $RealState->findField('title = ?', $data['title'],"real_state_id"))
+    {
+      return $real_state_id;
+    }
+    
+    return self::add($data);
+  }
+
   public static function add(array $data = null)
   {
     if(!$data)
@@ -20,9 +37,9 @@ class RealState extends Orm {
 
     $RealState = new self;
     $RealState->loadArray($data);
-    $RealState->link = strtolower($data['link']);
+    $RealState->link = isset($data['link']) ? strtolower($data['link']) : '';
     $RealState->create_date = time();
 
-    return $RealState->save();
+    return $RealState->save() ? $RealState->getId() : false;
   }
 }

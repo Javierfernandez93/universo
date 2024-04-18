@@ -669,6 +669,19 @@ class UserSupport extends Http {
     getAffiliationForEdit(data, callback) {
         return this.call('../../app/application/getAffiliationForEdit.php', data, callback);
     }
+    /* developers */
+    getDevelopers(data, callback) {
+        return this.call('../../app/application/getDevelopers.php', data, callback);
+    }
+    setDeveloperStatus(data, callback) {
+        return this.call('../../app/application/setDeveloperStatus.php', data, callback);
+    }
+    saveRealStateDeveloper(data, callback) {
+        return this.call('../../app/application/saveRealStateDeveloper.php', data, callback);
+    }
+    getRealStateDeveloperForEdit(data, callback) {
+        return this.call('../../app/application/getRealStateDeveloperForEdit.php', data, callback);
+    }
 }
 
 export { UserSupport }

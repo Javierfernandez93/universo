@@ -30,6 +30,22 @@ class UserData extends Orm {
       return $this->connection()->field($sql);
     }
   }
+
+  public function getUserLoginIdByName(string $names = null) 
+  {
+    if(!isset($names))
+    {
+      return false;
+    }
+    
+    return $this->connection()->field("SELECT
+        {$this->tblName}.user_login_id
+      FROM 
+        {$this->tblName}
+      WHERE 
+        {$this->tblName}.names LIKE  '%{$names}%'
+    ");
+  }
     
   public function getName(int $user_login_id = null) 
   {

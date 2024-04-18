@@ -3,6 +3,7 @@
 namespace Site;
 
 use HCStudio\Orm;
+use HCStudio\Util;
 
 class UserAccount extends Orm {
   protected $tblName  = 'user_account';
@@ -104,5 +105,17 @@ class UserAccount extends Orm {
     }
 
     return false;
+  }
+
+  public static function formatLandingByEmail(string $email = null) : string
+  {
+    if(isset($email) === true)
+    {
+      $email = explode('@',$email);
+      
+      return Util::sanitizeString(strtolower($email[0]));
+    }
+
+    return '';
   }
 }

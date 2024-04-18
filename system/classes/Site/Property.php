@@ -10,7 +10,24 @@ class Property extends Orm {
     public function __construct() {
         parent::__construct();
     }
-   
+
+    public static function safeAdd(array $data = null)
+    {
+      if(!$data)
+      {
+        return false;
+      }
+  
+      $Property = new self;
+      
+      if($property_id = $Property->findField('title = ?', $data['title'],"property_id"))
+      {
+        return $property_id;
+      }
+      
+      return self::add($data);
+    }
+  
     public static function add(array $data = null) {
         if(!$data) {
             return false;   
@@ -20,8 +37,9 @@ class Property extends Orm {
         $Property->loadArray($data);
         $Property->create_date = time();   
         
-        return $Property->save();
+        return $Property->save() ? $Property->getId() : false;
     }
+
     public function getAll() {
         $properties = $this->connection()->rows("
             SELECT 

@@ -6,4 +6,12 @@ class Constants {
     const DELETE = -1;
     const DISABLED = 0;
     const AVIABLE = 1;
+
+    const RESPONSES = [
+        'DATA_OK' => 'DATA_OK',
+        'NOT_FIELD_SESSION_DATA' => 'NOT_FIELD_SESSION_DATA',
+        'EMAIL_EXIST' => 'EMAIL_EXIST',
+        'INVALID_PERMISSION' => 'INVALID_PERMISSION',
+        'ERROR_ON_SIGNUP' => 'ERROR_ON_SIGNUP',
+    ];
 }

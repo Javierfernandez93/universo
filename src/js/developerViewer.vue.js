@@ -1,11 +1,11 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.4'
 
-const AdminrealstateViewer = {
+const DeveloperViewer = {
     data() {
         return {
             UserSupport: new UserSupport,
-            realStates: null,
-            realStatesAux: null,
+            developers: null,
+            developersAux: null,
             busy: false,
             query: null,
             columns: { // 0 DESC , 1 ASC 
@@ -35,7 +35,7 @@ const AdminrealstateViewer = {
     },
     methods: {
         sortData(column) {
-            this.realStates.sort((a, b) => {
+            this.developers.sort((a, b) => {
                 const _a = column.desc ? a : b
                 const _b = column.desc ? b : a
 
@@ -49,52 +49,52 @@ const AdminrealstateViewer = {
             column.desc = !column.desc
         },
         filterData() {
-            this.realStates = this.realStatesAux
-            this.realStates = this.realStates.filter((payment) => {
-                return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
+            this.developers = this.developersAux
+            this.developers = this.developers.filter((developer) => {
+                return developer.name.toLowerCase().includes(this.query.toLowerCase())
             })
         },
-        getRealStates() {
-            this.realStatesAux = null
-            this.realStates = null
+        getDevelopers() {
+            this.developersAux = null
+            this.developers = null
             this.busy = true
             
-            this.UserSupport.getRealStates({}, (response) => {
+            this.UserSupport.getDevelopers({}, (response) => {
                 this.busy = false
                 if (response.s == 1) {
-                    this.realStatesAux = response.realStates
-                    this.realStates = this.realStatesAux
+                    this.developersAux = response.developers
+                    this.developers = this.developersAux
                 } else {
-                    this.realStatesAux = false
-                    this.realStates = false
+                    this.developersAux = false
+                    this.developers = false
                 }
             })
         },
-        editRealState(realState) {
-            window.location.href = `../../apps/admin-realstate/edit.php?rsid=${realState.real_state_id}`
+        editDeveloper(developer) {
+            window.location.href = `../../apps/admin-developer/edit.php?rsdid=${developer.real_state_developer_id}`
         },
-        setRealStatStatus(realState,status) {
-            this.UserSupport.setRealStatStatus({real_state_id:realState.real_state_id,status:status}, (response) => {
+        setDeveloperStatus(developer,status) {
+            this.UserSupport.setDeveloperStatus({real_state_developer_id:developer.real_state_developer_id,status:status}, (response) => {
                 if (response.s == 1) {
-                    realState.status = status
+                    developer.status = status
 
                     if (status == 1) {
                         toastInfo({
-                            message: 'Proyecto habilitado',
+                            message: 'Desarrolladora habilitada',
                         })
                     } else if (status == 0) {
                         toastInfo({
-                            message: 'Proyecto deshabilitado',
+                            message: 'Desarrolladora deshabilitada',
                         })
                     } else if (status == -1) {
-                        this.getRealStates()
+                        this.getDevelopers()
                     }
                 }
             })
         },
     },
     mounted() {
-        this.getRealStates()
+        this.getDevelopers()
     },
     template: `
         <div class="row">
@@ -103,20 +103,20 @@ const AdminrealstateViewer = {
                     <div class="card-header ">
                         <div class="row justify-content-center align-items-center">
                             <div class="col-12 col-xl">
-                                <span v-if="realStates" class="badge text-secondary p-0">Total {{realStates.length}}</span>
+                                <span v-if="developers" class="badge text-secondary p-0">Total {{developers.length}}</span>
                                 <div class="h5">
-                                    Proyectos
+                                    Desarrolladoras
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
-                                <a href="../../apps/admin-realstate/add" class="btn btn-sm px-3 mb-0 shadow-none btn-success">Agregar proyecto</a>
+                                <a href="../../apps/admin-developer/add" class="btn btn-sm px-3 mb-0 shadow-none btn-success">Agregar desarrolladora</a>
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
 
-                        <div v-if="query" class="text-xs">Resultados de la búsqueda <b>{{query}}</b> ({{realStates.length}} resultados)</div>
+                        <div v-if="query" class="text-xs">Resultados de la búsqueda <b>{{query}}</b> ({{developers.length}} resultados)</div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div v-if="busy == true" class="d-flex justify-content-center py-3">
@@ -124,7 +124,7 @@ const AdminrealstateViewer = {
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                         </div>
-                        <div v-if="realStates" class="table-responsive-sm p-0">
+                        <div v-if="developers" class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center">
@@ -136,29 +136,7 @@ const AdminrealstateViewer = {
                                             <span v-else>    
                                                 <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                             </span>    
-                                            <u class="text-sm ms-2">proyecto</u>
-                                        </th>
-                                        <th 
-                                            @click="sortData(columns.link)"
-                                            class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.link.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">Link</u>
-                                        </th>
-                                        <th 
-                                            @click="sortData(columns.link)"
-                                            class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.link.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">Tipo</u>
+                                            <u class="text-sm ms-2">Desarrolladora</u>
                                         </th>
                                         <th 
                                             @click="sortData(columns.create_date)"
@@ -175,23 +153,16 @@ const AdminrealstateViewer = {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="realState in realStates" class="text-center text-sm">
+                                    <tr v-for="developer in developers" class="text-center text-sm">
                                         <td>
-                                            <span v-if="realState.status == '1'" class="badge bg-success">Activo</span>
-                                            <span v-if="realState.status == '0'" class="badge bg-secondary">Inactivo</span>
+                                            <span v-if="developer.status == '1'" class="badge bg-success">Activo</span>
+                                            <span v-if="developer.status == '0'" class="badge bg-secondary">Inactivo</span>
                                         </td>    
                                         <td class="align-middle fw-bold text-dark">
-                                            {{realState.title}} 
-                                        </td>
-                                        <td class="align-middle text-decoration-underline">
-                                            {{realState.link}}
+                                            {{developer.name}} 
                                         </td>
                                         <td class="align-middle">
-                                            <span v-if="realState.main == '1'" class="badge bg-primary">Primer etapa</span>
-                                            <span v-else class="badge bg-success">Etapas nuevas</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            {{realState.create_date.formatFullDate()}}
+                                            {{developer.create_date.formatFullDate()}}
                                         </td>
                                         <td class="align-middle">
                                             <div class="btn-group">
@@ -200,16 +171,16 @@ const AdminrealstateViewer = {
                                                 </button>
                                                 <ul class="dropdown-menu shadow">
                                                     <li>
-                                                        <button class="dropdown-item" @click="editRealState(realState)">Editar</button>
+                                                        <button class="dropdown-item" @click="editDeveloper(developer)">Editar</button>
                                                     </li>
-                                                    <li v-if="realState.status == '1'">
-                                                        <button class="dropdown-item" @click="setRealStatStatus(realState,0)">Inhabilitar</button>
+                                                    <li v-if="developer.status == '1'">
+                                                        <button class="dropdown-item" @click="setDeveloperStatus(developer,0)">Inhabilitar</button>
                                                     </li>
-                                                    <li v-if="realState.status == '0'">
-                                                        <button class="dropdown-item" @click="setRealStatStatus(realState,1)">Habilitar</button>
+                                                    <li v-if="developer.status == '0'">
+                                                        <button class="dropdown-item" @click="setDeveloperStatus(developer,1)">Habilitar</button>
                                                     </li>
                                                     <li>
-                                                        <button class="dropdown-item" @click="setRealStatStatus(realState,-1)">Eliminar</button>
+                                                        <button class="dropdown-item" @click="setDeveloperStatus(developer,-1)">Eliminar</button>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -225,4 +196,4 @@ const AdminrealstateViewer = {
     `
 }
 
-export { AdminrealstateViewer }
+export { DeveloperViewer }

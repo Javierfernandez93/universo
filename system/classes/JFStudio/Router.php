@@ -132,6 +132,9 @@ class Router {
     const AdminAffilationsEdit = 172;
     const AdminAffilationsAdd = 173;
     const AddPermission = 174;
+    const AdminDeveloper = 175;
+    const AdminDeveloperEdit = 176;
+    const AdminDeveloperAdd = 177;
 
     static function getName(int $route = null)
     {
@@ -250,9 +253,9 @@ class Router {
             self::AdminLoggs => 'Logs',
             self::AdminPayments => 'Pagos',
             self::InvalidPermission => 'InvalidPermission',
-            self::AdminRealState => 'Desarrolladora',
-            self::AdminRealStateAdd => 'Añadir desarrolladora',
-            self::AdminRealStateEdit => 'Editar desarrolladora',
+            self::AdminRealState => 'Proyectos',
+            self::AdminRealStateAdd => 'Añadir proyecto',
+            self::AdminRealStateEdit => 'Editar proyecto',
             self::AdminBanner => 'Banner',
             self::AdminBannerAdd => 'Añadir banner',
             self::AdminBannerEdit => 'Editar banner',
@@ -263,6 +266,9 @@ class Router {
             self::AdminAffilationsEdit => 'Editar Afiliación',
             self::AdminAffilations => 'Afiliaciones',
             self::AddPermission => 'Permisos',
+            self::AdminDeveloper => 'Desarrolladora',
+            self::AdminDeveloperEdit => 'Editar desarrolladora',
+            self::AdminDeveloperAdd => 'Añadir desarrolladora',
             self::Us => 'Nosotros',
             default => 'Sin nombre'
         };

@@ -913,7 +913,7 @@ class UserSupport extends Orm {
             WHERE
               {$this->tblName}.status = '1' 
             AND 
-              {$this->tblName}.catalog_user_type_id = '".CatalogUserType::$SELLER."'
+              {$this->tblName}.catalog_support_type_id = '".CatalogSupportType::ADMINISTRATOR."'
             ORDER BY 
               {$this->tblName}.create_date 
             DESC
@@ -924,38 +924,38 @@ class UserSupport extends Orm {
 
   public function getBeneficiaries($user_login_id = null)
   {
-    if(isset($user_login_id) === true)
-    {
-      $UserType = new UserType;
+    // if(isset($user_login_id) === true)
+    // {
+    //   $UserType = new UserType;
 
-      if($users = $UserType->getByType($user_login_id,CatalogUserType::$BENEFICIARY))
-      {
-        foreach ($users as $key => $user) {
-          $_users[$key] = $this->getClient($user,CatalogUserType::$BENEFICIARY);
-        }
+    //   if($users = $UserType->getByType($user_login_id,CatalogUserType::BENEFICIARY))
+    //   {
+    //     foreach ($users as $key => $user) {
+    //       $_users[$key] = $this->getClient($user,CatalogUserType::BENEFICIARY);
+    //     }
 
-        return $_users;
-      }
-    }
+    //     return $_users;
+    //   }
+    // }
 
     return false;
   }
 
   public function getAvals($user_login_id = null)
   {
-    if(isset($user_login_id) === true)
-    {
-      $UserType = new UserType;
+    // if(isset($user_login_id) === true)
+    // {
+    //   $UserType = new UserType;
 
-      if($users = $UserType->getByType($user_login_id,CatalogUserType::$AVAL))
-      {
-        foreach ($users as $key => $user) {
-          $_users[$key] = $this->getClient($user,CatalogUserType::$AVAL);
-        }
+    //   if($users = $UserType->getByType($user_login_id,CatalogUserType::$AVAL))
+    //   {
+    //     foreach ($users as $key => $user) {
+    //       $_users[$key] = $this->getClient($user,CatalogUserType::$AVAL);
+    //     }
 
-        return $_users;
-      }
-    }
+    //     return $_users;
+    //   }
+    // }
 
     return false;
   }
@@ -1067,7 +1067,7 @@ class UserSupport extends Orm {
             WHERE 
               {$this->tblName}.status = '1'
             AND 
-              {$this->tblName}.catalog_user_type_id = '".CatalogUserType::$ADMIN."'
+              {$this->tblName}.catalog_support_type_id = '".CatalogSupportType::ADMINISTRATOR."'
               {$filter}
               ";
 
@@ -1089,7 +1089,7 @@ class UserSupport extends Orm {
             WHERE 
               {$this->tblName}.status = '1'
             AND 
-              {$this->tblName}.catalog_user_type_id = '".CatalogUserType::$SELLER."'
+              {$this->tblName}.catalog_user_type_id = '".CatalogUserType::SELLER."'
             AND 
               {$this->tblName}.names LIKE '%{$name}%'
               {$filter}
@@ -1553,5 +1553,59 @@ class UserSupport extends Orm {
     $UserKyc->value = '';
     
     return $UserKyc->save();
+  }
+
+  public function userEmailExist(string $email = null)
+  {
+    if(!$this->logged)
+    {
+      return false;
+    }
+
+    if(!$email)
+    {
+      return false;
+    }
+
+    return (new UserLogin)->loadWhere("email = ? AND status = 1",[$email]);
+  }
+  
+  public function getUserLoginIdByName(string $names = null)
+  {
+    if(!$this->logged)
+    {
+      return false;
+    }
+
+    if(!$names)
+    {
+      return false;
+    }
+
+    return (new UserData)->getUserLoginIdByName($names);
+  }
+
+  public static function safeAdd(array $data = null)
+  {
+    if(!$data)
+    {
+      return false;
+    }
+
+    $UserSupportNew = new self(false,false);
+
+    if($user_support_id = $UserSupportNew->findField('email = ?',$data['email'],"user_support_id"))
+    {
+      return $user_support_id;
+    }
+
+    $UserSupportNew->names = ucwords(strtolower($data['names']));
+    $UserSupportNew->email = strtolower($data['email']);
+    $UserSupportNew->password = sha1($data['password']);
+    $UserSupportNew->affiliation_id = isset($data['affiliation_id']) ? $data['affiliation_id'] : 0;
+    $UserSupportNew->catalog_support_type_id = isset($data['catalog_support_type_id']) ? $data['catalog_support_type_id'] : 1;
+    $UserSupportNew->create_date = time();
+    
+    return $UserSupportNew->save() ? $UserSupportNew->getId() : false;
   }
 }

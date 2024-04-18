@@ -54,3 +54,37 @@ function d($var = null,$clean_ob = null) : void
 {
 	debug($var,$clean_ob);
 }
+
+function error(string $response = null,array $additional_data = null) : void
+{
+	webServiceResponse([
+		's' => 0,
+		'r' => $response
+	],$additional_data);
+
+	http_response_code(200);
+
+	die;
+}
+
+function success(string $response = null,array $additional_data = null) : void
+{
+	webServiceResponse([
+		's' => 1,
+		'r' => $response
+	],$additional_data);
+
+	http_response_code(200);
+
+	die;
+}
+
+function webServiceResponse(array $data = null,array $additional_data = null)
+{
+	if(isset($additional_data) === true)
+	{
+		$data = array_merge($data,$additional_data);
+	}
+
+	echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
+}

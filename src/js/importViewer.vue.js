@@ -79,6 +79,8 @@ const ImportViewer = {
                         resolve(this.STATES.ALREADY_EXIST)
                     } else if(response.r == "NOT_SAVED") {
                         resolve(this.STATES.NOT_SAVED)
+                    } else {
+                        resolve(this.STATES.NOT_SAVED)
                     }
                 })
             })

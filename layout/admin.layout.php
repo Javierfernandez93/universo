@@ -309,7 +309,7 @@
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#realstate" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminRealState, JFStudio\Router::AdminRealStateAdd, JFStudio\Router::AdminRealStateEdit])) { ?>active<?php } ?>" aria-controls="realstate" role="button" aria-expanded="false">
                             <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-building-check"></i></span>
-                            <span class="nav-link-text ms-1">Desarrolladoras</span>
+                            <span class="nav-link-text ms-1">Proyectos</span>
                         </a>
                         <div class="collapse" id="realstate">
                         <ul class="nav ms-4 ps-3">
@@ -321,6 +321,30 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-realstate/add">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Añadir </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
+                <?php if ($UserSupport->hasPermission('list_developer')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#developer" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminDeveloper, JFStudio\Router::AdminDeveloperAdd, JFStudio\Router::AdminDeveloperEdit])) { ?>active<?php } ?>" aria-controls="developer" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-cone-striped"></i></span>
+                            <span class="nav-link-text ms-1">Desarrolladoras</span>
+                        </a>
+                        <div class="collapse" id="developer">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../apps/admin-developer">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../apps/admin-developer/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>
                                 </a>

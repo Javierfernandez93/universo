@@ -8,8 +8,6 @@ $UserLogin = new Site\UserLogin;
 
 if($UserLogin->logged === true)
 {
-    d($data);
-    
     if($data['user']['email'])
     {
         if($UserLogin->isUniqueMail($data['user']['email']))
