@@ -153,16 +153,19 @@ const ViewclientfromsellerViewer = {
                                     Listado de propiedades
                                 </div>
                                 <div class="col-12 col-xl-auto">
-                                    <input type="text" v-model="query" class="form-control" placeholder="Buscar..."/>    
+                                    <div class="form-floating">
+                                        <input type="text" v-model="query" class="form-control" placeholder="Buscar..."/>    
+                                        <label for="query">Buscar</label>
+                                    </div>
                                 </div>
                                 <div class="col-12 col-xl-auto">
                                     <div class="form-floating">
-                                        <select class="form-select" v-model="real_state" id="real_state" aria-label="Gestor">
+                                        <select class="form-select" v-model="real_state" id="real_state" aria-label="Proyecto">
                                             <option v-for="real_state in real_states" v-bind:value="real_state.title">
                                                 {{ real_state.title }}
                                             </option>
                                         </select>
-                                        <label for="real_state_id">Gestor</label>
+                                        <label for="real_state_id">Filtra por proyecto</label>
                                     </div>
                                 </div>
                             </div>

@@ -49,7 +49,7 @@
             </a>
         </div>
         
-        <div class="collapse  navbar-collapse w-auto h-auto" id="sidenav-collapse-main">
+        <div class="collapse px-3 navbar-collapse w-auto h-auto" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item my-3">
                     <div class="row justify-content-center">

@@ -155,7 +155,6 @@ background: linear-gradient(45deg, rgba(225,193,70,1) 0%, rgba(206,158,35,1) 36%
 }
 
 .navbar-nav > .nav-item:hover {
-   background-color: #1e1e1e;
    transition: all ease 500ms;
 }
 
