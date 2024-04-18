@@ -7,22 +7,19 @@ $data = HCStudio\Util::getHeadersForWebService();
 $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
-{
-    $data['user']['email'] = 'pepejons@gmail.com';
-    $data['user']['user_account']['landing'] = 'pepejons';
-    
-    if($data['user']['email'])
+{   
+    if($data['user']['user_login']['email'])
     {
         $UserLogin = new Site\UserLogin(false,false);
 
-        if($UserLogin->isUniqueMail($data['user']['email']))
+        if($UserLogin->isUniqueMail($data['user']['user_login']['email']))
         {
             if($UserLogin->isUniqueLanding($data['user']['user_account']['landing']))
             {
                 if($user_login_id = $UserLogin->doSignup($data['user']))
                 {   
                     $data['s'] = 1;
-                    $data['r'] = 'LOGGED_OK';
+                    $data['r'] = 'DATA_OK';
                 } else {
                     $data['s'] = 0;
                     $data['r'] = 'ERROR_ON_SIGNUP';

@@ -1,6 +1,10 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.0'   
 
 const AdminadduserViewer = {
+    components : {
+        BackViewer
+    },
     data() {
         return {
             UserSupport: new UserSupport,
@@ -9,10 +13,14 @@ const AdminadduserViewer = {
             sponsors: null,
             countries: {},
             user: {
-                names: null,
-                password: null,
-                email: '',
-                catalog_user_type_id: 1, // sellter
+                user_login: {
+                    password: null,
+                    email: '',
+                    catalog_user_type_id: 1, // sellter
+                },
+                user_data : {
+                    names: null,
+                },
                 user_contact : {
                     phone: null,
                 },
@@ -32,7 +40,7 @@ const AdminadduserViewer = {
     watch: {
         user: {
             handler() {
-                this.filled = this.user.names != null && this.user.email.isValidMail() && this.user.user_contact.phone
+                this.filled = this.user.user_data.names != null && this.user.user_login.email.isValidMail() && this.user.user_contact.phone
             },
             deep: true
         }
@@ -110,6 +118,9 @@ const AdminadduserViewer = {
         <div class="card">
             <div class="card-header"> 
                 <div class="row justify-content-center"> 
+                    <div class="col-12 col-xl-auto"> 
+                        <backViewer></backViewer>
+                    </div>
                     <div class="col-12 col-xl"> 
                         <div class="h5">Añadir asesor</div>
                         <div class="text-xs text-secondary">(* Campos requeridos)</div>
@@ -128,17 +139,17 @@ const AdminadduserViewer = {
                         <label>Usuario *</label>
                         <input 
                             :autofocus="true"
-                            :class="user.names ? 'is-valid' : 'is-invalid'"
+                            :class="user.user_data.names ? 'is-valid' : 'is-invalid'"
                             @keydown.enter.exact.prevent="$refs.email.focus()"
-                            v-model="user.names"
+                            v-model="user.user_data.names"
                             ref="names"
                             type="text" class="form-control" placeholder="Nombre(s)">
                     </div>
                     <div class="col-12 col-xl-4 mb-3">
                         <label>Correo *</label>
                         <input 
-                            v-model="user.email"
-                            :class="user.email.isValidMail() ? 'is-valid' : 'is-invalid'"
+                            v-model="user.user_login.email"
+                            :class="user.user_login.email.isValidMail() ? 'is-valid' : 'is-invalid'"
                             @keydown.enter.exact.prevent="$refs.password.focus()"
                             ref="email"
                             type="text" class="form-control" placeholder="Email">
@@ -147,8 +158,8 @@ const AdminadduserViewer = {
                     <div class="col-12 col-xl-4">
                         <label>Contraseña</label>
                         <input 
-                            v-model="user.password"
-                            :class="user.password ? 'is-valid' : ''"
+                            v-model="user.user_login.password"
+                            :class="user.user_login.password ? 'is-valid' : ''"
                             @keydown.enter.exact.prevent="$refs.user_referral.focus()"
                             ref="password"
                             type="text" class="form-control" placeholder="Password">

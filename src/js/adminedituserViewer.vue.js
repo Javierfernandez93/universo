@@ -1,6 +1,10 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.0'   
 
 const AdminedituserViewer = {
+    components : {
+        BackViewer
+    },
     data() {
         return {
             UserSupport: new UserSupport,
@@ -114,6 +118,9 @@ const AdminedituserViewer = {
         <div class="card">
             <div class="card-header"> 
                 <div class="row justify-content-center align-items-center"> 
+                    <div class="col-12 col-xl-auto"> 
+                        <backViewer></backViewer>
+                    </div>
                     <div class="col-12 col-xl"> 
                         <div class="h5">Editar asesor</div>
                     </div>
