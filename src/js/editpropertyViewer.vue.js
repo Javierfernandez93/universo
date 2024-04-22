@@ -56,7 +56,20 @@ const EditpropertyViewer = {
                 if(response.s == 1)
                 {
                     this.property = response.property
-                    console.log(this.property)
+                    
+                    setTimeout(()=>{
+                        $('.selectpicker').selectpicker();
+                        
+                        console.log({b:'val', s: this.property.real_state_id});
+                        $('.selectpicker').selectpicker('val', this.property.real_state_id);
+                        $('.selectpicker').selectpicker('refresh');
+
+
+
+                        $('.selectpicker').change(() =>{
+                            this.property.real_state_id = $('.selectpicker').val();
+                        });
+                    },100)
                 }
             })
         },
@@ -101,13 +114,11 @@ const EditpropertyViewer = {
                     </div>
 
                     <div class="col-12 col-xl-6 mb-3">
-                        <div class="form-floating">
-                            <select class="form-select" v-model="property.real_state_id" id="real_state_id" aria-label="Gestor">
-                                <option v-for="real_state in real_states" v-bind:value="real_state.real_state_id">
-                                    {{ real_state.title }}
-                                </option>
+                        <div v-if="real_states">
+                            <label>Asignar a asesor</label>
+                            <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
+                                <option v-for="real_state in real_states" :data-tokens="real_state.names" :data-content="real_state.title">{{ real_state.real_state_id }}</option>
                             </select>
-                            <label for="real_state_id">Gestor</label>
                         </div>
                     </div>
                     <div class="col-12 col-xl-6 mb-3">

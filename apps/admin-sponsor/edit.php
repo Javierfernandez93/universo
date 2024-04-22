@@ -19,7 +19,7 @@ $Layout->init(JFStudio\Router::getName($route),"edit","admin","",TO_ROOT."/");
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
 	'jquery.mask.js',
-	'adminEditAdministrator.vue.js'
+	'admindeditsponsor.vue.js'
 ]);
 
 $Layout->setVar([

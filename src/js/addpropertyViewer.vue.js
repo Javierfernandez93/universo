@@ -46,6 +46,14 @@ const AddpropertyViewer = {
                 if(response.s == 1)
                 {
                     this.real_states = response.real_states
+
+                    setTimeout(()=>{
+                        $('.selectpicker').selectpicker();
+                        
+                        $('.selectpicker').change(() =>{
+                            this.property.real_state_id = $('.selectpicker').val();
+                        });
+                    },100)
                 }
             })
         },
@@ -84,13 +92,11 @@ const AddpropertyViewer = {
                     </div>
 
                     <div class="col-12 col-xl-6 mb-3">
-                        <div class="form-floating">
-                            <select class="form-select" v-model="property.real_state_id" id="real_state_id" aria-label="Proyecto">
-                                <option v-for="real_state in real_states" v-bind:value="real_state.real_state_id">
-                                    {{ real_state.title }}
-                                </option>
+                        <div v-if="real_states">
+                            <label>Asignar a asesor</label>
+                            <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
+                                <option v-for="real_state in real_states" :data-tokens="real_state.names" :data-content="real_state.title">{{ real_state.real_state_id }}</option>
                             </select>
-                            <label for="real_state_id">Proyecto</label>
                         </div>
                     </div>
                     <div class="col-12 col-xl-6 mb-3">

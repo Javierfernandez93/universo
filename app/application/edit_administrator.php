@@ -16,6 +16,7 @@ if($UserSupport->logged === true)
         {
             $UserSupportUpdate->names = ucwords(strtolower($data['administrator']['names']));
             $UserSupportUpdate->password = $data['administrator']['password'] ? sha1($data['administrator']['password']) : $UserSupportUpdate->password;
+            $UserSupportUpdate->affiliation_id = isset($data['administrator']['affiliation_id']) ? $data['administrator']['affiliation_id'] : $UserSupportUpdate->affiliation_id;
             $UserSupportUpdate->email = strtolower($data['administrator']['email']);
             
             if($UserSupportUpdate->save())

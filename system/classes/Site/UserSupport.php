@@ -1021,6 +1021,7 @@ class UserSupport extends Orm {
                 {$this->tblName}.{$this->tblName}_id,
                 {$this->tblName}.names,
                 {$this->tblName}.last_name,
+                {$this->tblName}.affiliation_id,
                 {$this->tblName}.sur_name,
                 {$this->tblName}.email,
                 {$this->tblName}.gender,

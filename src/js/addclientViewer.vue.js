@@ -26,6 +26,8 @@ const AddclientViewer = {
                 user_address : {
                     country_id: 159,
                     address: null,
+                    zip_code: null,
+                    external_number: null,
                     colony: null,
                     city: null,
                     state: null,
@@ -132,18 +134,6 @@ const AddclientViewer = {
                             this.user.user_referral.user_login_id = $('.selectpicker').val();
                         });
                     },100)
-                    setTimeout(()=>{
-                        // console.log(23)
-                        // $('.selectpicker').selectpicker('val', getParam("ulid"));
-
-
-                        // if(getParam("ulid"))
-                        // {
-                        //     $('select[name=selValue]').val(getParam("ulid"));
-                        //     $('.selectpicker').change()
-                        //     $('.selectpicker').selectpicker('refresh')
-                        // }
-                    },1500)
                 }
             })
         },
@@ -203,7 +193,7 @@ const AddclientViewer = {
                             type="text" class="form-control" placeholder="Nacionalidad">
                     </div>
                     
-                    <div class="col-12 col-md-6 mb-3">
+                    <div class="col-12 col-md-4 mb-3">
                         <label>Nombre de usuario</label>
                         <input 
                             v-model="user.user_account.landing"
@@ -214,14 +204,32 @@ const AddclientViewer = {
                             type="text" class="form-control" placeholder="Nombre de usuario">
                     </div>
                     
-                    <div class="col-12 col-md-6 mb-3">
-                        <label>Dirección</label>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label>Calle</label>
                         <input 
                             v-model="user.user_address.address"
                             :class="user.user_address.address ? 'is-valid' : ''"
-                            @keydown.enter.exact.prevent="$refs.city.focus()"
+                            @keydown.enter.exact.prevent="$refs.zip_code.focus()"
                             ref="address"
-                            type="text" class="form-control" placeholder="Dirección">
+                            type="text" class="form-control" placeholder="Calle">
+                    </div>
+                    <div class="col-12 col-md-2 mb-3">
+                        <label>Código postal</label>
+                        <input 
+                            v-model="user.user_address.zip_code"
+                            :class="user.user_address.zip_code ? 'is-valid' : ''"
+                            @keydown.enter.exact.prevent="$refs.external_number.focus()"
+                            ref="zip_code"
+                            type="text" class="form-control" placeholder="Código postal">
+                    </div>
+                    <div class="col-12 col-md-2 mb-3">
+                        <label>Número exterior</label>
+                        <input 
+                            v-model="user.user_address.external_number"
+                            :class="user.user_address.external_number ? 'is-valid' : ''"
+                            @keydown.enter.exact.prevent="$refs.city.focus()"
+                            ref="external_number"
+                            type="text" class="form-control" placeholder="Número exterior">
                     </div>
                     <div class="col-12 col-md-4 mb-3">
                         <label>Ciudad</label>

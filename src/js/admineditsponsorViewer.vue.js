@@ -1,7 +1,7 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.0'
 
-const AdmineditadministratorViewer = {
+const AdmineditsponsorViewer = {
     components : {
         BackViewer,
     },
@@ -11,12 +11,14 @@ const AdmineditadministratorViewer = {
             UserSupport: new UserSupport,
             query: null,
             feedback: null,
+            affiliations: null,
             administrator: {
-                name: null,
+                names: null,
                 password: null,
                 email: null,
                 permissions: null,
                 permissionsAux: null,
+                affiliation_id: null,
             },
         }
     },
@@ -31,7 +33,7 @@ const AdmineditadministratorViewer = {
         administrator:
         {
             handler() {
-                this.administratorComplete = this.administrator.name != null && this.administrator.email != null && this.administrator.password != null
+                this.administratorComplete = this.administrator.names != null && this.administrator.email != null && this.administrator.password != null
             },
             deep: true
         }
@@ -64,6 +66,30 @@ const AdmineditadministratorViewer = {
                 if (response.s == 1) {
                     this.administrator = {...this.administrator, ...response.administrator}
                     this.administrator.permissionsAux = this.administrator.permissions
+
+                    this.getAffiliations();
+                }
+            })
+        },
+        getAffiliations() {
+            this.busy = true
+            this.affiliations = null
+            this.UserSupport.getAffiliations({}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.affiliations = response.affiliations
+
+                    setTimeout(()=>{
+                        $('.selectpicker').selectpicker();
+                        
+                        $('.selectpicker').change(() =>{
+                            this.administrator.affiliation_id = $('.selectpicker').val();
+                        });
+
+
+                        let affiliation_id = this.administrator.affiliation_id.toString()
+                        $('.selectpicker').selectpicker('val', affiliation_id);
+                    },100)
                 }
             })
         },
@@ -83,10 +109,10 @@ const AdmineditadministratorViewer = {
                         <BackViewer/>
                     </div>
                     <div class="col-12 col-xl">
-                        <h6>Editar administrador</h6>
+                        <h6>Editar líder</h6>
                     </div>
                     <div class="col-12 col-xl-auto">
-                        <button ref="button" type="submit" class="btn btn-dark shadow-none mb-0" @click="editAdministrator">Editar</button>
+                        <button ref="button" type="submit" class="btn btn-dark btn-sm px-3 shadow-none mb-0" @click="editAdministrator">Editar</button>
                     </div>
                 </div>
             </div>
@@ -94,7 +120,7 @@ const AdmineditadministratorViewer = {
                 <div class="row align-items-center">
                     <div class="col-12 col-xl">
                         <label>Nombre</label>
-                        <input :disabled="busy" :autofocus="true" :class="administrator.name ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.email.focus()" v-model="administrator.name" ref="name" type="text" class="form-control" placeholder="nombre">
+                        <input :disabled="busy" :autofocus="true" :class="administrator.names ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.email.focus()" v-model="administrator.names" ref="names" type="text" class="form-control" placeholder="nombre">
                     </div>
                     <div class="col-12 col-xl">
                         <label>Correo electrónico</label>
@@ -108,6 +134,12 @@ const AdmineditadministratorViewer = {
                             ref="password" 
                             :class="administrator.password ? 'is-valid' : ''"
                             type="text" class="form-control" placeholder="Password">
+                    </div>
+                    <div v-if="affiliations" class="col-12 col-md mt-3">
+                        <label>Asignar a afiliación</label>
+                        <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
+                            <option v-for="affiliation in affiliations" :data-tokens="affiliation.name" :data-content="affiliation.name">{{ affiliation.affiliation_id }}</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -153,4 +185,4 @@ const AdmineditadministratorViewer = {
     `
 }
 
-export { AdmineditadministratorViewer }
+export { AdmineditsponsorViewer }

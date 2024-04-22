@@ -506,6 +506,8 @@ class UserLogin extends Orm {
     $UserAddress->city = isset($data['user_address']['city']) ? $data['user_address']['city'] : '';
     $UserAddress->state = isset($data['user_address']['state']) ? $data['user_address']['state'] : '';
     $UserAddress->country = isset($data['user_address']['country']) ? $data['user_address']['country'] : '';
+    $UserAddress->zip_code = isset($data['user_address']['zip_code']) ? $data['user_address']['zip_code'] : '';
+    $UserAddress->external_number = isset($data['user_address']['external_number']) ? $data['user_address']['external_number'] : '';
     $UserAddress->country_id = isset($data['user_address']['country_id']) && !empty($data['user_address']['country_id']) ? $data['user_address']['country_id'] : 0;
     
     if(!$UserAddress->save())
@@ -1552,6 +1554,8 @@ class UserLogin extends Orm {
     $UserAddress->city = isset($data['user_address']['city']) ? $data['user_address']['city'] : $UserAddress->city;
     $UserAddress->state = isset($data['user_address']['state']) ? $data['user_address']['state'] : $UserAddress->state;
     $UserAddress->colony = isset($data['user_address']['colony']) ? $data['user_address']['colony'] : $UserAddress->colony;
+    $UserAddress->zip_code = isset($data['user_address']['zip_code']) ? $data['user_address']['zip_code'] : $UserAddress->zip_code;
+    $UserAddress->external_number = isset($data['user_address']['external_number']) ? $data['user_address']['external_number'] : $UserAddress->external_number;
     $UserAddress->save();
     
     $UserData = new UserData;  
