@@ -292,15 +292,30 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-tools">
                                     <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Listar </span>
+                                    <span class="sidenav-normal"> Listar herramientas </span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-tools/add">
                                     <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Añadir </span>
+                                    <span class="sidenav-normal"> Añadir herramienta </span>
                                 </a>
                             </li>
+
+                            <?php if ($UserSupport->hasPermission('list_banners')) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-banner">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Listar banners </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-banner/add">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Añadir banner </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </ul>
                 <?php } ?>
@@ -352,30 +367,7 @@
                         </ul>
                     </ul>
                 <?php } ?>
-                <?php if ($UserSupport->hasPermission('list_banners')) { ?>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#banner" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminBanner, JFStudio\Router::AdminBannerAdd, JFStudio\Router::AdminBannerEdit])) { ?>active<?php } ?>" aria-controls="banner" role="button" aria-expanded="false">
-                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-card-image"></i></span>
-                            <span class="nav-link-text ms-1">Banners</span>
-                        </a>
-                        <div class="collapse" id="banner">
-                        <ul class="nav ms-4 ps-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="../../apps/admin-banner">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Listar </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="../../apps/admin-banner/add">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Añadir </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </ul>
-                <?php } ?>
+                
                 <?php if ($UserSupport->hasPermission('list_blog')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
