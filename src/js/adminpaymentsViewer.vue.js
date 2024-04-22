@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.4'
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?t=5.1.4'
+import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.5'
+import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?t=5.1.5'
 
 const AdminpaymentsViewer = {
     components: {

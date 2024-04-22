@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.4'
+import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.5'
 
 const AdminrealstateViewer = {
     data() {
