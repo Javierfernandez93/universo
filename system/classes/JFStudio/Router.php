@@ -251,7 +251,7 @@ class Router {
             self::AdminPropertiesAdd => 'Propiedades',
             self::AdminPropertiesEdit => 'Propiedades',
             self::AdminLoggs => 'Logs',
-            self::AdminPayments => 'Pagos',
+            self::AdminPayments => 'Pagos de propiedades',
             self::InvalidPermission => 'InvalidPermission',
             self::AdminRealState => 'Proyectos',
             self::AdminRealStateAdd => 'Añadir proyecto',
