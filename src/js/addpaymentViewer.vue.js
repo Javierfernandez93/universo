@@ -1,7 +1,6 @@
 import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const AddpaymentViewer = {
-    name : 'addpayment-viewer',
     data() {
         return {
             User: new User,

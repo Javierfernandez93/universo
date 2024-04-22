@@ -8,7 +8,7 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
-    if($payments = (new Site\PullProperty)->getPayments())
+    if($payments = (new Site\PaymentProperty)->getPayments())
     {
         $data["payments"] = $payments;
         $data["s"] = 1;

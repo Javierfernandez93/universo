@@ -8,7 +8,9 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
-    if($users = $UserSupport->getUsers("AND user_login.catalog_user_type_id = '".Site\CatalogUserType::SELLER."'"))
+    $data['catalog_user_type_id'] = isset($data['catalog_user_type_id']) ? $data['catalog_user_type_id'] : Site\CatalogUserType::SELLER;
+    
+    if($users = $UserSupport->getUsers("AND user_login.catalog_user_type_id = '".$data['catalog_user_type_id']."'"))
     {
         $data["users"] = $users;
         $data["s"] = 1;

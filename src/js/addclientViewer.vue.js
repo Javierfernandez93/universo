@@ -18,6 +18,7 @@ const AddclientViewer = {
                 user_login: {
                     password: null,
                     email: '',
+                    nationality: 'Méxicano',
                     catalog_user_type_id: 3, // client
                 },
                 user_contact : {

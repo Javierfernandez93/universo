@@ -1,11 +1,16 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.4'
+import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?t=5.1.4'
 
 const AdminpaymentsViewer = {
+    components: {
+        LoaderViewer
+    },
     data() {
         return {
             UserSupport: new UserSupport,
             payments: null,
             paymentsAux: null,
+            busy: null,
             query: null,
             columns: { // 0 DESC , 1 ASC 
                 company_id: {
@@ -66,10 +71,17 @@ const AdminpaymentsViewer = {
             window.location.href = `../../apps/admin-payments/view.php?pid=${property_id}`
         },
         getPaymentsProperties() {
+            this.busy = true
+            this.payments = null
+            this.paymentsAux = null
             this.UserSupport.getPaymentsProperties({}, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     this.paymentsAux = response.payments
                     this.payments = this.paymentsAux
+                } else {
+                    this.payments = false
+                    this.paymentsAux = false
                 }
             })
         },
@@ -83,6 +95,9 @@ const AdminpaymentsViewer = {
                 <div class="card mb-4">
                     <div class="card-header ">
                         <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-xl-auto">
+                                <LoaderViewer :busy="busy"/>
+                            </div>
                             <div class="col-12 col-xl">
                                 <span v-if="payments" class="badge text-secondary p-0">Total {{payments.length}}</span>
                                 <div class="h5">
@@ -91,6 +106,9 @@ const AdminpaymentsViewer = {
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
+                            </div>
+                            <div class="col-12 col-xl-auto">
+                                <a href="../../apps/admin-payments/add" class="btn btn-dark btn-sm mb-0 shadow-none px-3">Añadir venta</a>
                             </div>
                         </div>
 
@@ -154,7 +172,6 @@ const AdminpaymentsViewer = {
                                                 <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                             </span>    
                                             <u class="text-sm ms-2">Estatus</u>
-                                            <div class="text-xs">(último pago)</div>
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Opciones</th>
                                     </tr>
@@ -174,8 +191,7 @@ const AdminpaymentsViewer = {
                                             {{payment.last_payment_number}}
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span v-if="payment.status == 1" class="badge bg-secondary">Pendiente revisión</span>
-                                            <span v-if="payment.status == 2" class="badge bg-success">Aprobado</span>
+                                            <span class="badge bg-secondary">{{payment.payment_type}}</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <div class="btn-group">
@@ -192,6 +208,14 @@ const AdminpaymentsViewer = {
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                    <div v-else-if="payments == false" class="card-body">
+                        <div class="alert bg-dark text-center text-white mb-0">
+                            <strong>Aviso</strong>
+                            <div>
+                                No hay pagos, para añadir uno da click en el botón de arriba "Añadir venta".
+                            </div>
                         </div>
                     </div>
                 </div>

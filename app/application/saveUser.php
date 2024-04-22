@@ -19,7 +19,7 @@ if($UserLogin->logged === true)
                 if($user_login_id = $UserLogin->doSignup($data['user']))
                 {   
                     $data['s'] = 1;
-                    $data['r'] = 'LOGGED_OK';
+                    $data['r'] = 'DATA_OK';
                 } else {
                     $data['s'] = 0;
                     $data['r'] = 'ERROR_ON_SIGNUP';

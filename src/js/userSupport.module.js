@@ -669,6 +669,16 @@ class UserSupport extends Http {
     getAffiliationForEdit(data, callback) {
         return this.call('../../app/application/getAffiliationForEdit.php', data, callback);
     }
+    /* sale */
+    getCatalogMonthFinances(data, callback) {
+        return this.call('../../app/application/getCatalogMonthFinances.php', data, callback);
+    }
+    saveSale(data, callback) {
+        return this.call('../../app/application/saveSale.php', data, callback);
+    }
+    getCatalogPaymentTypes(data, callback) {
+        return this.call('../../app/application/getCatalogPaymentTypes.php', data, callback);
+    }
     /* developers */
     getDevelopers(data, callback) {
         return this.call('../../app/application/getDevelopers.php', data, callback);

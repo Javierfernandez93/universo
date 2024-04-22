@@ -271,7 +271,7 @@
                                     <span class="sidenav-normal"> Listar </span>
                                 </a>
                             </li>
-                            <li class="nav-item d-none">
+                            <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-payments/add">
                                     <span class="sidenav-mini-icon"> D </span>
                                     <span class="sidenav-normal"> Añadir </span>

@@ -135,6 +135,7 @@ class Router {
     const AdminDeveloper = 175;
     const AdminDeveloperEdit = 176;
     const AdminDeveloperAdd = 177;
+    const AdminAddPayment = 178;
 
     static function getName(int $route = null)
     {
@@ -269,6 +270,7 @@ class Router {
             self::AdminDeveloper => 'Desarrolladora',
             self::AdminDeveloperEdit => 'Editar desarrolladora',
             self::AdminDeveloperAdd => 'Añadir desarrolladora',
+            self::AdminAddPayment => 'Añadir venta',
             self::Us => 'Nosotros',
             default => 'Sin nombre'
         };

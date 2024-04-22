@@ -55,6 +55,31 @@ function d($var = null,$clean_ob = null) : void
 	debug($var,$clean_ob);
 }
 
+
+function unauthorized(string $response = null,array $additional_data = null) : void
+{
+	webServiceResponse([
+		's' => 0,
+		'r' => $response
+	],$additional_data);
+
+	http_response_code(401);
+
+	die;
+}
+
+function badRequest(string $response = null,array $additional_data = null) : void
+{
+	webServiceResponse([
+		's' => 0,
+		'r' => $response
+	],$additional_data);
+
+	http_response_code(400);
+
+	die;
+}
+
 function error(string $response = null,array $additional_data = null) : void
 {
 	webServiceResponse([
@@ -88,3 +113,6 @@ function webServiceResponse(array $data = null,array $additional_data = null)
 
 	echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
 }
+
+// $dotenv = Dotenv\Dotenv::createImmutable(TO_ROOT);
+// $dotenv->load();
