@@ -1,4 +1,4 @@
-import { ApisplitsmanagerViewer } from './apisplitsmanagerViewer.vue.js?v=1.0.0'
+import { ApisplitsmanagerViewer } from './apisplitsmanagerViewer.vue.js?v=1.0.1'
 
 Vue.createApp({
     components : { 

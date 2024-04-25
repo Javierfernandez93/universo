@@ -1,5 +1,5 @@
 /* vue */
-import { LandingpageViewer } from './landingpageViewer.vue.js?v=1.0.0'
+import { LandingpageViewer } from './landingpageViewer.vue.js?v=1.0.1'
 
 Vue.createApp({
     components: {
