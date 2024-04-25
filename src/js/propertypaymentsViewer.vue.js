@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.5'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
 
 const PropertypaymentsViewer = {
     data() {

@@ -1,9 +1,14 @@
 import { UserSupport } from './userSupport.module.js?v=1.0.0'   
+import { LoaderViewer } from './loaderViewer.vue.js?v=1.0.0'   
 
 const LoggsViewer = {
+    components : {
+        LoaderViewer
+    },
     data() {
         return {
             UserSupport : new UserSupport,
+            busy: false,
             loggs: null,
             loggsAux: null,
         }
@@ -41,11 +46,18 @@ const LoggsViewer = {
         },
         getLoggs() 
         { 
+            this.busy = true
+            this.loggs = null
+            this.loggsAux = null
             this.UserSupport.getLoggs({},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     this.loggs = response.loggs
                     this.loggsAux = response.loggs
+                } else {
+                    this.loggs = false
+                    this.loggsAux = false
                 }
             })
         },
@@ -65,9 +77,15 @@ const LoggsViewer = {
                     <div class="col-auto text-end">
                         <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
+                    <div class="col-auto text-end">
+                        <button @click="getLoggs" :disabled="busy" class="btn btn-dark shadow-none mb-0 px-3 btn-sm">
+                            <i class="fas fa-sync"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
+                <LoaderViewer v-if="busy" />
                 <div v-if="loggs" class="table-responsive-sm p-0">
                     <table class="table align-items-center mb-0">
                         <thead>
@@ -128,9 +146,9 @@ const LoggsViewer = {
                         </tbody>
                     </table>
                 </div>
-                <div v-else-if="users == false" class="card-body">
+                <div v-else-if="logs == false" class="card-body">
                     <div class="alert alert-warning text-white text-center">
-                        <div>No tenemos asesores aún</div>
+                        <div>No tenemos logs aún</div>
                     </div>
                 </div>
             </div>

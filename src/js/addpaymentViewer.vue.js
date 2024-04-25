@@ -182,7 +182,7 @@ const AddpaymentViewer = {
                     reject()
                 })
             })
-        }
+        },
     },
     mounted() {
         this.isSponsorActive().then((active) => {

@@ -7,9 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
 {
     public static $files = array (
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     );
 
@@ -35,21 +32,10 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
         array (
             'Matrix\\' => 7,
         ),
-        'G' => 
-        array (
-            'GuzzleHttp\\Psr7\\' => 16,
-            'GuzzleHttp\\Promise\\' => 19,
-            'GuzzleHttp\\' => 11,
-        ),
-        'D' => 
-        array (
-            'DummyTrader\\Sdk\\' => 16,
-        ),
         'C' => 
         array (
             'Curl\\' => 5,
             'Complex\\' => 8,
-            'CapitalPayments\\Sdk\\' => 20,
         ),
     );
 
@@ -91,22 +77,6 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
         ),
-        'GuzzleHttp\\Psr7\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
-        ),
-        'GuzzleHttp\\Promise\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
-        ),
-        'GuzzleHttp\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
-        ),
-        'DummyTrader\\Sdk\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dummytrader/sdk/src',
-        ),
         'Curl\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
@@ -114,10 +84,6 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
-        ),
-        'CapitalPayments\\Sdk\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/capitalpayments/sdk/src',
         ),
     );
 

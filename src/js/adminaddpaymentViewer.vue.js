@@ -12,6 +12,7 @@ const AdminaddpaymentViewer = {
             UserSupport: new UserSupport,
             filled: null,
             catalogMonthFinances: null,
+            catalogPromotions: null,
             catalogPaymentTypes: null,
             busy: false,
             users: null,
@@ -44,8 +45,10 @@ const AdminaddpaymentViewer = {
                     property_id: null,
                     title : null,
                     price : null,
+                    extension_date : null,
                     promotion : false,
                     extension : false,
+                    catalog_promotion_id: null,
                     catalog_month_finance_id: null,
                     new: false
                 }
@@ -53,9 +56,9 @@ const AdminaddpaymentViewer = {
         }
     },
     watch: {
-        buy: {
+        sale: {
             handler() {
-                this.isBuyFilled = this.buy.ipn_data.observation != null && this.buy.ipn_data.image != null
+                this.filled = this.sale.property.title && this.sale.property.price && this.sale.payment_property.start_date
             },
             deep: true
         },
@@ -80,6 +83,13 @@ const AdminaddpaymentViewer = {
                         $('.selectpicker-catalogMonthFinances').change(() =>{
                             this.sale.property.catalog_month_finance_id = $('.selectpicker-catalogMonthFinances').val();
                         });
+
+                        const [catalogMonthFinance] = this.catalogMonthFinances
+                        
+                        this.sale.property.catalog_month_finance_id = catalogMonthFinance.catalog_month_finance_id
+
+                        $('.selectpicker-catalogMonthFinances').selectpicker('val', catalogMonthFinance.catalog_month_finance_id.toString());
+                        $('.selectpicker-catalogMonthFinances').selectpicker('refresh');
                     },100)
                 }
             })
@@ -97,6 +107,13 @@ const AdminaddpaymentViewer = {
                         $('.selectpicker-catalogPaymentTypes').change(() =>{
                             this.sale.payment_property.catalog_payment_type_id = $('.selectpicker-catalogPaymentTypes').val();
                         });
+                        
+                        const [catalogPaymentType] = this.catalogPaymentTypes
+                        
+                        this.sale.payment_property.catalog_payment_type_id = catalogPaymentType.catalog_payment_type_id
+
+                        $('.selectpicker-catalogPaymentTypes').selectpicker('val', catalogPaymentType.catalog_payment_type_id.toString());
+                        $('.selectpicker-catalogPaymentTypes').selectpicker('refresh');
                     },100)
                 }
             })
@@ -113,9 +130,11 @@ const AdminaddpaymentViewer = {
                         $('.selectpicker').change(() =>{
                             this.sale.user.user_login_id = $('.selectpicker').val();
                         });
-
-                        $('.selectpicker').selectpicker('val', this.users[0].user_login_id.toString());
-
+                        
+                        const [user] = this.users
+                        this.sale.user.user_login_id = user.user_login_id
+                        $('.selectpicker').selectpicker('val', user.user_login_id.toString());
+                        $('.selectpicker').selectpicker('refresh');
                     },100)
                 }
             })
@@ -132,7 +151,10 @@ const AdminaddpaymentViewer = {
                             this.sale.real_state_developer.real_state_developer_id = $('.selectpicker-developers').val();
                         });
                         
-                        $('.selectpicker-developers').selectpicker('val', this.developers[0].real_state_developer_id.toString());
+                        const [developer] = this.developers
+                        this.sale.real_state_developer.real_state_developer_id = developer.real_state_developer_id
+                        $('.selectpicker-developers').selectpicker('val', developer.real_state_developer_id.toString());
+                        $('.selectpicker-developers').selectpicker('refresh');
                     },100)
                 }
             })
@@ -148,8 +170,11 @@ const AdminaddpaymentViewer = {
                         $('.selectpicker-realStates').change(() =>{
                             this.sale.real_state.real_state_id = $('.selectpicker-realStates').val();
                         });
-
-                        $('.selectpicker-realStates').selectpicker('val', this.realStates[0].real_state_id.toString());
+                        
+                        const [realState] = this.realStates
+                        this.sale.real_state.real_state_id = realState.real_state_id
+                        $('.selectpicker-realStates').selectpicker('val', realState.real_state_id.toString());
+                        $('.selectpicker-realStates').selectpicker('refresh');
 
                     },100)
                 }
@@ -183,17 +208,42 @@ const AdminaddpaymentViewer = {
                 ],
             })
 
-            alertCtrl.present(alert.modal)  
-            
+            alertCtrl.present(alert.modal)    
         },
+        getCatalogPromotion() {
+            this.busy = true
+            this.UserSupport.getCatalogPromotion({}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.catalogPromotions = response.catalogPromotions
+
+                    setTimeout(()=>{
+                        $('.selectpicker-catalogPromotions').selectpicker();
+                        
+                        $('.selectpicker-catalogPromotions').change(() =>{
+                            this.sale.property.catalog_promotion_id = $('.selectpicker-catalogPromotions').val();
+                        });
+                        
+                        const [catalogPromotion] = this.catalogPromotions
+                        this.sale.property.catalog_promotion_id = catalogPromotion.catalog_promotion_id;
+                        $('.selectpicker-catalogPromotions').selectpicker('val', catalogPromotion.catalog_promotion_id.toString());
+                        $('.selectpicker-catalogPromotions').selectpicker('refresh');
+                    },100)
+                }
+            })
+        }
     },
     mounted() {
         this.getClients()
         this.getDevelopers()
         this.getRealStates()
         this.getCatalogPaymentTypes()
+        this.getCatalogPromotion()
         this.getCatalogMonthFinances()
-    
+
+        setTimeout(()=>{
+            $('#price').mask("#,##0", {reverse: true});
+        },500)
     },
     template : `
         <LoaderViewer :busy="busy"/>
@@ -209,7 +259,7 @@ const AdminaddpaymentViewer = {
                     </div>
 
                     <div class="col-12 col-md-auto">
-                        <button @click="saveSale" class="btn btn-dark btn-sm px-3 mb-0 shadow-none">Guardar</button>
+                        <button :disabled="!filled" @click="saveSale" class="btn btn-dark btn-sm px-3 mb-0 shadow-none">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -281,7 +331,7 @@ const AdminaddpaymentViewer = {
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="row align-items-center mb-3">
+                        <div class="row align-items-center mb-3 align-items-center">
                             <div class="col-12 col-md">
                                 <div class="form-group">
                                     <label>Propiedad</label>
@@ -291,7 +341,7 @@ const AdminaddpaymentViewer = {
                             <div class="col-12 col-md">
                                 <div class="form-group">
                                     <label>Precio</label>
-                                    <input :class="sale.property.price ? 'is-valid' :'is-invalid'"  v-model="sale.property.price" type="text" class="form-control" placeholder="Precio">
+                                    <input :class="sale.property.price ? 'is-valid' :'is-invalid'"  v-model="sale.property.price" type="text" id="price" class="form-control" placeholder="Precio">
                                 </div>
                             </div>
                             <div class="col-12 col-md">
@@ -300,24 +350,40 @@ const AdminaddpaymentViewer = {
                                     <input :class="sale.payment_property.start_date ? 'is-valid' :'is-invalid'"  v-model="sale.payment_property.start_date" type="date" class="form-control" placeholder="Fecha apertura">
                                 </div>
                             </div>
+                        </div>
+                        <div class="row align-items-center mb-3 align-items-center">
                             <div v-if="realStates" class="col-12 col-md">
                                 <label>Elegir proyecto</label>
                                 <select class="selectpicker selectpicker-realStates form-control" data-live-search="true" data-style="border shadow-none">
                                     <option v-for="realState in realStates" :data-tokens="realState.title" :data-content="realState.title">{{ realState.real_state_id }}</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="row align-items-center mb-3">
                             <div class="col-12 col-md">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" v-model="sale.property.promotion" type="checkbox" role="switch" id="promotion">
                                     <label class="form-check-label" for="promotion">Promoción</label>
                                 </div>
                             </div>
+                            <div v-show="sale.property.promotion" class="col-12 col-md">
+                                <div v-if="catalogPromotions">
+                                    <label>Elegir proyecto</label>
+                                    <select class="selectpicker selectpicker-catalogPromotions form-control" data-live-search="true" data-style="border shadow-none">
+                                        <option v-for="catalogPromotion in catalogPromotions" :data-tokens="catalogPromotion.title" :data-content="catalogPromotion.title">{{ catalogPromotions.catalog_promotion_id }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3 align-items-center">
                             <div class="col-12 col-md">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" v-model="sale.property.extension" type="checkbox" role="switch" id="extension">
                                     <label class="form-check-label" for="extension">Extensión</label>
+                                </div>
+                            </div>
+                            <div v-if="sale.property.extension" class="col-12 col-md">
+                                <div class="form-group">
+                                    <label>Fecha de extension</label>
+                                    <input :class="sale.property.extension_date ? 'is-valid' :'is-invalid'"  v-model="sale.property.extension_date" type="date" class="form-control" placeholder="Fecha de extensión">
                                 </div>
                             </div>
                             <div v-if="catalogPaymentTypes" class="col-12 col-md">

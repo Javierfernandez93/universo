@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?t=5.1.5'
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?t=5.1.5'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'
+import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.0'
 
 const AdminpaymentsViewer = {
     components: {
@@ -17,17 +17,43 @@ const AdminpaymentsViewer = {
                     name: 'company_id',
                     desc: false,
                 },
-                create_date: {
-                    name: 'create_date',
-                    desc: false,
-                },
                 names: {
                     name: 'names',
                     desc: false,
+                    alphabetically: true,
+                },
+                seller: {
+                    name: 'seller',
+                    desc: false,
+                    alphabetically: true,
+                },
+                support_name: {
+                    name: 'support_name',
+                    desc: false,
+                    alphabetically: true,
                 },
                 title: {
                     name: 'title',
                     desc: false,
+                    alphabetically: true,
+                },
+                last_payment_number: {
+                    name: 'last_payment_number',
+                    desc: false,
+                },
+                create_date: {
+                    name: 'create_date',
+                    desc: false,
+                },
+                affiliation_name: {
+                    name: 'affiliation_name',
+                    desc: false,
+                    alphabetically: true,
+                },
+                status: {
+                    name: 'status',
+                    desc: false,
+                    alphabetically: true,
                 },
                 real_state: {
                     name: 'real_state',
@@ -111,89 +137,68 @@ const AdminpaymentsViewer = {
                                 <a href="../../apps/admin-payments/add" class="btn btn-dark btn-sm mb-0 shadow-none px-3">Añadir venta</a>
                             </div>
                         </div>
-
-
                         <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{payments.length}} resultados)</div>
                     </div>
                     <div v-if="payments" class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
-                                    <tr class="align-items-center">
-                                        <th @click="sortData(columns.company_id)" class="text-center c-pointer text-uppercase text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">Cliente</u>
+                                    <tr class="align-items-center opacity-7 text-center text-xs text-primary">
+                                        <th @click="sortData(columns.names)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.names.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            Cliente
                                         </th>
-                                        <th 
-                                            @click="sortData(columns.company_id)"
-                                            class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">asesor</u>
+                                        <th @click="sortData(columns.seller)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.seller.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            Asesor
                                         </th>
-                                        <th 
-                                            @click="sortData(columns.company_id)"
-                                            class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">Propiedad</u>
+                                        <th @click="sortData(columns.support_name)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.support_name.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            Lider
                                         </th>
-                                        <th 
-                                            @click="sortData(columns.company_id)"
-                                            class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">Número de pago</u>
+                                        <th @click="sortData(columns.affiliation_name)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.affiliation_name.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            Afiliación
                                         </th>
-                                        <th 
-                                            @click="sortData(columns.company_id)"
-                                            class="text-center c-pointer text-uppercase text-primary text-secondary font-weight-bolder opacity-7">
-                                            <span v-if="columns.company_id.desc">
-                                                <i class="bi text-primary bi-arrow-up-square-fill"></i>
-                                            </span>    
-                                            <span v-else>    
-                                                <i class="bi text-primary bi-arrow-down-square-fill"></i>
-                                            </span>    
-                                            <u class="text-sm ms-2">Estatus</u>
+                                        <th @click="sortData(columns.title)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.title.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            Propiedad
                                         </th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Opciones</th>
+                                        <th @click="sortData(columns.last_payment_number)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.last_payment_number.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            Número de pago
+                                        </th>
+                                        <th @click="sortData(columns.status)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.status.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            Estatus
+                                        </th>
+                                        <th class="text-uppercase">Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="payment in payments">
-                                        <td class="align-middle text-capitalize text-center text-sm">
+                                    <tr v-for="payment in payments" class="text-center text-sm fw-bold text-capitalize">
+                                        <td class="align-middle text-capitalize ">
                                             {{payment.names}} 
                                         </td>
-                                        <td @click="query = payment.seller" class="align-middle text-decoration-underline text-primary fw-bold text-capitalize text-center text-sm">
+                                        <td @click="query = payment.seller" class="align-middle text-decoration-underline text-primary">
                                             {{payment.seller}}
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td @click="query = payment.support_name" class="align-middle">
+                                            {{payment.support_name}}
+                                        </td>
+                                        <td @click="query = payment.affiliation_name" class="align-middle">
+                                            {{payment.affiliation_name}}
+                                        </td>
+                                        <td class="align-middle">
                                             {{payment.title}}
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td class="align-middle">
                                             {{payment.last_payment_number}}
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td class="align-middle">
                                             <span class="badge bg-secondary">{{payment.payment_type}}</span>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td class="align-middle">
                                             <div class="btn-group">
                                                 <button type="button" class="btn px-3 btn-dark shadow-none px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 

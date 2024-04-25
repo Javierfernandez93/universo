@@ -1,5 +1,5 @@
-import { PropertypaymentsViewer } from '../../src/js/propertypaymentsViewer.vue.js?t=5.1.5'
-import { PropertywidgetViewer } from '../../src/js/propertywidgetViewer.vue.js?t=5.1.5'
+import { PropertypaymentsViewer } from '../../src/js/propertypaymentsViewer.vue.js?v=1.0.0'
+import { PropertywidgetViewer } from '../../src/js/propertywidgetViewer.vue.js?v=1.0.0'
 
 Vue.createApp({
     components: {

@@ -10,7 +10,11 @@
         {{title}}
     </title>
 
-    <meta content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" name="author" />
+    <meta content="<?php
+
+use JFStudio\Router;
+
+ echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" name="author" />
     <meta content="<?php echo Site\SystemVar::_getValue("description"); ?>" name="description" />
     <meta property="og:site_name" content="<?php echo Site\SystemVar::_getValue("company_name"); ?>">
     <meta property="og:title" content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" />
@@ -259,7 +263,7 @@
                 <?php if ($UserSupport->hasPermission('list_payments')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#payments" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminPayments])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
+                            <a data-bs-toggle="collapse" href="#payments" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminPayments,Router::AdminAddPayment])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
                             <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-list-check"></i></span>
                             <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminPayments); ?></span>
                         </a>

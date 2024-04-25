@@ -6,6 +6,47 @@ backwards-incompatible changes that will affect existing usage.
 
 <!-- CHANGELOG_PLACEHOLDER -->
 
+## 9.19.2 - 2024-04-09
+
+- Fix CI: Use nullable type declaration ([#859](https://github.com/php-curl-class/php-curl-class/pull/859))
+
+## 9.19.1 - 2024-02-27
+
+- Fix afterSend not being called ([#848](https://github.com/php-curl-class/php-curl-class/pull/848))
+
+## 9.19.0 - 2024-01-18
+
+- Allow displaying curl option value without specifying value ([#837](https://github.com/php-curl-class/php-curl-class/pull/837))
+
+## 9.18.2 - 2023-09-11
+
+- Fix use of mb_strpos() causing error when polyfill is used ([#813](https://github.com/php-curl-class/php-curl-class/pull/813))
+
+## 9.18.1 - 2023-08-29
+
+- Add additional check for decoding gzip-encoded responses ([#808](https://github.com/php-curl-class/php-curl-class/pull/808))
+
+## 9.18.0 - 2023-08-28
+
+- Implement Curl::setError() and MultiCurl::setError() ([#805](https://github.com/php-curl-class/php-curl-class/pull/805))
+- Rename ::setError() to ::afterSend() ([#807](https://github.com/php-curl-class/php-curl-class/pull/807))
+
+## 9.17.4 - 2023-07-10
+
+- Add coding standards rule to use the null coalescing operator ?? where possible ([#801](https://github.com/php-curl-class/php-curl-class/pull/801))
+- Replace isset with null coalescing operator ([#800](https://github.com/php-curl-class/php-curl-class/pull/800))
+
+## 9.17.3 - 2023-07-04
+
+- Update PHP_CodeSniffer ruleset: PSR2 → PSR12 ([#797](https://github.com/php-curl-class/php-curl-class/pull/797))
+- Add additional coding standard checks ([#796](https://github.com/php-curl-class/php-curl-class/pull/796))
+
+## 9.17.2 - 2023-06-27
+
+- Use short array syntax ([#793](https://github.com/php-curl-class/php-curl-class/pull/793))
+- Add PHP-CS-Fixer to check for unused imports ([#794](https://github.com/php-curl-class/php-curl-class/pull/794))
+- Replace `uniqid` by `random_bytes` ([#792](https://github.com/php-curl-class/php-curl-class/pull/792))
+
 ## 9.17.1 - 2023-06-14
 
 - Improve and add tests for Curl::fastDownload() ([#791](https://github.com/php-curl-class/php-curl-class/pull/791))

@@ -84,8 +84,11 @@ class PaymentProperty extends Orm {
                 property.title,
                 real_state.title as real_state,
                 user_data.names,
+                user_support.names as support_name,
+                user_referral.user_support_id,
                 user_referral.referral_id,
-                catalog_payment_type.title as payment_type
+                catalog_payment_type.title as payment_type,
+                affiliation.name as affiliation_name
             FROM
                 {$this->tblName} 
             LEFT JOIN 
@@ -108,6 +111,14 @@ class PaymentProperty extends Orm {
                 catalog_payment_type 
             ON 
                 catalog_payment_type.catalog_payment_type_id = {$this->tblName}.catalog_payment_type_id
+            LEFT JOIN 
+                user_support 
+            ON 
+                user_support.user_support_id = user_referral.user_support_id
+            LEFT JOIN 
+                affiliation 
+            ON 
+                affiliation.affiliation_id = user_support.affiliation_id
             WHERE 
                 {$this->tblName}.status = '1'
             GROUP BY 

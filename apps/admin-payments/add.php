@@ -18,6 +18,7 @@ $Layout->init(JFStudio\Router::getName($route),"add","admin","",TO_ROOT."/");
 
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
+	'jquery.mask.js',
 	'adminaddpayment.vue.js'
 ]);
 

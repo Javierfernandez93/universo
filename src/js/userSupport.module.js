@@ -692,6 +692,12 @@ class UserSupport extends Http {
     getRealStateDeveloperForEdit(data, callback) {
         return this.call('../../app/application/getRealStateDeveloperForEdit.php', data, callback);
     }
+    catalogPromotions(data, callback) {
+        return this.call('../../app/application/catalogPromotions.php', data, callback);
+    }
+    getCatalogPromotion(data, callback) {
+        return this.call('../../app/application/getCatalogPromotion.php', data, callback);
+    }
 }
 
 export { UserSupport }

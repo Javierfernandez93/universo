@@ -11,6 +11,10 @@
     "authors": [
         {
             "name": "Zach Borboa"
+        },
+        {
+            "name": "Contributors",
+            "homepage": "https://github.com/php-curl-class/php-curl-class/graphs/contributors"
         }
     ],
     "require": {
@@ -20,11 +24,12 @@
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "*",
         "ext-gd": "*",
+        "friendsofphp/php-cs-fixer": "*",
         "phpcompatibility/php-compatibility": "dev-develop",
         "phpcsstandards/phpcsutils": "@alpha",
         "phpunit/phpunit": "*",
         "squizlabs/php_codesniffer": "*",
-        "vimeo/psalm": "*"
+        "vimeo/psalm": ">=0.3.63"
     },
     "suggest": {
         "ext-mbstring": "*"

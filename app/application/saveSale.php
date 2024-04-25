@@ -14,6 +14,9 @@ if(!$UserSupport->logged)
 // formatting data 
 $data['property']['extension'] = $data['property']['extension'] == 'true' ? 1 : 0;
 $data['property']['promotion'] = $data['property']['promotion'] == 'true' ? 1 : 0;
+$data['property']['extension'] = $data['property']['extension'] == 'true' ? 1 : 0;
+$data['property']['extension_date'] = $data['property']['extension'] ? strtotime($data['property']['extension_date']) : 0;
+$data['property']['price'] = HCStudio\Util::getNumbers($data['property']['price'],0);
 $data['property']['real_state_id'] = $data['real_state']['real_state_id'];
 $data['payment_property']['start_date'] = strtotime($data['payment_property']['start_date']);
 $data['user']['new'] = filter_var($data['user']['new'],FILTER_VALIDATE_BOOLEAN);
