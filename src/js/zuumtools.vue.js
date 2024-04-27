@@ -1,7 +1,7 @@
-import { User } from '../../src/js/user.module.js?v=1.0.1'   
+import { User } from '../../src/js/user.module.js?v=1.0.2'   
 
 /* vue */ 
-import { ZuumtoolsViewer } from '../../src/js/zuumtoolsViewer.vue.js?v=1.0.1'
+import { ZuumtoolsViewer } from '../../src/js/zuumtoolsViewer.vue.js?v=1.0.2'
 
 Vue.createApp({
     components : { 

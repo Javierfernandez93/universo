@@ -1,4 +1,4 @@
-import { Translator } from '../../src/js/translator.module.js?v=1.0.1'   
+import { Translator } from '../../src/js/translator.module.js?v=1.0.2'   
 
 const BridgefundsViewer = {
     name : 'home-viewer',

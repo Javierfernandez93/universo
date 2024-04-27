@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.1'   
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.1'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.1'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.2'   
+import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.2'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.2'   
 
 const AdminaddpaymentViewer = {
     components : {
@@ -39,6 +39,7 @@ const AdminaddpaymentViewer = {
                     user_login_id : null,
                     property_id : null,
                     catalog_payment_type_id : null,
+                    end_date : null,
                     start_date : null
                 },
                 property : {
@@ -348,6 +349,12 @@ const AdminaddpaymentViewer = {
                                 <div class="form-group">
                                     <label>Fecha apertura</label>
                                     <input :class="sale.payment_property.start_date ? 'is-valid' :'is-invalid'"  v-model="sale.payment_property.start_date" type="date" class="form-control" placeholder="Fecha apertura">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md">
+                                <div class="form-group">
+                                    <label>Fecha cierre</label>
+                                    <input :class="sale.payment_property.end_date ? 'is-valid' :'is-invalid'"  v-model="sale.payment_property.end_date" type="date" class="form-control" placeholder="Fecha cierre">
                                 </div>
                             </div>
                         </div>

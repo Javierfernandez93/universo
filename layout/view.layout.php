@@ -47,13 +47,13 @@
     
     <script type="text/javascript" src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/colorpicker.js"></script>
 
-    <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/constants.js?v=1.0.1" type="text/javascript"></script>
+    <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/constants.js?v=1.0.2" type="text/javascript"></script>
     <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/wow.js" type="text/javascript"></script>
     <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/tooltip.js" type="text/javascript"></script>
     <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/http.js" type="text/javascript"></script>
-    <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/general.js?v=1.0.1" type="text/javascript"></script>
+    <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/general.js?v=1.0.2" type="text/javascript"></script>
 
-    <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/alertCtrl.js?v=1.0.1" type="text/javascript"></script>
+    <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/alertCtrl.js?v=1.0.2" type="text/javascript"></script>
     <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/loader.js" type="text/javascript"></script>
     <script src="<?php echo HCStudio\Connection::getMainPath();?>/src/js/boxloader.js" type="text/javascript"></script>
     
