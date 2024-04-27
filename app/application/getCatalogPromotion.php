@@ -8,7 +8,7 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
-    if($catalogPromotions = (new Site\CatalogPromotion)->findAll("status = ?",JFStudio\Constants::AVIABLE))
+    if($catalogPromotions = (new Site\CatalogPromotion)->findAll("status = ?",Constants::AVIABLE))
     {
         $data["catalogPromotions"] = $catalogPromotions;
         $data["s"] = 1;

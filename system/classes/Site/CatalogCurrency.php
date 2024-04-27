@@ -3,7 +3,7 @@
 namespace Site;
 
 use HCStudio\Orm;
-use JFStudio\Constants;
+use Constants;
 
 class CatalogCurrency extends Orm {
 	protected $tblName = 'catalog_currency';

@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class RollbackMainWalletHistory extends Orm {
   protected $tblName  = 'rollback_main_wallet_history';

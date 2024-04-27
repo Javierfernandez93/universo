@@ -16,7 +16,7 @@ use Site\UserBridgeAccount;
 use Site\UserLogin;
 use Site\BuyPerUser;
 use Site\Log;
-use JFStudio\Constants;
+use Constants;
 
 class UserSupport extends Orm {
   protected $tblName  = 'user_support';

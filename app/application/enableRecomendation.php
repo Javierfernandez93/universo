@@ -14,7 +14,7 @@ if($UserSupport->logged === true)
 
         if($CatalogPaymentMethod->loadWhere('catalog_payment_method_id = ?',$data['catalog_payment_method_id']))
         {
-            $CatalogPaymentMethod->recomend = JFStudio\Constants::AVIABLE;
+            $CatalogPaymentMethod->recomend = Constants::AVIABLE;
 
             if($CatalogPaymentMethod->save())
             {

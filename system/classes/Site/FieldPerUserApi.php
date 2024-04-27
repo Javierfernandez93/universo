@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class FieldPerUserApi extends Orm {
   protected $tblName  = 'field_per_user_api';

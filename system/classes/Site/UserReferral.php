@@ -3,7 +3,7 @@
 namespace Site;
 
 use HCStudio\Orm;
-use JFStudio\Constants;
+use Constants;
 
 class UserReferral extends Orm {
   protected $tblName  = 'user_referral';

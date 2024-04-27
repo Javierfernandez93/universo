@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class ServicePerUser extends Orm {
 	protected $tblName = 'service_per_user';

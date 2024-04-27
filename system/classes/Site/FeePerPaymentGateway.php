@@ -8,7 +8,7 @@ use Site\TronWallet;
 use HCStudio\Util;
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class FeePerPaymentGateway extends Orm {
   protected $tblName  = 'fee_per_payment_gateway';

@@ -10,7 +10,7 @@ use BlockChain\Transaction;
 
 use Site\ShortUrl;
 
-use JFStudio\Constants;
+use Constants;
 
 class Wallet extends Orm
 {

@@ -3,7 +3,7 @@
 namespace Site;
 
 use HCStudio\Orm;
-use JFStudio\Constants;
+use Constants;
 
 class CatalogMessageWhatsAppType extends Orm {
 	protected $tblName = 'catalog_message_whatsapp_type';

@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 use Site\ExternalLogin;
 use Site\ExternalLoginRouter;
 

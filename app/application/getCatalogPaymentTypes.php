@@ -4,7 +4,7 @@ require_once TO_ROOT. "/system/core.php";
 
 $data = HCStudio\Util::getHeadersForWebService();
 
-if($catalogPaymentTypes = (new Site\CatalogPaymentType)->findAll("status = ?",JFStudio\Constants::AVIABLE))
+if($catalogPaymentTypes = (new Site\CatalogPaymentType)->findAll("status = ?",Constants::AVIABLE))
 {
     $data["catalogPaymentTypes"] = $catalogPaymentTypes;
     $data["s"] = 1;

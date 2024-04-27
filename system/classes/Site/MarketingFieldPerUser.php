@@ -4,7 +4,7 @@ namespace Site;
 
 use Site\CatalogMarketingField;
 
-use JFStudio\Constants;
+use Constants;
 
 use HCStudio\Orm;
 

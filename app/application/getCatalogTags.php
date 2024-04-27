@@ -8,7 +8,7 @@ $UserLogin = new Site\UserLogin;
 
 if($UserLogin->logged === true)
 {
-    if($catalog_tags = (new Site\CatalogTag)->findAll("status = ?",JFStudio\Constants::AVIABLE))
+    if($catalog_tags = (new Site\CatalogTag)->findAll("status = ?",Constants::AVIABLE))
     {
         $data["catalog_tags"] = $catalog_tags;
         $data["s"] = 1;

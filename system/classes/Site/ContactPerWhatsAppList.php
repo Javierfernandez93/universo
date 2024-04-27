@@ -3,7 +3,7 @@
 namespace Site;
 
 use HCStudio\Orm;
-use JFStudio\Constants;
+use Constants;
 
 class ContactPerWhatsAppList extends Orm {
     protected $tblName  = 'contact_per_whatsapp_list';

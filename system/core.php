@@ -35,6 +35,10 @@ if(!__DEBUG__) {
 	ini_set('display_errors', '1');
 } else  ini_set('display_errors', '0');
 
+require_once Constants::ROOT."/vendor/autoload.php";
+
+$dotenv = Dotenv\Dotenv::createImmutable(Constants::ROOT);
+$dotenv->load();
 
 /* main_function */
 function debug($var = null,$clean_ob = true) : void
@@ -113,6 +117,3 @@ function webServiceResponse(array $data = null,array $additional_data = null)
 
 	echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
 }
-
-// $dotenv = Dotenv\Dotenv::createImmutable(TO_ROOT);
-// $dotenv->load();

@@ -3,7 +3,7 @@
 namespace Site;
 
 use HCStudio\Orm;
-use JFStudio\Constants;
+use Constants;
 
 class Product extends Orm {
 	protected $tblName = 'product';

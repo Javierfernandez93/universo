@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class CatalogPaymentMethod extends Orm {
 	protected $tblName = 'catalog_payment_method';

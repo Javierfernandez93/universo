@@ -14,7 +14,7 @@ if($UserSupport->logged === true)
 
         if($CatalogPaymentMethod->loadWhere('catalog_payment_method_id = ?',$data['catalog_payment_method_id']))
         {
-            $data['status'] = JFStudio\Constants::DISABLED;
+            $data['status'] = Constants::DISABLED;
 
             $CatalogPaymentMethod->status = $data['status'];
 

@@ -3,7 +3,7 @@
 namespace Site;
 
 use HCStudio\Orm;
-use JFStudio\Constants;
+use Constants;
 
 class EmailPerCampaign extends Orm {
 	protected $tblName = 'email_per_campaign';

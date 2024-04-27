@@ -10,7 +10,7 @@ if($UserSupport->logged === true)
 {
     if(isset($data['landing_id']) === true)
     {
-        $data['status'] = JFStudio\Constants::DISABLED;
+        $data['status'] = Constants::DISABLED;
 
         if(CapitalTrading\Landing::setLandingAs($data['landing_id'],$data['status']))
         {

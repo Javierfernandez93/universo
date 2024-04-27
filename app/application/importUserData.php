@@ -8,12 +8,12 @@ $UserSupport = new Site\UserSupport;
 
 if(!$UserSupport->hasPermission('add_client'))
 {
-    error(JFStudio\Constants::RESPONSES['INVALID_PERMISSION']);
+    error(Constants::RESPONSES['INVALID_PERMISSION']);
 }
 
 if(!$UserSupport->logged)
 {
-    error(JFStudio\Constants::RESPONSES['INVALID_PERMISSION']);
+    error(Constants::RESPONSES['INVALID_PERMISSION']);
 }
 
 // (new Site\UserLogin)->truncate();
@@ -131,4 +131,4 @@ $data['property']['property_id'] = Site\Property::safeAdd([
     'month_finance' => HCStudio\Util::getNumbers($data['user']['financing'])
 ]);
 
-success(JFStudio\Constants::RESPONSES['DATA_OK']);
+success(Constants::RESPONSES['DATA_OK']);

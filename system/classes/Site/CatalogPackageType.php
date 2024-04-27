@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class CatalogPackageType extends Orm {
 	protected $tblName = 'catalog_package_type';

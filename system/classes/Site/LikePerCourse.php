@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class LikePerCourse extends Orm {
 	protected $tblName = 'like_per_course';

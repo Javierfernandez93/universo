@@ -4,7 +4,7 @@ namespace BlockChain;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class TransactionPerWallet extends Orm 
 {

@@ -8,7 +8,7 @@ $UserSupport = new Site\UserSupport;
 
 if(!$UserSupport->logged)
 {
-    unauthorized(JFStudio\Constants::RESPONSES['INVALID_PERMISSION']);
+    unauthorized(Constants::RESPONSES['INVALID_PERMISSION']);
 }
 
 // formatting data 
@@ -57,7 +57,7 @@ $data['property']['property_id'] = Site\Property::add($data['property']);
 
 if(!$data['property']['property_id'])
 {
-    error(JFStudio\Constants::RESPONSES['DATA_ERROR']);
+    error(Constants::RESPONSES['DATA_ERROR']);
 }
 
 // saving payment property
@@ -67,7 +67,7 @@ $data['payment_property']['payment_property_id'] = Site\PaymentProperty::add($da
 
 if(!$data['payment_property']['payment_property_id'])
 {
-    error(JFStudio\Constants::RESPONSES['DATA_ERROR']);
+    error(Constants::RESPONSES['DATA_ERROR']);
 }
 
-success(JFStudio\Constants::RESPONSES['DATA_OK'],$data);
+success(Constants::RESPONSES['DATA_OK'],$data);

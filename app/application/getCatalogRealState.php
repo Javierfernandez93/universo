@@ -9,7 +9,7 @@ $UserSupport = new Site\UserSupport;
 
 if($UserLogin->logged === true || $UserSupport->logged === true)
 {
-    if($real_states = (new Site\CatalogRealState)->findAll("status = ?",JFStudio\Constants::AVIABLE))
+    if($real_states = (new Site\CatalogRealState)->findAll("status = ?",Constants::AVIABLE))
     {
         $data["real_states"] = $real_states;
         $data["s"] = 1;

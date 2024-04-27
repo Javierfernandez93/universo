@@ -14,7 +14,7 @@ if($UserLogin->logged === true)
 
         if($IntentChat->loadWhere('intent_chat_id = ?',$data['intent_chat_id']))
         {
-            $data['status'] = JFStudio\Constants::AVIABLE;
+            $data['status'] = Constants::AVIABLE;
             
             $IntentChat->status = $data['status'];
             

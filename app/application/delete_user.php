@@ -16,7 +16,7 @@ if($UserSupport->logged === true)
     
             if($UserLogin->loadWhere("company_id = ?",$data['company_id'])) 
             {
-                $UserLogin->status = JFStudio\Constants::DELETE;
+                $UserLogin->status = Constants::DELETE;
     
                 if($UserLogin->save())
                 {

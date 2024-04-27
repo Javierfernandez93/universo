@@ -7,7 +7,7 @@ use HCStudio\Orm;
 use Site\CatalogCurrency;
 use Site\UserReferral;
 use HCStudio\Util;
-use JFStudio\Constants;
+use Constants;
 
 class CommissionPerUser extends Orm
 {

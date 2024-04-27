@@ -4,8 +4,6 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
-
 class FieldPerItem extends Orm {
   protected $tblName  = 'field_per_item';
   public $logged = false;

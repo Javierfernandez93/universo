@@ -10,7 +10,7 @@ if($UserLogin->logged === true)
 {	
 	$Product = new Site\Product;
 
-	if($Product->loadWhere("product_id = ? AND status = ?",[$data['product_id'],JFStudio\Constants::AVIABLE]))
+	if($Product->loadWhere("product_id = ? AND status = ?",[$data['product_id'],Constants::AVIABLE]))
 	{
 		$Cart = Jcart\Cart::getInstance(Jcart\Cart::LAST_INSTANCE);
 		$Cart->loadFromSession();	

@@ -12,7 +12,7 @@ if($UserLogin->logged === true)
     {
         $Package = new Site\Package;
         
-        if($Package->loadWhere("package_id = ? AND status = ?",[$data['package_id'],JFStudio\Constants::AVIABLE]))
+        if($Package->loadWhere("package_id = ? AND status = ?",[$data['package_id'],Constants::AVIABLE]))
         {
             $data['package'] = $Package->data();
             $data['r'] = 'DATA_OK';

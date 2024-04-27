@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class TagPerUser extends Orm {
     protected $tblName  = 'tag_per_user';

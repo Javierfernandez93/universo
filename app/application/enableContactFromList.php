@@ -14,7 +14,7 @@ if($UserLogin->logged === true)
 
         if($ContactPerWhatsAppList->loadWhere('contact_per_whatsapp_list_id = ?',$data['contact_per_whatsapp_list_id']))
         {
-            $data['status'] = JFStudio\Constants::AVIABLE;
+            $data['status'] = Constants::AVIABLE;
 
             $ContactPerWhatsAppList->status = $data['status'];
             

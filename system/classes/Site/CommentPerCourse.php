@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class CommentPerCourse extends Orm {
 	protected $tblName = 'comment_per_course';

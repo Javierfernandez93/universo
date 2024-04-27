@@ -12,7 +12,7 @@ if($UserLogin->logged === true)
 
         if($IntentChat->loadWhere('intent_chat_id = ?',$data['intent_chat_id']))
         {
-            $data['status'] = JFStudio\Constants::DELETE;
+            $data['status'] = Constants::DELETE;
             
             $IntentChat->status = $data['status'];
             

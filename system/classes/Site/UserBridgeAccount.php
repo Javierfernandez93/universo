@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class UserBridgeAccount extends Orm {
   protected $tblName  = 'user_bridge_account';

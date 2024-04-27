@@ -3,7 +3,7 @@
 namespace Site;
 
 use HCStudio\Orm;
-use JFStudio\Constants;
+use Constants;
 
 class ClientPerUser extends Orm {
 	protected $tblName = 'client_per_user';

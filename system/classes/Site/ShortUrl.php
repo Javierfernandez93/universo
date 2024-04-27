@@ -7,7 +7,7 @@ use HCStudio\Token;
 use HCStudio\Connection;
 use HCStudio\Util;
 
-use JFStudio\Constants;
+use Constants;
 
 use BlockChain\Wallet;
 

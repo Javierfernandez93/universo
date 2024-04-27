@@ -4,7 +4,7 @@ require_once TO_ROOT. "/system/core.php";
 
 $data = HCStudio\Util::getHeadersForWebService();
 
-if($catalogMonthFinances = (new Site\CatalogMonthFinance)->findAll("status = ?",JFStudio\Constants::AVIABLE))
+if($catalogMonthFinances = (new Site\CatalogMonthFinance)->findAll("status = ?",Constants::AVIABLE))
 {
     $data["catalogMonthFinances"] = $catalogMonthFinances;
     $data["s"] = 1;

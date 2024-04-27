@@ -3,7 +3,7 @@
 namespace Site;
 
 use HCStudio\Orm;
-use JFStudio\Constants;
+use Constants;
 
 class GainPerClient extends Orm {
   protected $tblName  = 'gain_per_client';

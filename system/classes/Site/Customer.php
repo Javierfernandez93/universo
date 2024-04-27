@@ -7,7 +7,7 @@ use HCStudio\Connection;
 use HCStudio\Token;
 use HCStudio\Util;
 
-use JFStudio\Constants;
+use Constants;
 
 use Site\FieldPerCustomer;
 

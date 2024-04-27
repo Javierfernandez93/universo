@@ -4,7 +4,7 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 class CatalogLandingAction extends Orm {
   protected $tblName  = 'catalog_landing_action';

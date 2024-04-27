@@ -5,7 +5,7 @@ namespace Site;
 use HCStudio\Orm;
 use HCStudio\Token;
 
-use JFStudio\Constants;
+use Constants;
 
 use Site\UserData;
 

@@ -5,7 +5,7 @@ namespace Site;
 use HCStudio\Util;
 use HCStudio\Orm;
 
-use JFStudio\Constants;
+use Constants;
 
 use Site\CatalogTimezone;
 
