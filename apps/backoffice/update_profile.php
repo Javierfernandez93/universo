@@ -17,7 +17,7 @@ $Layout->setScript(['update_data.js','update_profile.css']);
 
 $Layout->setVar([
 	'nav' => 'backoffice',
-	'pill' => HCStudio\Util::getVarFromPGS("pill"),
+	'pill' => HCStudio\Util::getParam("pill"),
 	'UserLogin' => $UserLogin,
 	'url' => HCStudio\Util::getCurrentURL(),
 	'UserNotificationSetting' => new Talento\UserNotificationSetting,

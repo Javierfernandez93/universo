@@ -6,9 +6,9 @@ header("Access-Control-Allow-Origin: *");
 require_once TO_ROOT . "/system/core.php";
 
 $returnData = Array();
-$returnData['current_password'] = HCStudio\Util::getVarFromPGS('current_password');
-$returnData['password'] = HCStudio\Util::getVarFromPGS('password');
-$returnData['confirm_password'] = HCStudio\Util::getVarFromPGS('confirm_password');
+$returnData['current_password'] = HCStudio\Util::getParam('current_password');
+$returnData['password'] = HCStudio\Util::getParam('password');
+$returnData['confirm_password'] = HCStudio\Util::getParam('confirm_password');
 
 $UserLogin = new Site\UserLogin(true);
 

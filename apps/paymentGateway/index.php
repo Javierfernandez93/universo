@@ -13,8 +13,8 @@ $Layout->setScript([
 ]);
 
 $Layout->setVar([
-	'merchant_id' => HCStudio\Util::getVarFromPGS('merchant_id'),
-	'api_key' => HCStudio\Util::getVarFromPGS('api_key'),
+	'merchant_id' => HCStudio\Util::getParam('merchant_id'),
+	'api_key' => HCStudio\Util::getParam('api_key'),
 	'route' => $route
 ]);
 $Layout();

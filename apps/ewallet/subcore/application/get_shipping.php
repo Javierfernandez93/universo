@@ -8,7 +8,7 @@ require_once TO_ROOT . "/system/core.php";
 $returnData = Array();
 $UserLogin = new Umbrella\UserLogin();
 
-$returnData['shipping'] = HCStudio\Util::getVarFromPGS('shipping');
+$returnData['shipping'] = HCStudio\Util::getParam('shipping');
 
 if($UserLogin->logged === true)
 {

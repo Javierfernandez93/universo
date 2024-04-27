@@ -11,7 +11,7 @@ if($UserSupport->logged === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-$user_support_id = HCStudio\Util::getVarFromPGS('usid');
+$user_support_id = HCStudio\Util::getParam('usid');
 
 if($user_support_id && $UserSupport->hasPermission('list_clients_per_seller') === false) 
 {

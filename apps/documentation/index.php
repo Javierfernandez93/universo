@@ -36,7 +36,7 @@ $Layout->setScript([
 ]);
 
 $Layout->setVar([
-	"documentation_id" => Util::getVarFromPGS('did') ? Util::getVarFromPGS('did') : 1,
+	"documentation_id" => Util::getParam('did') ? Util::getParam('did') : 1,
 	"UserLogin" => $UserLogin,
 	"documentations" => (new Site\Documentation)->getAllTitles(),
 	"route" => $route,

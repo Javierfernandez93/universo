@@ -8,7 +8,7 @@ require_once TO_ROOT . '/system/core.php';
 $returnData = Array();
 
 
-$returnData['buy_per_user_login'] = HCStudio\Util::getVarFromPGS('buy_per_user_login');
+$returnData['buy_per_user_login'] = HCStudio\Util::getParam('buy_per_user_login');
 $UserLogin = new Site\UserLogin;
 
 if($UserLogin->logged === true)

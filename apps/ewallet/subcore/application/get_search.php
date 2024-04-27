@@ -9,11 +9,11 @@ $returnData = Array();
 $UserLogin = new Umbrella\UserLogin();
 
 
-$returnData['search_kind'] = HCStudio\Util::getVarFromPGS('search_kind');
-$returnData['item_kind'] = HCStudio\Util::getVarFromPGS('item_kind');
-$returnData['search'] = HCStudio\Util::getVarFromPGS('search');
-$returnData['min'] = HCStudio\Util::getVarFromPGS('min');
-$returnData['max'] = HCStudio\Util::getVarFromPGS('max');
+$returnData['search_kind'] = HCStudio\Util::getParam('search_kind');
+$returnData['item_kind'] = HCStudio\Util::getParam('item_kind');
+$returnData['search'] = HCStudio\Util::getParam('search');
+$returnData['min'] = HCStudio\Util::getParam('min');
+$returnData['max'] = HCStudio\Util::getParam('max');
 
 if($UserLogin->logged === true)
 {

@@ -196,7 +196,7 @@ class UserSupport extends Orm {
   }
 
   public function logoutRequest(bool $logout = true) {
-    $logout = Util::getVarFromPGS('adminLogout');
+    $logout = Util::getParam('adminLogout');
 
     if($this->hasPidRequestCookie())
     {
@@ -346,8 +346,8 @@ class UserSupport extends Orm {
   }
 
   public function login($field_session = false,$field_control = false) {
-    $field_session = ($field_session) ? $field_session : Util::getVarFromPGS($this->field_session,false);
-    $field_control = ($field_control) ? $field_control : sha1(Util::getVarFromPGS($this->field_control,false));
+    $field_session = ($field_session) ? $field_session : Util::getParam($this->field_session,false);
+    $field_control = ($field_control) ? $field_control : sha1(Util::getParam($this->field_control,false));
 
     $this->loadWhere("{$this->field_session}=? AND {$this->field_control}=?",[$field_session,$field_control]);
     

@@ -2,7 +2,7 @@
 
 require_once TO_ROOT . "/system/core.php";
 
-$key_name = HCStudio\Util::getVarFromPGS("key_name");
+$key_name = HCStudio\Util::getParam("key_name");
 
 $Layout = JFStudio\Layout::getInstance();
 $Layout->init("Aprendiendo en curso","learning","backoffice","",TO_ROOT."/");
@@ -14,8 +14,8 @@ $UserLogin = new Site\UserLogin;
 $SessionPerCourse = new OwnBoss\SessionPerCourse;
 $Course = new OwnBoss\Course;
 
-$SessionPerCourse->loadWhere("session_per_course_id = ?",HCStudio\Util::getVarFromPGS("spcid"));
-$Course->loadWhere("course_id = ?",$SessionPerCourse->getCourseId(HCStudio\Util::getVarFromPGS("spcid")));
+$SessionPerCourse->loadWhere("session_per_course_id = ?",HCStudio\Util::getParam("spcid"));
+$Course->loadWhere("course_id = ?",$SessionPerCourse->getCourseId(HCStudio\Util::getParam("spcid")));
 
 $Layout->setVar([
 	"nav" => "courses",

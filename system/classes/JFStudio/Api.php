@@ -14,8 +14,8 @@ class Api {
         if($this->hasParamsForLogin() === true)
         {
             $params = [
-                'token' => str_replace(" ", "+", Util::getVarFromPGS("token")),
-                'key' => Util::getVarFromPGS("secret")
+                'token' => str_replace(" ", "+", Util::getParam("token")),
+                'key' => Util::getParam("secret")
             ];
 
             if($company_id = SimpleCipher::decrypt($params))
@@ -29,9 +29,9 @@ class Api {
     }
     public function hasParamsForLogin() 
     {
-        if(Util::getVarFromPGS("token"))
+        if(Util::getParam("token"))
         {
-            if(Util::getVarFromPGS("secret"))
+            if(Util::getParam("secret"))
             {
                 return true;
             }

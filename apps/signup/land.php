@@ -19,8 +19,8 @@ $Session = new HCStudio\Session('utm');
 $sponsor_id = $Session->get('sponsor_id');
 $utm = $Session->get('utm');
 
-if(!empty(HCStudio\Util::getVarFromPGS('sponsor_id'))) {
-	$sponsor_id = HCStudio\Util::getVarFromPGS('sponsor_id');
+if(!empty(HCStudio\Util::getParam('sponsor_id'))) {
+	$sponsor_id = HCStudio\Util::getParam('sponsor_id');
 }
 
 $Layout->setVar([

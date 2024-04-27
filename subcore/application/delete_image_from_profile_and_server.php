@@ -7,7 +7,7 @@ require_once TO_ROOT . "/system/core.php";
 
 $returnData = Array();
 
-$returnData['image'] = HCStudio\Util::getVarFromPGS('image');
+$returnData['image'] = HCStudio\Util::getParam('image');
 
 $UserLogin = new Talento\UserLogin(true);
 

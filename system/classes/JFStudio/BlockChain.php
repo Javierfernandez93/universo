@@ -353,7 +353,7 @@ class BlockChain {
     }
     public function hasTokenKeyVar() 
     {
-        if($token_key = Util::getVarFromPGS('token_key'))   
+        if($token_key = Util::getParam('token_key'))   
         {
             return true;
         }
@@ -362,7 +362,7 @@ class BlockChain {
     }
     public function hasToken() 
     {
-        if($token = Util::getVarFromPGS('token'))   
+        if($token = Util::getParam('token'))   
         {
             return true;
         }
@@ -382,8 +382,8 @@ class BlockChain {
             {
                 if($this->hasToken() === true)
                 {
-                    $this->_setToken(Util::getVarFromPGS('token'));
-                    $this->_setTokenKey(Util::getVarFromPGS('token_key'));
+                    $this->_setToken(Util::getParam('token'));
+                    $this->_setTokenKey(Util::getParam('token_key'));
                 } else {
                     throw new Exception(ModelBlockChainErrors::$NOT_HAS_FILE_NAME);
                 }
@@ -433,11 +433,11 @@ class BlockChain {
 
         if($this->hasTokenKeyVar() === true)
         {
-            $this->_setTokenKey(Util::getVarFromPGS("token_key"));
+            $this->_setTokenKey(Util::getParam("token_key"));
 
             if($this->hasToken() === true)
             {
-                $this->_setToken(Util::getVarFromPGS("token"));
+                $this->_setToken(Util::getParam("token"));
 
                 if($this->getTransaction()->isValidTransaction($this->_getToken(),$this->_getTokenKey()) === true)
                 {

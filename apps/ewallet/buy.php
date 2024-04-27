@@ -45,8 +45,8 @@ if($reg_buys){
 	
 }
 
-$Layout->setVar("bpulid",HCStudio\Util::getVarFromPGS('bpulid'));
-$Layout->setVar("tab",HCStudio\Util::getVarFromPGS('tab'));
+$Layout->setVar("bpulid",HCStudio\Util::getParam('bpulid'));
+$Layout->setVar("tab",HCStudio\Util::getParam('tab'));
 $Layout->setVar("UserLogin",$UserLogin);
 $Layout->setVar("reg_buys",$reg_buys);
 $Layout->setVar("validate_buys",$validate_buys);

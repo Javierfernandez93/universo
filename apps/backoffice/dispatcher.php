@@ -2,7 +2,7 @@
 
 require_once TO_ROOT . "/system/core.php";
 
-$link = HCStudio\Util::getVarFromPGS('link');
+$link = HCStudio\Util::getParam('link');
 
 if($link)
 {

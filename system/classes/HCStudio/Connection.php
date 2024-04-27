@@ -26,24 +26,18 @@ use RecursiveArrayIterator;
 
 class Connection
 {
-	# Variables privadas
-	private static $connections = array(
-		'default' => ['localhost', 'root', 'root', 'app_universo'],
-		'world' => ['localhost', 'root', 'root', 'apps_world'],
-		'blockchain' => ['localhost', 'root', 'root', 'app_blockchain_site']
-	);
+	private static $connections = [];
 
-	private static $instances;
-
-	static $instance;
+	private static $instances = [];
 
 	private $connection;
+	private $mysqlSettings;
 	private $debug;
 	private $mysqli;
 	const protocol = 'http';
 	// const $proyect_url = '192.168.100.237:8888/mizuum';
-	const proyect_url = 'localhost:8888/universo';
-	const proyect_name = 'Site';
+	const proyect_url = 'localhost:8888/dummytraderweb/';
+	const proyect_name = 'DummieTrading';
 
 	public function getConnectioName()
 	{
@@ -55,12 +49,13 @@ class Connection
 		return self::protocol . "://" . self::proyect_url;
 	}
 
-	public static function getInstance()
+	public static function getInstance($connection = null)
 	{
-		if (!self::$instance instanceof self) {
-			self::$instance = new self;
+		if(!array_key_exists($connection, self::$instances)){
+			self::$instances[$connection] = new self($connection);
 		}
-		return self::$instance;
+		
+		return self::$instances[$connection];
 	}
 
 	public function __construct($connection = null)
@@ -71,7 +66,14 @@ class Connection
 	public function setConnection($connection = null)
 	{
 		# Setemos conexion por default
-		$debug = Util::getVarFromPGS('debug');
+		$debug = Util::getParam('debug');
+		# TODO: We might not use the root user
+		# Shared mysql settings 
+		$mysqlSettings = [$_ENV['MYSQL_HOSTNAME'], $_ENV['MYSQL_ROOT_USER'], $_ENV['MYSQL_ROOT_PASSWORD']];
+		$connections = [
+			'default' => [...$mysqlSettings, 'app_crm'],
+			'world' => [...$mysqlSettings, 'apps_world'],
+		];
 
 		if (isset($debug) && $debug === 'true') {
 			$connection = 'default_sandbox';
@@ -80,18 +82,17 @@ class Connection
 		}
 
 		# Si no se encuentra conexion
-		if (!isset(self::$connections[$connection])) {
+		if (!isset($connections[$connection])) {
 			throw new Exception('Conexion no localizada');
 		} else {
 			# Si no existe instancia, la creamos
-			if (!isset(self::$instances[$connection])) {
-				#
-				list($host, $user, $pass, $db) = self::$connections[$connection];
-				self::$instances[$connection] = new MySQLi($host, $user, $pass, $db);
-				self::$instances[$connection]->query('SET NAMES "utf8"');
+			if (!isset(self::$connections[$connection])) {
+				list($host, $user, $pass, $db) = $connections[$connection];
+				self::$connections[$connection] = new MySQLi($host, $user, $pass, $db);
+				self::$connections[$connection]->query('SET NAMES "utf8"');
 			}
 			# Asignamos instancia en mysqli
-			$this->mysqli = &self::$instances[$connection];
+			$this->mysqli = &self::$connections[$connection];
 			#
 			$this->connection = $connection;
 		}
@@ -121,7 +122,7 @@ class Connection
 	# upgrade to PHP 8.
 	private function getType($item = null)
 	{
-		return match(gettype($item)) {
+		return match (gettype($item)) {
 			'string' => 's',
 			'boolean' => '',
 			'integer' => 'i',
@@ -149,8 +150,8 @@ class Connection
 					$refParams['_types_'] .= $this->getType($param);
 					$refParams[$key] = &$param;
 				}
-				
-				
+
+
 				$stmt->bind_param(...array_values($refParams));
 			}
 
@@ -160,7 +161,7 @@ class Connection
 			if ($stmt->errno) {
 				throw new Exception($stmt->error);
 			}
-			
+
 			# Retornamos 'true' en INSERT, UPDATE y DELETE
 			if ($stmt->affected_rows > -1) {
 				return true;
@@ -186,7 +187,7 @@ class Connection
 			}
 
 			$stmt->close();
-			
+
 			#
 			return empty($results) ? false : $results;
 		} else {

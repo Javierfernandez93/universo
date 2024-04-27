@@ -294,7 +294,7 @@ class Util
 		die();
 	}
 
-	public static function getVarFromPGS($var = null, $session_included = true, $server_auth_included = false)
+	public static function getParam($var = null, $session_included = true, $server_auth_included = false)
 	{
 		if (isset($var) === true) {
 			$data = (isset($_POST[$var])) ? $_POST[$var] : false;
@@ -427,7 +427,7 @@ class Util
 			self::getHeadersForAllDevices();
 		}
 
-		$data = self::getVarFromPGS(null, $session_included, $server_auth_included);
+		$data = self::getParam(null, $session_included, $server_auth_included);
 		$data["gzip"] = self::getCompressor();
 
 		return $data;
@@ -668,7 +668,7 @@ class Util
 	public static function debug($var = null)
 	{
 		if (isset($var)) {
-			if ($debug = self::getVarFromPGS("debug")) {
+			if ($debug = self::getParam("debug")) {
 				echo "<pre>";
 				print_r($var);
 				die;

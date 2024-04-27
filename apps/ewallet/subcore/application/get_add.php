@@ -8,9 +8,9 @@ require_once TO_ROOT . "/system/core.php";
 $returnData = Array();
 $UserLogin = new Umbrella\UserLogin();
 
-$returnData['id'] = HCStudio\Util::getVarFromPGS('id');
-$returnData['type'] = HCStudio\Util::getVarFromPGS('type');
-$returnData['ammount'] = HCStudio\Util::getVarFromPGS('ammount');
+$returnData['id'] = HCStudio\Util::getParam('id');
+$returnData['type'] = HCStudio\Util::getParam('type');
+$returnData['ammount'] = HCStudio\Util::getParam('ammount');
 
 if($UserLogin->logged === true)
 {

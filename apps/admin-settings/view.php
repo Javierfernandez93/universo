@@ -16,7 +16,7 @@ $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript(['admin.css','animate.css','alertCtrl.js','http.js','home.*','medical.js']);
 
 $CatalogCaseFile = new Talento\CatalogCaseFile;
-$CatalogCaseFile->loadWhere("catalog_case_file_id = ?",HCStudio\Util::getVarFromPGS("catalog_case_file_id"));
+$CatalogCaseFile->loadWhere("catalog_case_file_id = ?",HCStudio\Util::getParam("catalog_case_file_id"));
 $CatalogSign = new Talento\CatalogSign;
 
 $Layout->setVar([
