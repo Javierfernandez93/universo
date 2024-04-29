@@ -23,8 +23,6 @@ $data['payment_property']['end_date'] = isset($data['payment_property']['end_dat
 $data['payment_property']['start_date'] = isset($data['payment_property']['start_date']) && !empty($data['payment_property']['start_date']) ? strtotime($data['payment_property']['start_date']) : 0;
 $data['user']['new'] = filter_var($data['user']['new'],FILTER_VALIDATE_BOOLEAN);
 
-// $data['user']['names'] = rand(1,10000);
-
 // saving user
 if($data['user']['new'])
 {
