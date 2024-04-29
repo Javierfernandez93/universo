@@ -22,7 +22,7 @@ $data['payment_property']['end_date'] = strtotime($data['payment_property']['end
 $data['payment_property']['start_date'] = strtotime($data['payment_property']['start_date']);
 $data['user']['new'] = filter_var($data['user']['new'],FILTER_VALIDATE_BOOLEAN);
 
-$data['user']['names'] = rand(1,10000);
+// $data['user']['names'] = rand(1,10000);
 
 // saving user
 if($data['user']['new'])
@@ -41,6 +41,8 @@ if($data['user']['new'])
         // 'user_address' => [],
         'user_data' => [
             'names' => $data['user']['names'],
+            'last_name' => $data['user']['last_name'],
+            'sur_name' => $data['user']['sur_name'],
             'nationality' => $data['user']['nationality']
         ],
         'user_account' => [
