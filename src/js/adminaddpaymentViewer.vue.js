@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.2'   
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.2'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.2'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.3'   
+import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.3'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.3'   
 
 const AdminaddpaymentViewer = {
     components : {
@@ -243,7 +243,7 @@ const AdminaddpaymentViewer = {
         this.getCatalogMonthFinances()
 
         setTimeout(()=>{
-            $('#price').mask("#,##0", {reverse: true});
+            $('#price').mask("#,##0.00", {reverse: true});
         },500)
     },
     template : `
@@ -353,7 +353,7 @@ const AdminaddpaymentViewer = {
                             </div>
                             <div class="col-12 col-md">
                                 <div class="form-group">
-                                    <label>Fecha cierre</label>
+                                    <label>Fecha cierre (opcional)</label>
                                     <input :class="sale.payment_property.end_date ? 'is-valid' :'is-invalid'"  v-model="sale.payment_property.end_date" type="date" class="form-control" placeholder="Fecha cierre">
                                 </div>
                             </div>

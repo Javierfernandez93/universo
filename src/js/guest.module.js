@@ -1,4 +1,4 @@
-import { Http } from './http.module.js?v=1.0.2';
+import { Http } from './http.module.js?v=1.0.3';
 
 class Guest extends Http {
     constructor() {
