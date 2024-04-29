@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.3'
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.3'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.4'
+import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.4'
 
 const AdminpaymentsViewer = {
     components: {
@@ -45,6 +45,10 @@ const AdminpaymentsViewer = {
                     name: 'create_date',
                     desc: false,
                 },
+                price: {
+                    name: 'price',
+                    desc: false,
+                },
                 affiliation_name: {
                     name: 'affiliation_name',
                     desc: false,
@@ -60,7 +64,10 @@ const AdminpaymentsViewer = {
                     desc: false,
                     alphabetically: true,
                 },
-            }
+            },
+            totals: {
+                price : 0
+            },
         }
     },
     watch: {
@@ -96,6 +103,12 @@ const AdminpaymentsViewer = {
         viewPayments(property_id) {
             window.location.href = `../../apps/admin-payments/view.php?pid=${property_id}`
         },
+        getTotals() {
+            this.totals.price = 0
+            this.payments.map((payment) => {
+                this.totals.price += parseFloat(payment.price)
+            })
+        },
         getPaymentsProperties() {
             this.busy = true
             this.payments = null
@@ -105,6 +118,8 @@ const AdminpaymentsViewer = {
                 if (response.s == 1) {
                     this.paymentsAux = response.payments
                     this.payments = this.paymentsAux
+
+                    this.getTotals()
                 } else {
                     this.payments = false
                     this.paymentsAux = false
@@ -168,9 +183,14 @@ const AdminpaymentsViewer = {
                                             <span :class="columns.last_payment_number.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
                                             Número de pago
                                         </th>
+
                                         <th @click="sortData(columns.status)" class="cursor-pointer text-uppercase">
                                             <span :class="columns.status.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
                                             Estatus
+                                        </th>
+                                        <th @click="sortData(columns.price)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.price.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            Precio
                                         </th>
                                         <th class="text-uppercase">Opciones</th>
                                     </tr>
@@ -199,6 +219,9 @@ const AdminpaymentsViewer = {
                                             <span class="badge bg-secondary">{{payment.payment_type}}</span>
                                         </td>
                                         <td class="align-middle">
+                                            $ {{payment.price.numberFormat(2)}}
+                                        </td>
+                                        <td class="align-middle">
                                             <div class="btn-group">
                                                 <button type="button" class="btn px-3 btn-dark shadow-none px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -212,6 +235,19 @@ const AdminpaymentsViewer = {
                                         </td>
                                     </tr>
                                 </tbody>
+                                <tfoot>
+                                    <tr class="text-center text-sm fw-bold text-capitalize">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>total</td>
+                                        <td>$ {{totals.price.numberFormat(2)}}</td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

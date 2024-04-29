@@ -82,6 +82,7 @@ class PaymentProperty extends Orm {
                 {$this->tblName}.status,
                 {$this->tblName}.property_id,
                 property.title,
+                property.price,
                 real_state.title as real_state,
                 user_data.names,
                 user_support.names as support_name,

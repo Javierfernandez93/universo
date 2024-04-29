@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.0.3'   
+import { User } from '../../src/js/user.module.js?v=1.0.4'   
 
 const NewpasswordViewer = {
     name: 'newpassword-viewer',

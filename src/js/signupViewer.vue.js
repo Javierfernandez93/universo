@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=1.0.3'   
-import { Translator } from '../../src/js/translator.module.js?v=1.0.3'   
+import { User } from '../../src/js/user.module.js?v=1.0.4'   
+import { Translator } from '../../src/js/translator.module.js?v=1.0.4'   
 
 const SignupViewer = {
     name: 'signup-viewer',

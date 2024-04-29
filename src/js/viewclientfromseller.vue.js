@@ -1,9 +1,9 @@
-import { ViewclientfromsellerViewer } from '../../src/js/viewclientfromsellerViewer.vue.js?v=1.0.3'
-import { PropertieslistViewer } from '../../src/js/propertieslistViewer.vue.js?v=1.0.3'
-import { ViewuserwidgetfromsellerViewer } from '../../src/js/viewuserwidgetfromsellerViewer.vue.js?v=1.0.3'
-import { ViewtasklistwidgetViewer } from '../../src/js/viewtasklistwidgetViewer.vue.js?v=1.0.3'
-import { FeedbackclientViewer } from '../../src/js/feedbackclientViewer.vue.js?v=1.0.3'
-import { PropertypullViewer } from '../../src/js/propertypullViewer.vue.js?v=1.0.3'
+import { ViewclientfromsellerViewer } from '../../src/js/viewclientfromsellerViewer.vue.js?v=1.0.4'
+import { PropertieslistViewer } from '../../src/js/propertieslistViewer.vue.js?v=1.0.4'
+import { ViewuserwidgetfromsellerViewer } from '../../src/js/viewuserwidgetfromsellerViewer.vue.js?v=1.0.4'
+import { ViewtasklistwidgetViewer } from '../../src/js/viewtasklistwidgetViewer.vue.js?v=1.0.4'
+import { FeedbackclientViewer } from '../../src/js/feedbackclientViewer.vue.js?v=1.0.4'
+import { PropertypullViewer } from '../../src/js/propertypullViewer.vue.js?v=1.0.4'
 
 Vue.createApp({
     components : { 
