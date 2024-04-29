@@ -479,6 +479,8 @@ class UserLogin extends Orm {
     $UserData = new UserData;
     $UserData->user_login_id = $UserLogin->company_id;
     $UserData->names = ucfirst(strtolower(trim($data['user_data']['names'])));
+    $UserData->sur_name = isset($data['user_data']['sur_name']) ? ucfirst(strtolower(trim($data['user_data']['sur_name']))) : '';
+    $UserData->last_name = isset($data['user_data']['last_name']) ? ucfirst(strtolower(trim($data['user_data']['last_name']))) : '';
     $UserData->nationality = isset($data['user_data']['nationality']) ? $data['user_data']['nationality'] : '';
     $UserData->curp = isset($data['user_data']['curp']) ? $data['user_data']['curp'] : '';
     $UserData->rfc = isset($data['user_data']['rfc']) ? $data['user_data']['rfc'] : '';
