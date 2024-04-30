@@ -171,7 +171,7 @@ class PaymentProperty extends Orm {
                 'property_id' => $payment['property_id'],
             ]);
 
-            $payment['price'] = number_format($payment['price'] / 100, 2, '.', '');
+            // $payment['price'] = number_format($payment['price'] / 100, 2, '.', '');
 
             return $payment;
         }, $payments);

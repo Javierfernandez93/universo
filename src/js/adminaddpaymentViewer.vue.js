@@ -303,7 +303,6 @@ const AdminaddpaymentViewer = {
                     this.sale.user.user_login_id = response.payment_property.user_login_id
                     this.sale.property = response.property
                     this.sale.payment_property = response.payment_property
-                    
 
                     $('.selectpicker').selectpicker('val', this.sale.user.user_login_id.toString());
                     $('.selectpicker').selectpicker("refresh");
@@ -326,7 +325,7 @@ const AdminaddpaymentViewer = {
         this.getCatalogMonthFinances()
 
         setTimeout(()=>{
-            $('#price').mask("#,##0.00", {reverse: true});
+            // $('#price').mask("#,##0.00", {reverse: true});
         },500)
 
         if(getParam("ppid"))
@@ -487,7 +486,7 @@ const AdminaddpaymentViewer = {
                             <div class="col-12 col-md">
                                 <div class="form-group">
                                     <label>Precio</label>
-                                    <input :class="sale.property.price ? 'is-valid' :'is-invalid'"  v-model="sale.property.price" type="text" id="price" class="form-control" placeholder="Precio">
+                                    <input :class="sale.property.price ? 'is-valid' :'is-invalid'"  v-model="sale.property.price" type="text" id="price" ref="price" class="form-control" placeholder="Precio">
                                 </div>
                             </div>
                             <div class="col-12 col-md">
