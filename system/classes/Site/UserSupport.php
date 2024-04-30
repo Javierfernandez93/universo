@@ -578,6 +578,15 @@ class UserSupport extends Orm {
     return $this->_getUserDataByEmail($email);
   }
 
+  public function getUserLoginIdByEmail(string $email = null) 
+  {
+    if(!$email)
+    {
+      return false;
+    }
+
+    return (new UserLogin(false,false))->findField("email = ?",[$email],"user_login_id");
+  }
   private function _getUserDataByEmail($email = false) {
     if($email)
     {

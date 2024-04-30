@@ -8,7 +8,14 @@ $UserSupport = new Site\UserSupport;
 
 if($UserSupport->logged === true)
 {
-    if($payments = (new Site\PaymentProperty)->getPayments())
+    $filter = "";
+
+    if(isset($data['catalog_payment_type_id']))
+    {
+        $filter = "AND catalog_payment_type.catalog_payment_type_id = '{$data['catalog_payment_type_id']}'";
+    }
+
+    if($payments = (new Site\PaymentProperty)->getPayments($filter))
     {
         $data["payments"] = $payments;
         $data["s"] = 1;

@@ -1,4 +1,4 @@
-import { Http } from '../../src/js/http.module.js?v=1.0.4';
+import { Http } from '../../src/js/http.module.js?v=1.0.5';
 
 class UserSupport extends Http {
     constructor() {
@@ -697,6 +697,21 @@ class UserSupport extends Http {
     }
     getCatalogPromotion(data, callback) {
         return this.call('../../app/application/getCatalogPromotion.php', data, callback);
+    }
+    getManivelaSales(data, callback) {
+        return this.call('../../app/application/getManivelaSales.php', data, callback);
+    }
+    importUserDataFromService(data, callback) {
+        return this.call('../../app/application/importUserDataFromService.php', data, callback);
+    }
+    getPaymentPropertyForEdit(data, callback) {
+        return this.call('../../app/application/getPaymentPropertyForEdit.php', data, callback);
+    }
+    setPaymentPropertyAs(data, callback) {
+        return this.call('../../app/application/setPaymentPropertyAs.php', data, callback);
+    }
+    setPaymentPropertyTypeAs(data, callback) {
+        return this.call('../../app/application/setPaymentPropertyTypeAs.php', data, callback);
     }
 }
 

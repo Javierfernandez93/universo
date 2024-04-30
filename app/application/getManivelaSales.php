@@ -9,8 +9,16 @@ $UserSupport = new Site\UserSupport;
 if($UserSupport->logged === true)
 {
     $Api = Manivela\Api::getInstance();
-    $w = $Api->getSales();
-    d($w);
+    
+    if($users = $Api->getSales())
+    {
+        $data['users'] = $users;
+        $data['r'] = 'DATA_OK';
+        $data['s'] = 1;
+    } else {
+        $data['r'] = 'NOT_SALES';
+        $data['s'] = 0;
+    }   
 } else {
 	$data["s"] = 0;
 	$data["r"] = "NOT_FIELD_SESSION_DATA";

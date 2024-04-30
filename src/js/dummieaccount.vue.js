@@ -1,6 +1,6 @@
 /* vue */
-import { DummieaccountViewer } from '../../src/js/dummieaccountViewer.vue.js?v=1.0.4'
-import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=1.0.4'
+import { DummieaccountViewer } from '../../src/js/dummieaccountViewer.vue.js?v=1.0.5'
+import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=1.0.5'
 
 Vue.createApp({
     components: {

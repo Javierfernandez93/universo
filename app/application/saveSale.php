@@ -23,7 +23,37 @@ $data['payment_property']['end_date'] = isset($data['payment_property']['end_dat
 $data['payment_property']['start_date'] = isset($data['payment_property']['start_date']) && !empty($data['payment_property']['start_date']) ? strtotime($data['payment_property']['start_date']) : 0;
 $data['user']['new'] = filter_var($data['user']['new'],FILTER_VALIDATE_BOOLEAN);
 
-// saving user
+// saving seller
+if($data['seller']['new'])
+{
+    $data['seller']['email'] = isset($data['seller']['email']) && !empty($data['seller']['email']) ? $data['seller']['email'] : Site\UserLogin::makeEmailFromName($data['seller']['names'].$data['seller']['last_name']);
+
+    $data['seller']['user_login_id'] = (new Site\UserLogin(false,false))->doSignup([
+        'user_login' => [
+            'password' => $data['seller']['email'],
+            'email' => $data['seller']['email'],
+            'catalog_user_type_id' => Site\CatalogUserType::SELLER,
+        ],
+        'user_contact' => [
+            'phone' => isset($data['seller']['phone']) ? $data['seller']['phone'] : '',
+        ],
+        // 'user_address' => [],
+        'user_data' => [
+            'names' => $data['seller']['names'],
+            'last_name' => $data['seller']['last_name'],
+            'sur_name' => $data['seller']['sur_name'],
+            'nationality' => $data['seller']['nationality']
+        ],
+        'user_account' => [
+            'landing' => Site\UserAccount::formatLandingByEmail($data['seller']['email'])
+        ],
+        'user_referral' => [
+            'user_support_id' => $data['seller']['user_support_id']
+        ]
+    ]);
+} 
+
+// saving client
 if($data['user']['new'])
 {
     $data['user']['email'] = isset($data['user']['email']) && !empty($data['user']['email']) ? $data['user']['email'] : Site\UserLogin::makeEmailFromName($data['user']['names'].$data['user']['last_name']);
@@ -48,27 +78,45 @@ if($data['user']['new'])
             'landing' => Site\UserAccount::formatLandingByEmail($data['user']['email'])
         ],
         'user_referral' => [
-            'user_login_id' => 1
+            'referral_id' => $data['seller']['user_login_id'],
+            'user_support_id' => 0
         ]
     ]);
 }
 
 // saving property 
-$data['property']['property_id'] = Site\Property::add($data['property']);
+if(!$data['property']['property_id'])
+{
+    $data['property']['property_id'] = Site\Property::safeAdd($data['property']);
+} else {
+    $Property = new Site\Property; 
+    $Property->loadArray($data['property']);
+    $Property->save();
+}
 
 if(!$data['property']['property_id'])
 {
-    error(Constants::RESPONSES['DATA_ERROR']);
+    error('NOT_PROPERTY_ID');
 }
 
 // saving payment property
 $data['payment_property']['property_id'] = $data['property']['property_id'];
 $data['payment_property']['user_login_id'] = $data['user']['user_login_id'];
-$data['payment_property']['payment_property_id'] = Site\PaymentProperty::add($data['payment_property']);
+
+// saving property 
+if(!$data['payment_property']['payment_property_id'])
+{
+    $data['payment_property']['payment_property_id'] = Site\PaymentProperty::safeAdd($data['payment_property']);
+} else {
+    $PaymentProperty = new Site\PaymentProperty; 
+    $PaymentProperty->loadArray($data['payment_property']);
+    $PaymentProperty->save();
+} 
+
 
 if(!$data['payment_property']['payment_property_id'])
 {
-    error(Constants::RESPONSES['DATA_ERROR']);
+    error('NOT_PAYMENT_PROPERTY_ID');
 }
 
 success(Constants::RESPONSES['DATA_OK'],$data);

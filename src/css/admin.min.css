@@ -26,3 +26,26 @@ td span {
 .dropdown-menu.show {
     display: block !important;
 }
+
+td {
+    white-space: normal !important;
+    word-wrap: break-word;
+  }
+  table {
+    table-layout: fixed;
+  }
+  .bg-gradient-special-x {
+    background: linear-gradient(
+        155deg,
+        rgba(255, 220, 229, 0.5),
+        rgba(199, 229, 255, 0.5)
+      );
+    background-attachment: fixed;
+  }
+  
+  .th-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+  }

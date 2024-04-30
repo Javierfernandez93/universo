@@ -81,16 +81,16 @@
     <script src="../../src/js/plugins/chartjs.min.js"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
 
-    <script src="../../src/js/constants.js?v=1.0.4" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.0.4" type="text/javascript"></script>
+    <script src="../../src/js/constants.js?v=1.0.5" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.0.5" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.5.1.min.js" type="text/javascript"></script>
-    <script src="../../src/js/general.js?v=1.0.4" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.0.5" type="text/javascript"></script>
 
     <!-- Github buttons -->
 
     <script async defer src="../../src/js/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.4"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../../src/js/vue.js"></script>

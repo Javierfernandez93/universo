@@ -11,6 +11,23 @@ class PaymentProperty extends Orm {
         parent::__construct();
     }
    
+    public static function safeAdd(array $data = null)
+    {
+      if(!$data)
+      {
+        return false;
+      }
+  
+      $PaymentProperty = new self;
+      
+      if($payment_property_id = $PaymentProperty->findField('property_id = ? AND user_login_id = ?', [$data['property_id'],$data['user_login_id']],"payment_property_id"))
+      {
+        return $payment_property_id;
+      }
+      
+      return self::add($data);
+    }
+  
     public static function add(array $data = null) {
         if(!$data) {
             return false;   
@@ -73,7 +90,7 @@ class PaymentProperty extends Orm {
         return $property;
     }
 
-    public function getPayments() {
+    public function getPayments(string $filter = null) {
 
         $payments = $this->connection()->rows("
             SELECT 
@@ -86,10 +103,12 @@ class PaymentProperty extends Orm {
                 real_state.title as real_state,
                 user_data.names,
                 user_support.names as support_name,
-                user_referral.user_support_id,
                 user_referral.referral_id,
+                catalog_payment_type.catalog_payment_type_id,
                 catalog_payment_type.title as payment_type,
-                affiliation.name as affiliation_name
+                user_data_seller.names as seller_names,
+                affiliation.name as affiliation_name,
+                user_referral_seller.user_support_id 
             FROM
                 {$this->tblName} 
             LEFT JOIN 
@@ -105,23 +124,32 @@ class PaymentProperty extends Orm {
             ON 
                 user_data.user_login_id = {$this->tblName}.user_login_id
             LEFT JOIN 
-                user_referral 
-            ON 
-                user_referral.user_login_id = {$this->tblName}.user_login_id
-            LEFT JOIN 
                 catalog_payment_type 
             ON 
                 catalog_payment_type.catalog_payment_type_id = {$this->tblName}.catalog_payment_type_id
             LEFT JOIN 
+                user_referral 
+            ON 
+                user_referral.user_login_id = {$this->tblName}.user_login_id
+            LEFT JOIN 
+                user_data as user_data_seller
+            ON 
+                user_data_seller.user_login_id = user_referral.referral_id
+            LEFT JOIN 
+                user_referral as user_referral_seller
+            ON 
+                user_referral_seller.user_login_id = user_data_seller.user_login_id
+            LEFT JOIN 
                 user_support 
             ON 
-                user_support.user_support_id = user_referral.user_support_id
+                user_support.user_support_id = user_referral_seller.user_support_id 
             LEFT JOIN 
                 affiliation 
             ON 
                 affiliation.affiliation_id = user_support.affiliation_id
             WHERE 
                 {$this->tblName}.status = '1'
+                {$filter}
             GROUP BY 
                 {$this->tblName}.property_id
         ");
@@ -142,6 +170,8 @@ class PaymentProperty extends Orm {
                 'user_login_id' => $payment['user_login_id'],
                 'property_id' => $payment['property_id'],
             ]);
+
+            $payment['price'] = number_format($payment['price'] / 100, 2, '.', '');
 
             return $payment;
         }, $payments);

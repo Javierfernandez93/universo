@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.4'
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.4'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.5'
+import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.5'
 
 const AdminpaymentsViewer = {
     components: {
@@ -11,7 +11,9 @@ const AdminpaymentsViewer = {
             payments: null,
             paymentsAux: null,
             busy: null,
+            catalog_payment_type_id: 1,
             query: null,
+            catalogPaymentTypes: null,
             columns: { // 0 DESC , 1 ASC 
                 company_id: {
                     name: 'company_id',
@@ -77,6 +79,13 @@ const AdminpaymentsViewer = {
                 this.filterData()
             },
             deep: true
+        },
+        catalog_payment_type_id:
+        {
+            handler() {
+                this.getPaymentsProperties()
+            },
+            deep: true
         }
     },
     methods: {
@@ -103,6 +112,9 @@ const AdminpaymentsViewer = {
         viewPayments(property_id) {
             window.location.href = `../../apps/admin-payments/view.php?pid=${property_id}`
         },
+        editPayment(payment_property_id) {
+            window.location.href = `../../apps/admin-payments/edit.php?ppid=${payment_property_id}`
+        },
         getTotals() {
             this.totals.price = 0
             this.payments.map((payment) => {
@@ -113,7 +125,7 @@ const AdminpaymentsViewer = {
             this.busy = true
             this.payments = null
             this.paymentsAux = null
-            this.UserSupport.getPaymentsProperties({}, (response) => {
+            this.UserSupport.getPaymentsProperties({catalog_payment_type_id:this.catalog_payment_type_id}, (response) => {
                 this.busy = false
                 if (response.s == 1) {
                     this.paymentsAux = response.payments
@@ -126,9 +138,52 @@ const AdminpaymentsViewer = {
                 }
             })
         },
+        getCatalogPaymentTypes() {
+            this.busy = true
+            this.catalogPaymentTypes = null
+            this.UserSupport.getCatalogPaymentTypes({}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.catalogPaymentTypes = response.catalogPaymentTypes
+                    this.catalog_payment_type_id = this.catalogPaymentTypes[1].catalog_payment_type_id
+                } else {
+                    this.catalogPaymentTypes = false
+                }
+            })
+        },
+        setPaymentPropertyTypeAs(payment_property_id, catalog_payment_type_id, title) {
+            this.busy = true
+            this.UserSupport.setPaymentPropertyTypeAs({payment_property_id:payment_property_id,catalog_payment_type_id}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.getPaymentsProperties()
+
+                    toastInfo({
+                        message: `Se ha cambiado el tipo de pago a ${title}`
+                    })
+                } 
+            })
+        },
+        setPaymentPropertyAs(payment_property_id, status) {
+            this.busy = true
+            this.UserSupport.setPaymentPropertyAs({payment_property_id:payment_property_id,status:status}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.getPaymentsProperties()
+
+                    if(!status == -1)
+                    {
+                        toastInfo({
+                            message: 'Se ha eliminado el pago'
+                        })
+                    } 
+                } 
+            })
+        },
     },
     mounted() {
         this.getPaymentsProperties()
+        this.getCatalogPaymentTypes()
     },
     template: `
         <div class="row">
@@ -146,7 +201,21 @@ const AdminpaymentsViewer = {
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
+                                <div v-if="catalogPaymentTypes" class="">
+                                    <select class="form-select" v-model="catalog_payment_type_id" id="" aria-label="">
+                                        <option v-for="catalogPaymentType in catalogPaymentTypes" v-bind:value="catalogPaymentType.catalog_payment_type_id">
+                                            {{ catalogPaymentType.title }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-auto">
                                 <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
+                            </div>
+                            <div class="col-12 col-xl-auto">
+                                <button @click="getPaymentsProperties" class="btn btn-dark btn-sm mb-0 shadow-none px-3">
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </button>
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <a href="../../apps/admin-payments/add" class="btn btn-dark btn-sm mb-0 shadow-none px-3">Añadir venta</a>
@@ -154,6 +223,9 @@ const AdminpaymentsViewer = {
                         </div>
                         <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{payments.length}} resultados)</div>
                     </div>
+
+                    <LoaderViewer :busy="busy"/>
+                    
                     <div v-if="payments" class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
@@ -228,7 +300,12 @@ const AdminpaymentsViewer = {
                                                 </button>
                                                 <ul class="dropdown-menu shadow">
                                                     <li>
+                                                        <button class="dropdown-item" @click="editPayment(payment.payment_property_id)">Editar</button>
+                                                        <button class="dropdown-item" @click="setPaymentPropertyAs(payment.property_id,-1)">Eliminar</button>
                                                         <button class="dropdown-item" @click="viewPayments(payment.property_id)">Ver pagos</button>
+                                                        <div v-for="catalogPaymentType in catalogPaymentTypes">
+                                                            <button v-if="catalogPaymentType.catalog_payment_type_id != payment.catalog_payment_type_id" class="dropdown-item" @click="setPaymentPropertyTypeAs(payment.property_id,catalogPaymentType.catalog_payment_type_id,catalogPaymentType.title)">{{catalogPaymentType.title}}</button>
+                                                        </div>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -251,7 +328,7 @@ const AdminpaymentsViewer = {
                             </table>
                         </div>
                     </div>
-                    <div v-else-if="payments == false" class="card-body">
+                    <div v-else-if="payments === false" class="card-body">
                         <div class="alert bg-dark text-center text-white mb-0">
                             <strong>Aviso</strong>
                             <div>

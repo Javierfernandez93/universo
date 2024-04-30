@@ -136,6 +136,8 @@ class Router {
     const AdminDeveloperEdit = 176;
     const AdminDeveloperAdd = 177;
     const AdminAddPayment = 178;
+    const AdminManivela = 179;
+    const AdminEditPayment = 180;
 
     static function getName(int $route = null)
     {
@@ -252,7 +254,7 @@ class Router {
             self::AdminPropertiesAdd => 'Propiedades',
             self::AdminPropertiesEdit => 'Propiedades',
             self::AdminLoggs => 'Logs',
-            self::AdminPayments => 'Alta de venta',
+            self::AdminPayments => 'Lista de ventas',
             self::InvalidPermission => 'InvalidPermission',
             self::AdminRealState => 'Proyectos',
             self::AdminRealStateAdd => 'Añadir proyecto',
@@ -271,6 +273,8 @@ class Router {
             self::AdminDeveloperEdit => 'Editar desarrolladora',
             self::AdminDeveloperAdd => 'Añadir desarrolladora',
             self::AdminAddPayment => 'Añadir venta',
+            self::AdminEditPayment => 'Editar venta',
+            self::AdminManivela => 'Manivela',
             self::Us => 'Nosotros',
             default => 'Sin nombre'
         };

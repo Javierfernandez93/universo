@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.4'   
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.4'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.4'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.5'   
+import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.5'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.5'   
 
 const AdminaddpaymentViewer = {
     components : {
@@ -11,15 +11,27 @@ const AdminaddpaymentViewer = {
         return {
             UserSupport: new UserSupport,
             filled: null,
+            edit : null,
             catalogMonthFinances: null,
             catalogPromotions: null,
             catalogPaymentTypes: null,
             busy: false,
             users: null,
-            users: null,
+            administrators: null,
+            sellers: null,
             realStates: null,
             developers: null,
             sale: {
+                seller : {
+                    user_login_id : null,
+                    names : null,
+                    last_name : null,
+                    sur_name : null,
+                    nationality : 'Méxicano',
+                    user_support_id : 0,
+                    catalog_user_type_id : 1,
+                    new : false,
+                },
                 user : {
                     user_login_id : null,
                     names : null,
@@ -36,6 +48,7 @@ const AdminaddpaymentViewer = {
                     real_state_id : null,
                 },
                 payment_property : {
+                    payment_property_id : null,
                     user_login_id : null,
                     property_id : null,
                     catalog_payment_type_id : null,
@@ -59,7 +72,10 @@ const AdminaddpaymentViewer = {
     watch: {
         sale: {
             handler() {
-                this.filled = this.sale.property.title && this.sale.property.price && this.sale.payment_property.start_date
+                this.filled = this.sale.property.title 
+                && this.sale.property.price 
+                && this.sale.payment_property.start_date
+                && this.sale.seller.user_support_id
             },
             deep: true
         },
@@ -109,8 +125,7 @@ const AdminaddpaymentViewer = {
                             this.sale.payment_property.catalog_payment_type_id = $('.selectpicker-catalogPaymentTypes').val();
                         });
                         
-                        const [catalogPaymentType] = this.catalogPaymentTypes
-                        
+                        const catalogPaymentType = this.catalogPaymentTypes[1]
                         this.sale.payment_property.catalog_payment_type_id = catalogPaymentType.catalog_payment_type_id
 
                         $('.selectpicker-catalogPaymentTypes').selectpicker('val', catalogPaymentType.catalog_payment_type_id.toString());
@@ -119,23 +134,23 @@ const AdminaddpaymentViewer = {
                 }
             })
         },
-        getClients() {
-            this.UserSupport.getUsers({ catalog_user_type_id : 3 }, (response) => {
+        getUsers() {
+            this.UserSupport.getUsers({ catalog_user_type_id : 1 }, (response) => {
                 if (response.s == 1) {
-                    this.users = response.users
-                    this.usersAux = response.users
+                    this.sellers = response.users
 
                     setTimeout(()=>{
-                        $('.selectpicker').selectpicker();
+                        $('.selectpicker-sellers').selectpicker();
                         
-                        $('.selectpicker').change(() =>{
-                            this.sale.user.user_login_id = $('.selectpicker').val();
+                        $('.selectpicker-sellers').change(() =>{
+                            this.sale.seller.user_login_id = $('.selectpicker-sellers').val();
                         });
                         
-                        const [user] = this.users
-                        this.sale.user.user_login_id = user.user_login_id
-                        $('.selectpicker').selectpicker('val', user.user_login_id.toString());
-                        $('.selectpicker').selectpicker('refresh');
+                        const [user] = this.sellers
+                        this.sale.seller.user_login_id = user.user_login_id
+
+                        $('.selectpicker-sellers').selectpicker('val', user.user_login_id.toString());
+                        $('.selectpicker-sellers').selectpicker('refresh');
                     },100)
                 }
             })
@@ -232,12 +247,80 @@ const AdminaddpaymentViewer = {
                     },100)
                 }
             })
+        },
+        getAdministrators() {
+            this.busy = true
+            this.administrators = null
+            this.UserSupport.getAdministrators({catalog_support_type_id:2},(response)=>{
+                this.busy = false
+                if(response.s == 1)
+                {
+                    this.administrators = response.administrators
+
+                    setTimeout(()=>{
+                        $('.selectpicker-administrators').selectpicker();
+                        $('.selectpicker-administrators').change(() =>{
+                            this.sale.seller.user_support_id = $('.selectpicker-administrators').val();
+                        });
+                        
+                        const [administrator] = this.administrators
+                        this.sale.seller.user_support_id = administrator.user_support_id;
+
+                        $('.selectpicker-administrators').selectpicker('val', administrator.user_support_id.toString());
+                        $('.selectpicker-administrators').selectpicker('refresh');
+                    },100)
+                }
+            })
+        },
+        getClients() {
+            this.UserSupport.getUsers({ catalog_user_type_id : 3 }, (response) => {
+                if (response.s == 1) {
+                    this.users = response.users
+                    this.usersAux = response.users
+
+                    setTimeout(()=>{
+                        $('.selectpicker').selectpicker();
+                        
+                        $('.selectpicker').change(() =>{
+                            this.sale.user.user_login_id = $('.selectpicker').val();
+                        });
+                        
+                        const [user] = this.users
+                        this.sale.user.user_login_id = user.user_login_id
+                        $('.selectpicker').selectpicker('val', user.user_login_id.toString());
+                        $('.selectpicker').selectpicker('refresh');
+                    },100)
+                }
+            })
+        },
+        getPaymentPropertyForEdit(payment_property_id)
+        {
+            this.UserSupport.getPaymentPropertyForEdit({payment_property_id:payment_property_id},(response)=>{
+                if(response.s == 1)
+                {
+                    this.edit = true
+
+                    this.sale.user.user_login_id = response.payment_property.user_login_id
+                    this.sale.property = response.property
+                    this.sale.payment_property = response.payment_property
+                    
+
+                    $('.selectpicker').selectpicker('val', this.sale.user.user_login_id.toString());
+                    $('.selectpicker').selectpicker("refresh");
+
+                    $('.selectpicker-catalogPaymentTypes').selectpicker('val', this.sale.payment_property.catalog_payment_type_id.toString());
+                    $('.selectpicker-catalogPaymentTypes').selectpicker('refresh');
+                }
+            })
         }
     },
     mounted() {
+        this.getUsers()
         this.getClients()
         this.getDevelopers()
         this.getRealStates()
+        this.getAdministrators()
+
         this.getCatalogPaymentTypes()
         this.getCatalogPromotion()
         this.getCatalogMonthFinances()
@@ -245,6 +328,11 @@ const AdminaddpaymentViewer = {
         setTimeout(()=>{
             $('#price').mask("#,##0.00", {reverse: true});
         },500)
+
+        if(getParam("ppid"))
+        {
+            this.getPaymentPropertyForEdit(getParam("ppid"))
+        }
     },
     template : `
         <LoaderViewer :busy="busy"/>
@@ -256,7 +344,7 @@ const AdminaddpaymentViewer = {
                         <BackViewer/>
                     </div>
                     <div class="col-12 col-md h5">
-                        Añadir venta
+                        {{edit ? 'Editar' : 'Añadir'}} venta
                     </div>
 
                     <div class="col-12 col-md-auto">
@@ -296,13 +384,13 @@ const AdminaddpaymentViewer = {
                                     <div class="col-12 col-md">
                                         <div class="form-group">
                                             <label>Nombre</label>
-                                            <input ref="names" :class="sale.user.names ? 'is-valid' :'is-invalid'" @keydown.enter.exact.prevent="$refs.las_name.focus()" v-model="sale.user.names" type="text" class="form-control" placeholder="Nombre del cliente">
+                                            <input ref="names" :class="sale.user.names ? 'is-valid' :'is-invalid'" @keydown.enter.exact.prevent="$refs.last_name.focus()" v-model="sale.user.names" type="text" class="form-control" placeholder="Nombre del cliente">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md">
                                         <div class="form-group">
                                             <label>Apellido paterno</label>
-                                            <input ref="las_name" :class="sale.user.last_name ? 'is-valid' :'is-invalid'" @keydown.enter.exact.prevent="$refs.sur_name.focus()" v-model="sale.user.last_name" type="text" class="form-control" placeholder="Apellido paterno">
+                                            <input ref="last_name" :class="sale.user.last_name ? 'is-valid' :'is-invalid'" @keydown.enter.exact.prevent="$refs.sur_name.focus()" v-model="sale.user.last_name" type="text" class="form-control" placeholder="Apellido paterno">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md">
@@ -310,6 +398,63 @@ const AdminaddpaymentViewer = {
                                             <label>Apellido materno</label>
                                             <input ref="sur_name" :class="sale.user.sur_name ? 'is-valid' :'is-invalid'"  v-model="sale.user.sur_name" type="text" class="form-control" placeholder="Apellido materno">
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border border-light mb-3">
+                    <div class="card-header">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-md h6">
+                                Asesor
+                            </div>
+
+                            <div class="col-12 col-md-auto">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" v-model="sale.seller.new" type="checkbox" role="switch" id="new_seller">
+                                    <label class="form-check-label" for="new_seller">Asesor nuevo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md">
+                                <div v-show="!sale.seller.new">
+                                    <div v-if="sellers">
+                                        <label>Elegir Asesor</label>
+                                        <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
+                                            <option v-for="user in sellers" :data-tokens="user.names" :data-content="user.names">{{ user.user_login_id }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div v-show="sale.seller.new" class="row">
+                                    <div class="col-12 col-md">
+                                        <div class="form-group">
+                                            <label>Nombre</label>
+                                            <input ref="seller_names" :class="sale.seller.names ? 'is-valid' :'is-invalid'" @keydown.enter.exact.prevent="$refs.seller_last_name.focus()" v-model="sale.seller.names" type="text" class="form-control" placeholder="Nombre del asesor">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md">
+                                        <div class="form-group">
+                                            <label>Apellido paterno</label>
+                                            <input ref="seller_last_name" :class="sale.seller.last_name ? 'is-valid' :'is-invalid'" @keydown.enter.exact.prevent="$refs.seller_sur_name.focus()" v-model="sale.seller.last_name" type="text" class="form-control" placeholder="Apellido paterno">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md">
+                                        <div class="form-group">
+                                            <label>Apellido materno</label>
+                                            <input ref="seller_sur_name" :class="sale.seller.sur_name ? 'is-valid' :'is-invalid'"  v-model="sale.seller.sur_name" type="text" class="form-control" placeholder="Apellido materno">
+                                        </div>
+                                    </div>
+                                    <div v-if="administrators" class="col-12 col-md">
+                                        <label>Asignar a líder</label>
+                                        <select class="selectpicker selectpicker-administrators form-control" data-live-search="true" data-style="border shadow-none">
+                                            <option v-for="administrator in administrators" :data-tokens="administrator.names + ' - ' + administrator.affiliation" :data-content="administrator.names + ' - ' + administrator.affiliation">{{ administrator.user_support_id }} </option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

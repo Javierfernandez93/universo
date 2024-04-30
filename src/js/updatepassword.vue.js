@@ -1,5 +1,5 @@
-import { UpdatepasswordViewer } from '../../src/js/updatepasswordViewer.vue.js?v=1.0.4'   
-import { Translator } from '../../src/js/translator.module.js?v=1.0.4'   
+import { UpdatepasswordViewer } from '../../src/js/updatepasswordViewer.vue.js?v=1.0.5'   
+import { Translator } from '../../src/js/translator.module.js?v=1.0.5'   
 
 Vue.createApp({
     components : { 

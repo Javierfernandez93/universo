@@ -416,12 +416,20 @@ use JFStudio\Router;
                     </li>
                 <?php } ?>
 
-
                 <?php if ($UserSupport->hasPermission('list_logger')) { ?>
                     <li class="nav-item">
                         <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminLoggs])) { ?>active<?php } ?>" href="../../apps/admin-logs/">
                             <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-clock-history"></i></span>
                             <span class="nav-link-text text-dark ms-1">Logs</span>
+                        </a>
+                    </li>
+                <?php } ?>
+
+                <?php if ($UserSupport->hasPermission('list_manivela')) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminManivela])) { ?>active<?php } ?>" href="../../apps/admin-manivela/import">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-triangle-fill"></i></span>
+                            <span class="nav-link-text text-dark ms-1">Manivela</span>
                         </a>
                     </li>
                 <?php } ?>
@@ -604,8 +612,8 @@ use JFStudio\Router;
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
     <script src="../../src/js/general.js?t=3" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.0.4" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.0.4" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.0.5" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.0.5" type="text/javascript"></script>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
@@ -622,7 +630,7 @@ use JFStudio\Router;
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.4.6"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.5.6"></script>
 
     <script src="../../src/js/vue.js"></script>
 
