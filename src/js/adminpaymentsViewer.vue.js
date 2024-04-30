@@ -301,10 +301,10 @@ const AdminpaymentsViewer = {
                                                 <ul class="dropdown-menu shadow">
                                                     <li>
                                                         <button class="dropdown-item" @click="editPayment(payment.payment_property_id)">Editar</button>
-                                                        <button class="dropdown-item" @click="setPaymentPropertyAs(payment.property_id,-1)">Eliminar</button>
+                                                        <button class="dropdown-item" @click="setPaymentPropertyAs(payment.payment_property_id,-1)">Eliminar</button>
                                                         <button class="dropdown-item" @click="viewPayments(payment.property_id)">Ver pagos</button>
                                                         <div v-for="catalogPaymentType in catalogPaymentTypes">
-                                                            <button v-if="catalogPaymentType.catalog_payment_type_id != payment.catalog_payment_type_id" class="dropdown-item" @click="setPaymentPropertyTypeAs(payment.property_id,catalogPaymentType.catalog_payment_type_id,catalogPaymentType.title)">{{catalogPaymentType.title}}</button>
+                                                            <button v-if="catalogPaymentType.catalog_payment_type_id != payment.catalog_payment_type_id" class="dropdown-item" @click="setPaymentPropertyTypeAs(payment.payment_property_id,catalogPaymentType.catalog_payment_type_id,catalogPaymentType.title)">{{catalogPaymentType.title}}</button>
                                                         </div>
                                                     </li>
                                                 </ul>
