@@ -88,6 +88,7 @@ if($data['user']['new'])
 // saving property 
 if(!$data['property']['property_id'])
 {
+    $data['property']['user_support_id'] = $UserSupport->getId();
     $data['property']['property_id'] = Site\Property::safeAdd($data['property']);
 } else {
     $Property = new Site\Property; 
