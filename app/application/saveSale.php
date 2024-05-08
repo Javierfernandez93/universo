@@ -12,7 +12,6 @@ if(!$UserSupport->logged)
 }
 
 // formatting data 
-$data['property']['extension'] = $data['property']['extension'] == 'true' ? 1 : 0;
 $data['property']['promotion'] = $data['property']['promotion'] == 'true' ? 1 : 0;
 $data['property']['extension'] = $data['property']['extension'] == 'true' ? 1 : 0;
 $data['property']['extension_date'] = $data['property']['extension'] ? strtotime($data['property']['extension_date']) : 0;

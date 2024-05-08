@@ -227,7 +227,7 @@ const AdminpaymentsViewer = {
                     <LoaderViewer :busy="busy"/>
                     
                     <div v-if="payments" class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive-sm p-0">
+                        <div class="table-responsive-md p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center opacity-7 text-center text-xs text-primary">
@@ -253,7 +253,7 @@ const AdminpaymentsViewer = {
                                         </th>
                                         <th @click="sortData(columns.last_payment_number)" class="cursor-pointer text-uppercase">
                                             <span :class="columns.last_payment_number.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
-                                            Número de pago
+                                            Núm pago
                                         </th>
 
                                         <th @click="sortData(columns.status)" class="cursor-pointer text-uppercase">
