@@ -35,11 +35,11 @@ use JFStudio\Router;
     <link rel="stylesheet" href="../../src/css/nucleo-svg.css" />
     <!-- CSS Files -->
     
-    <link id="pagestyle" href="../../src/css/soft-ui-dashboard-admin.css?v=1.3.1" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/soft-ui-dashboard-admin.css?v=1.0.6" rel="stylesheet" />
     
-    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.3.1" />
+    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.0.6" />
 
-    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.3.1" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.0.6" rel="stylesheet" />
     {{css_scripts}}
 </head>
 
@@ -612,8 +612,8 @@ use JFStudio\Router;
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
     <script fetchpriority="high" src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
     <script src="../../src/js/general.js?t=3" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.0.5" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.0.5" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.0.6" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.0.6" type="text/javascript"></script>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
@@ -630,7 +630,7 @@ use JFStudio\Router;
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.5.6"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.6.6"></script>
 
     <script src="../../src/js/vue.js"></script>
 

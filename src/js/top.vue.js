@@ -1,4 +1,4 @@
-import { LastsignedwidgetViewer } from '../../src/js/lastsignedwidgetViewer.vue.js?v=1.0.5'   
+import { LastsignedwidgetViewer } from '../../src/js/lastsignedwidgetViewer.vue.js?v=1.0.6'   
 
 Vue.createApp({
     components : { 

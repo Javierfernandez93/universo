@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.0.5'   
+import { User } from '../../src/js/user.module.js?v=1.0.6'   
 
 const MembershipwidgetViewer = {
     name : 'membershipwidget-viewer',
