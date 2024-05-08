@@ -448,4 +448,20 @@ class UserReferral extends Orm {
       return $this->connection()->rows($sql);
     }
   }
+
+  public static function updateReferralId(int $user_login_id = null,int $referral_id = null)
+  {
+    $UserReferral = new self;
+    
+    $UserReferral->loadWhere('user_login_id = ?', $user_login_id);
+    
+    if(!$UserReferral->getId())
+    {
+      return false;
+    }
+
+    $UserReferral->referral_id  = $referral_id;
+
+    return $UserReferral->save();
+  }
 }

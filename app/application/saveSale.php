@@ -23,6 +23,7 @@ $data['property']['real_state_id'] = $data['real_state']['real_state_id'];
 $data['payment_property']['end_date'] = isset($data['payment_property']['end_date']) && !empty($data['payment_property']['end_date']) ? strtotime($data['payment_property']['end_date']) : 0;
 $data['payment_property']['start_date'] = isset($data['payment_property']['start_date']) && !empty($data['payment_property']['start_date']) ? strtotime($data['payment_property']['start_date']) : 0;
 $data['user']['new'] = filter_var($data['user']['new'],FILTER_VALIDATE_BOOLEAN);
+$data['seller']['new'] = filter_var($data['user']['new'],FILTER_VALIDATE_BOOLEAN);
 
 // saving seller
 if($data['seller']['new'])
@@ -52,7 +53,7 @@ if($data['seller']['new'])
             'user_support_id' => $data['seller']['user_support_id']
         ]
     ]);
-} 
+}
 
 // saving client
 if($data['user']['new'])
@@ -83,6 +84,8 @@ if($data['user']['new'])
             'user_support_id' => 0
         ]
     ]);
+} else {
+    Site\UserReferral::updateReferralId($data['user']['user_login_id'],$data['seller']['user_login_id']);
 }
 
 // saving property 

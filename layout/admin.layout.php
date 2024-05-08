@@ -610,7 +610,7 @@ use JFStudio\Router;
     <script src="../../src/js/plugins/smooth-scrollbar.min.js" type="text/javascript"></script>
     <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
-    <script src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
+    <script fetchpriority="high" src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
     <script src="../../src/js/general.js?t=3" type="text/javascript"></script>
     <script src="../../src/js/toastCtrl.js?v=1.0.5" type="text/javascript"></script>
     <script src="../../src/js/alertCtrl.js?v=1.0.5" type="text/javascript"></script>

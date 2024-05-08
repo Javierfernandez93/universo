@@ -87,14 +87,15 @@ const AdminaddpaymentViewer = {
                 return payment.names.toLowerCase().includes(this.query.toLowerCase()) 
             })
         },
-        getCatalogMonthFinances() {
-            this.busy = true
-            this.UserSupport.getCatalogMonthFinances({}, (response) => {
-                this.busy = false
-                if (response.s == 1) {
-                    this.catalogMonthFinances = response.catalogMonthFinances
+        async getCatalogMonthFinances() {
+            return new Promise((resolve) => {
 
-                    setTimeout(()=>{
+                this.busy = true
+                this.UserSupport.getCatalogMonthFinances({}, (response) => {
+                    this.busy = false
+                    if (response.s == 1) {
+                        this.catalogMonthFinances = response.catalogMonthFinances
+    
                         $('.selectpicker-catalogMonthFinances').selectpicker();
                         
                         $('.selectpicker-catalogMonthFinances').change(() =>{
@@ -107,8 +108,10 @@ const AdminaddpaymentViewer = {
 
                         $('.selectpicker-catalogMonthFinances').selectpicker('val', catalogMonthFinance.catalog_month_finance_id.toString());
                         $('.selectpicker-catalogMonthFinances').selectpicker('refresh');
-                    },100)
-                }
+                    }
+
+                    resolve()
+                })
             })
         },
         getCatalogPaymentTypes() {
@@ -141,7 +144,6 @@ const AdminaddpaymentViewer = {
 
                     setTimeout(()=>{
                         $('.selectpicker-sellers').selectpicker();
-                        
                         $('.selectpicker-sellers').change(() =>{
                             this.sale.seller.user_login_id = $('.selectpicker-sellers').val();
                         });
@@ -162,7 +164,6 @@ const AdminaddpaymentViewer = {
 
                     setTimeout(()=>{
                         $('.selectpicker-developers').selectpicker();
-                        
                         $('.selectpicker-developers').change(() =>{
                             this.sale.real_state_developer.real_state_developer_id = $('.selectpicker-developers').val();
                         });
@@ -182,7 +183,6 @@ const AdminaddpaymentViewer = {
 
                     setTimeout(()=>{
                         $('.selectpicker-realStates').selectpicker();
-                        
                         $('.selectpicker-realStates').change(() =>{
                             this.sale.real_state.real_state_id = $('.selectpicker-realStates').val();
                         });
@@ -235,7 +235,6 @@ const AdminaddpaymentViewer = {
 
                     setTimeout(()=>{
                         $('.selectpicker-catalogPromotions').selectpicker();
-                        
                         $('.selectpicker-catalogPromotions').change(() =>{
                             this.sale.property.catalog_promotion_id = $('.selectpicker-catalogPromotions').val();
                         });
@@ -279,16 +278,15 @@ const AdminaddpaymentViewer = {
                     this.usersAux = response.users
 
                     setTimeout(()=>{
-                        $('.selectpicker').selectpicker();
-                        
-                        $('.selectpicker').change(() =>{
+                        $('.selectpicker-users').selectpicker();
+                        $('.selectpicker-users').change(() =>{
                             this.sale.user.user_login_id = $('.selectpicker').val();
                         });
                         
                         const [user] = this.users
                         this.sale.user.user_login_id = user.user_login_id
-                        $('.selectpicker').selectpicker('val', user.user_login_id.toString());
-                        $('.selectpicker').selectpicker('refresh');
+                        $('.selectpicker-users').selectpicker('val', user.user_login_id.toString());
+                        $('.selectpicker-users').selectpicker('refresh');
                     },100)
                 }
             })
@@ -303,9 +301,13 @@ const AdminaddpaymentViewer = {
                     this.sale.user.user_login_id = response.payment_property.user_login_id
                     this.sale.property = response.property
                     this.sale.payment_property = response.payment_property
+                    this.sale.seller.user_login_id = response.seller.user_login_id
 
                     $('.selectpicker').selectpicker('val', this.sale.user.user_login_id.toString());
                     $('.selectpicker').selectpicker("refresh");
+                    
+                    $('.selectpicker-sellers').selectpicker('val', this.sale.seller.user_login_id.toString());
+                    $('.selectpicker-sellers').selectpicker("refresh");
 
                     $('.selectpicker-catalogPaymentTypes').selectpicker('val', this.sale.payment_property.catalog_payment_type_id.toString());
                     $('.selectpicker-catalogPaymentTypes').selectpicker('refresh');
@@ -313,7 +315,7 @@ const AdminaddpaymentViewer = {
             })
         }
     },
-    mounted() {
+    async mounted() {
         this.getUsers()
         this.getClients()
         this.getDevelopers()
@@ -322,12 +324,8 @@ const AdminaddpaymentViewer = {
 
         this.getCatalogPaymentTypes()
         this.getCatalogPromotion()
-        this.getCatalogMonthFinances()
-
-        setTimeout(()=>{
-            // $('#price').mask("#,##0.00", {reverse: true});
-        },500)
-
+        await this.getCatalogMonthFinances()
+        
         if(getParam("ppid"))
         {
             this.getPaymentPropertyForEdit(getParam("ppid"))
@@ -374,7 +372,7 @@ const AdminaddpaymentViewer = {
                                 <div v-show="!sale.user.new">
                                     <div v-if="users">
                                         <label>Elegir cliente</label>
-                                        <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
+                                        <select class="selectpicker selectpicker-users form-control" data-live-search="true" data-style="border shadow-none">
                                             <option v-for="user in users" :data-tokens="user.names" :data-content="user.names">{{ user.user_login_id }}</option>
                                         </select>
                                     </div>
@@ -425,8 +423,8 @@ const AdminaddpaymentViewer = {
                                 <div v-show="!sale.seller.new">
                                     <div v-if="sellers">
                                         <label>Elegir Asesor</label>
-                                        <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
-                                            <option v-for="user in sellers" :data-tokens="user.names" :data-content="user.names">{{ user.user_login_id }}</option>
+                                        <select class="selectpicker selectpicker-sellers form-control" data-live-search="true" data-style="border shadow-none">
+                                            <option v-for="seller in sellers" :data-tokens="seller.names" :data-content="seller.names">{{ seller.user_login_id }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -504,7 +502,7 @@ const AdminaddpaymentViewer = {
                         </div>
                         <div class="row align-items-center mb-3 align-items-center">
                             <div v-if="realStates" class="col-12 col-md">
-                                <label>Elegir proyecto</label>
+                                <label>Elegir desarrollo</label>
                                 <select class="selectpicker selectpicker-realStates form-control" data-live-search="true" data-style="border shadow-none">
                                     <option v-for="realState in realStates" :data-tokens="realState.title" :data-content="realState.title">{{ realState.real_state_id }}</option>
                                 </select>
@@ -517,7 +515,7 @@ const AdminaddpaymentViewer = {
                             </div>
                             <div v-show="sale.property.promotion" class="col-12 col-md">
                                 <div v-if="catalogPromotions">
-                                    <label>Elegir proyecto</label>
+                                    <label>Elegir</label>
                                     <select class="selectpicker selectpicker-catalogPromotions form-control" data-live-search="true" data-style="border shadow-none">
                                         <option v-for="catalogPromotion in catalogPromotions" :data-tokens="catalogPromotion.title" :data-content="catalogPromotion.title">{{ catalogPromotions.catalog_promotion_id }}</option>
                                     </select>

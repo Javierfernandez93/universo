@@ -27,6 +27,10 @@ $data['property']['extension_date'] = $data['property']['extension_date'] ? date
 $data['payment_property']['start_date'] = $data['payment_property']['start_date'] ? date("Y-m-d",$data['payment_property']['start_date']) : 0;
 $data['payment_property']['end_date'] = $data['payment_property']['end_date'] ? date("Y-m-d",$data['payment_property']['end_date']) : 0;
 
+$data['seller'] = [
+    'user_login_id' => (new Site\UserReferral)->findField("user_login_id = ?",$data['payment_property']['user_login_id'], 'referral_id'),
+];
+
 if(isset($data['d']))
 {
     d($data);
