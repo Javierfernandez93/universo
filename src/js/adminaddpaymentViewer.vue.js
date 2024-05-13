@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.6'   
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.6'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.6'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'   
+import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.7'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.7'   
 
 const AdminaddpaymentViewer = {
     components : {
@@ -89,21 +89,20 @@ const AdminaddpaymentViewer = {
         },
         async getCatalogMonthFinances() {
             return new Promise((resolve) => {
-
                 this.busy = true
-                this.UserSupport.getCatalogMonthFinances({}, (response) => {
+                this.UserSupport.getCatalogMonthFinances({},async (response) => {
                     this.busy = false
                     if (response.s == 1) {
                         this.catalogMonthFinances = response.catalogMonthFinances
-    
-                        $('.selectpicker-catalogMonthFinances').selectpicker();
                         
+                        await sleep(250)   
+
+                        $('.selectpicker-catalogMonthFinances').selectpicker();
                         $('.selectpicker-catalogMonthFinances').change(() =>{
                             this.sale.property.catalog_month_finance_id = $('.selectpicker-catalogMonthFinances').val();
                         });
 
                         const [catalogMonthFinance] = this.catalogMonthFinances
-                        
                         this.sale.property.catalog_month_finance_id = catalogMonthFinance.catalog_month_finance_id
 
                         $('.selectpicker-catalogMonthFinances').selectpicker('val', catalogMonthFinance.catalog_month_finance_id.toString());
@@ -116,83 +115,82 @@ const AdminaddpaymentViewer = {
         },
         getCatalogPaymentTypes() {
             this.busy = true
-            this.UserSupport.getCatalogPaymentTypes({}, (response) => {
+            this.UserSupport.getCatalogPaymentTypes({},async (response) => {
                 this.busy = false
                 if (response.s == 1) {
                     this.catalogPaymentTypes = response.catalogPaymentTypes
 
-                    setTimeout(()=>{
-                        $('.selectpicker-catalogPaymentTypes').selectpicker();
-                        
-                        $('.selectpicker-catalogPaymentTypes').change(() =>{
-                            this.sale.payment_property.catalog_payment_type_id = $('.selectpicker-catalogPaymentTypes').val();
-                        });
-                        
-                        const catalogPaymentType = this.catalogPaymentTypes[1]
-                        this.sale.payment_property.catalog_payment_type_id = catalogPaymentType.catalog_payment_type_id
+                    await sleep(250)   
 
-                        $('.selectpicker-catalogPaymentTypes').selectpicker('val', catalogPaymentType.catalog_payment_type_id.toString());
-                        $('.selectpicker-catalogPaymentTypes').selectpicker('refresh');
-                    },100)
+                    $('.selectpicker-catalogPaymentTypes').selectpicker();
+                    
+                    $('.selectpicker-catalogPaymentTypes').change(() =>{
+                        this.sale.payment_property.catalog_payment_type_id = $('.selectpicker-catalogPaymentTypes').val();
+                    });
+                    
+                    const catalogPaymentType = this.catalogPaymentTypes[1]
+                    this.sale.payment_property.catalog_payment_type_id = catalogPaymentType.catalog_payment_type_id
+
+                    $('.selectpicker-catalogPaymentTypes').selectpicker('val', catalogPaymentType.catalog_payment_type_id.toString());
+                    $('.selectpicker-catalogPaymentTypes').selectpicker('refresh');
                 }
             })
         },
         getUsers() {
-            this.UserSupport.getUsers({ catalog_user_type_id : 1 }, (response) => {
+            this.UserSupport.getUsers({ catalog_user_type_id : 1 },async (response) => {
                 if (response.s == 1) {
                     this.sellers = response.users
 
-                    setTimeout(()=>{
-                        $('.selectpicker-sellers').selectpicker();
-                        $('.selectpicker-sellers').change(() =>{
-                            this.sale.seller.user_login_id = $('.selectpicker-sellers').val();
-                        });
-                        
-                        const [user] = this.sellers
-                        this.sale.seller.user_login_id = user.user_login_id
+                    await sleep(250)   
 
-                        $('.selectpicker-sellers').selectpicker('val', user.user_login_id.toString());
-                        $('.selectpicker-sellers').selectpicker('refresh');
-                    },100)
+                    $('.selectpicker-sellers').selectpicker();
+                    $('.selectpicker-sellers').change(() =>{
+                        this.sale.seller.user_login_id = $('.selectpicker-sellers').val();
+                    });
+                    
+                    const [user] = this.sellers
+                    this.sale.seller.user_login_id = user.user_login_id
+
+                    $('.selectpicker-sellers').selectpicker('val', user.user_login_id.toString());
+                    $('.selectpicker-sellers').selectpicker('refresh');
                 }
             })
         },
         getDevelopers() {
-            this.UserSupport.getDevelopers({ catalog_user_type_id : 3 }, (response) => {
+            this.UserSupport.getDevelopers({ catalog_user_type_id : 3 }, async (response) => {
                 if (response.s == 1) {
                     this.developers = response.developers
 
-                    setTimeout(()=>{
-                        $('.selectpicker-developers').selectpicker();
-                        $('.selectpicker-developers').change(() =>{
-                            this.sale.real_state_developer.real_state_developer_id = $('.selectpicker-developers').val();
-                        });
-                        
-                        const [developer] = this.developers
-                        this.sale.real_state_developer.real_state_developer_id = developer.real_state_developer_id
-                        $('.selectpicker-developers').selectpicker('val', developer.real_state_developer_id.toString());
-                        $('.selectpicker-developers').selectpicker('refresh');
-                    },100)
+                    await sleep(250)   
+
+                    $('.selectpicker-developers').selectpicker();
+                    $('.selectpicker-developers').change(() =>{
+                        this.sale.real_state_developer.real_state_developer_id = $('.selectpicker-developers').val();
+                    });
+                    
+                    const [developer] = this.developers
+                    this.sale.real_state_developer.real_state_developer_id = developer.real_state_developer_id
+                    $('.selectpicker-developers').selectpicker('val', developer.real_state_developer_id.toString());
+                    $('.selectpicker-developers').selectpicker('refresh');
                 }
             })
         },
         getRealStates() {
-            this.UserSupport.getRealStates({ catalog_user_type_id : 3 }, (response) => {
+            this.UserSupport.getRealStates({ catalog_user_type_id : 3 }, async (response) => {
                 if (response.s == 1) {
                     this.realStates = response.realStates
 
-                    setTimeout(()=>{
-                        $('.selectpicker-realStates').selectpicker();
-                        $('.selectpicker-realStates').change(() =>{
-                            this.sale.real_state.real_state_id = $('.selectpicker-realStates').val();
-                        });
-                        
-                        const [realState] = this.realStates
-                        this.sale.real_state.real_state_id = realState.real_state_id
-                        $('.selectpicker-realStates').selectpicker('val', realState.real_state_id.toString());
-                        $('.selectpicker-realStates').selectpicker('refresh');
+                    await sleep(250)   
 
-                    },100)
+                    $('.selectpicker-realStates').selectpicker();
+                    $('.selectpicker-realStates').change(() =>{
+                        this.sale.real_state.real_state_id = $('.selectpicker-realStates').val();
+                    });
+                    
+                    const [realState] = this.realStates
+                    this.sale.real_state.real_state_id = realState.real_state_id
+                    $('.selectpicker-realStates').selectpicker('val', realState.real_state_id.toString());
+                    $('.selectpicker-realStates').selectpicker('refresh');
                 }
             })
         },
@@ -228,66 +226,66 @@ const AdminaddpaymentViewer = {
         },
         getCatalogPromotion() {
             this.busy = true
-            this.UserSupport.getCatalogPromotion({}, (response) => {
+            this.UserSupport.getCatalogPromotion({}, async (response) => {
                 this.busy = false
                 if (response.s == 1) {
                     this.catalogPromotions = response.catalogPromotions
 
-                    setTimeout(()=>{
-                        $('.selectpicker-catalogPromotions').selectpicker();
-                        $('.selectpicker-catalogPromotions').change(() =>{
-                            this.sale.property.catalog_promotion_id = $('.selectpicker-catalogPromotions').val();
-                        });
-                        
-                        const [catalogPromotion] = this.catalogPromotions
-                        this.sale.property.catalog_promotion_id = catalogPromotion.catalog_promotion_id;
-                        $('.selectpicker-catalogPromotions').selectpicker('val', catalogPromotion.catalog_promotion_id.toString());
-                        $('.selectpicker-catalogPromotions').selectpicker('refresh');
-                    },100)
+                    await sleep(250)   
+
+                    $('.selectpicker-catalogPromotions').selectpicker();
+                    $('.selectpicker-catalogPromotions').change(() =>{
+                        this.sale.property.catalog_promotion_id = $('.selectpicker-catalogPromotions').val();
+                    });
+                    
+                    const [catalogPromotion] = this.catalogPromotions
+                    this.sale.property.catalog_promotion_id = catalogPromotion.catalog_promotion_id;
+                    $('.selectpicker-catalogPromotions').selectpicker('val', catalogPromotion.catalog_promotion_id.toString());
+                    $('.selectpicker-catalogPromotions').selectpicker('refresh');
                 }
             })
         },
         getAdministrators() {
             this.busy = true
             this.administrators = null
-            this.UserSupport.getAdministrators({catalog_support_type_id:2},(response)=>{
+            this.UserSupport.getAdministrators({catalog_support_type_id:2}, async (response)=>{
                 this.busy = false
                 if(response.s == 1)
                 {
                     this.administrators = response.administrators
 
-                    setTimeout(()=>{
-                        $('.selectpicker-administrators').selectpicker();
-                        $('.selectpicker-administrators').change(() =>{
-                            this.sale.seller.user_support_id = $('.selectpicker-administrators').val();
-                        });
-                        
-                        const [administrator] = this.administrators
-                        this.sale.seller.user_support_id = administrator.user_support_id;
+                    await sleep(250)   
 
-                        $('.selectpicker-administrators').selectpicker('val', administrator.user_support_id.toString());
-                        $('.selectpicker-administrators').selectpicker('refresh');
-                    },100)
+                    $('.selectpicker-administrators').selectpicker();
+                    $('.selectpicker-administrators').change(() =>{
+                        this.sale.seller.user_support_id = $('.selectpicker-administrators').val();
+                    });
+                    
+                    const [administrator] = this.administrators
+                    this.sale.seller.user_support_id = administrator.user_support_id;
+
+                    $('.selectpicker-administrators').selectpicker('val', administrator.user_support_id.toString());
+                    $('.selectpicker-administrators').selectpicker('refresh');
                 }
             })
         },
         getClients() {
-            this.UserSupport.getUsers({ catalog_user_type_id : 3 }, (response) => {
+            this.UserSupport.getUsers({ catalog_user_type_id : 3 }, async (response) => {
                 if (response.s == 1) {
                     this.users = response.users
                     this.usersAux = response.users
 
-                    setTimeout(()=>{
-                        $('.selectpicker-users').selectpicker();
-                        $('.selectpicker-users').change(() =>{
-                            this.sale.user.user_login_id = $('.selectpicker').val();
-                        });
-                        
-                        const [user] = this.users
-                        this.sale.user.user_login_id = user.user_login_id
-                        $('.selectpicker-users').selectpicker('val', user.user_login_id.toString());
-                        $('.selectpicker-users').selectpicker('refresh');
-                    },100)
+                    await sleep(250)   
+
+                    $('.selectpicker-users').selectpicker();
+                    $('.selectpicker-users').change(() =>{
+                        this.sale.user.user_login_id = $('.selectpicker').val();
+                    });
+                    
+                    const [user] = this.users
+                    this.sale.user.user_login_id = user.user_login_id
+                    $('.selectpicker-users').selectpicker('val', user.user_login_id.toString());
+                    $('.selectpicker-users').selectpicker('refresh');
                 }
             })
         },
@@ -324,6 +322,7 @@ const AdminaddpaymentViewer = {
 
         this.getCatalogPaymentTypes()
         this.getCatalogPromotion()
+
         await this.getCatalogMonthFinances()
         
         if(getParam("ppid"))

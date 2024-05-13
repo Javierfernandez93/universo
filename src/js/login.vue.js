@@ -1,5 +1,5 @@
-import { LoginViewer } from '../../src/js/loginViewer.vue.js?v=1.0.6'   
-import { Translator } from '../../src/js/translator.module.js?v=1.0.6'   
+import { LoginViewer } from '../../src/js/loginViewer.vue.js?v=1.0.7'   
+import { Translator } from '../../src/js/translator.module.js?v=1.0.7'   
 
 Vue.createApp({
     components : { 

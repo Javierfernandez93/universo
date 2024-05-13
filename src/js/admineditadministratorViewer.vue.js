@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.6'
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.6'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.7'
 
 const AdmineditadministratorViewer = {
     components : {

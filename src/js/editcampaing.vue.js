@@ -1,6 +1,6 @@
 /* vue */
-import { EditcampaignViewer } from '../../src/js/editcampaignViewer.vue.js?v=1.0.6'
-import { CountryViewer } from '../../src/js/countryViewer.vue.js?v=1.0.6'
+import { EditcampaignViewer } from '../../src/js/editcampaignViewer.vue.js?v=1.0.7'
+import { CountryViewer } from '../../src/js/countryViewer.vue.js?v=1.0.7'
 
 Vue.createApp({
     components: {

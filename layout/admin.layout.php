@@ -10,11 +10,7 @@
         {{title}}
     </title>
 
-    <meta content="<?php
-
-use JFStudio\Router;
-
- echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" name="author" />
+    <meta content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" name="author" />
     <meta content="<?php echo Site\SystemVar::_getValue("description"); ?>" name="description" />
     <meta property="og:site_name" content="<?php echo Site\SystemVar::_getValue("company_name"); ?>">
     <meta property="og:title" content="<?php echo Site\SystemVar::_getValue("company_name"); ?> | <?php echo Site\SystemVar::_getValue("title"); ?>" />
@@ -35,11 +31,11 @@ use JFStudio\Router;
     <link rel="stylesheet" href="../../src/css/nucleo-svg.css" />
     <!-- CSS Files -->
     
-    <link id="pagestyle" href="../../src/css/soft-ui-dashboard-admin.css?v=1.0.6" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/soft-ui-dashboard-admin.css?v=1.0.7" rel="stylesheet" />
     
-    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.0.6" />
+    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.0.7" />
 
-    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.0.6" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.0.7" rel="stylesheet" />
     {{css_scripts}}
 </head>
 
@@ -263,7 +259,7 @@ use JFStudio\Router;
                 <?php if ($UserSupport->hasPermission('list_payments')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a data-bs-toggle="collapse" href="#payments" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminPayments,Router::AdminAddPayment])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
+                            <a data-bs-toggle="collapse" href="#payments" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminPayments,JFStudio\Router::AdminAddPayment])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
                             <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-list-check"></i></span>
                             <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::AdminPayments); ?></span>
                         </a>
@@ -606,31 +602,22 @@ use JFStudio\Router;
 
     <script src="../../src/js/core/bootstrap.bundle.min.js" type="text/javascript"></script>
     <!--   Core JS Files   -->
+    <script fetchpriority="high" src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
+    <script fetchpriority="high" src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
+
     <script src="../../src/js/plugins/perfect-scrollbar.min.js" type="text/javascript"></script>
     <script src="../../src/js/plugins/smooth-scrollbar.min.js" type="text/javascript"></script>
     <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
-    <script fetchpriority="high" src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
-    <script src="../../src/js/general.js?t=3" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.0.6" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.0.6" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.0.7" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.0.7" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.0.7" type="text/javascript"></script>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
-    
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
+
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.6.6"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.7.6"></script>
 
     <script src="../../src/js/vue.js"></script>
 

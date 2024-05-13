@@ -1,5 +1,5 @@
-import { UserSupport } from './userSupport.module.js?v=1.0.6'   
-import { LoaderViewer } from './loaderViewer.vue.js?v=1.0.6'   
+import { UserSupport } from './userSupport.module.js?v=1.0.7'   
+import { LoaderViewer } from './loaderViewer.vue.js?v=1.0.7'   
 
 const LoggsViewer = {
     components : {

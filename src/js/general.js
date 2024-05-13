@@ -1419,3 +1419,6 @@ const shuffle = (array) => {
   } 
   return array; 
 }; 
+
+
+const sleep = (ms) => new Promise((res) => setTimeout(res, ms));

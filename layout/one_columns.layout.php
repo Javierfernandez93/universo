@@ -23,7 +23,7 @@
         <link href="../../src/css/animate.css" rel="stylesheet" />
         
         <link href="<?php echo HCStudio\Connection::getMainPath();?>/src/css/general.css" rel="stylesheet" type="text/css">
-        <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet" />
+        <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
         {{css_scripts}}
     </head>
     <body>
