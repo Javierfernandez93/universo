@@ -13,6 +13,7 @@ class Api extends Curl {
     const EMAIL = 'carla.barrera@universodejade.com';
     const PASSWORD = 'C4rlaBarrera1@';
     const API_URL = "https://crmarka.com/api/";
+    const API_MONDAY_URL = "https://crmarka.com/api_monday/";
 
 	public static function getInstance()
     {
@@ -69,18 +70,21 @@ class Api extends Curl {
     }
 
 
-    public function getSales() {
-        $this->generateTokenAccess();
+    // post functions
+    public function requiredGeneral(array $data = null) {
+        
+        if($data['event'])
+        {
+            
+        }
+    }
 
-        try {
-            $this->curl->setHeader('Authorization', 'Bearer '.$this->token);
-            $result = $this->curl->post($this->getApiUrl('ventas/'));
-
-            $response = $result->getResponse(true);
-
-            return $response;
-        } catch (\Exception $e) {
-            return $e->getMessage();
+    // post functions
+    public function requiredApart(array $data = null) {
+        
+        if($data['event'])
+        {
+            
         }
     }
 }

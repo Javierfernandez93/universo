@@ -131,7 +131,7 @@ const AddleadViewer = {
                             type="text" class="form-control" placeholder="Email">
                     </div>
                     
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-xl-6 mb-3 d-none">
                         <label>Nombre de usuario</label>
                         <input 
                             v-model="user.user_account.landing"

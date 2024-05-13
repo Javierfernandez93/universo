@@ -194,7 +194,7 @@ const AddclientViewer = {
                             type="text" class="form-control" placeholder="Nacionalidad">
                     </div>
                     
-                    <div class="col-12 col-md-4 mb-3">
+                    <div class="col-12 col-md-4 mb-3 d-none">
                         <label>Nombre de usuario</label>
                         <input 
                             v-model="user.user_account.landing"
