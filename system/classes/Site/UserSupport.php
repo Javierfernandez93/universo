@@ -1248,7 +1248,7 @@ class UserSupport extends Orm {
       return false;
     }
     
-    return $this->connection()->row("SELECT
+    $user = $this->connection()->row("SELECT
       user_login.user_login_id,
       user_login.company_id,
       user_login.signup_date,
@@ -1258,8 +1258,6 @@ class UserSupport extends Orm {
       user_data.names,
       user_data.rfc,
       user_data.curp,
-      user_data.reference_1,
-      user_data.reference_2,
       user_data.nationality,
       user_contact.phone,
       user_address.address,
@@ -1295,6 +1293,10 @@ class UserSupport extends Orm {
       user_login.signup_date
     DESC
       ");
+
+    $user['user_references'] = (new UserReference)->findAll("user_login_id = ? AND status != ?",[$user_login_id,-1]);
+
+    return $user;
   }
   public function getUserEmail(int $user_login_id = null)
   {

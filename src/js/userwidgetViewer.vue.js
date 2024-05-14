@@ -90,18 +90,14 @@ const UserwidgetViewer = {
                             <span class="text-dark">{{user.curp}}</span>   
                         </div>
                     </li>
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between">
-                            <span class="text-secondary">Referencia 1</span> 
-                            <span class="text-dark">{{user.reference_1}}</span>   
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between">
-                            <span class="text-secondary">Referencia 2</span> 
-                            <span class="text-dark">{{user.reference_2}}</span>   
-                        </div>
-                    </li>
+                    <div v-if="user.user_references">
+                        <li v-for="(user_reference,index) in user.user_references" class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary">Referencia {{index+1}}</span> 
+                                <span class="text-dark">{{user_reference.names}} {{user_reference.last_name}}</span>   
+                            </div>
+                        </li>
+                    </div>
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between">
                             <span class="text-secondary">Dirección</span> 
