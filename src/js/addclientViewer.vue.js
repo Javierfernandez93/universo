@@ -41,6 +41,16 @@ const AddclientViewer = {
                     reference_1: null,
                     reference_2: null,
                 },
+                user_reference : [
+                    {
+                        name: null,
+                        last_name: null, 
+                    },
+                    {
+                        name: null,
+                        last_name: null,
+                    }
+                ],
                 user_account: {
                     landing: null,
                 },
@@ -305,22 +315,25 @@ const AddclientViewer = {
                 <div class="text-xs text-secondary mb-3">- Referencias personales</div>
 
                 <div class="row">
-                    <div class="col-12 col-md-6 mb-3">
-                        <label>Referencia 1</label>
-                        <input 
-                            v-model="user.user_data.reference_1"
-                            :class="user.user_data.reference_1 ? 'is-valid' : ''"
-                            @keydown.enter.exact.prevent="$refs.reference_2.focus()"
-                            ref="reference_1"
-                            type="text" class="form-control" placeholder="Nombre completo">
-                    </div>
-                    <div class="col-12 col-md-6 mb-3">
-                        <label>Referencia 2</label>
-                        <input 
-                            v-model="user.user_data.reference_2"
-                            :class="user.user_data.reference_2 ? 'is-valid' : ''"
-                            ref="reference_2"
-                            type="text" class="form-control" placeholder="Nombre completo">
+                    <div v-for="(user_reference,index) in user.user_reference" class="col-12 col-md-6 mb-3">
+                        <label>Referencia {{index+1}}</label>
+
+                        <div class="row">
+                            <div class="col-12 col-md">
+                                <input 
+                                    v-model="user_reference.names"
+                                    :class="user_reference.names ? 'is-valid' : ''"
+                                    @keydown.enter.exact.prevent="$refs.reference_2.focus()"
+                                    type="text" class="form-control" placeholder="Nombre completo">
+                            </div>
+                            <div class="col-12 col-md">
+                                <input 
+                                    v-model="user_reference.last_name"
+                                    :class="user_reference.last_name ? 'is-valid' : ''"
+                                    @keydown.enter.exact.prevent="$refs.reference_2.focus()"
+                                    type="text" class="form-control" placeholder="Apellido">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div v-if="sellers" class="row">

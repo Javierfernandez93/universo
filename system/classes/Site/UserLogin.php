@@ -534,6 +534,18 @@ class UserLogin extends Orm {
       $UserReferral->save();
     }
 
+    if(isset($data['user_reference']) && is_array($data['user_reference']))
+    {
+      foreach($data['user_reference'] as $user_reference)
+      {
+        $UserReference = new UserReference;
+        $user_reference['create_date'] = time();
+        $user_reference['user_login_id'] = $UserLogin->company_id;
+        $UserReference->loadArray($user_reference);
+        $UserReference->save();
+      }
+    }
+
     if(!$UserAccount->save())
     {
       return false;
