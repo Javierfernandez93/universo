@@ -8,16 +8,6 @@ if($UserSupport->_loaded === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-// $source = TO_ROOT . '/sitemap.xml';
-
-// $Api = Manivela\Api::getInstance();
-// $Api->test([
-// 	'name' => 'test',
-// 	'file' => new CURLFILE($source)
-// ]);
-
-// die;
-
 if($UserSupport->hasPermission('list_payments') === false) {
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }

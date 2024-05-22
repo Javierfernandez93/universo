@@ -1,4 +1,4 @@
-import { AdminrealstateViewer } from '../../src/js/adminrealstateViewer.vue.js?v=1.0.8'
+import { AdminrealstateViewer } from '../../src/js/adminrealstateViewer.vue.js?v=1.0.9'
 
 Vue.createApp({
     components: {

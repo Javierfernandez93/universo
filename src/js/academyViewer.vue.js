@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.0.8'   
+import { User } from '../../src/js/user.module.js?v=1.0.9'   
 
 const AcademyViewer = {
     name : 'academy-viewer',
