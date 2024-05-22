@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.7' 
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.8'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.8' 
  
 const AddclientViewer = {
     components : {
@@ -16,6 +16,7 @@ const AddclientViewer = {
             countries: {},
             user: {
                 user_login: {
+                    user_login_id: null,
                     password: null,
                     email: '',
                     nationality: 'Méxicano',
@@ -35,20 +36,31 @@ const AddclientViewer = {
                 },
                 user_data: {
                     names: null,
+                    last_name: null,
+                    sur_name: null,
+                    marital_status: 'single',
                     nationality: 'Méxicano',
+                    fiscal_status: 'business_activity',
                     rfc: '',
                     curp: '',
-                    reference_1: null,
-                    reference_2: null,
+                    birthdate: null,
+                    employment_status: 'employed',
+                    gender: 'male',
                 },
                 user_reference : [
                     {
                         name: null,
                         last_name: null, 
+                        sur_name : null,
+                        phone: null,
+                        email: '',
                     },
                     {
                         name: null,
                         last_name: null,
+                        sur_name : null,
+                        phone: null,
+                        email: '',
                     }
                 ],
                 user_account: {
@@ -148,12 +160,33 @@ const AddclientViewer = {
                 }
             })
         },
+        getUserToEdit() {
+            this.UserSupport.getUserToEdit({ user_login_id: this.user.user_login.user_login_id }, async (response) => {
+                if (response.s == 1) {
+                    this.user = {...this.user, ...response.user}
+
+                    await sleep(1000)
+
+                    console.log(this.user.user_referral.user_login_id)
+
+                    $(".selectpicker").val(this.user.user_referral.referral_id)
+                    $(".selectpicker").selectpicker("refresh")
+                }
+            })
+        },
     },
     mounted() {
         $(this.$refs.phone).mask('(00) 0000-0000');
 
         this.getCountries()
         this.getSellers()
+
+        if(getParam('ulid'))
+        {
+            this.user.user_login.user_login_id = getParam('ulid')
+
+            this.getUserToEdit()
+        }
     },
     template : `
         <div class="card">
@@ -163,7 +196,12 @@ const AddclientViewer = {
                         <BackViewer/>
                     </div>
                     <div class="col-12 col-xl"> 
-                        <div class="h5">Añadir cliente</div>
+                        <div class="h5">
+                            <span v-text="user.user_login.user_login_id  ? 'Editar' : 'Añadir'"></span>
+                            cliente
+                        </div>
+
+
                         <div class="text-xs text-secondary">(* Campos requeridos)</div>
                     </div>
                     <div class="col-12 col-md-auto"> 
@@ -176,14 +214,34 @@ const AddclientViewer = {
 
                 <div class="row">
                     <div class="col-12 col-md-4 mb-3">
-                        <label>Nombre completo *</label>
+                        <label>Nombre *</label>
                         <input 
                             :autofocus="true"
                             :class="user.user_data.names ? 'is-valid' : 'is-invalid'"
                             @keydown.enter.exact.prevent="$refs.email.focus()"
                             v-model="user.user_data.names"
                             ref="names"
-                            type="text" class="form-control" placeholder="Nombre completo">
+                            type="text" class="form-control" placeholder="Nombre">
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label>Apellido paterno *</label>
+                        <input
+                            :autofocus="true"
+                            :class="user.user_data.last_name ? 'is-valid' : 'is-invalid'"
+                            @keydown.enter.exact.prevent="$refs.sur_name.focus()"
+                            v-model="user.user_data.last_name"
+                            ref="last_name"
+                            type="text" class="form-control" placeholder="Apellido paterno">  
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label>Apellido materno *</label>
+                        <input
+                            :autofocus="true"
+                            :class="user.user_data.sur_name ? 'is-valid' : 'is-invalid'"
+                            @keydown.enter.exact.prevent="$refs.email.focus()"
+                            v-model="user.user_data.sur_name"
+                            ref="sur_name"
+                            type="text" class="form-control" placeholder="Apellido materno">  
                     </div>
                     <div class="col-12 col-md-4 mb-3">
                         <label>Correo *</label>
@@ -202,6 +260,43 @@ const AddclientViewer = {
                             @keydown.enter.exact.prevent="$refs.landing.focus()"
                             ref="nationality"
                             type="text" class="form-control" placeholder="Nacionalidad">
+                    </div>
+                    
+                    <div class="col-12 col-md-4 mb-3">
+                        <label>Genero</label>
+                        <select v-model="user.user_data.gender" class="form-control">
+                            <option value="male">Masculino</option>
+                            <option value="female">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label>Estado civil</label>
+                        <select v-model="user.user_data.marital_status" class="form-control">
+                            <option value="single">Soltero</option>
+                            <option value="married">Casado</option>
+                            <option value="divorced">Divorciado</option>
+                            <option value="widower">Viudo</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label>Estado civil</label>
+                        <select v-model="user.user_data.fiscal_status" class="form-control">
+                            <option value="business_activity">Actividad Empresarial</option>
+                            <option value="leasing">Arrendamiento</option>
+                            <option value="salaried">Asalariado</option>
+                            <option value="interests">Intereses</option>
+                            <option value="professional_services">Servicios profesionales</option>
+                            <option value="fiscal_incorporation">Incorporación Fiscal</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-4 mb-3">
+                        <label>Estado de trabajo</label>
+                        <select v-model="user.user_data.employment_status" class="form-control">
+                            <option value="employed">Empleado</option>
+                            <option value="unemployed">Desempleado</option>
+                            <option value="retired">Jubilado</option>
+                            <option value="student">Estudiante</option>
+                        </select>
                     </div>
                     
                     <div class="col-12 col-md-4 mb-3 d-none">
@@ -251,7 +346,7 @@ const AddclientViewer = {
                             ref="city"
                             type="text" class="form-control" placeholder="Ciudad">
                     </div>
-                    <div class="col-12 col-md-4 mb-3">
+                    <div class="col-12 col-md-3 mb-3">
                         <label>Estado</label>
                         <input 
                             v-model="user.user_address.state"
@@ -260,7 +355,7 @@ const AddclientViewer = {
                             ref="state"
                             type="text" class="form-control" placeholder="Estado">
                     </div>
-                    <div class="col-12 col-md-4 mb-3">
+                    <div class="col-12 col-md-3 mb-3">
                         <label>Colonia</label>
                         <input 
                             v-model="user.user_address.colony"
@@ -278,6 +373,15 @@ const AddclientViewer = {
                             @keydown.enter.exact.prevent="$refs.curp.focus()"
                             ref="curp"
                             type="text" class="form-control" placeholder="CURP">
+                    </div>
+                    <div class="col-12 col-md-3 mb-3">
+                        <label>Fecha de nacimiento</label>
+                        <input 
+                            v-model="user.user_data.birthdate"
+                            :class="user.user_data.birthdate ? 'is-valid' : 'is-invalid'"
+                            @keydown.enter.exact.prevent="$refs.rfc.focus()"
+                            ref="birthdate"
+                            type="date" class="form-control" placeholder="Fecha de nacimiento">
                     </div>
                     <div class="col-12 col-md-3 mb-3">
                         <label>RFC <span class="text-decoration-underline text-primary cursor-pointer" @click="showRFCInfo">(Info)</span></label>
@@ -315,23 +419,44 @@ const AddclientViewer = {
                 <div class="text-xs text-secondary mb-3">- Referencias personales</div>
 
                 <div class="row">
-                    <div v-for="(user_reference,index) in user.user_reference" class="col-12 col-md-6 mb-3">
-                        <label>Referencia {{index+1}}</label>
+                    <div v-for="(user_reference,index) in user.user_reference" class="col-12 mb-5">
+                        <div class="text-xs text-secondary mb-3">Referencia {{index+1}}</div>
 
                         <div class="row">
-                            <div class="col-12 col-md">
+                            <div class="col-12 mb-3 col-md-4">
+                                <label>Nombre completo</label>
                                 <input 
                                     v-model="user_reference.names"
                                     :class="user_reference.names ? 'is-valid' : ''"
-                                    @keydown.enter.exact.prevent="$refs.reference_2.focus()"
                                     type="text" class="form-control" placeholder="Nombre completo">
                             </div>
-                            <div class="col-12 col-md">
+                            <div class="col-12 mb-3 col-md-4">
+                                <label>Apellido paterno</label>
                                 <input 
                                     v-model="user_reference.last_name"
                                     :class="user_reference.last_name ? 'is-valid' : ''"
-                                    @keydown.enter.exact.prevent="$refs.reference_2.focus()"
                                     type="text" class="form-control" placeholder="Apellido">
+                            </div>
+                            <div class="col-12 mb-3 col-md-4">
+                                <label>Apellido materno</label>
+                                <input 
+                                    v-model="user_reference.sur_name"
+                                    :class="user_reference.sur_name ? 'is-valid' : ''"
+                                    type="text" class="form-control" placeholder="Apellido">
+                            </div>
+                            <div class="col-12 mb-3 col-md-6">
+                                <label>Teléfono</label>
+                                <input 
+                                    v-model="user_reference.phone"
+                                    :class="user_reference.phone ? 'is-valid' : ''"
+                                    type="text" class="form-control" placeholder="Teléfono">
+                            </div>
+                            <div class="col-12 mb-3 col-md-6">
+                                <label>Correo</label>
+                                <input 
+                                    v-model="user_reference.email"
+                                    :class="user_reference.email.isValidMail() ? 'is-valid' : 'is-invalid'"
+                                    type="text" class="form-control" placeholder="Correo">
                             </div>
                         </div>
                     </div>

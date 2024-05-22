@@ -1,5 +1,5 @@
 import { User } from './user.module.js?t=4'
-import { Translator } from '../../src/js/translator.module.js?v=1.0.7'   
+import { Translator } from '../../src/js/translator.module.js?v=1.0.8'   
 
 const LoginViewer = {
     name: 'login-viewer',

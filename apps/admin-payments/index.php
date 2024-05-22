@@ -1,12 +1,22 @@
-<?php define("TO_ROOT", "../..");
+<?php define("TO_ROOT", "../../");
 
-require_once TO_ROOT . "/system/core.php";
+require_once TO_ROOT . "system/core.php";
 
 $UserSupport = new Site\UserSupport;
 
 if($UserSupport->_loaded === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
+
+// $source = TO_ROOT . '/sitemap.xml';
+
+// $Api = Manivela\Api::getInstance();
+// $Api->test([
+// 	'name' => 'test',
+// 	'file' => new CURLFILE($source)
+// ]);
+
+// die;
 
 if($UserSupport->hasPermission('list_payments') === false) {
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');

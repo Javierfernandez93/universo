@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.0.7'   
+import { User } from '../../src/js/user.module.js?v=1.0.8'   
 
 const CountryViewer = {
     name : 'country-viewer',

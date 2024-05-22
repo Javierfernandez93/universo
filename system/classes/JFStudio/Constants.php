@@ -3,6 +3,7 @@
 namespace JFStudio;
 
 class Constants {
+    const ROOT = __DIR__."/../../";
     const DELETE = -1;
     const DISABLED = 0;
     const AVIABLE = 1;

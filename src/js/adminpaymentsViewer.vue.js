@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.7'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.8'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.8'
 
 const AdminpaymentsViewer = {
     components: {
@@ -180,6 +180,67 @@ const AdminpaymentsViewer = {
                 } 
             })
         },
+        findPayment(property) {
+            return new Promise((resolve,reject) => {
+                this.busy = true
+                this.UserSupport.findPayment({email:property.email,user_login_id:property.user_login_id,title:property.title}, (response) => {
+                    this.busy = false
+                    if (response.s == 1) {
+                        property.on_manivela = true
+                        toastInfo({
+                            message: `✅ Usuario encontrado ${response.user.Cliente}`
+                        })
+
+                        resolve(true)
+                    } else if(response.r == "NOT_PAYMENTS") {
+                        resolve(false)
+                    } else if(response.r == "NOT_USER") {
+                        toastInfo({
+                            message: `❌ Usuario no encontrado ${response.user.Cliente}`
+                        })
+
+                        reject()
+                    }
+                })
+            })
+        },
+        async validateIfExistBeforeSend(property) {
+            return new Promise(async (resolve) => {
+                await this.findPayment(property)
+    
+                if(property.on_manivela)
+                {
+                    resolve(true)
+                } else {
+                    resolve(false)
+                }
+            })
+        },
+        requiredApart(property) {
+            this.validateIfExistBeforeSend(property).then((exist) => {
+                if(!exist)
+                {
+                    this.busy = true
+
+                    this.UserSupport.requiredApart({
+                        user_login_id: property.user_login_id,
+                        property : {
+                            property_id: property.property_id,
+                            month_finance: property.month_finance,
+                            affiliation_name: property.affiliation_name,
+                            real_state: property.real_state
+                        }
+                    }, (response) => {
+                        this.busy = false
+                        if (response.s == 1) {
+                            toastInfo({
+                                message: `✅ Pago registrado en manivela`
+                            })
+                        }
+                    })
+                }
+            })
+        },
     },
     mounted() {
         this.getPaymentsProperties()
@@ -231,6 +292,9 @@ const AdminpaymentsViewer = {
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center opacity-7 text-center text-xs text-primary">
+                                        <th class="cursor-pointer text-uppercase">
+                                            Manivela
+                                        </th>
                                         <th @click="sortData(columns.names)" class="cursor-pointer text-uppercase">
                                             <span :class="columns.names.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
                                             Cliente
@@ -269,6 +333,11 @@ const AdminpaymentsViewer = {
                                 </thead>
                                 <tbody>
                                     <tr v-for="payment in payments" class="text-center text-sm fw-bold text-capitalize">
+                                        <td class="align-middle text-capitalize text-center">
+                                            <span v-if="payment.on_manivela" class="text-success">
+                                                <i class="bi bi-check-square-fill"></i>
+                                            </span>
+                                        </td>
                                         <td class="align-middle text-capitalize ">
                                             {{payment.names}} 
                                         </td>
@@ -303,6 +372,7 @@ const AdminpaymentsViewer = {
                                                         <button class="dropdown-item" @click="editPayment(payment.payment_property_id)">Editar</button>
                                                         <button class="dropdown-item" @click="setPaymentPropertyAs(payment.payment_property_id,-1)">Eliminar</button>
                                                         <button class="dropdown-item" @click="viewPayments(payment.property_id)">Ver pagos</button>
+                                                        <button class="dropdown-item" @click="requiredApart(payment)">Enviar a manivela</button>
                                                         <div v-for="catalogPaymentType in catalogPaymentTypes">
                                                             <button v-if="catalogPaymentType.catalog_payment_type_id != payment.catalog_payment_type_id" class="dropdown-item" @click="setPaymentPropertyTypeAs(payment.payment_property_id,catalogPaymentType.catalog_payment_type_id,catalogPaymentType.title)">{{catalogPaymentType.title}}</button>
                                                         </div>

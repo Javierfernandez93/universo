@@ -220,4 +220,20 @@ class Country extends Orm {
 
 		return false;
 	}
+	
+	public function getCountryCodeByCountry(string $country = null)
+	{
+		if (!isset($country)) 
+		{
+			return false;
+		}
+
+		return $this->connection()->field("SELECT 
+				{$this->tblName}.country_code
+			FROM 
+				{$this->tblName}
+			WHERE	
+				{$this->tblName}.country Like '%{$country}%'
+		");
+	}
 }

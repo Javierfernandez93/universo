@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'   
-import { LoaderViewer } from '../../src/js/loaderViewer.vue.js?v=1.0.7'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.7'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.8'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.8'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.8'   
 
 const AdminaddpaymentViewer = {
     components : {
@@ -45,7 +45,7 @@ const AdminaddpaymentViewer = {
                     real_state_developer_id : null,
                 },
                 real_state : {
-                    real_state_id : null,
+                    real_state_id : null, 
                 },
                 payment_property : {
                     payment_property_id : null,
@@ -309,6 +309,9 @@ const AdminaddpaymentViewer = {
 
                     $('.selectpicker-catalogPaymentTypes').selectpicker('val', this.sale.payment_property.catalog_payment_type_id.toString());
                     $('.selectpicker-catalogPaymentTypes').selectpicker('refresh');
+
+                    $('.selectpicker-catalogMonthFinances').selectpicker('val', this.sale.property.catalog_month_finance_id.toString());
+                    $('.selectpicker-catalogMonthFinances').selectpicker('refresh');
                 }
             })
         }

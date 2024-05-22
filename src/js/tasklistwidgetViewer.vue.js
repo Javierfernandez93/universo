@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.8'   
 
 const TasklistwidgetViewer = {
     emit : ['refresh'],
@@ -12,9 +12,10 @@ const TasklistwidgetViewer = {
         }
     },
     methods : {
-        show(user_login_id)
+        show(user_login_id,message)
         {
             this.feedback.user_login_id = user_login_id
+            this.feedback.message = message ? message : null
 
             $(this.$refs.offcanvasRight2).offcanvas('show')
         },

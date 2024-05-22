@@ -8,8 +8,23 @@ $UserSupport = new Site\UserSupport;
 
 if(!$UserSupport->logged)
 {
-    error(Constants::RESPONSES['INVALID_PERMISSION']);
+    unauthorized(Constants::RESPONSES['INVALID_PERMISSION']);
 }
+
+if(!$data['user_login_id'])
+{
+    error('USER_NOT_FOUND');
+}
+
+$user = $UserSupport->getUserToEdit($data['user_login_id']);
+
+if(!$user)
+{
+    error('USER_NOT_FOUND');
+}
+
+$date = new DateTime('now', new DateTimeZone('UTC'));
+
 
 $event = [
     'event' => [
@@ -21,38 +36,38 @@ $event = [
         'originalTriggerUuid' => '',
         'boardId' => 3273009894,
         'pulseId' => 6340883292,
-        'pulseName' => 'JOSE LUIS', // nombre del cliente
+        'pulseName' => $user['user_data']['names'], // nombre del cliente
         'groupId' => 'topics', 
         'groupName' => 'REGISTRO CLIENTES',
         'groupColor' => '#579bfc',
         'isTopGroup' => 1,
         'columnValues' => [
             'texto' => [
-                'value' => $data['real_state']['title'],
+                'value' => $data['real_state']['title'] ?? 'Zukum 2' // Nombre del proyecto,
             ],
             'n_meros' => [
-                'value' => 404,
+                'value' => 404, // ID de la propiedad
                 'unit' => ''
             ],
             'texto06' => [
-                'value' => 'BERNAL'
+                'value' => $user['user_data']['last_name'] // Apellido paterno
             ],
             'texto03' => [
-                'value' => 'SOTO'
+                'value' => $user['user_data']['sur_name'] // Apellido materno
             ],
             'texto7' => [
-                'value' => 'Guadalajara Jalisco'
+                'value' => $user['user_address']['city'] // Ciudad
             ],
             'fecha_1' => [
-                'date' => '1979-02-03',
+                'date' => $user['user_data']['birthdate'], // Fecha de nacimiento
                 'icon' => '',
                 'time' => '',
-                'changed_at' => '2024-03-27T15:21:34.848Z'
+                'changed_at' => $date->format('Y-m-d\TH:i:s.v\Z')
             ],
             'estado_1' => [
                 'label' => [
                     'index' => 1,
-                    'text' => $data['user']['gender'], // Hombre => Mujer
+                    'text' => Site\UserData::translateGender($user['user_data']['gender']), // Hombre => Mujer
                     'style' => [
                         'color' => '#579bfc',
                         'border' => '#4387e8',
@@ -63,26 +78,23 @@ $event = [
                 'post_id' => ''
             ],
             'texto5' => [
-                'value' => $data['user']['nationality']
+                'value' => $user['user_data']['nationality'] // Nacionalidad
             ],
             'texto3' => [
-                'value' => 'BESL790203HJCRTS03'
+                'value' => $user['user_data']['curp'] // CURP
             ],
             'archivo0' => [
                 'files' => [
-                    [
-                        'fileType' => 'ASSET',
-                        'assetId' => 1371608154,
-                        'name' => 'curp (36).pdf',
-                        'extension' => 'pdf',
-                        'isImage' => false
-                    ]
+                    Site\UserKyc::getFileByNameFullRouteAsFile([
+                        "user_login_id" => $user['user_login']['user_login_id'],
+                        "code" => "curp"
+                    ]), // CURP
                 ]
             ],
             'estado_14' => [
                 'label' => [
                     'index' => 0,
-                    'text' => 'Casado',
+                    'text' => Site\UserData::translateMaritalStatus($user['user_data']['marital_status']), // Estado civil
                     'style' => [
                         'color' => '#df2f4a',
                         'border' => '#ce3048',
@@ -93,26 +105,26 @@ $event = [
                 'post_id' => ''
             ],
             'texto4' => [
-                'value' => '2440 Don Pedro'
+                'value' => $user['user_address']['address'] // Domicilio
             ],
             'n_meros3' => [
-                'value' => 0,
+                'value' => 0, // n´mero exterior
                 'unit' => ''
             ],
             'texto713' => [
-                'value' => 'empleado'
+                'value' => Site\UserData::translateEmploymentStatus($user['user_data']['employment_status']) // Ocupación
             ],
             'correo_electr_nico' => [
-                'email' => $data['user']['email'],
-                'text' => $data['user']['email']
+                'email' => $user['user_login']['email'],
+                'text' => $user['user_login']['email']
             ],
             'tel_fono' => [
-                'phone' => '13106256620'
+                'phone' => $user['user_contact']['phone'] // Teléfono
             ],
             'estado_10' => [
                 'label' => [
                     'index' => 1,
-                    'text' => 'Sociedad legal',
+                    'text' => Site\UserData::translateFisicalStatus($user['user_data']['fiscal_status']), // Tipo de persona
                     'style' => [
                         'color' => '#df2f4a',
                         'border' => '#ce3048',
@@ -124,13 +136,10 @@ $event = [
             ],
             'archivo09' => [
                 'files' => [
-                    [
-                        'fileType' => 'ASSET',
-                        'assetId' => 1371636798,
-                        'name' => 'WhatsApp Image 2024-03-25 at 1.00.05 PM.jpeg',
-                        'extension' => 'jpeg',
-                        'isImage' => true
-                    ]
+                    Site\UserKyc::getFileByNameFullRouteAsFile([
+                        "user_login_id" => $user['user_login']['user_login_id'],
+                        "code" => "marriage_certificate"
+                    ])
                 ]
             ],
             'estado_13' => [
@@ -148,38 +157,29 @@ $event = [
             ],
             'archivo' => [
                 'files' => [
-                    [
-                        'fileType' => 'ASSET',
-                        'assetId' => 1371639534,
-                        'name' => 'WhatsApp Image 2024-03-16 at 6.16.43 PM.jpeg',
-                        'extension' => 'jpeg',
-                        'isImage' => true
-                    ]
+                    Site\UserKyc::getFileByNameFullRouteAsFile([
+                        "user_login_id" => $user['user_login']['user_login_id'],
+                        "code" => "rfc"
+                    ]),
                 ]
             ],
             'texto72' => [
-                'value' => 'g26059816'
+                'value' => $user['user_data']['identification_number']
             ],
             'archivo7' => [
                 'files' => [
-                    [
-                        'fileType' => 'ASSET',
-                        'assetId' => 1371648262,
-                        'name' => 'WhatsApp Image 2024-03-25 at 3.07.17 PM.jpeg',
-                        'extension' => 'jpeg',
-                        'isImage' => true
-                    ]
+                    Site\UserKyc::getFileByNameFullRouteAsFile([
+                        "user_login_id" => $user['user_login']['user_login_id'],
+                        "code" => "id_full"
+                    ]), // identificación completa
                 ]
             ],
             'archivo4' => [
                 'files' => [
-                    [
-                        'fileType' => 'ASSET',
-                        'assetId' => 1371650206,
-                        'name' => 'WhatsApp Image 2024-03-25 at 3.07.18 PM.jpeg',
-                        'extension' => 'jpeg',
-                        'isImage' => true
-                    ]
+                    Site\UserKyc::getFileByNameFullRouteAsFile([
+                        "user_login_id" => $user['user_login']['user_login_id'],
+                        "code" => "proof_of_address"
+                    ]), // comprobante domicilio
                 ]
             ],
             'n_meros4' => [
@@ -187,46 +187,46 @@ $event = [
                 'unit' => ''
             ],
             'texto39' => [
-                'value' => 'CERES'
+                'value' => $user['user_address']['city'] // Ciudad
             ],
             'texto45' => [
-                'value' => 'CERES'
+                'value' => $user['user_address']['city'] // Municipio
             ],
             'texto71' => [
-                'value' => 'california'
+                'value' => $user['user_address']['state']// Estado
             ],
             'pa_s' => [
-                'countryCode' => 'US',
-                'countryName' => 'United States',
+                'countryCode' => Site\UserAddress::getCountryCodeByCountry($user['user_address']['country']), // @Todo
+                'countryName' => $user['user_address']['country'], // País
                 'changed_at' => '2024-03-27T15:21:35.110Z'
             ],
             'texto1' => [
-                'value' => 'Nadia bernal'
+                'value' => $user['user_reference'] ? $user['user_reference'][0]['names'] . ' ' . $user['user_reference'][0]['last_name'] . ' ' . $user['user_reference'][0]['sur_name'] : "",// Nombre completo
             ],
             'tel_fono0' => [
-                'phone' => '14242074040'
+                'phone' =>  $user['user_reference'] ? $user['user_reference'][0]['phone'] : "", // Teléfono
             ],
             'correo_electr_nico_1' => [
-                'email' => 'nbernal693@gmail.com',
-                'text' => 'nbernal693@gmail.com'
+                'email' => $user['user_reference'] ? $user['user_reference'][0]['email'] : "", // Email
+                'text' => $user['user_reference'] ? $user['user_reference'][0]['email'] : ""   // Texto
             ],
             'texto31' => [
-                'value' => 'Luis David Bernal'
+                'value' =>  $user['user_reference'] ? $user['user_reference'][0]['names'] . ' ' . $user['user_reference'][0]['last_name'] . ' ' . $user['user_reference'][0]['sur_name'] : "", // Nombre completo
             ],
             'tel_fono8' => [
-                'phone' => '12094108261'
+                'phone' =>  $user['user_reference'] ? $user['user_reference'][1]['phone'] : "", // Teléfono 
             ],
             'correo_electr_nico_16' => [
-                'email' => 'dbernal990@gmail.com',
-                'text' => 'dbernal990@gmail.com'
+                'email' =>  $user['user_reference'] ? $user['user_reference'][1]['email'] : "", // Email
+                'text' =>  $user['user_reference'] ? $user['user_reference'][1]['email'] : "" // Texto
             ]
         ],
         'triggerUuid' => '565b84e3ae3e3390c1544d4aeed35539'
     ]
 ];
 
+d($event);
 $Api = Manivela\Api::getInstance();
-
 $response = $Api->requiredGeneral($event);
 
 if(!$response)
@@ -234,4 +234,6 @@ if(!$response)
     error('DATA_NOT_FOUND');
 }
 
-success(Constants::RESPONSES['DATA_OK'], $response);
+success(Constants::RESPONSES['DATA_OK'], [
+    $response => $response
+]);

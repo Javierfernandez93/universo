@@ -69,10 +69,10 @@
     <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
     
-    <script src="../../src/js/constants.js?v=1.0.7" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.0.7" type="text/javascript"></script>
+    <script src="../../src/js/constants.js?v=1.0.8" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.0.8" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.5.1.min.js" type="text/javascript"></script>
-    <script src="../../src/js/general.js?v=1.0.7" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.0.8" type="text/javascript"></script>
     <!-- Github buttons -->
     
     <script>
@@ -88,9 +88,9 @@
 
     <!-- Github buttons -->
     <script src="../../src/js/buttons.js" type="text/javascript"></script>
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.8"></script>
     
-    <script src="../../src/js/vue.js?v=1.0.7" type="text/javascript"></script>
+    <script src="../../src/js/vue.js?v=1.0.8" type="text/javascript"></script>
 
     {{js_scripts}}
     {{css_scripts}}

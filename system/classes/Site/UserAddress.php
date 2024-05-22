@@ -4,6 +4,8 @@ namespace Site;
 
 use HCStudio\Orm;
 
+use World\Country;
+
 class UserAddress extends Orm {
   protected $tblName  = 'user_address';
 
@@ -51,4 +53,16 @@ class UserAddress extends Orm {
 
 		return false;
 	}
+
+  public static function getCountryCodeByCountry(string $country = null)
+  {
+    if(!isset($country))
+    {
+      return false;
+    }
+
+    $Country = new Country;
+
+    return $Country->getCountryCodeByCountry($country);
+  }
 }

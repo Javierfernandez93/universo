@@ -1167,6 +1167,7 @@ class UserSupport extends Orm {
       user_login.company_id,
       user_login.email,
       user_account.image,
+      user_account.on_manivela,
       user_data.names,
       user_address.country_id,
       user_contact.phone,
@@ -1513,7 +1514,7 @@ class UserSupport extends Orm {
       return $catalog_kyc;
     },$user['user_kyc']);
 
-    $user['user_feedback'] = (new UserFeedback)->findAll("user_login_id = ? AND status != ?",[$user_login_id,-1]);
+    $user['user_feedback'] = (new UserFeedback)->allByOrdered("user_login_id = ? AND status != ?",[$user_login_id,-1]);
 
     return $user;
   }
@@ -1619,5 +1620,44 @@ class UserSupport extends Orm {
     $UserSupportNew->create_date = time();
     
     return $UserSupportNew->save() ? $UserSupportNew->getId() : false;
+  }
+
+  public function getUserToEdit(int $user_login_id = null) : array
+  {
+
+    if(!$this->logged)
+    {
+      return false;
+    }
+
+    if(!$user_login_id)
+    {
+      return false;
+    }
+
+    $user = [];
+
+    $UserLogin = new UserLogin(false,false);
+    $user['user_login'] = $UserLogin->findRow("user_login_id = ?",$user_login_id);
+    
+    $UserData = new UserData;
+    $user['user_data'] = $UserData->findRow("user_login_id = ?",$user_login_id);
+    
+    $UserAddress = new UserAddress;
+    $user['user_address'] = $UserAddress->findRow("user_login_id = ?",$user_login_id);
+    
+    $UserContact = new UserContact;
+    $user['user_contact'] = $UserContact->findRow("user_login_id = ?",$user_login_id);
+    
+    $UserReferral = new UserReferral;
+    $user['user_referral'] = $UserReferral->findRow("user_login_id = ?",$user_login_id);
+    
+    $UserAccount = new UserAccount;
+    $user['user_account'] = $UserAccount->findRow("user_login_id = ?",$user_login_id);
+    
+    $UserReference = new UserReference;
+    $user['user_reference'] = $UserReference->findAll("user_login_id = ? AND status = 1",$user_login_id);
+
+    return $user;
   }
 }

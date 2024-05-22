@@ -19,4 +19,4 @@ const LoaderViewer = {
     `,
 }
 
-export { LoaderViewer } 
+export default LoaderViewer

@@ -9,7 +9,7 @@ $UserSupport = new Site\UserSupport;
 if(!$UserSupport->logged)
 {
     if (!isset($_SERVER['PHP_AUTH_USER'])) {
-        unauthorized("NO_USER_AUTHENTICATION_SENT");
+        unauthorized(Constants::RESPONSES['INVALID_PERMISSION']);
     }
     
     if (!isset($_SERVER['PHP_AUTH_PW'])) {

@@ -31,15 +31,16 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
+            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
-            'Phpml\\' => 6,
             'PhpOption\\' => 10,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
+            'Monolog\\' => 8,
             'Matrix\\' => 7,
         ),
         'G' => 
@@ -52,7 +53,6 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
         ),
         'C' => 
         array (
-            'Curl\\' => 5,
             'Complex\\' => 8,
         ),
     );
@@ -82,6 +82,10 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
@@ -90,10 +94,6 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
         'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
-        ),
-        'Phpml\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-ai/php-ml/src',
         ),
         'PhpOption\\' => 
         array (
@@ -107,6 +107,10 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
@@ -118,10 +122,6 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
-        ),
-        'Curl\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
         ),
         'Complex\\' => 
         array (
@@ -135,6 +135,13 @@ class ComposerStaticInitedacdef1aab20a4660a295e080fdf993
             'HTMLPurifier' => 
             array (
                 0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
+            ),
+        ),
+        'C' => 
+        array (
+            'Curl' => 
+            array (
+                0 => __DIR__ . '/..' . '/curl/curl/src',
             ),
         ),
     );

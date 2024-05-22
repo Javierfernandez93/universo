@@ -1,4 +1,4 @@
-import { Http } from '../../src/js/http.module.js?v=1.0.7';
+import { Http } from '../../src/js/http.module.js?v=1.0.8';
 
 class UserSupport extends Http {
     constructor() {
@@ -698,9 +698,6 @@ class UserSupport extends Http {
     getCatalogPromotion(data, callback) {
         return this.call('../../app/application/getCatalogPromotion.php', data, callback);
     }
-    getManivelaSales(data, callback) {
-        return this.call('../../app/application/getManivelaSales.php', data, callback);
-    }
     importUserDataFromService(data, callback) {
         return this.call('../../app/application/importUserDataFromService.php', data, callback);
     }
@@ -712,6 +709,25 @@ class UserSupport extends Http {
     }
     setPaymentPropertyTypeAs(data, callback) {
         return this.call('../../app/application/setPaymentPropertyTypeAs.php', data, callback);
+    }
+    getUserToEdit(data, callback) {
+        return this.call('../../app/application/getUserToEdit.php', data, callback);
+    }
+    /* manivela */
+    getManivelaSales(data, callback) {
+        return this.call('../../app/application/manivela/getSales.php', data, callback);
+    }
+    findUser(data, callback) {
+        return this.call('../../app/application/manivela/findUser.php', data, callback);
+    }
+    requiredGeneral(data, callback) {
+        return this.call('../../app/api/manivela/requiredGeneral.php', data, callback);
+    }
+    requiredApart(data, callback) {
+        return this.call('../../app/api/manivela/requiredApart.php', data, callback);
+    }
+    findPayment(data, callback) {
+        return this.call('../../app/application/manivela/findPayment.php', data, callback);
     }
 }
 

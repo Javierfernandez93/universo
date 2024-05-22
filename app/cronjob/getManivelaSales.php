@@ -15,10 +15,6 @@ if(!$sales)
     error('NOT_SALES');
 }
 
-(new Site\UserLogin)->truncate();
-(new Site\RealState)->truncate();
-(new Site\Property)->truncate();
-
 foreach($sales as $key => $sale)
 {
     $data['user'] = [

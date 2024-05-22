@@ -10,6 +10,19 @@ class PaymentProperty extends Orm {
     public function __construct() {
         parent::__construct();
     }
+
+    public static function setOnManivela(int $payment_property_id = null) {
+        if(!$payment_property_id)
+        {
+            return false;
+        }
+
+        $PaymentProperty = new self;
+        $PaymentProperty->loadWhere('payment_property_id = ?',$payment_property_id);
+        $PaymentProperty->on_manivela = true;
+
+        return $PaymentProperty->save();
+    }
    
     public static function safeAdd(array $data = null)
     {
@@ -97,11 +110,15 @@ class PaymentProperty extends Orm {
                 {$this->tblName}.{$this->tblName}_id,
                 {$this->tblName}.user_login_id,
                 {$this->tblName}.status,
+                {$this->tblName}.on_manivela,
                 {$this->tblName}.property_id,
                 property.title,
                 property.price,
+                catalog_month_finance.title as month_finance,
+                property.catalog_month_finance_id,
                 real_state.title as real_state,
                 user_data.names,
+                user_login.email,
                 user_support.names as support_name,
                 user_referral.referral_id,
                 catalog_payment_type.catalog_payment_type_id,
@@ -124,9 +141,17 @@ class PaymentProperty extends Orm {
             ON 
                 user_data.user_login_id = {$this->tblName}.user_login_id
             LEFT JOIN 
+                user_login 
+            ON 
+                user_login.user_login_id = {$this->tblName}.user_login_id
+            LEFT JOIN 
                 catalog_payment_type 
             ON 
                 catalog_payment_type.catalog_payment_type_id = {$this->tblName}.catalog_payment_type_id
+            LEFT JOIN 
+                catalog_month_finance 
+            ON 
+                catalog_month_finance.catalog_month_finance_id = property.catalog_month_finance_id
             LEFT JOIN 
                 user_referral 
             ON 

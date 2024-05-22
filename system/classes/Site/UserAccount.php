@@ -14,6 +14,30 @@ class UserAccount extends Orm {
     parent::__construct();
   }
   
+  public static function setOnManivela(int $user_login_id = null) : bool
+  {
+    if(!isset($user_login_id))
+    {
+      return false;
+    }
+
+    $UserAccount = new self;
+    
+    if(!$UserAccount->loadWhere('user_login_id = ?',$user_login_id)) 
+    {
+      return false;
+    }
+
+    if($UserAccount->on_manivela)
+    {
+      return true;
+    }
+    
+    $UserAccount->on_manivela = 1;
+
+    return $UserAccount->save();
+  }
+
   public function getTimeZone(int $user_login_id = null) 
   {
     if(isset($user_login_id) === true)

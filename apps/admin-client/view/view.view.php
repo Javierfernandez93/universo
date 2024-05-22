@@ -1,5 +1,5 @@
 <div class="container-fluid py-4" id="app">
-    <userwidget-viewer type="clientes"></userwidget-viewer>
+    <userwidget-viewer type="cliente"></userwidget-viewer>
     
     <client-viewer ref="client" @show="show"></client-viewer>
 

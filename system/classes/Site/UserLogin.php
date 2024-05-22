@@ -458,18 +458,31 @@ class UserLogin extends Orm {
   public function doSignup(array $data = null) 
   {
     $UserLogin = new UserLogin(false,false);
+
+    if(isset($data['user_login']['user_login_id']) && $data['user_login']['user_login_id'] > 0)
+    {
+      $UserLogin->loadWhere("user_login_id = ?",$data['user_login']['user_login_id']);
+    }
+
     $UserLogin->email = strtolower(Util::sanitizeString(trim($data['user_login']['email'])));
-    $UserLogin->catalog_user_type_id = isset($data['user_login']['catalog_user_type_id']) ? $data['user_login']['catalog_user_type_id'] : CatalogUserType::SELLER;
-    $UserLogin->password = sha1($data['user_login']['password']);
-    $UserLogin->signup_date = time();
-    $UserLogin->verified_mail = self::VERIFIED_MAIL;
+
+    if($data['user_login']['user_login_id'])
+    {
+      $UserLogin->catalog_user_type_id = isset($data['user_login']['catalog_user_type_id']) ? $data['user_login']['catalog_user_type_id'] : CatalogUserType::SELLER;
+      $UserLogin->password = sha1($data['user_login']['password']);
+      $UserLogin->signup_date = time();
+      $UserLogin->verified_mail = self::VERIFIED_MAIL;
+    }
     
     if(!$UserLogin->save())
     {
       return false;
     }
 
-    $UserLogin->company_id = $UserLogin->getId();
+    if($data['user_login']['user_login_id'])
+    {
+      $UserLogin->company_id = $UserLogin->getId();
+    } 
     
     if(!$UserLogin->save())
     {
@@ -477,15 +490,29 @@ class UserLogin extends Orm {
     }
 
     $UserData = new UserData;
+
+    if($data['user_data']['user_data_id'])
+    {
+      $UserData->loadWhere('user_data_id = ?',$data['user_data']['user_data_id']);
+    }
+    
     $UserData->user_login_id = $UserLogin->company_id;
     $UserData->names = ucfirst(strtolower(trim($data['user_data']['names'])));
-    $UserData->sur_name = isset($data['user_data']['sur_name']) ? ucfirst(strtolower(trim($data['user_data']['sur_name']))) : '';
     $UserData->last_name = isset($data['user_data']['last_name']) ? ucfirst(strtolower(trim($data['user_data']['last_name']))) : '';
+    $UserData->sur_name = isset($data['user_data']['sur_name']) ? ucfirst(strtolower(trim($data['user_data']['sur_name']))) : '';
     $UserData->nationality = isset($data['user_data']['nationality']) ? $data['user_data']['nationality'] : '';
     $UserData->curp = isset($data['user_data']['curp']) ? $data['user_data']['curp'] : '';
     $UserData->rfc = isset($data['user_data']['rfc']) ? $data['user_data']['rfc'] : '';
-    $UserData->reference_1 = isset($data['user_data']['reference_1']) ? $data['user_data']['reference_1'] : '';
-    $UserData->reference_2 = isset($data['user_data']['reference_2']) ? $data['user_data']['reference_2'] : '';
+    $UserData->employment_status = isset($data['user_data']['employment_status']) ? $data['user_data']['employment_status'] : '';
+    $UserData->birthdate = isset($data['user_data']['birthdate']) ? $data['user_data']['birthdate'] : '';
+    $UserData->marital_status = isset($data['user_data']['marital_status']) ? $data['user_data']['marital_status'] : '';
+    $UserData->fiscal_status = isset($data['user_data']['fiscal_status']) ? $data['user_data']['fiscal_status'] : '';
+    $UserData->gender = isset($data['user_data']['gender']) ? $data['user_data']['gender'] : '';
+    $UserData->employment_status = isset($data['user_data']['employment_status']) ? $data['user_data']['employment_status'] : '';
+
+    // @ deprecated
+    // $UserData->reference_1 = isset($data['user_data']['reference_1']) ? $data['user_data']['reference_1'] : '';
+    // $UserData->reference_2 = isset($data['user_data']['reference_2']) ? $data['user_data']['reference_2'] : '';
     
     if(!$UserData->save())
     {
@@ -493,21 +520,34 @@ class UserLogin extends Orm {
     }
       
     $UserContact = new UserContact;
-    $UserContact->user_login_id = $UserLogin->company_id;
-    $UserContact->phone = isset($data['phone']) ? $data['user_contact']['phone'] : '';
+
+    if($data['user_contact']['user_contact_id'])
+    {
+      $UserContact->loadWhere('user_contact_id = ?',$data['user_contact']['user_contact_id']);
+    }
     
+    $UserContact->user_login_id = $UserLogin->company_id;
+    $UserContact->phone = isset($data['user_contact']['phone']) ? Util::getNumbers($data['user_contact']['phone']) : ''; 
+
     if(!$UserContact->save())
     {
       return false;
     }
 
     $UserAddress = new UserAddress;
+
+    if($data['user_address']['user_address_id'])
+    {
+      $UserAddress->loadWhere('user_address_id = ?',$data['user_address']['user_address_id']);
+    }
+    
     $UserAddress->user_login_id = $UserLogin->company_id;
-    $UserAddress->address = isset($data['user_address']['user_data']['address']) ? $data['user_address']['user_data']['address'] : '';
+    $UserAddress->address = isset($data['user_address']['address']) ? $data['user_address']['address'] : '';
+    $UserAddress->external_number = isset($data['user_address']['external_number']) ? $data['user_address']['external_number'] : '';
     $UserAddress->colony = isset($data['user_address']['colony']) ? $data['user_address']['colony'] : '';
     $UserAddress->city = isset($data['user_address']['city']) ? $data['user_address']['city'] : '';
     $UserAddress->state = isset($data['user_address']['state']) ? $data['user_address']['state'] : '';
-    $UserAddress->country = isset($data['user_address']['country']) ? $data['user_address']['country'] : '';
+    $UserAddress->country = isset($data['user_address']['country']) ? $data['user_address']['country'] : 'México';
     $UserAddress->zip_code = isset($data['user_address']['zip_code']) ? $data['user_address']['zip_code'] : '';
     $UserAddress->external_number = isset($data['user_address']['external_number']) ? $data['user_address']['external_number'] : '';
     $UserAddress->country_id = isset($data['user_address']['country_id']) && !empty($data['user_address']['country_id']) ? $data['user_address']['country_id'] : 0;
@@ -518,19 +558,36 @@ class UserLogin extends Orm {
     }
 
     $UserAccount = new UserAccount;
+
+    if($data['user_account']['user_account_id'])
+    {
+      $UserAccount->loadWhere('user_login_id = ?',$data['user_account']['user_account_id']);
+    }
+    
     $UserAccount->user_login_id = $UserLogin->company_id;
     $UserAccount->landing = isset($data['user_account']['landing']) ? $data['user_account']['landing'] : '';
     $UserAccount->image = UserAccount::DEFAULT_IMAGE;
+    if(!$UserAccount->save())
+    {
+      return false;
+    }
 
     if(isset($data['user_referral']))
     {
       $UserReferral = new UserReferral;
+
+      if($data['user_referral']['user_referral_id'])
+      {
+        $UserReferral->loadWhere('user_referral_id = ?',$data['user_referral']['user_referral_id']);
+      }
+
       $UserReferral->referral_id = isset($data['user_referral']['user_login_id']) && !empty($data['user_referral']['user_login_id']) ? $data['user_referral']['user_login_id'] : 1;
       $UserReferral->user_support_id = isset($data['user_referral']['user_support_id']) && !empty($data['user_referral']['user_support_id']) ? $data['user_referral']['user_support_id'] : 1;
       $UserReferral->user_login_id = $UserLogin->company_id;
       $UserReferral->catalog_level_id = 0;
       $UserReferral->status = UserReferral::ACTIVE;
       $UserReferral->create_date = time();
+
       $UserReferral->save();
     }
 
@@ -539,16 +596,17 @@ class UserLogin extends Orm {
       foreach($data['user_reference'] as $user_reference)
       {
         $UserReference = new UserReference;
+
+        if($user_reference['user_reference_id'])
+        {
+          $UserReference->loadWhere('user_reference_id = ?',$user_reference['user_reference_id']);
+        }
+
         $user_reference['create_date'] = time();
         $user_reference['user_login_id'] = $UserLogin->company_id;
         $UserReference->loadArray($user_reference);
         $UserReference->save();
       }
-    }
-
-    if(!$UserAccount->save())
-    {
-      return false;
     }
     
     return $UserLogin->company_id;

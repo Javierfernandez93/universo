@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.8'   
 
 const ClientlistViewer = {
     name : 'clientlist-viewer',
@@ -10,6 +10,7 @@ const ClientlistViewer = {
             busy: false,
             usersAux: null,
             query: null,
+            user_login_id: null,
             columns: { // 0 DESC , 1 ASC 
                 company_id: {
                     name: 'company_id',
@@ -84,24 +85,81 @@ const ClientlistViewer = {
         viewDetail(company_id) {
             window.location.href = `../../apps/admin-client/view.php?ulid=${company_id}`
         },
-        getClients(user_login_id) {
-            this.users = null
-            this.usersAux = null
-            this.busy = true
-            this.UserSupport.getClients({user_login_id:user_login_id}, (response) => {
-                this.busy = false
-                if (response.s == 1) {
-                    this.users = response.users
-                    this.usersAux = response.users
+        getClients() {
+            return new Promise((resolve, reject) => {
+                this.busy = true
+                this.UserSupport.getClients({user_login_id:this.user_login_id}, (response) => {
+                    this.busy = false
+                    if (response.s == 1) {
+                        this.users = response.users
+                        this.usersAux = response.users
+                        resolve()
+                    } else {
+                        this.users = false
+                        this.usersAux = false
+                        reject()
+                    }
+                })
+            })
+        },
+        findUser(user) {
+            return new Promise((resolve) => {
+                this.busy = true
+                this.UserSupport.findUser({email:user.email,user_login_id:user.user_login_id}, (response) => {
+                    this.busy = false
+                    if (response.s == 1) {
+                        user.on_manivela = true
+                        toastInfo({
+                            message: `✅ Usuario encontrado ${response.user.Cliente}`
+                        })
+                    }
+                    
+                    resolve()
+                })
+            })
+        },
+        async validateIfExistBeforeSend(user) {
+            return new Promise(async (resolve) => {
+                await this.findUser(user)
+    
+                if(user.on_manivela)
+                {
+                    resolve(true)
                 } else {
-                    this.users = false
-                    this.usersAux = false
+                    resolve(false)
+                }
+            })
+        },
+        requiredGeneral(user) {
+            this.validateIfExistBeforeSend(user).then((exist) => {
+                if(!exist)
+                {
+                    this.busy = true
+                    this.UserSupport.requiredGeneral({user_login_id:user.user_login_id}, (response) => {
+                        this.busy = false
+                        if (response.s == 1) {
+                            toastInfo({
+                                message: `✅ Usuario registrado en manivela`
+                            })
+                        }
+                    })
                 }
             })
         },
     },
-    mounted() {
-        this.getClients(getParam("ulid"))
+    async mounted() {
+        if(getParam("ulid"))
+        {
+            this.user_login_id = getParam("ulid")
+        }
+
+        await this.getClients();
+
+
+        if(getParam("query"))
+        {
+            this.query = getParam("query")
+        }
     },
     template : `
         <div class="card">
@@ -117,6 +175,11 @@ const ClientlistViewer = {
                     <div class="col-auto text-end">
                         <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
+                    <div class="col-auto text-end">
+                        <button @click="getClients" type="button" class="btn shadow-none mb-0 btn-dark px-3 btn-sm">
+                            <i class="fa fa-sync"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
@@ -130,6 +193,9 @@ const ClientlistViewer = {
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr class="align-items-center">
+                                <th class="header-sticky text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="width:4rem">
+                                    Manivela
+                                </th>
                                 <th class="header-sticky text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     USUARIO
                                 </th>
@@ -144,7 +210,12 @@ const ClientlistViewer = {
                         </thead>
                         <tbody>
                             <tr v-for="user in users">
-                                <td class="cursor-pointer" @click="viewDetail(user.user_login_id)">
+                                <td class="align-middle text-center">
+                                    <span v-if="user.on_manivela" class="text-success">
+                                        <i class="bi bi-check-square-fill"></i>
+                                    </span>
+                                </td>
+                                <td class="align-middle cursor-pointer" @click="viewDetail(user.user_login_id)">
                                     <div class="d-flex px-2 py-1">
                                         <div>
                                             <img src="../../src/img/user/user.png" class="avatar avatar-sm me-3" alt="user1">
@@ -170,6 +241,10 @@ const ClientlistViewer = {
                                         <ul class="dropdown-menu shadow">
                                             <li><button class="dropdown-item" @click="goToEdit(user.user_login_id)">Editar</button></li>
                                             <li><button class="dropdown-item" @click="viewDetail(user.user_login_id)">Ver expediente</button></li>
+                                            
+                                            <li v-if="!user.on_manivela"><button class="dropdown-item" @click="findUser(user)">Verificar existencia manivela</button></li>
+                                            <li v-if="!user.on_manivela"><button class="dropdown-item" @click="requiredGeneral(user)">Mandar registro manivela</button></li>
+                                            
                                             <li><button class="dropdown-item" @click="deleteUser(user.user_login_id)">Eliminar</button></li>
                                         </ul>
                                     </div>

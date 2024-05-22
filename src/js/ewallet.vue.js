@@ -1,10 +1,10 @@
-import { User } from '../../src/js/user.module.js?v=1.0.7'   
+import { User } from '../../src/js/user.module.js?v=1.0.8'   
 
-import { EwalletViewer } from './ewalletViewer.vue.js?v=1.0.7'
-import { EwalletatmViewer } from './ewalletatmViewer.vue.js?v=1.0.7'
-import { EwalletqrViewer } from './ewalletqrViewer.vue.js?v=1.0.7'
-import { EwalletwithdrawViewer } from './ewalletwithdrawViewer.vue.js?v=1.0.7'
-import { EwalletaddfundsViewer } from './ewalletaddfundsViewer.vue.js?v=1.0.7'
+import { EwalletViewer } from './ewalletViewer.vue.js?v=1.0.8'
+import { EwalletatmViewer } from './ewalletatmViewer.vue.js?v=1.0.8'
+import { EwalletqrViewer } from './ewalletqrViewer.vue.js?v=1.0.8'
+import { EwalletwithdrawViewer } from './ewalletwithdrawViewer.vue.js?v=1.0.8'
+import { EwalletaddfundsViewer } from './ewalletaddfundsViewer.vue.js?v=1.0.8'
 
 Vue.createApp({
     components : { 

@@ -2,16 +2,15 @@
 
 namespace Manivela;
 
-use JFStudio\Curl;
+use Site\SystemVar;
+
+use \Curl\Curl;
 
 class Api extends Curl {
-	private static $instance;
+	protected static $instance;
 
     public $token = null;
-    public $curl = null;
 
-    const EMAIL = 'carla.barrera@universodejade.com';
-    const PASSWORD = 'C4rlaBarrera1@';
     const API_URL = "https://crmarka.com/api/";
     const API_MONDAY_URL = "https://crmarka.com/api_monday/";
 
@@ -24,14 +23,15 @@ class Api extends Curl {
        return self::$instance;
     }
 
-    public function __construct() {
-        $this->curl = new Curl;
-    }
-
+    /**
+     * Retrieves the login parameters for the Manivela API.
+     *
+     * @return array An associative array containing the email and password for the Manivela API login.
+     */
     public function getLoginParams() {
         return [
-            'email' => self::EMAIL,
-            'password' => self::PASSWORD
+            'email' => SystemVar::_getValue('manivela:email'),
+            'password' => SystemVar::_getValue('manivela:password')
         ];
     }
 
@@ -55,36 +55,65 @@ class Api extends Curl {
     }
     
     public function login() {
-        try {
-            $result = $this->curl->post($this->getApiUrl('authentication/'),$this->getLoginParams());
+    
+        $this->post($this->getApiUrl('authentication/'),$this->getLoginParams());
 
-            $response = $result->getResponse(true);
+        $respose = $this->_getResponse();
 
-            if($response['success'] == 1)
-            {
-                return $response['token'];
-            }
-        } catch (\Exception $e) {
-            return $e->getMessage();
+        if($respose['success'] == 1)
+        {
+            return $respose['token'];
         }
+
+        return false;
     }
 
+    public function getSales()
+    {
+        $this->_preparePayload();
+        $this->post($this->getApiUrl('ventas/')); 
+
+        return $this->_getResponse();
+    }
 
     // post functions
     public function requiredGeneral(array $data = null) {
-        
+        $this->_preparePayload();
+
         if($data['event'])
         {
-            
+            d($data);
         }
+    }
+
+    public function test(array $data = null) { 
+        
+        $this->post('http://localhost:8888/universo/app/test/getData',$data);  
+        
+        d($this->response);
+
+        return $this->_getResponse();
     }
 
     // post functions
     public function requiredApart(array $data = null) {
+        $this->_preparePayload();
         
         if($data['event'])
         {
             
         }
+    }
+
+    /* gets */
+    public function _getResponse(): array|bool
+    {
+        return json_decode($this->getResponse(),true);
+    }
+
+    public function _preparePayload()
+    {
+        $this->generateTokenAccess();
+        $this->setHeader('Authorization', 'Bearer '.$this->token);
     }
 }

@@ -103,4 +103,92 @@ class UserData extends Orm {
 
     return false;
   }
+
+  public static function translateEmploymentStatus(string $employment_status = null) 
+  {
+    if(!isset($employment_status))
+    {
+      return false;
+    }
+    
+    switch($employment_status)
+    {
+      case 'single':
+        return 'Soltero';
+      case 'married':
+        return 'Casado';
+      case 'divorced':
+        return 'Divorciado';
+      case 'widower':
+        return 'Viudo';
+      default:
+        return false;
+    }
+  }
+
+  public static function translateFisicalStatus(string $fiscal_status = null) 
+  {
+    if(!isset($fiscal_status))
+    {
+      return false;
+    }
+
+    switch($fiscal_status)
+    {
+      case 'business_activity':
+        return 'Actividad Empresarial';
+      case 'leasing':
+        return 'Arrendamiento';
+      case 'salaried':
+        return 'Asalariado';
+      case 'interests':
+        return 'Intereses';
+      case 'professional_services':
+        return 'Servicios profesionales';
+      case 'fiscal_incorporation':
+        return 'Incorporación Fiscal';
+      default:
+        return false;
+    }
+  }
+  
+  public static function translateMaritalStatus(string $marital_status = null) 
+  {
+    if(!isset($marital_status))
+    {
+      return false;
+    }
+    
+    switch($marital_status)
+    {
+      case 'single':
+        return 'Soltero';
+      case 'married':
+        return 'Casado';
+      case 'divorced':
+        return 'Divorciado';
+      case 'widower':
+        return 'Viudo';
+      default:
+        return false;
+    }
+  }
+
+  public static function translateGender(string $gender = null) 
+  {
+    if(!isset($gender))
+    {
+      return false;
+    }
+
+    switch($gender)
+    {
+      case 'male':
+        return 'Hombre';
+      case 'female':
+        return 'Mujer';
+      default:
+        return false;
+    }
+  }
 }
