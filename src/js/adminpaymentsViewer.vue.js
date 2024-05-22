@@ -73,12 +73,10 @@ const AdminpaymentsViewer = {
         }
     },
     watch: {
-        query:
-        {
-            handler() {
-                this.filterData()
-            },
-            deep: true
+        query() {
+            this.payments = this.paymentsAux.filter((payment) => {
+                return payment.seller?.toLowerCase().includes(this.query.toLowerCase()) || payment.title?.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number?.toString().includes(this.query.toLowerCase())
+            })
         },
         catalog_payment_type_id:
         {
@@ -102,12 +100,6 @@ const AdminpaymentsViewer = {
             });
 
             column.desc = !column.desc
-        },
-        filterData() {
-            this.payments = this.paymentsAux
-            this.payments = this.payments.filter((payment) => {
-                return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
-            })
         },
         viewPayments(property_id) {
             window.location.href = `../../apps/admin-payments/view.php?pid=${property_id}`
