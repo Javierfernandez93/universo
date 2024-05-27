@@ -256,17 +256,23 @@ abstract class Orm
 	public function saveNew()
 	{
 		$this->tblFields[$this->tblPrimary] = 0;
-		$this->guardar();
-	}
-	public function save()
-	{
-		return $this->guardar();
+		$this->save();
 	}
 
+
 	# Guardamos/Actualizamos objecto
-	public function guardar()
+	public function fillFields()
+	{
+		foreach ($this->tblFields as $key => $value) {
+			$this->{$key} = is_null($value) ? '' : $value;
+		}
+	}
+
+	public function save()
 	{
 		if (!$this->getId()) {
+			$this->fillFields();
+
 			$query = "INSERT INTO {$this->tblName} VALUES({$this->sqlHelper($this->getFields(), true)})";
 
 			$data = $this->db->stmtQuery($query, $this->getFields());
@@ -341,6 +347,11 @@ abstract class Orm
 	public function atributos(array $filter = array())
 	{
 		return $this->getFields(array_merge($filter, array($this->tblPrimary)));
+	}
+	
+	public function getTblPrimary() : string
+	{
+		return $this->tblPrimary;
 	}
 
 	public function attr(array $filter = array())
