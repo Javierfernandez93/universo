@@ -19,7 +19,7 @@
 
                     <div class="col-12 col-12 animation-fall-down text-white" style="--delay:600ms">
 
-                        <div class="h3 text-white maldives">Querida comunidad Jade: </div>
+                        <div class="h3 text-white maldives">Querida COMUNIDAD DE JADE: </div>
 
                         <div class="my-5">
                             <p class="lead">En nombre de todo el equipo UNIVERSO DE JADE, queremos  expresar nuestro mas sincero agradecimiento por habernos elegido, queremos felicitarte, ya que desde este momento formas parte de nuestra familia </p>
