@@ -823,6 +823,9 @@ class User extends Http {
     getConfigVarsStats(data, callback) {
         return this.call('../../app/application/getConfigVarsStats.php', data, callback);
     }
+    getUserToEdit(data, callback) {
+        return this.call('../../app/application/getUserToEdit.php', data, callback);
+    }
 }
 
 export { User }

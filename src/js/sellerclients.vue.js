@@ -1,10 +1,9 @@
 import { SellerclientsViewer } from '../../src/js/sellerclientsViewer.vue.js?v=1.0.9'
 import { SellerclientsaddViewer } from '../../src/js/sellerclientsaddViewer.vue.js?v=1.0.9'
-import { SellerclientseditViewer } from '../../src/js/SellerclientseditViewer.vue.js?v=1.0.9'
 
 Vue.createApp({
     components : { 
-        SellerclientsViewer, SellerclientsaddViewer, SellerclientseditViewer
+        SellerclientsViewer, SellerclientsaddViewer
     },
     methods: {
         add()
@@ -13,7 +12,7 @@ Vue.createApp({
         },
         edit(company_id)
         {
-            this.$refs.edit.edit(company_id)
+            this.$refs.add.add(company_id)
         },
         update()
         {

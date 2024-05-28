@@ -45,9 +45,9 @@ const ViewuserwidgetfromsellerViewer = {
         <div v-if="user" class="card card-body mb-3">
             <div class="row justify-content-center align-items-center">
                 <div class="col-12 col-xl-auto">
-                    <div class="avatar avatar-xl">
-                        <img v-if="user.image" :src="user.image" class="avatar avatar-xl rounded-circle"/>
-                        <img v-else src="../../src/img/user/user.png" class="avatar avatar-xl rounded-circle"/>
+                    <div class="avatar avatar-md">
+                        <img v-if="user.image" :src="user.image" class="avatar avatar-md rounded-circle"/>
+                        <img v-else src="../../src/img/user/user.png" class="avatar avatar-md rounded-circle"/>
                     </div>
                 </div>
                 <div class="col-12 col-xl">

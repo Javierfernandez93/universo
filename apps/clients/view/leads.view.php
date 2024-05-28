@@ -2,5 +2,4 @@
     <sellerleads-viewer ref="list" @add="add" @edit="edit"></sellerleads-viewer>
 
     <sellerleadsadd-viewer ref="add" @update="update"></sellerleadsadd-viewer>
-    <sellerleadsedit-viewer ref="edit" @update="update"></sellerleadsedit-viewer>
 </div>
