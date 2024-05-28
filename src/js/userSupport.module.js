@@ -4,13 +4,7 @@ class UserSupport extends Http {
     constructor() {
         super();
     }
-    /* ATI */
-    getAdminUserAti(data, callback) {
-        return this.call('../../app/application/getAdminUserAti.php', data, callback);
-    }
-    addAtiCredentials(data, callback) {
-        return this.call('../../app/application/addAtiCredentials.php', data, callback);
-    }
+
     getUsers(data, callback) {
         return this.call('../../app/application/get_users.php', data, callback);
     }
@@ -728,6 +722,9 @@ class UserSupport extends Http {
     }
     findPayment(data, callback) {
         return this.call('../../app/application/manivela/findPayment.php', data, callback);
+    }
+    getLeadershipStats(data, callback) {
+        return this.call('../../app/application/getLeadershipStats.php', data, callback);
     }
 }
 

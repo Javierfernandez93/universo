@@ -1660,4 +1660,49 @@ class UserSupport extends Orm {
 
     return $user;
   }
+
+  public function getLeadershipStats()  
+  {
+    if(!$this->logged)
+    {
+      return false;
+    }
+   
+    $affiliations = (new Affiliation)->getAll();
+
+    if(!$affiliations)
+    {
+      return false;
+    }
+
+    $UserReferral = new UserReferral;
+
+    $stats = array_map(function($affiliation) use($UserReferral){
+      $affiliation['count_clients'] = 0;
+      $affiliation['count_leads'] = 0;
+      $affiliation['count_sellers'] = 0;
+
+      $sellers = $UserReferral->findAll("user_support_id = ? AND status = 1",$affiliation['user_support_id'],['referral_id']);
+
+
+      if($sellers)
+      {
+        $affiliation['count_sellers'] = sizeof($sellers);
+
+        $referral_ids = array_column($sellers,'referral_id'); 
+        $referral_ids = array_unique($referral_ids);
+        $referral_ids = implode(",",$referral_ids);
+
+        $affiliation['count_clients'] = $UserReferral->getCountUsersByIn($referral_ids,CatalogUserType::CLIENT);
+        $affiliation['count_leads'] = $UserReferral->getCountUsersByIn($referral_ids,CatalogUserType::LEAD);
+      }
+
+      return $affiliation;
+    },$affiliations);
+
+    array_multisort(array_column($stats, 'count_clients'), SORT_DESC, $stats);
+
+
+    return $stats;  
+  }
 }

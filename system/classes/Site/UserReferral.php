@@ -2,6 +2,7 @@
 
 namespace Site;
 
+use BadFunctionCallException;
 use HCStudio\Orm;
 use Constants;
 
@@ -463,5 +464,30 @@ class UserReferral extends Orm {
     $UserReferral->referral_id  = $referral_id;
 
     return $UserReferral->save();
+  }
+
+  public function getCountUsersByIn(string $referral_ids = null,int $catalog_user_type_id = null) : int
+  {
+    if(!$referral_ids)
+    {
+      return false;
+    }
+    
+    return $this->connection()->field("
+      SELECT 
+        COUNT({$this->tblName}.user_login_id) as c
+      FROM 
+        {$this->tblName} 
+      LEFT JOIN  
+        user_login 
+      ON 
+        user_login.user_login_id = {$this->tblName}.user_login_id
+      WHERE 
+        {$this->tblName}.referral_id IN ({$referral_ids})
+      AND 
+        {$this->tblName}.status != '".Constants::DELETE."'
+      AND 
+        user_login.catalog_user_type_id = '{$catalog_user_type_id}'
+      "); 
   }
 }

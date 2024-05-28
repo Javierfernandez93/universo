@@ -41,4 +41,22 @@ class Affiliation extends Orm {
 
     return $Affiliation->save() ? $Affiliation->getId() : false;
   }
+
+  public function getAll()
+  {
+    return $this->connection()->rows("SELECT 
+      {$this->tblName}.{$this->tblName}_id,
+      {$this->tblName}.name, 
+      user_support.user_support_id, 
+      user_support.names 
+    FROM 
+      {$this->tblName}
+    LEFT JOIN 
+      user_support
+    ON 
+      user_support.user_support_id = {$this->tblName}.user_support_id
+    WHERE
+      {$this->tblName}.status = '1'
+      "); 
+  }
 }
