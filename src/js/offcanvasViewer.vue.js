@@ -5,21 +5,22 @@ const OffCanvasViewer = {
         }
     },
     methods: {
-        loadCanvas()
+        async loadCanvas()
         {
             if(!this.canvas)
             {
-                this.canvas = new bootstrap.Offcanvas(this.$refs.offcanvas)
+                await sleep (250)
+                this.canvas = new bootstrap.Offcanvas(this.$refs.intertnalOffcanvas)
             }
         },
-        show()
+        async show()
         {
-            this.loadCanvas()
+            await this.loadCanvas()
 
             this.canvas.show()
         },
-        hide() {
-            this.loadCanvas()
+        async hide() {
+            await this.loadCanvas()
 
             this.canvas.hide()
         }
@@ -30,7 +31,7 @@ const OffCanvasViewer = {
     },
     template : `
         <Teleport to="body">
-            <div class="offcanvas offcanvas-end" ref="offcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas offcanvas-end" ref="intertnalOffcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasRightLabel">{{title}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">

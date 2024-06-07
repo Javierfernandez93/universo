@@ -481,7 +481,7 @@ class UserLogin extends Orm {
       return false;
     }
 
-    if(!$data['user_login']['user_login_id'])
+    if(!isset($data['user_login']['user_login_id']))
     {
       $UserLogin->company_id = $UserLogin->getId();
     } 
@@ -505,12 +505,15 @@ class UserLogin extends Orm {
       $UserLogin->company_id
     );
 
-    self::saveSafeClass(
-      UserAddress::class,
-      $data['user_address']['user_address_id'] ?? 0,
-      $data['user_address'],
-      $UserLogin->company_id
-    );
+    if(isset($data['user_address']))
+    {
+      self::saveSafeClass(
+        UserAddress::class,
+        $data['user_address']['user_address_id'] ?? 0,
+        $data['user_address'],
+        $UserLogin->company_id
+      );
+    }
 
     self::saveSafeClass(
       UserAccount::class,

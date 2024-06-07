@@ -75,8 +75,14 @@ const AdminpaymentsViewer = {
     watch: {
         query() {
             this.payments = this.paymentsAux.filter((payment) => {
-                return payment.seller?.toLowerCase().includes(this.query.toLowerCase()) || payment.title?.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number?.toString().includes(this.query.toLowerCase())
+                return payment.seller?.toLowerCase().includes(this.query.toLowerCase()) 
+                || payment.names?.toLowerCase().includes(this.query.toLowerCase()) 
+                || payment.title?.toLowerCase().includes(this.query.toLowerCase()) 
+                || payment.last_payment_number?.toString().includes(this.query.toLowerCase())
             })
+
+            this.getTotals()
+
         },
         catalog_payment_type_id:
         {
@@ -121,7 +127,7 @@ const AdminpaymentsViewer = {
                 this.busy = false
                 if (response.s == 1) {
                     this.paymentsAux = response.payments
-                    this.payments = this.paymentsAux
+                    this.payments = response.payments
 
                     this.getTotals()
                 } else {
@@ -188,11 +194,13 @@ const AdminpaymentsViewer = {
                         resolve(false)
                     } else if(response.r == "NOT_USER") {
                         toastInfo({
-                            message: `❌ Usuario no encontrado ${response.user.Cliente}`
+                            message: `❌ Usuario no encontrado`
                         })
 
-                        reject()
+                        resolve(false)
                     }
+
+                    reject()
                 })
             })
         },
@@ -204,7 +212,29 @@ const AdminpaymentsViewer = {
                 {
                     resolve(true)
                 } else {
-                    resolve(false)
+
+                    let alert = alertCtrl.create({
+                        title: "Aviso",
+                        subTitle: "¿Estás seguro de que deseas enviar el apartado a Manivela?",
+                        buttons: [
+                            {
+                                text: "Sí, enviar",
+                                class: 'btn-success',
+                                handler: (data) => {
+                                    resolve(false)
+                                }
+                            },
+                            {
+                                text: "Cancelar",
+                                role: "cancel",
+                                handler: (data) => {
+                                    reject()
+                                }
+                            }
+                        ],
+                    })
+
+                    alertCtrl.present(alert.modal);
                 }
             })
         },

@@ -726,6 +726,18 @@ class UserSupport extends Http {
     getLeadershipStats(data, callback) {
         return this.call('../../app/application/getLeadershipStats.php', data, callback);
     }
+    pullProperty(data, callback) {
+        return this.call('../../app/application/pullProperty.php', data, callback);
+    }
+    getCatalogPaymentMethods(data, callback) {
+        return this.call('../../app/application/getCatalogPaymentMethods.php', data, callback);
+    }
+    getProperties(data, callback) {
+        return this.call('../../app/application/getProperties.php', data, callback);
+    }
+    uploadImageProperty(data, progress, callback) {
+        return this.callFile('../../app/application/uploadImageProperty.php', data, callback, progress);
+    }
 }
 
 export { UserSupport }

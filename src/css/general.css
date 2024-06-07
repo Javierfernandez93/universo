@@ -1,11 +1,10 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;400;500&family=Jost:wght@100;400;500&display=swap"); */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 html {
   scroll-behavior: smooth;
 }
-
 
 @font-face {
   font-family: "Maldives regular";
@@ -30,8 +29,7 @@ body {
   font-family: "Maldives regular", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-variation-settings:
-    "slnt" 0;
+  font-variation-settings: "slnt" 0;
 }
 
 #section-1 {
@@ -218,22 +216,22 @@ nav {
 
 @keyframes reveal {
   from {
-      translate: 0 20px;
+    translate: 0 20px;
   }
   to {
-      translate: none; opacity: 1;
+    translate: none;
+    opacity: 1;
   }
 }
 @keyframes revealRight {
   from {
-      translate: 20px 0;
+    translate: 20px 0;
   }
   to {
-      translate: none; opacity: 1;
+    translate: none;
+    opacity: 1;
   }
 }
-
-
 
 .tag-dot {
   width: 1.1rem;
@@ -278,7 +276,7 @@ nav {
 #appChatBot {
   z-index: 1000001;
 }
-.sold-out {  
+.sold-out {
   transform: rotate(305deg);
   transform-origin: bottom right;
   position: absolute;

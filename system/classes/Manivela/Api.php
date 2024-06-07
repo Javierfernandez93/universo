@@ -113,9 +113,7 @@ class Api extends Curl {
         $this->_preparePayload();
         $this->post($this->getApiUrlMonday('required_apart.php'),json_encode($data));
 
-        d($this->response);
-
-        $respose = $this->_getResponse();
+        return $this->_getResponse();
     }
 
     /* gets */

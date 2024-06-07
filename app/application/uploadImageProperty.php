@@ -5,8 +5,9 @@ require_once TO_ROOT . "system/core.php";
 $data = HCStudio\Util::getHeadersForWebService();
 
 $UserLogin = new Site\UserLogin;
+$UserSupport = new Site\UserSupport;
 
-if($UserLogin->logged === true)
+if($UserLogin->logged === true || $UserSupport->logged === true)
 {
     if(!empty($_FILES))
 	{

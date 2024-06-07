@@ -19,10 +19,13 @@ class Property extends Orm {
       }
   
       $Property = new self;
-      
-      if($property_id = $Property->findField('title = ?', $data['title'],"property_id"))
+
+      if(isset($data['title']) && !empty($data['title']))
       {
-        return $property_id;
+          if($property_id = $Property->findField('title = ?', $data['title'], "property_id"))
+          {
+            return $property_id;
+          }
       }
       
       return self::add($data);

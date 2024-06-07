@@ -36,7 +36,7 @@ class Connection
 	private $mysqli;
 	const protocol = 'http';
 	// const $proyect_url = '192.168.100.237:8888/mizuum';
-	const proyect_url = 'localhost:8888/dummytraderweb/';
+	const proyect_url = 'localhost:8888/universo/';
 	const proyect_name = 'DummieTrading';
 
 	public function getConnectioName()
@@ -71,8 +71,8 @@ class Connection
 		# Shared mysql settings 
 		$mysqlSettings = [$_ENV['MYSQL_HOSTNAME'], $_ENV['MYSQL_ROOT_USER'], $_ENV['MYSQL_ROOT_PASSWORD']];
 		$connections = [
-			'default' => [...$mysqlSettings, 'app_crm'],
-			'world' => [...$mysqlSettings, 'apps_world'],
+			'default' => [...$mysqlSettings, 'app_universo'],
+			'world' => [...$mysqlSettings, 'app_world'],
 		];
 
 		if (isset($debug) && $debug === 'true') {

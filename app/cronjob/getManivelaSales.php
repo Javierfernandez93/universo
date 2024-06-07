@@ -15,7 +15,7 @@ if(!$sales)
     error('NOT_SALES');
 }
 
-foreach($sales as $key => $sale)
+foreach($sales as $sale)
 {
     $data['user'] = [
         'names' => ucwords(strtolower($sale['Cliente'])),
@@ -47,6 +47,8 @@ foreach($sales as $key => $sale)
                 'user_login_id' => 0
             ]
         ]);
+    } else {
+        $user_login_id = $UserSupport->getUserLoginIdByEmail($data['user']['email']);
     }
 
     # save real state developer

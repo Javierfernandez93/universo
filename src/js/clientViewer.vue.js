@@ -2,11 +2,13 @@ import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.9'
 import OffCanvasViewer from './offcanvasViewer.vue.js?v=1.0.9'
 import feedBackModel from './models/feedback.module.js?v=1.0.9'
 import LoaderViewer from './loaderViewer.vue.js?v=1.0.9'
+import { PropertiesAdminListViewer } from '../../src/js/propertiesAdminListViewer.vue.js?v=1.0.9'
 
 const ClientViewer = {
     components : {
         OffCanvasViewer,
-        LoaderViewer    
+        LoaderViewer,
+        PropertiesAdminListViewer
     },
     data() {
         return {
@@ -153,13 +155,7 @@ const ClientViewer = {
         <div v-if="user">
             <div class="row mb-3">
                 <div class="col-12 col-xl-8 animation-fall-down" style="--delay:500ms">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="h5">Sin pagos</div>
-                        </div>
-                        <div class="card-body">
-                        </div>
-                    </div>
+                    <PropertiesAdminListViewer/>
                 </div>
                 <div class="col-12 col-xl-4 animation-fall-down" style="--delay:600ms">
                     <div class="card">
