@@ -16,11 +16,11 @@ if(!$UserSupport->logged)
         unauthorized("NO_PASSWORD_AUTHENTICATION_SENT");
     }
     
-    if($_SERVER['PHP_AUTH_USER'] != HCStudio\Util::USERNAME) {
+    if($_SERVER['PHP_AUTH_USER'] != $_ENV['SERVER_AUTH_USER']) {
         unauthorized("INVALID_USER");
     }
     
-    if($_SERVER['PHP_AUTH_PW'] != HCStudio\Util::PASSWORD) {
+    if($_SERVER['PHP_AUTH_PW'] != $_ENV['SERVER_AUTH_PW']) { 
         unauthorized("INVALID_PASSWORD");
     }
 }
