@@ -8,19 +8,19 @@ $UserSupport = new Site\UserSupport;
 
 if(!$UserSupport->logged)
 {
-    if (!isset($_SERVER['PHP_AUTH_USER'])) {
+    if (!isset($_SERVER['SERVER_AUTH_USER'])) {
         unauthorized(Constants::RESPONSES['INVALID_PERMISSION']);
     }
     
-    if (!isset($_SERVER['PHP_AUTH_PW'])) {
+    if (!isset($_SERVER['SERVER_AUTH_PW'])) {
         unauthorized("NO_PASSWORD_AUTHENTICATION_SENT");
     }
     
-    if($_SERVER['PHP_AUTH_USER'] != $_ENV['SERVER_AUTH_USER']) {
+    if($_SERVER['SERVER_AUTH_USER'] != $_ENV['SERVER_AUTH_USER']) {
         unauthorized("INVALID_USER");
     }
     
-    if($_SERVER['PHP_AUTH_PW'] != $_ENV['SERVER_AUTH_PW']) { 
+    if($_SERVER['SERVER_AUTH_PW'] != $_ENV['SERVER_AUTH_PW']) { 
         unauthorized("INVALID_PASSWORD");
     }
 }

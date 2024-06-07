@@ -2,25 +2,25 @@
 
 require_once TO_ROOT. "/system/core.php";
 
-$data = HCStudio\Util::getParam();
+$data = HCStudio\Util::getHeadersForWebService();
 
 $UserSupport = new Site\UserSupport;
 
 if(!$UserSupport->logged)
 {
-    if (!isset($_SERVER['PHP_AUTH_USER'])) {
+    if (!isset($_SERVER['SERVER_AUTH_USER'])) {
         unauthorized('NO_AUTH_USER_FOUND');
     }
     
-    if (!isset($_SERVER['PHP_AUTH_PW'])) {
+    if (!isset($_SERVER['SERVER_AUTH_PW'])) {
         unauthorized("NO_AUTH_PASSWORD_FOUND");
     }
     
-    if($_SERVER['PHP_AUTH_USER'] != $_ENV['SERVER_AUTH_USER']) {
+    if($_SERVER['SERVER_AUTH_USER'] != $_ENV['SERVER_AUTH_USER']) {
         unauthorized("INVALID_USER");
     }
     
-    if($_SERVER['PHP_AUTH_PW'] != $_ENV['SERVER_AUTH_PW']) { 
+    if($_SERVER['SERVER_AUTH_PW'] != $_ENV['SERVER_AUTH_PW']) { 
         unauthorized("INVALID_PASSWORD");
     }
 }
