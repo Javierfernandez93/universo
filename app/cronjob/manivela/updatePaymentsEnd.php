@@ -54,8 +54,6 @@ foreach($sales as $sale)
                 {
                     $PaymentProperty->catalog_payment_type_id = $catalog_payment_type_id;
                     $PaymentProperty->save();
-
-                    d($PaymentProperty->catalog_payment_type_id);
                 }
             }
         }
