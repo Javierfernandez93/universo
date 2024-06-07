@@ -5,6 +5,7 @@ namespace Manivela;
 use Site\SystemVar;
 
 use \Curl\Curl;
+use \Exception;
 
 class Api extends Curl {
 	protected static $instance;
@@ -39,12 +40,17 @@ class Api extends Curl {
         return self::API_URL.$endPoint;
     }
 
+    public function getApiUrlMonday(string $endPoint = null) {
+        return self::API_MONDAY_URL.$endPoint;
+    }
+
     public function getTokenAccess() {
         return [
             'jwt' => $this->token
         ];
     }
 
+    
     public function generateTokenAccess() {
         if(!$this->token)
         {
@@ -77,13 +83,15 @@ class Api extends Curl {
     }
 
     // post functions
-    public function requiredGeneral(array $data = null) {
-        $this->_preparePayload();
-
-        if($data['event'])
+    public function requiredGeneral(array $data = []) {
+        if(!isset($data['event']))
         {
-            d($data);
+            throw new Exception('Event is not allowed');
         }
+        
+        $this->post($this->getApiUrlMonday('required_general.php'),json_encode($data));
+
+        $respose = $this->_getResponse();
     }
 
     public function test(array $data = null) { 
@@ -97,12 +105,17 @@ class Api extends Curl {
 
     // post functions
     public function requiredApart(array $data = null) {
-        $this->_preparePayload();
-        
-        if($data['event'])
+        if(!isset($data['event']))
         {
-            
+            throw new Exception('Event is not allowed');
         }
+
+        $this->_preparePayload();
+        $this->post($this->getApiUrlMonday('required_apart.php'),json_encode($data));
+
+        d($this->response);
+
+        $respose = $this->_getResponse();
     }
 
     /* gets */
@@ -115,5 +128,6 @@ class Api extends Curl {
     {
         $this->generateTokenAccess();
         $this->setHeader('Authorization', 'Bearer '.$this->token);
+        $this->setHeader('Content-Type', 'application/json');
     }
 }

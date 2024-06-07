@@ -25,7 +25,6 @@ if(!$user)
 
 $date = new DateTime('now', new DateTimeZone('UTC'));
 
-
 $event = [
     'event' => [
         'app' => 'monday',
@@ -225,7 +224,6 @@ $event = [
     ]
 ];
 
-d($event);
 $Api = Manivela\Api::getInstance();
 $response = $Api->requiredGeneral($event);
 
