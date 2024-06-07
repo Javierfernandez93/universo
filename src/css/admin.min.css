@@ -1,51 +1,54 @@
-.navbar-vertical .navbar-nav>.nav-item .nav-link .nav-link-text,
-.navbar-vertical .navbar-nav>.nav-item .nav-link i {
-   color: #222 !important;
+.navbar-vertical .navbar-nav > .nav-item .nav-link .nav-link-text,
+.navbar-vertical .navbar-nav > .nav-item .nav-link i {
+  color: #222 !important;
 }
-.navbar-vertical .navbar-nav>.nav-item .nav-link.active i {
-    color: #fff !important;
+.navbar-vertical .navbar-nav > .nav-item .nav-link.active i {
+  color: #fff !important;
 }
-.navbar-vertical .navbar-nav>.nav-item .nav-link.active .nav-link-text {
-    color: #222 !important;
+.navbar-vertical .navbar-nav > .nav-item .nav-link.active .nav-link-text {
+  color: #222 !important;
 }
 
 td span {
-    word-wrap: break-word;
-    word-break: break-all;
-    white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
 }
-.navbar-vertical .navbar-nav>.nav-item .nav-link.active
-{
-    padding: 12px 16px;
-    border-radius: 0.5rem;
+.navbar-vertical .navbar-nav > .nav-item .nav-link.active {
+  padding: 12px 16px;
+  border-radius: 0.5rem;
 }
 
 .dropdown-menu {
-    display: none !important;
+  display: none !important;
 }
 .dropdown-menu.show {
-    display: block !important;
+  display: block !important;
 }
 
 td {
-    white-space: normal !important;
-    word-wrap: break-word;
-  }
-  table {
-    table-layout: fixed;
-  }
-  .bg-gradient-special-x {
-    background: linear-gradient(
-        155deg,
-        rgba(255, 220, 229, 0.5),
-        rgba(199, 229, 255, 0.5)
-      );
-    background-attachment: fixed;
-  }
-  
-  .th-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-  }
+  white-space: normal !important;
+  word-wrap: break-word;
+}
+table {
+  table-layout: fixed;
+}
+.bg-gradient-special-x {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 220, 229, 0.5),
+    rgba(199, 229, 255, 0.5)
+  );
+  background-attachment: fixed;
+}
+
+.th-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+.break-words {
+  word-break: break-word;
+  text-wrap: balance;
+}

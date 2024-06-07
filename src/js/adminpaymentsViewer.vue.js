@@ -379,7 +379,7 @@ const AdminpaymentsViewer = {
                                             {{payment.last_payment_number}}
                                         </td>
                                         <td class="align-middle">
-                                            <span class="badge bg-secondary">{{payment.payment_type}}</span>
+                                            <span class="badge bg-secondary break-words">{{payment.payment_type}}</span>
                                         </td>
                                         <td class="align-middle">
                                             $ {{payment.price.numberFormat(2)}}
