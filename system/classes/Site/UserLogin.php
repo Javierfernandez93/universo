@@ -469,7 +469,7 @@ class UserLogin extends Orm {
     $UserLogin->catalog_user_type_id = isset($data['user_login']['catalog_user_type_id']) ? $data['user_login']['catalog_user_type_id'] : CatalogUserType::SELLER;
     $UserLogin->catalog_campaign_id = isset($data['user_login']['catalog_campaign_id']) && !empty($data['user_login']['catalog_campaign_id']) ? $data['user_login']['catalog_campaign_id'] : 1;
     
-    if(isset($data['user_login']['user_login_id']) && $data['user_login']['user_login_id'] > 0)
+    if(isset($data['user_login']['user_login_id']) && !$data['user_login']['user_login_id'])
     {
       $UserLogin->password = sha1($data['user_login']['password']);
       $UserLogin->signup_date = time();
@@ -481,7 +481,7 @@ class UserLogin extends Orm {
       return false;
     }
 
-    if(!isset($data['user_login']['user_login_id']))
+    if(isset($data['user_login']['user_login_id']) && !$data['user_login']['user_login_id'])
     {
       $UserLogin->company_id = $UserLogin->getId();
     } 
@@ -524,12 +524,15 @@ class UserLogin extends Orm {
 
     if(isset($data['user_reference']) && is_array($data['user_reference']))
     {
-      self::saveSafeClass(
-        UserReference::class,
-        $data['user_reference']['user_reference_id'] ?? 0,
-        $data['user_reference'],
-        $UserLogin->company_id
-      );
+      foreach($data['user_reference'] as $user_reference)
+      {
+        self::saveSafeClass(
+          UserReference::class,
+          $user_reference['user_reference_id'] ?? 0,
+          $user_reference,
+          $UserLogin->company_id
+        );
+      }
     }
 
     if(isset($data['user_kyc']) && is_array($data['user_kyc']))

@@ -18,6 +18,8 @@ if(!$data['user']['user_login']['email'])
 
 $UserLogin = new Site\UserLogin(false,false);
 
+// $data['user']['user_login']['email'] = rand(1000,9999).'@'.rand(1000,9999).'.com';  
+
 if(!$UserLogin->isUniqueMail($data['user']['user_login']['email']) && !$data['user']['user_login']['user_login_id'])
 {
     error('MAIL_ALREADY_EXISTS');
