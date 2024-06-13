@@ -265,7 +265,7 @@ const AdminpaymentsViewer = {
         },
     },
     mounted() {
-        this.getPaymentsProperties()
+        // this.getPaymentsProperties()
         this.getCatalogPaymentTypes()
     },
     template: `
