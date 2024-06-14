@@ -1,4 +1,4 @@
-import { ImportViewer } from '../../src/js/importViewer.vue.js?v=1.0.9'
+import { ImportViewer } from '../../src/js/importViewer.vue.js?v=1.1.0'
 
 Vue.createApp({
     components : { 

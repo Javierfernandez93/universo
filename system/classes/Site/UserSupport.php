@@ -11,8 +11,6 @@ use JFStudio\Cookie;
 
 use Site\CatalogUserType;
 use Site\PermissionPerUserSupport;
-use Site\UserType;
-use Site\UserBridgeAccount;
 use Site\UserLogin;
 use Site\BuyPerUser;
 use Site\Log;
@@ -1172,7 +1170,9 @@ class UserSupport extends Orm {
       user_address.country_id,
       user_contact.phone,
       affiliation.name as affiliation,
-      user_support.names as sponsor_name
+      user_referral.referral_id,
+      user_support.names as sponsor_name,
+      user_referral_data.names as referral_name
     FROM
       user_login
     LEFT JOIN 
@@ -1195,6 +1195,10 @@ class UserSupport extends Orm {
       user_referral
     ON 
       user_referral.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_data as user_referral_data
+    ON 
+      user_referral_data.user_login_id = user_referral.referral_id
     LEFT JOIN 
       user_support
     ON 

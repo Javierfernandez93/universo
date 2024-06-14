@@ -1,4 +1,4 @@
-import { DocumentationViewer } from '../../src/js/documentationViewer.vue.js?v=1.0.9'
+import { DocumentationViewer } from '../../src/js/documentationViewer.vue.js?v=1.1.0'
 
 Vue.createApp({
     components : { 

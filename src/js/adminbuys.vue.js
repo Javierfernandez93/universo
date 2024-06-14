@@ -1,5 +1,5 @@
 /* vue */
-import { AdminbuysViewer } from '../../src/js/adminbuysViewer.vue.js?v=1.0.9'
+import { AdminbuysViewer } from '../../src/js/adminbuysViewer.vue.js?v=1.1.0'
 
 Vue.createApp({
     components: {

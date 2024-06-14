@@ -609,15 +609,15 @@
     <script src="../../src/js/plugins/smooth-scrollbar.min.js" type="text/javascript"></script>
     <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
-    <script src="../../src/js/general.js?v=1.0.9" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.0.9" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.0.9" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.1.0" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.1.0" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.1.0" type="text/javascript"></script>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
 
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.js"></script>
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.9.6"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.0.6"></script>
 
     <script src="../../src/js/vue.js"></script>
 

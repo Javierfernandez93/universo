@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.9'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.9'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.0'   
 
 const AdminadduserViewer = {
     components : {
@@ -14,6 +14,7 @@ const AdminadduserViewer = {
             countries: {},
             user: {
                 user_login: {
+                    user_login_id: null,
                     password: null,
                     email: '',
                     catalog_user_type_id: 1, // sellter
@@ -31,7 +32,6 @@ const AdminadduserViewer = {
                     landing: null,
                 },
                 user_referral: {
-                    user_login_id: null,
                     user_support_id: null
                 }
             },

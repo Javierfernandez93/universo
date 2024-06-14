@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.9'
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.9'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.0'
 
 const AdmineditadministratorViewer = {
     components : {
@@ -31,7 +31,7 @@ const AdmineditadministratorViewer = {
         administrator:
         {
             handler() {
-                this.administratorComplete = this.administrator.name != null && this.administrator.email != null && this.administrator.password != null
+                this.administratorComplete = this.administrator.names != null && this.administrator.email != null && this.administrator.password != null
             },
             deep: true
         }
@@ -94,7 +94,7 @@ const AdmineditadministratorViewer = {
                 <div class="row align-items-center">
                     <div class="col-12 col-xl">
                         <label>Nombre</label>
-                        <input :disabled="busy" :autofocus="true" :class="administrator.name ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.email.focus()" v-model="administrator.name" ref="name" type="text" class="form-control" placeholder="nombre">
+                        <input :disabled="busy" :autofocus="true" :class="administrator.names ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.email.focus()" v-model="administrator.names" ref="name" type="text" class="form-control" placeholder="nombre">
                     </div>
                     <div class="col-12 col-xl">
                         <label>Correo electrónico</label>

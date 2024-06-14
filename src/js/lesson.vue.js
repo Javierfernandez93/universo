@@ -1,5 +1,5 @@
 /* vue */
-import { LessonViewer } from '../../src/js/lessonViewer.vue.js?v=1.0.9'
+import { LessonViewer } from '../../src/js/lessonViewer.vue.js?v=1.1.0'
 
 Vue.createApp({
     components: {

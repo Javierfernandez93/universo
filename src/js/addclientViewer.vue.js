@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.9'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.9' 
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.0' 
  
 const AddclientViewer = {
     components : {
@@ -67,7 +67,7 @@ const AddclientViewer = {
                     landing: null,
                 },
                 user_referral: {
-                    user_login_id: null
+                    referral_id: null
                 }
             },
         }
@@ -145,19 +145,26 @@ const AddclientViewer = {
             alertMessage('La CURP se integra por 18 caracteres.')
         },
         getSellers() {
-            this.UserSupport.getUsers({  }, (response) => {
-                if (response.s == 1) {
-                    this.sellers = response.users
-                    this.sellersAux = response.users
+            return new Promise((resolve) => {
+                this.busy = true
+                this.UserSupport.getUsers({  }, async (response) => {
+                    this.busy = false
+                    if (response.s == 1) {
+                        this.sellers = response.users
+                        this.sellersAux = response.users
 
-                    setTimeout(()=>{
-                        $('.selectpicker').selectpicker();
+                        await sleep(100)
                         
+                        $('.selectpicker').selectpicker();
                         $('.selectpicker').change(() =>{
-                            this.user.user_referral.user_login_id = $('.selectpicker').val();
+                            this.user.user_referral.referral_id = $('.selectpicker').val();
                         });
-                    },100)
-                }
+
+                        this.user.user_referral.referral_id = this.sellers[0].user_login_id
+                    }
+
+                    resolve()
+                })
             })
         },
         getUserToEdit() {
@@ -165,21 +172,19 @@ const AddclientViewer = {
                 if (response.s == 1) {
                     this.user = {...this.user, ...response.user}
 
-                    await sleep(1000)
+                    await sleep(100)
 
-                    console.log(this.user.user_referral.user_login_id)
-
-                    $(".selectpicker").val(this.user.user_referral.referral_id)
+                    $(".selectpicker").val(this.user.user_referral.referral_id.toString())
                     $(".selectpicker").selectpicker("refresh")
                 }
             })
         },
     },
-    mounted() {
+    async mounted() {
         $(this.$refs.phone).mask('(00) 0000-0000');
 
         this.getCountries()
-        this.getSellers()
+        await this.getSellers()
 
         if(getParam('ulid'))
         {
@@ -461,7 +466,7 @@ const AddclientViewer = {
                         </div>
                     </div>
                 </div>
-                <div v-if="sellers" class="row">
+                <div class="row">
                     <div class="col-12 col-md-6 mb-3">
                         <label>Asignar a asesor</label>
                         <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">

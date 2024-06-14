@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.9'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'   
 
 const ClientlistViewer = {
     name : 'clientlist-viewer',
@@ -200,6 +200,9 @@ const ClientlistViewer = {
                                     USUARIO
                                 </th>
                                 <th class="header-sticky text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Asesor
+                                </th>
+                                <th class="header-sticky text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     fecha de registro
                                 </th>
                                 <th class="header-sticky text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -225,6 +228,9 @@ const ClientlistViewer = {
                                             <p class="text-xs text-secondary mb-0">{{user.email}}</p>
                                         </div>
                                     </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    {{user.referral_name}}
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     {{user.signup_date.formatFullDate()}}

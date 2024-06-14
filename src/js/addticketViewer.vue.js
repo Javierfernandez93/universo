@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.0.9'   
+import { User } from '../../src/js/user.module.js?v=1.1.0'   
 
 const AddticketViewer = {
     name : 'addticket-viewer',
