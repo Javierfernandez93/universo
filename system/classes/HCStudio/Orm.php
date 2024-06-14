@@ -305,6 +305,7 @@ abstract class Orm
 
 	public function exist()
 	{
+		$where = '';
 		$first = true;
 		foreach ($this->tblFields as $key => $value)
 			if($key != $this->tblPrimary)
