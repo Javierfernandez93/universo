@@ -5,10 +5,9 @@ namespace JFStudio;
 use JFStudio\Layout;
 
 use Site\CatalogMailController;
+use Site\EmailLogger;
 
 use \Exception;
-
-require_once TO_ROOT . '/vendor/autoload.php';
 
 class Mailer
 {
@@ -20,6 +19,29 @@ class Mailer
         if(!isset($data))
         {
             return false;
+        }
+
+        if(!$data['vars']['email'])
+        {
+            throw new Exception('Email is required');   
+        }
+
+        if(!$data['view'])
+        {
+            throw new Exception('view is required');   
+        }
+
+        if($data['logger'] == true)
+        {
+            $EmailLogger = new EmailLogger;
+
+            if($EmailLogger->isInLog([
+                'email' => $data['vars']['email'],
+                'template' => $data['view'],
+            ]))
+            {
+                return false;
+            }
         }
             
         $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
@@ -52,7 +74,6 @@ class Mailer
             //Recipients
             $mail->setFrom($CatalogMailController->mail, $CatalogMailController->sender);
             $mail->addAddress($data['vars']['email'], $data['vars']['names']);     
-            
 
             //Content
             $mail->isHTML(true);                                  
@@ -61,7 +82,14 @@ class Mailer
             $mail->Body = $Layout->getHtml();
             $mail->AltBody = strip_tags($Layout->getHtml());
 
-            return $mail->send();
+            $response = $mail->send();
+
+            EmailLogger::add([
+                'email' => $data['vars']['email'],
+                'template' => $data['view']
+            ]);
+
+            return $response;
         } catch (Exception $e) {
             d($e);
         }

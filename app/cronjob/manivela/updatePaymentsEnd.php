@@ -58,7 +58,6 @@ foreach($sales as $sale)
             }
         }
     }
-    
 }
 
 success(Constants::RESPONSES['DATA_OK']);

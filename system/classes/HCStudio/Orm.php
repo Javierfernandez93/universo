@@ -526,6 +526,7 @@ abstract class Orm
 
 	public function findField(string $where = null,array|string|int|float $binds = null,string $field = null) : string|bool
 	{
+		$field = isset($field) ? $field : $this->tblPrimary;
 		$query = "SELECT {$field} FROM {$this->tblName} WHERE {$where}";
 
 		if($data = $this->db->field($query, $binds))

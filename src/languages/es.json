@@ -61,5 +61,6 @@
   "security_body" : "Todos tus datos están protegidos porque están encriptados, sólo tu tienes el poder de utilizar tu dinero.",
   "filter": "Filter",
   "whatsapp_default_message": "¡Hola! te escribimos desde Site",
-  "start_now": "Empezar ahora"
+  "start_now": "Empezar ahora",
+  "email.welcome_admin": "¡Bienvenid@ a Jade!"
 }

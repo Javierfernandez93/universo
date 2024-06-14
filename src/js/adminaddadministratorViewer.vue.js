@@ -1,50 +1,47 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.9'
 import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.9'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.9'
 
 const AdminaddadministratorViewer = {
     components: {
-        BackViewer
+        BackViewer,
+        LoaderViewer
     },
     data() {
         return {
             UserSupport: new UserSupport,
-            administratorComplete: false,
+            filled: false,
             query: null,
+            busy: false,
             feedback: null,
+            permissionsAux:null,
             administrator: {
+                user_support_id: null,  
                 names: null,
                 password: null,
-                email: null,
-                permissionsAux: {},
-                permissions: {},
+                email: '',
+                permissions:null,
             },
         }
     },
     watch: {
-        query:
-        {
-            handler() {
-                this.filterData()
-            },
-            deep: true
+        query() {
+            this.administrator.permissions = this.permissionsAux.filter((permission) => {
+                return permission.description.toLowerCase().includes(this.query.toLowerCase())
+                    || permission.permission.toLowerCase().includes(this.query.toLowerCase())
+            })
         },
-        administrator:
-        {
+        administrator: {
             handler() {
-                this.administratorComplete = this.administrator.names != null && this.administrator.email != null && this.administrator.password != null
+                this.filled = this.administrator.names != null 
+                && this.administrator.email.isValidMail()
+                && this.administrator.password != null
+                && this.administrator.permissions.some((permission) => permission.checked == true)
             },
             deep: true
         }
     },
     methods: {
-        filterData() {
-            this.administrator.permissions = this.administrator.permissionsAux
-
-            this.administrator.permissions = this.administrator.permissions.filter((permission) => {
-                return permission.description.toLowerCase().includes(this.query.toLowerCase())
-                    || permission.permission.toLowerCase().includes(this.query.toLowerCase())
-            })
-        },
         saveAdministrator() {
             this.feedback = null
             this.UserSupport.saveAdministrator({administrator:this.administrator}, (response) => {
@@ -55,19 +52,31 @@ const AdminaddadministratorViewer = {
                 }
             })
         },
+        generatePassword() {
+            this.administrator.password = generateRandomPassword();
+        },
         getAdministratorPermissions() {
+            this.busy = true
             this.UserSupport.getAdministratorPermissions({user:this.user}, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     this.administrator.permissions = response.permissions
-                    this.administrator.permissionsAux = this.administrator.permissions
+                    this.permissionsAux = response.permissions
                 }
             })
         },
     },
     mounted() {
         this.getAdministratorPermissions();
+
+        if(!this.administrator.user_support_id)
+        {
+            this.generatePassword();
+        }
     },
     template: `
+        <LoaderViewer :busy="busy"/>
+
         <div class="card mb-3">
             <div class="card-header">
                 <div class="row justify-content-center align-items-center">
@@ -78,19 +87,19 @@ const AdminaddadministratorViewer = {
                         Añadir administrador
                     </div>
                     <div class="col-12 col-md-auto">
-                        <button :disabled="!administratorComplete" ref="button" type="submit" class="btn btn-dark mb-0 shadow-none btn-sm px-3" @click="saveAdministrator">Guardar adminsitrador</button>
+                        <button :disabled="!filled" ref="button" type="submit" class="btn btn-dark mb-0 shadow-none btn-sm px-3" @click="saveAdministrator">Guardar adminsitrador</button>
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <div class="row">
+                <div class="row align-items-end d-flex">
                     <div class="col-12 col-md">
                         <label>Nombre</label>
                         <input :disabled="busy" :autofocus="true" :class="administrator.names ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.email.focus()" v-model="administrator.names" ref="names" type="text" class="form-control" placeholder="nombre">
                     </div>
                     <div class="col-12 col-md">
                         <label>Correo electrónico</label>
-                        <input v-model="administrator.email" :class="administrator.email ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.password.focus()" ref="email" type="text" class="form-control" placeholder="Email">
+                        <input v-model="administrator.email" :class="administrator.email.isValidMail() ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.password.focus()" ref="email" type="text" class="form-control" placeholder="Email">
                     </div>
                     <div class="col-12 col-md">
                         <label>Contraseña</label>
@@ -101,6 +110,11 @@ const AdminaddadministratorViewer = {
                             :class="administrator.password ? 'is-valid' : ''"
                             type="text" class="form-control" placeholder="Password">
                     </div>
+                    <div class="col-12 col-md-auto">
+                        <button @click="generatePassword" class="btn btn-sm btn-outline-dark px-3 mb-0 shadow-none">
+                            generar contraseña segura
+                        </button>   
+                    </div>
                 </div>
             </div>
         </div>
@@ -109,6 +123,7 @@ const AdminaddadministratorViewer = {
             <div class="card-header">
                 <div class="row align-items-center">
                     <div class="col-12 col-xl fw-semibold text-primary">
+                        <div class="text-xs text-secondary">{{administrator.permissions? administrator.permissions.length :0 }}</div>  
                         <h6>
                             Listado de permisos
                         </h6>
@@ -118,7 +133,15 @@ const AdminaddadministratorViewer = {
                     </div>
                 </div>
             </div>
+
+            
             <div class="card-body">
+                <div v-if="!administrator.permissions.some((permission) => permission.checked == true)" class="alert alert-dark text-center text-white">
+                    <strong>Aviso</strong>
+                    <div>
+                        Elige al menos un permiso 
+                    </div>
+                </div>
                 <ul class="list-group">
                     <li v-for="permission in administrator.permissions" class="list-group-item">
                         <div class="row align-items-center">

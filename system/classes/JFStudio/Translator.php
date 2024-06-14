@@ -12,24 +12,30 @@ class Translator
     
     const LOAD_FROM_STORAGE = true;
     const ACCEPTED_LANGUAGES = ['en', 'es'];
+    const DEFAULT_LANGUAGE = 'es';
 
 	private static $instance;
 
-	public static function getInstance()
+	public static function getInstance(string $language = self::DEFAULT_LANGUAGE)
  	{
 	    if(self::$instance instanceof self === false) {
-	      self::$instance = new self;
+	      self::$instance = new self($language);
 	    }
 
 	    return self::$instance;
  	}
 
+	public function __construct(string $language = self::DEFAULT_LANGUAGE)
+    {
+        $this->init($language);
+    } 
+
 	public function __destruct() { }
 
 	public function __clone() { }
 
-    public function init() {
-        $this->getLanguage();
+    public function init(string $language = self::DEFAULT_LANGUAGE) {
+        $this->getLanguage($language);
         $this->getWords();
     }
 
@@ -43,60 +49,46 @@ class Translator
     }
 
     public function getWords() {
-        $this->words = $this->getWordsCookie($this->language);
-        
-        if($this->words == null || self::LOAD_FROM_STORAGE == false) 
+        if($this->words != null)
         {
-            $words = file_get_contents("../../src/languages/{$this->language}.json");
-            $words = json_decode($words, true);
-
-            $this->setWordsCookie($this->language, $this->words);
+            return $this->words;
         }
-    }
+        
+        $words = file_get_contents("../../src/languages/{$this->language}.json");
 
+        $this->words = json_decode($words, true);
+    }
+    
     public function getBrowserLanguage() {
-        $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+        {
+            $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        } else {
+            $language = 'es';
+        }
         
-        return in_array($lang, self::ACCEPTED_LANGUAGES) ? $lang : 'en';
+        return in_array($language, self::ACCEPTED_LANGUAGES) ? $language : 'en';
     }
 
-    public function getLanguage() {
-        $this->language = $this->getLanguageCookie();
-
-        if($this->language == null)
+    public function getLanguage(string $language = self::DEFAULT_LANGUAGE) {
+        $language = isset($language) ? $language : self::DEFAULT_LANGUAGE;
+        $language = Cookie::get('language') ? Cookie::get('language') : $language;
+        
+        if($language == null)
         {
-            $this->language = $this->sanitizeLanguage($this->getBrowserLanguage());
-            $this->setLanguage($this->language);
+            $language = $this->sanitizeLanguage($this->getBrowserLanguage());
         }
+        
+        $this->setLanguage($language);
 
         return $this->language;
     }
 
-    public function getWordsCookie(string $language = null) {
-        $words = Cookie::get("w_{$language}");
-
-        if($words != null)
-        {
-            return $words;
-        }
-
-        return null;
-    }
-
-    public function getLanguageCookie() {
-        return Cookie::get('language');
-    }
-
-    public function setWordsCookie($language,$words) {
-        // Cookie::set("w_{$language}", $words);
-    }
-
-    public function setLanguageCookie($language) {
-        // Cookie::set('language', $language);
+    public function t(string $key) : string {
+        return isset($this->words[$key]) ? $this->words[$key] : $key;
     }
 
     public function setLanguage($language) {
         $this->language = $language;
-        $this->setLanguageCookie($this->language);
     }
 }

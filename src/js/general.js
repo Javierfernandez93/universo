@@ -1422,3 +1422,17 @@ const shuffle = (array) => {
 
 
 const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+
+const generateRandomPassword = (length = 8) => {
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+";
+
+  let password = "";
+
+  for (let i = 0; i < length; i++) {
+    // Choose a random character from the charset and add it to the password
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    password += charset[randomIndex];
+  }
+
+  return password;
+}
