@@ -41,7 +41,7 @@ if($UserSupport->logged === true)
 
 function uploadUserImage(int $company_id = null,string $image = null) : bool 
 {
-	$UserAccount = new DummieTrading\UserAccount;
+	$UserAccount = new Site\UserAccount;
 	
 	if($UserAccount->cargarDonde("user_login_id = ?",$company_id))
 	{

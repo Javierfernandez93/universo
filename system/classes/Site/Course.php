@@ -19,38 +19,6 @@ class Course extends Orm {
 		parent::__construct();
 	}
 
-	public static function filterCourseBlocked(array $course = null,int $user_login_id = null) : bool
-    {
-        if(!$course['attach_to_course_id'])
-        {
-            return false;
-        }
-
-        return !(new UserEnrolledInCourse)->isCourseFinished([
-            'course_id' => $course['attach_to_course_id'],
-            'user_login_id' => $user_login_id,
-        ]);
-    }
-
-	public static function filterCoursesBlocked(array $courses = null,int $user_login_id = null) : array
-    {
-        if(!isset($courses))
-        {
-            return false;
-        }
-
-        if(!isset($user_login_id))
-        {
-            return false;
-        }
-
-        return array_map(function($course) use($user_login_id){
-            $course['blocked'] = self::filterCourseBlocked($course,$user_login_id);
-
-            return $course;
-        },$courses);
-    }
-
 	public static function setState(array $data = null) : bool
     {
         $Course = new self;
@@ -72,7 +40,11 @@ class Course extends Orm {
         if(isset($data['course_id']))
         {
             $Course->loadWhere("course_id = ?",$data['course_id']);
+        } else {
+            $Course->create_date = time();
         }
+
+        $is_free = filter_var($data['free'], FILTER_VALIDATE_BOOLEAN);
 
         $Course->title = $data['title'];
         // $Course->user_support_id = $data['user_support_id'];
@@ -81,19 +53,16 @@ class Course extends Orm {
         $Course->price = isset($data['price']) ? $data['price'] : 0;
         $Course->duration = isset($data['duration']) ? $data['duration'] : '';
         $Course->target = isset($data['target']) ? $data['target'] : self::ALL;
-        $Course->catalog_course_type_id = $data['free'] ? 1 : 2;
-        
-        if($data['free'])
-        {
-            $Course->price = 0;
-        }
+        $Course->catalog_course_type_id = $is_free ? 1 : 2;
+        $Course->price = $is_free ? 0 : $Course->price;
+
+        // TODO: Set a default value either via database or by class without using magic numbers
+        $default_currency_id = 8; // USD
 
         $Course->catalog_course_id = $data['catalog_course_id'];
-        $Course->catalog_currency_id = $data['catalog_currency_id'];
+        $Course->catalog_currency_id = $data['catalog_currency_id'] ?? $default_currency_id;
         $Course->tag = $data['tag'];
         
-        $Course->create_date = time();
-    
         if($Course->save())
         {
             foreach($data['sessions'] as $key => $session)
@@ -103,9 +72,16 @@ class Course extends Orm {
 
                 SessionPerCourse::addSession($session);
             }
+
+            foreach($data['deleted_lessons'] as $lesson_id){
+                if (!is_numeric($lesson_id)) {
+                    continue;
+                }
+                $_was_removed = SessionPerCourse::removeSingleSession($data['course_id'], $lesson_id);
+            }
         }
 
-        return true;
+        return $Course->getId();
     }
 
 	public function getList()
@@ -116,7 +92,6 @@ class Course extends Orm {
                     {$this->tblName}.description,
                     {$this->tblName}.price,
                     {$this->tblName}.create_date,
-                    {$this->tblName}.attach_to_course_id,
                     {$this->tblName}.target,
                     {$this->tblName}.image,
                     catalog_course.name,
@@ -139,7 +114,6 @@ class Course extends Orm {
                     user_support.user_support_id = {$this->tblName}.user_support_id
                 WHERE 
                     {$this->tblName}.status = '".Constants::AVIABLE."'
-                GROUP BY {$this->tblName}.{$this->tblName}_id
                 ";
         
         return $this->connection()->rows($sql);
@@ -249,9 +223,15 @@ class Course extends Orm {
         if(isset($course_id))
         {
             $course = $this->_getCourse($course_id);
-            $course['free'] = 1;
+            $course['free'] = (int)($course['price']) <= 0 ? 1 : 0;
             $course['tag'] = json_decode($course['tag'],true);
             $course['sessions'] = (new SessionPerCourse)->getList($course_id);
+            foreach($course['sessions'] as $key => $lesson){
+                if ($lesson['catalog_multimedia_id'] === 5) { // module
+                    $subLessons = (new SessionPerCourse)->getList($course_id,$lesson['session_per_course_id']);
+                    $course['sessions'][$key]['sessions'] = $subLessons;
+                }
+            }
             return $course;
         }
 

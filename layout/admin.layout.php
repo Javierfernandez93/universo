@@ -91,6 +91,30 @@
                         </ul>
                     </ul>
                 <?php } ?>
+                <?php if ($UserSupport->hasPermission('list_academy')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#academy" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminAcademy])) { ?>active<?php } ?>" aria-controls="academy" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-person-circle"></i></span>
+                            <span class="nav-link-text ms-1">Academia</span>
+                        </a>
+                        <div class="collapse" id="academy">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../apps/admin-academy">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../apps/admin-academy/add">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Añadir </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
                 <?php if ($UserSupport->hasPermission('list_clients')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">

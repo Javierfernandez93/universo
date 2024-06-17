@@ -90,6 +90,13 @@
                     </li>
                     
                     <li class="nav-item">
+                        <a class="nav-link <?php if ($route == JFStudio\Router::Academy) { ?>active<?php } ?>" href="../../apps/academy">
+                            <i class="bi bi-youtube"></i>
+                            <span  data-translate="menu.start" class="nav-link-text ms-1 fw-semiboldx">Academia</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link <?php if ($route == JFStudio\Router::Tools) { ?>active<?php } ?>" href="../../apps/backoffice/tools">
                             <i class="bi bi-laptop-fill"></i>
                             <span  data-translate="menu.start" class="nav-link-text ms-1 fw-semiboldx">Herramientas</span>

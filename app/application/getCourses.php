@@ -1,6 +1,6 @@
 <?php define('TO_ROOT', '../../');
 
-require_once TO_ROOT . 'system/core.php'; 
+require_once TO_ROOT."system/core.php";
 
 $data = HCStudio\Util::getHeadersForWebService();
 
@@ -33,7 +33,7 @@ function format(array $courses = null) : array
         $course['like'] = $LikePerCourse->getCount($course['course_id']);
         $course['comment'] = $CommentPerCourse->getCount($course['course_id']);
         $course['visit'] = $VisitPerCourse->getCount($course['course_id']);
-        $course['user'] = $UserEnrolledInCourse->getCoutEnrolledCourses($course['course_id']);
+        $course['user'] = $UserEnrolledInCourse->getCountEnrolledCourses($course['course_id']);
 
         return $course;
     },$courses);

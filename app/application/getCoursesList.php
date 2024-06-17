@@ -1,6 +1,6 @@
 <?php define('TO_ROOT', '../../');
 
-require_once TO_ROOT . 'system/core.php'; 
+require_once TO_ROOT . 'system/core.php';
 
 $data = HCStudio\Util::getHeadersForWebService();
 
@@ -12,9 +12,9 @@ if($UserLogin->logged === true)
     $Course->connection()->stmtQuery("SET NAMES utf8mb4");
 
     if($courses = $Course->getList())
-    {
-        $data['courses'] = array_values(format(filter($courses,$UserLogin->company_id),$UserLogin->company_id));
-        $data['courses'] = Site\Course::filterCoursesBlocked($data['courses'],$UserLogin->company_id);
+    {   
+        $data['courses'] = format(filter($data['courses'],$UserLogin->company_id),$UserLogin->company_id);
+        
         $data['r'] = 'DATA_OK';
         $data['s'] = 1;
     } else {
@@ -46,15 +46,9 @@ function format(array $courses = null,int $user_login_id = null) : array
 {	
     $SessionTakeByUserPerCourse = new Site\SessionTakeByUserPerCourse;
     $UserEnrolledInCourse = new Site\UserEnrolledInCourse;
-    $Course = new Site\Course;
     
-	return array_map(function ($course) use($SessionTakeByUserPerCourse,$UserEnrolledInCourse,$Course,$user_login_id) {
+	return array_map(function ($course) use($SessionTakeByUserPerCourse,$UserEnrolledInCourse,$user_login_id) {
         $course['isEnrolled'] = $UserEnrolledInCourse->isEnrolled($course['course_id'],$user_login_id);
-        
-        if($course['attach_to_course_id'])
-        {
-            $course['attach_to_course'] = $Course->findField("course_id = ?",$course['attach_to_course_id'],"title");
-        }
 
         if($course['isEnrolled'])
         {

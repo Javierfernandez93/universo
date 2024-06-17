@@ -73,6 +73,7 @@ class Router {
     const Commissions = 153;
     const Receipt = 154;
     const Quoter = 181;
+    const Academy = 182;
     
     /* admin */
     const AdminUsers = 9;
@@ -278,6 +279,7 @@ class Router {
             self::AdminManivela => 'Manivela',
             self::Us => 'Nosotros',
             self::Quoter => 'Cotizador',
+            self::Academy => 'Academia',
             default => 'Sin nombre'
         };
     }
