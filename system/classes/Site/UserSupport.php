@@ -1709,4 +1709,14 @@ class UserSupport extends Orm {
 
     return $stats;  
   }
+
+  public function getPermissionsGroup(string $code)
+  {
+    if(!$this->logged || !$code)
+    {
+      return false;
+    }
+
+    return PermissionGroup::getAll($code);
+  }
 }

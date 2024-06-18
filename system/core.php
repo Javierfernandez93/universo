@@ -64,7 +64,7 @@ function unauthorized(string $response = null,array $additional_data = null) : v
 {
 	webServiceResponse([
 		's' => 0,
-		'r' => $response
+		'r' => $response ?? Constants::RESPONSES['INVALID_PERMISSION']
 	],$additional_data);
 
 	http_response_code(401);
@@ -76,7 +76,7 @@ function badRequest(string $response = null,array $additional_data = null) : voi
 {
 	webServiceResponse([
 		's' => 0,
-		'r' => $response
+		'r' => $response ?? Constants::RESPONSES['BAD_REQUEST']
 	],$additional_data);
 
 	http_response_code(400);
@@ -88,7 +88,7 @@ function error(string $response = null,array $additional_data = null) : void
 {
 	webServiceResponse([
 		's' => 0,
-		'r' => $response
+		'r' => $response ?? Constants::RESPONSES['WEB_SERVICE_ERROR']
 	],$additional_data);
 
 	http_response_code(200);
@@ -100,7 +100,7 @@ function success(string $response = null,array $additional_data = null) : void
 {
 	webServiceResponse([
 		's' => 1,
-		'r' => $response
+		'r' => $response ?? Constants::RESPONSES['DATA_OK']
 	],$additional_data);
 
 	http_response_code(200);

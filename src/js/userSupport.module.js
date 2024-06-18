@@ -738,6 +738,9 @@ class UserSupport extends Http {
     uploadImageProperty(data, progress, callback) {
         return this.callFile('../../app/application/uploadImageProperty.php', data, callback, progress);
     }
+    getPermissionsGroup(data, callback) {
+        return this.call('../../app/application/getPermissionsGroup.php', data, callback);
+    }
 }
 
 export { UserSupport }

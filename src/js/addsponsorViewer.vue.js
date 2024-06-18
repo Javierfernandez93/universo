@@ -65,37 +65,67 @@ const AddsponsorViewer = {
             })
         },
         getAdministratorPermissions() {
-            this.busy = true
-            this.UserSupport.getAdministratorPermissions({user:this.user}, (response) => {
-                this.busy = false
-                if (response.s == 1) {
-                    this.administrator.permissions = response.permissions
-                    this.administrator.permissionsAux = this.administrator.permissions
-                }
+            return new Promise((resolve) => {
+                this.busy = true
+                this.UserSupport.getAdministratorPermissions({user:this.user}, (response) => {
+                    this.busy = false
+                    if (response.s == 1) {
+                        this.administrator.permissions = response.permissions
+                        this.administrator.permissionsAux = this.administrator.permissions
+                    }
+
+                    resolve()
+                })
             })
         },
         getAffiliations() {
             this.busy = true
             this.affiliations = null
-            this.UserSupport.getAffiliations({}, (response) => {
+            this.UserSupport.getAffiliations({}, async (response) => {
                 this.busy = false
                 if (response.s == 1) {
                     this.affiliations = response.affiliations
 
-                    setTimeout(()=>{
-                        $('.selectpicker').selectpicker();
-                        
-                        $('.selectpicker').change(() =>{
-                            this.administrator.affiliation_id = $('.selectpicker').val();
-                        });
-                    },100)
+                    await sleep(100)
+
+                    $('.selectpicker').selectpicker();
+                    $('.selectpicker').change(() =>{
+                        this.administrator.affiliation_id = $('.selectpicker').val();
+                    });
+                }
+            })
+        },
+        getPermissionsGroup() {
+            this.busy = true
+            this.UserSupport.getPermissionsGroup({code:'leader'}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    if(response.permission_group.permissions.length ==0)
+                    {
+                        toastInfo({
+                            message: 'No hay permisos para este grupo',
+                        })
+                        return
+                    }
+                    
+                    let permissions = response.permission_group.permissions.map((permission) => {
+
+                        permission.checked = true
+
+                        return permission
+                    })
+                    console.log(response.permission_group.permissions)
+
+                    this.administrator.permissions = {...this.administrator.permissions,...permissions}
                 }
             })
         },
     },
-    mounted() {
-        this.getAdministratorPermissions();
+    async mounted() {
+        await this.getAdministratorPermissions();
+
         this.getAffiliations();
+        this.getPermissionsGroup();
     },
     template: `
         <div class="card mb-3">
