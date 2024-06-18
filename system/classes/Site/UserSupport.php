@@ -1718,5 +1718,30 @@ class UserSupport extends Orm {
     }
 
     return PermissionGroup::getAll($code);
+  }  
+
+  public function deleteUsers(array $user_login_ids)
+  {
+    if(!$this->logged || !$user_login_ids)
+    {
+      return false;
+    }
+
+    foreach($user_login_ids as $user_login_id)
+    {
+      $this->deleteUser($user_login_id);
+    }
+
+    return true;  
+  }
+
+  public function deleteUser(int $user_login_id)
+  {
+    if(!$this->logged || !$user_login_id)
+    {
+      return false;
+    }
+
+    return (new UserLogin(false,false))->find($user_login_id)->updateStatus(Constants::DELETE); 
   }
 }

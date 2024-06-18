@@ -1,4 +1,3 @@
-
 const Status = {
     props: ['status'],
     template: `

@@ -744,6 +744,9 @@ class UserSupport extends Http {
     getRealStateDevelopers(data, callback) {
         return this.call('../../app/application/getRealStateDevelopers.php', data, callback);
     }
+    deleteUsers(data, callback) {
+        return this.call('../../app/application/deleteUsers.php', data, callback);
+    }
 }
 
 export { UserSupport }

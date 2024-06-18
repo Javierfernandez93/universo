@@ -1,6 +1,12 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.0'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.0' 
 
 const AdminusersViewer = {
+    components: {
+        LoaderViewer,
+        PlaceHolder
+    },  
     data() {
         return {
             UserSupport: new UserSupport,
@@ -8,6 +14,7 @@ const AdminusersViewer = {
             users: null,
             usersAux: null,
             query: null,
+            checkAll: false,
             columns: { // 0 DESC , 1 ASC 
                 company_id: {
                     name: 'company_id',
@@ -34,12 +41,19 @@ const AdminusersViewer = {
         }
     },
     watch: {
-        query:
-        {
-            handler() {
-                this.filterData()
-            },
-            deep: true
+        checkAll() {
+            this.users.forEach(element => {
+                element.checked = this.checkAll
+            });
+        },
+        query() {
+            this.users = this.usersAux.filter(user => {
+                return user.names?.toLowerCase().includes(this.query.toLowerCase()) 
+                || user.email?.toLowerCase().includes(this.query.toLowerCase())  
+                || user.company_id?.toString().includes(this.query.toLowerCase()) 
+                || user.sponsor_name?.toLowerCase().includes(this.query.toLowerCase()) 
+                || user.affiliation?.toLowerCase().includes(this.query.toLowerCase())  
+            })
         }
     },
     methods: {
@@ -53,16 +67,6 @@ const AdminusersViewer = {
 
             column.desc = !column.desc
         },
-        filterData() {
-            this.users = this.usersAux
-            this.users = this.users.filter(user => {
-                return user.names.toLowerCase().includes(this.query.toLowerCase()) || 
-                user.email.toLowerCase().includes(this.query.toLowerCase()) || 
-                user.company_id.toString().includes(this.query.toLowerCase()) ||
-                user.sponsor_name.toLowerCase().includes(this.query.toLowerCase()) ||
-                user.affiliation.toLowerCase().includes(this.query.toLowerCase()) 
-        })
-        },
         getInBackoffice(company_id) {
             this.UserSupport.getInBackoffice({ company_id: company_id }, (response) => {
                 if (response.s == 1) {
@@ -70,8 +74,26 @@ const AdminusersViewer = {
                 }
             })
         },
+        deleteUsers() {
+            this.busy = true
+
+            const user_login_ids = this.users.filter(user => user.checked).map(user => user.user_login_id)
+
+            this.UserSupport.deleteUsers({ user_login_ids: user_login_ids }, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.getUsers()
+
+                    toastInfo({
+                        message: `Se han eliminado ${user_login_ids.length} usuarios`,
+                    })
+                }
+            })
+        },
         deleteUser(company_id) {
+            this.busy = true
             this.UserSupport.deleteUser({ company_id: company_id }, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     this.getUsers()
                 }
@@ -116,19 +138,30 @@ const AdminusersViewer = {
                     <div class="col-auto text-end">
                         <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
+                    <div v-if="users.some(user => user.checked)" class="col-auto text-end">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-dark mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+
+                            </button>
+                            <ul class="dropdown-menu shadow">
+                                <li><button class="dropdown-item" @click="deleteUsers">Eliminar todos</button></li>
+                            </ul>
+                        </div>  
+                    </div>
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-                <div v-if="busy == true" class="d-flex justify-content-center py-3">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
+                <LoaderViewer :busy="busy"/>
 
                 <div v-if="users" class="table-responsive-sm p-0 h-100">
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr class="text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="text-uppercase">
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input v-model="checkAll" class="form-check-input" type="checkbox" id="checkAll">
+                                    </div>
+                                </th>
                                 <th class="text-uppercase">
                                     USUARIO
                                 </th>
@@ -140,7 +173,12 @@ const AdminusersViewer = {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="user in users" class="text-center text-sm fw-bold text-dark text-uppercase">
+                            <tr v-for="(user,index) in users" class="text-center text-sm fw-bold text-dark text-uppercase">
+                                <td>
+                                    <div class="form-check d-flex justify-content-center">
+                                        <input v-model="user.checked" class="form-check-input" type="checkbox" :id="'user'+index">
+                                    </div> 
+                                </td>
                                 <td class="text-start">
                                     <div class="d-flex px-2 py-1">
                                         <div>
@@ -156,10 +194,10 @@ const AdminusersViewer = {
                                     <span class="badge bg-primary">asesor</span>
                                 </td>
                                 <td class="align-middle cursor-pointer text-decoration-underline" @click="query = user.sponsor_name">
-                                    {{user.sponsor_name}}
+                                    <PlaceHolder placeholder="-" :value="user.sponsor_name" type="text" />
                                 </td>
                                 <td class="align-middle cursor-pointer text-decoration-underline" @click="query = user.affiliation">
-                                    {{user.affiliation}}
+                                    <PlaceHolder placeholder="-" :value="user.affiliation" type="text" />
                                 </td>
                                 <td class="align-middle">
                                     {{user.signup_date.formatFullDate()}}
