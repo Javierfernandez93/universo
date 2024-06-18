@@ -1,4 +1,4 @@
-import { FooterViewer } from '../../src/js/footerViewer.vue.js?v=1.1.0'
+import { FooterViewer } from '../../src/js/footerViewer.vue.js?v=1.1.1'
 
 Vue.createApp({
     data() {

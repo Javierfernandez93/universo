@@ -1,5 +1,5 @@
 /* vue */
-import { VcardViewer } from '../../src/js/vcardViewer.vue.js?v=1.1.0'
+import { VcardViewer } from '../../src/js/vcardViewer.vue.js?v=1.1.1'
 
 Vue.createApp({
     components: {

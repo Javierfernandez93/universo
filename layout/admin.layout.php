@@ -95,7 +95,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#academy" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminAcademy])) { ?>active<?php } ?>" aria-controls="academy" role="button" aria-expanded="false">
-                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-person-circle"></i></span>
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-youtube"></i></span>
                             <span class="nav-link-text ms-1">Academia</span>
                         </a>
                         <div class="collapse" id="academy">
@@ -633,15 +633,15 @@
     <script src="../../src/js/plugins/smooth-scrollbar.min.js" type="text/javascript"></script>
     <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
-    <script src="../../src/js/general.js?v=1.1.0" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.1.0" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.1.0" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.1.1" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.1.1" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.1.1" type="text/javascript"></script>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
 
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.js"></script>
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.0.6"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.1.6"></script>
 
     <script src="../../src/js/vue.js"></script>
 

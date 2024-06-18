@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'
-import Status from '../../src/js/components/Status.vue.js?v=1.1.0'
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
+import Status from '../../src/js/components/Status.vue.js?v=1.1.1'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
 
 const AdminrealstateViewer = {
     components : {

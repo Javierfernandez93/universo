@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'   
-import LoaderViewer from './loaderViewer.vue.js?v=1.1.0'
-import { PropertyAdminPullViewer } from './propertyAdminPullViewer.vue.js?v=1.1.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'   
+import LoaderViewer from './loaderViewer.vue.js?v=1.1.1'
+import { PropertyAdminPullViewer } from './propertyAdminPullViewer.vue.js?v=1.1.1'
 
 const PropertiesAdminListViewer = {
     components : {
