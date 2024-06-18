@@ -147,7 +147,7 @@ const AdminrealstateViewer = {
                                             <span v-else>    
                                                 <i class="bi text-primary bi-arrow-down-square-fill"></i>
                                             </span>    
-                                            <u class="text-sm ms-2">Link</u>
+                                            <u class="text-sm ms-2">Estado</u>
                                         </th>
                                         <th 
                                             @click="sortData(columns.link)"
@@ -177,18 +177,27 @@ const AdminrealstateViewer = {
                                 <tbody>
                                     <tr v-for="realState in realStates" class="text-center text-sm">
                                         <td>
-                                            <span v-if="realState.status == '1'" class="badge bg-success">Activo</span>
-                                            <span v-if="realState.status == '0'" class="badge bg-secondary">Inactivo</span>
+                                            <i :class="realState.status == 1 ? 'bi-check text-secondary' : 'bi-x text-secondary'" class="bi"></i>
                                         </td>    
                                         <td class="align-middle fw-bold text-dark">
                                             {{realState.title}} 
+                                            <span v-if="realState.link" class="text-secondary">
+                                                <a :href="realState.link" target="_blank">
+                                                    <i class="bi bi-link-45deg text-secondary"></i>
+                                                </a>
+                                            </span>
                                         </td>
                                         <td class="align-middle text-decoration-underline">
-                                            {{realState.link}}
+                                            <span v-if="realState.sold_out" class="badge border border-danger text-danger">
+                                                Sold out
+                                            </span>
+                                            <span v-else class="badge border border-success text-success">  
+                                                Unidades disponibles
+                                            </span>
                                         </td>
                                         <td class="align-middle">
-                                            <span v-if="realState.main == '1'" class="badge bg-primary">Primer etapa</span>
-                                            <span v-else class="badge bg-success">Etapas nuevas</span>
+                                            <span v-if="realState.main == '1'" class="badge border border-primary text-primary">Primer etapa</span>
+                                            <span v-else class="badge border border-success text-success">Etapas nuevas</span>
                                         </td>
                                         <td class="align-middle">
                                             {{realState.create_date.formatFullDate()}}

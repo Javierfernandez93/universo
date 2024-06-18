@@ -2,29 +2,23 @@
 
 require_once TO_ROOT. "/system/core.php";
 
-$data = HCStudio\Util::getHeadersForWebService();
-
 $UserSupport = new Site\UserSupport;
 
-if($UserSupport->logged === true)
+if(!$UserSupport->logged)
 {
-    if($data['real_state_id'])
-    {
-        if((new Site\RealState)->find($data['real_state_id'])->updateStatus($data['status']))
-        {
-            $data["s"] = 1;
-            $data["r"] = "DATA_OK";
-        } else {
-            $data["s"] = 0;
-            $data["r"] = "NOT_UPDATED";
-        }
-    } else {
-        $data["s"] = 0;
-        $data["r"] = "NOT_REAL_STATE_ID";
-    }
-} else {
-	$data["s"] = 0;
-	$data["r"] = "NOT_FIELD_SESSION_DATA";
+    unauthorized();
+}   
+
+$data = HCStudio\Util::getHeadersForWebService();
+
+if(!$data['real_state_id'])
+{
+    error(JFStudio\Constants::RESPONSES['NOT_PARAM']);
 }
 
-echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
+if(!(new Site\RealState)->find($data['real_state_id'])->updateStatus($data['status']))
+{
+    error(JFStudio\Constants::RESPONSES['ERROR_ON_SAVE']);
+}
+
+success();

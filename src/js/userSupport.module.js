@@ -741,6 +741,9 @@ class UserSupport extends Http {
     getPermissionsGroup(data, callback) {
         return this.call('../../app/application/getPermissionsGroup.php', data, callback);
     }
+    getRealStateDevelopers(data, callback) {
+        return this.call('../../app/application/getRealStateDevelopers.php', data, callback);
+    }
 }
 
 export { UserSupport }

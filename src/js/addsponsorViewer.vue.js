@@ -109,12 +109,9 @@ const AddsponsorViewer = {
                     }
                     
                     let permissions = response.permission_group.permissions.map((permission) => {
-
                         permission.checked = true
-
                         return permission
                     })
-                    console.log(response.permission_group.permissions)
 
                     this.administrator.permissions = {...this.administrator.permissions,...permissions}
                 }

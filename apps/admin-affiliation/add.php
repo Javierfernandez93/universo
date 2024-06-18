@@ -14,7 +14,7 @@ if($UserSupport->hasPermission('add_affiliation') === false) {
 
 $Layout = JFStudio\Layout::getInstance();
 
-$route = JFStudio\Router::AdminRealStateAdd;
+$route = JFStudio\Router::AdminAffilationsAdd;
 $Layout->init(JFStudio\Router::getName($route),"add","admin","",TO_ROOT."/");
 
 $Layout->setScriptPath(TO_ROOT . '/src/');

@@ -10,6 +10,7 @@ class Constants {
     const AVIABLE = 1;
     const RESPONSES = [
         'DATA_OK' => 'DATA_OK',
+        'ERROR_ON_SAVE' => 'ERROR_ON_SAVE',
         'WEB_SERVICE_ERROR' => 'WEB_SERVICE_ERROR',
         'INVALID_DATA' => 'INVALID_DATA',
         'BAD_REQUEST' => 'BAD_REQUEST',

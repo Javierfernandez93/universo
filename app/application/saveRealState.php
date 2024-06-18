@@ -2,29 +2,25 @@
 
 require_once TO_ROOT. "/system/core.php";
 
-$data = HCStudio\Util::getHeadersForWebService();
-
 $UserSupport = new Site\UserSupport;
 
-if($UserSupport->logged === true)
+if(!$UserSupport->logged)
 {
-    if($data['realState'])
-    {
-        if(Site\RealState::add($data['realState']))
-        {
-            $data["s"] = 1;
-            $data["r"] = "DATA_OK";
-        } else {
-            $data["s"] = 0;
-            $data["r"] = "NOT_UPDATED";
-        }
-    } else {
-        $data["s"] = 0;
-        $data["r"] = "NOT_REALSTATE";
-    }
-} else {
-	$data["s"] = 0;
-	$data["r"] = "NOT_FIELD_SESSION_DATA";
+    unauthorized();
 }
 
-echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
+$data = HCStudio\Util::getHeadersForWebService();
+
+if(!$data['realState']) {
+    error(JFStudio\Constants::RESPONSES['INVALID_DATA']);
+}
+
+$data['realState']['sold_out'] = filter_var($data['realState']['sold_out'], FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
+$data['realState']['main'] = filter_var($data['realState']['main'], FILTER_VALIDATE_BOOLEAN) ? 1 : 0;
+
+if(!Site\RealState::add($data['realState']))
+{
+    error(JFStudio\Constants::RESPONSES['ERROR_ON_SAVE']);
+}
+
+success();    
