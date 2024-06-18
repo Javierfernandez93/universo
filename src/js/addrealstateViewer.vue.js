@@ -132,7 +132,7 @@ const AddrealstateViewer = {
                         </p>
 
                         <div class="h5">
-                            <span v-else  v-text="realState.real_state_id ? 'Editar' : 'Añadir'"></span> Proyecto
+                            <span v-else v-text="realState.real_state_id ? 'Editar' : 'Añadir'"></span> Proyecto
                         </div>
 
                         <div class="text-xs text-secondary">(* Campos requeridos)</div>

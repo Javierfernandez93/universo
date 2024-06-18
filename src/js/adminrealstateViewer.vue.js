@@ -1,6 +1,12 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'
+import Status from '../../src/js/components/status.vue.js?v=1.1.0'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.0'
 
 const AdminrealstateViewer = {
+    components : {
+        LoaderViewer,
+        Status
+    },
     data() {
         return {
             UserSupport: new UserSupport,
@@ -119,11 +125,8 @@ const AdminrealstateViewer = {
                         <div v-if="query" class="text-xs">Resultados de la búsqueda <b>{{query}}</b> ({{realStates.length}} resultados)</div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
-                        <div v-if="busy == true" class="d-flex justify-content-center py-3">
-                            <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
+                        <LoaderViewer :busy="busy"/>
+                        
                         <div v-if="realStates" class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -177,7 +180,7 @@ const AdminrealstateViewer = {
                                 <tbody>
                                     <tr v-for="realState in realStates" class="text-center text-sm">
                                         <td>
-                                            <i :class="realState.status == 1 ? 'bi-check text-secondary' : 'bi-x text-secondary'" class="bi"></i>
+                                            <Status :status="realState.status"/>
                                         </td>    
                                         <td class="align-middle fw-bold text-dark">
                                             {{realState.title}} 

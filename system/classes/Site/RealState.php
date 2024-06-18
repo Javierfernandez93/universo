@@ -49,7 +49,7 @@ class RealState extends Orm {
       ON
         real_state_developer.real_state_developer_id = {$this->tblName}.real_state_developer_id
       WHERE 
-        {$this->tblName}.status = '1'
+        {$this->tblName}.status != '-1'
       ");
   }
 
