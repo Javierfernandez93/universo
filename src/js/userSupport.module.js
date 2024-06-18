@@ -1,6 +1,6 @@
-import { Http } from '../../src/js/http.module.js?v=1.1.1';
+import HttpMemoized from '../../src/js/httpMemoized.module.js?v=1.1.1';
 
-class UserSupport extends Http {
+class UserSupport extends HttpMemoized {
     constructor() {
         super();
     }
@@ -259,36 +259,6 @@ class UserSupport extends Http {
     }
     getEwalletInfo(data, callback) {
         return this.call('../../app/application/getEwalletInfo.php', data, callback);
-    }
-    getAllIptvClients(data, callback) {
-        return this.call('../../app/application/getAllIptvClients.php', data, callback);
-    }
-    addClientIptvCredentials(data, callback) {
-        return this.call('../../app/application/addClientIptvCredentials.php', data, callback);
-    }
-    setUpIptvService(data, callback) {
-        return this.call('../../app/application/setUpIptvService.php', data, callback);
-    }
-    setUpIptvDemo(data, callback) {
-        return this.call('../../app/application/setUpIptvDemo.php', data, callback);
-    }
-    sendDemoCredentials(data, callback) {
-        return this.call('../../app/application/sendDemoCredentials.php', data, callback);
-    }
-    sendServiceCredentials(data, callback) {
-        return this.call('../../app/application/sendServiceCredentials.php', data, callback);
-    }
-    setAsRenovated(data, callback) {
-        return this.call('../../app/application/setAsRenovated.php', data, callback);
-    }
-    addLicenceToUser(data, callback) {
-        return this.call('../../app/application/addLicenceToUser.php', data, callback);
-    }
-    addCreditToUser(data, callback) {
-        return this.call('../../app/application/addCreditToUser.php', data, callback);
-    }
-    getClientIptvApi(data, callback) {
-        return this.call('../../app/application/getClientIptvApi.php', data, callback);
     }
     deleteKycValue(data, callback) {
         return this.call('../../app/application/deleteKycValue.php', data, callback);
@@ -599,7 +569,7 @@ class UserSupport extends Http {
         return this.call('../../app/application/getPropertyUserInfo.php', data, callback);
     }
     getPaymentsProperties(data, callback) {
-        return this.call('../../app/application/getPaymentsProperties.php', data, callback);
+        return this.memoizedCall('../../app/application/getPaymentsProperties.php', data, callback);
     }
     getPropertyPayments(data, callback) {
         return this.call('../../app/application/getPropertyPayments.php', data, callback);
@@ -609,6 +579,12 @@ class UserSupport extends Http {
     }
     getPropertyForEdit(data, callback) {
         return this.call('../../app/application/getPropertyForEdit.php', data, callback);
+    }
+    findClientPayment(data, callback) {
+        return this.memoizedCall('../../app/application/findClientPayment.php', data, callback);
+    }
+    findClient(data, callback) {
+        return this.memoizedCall('../../app/application/findClient.php', data, callback);
     }
     saveProperty(data, callback) {
         return this.call('../../app/application/saveProperty.php', data, callback);
@@ -632,7 +608,7 @@ class UserSupport extends Http {
     }
     /* clients */
     getClients(data, callback) {
-        return this.call('../../app/application/getClients.php', data, callback);
+        return this.memoizedCall('../../app/application/getClients.php', data, callback);
     }
     setAsUserKind(data, callback) {
         return this.call('../../app/application/setAsUserKind.php', data, callback);

@@ -8,12 +8,12 @@ const AdminpaymentsViewer = {
     data() {
         return {
             UserSupport: new UserSupport,
-            payments: null,
-            paymentsAux: null,
-            busy: null,
+            payments: [],
+            paymentsAux: [],
+            busy: false,
             catalog_payment_type_id: 1,
             query: null,
-            catalogPaymentTypes: null,
+            catalogPaymentTypes: [],
             columns: { // 0 DESC , 1 ASC 
                 company_id: {
                     name: 'company_id',
@@ -73,21 +73,10 @@ const AdminpaymentsViewer = {
         }
     },
     watch: {
-        query() {
-            this.payments = this.paymentsAux.filter((payment) => {
-                return payment.seller?.toLowerCase().includes(this.query.toLowerCase()) 
-                || payment.names?.toLowerCase().includes(this.query.toLowerCase()) 
-                || payment.title?.toLowerCase().includes(this.query.toLowerCase()) 
-                || payment.last_payment_number?.toString().includes(this.query.toLowerCase())
-            })
-
-            this.getTotals()
-
-        },
-        catalog_payment_type_id:
-        {
-            handler() {
-                this.getPaymentsProperties()
+        catalog_payment_type_id: {
+            async handler() {
+                this.query = null
+                await this.getPaymentsProperties()
             },
             deep: true
         }
@@ -107,6 +96,21 @@ const AdminpaymentsViewer = {
 
             column.desc = !column.desc
         },
+        searchProperties: _debounce((self) => {
+            self.payments = self.paymentsAux.filter((payment) => {
+                return payment.seller?.toLowerCase().includes(self.query.toLowerCase()) 
+                || payment.names?.toLowerCase().includes(self.query.toLowerCase()) 
+                || payment.title?.toLowerCase().includes(self.query.toLowerCase()) 
+                || payment.last_payment_number?.toString().includes(self.query.toLowerCase())
+            })
+
+            if(self.payments.length == 0)
+            {
+                self.getPaymentsProperties(self.query)
+            }
+
+            self.getTotals()
+        },500),
         viewPayments(property_id) {
             window.location.href = `../../apps/admin-payments/view.php?pid=${property_id}`
         },
@@ -115,38 +119,41 @@ const AdminpaymentsViewer = {
         },
         getTotals() {
             this.totals.price = 0
+
+            if(!this.payments) { 
+                return;
+            }
             this.payments.map((payment) => {
                 this.totals.price += parseFloat(payment.price)
             })
         },
         getPaymentsProperties() {
-            this.busy = true
-            this.payments = null
-            this.paymentsAux = null
-            this.UserSupport.getPaymentsProperties({catalog_payment_type_id:this.catalog_payment_type_id}, (response) => {
-                this.busy = false
-                if (response.s == 1) {
-                    this.paymentsAux = response.payments
-                    this.payments = response.payments
+            return new Promise((resolve) => {
+                this.busy = true
+                this.payments = []
+                this.paymentsAux = []
+                this.UserSupport.getPaymentsProperties({catalog_payment_type_id:this.catalog_payment_type_id,query:this.query}, (response) => {
+                    this.busy = false
+                    if (response.s == 1) {
+                        this.payments = response.payments
+                        this.paymentsAux = response.payments
 
-                    this.getTotals()
-                } else {
-                    this.payments = false
-                    this.paymentsAux = false
-                }
+                        this.getTotals()
+                    } 
+
+                    resolve()
+                })
             })
         },
         getCatalogPaymentTypes() {
             this.busy = true
-            this.catalogPaymentTypes = null
+            this.catalogPaymentTypes = []
             this.UserSupport.getCatalogPaymentTypes({}, (response) => {
                 this.busy = false
                 if (response.s == 1) {
                     this.catalogPaymentTypes = response.catalogPaymentTypes
                     this.catalog_payment_type_id = this.catalogPaymentTypes[1].catalog_payment_type_id
-                } else {
-                    this.catalogPaymentTypes = false
-                }
+                } 
             })
         },
         setPaymentPropertyTypeAs(payment_property_id, catalog_payment_type_id, title) {
@@ -265,7 +272,6 @@ const AdminpaymentsViewer = {
         },
     },
     mounted() {
-        // this.getPaymentsProperties()
         this.getCatalogPaymentTypes()
     },
     template: `
@@ -293,7 +299,7 @@ const AdminpaymentsViewer = {
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
-                                <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
+                                <input :disabled="busy" v-model="query" @input="searchProperties(this)" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <button @click="getPaymentsProperties" class="btn btn-dark btn-sm mb-0 shadow-none px-3">

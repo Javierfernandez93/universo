@@ -37,10 +37,9 @@ const ClientlistViewer = {
         }
     },
     watch: {
-        query:
-        {
+        query: {
             handler() {
-                this.filterData()
+                this.users = this.usersAux.filter(user =>  user.names.toLowerCase().includes(this.query.toLowerCase()) || user.email.toLowerCase().includes(this.query.toLowerCase()) || user.company_id.toString().includes(this.query.toLowerCase()))
             },
             deep: true
         }
@@ -58,7 +57,6 @@ const ClientlistViewer = {
         },
         filterData() {
             this.users = this.usersAux
-            this.users = this.users.filter(user =>  user.names.toLowerCase().includes(this.query.toLowerCase()) || user.email.toLowerCase().includes(this.query.toLowerCase()) || user.company_id.toString().includes(this.query.toLowerCase()))
         },
         getInBackoffice(company_id) {
             this.UserSupport.getInBackoffice({ company_id: company_id }, (response) => {
@@ -154,7 +152,6 @@ const ClientlistViewer = {
         }
 
         await this.getClients();
-
 
         if(getParam("query"))
         {

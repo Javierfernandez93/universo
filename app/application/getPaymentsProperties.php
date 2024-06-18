@@ -2,31 +2,33 @@
 
 require_once TO_ROOT. "/system/core.php";
 
-$data = HCStudio\Util::getHeadersForWebService();
-
 $UserSupport = new Site\UserSupport;
 
-if($UserSupport->logged === true)
+if(!$UserSupport->logged)
 {
-    $filter = "";
+    unauthorized();
+}
+    
+$data = HCStudio\Util::getHeadersForWebService();
 
-    if(isset($data['catalog_payment_type_id']))
-    {
-        $filter = "AND catalog_payment_type.catalog_payment_type_id = '{$data['catalog_payment_type_id']}'";
-    }
 
-    if($payments = (new Site\PaymentProperty)->getPayments($filter))
-    {
-        $data["payments"] = $payments;
-        $data["s"] = 1;
-        $data["r"] = "DATA_OK";
-    } else {
-        $data["s"] = 0;
-        $data["r"] = "NOT_PAYMENTS";
-    }
-} else {
-	$data["s"] = 0;
-	$data["r"] = "NOT_FIELD_SESSION_DATA";
+if(isset($data['catalog_payment_type_id']))
+{
+    $filter = "AND catalog_payment_type.catalog_payment_type_id = '{$data['catalog_payment_type_id']}'";
 }
 
-echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
+if(isset($data['query']) && !empty($data['query']))
+{
+    $filter = "AND (user_data.names LIKE '%{$data['query']}%' OR property.title LIKE '%{$data['query']}%' OR user_login.email LIKE '%{$data['query']}%' OR real_state.title LIKE '%{$data['query']}%')";
+}
+
+$payments = (new Site\PaymentProperty)->getPayments($filter);
+
+if(!$payments)
+{
+    error(Constants::RESPONSES['NOT_DATA']);
+}
+
+success(null,[
+    'payments' => $payments
+]);
