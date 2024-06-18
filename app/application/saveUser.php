@@ -31,7 +31,7 @@ if(!$UserLogin->isUniqueLanding($data['user']['user_account']['landing']))
 // sanitize data
 $data['user']['user_contact']['phone'] = HCStudio\Util::getNumbers($data['user']['user_contact']['phone']);
 $data['user']['user_login']['email'] = strtolower($data['user']['user_login']['email']);
-$data['user']['user_referral']['referral_id'] = $UserLogin->company_id; 
+$data['user']['user_referral']['user_login_id'] = $UserLogin->company_id; 
 
 $user_login_id = $UserLogin->doSignup($data['user']);
 

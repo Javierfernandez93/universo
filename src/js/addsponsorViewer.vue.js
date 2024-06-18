@@ -145,7 +145,7 @@ const AddsponsorViewer = {
                 <div class="row align-items-center">
                     <div class="col-12 col-xl fw-semibold text-primary">
                         <h6>
-                            Listado de permisoss
+                            Listado de permisos
                         </h6>
                     </div>
                     <div class="col-12 col-xl-auto">

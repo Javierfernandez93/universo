@@ -1,9 +1,11 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'   
 import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.0'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.0'
 
 const AdminadduserViewer = {
     components : {
-        BackViewer
+        BackViewer,
+        LoaderViewer
     },
     data() {
         return {
@@ -90,31 +92,54 @@ const AdminadduserViewer = {
             })
         },
         getAdministrators() {
-            this.busy = true
-            this.UserSupport.getAdministrators({ catalog_support_type_id: 2 }, (response) => {
-                this.busy = false
-                if (response.s == 1) {
-                    this.sponsors = response.administrators
+            return new Promise((resolve,reject) => {
+                this.busy = true
+                this.UserSupport.getAdministrators({ catalog_support_type_id: 2 }, async (response) => {
+                    this.busy = false
+                    if (response.s == 1) {
+                        this.sponsors = response.administrators
 
-                    this.user.user_referral.user_support_id = this.sponsors[0].user_support_id
+                        this.user.user_referral.user_support_id = this.sponsors[0].user_support_id
 
-                    setTimeout(()=>{
+                        await sleep(100)
+                        
                         $('.selectpicker').selectpicker();
                         $('.selectpicker').change(() =>{
                             this.user.user_referral.user_support_id = $('.selectpicker').val();
                         });
-                    },100)
+                    }
+                    resolve()
+                })
+            })
+        },
+        getUserToEdit() {
+            this.busy = true
+            this.UserSupport.getUserToEdit({ user_login_id: this.user.user_login.user_login_id }, (response) => {
+                this.busy = false
+
+                if (response.s == 1) {
+                    this.user = {...this.user,...response.user}
+
+                    $('.selectpicker').val(this.user.user_referral.user_support_id)
+                    $('.selectpicker').selectpicker('refresh');
                 }
             })
         },
     },
-    mounted() {
+    async mounted() {
         $(this.$refs.phone).mask('(00) 0000-0000');
 
         this.getCountries()
-        this.getAdministrators()
+        await this.getAdministrators()
+
+        if(getParam('ulid')) {
+            this.user.user_login.user_login_id = getParam('ulid')
+            this.getUserToEdit()
+        }
+
     },
     template : `
+        <LoaderViewer :busy="busy"/>
         <div class="card">
             <div class="card-header"> 
                 <div class="row justify-content-center align-items-center"> 
@@ -122,14 +147,16 @@ const AdminadduserViewer = {
                         <backViewer></backViewer>
                     </div>
                     <div class="col-12 col-xl"> 
-                        <div class="h5">Añadir asesor</div>
+                        <div class="h5">
+                            <span v-text="user.user_login.user_login_id ? 'Editar' : 'Añadir'"></span> asesor
+                        </div>
                         <div class="text-xs text-secondary">(* Campos requeridos)</div>
                     </div>
                     <div class="col-12 col-xl-auto"> 
                         <button 
                             :disabled="!filled"
                             ref="button"
-                            type="submit" class="btn shadow-none mb-0 btn-success px-3 btn-sm" @click="saveUser">Guardar usuario</button>
+                            type="submit" class="btn shadow-none mb-0 btn-success px-3 btn-sm" @click="saveUser">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -164,7 +191,7 @@ const AdminadduserViewer = {
                             ref="password"
                             type="text" class="form-control" placeholder="Password">
                     </div>
-                    <div class="col-12 col-xl-3 mb-3">
+                    <div class="col-12 col-xl-3 mb-3 d-none">
                         <label>Nombre de usuario</label>
                         <input 
                             v-model="user.user_account.landing"
@@ -173,7 +200,7 @@ const AdminadduserViewer = {
                             ref="landing"
                             type="text" class="form-control" placeholder="Nombre de usuario">
                     </div>
-                    <div class="col-12 col-xl-3 mb-3">
+                    <div class="col-12 col-xl-4 mb-3">
                         <div v-if="sponsors" class="col-12 col-md">
                             <label>Asignar a líder</label>
                             <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
@@ -196,7 +223,7 @@ const AdminadduserViewer = {
                         </div>
                     </div>
 
-                    <div class="col-12 col-xl-6 mb-3">
+                    <div class="col-12 col-xl-8 mb-3">
                         <label>Teléfono * </label>
                         <div class="row">
                             <div class="col-auto">

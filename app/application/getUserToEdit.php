@@ -13,6 +13,8 @@ if($UserSupport->logged === true || $UserLogin->logged === true)
     {
         if($user = $UserSupport->getUserToEdit($data['user_login_id']))
         {
+            unset($user['user_login']['password']);
+            
             $data["user"] = $user;
             $data["s"] = 1;
             $data["r"] = "DATA_OK";
