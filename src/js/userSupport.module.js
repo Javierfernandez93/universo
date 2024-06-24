@@ -723,6 +723,9 @@ class UserSupport extends HttpMemoized {
     deleteUsers(data, callback) {
         return this.call('../../app/application/deleteUsers.php', data, callback);
     }
+    updateManivelaPayment(data, callback) {
+        return this.call('../../app/application/manivela/updatePayment.php', data, callback);
+    }
 }
 
 export { UserSupport }

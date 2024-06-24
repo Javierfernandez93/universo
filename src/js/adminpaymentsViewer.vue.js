@@ -169,6 +169,19 @@ const AdminpaymentsViewer = {
                 } 
             })
         },
+        updateManivelaPayment(payment) {
+            this.busy = true
+            this.UserSupport.updateManivelaPayment({email:payment.email,title:payment.title}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.getPaymentsProperties()
+
+                    toastInfo({
+                        message: `Actualizamos la información de la manivela`
+                    })
+                } 
+            })
+        },
         setPaymentPropertyAs(payment_property_id, status) {
             this.busy = true
             this.UserSupport.setPaymentPropertyAs({payment_property_id:payment_property_id,status:status}, (response) => {
@@ -401,6 +414,7 @@ const AdminpaymentsViewer = {
                                                         <button class="dropdown-item" @click="setPaymentPropertyAs(payment.payment_property_id,-1)">Eliminar</button>
                                                         <button class="dropdown-item" @click="viewPayments(payment.property_id)">Ver pagos</button>
                                                         <button class="dropdown-item" @click="requiredApart(payment)">Enviar a manivela</button>
+                                                        <button class="dropdown-item" @click="updateManivelaPayment(payment)">Actualizar información de manivela</button>
                                                         <div v-for="catalogPaymentType in catalogPaymentTypes">
                                                             <button v-if="catalogPaymentType.catalog_payment_type_id != payment.catalog_payment_type_id" class="dropdown-item" @click="setPaymentPropertyTypeAs(payment.payment_property_id,catalogPaymentType.catalog_payment_type_id,catalogPaymentType.title)">{{catalogPaymentType.title}}</button>
                                                         </div>

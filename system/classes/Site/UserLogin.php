@@ -450,9 +450,13 @@ class UserLogin extends Orm {
     return $this->connection()->field($sql) ? false : true;
   }
   
-  public function isUniqueMail($email = false) {
-    $sql = "SELECT email FROM user_login WHERE user_login.email = '{$email}' LIMIT 1";
-    return ($this->connection()->field($sql)) ? false : true;
+  public function isUniqueMail(string $email = null, int $catalog_user_type_id = CatalogUserType::SELLER) : bool {
+    if(!$email || !$catalog_user_type_id)
+    {
+      return false;
+    }
+    
+    return $this->findField("email = ? AND catalog_user_type_id = ?",[$email,$catalog_user_type_id],'user_login_id') ? false : true;
   }
 
   public function doSignup(array $data = null) 
