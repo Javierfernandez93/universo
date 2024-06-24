@@ -485,7 +485,7 @@ class UserLogin extends Orm {
       return false;
     }
 
-    if(isset($data['user_login']['user_login_id']) && !$data['user_login']['user_login_id'])
+    if(!$UserLogin->company_id)
     {
       $UserLogin->company_id = $UserLogin->getId();
     } 
@@ -574,7 +574,8 @@ class UserLogin extends Orm {
     if($id > 0)
     {
       $Class->loadWhere($Class->getTblPrimary().' = ?',$id);
-    } else {
+    } else if($user_login_id > 0) {
+      $Class->loadWhere("user_login_id = ?",$user_login_id);
       $Class->user_login_id = $user_login_id;
     }
 

@@ -24,6 +24,7 @@ if(!$data['user'])
 $data['user']['names'] = ucwords(strtolower($data['user']['Cliente']));
 $data['user']['email'] = strtolower($data['user']['Correo']);
 
+
 # save user client
 if(!$UserSupport->userEmailExist($data['user']['email']))
 {
