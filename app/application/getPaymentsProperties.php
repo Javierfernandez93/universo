@@ -11,6 +11,7 @@ if(!$UserSupport->logged)
     
 $data = HCStudio\Util::getHeadersForWebService();
 
+$filter = '';
 
 if(isset($data['catalog_payment_type_id']))
 {

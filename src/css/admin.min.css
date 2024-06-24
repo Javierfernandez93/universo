@@ -52,3 +52,7 @@ table {
   word-break: break-word;
   text-wrap: balance;
 }
+
+.table {
+  border-collapse: collapse;
+}

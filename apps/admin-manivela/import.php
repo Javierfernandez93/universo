@@ -12,17 +12,6 @@ if($UserSupport->hasPermission('list_manivela') === false) {
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }
 
-// (new Site\RealState)->truncate();
-
-// (new Site\UserLogin)->truncate();
-// (new Site\Property)->truncate();
-// (new Site\PaymentProperty)->truncate();
-// (new Site\UserReferral)->truncate();
-// (new Site\UserData)->truncate();
-// (new Site\UserContact)->truncate();
-// (new Site\UserAddress)->truncate();
-// (new Site\UserAccount)->truncate();
-
 $Layout = JFStudio\Layout::getInstance();
 
 $route = JFStudio\Router::AdminManivela;

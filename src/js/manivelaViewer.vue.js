@@ -1,12 +1,17 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=2.3.3'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=2.3.3'
 
 const ManivelaViewer = {
+    components: {
+        LoaderViewer
+    },
     data() {
         return {
             UserSupport: new UserSupport,
             done: null,
             query: null,
             users: null,
+            usersAux: null,
             dataAux: null,
             STATES: Object.freeze({
                 SAVED: 'Guardado',
@@ -22,22 +27,15 @@ const ManivelaViewer = {
         }
     },
     watch: {
-        query : {
-            handler() {
-                this.filterData()
-            },
-            deep: true
+        query() {
+            this.users = this.usersAux.filter((user)=>{
+                return user.Cliente.toLowerCase().includes(this.query.toLowerCase()) 
+                || user.Unidad.toLowerCase().includes(this.query.toLowerCase()) 
+                || user.Status_venta.toLowerCase().includes(this.query.toLowerCase()) 
+            })
         }
     },
     methods: {
-        filterData() {
-            this.users = this.usersAux
-            this.users = this.users.filter((user)=>{
-                user.broker = user.broker ? user.broker.toString() : ""
-
-                return user.names.toLowerCase().includes(this.query.toLowerCase()) || user.email.toLowerCase().includes(this.query.toLowerCase()) || user.broker.toString().includes(this.query)
-            })
-        },
         getAdminUserGains() {
             return new Promise((resolve,reject) => {
                 this.UserSupport.getAdminUserGains({}, (response) => {
@@ -70,8 +68,7 @@ const ManivelaViewer = {
         },
         async importData() 
         {
-            for(let user of this.users)
-            {
+            for(let user of this.users) {
                 user.result = await this.importUserDataFromService(user)
             }
         },
@@ -81,9 +78,11 @@ const ManivelaViewer = {
           
             this.UserSupport.getManivelaSales({},(response)=>{
                 this.busy = false
+
                 if(response.s == 1)
                 {
                     this.users = response.users
+                    this.usersAux = response.users
                 }
             });
         },
@@ -92,17 +91,15 @@ const ManivelaViewer = {
         this.getManivelaSales()
     },
     template : `
-        <LoaderViewer :busy="busy"/>
-
-        <div v-if="users" class="card">
+        <div class="card">
             <div class="card-header">
                 <div class="row justify-content-center">
                     <div class="col-12 col-xl">
                         <span class="badge text-secondary p-0">total {{users ? users.length : 0}}</span>
-                        <div class="fs-4 fw-sembold text-primary">Información</div>
+                        <div class="h3">Información</div>
                     </div>
                     <div class="col-12 col-xl-auto">
-                        <input :disabled="busy" v-model="query" type="text" class="form-control" placeholder="buscar...">
+                        <input :disabled="busy" v-model="query" type="search" class="form-control" placeholder="buscar...">
                     </div>
                     <div class="col-12 col-xl-auto">
                         <button @click="importData" class="btn btn-primary mb-0 shadow-none">Importar</button>
@@ -113,7 +110,9 @@ const ManivelaViewer = {
                     </div>
                 </div>
             </div>
-            <div class="table-responsive">
+            <LoaderViewer :busy="busy"/>
+
+            <div  v-if="users" class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                         <tr class="text-xs text-center">

@@ -1,9 +1,11 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
 import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1'
 
 const AdminpaymentsViewer = {
     components: {
-        LoaderViewer
+        LoaderViewer,
+        PlaceHolder
     },
     data() {
         return {
@@ -380,22 +382,22 @@ const AdminpaymentsViewer = {
                                             </span>
                                         </td>
                                         <td class="align-middle text-capitalize ">
-                                            {{payment.names}} 
+                                            <PlaceHolder :value="payment.names" placeholder="-"/>
                                         </td>
                                         <td @click="query = payment.seller" class="align-middle text-decoration-underline text-primary">
-                                            {{payment.seller}}
+                                            <PlaceHolder :value="payment.seller" placeholder="-"/>
                                         </td>
                                         <td @click="query = payment.support_name" class="align-middle">
-                                            {{payment.support_name}}
+                                            <PlaceHolder :value="payment.support_name" placeholder="-"/>
                                         </td>
                                         <td @click="query = payment.affiliation_name" class="align-middle">
-                                            {{payment.affiliation_name}}
+                                            <PlaceHolder :value="payment.affiliation_name" placeholder="-"/>
                                         </td>
                                         <td class="align-middle">
-                                            {{payment.title}}
+                                            <PlaceHolder :value="payment.title" placeholder="-"/>
                                         </td>
                                         <td class="align-middle">
-                                            {{payment.last_payment_number}}
+                                            <PlaceHolder :value="payment.last_payment_number" placeholder="-"/>
                                         </td>
                                         <td class="align-middle">
                                             <span class="badge bg-secondary break-words">{{payment.payment_type}}</span>
@@ -405,7 +407,7 @@ const AdminpaymentsViewer = {
                                         </td>
                                         <td class="align-middle">
                                             <div class="btn-group">
-                                                <button type="button" class="btn px-3 btn-dark shadow-none px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <button type="button" class="btn btn-dark mb-0 shadow-none px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
                                                 </button>
                                                 <ul class="dropdown-menu shadow">
