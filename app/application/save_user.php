@@ -18,10 +18,12 @@ if(!$data['user']['user_login']['email'])
 
 $UserLogin = new Site\UserLogin(false,false);
 
-if(!$UserLogin->isUniqueMail($data['user']['user_login']['email'],$data['user']['user_login']['catalog_user_type_id']) && !$data['user']['user_login']['user_login_id'])
+if(!$data['user']['user_login']['user_login_id'])
 {
-    d(23);
-    error('MAIL_ALREADY_EXISTS');
+    if(!$UserLogin->isUniqueMail($data['user']['user_login']['email'],$data['user']['user_login']['catalog_user_type_id']))
+    {
+        error('MAIL_ALREADY_EXISTS');
+    }
 }
 
 if(!$UserLogin->isUniqueLanding($data['user']['user_account']['landing']))
