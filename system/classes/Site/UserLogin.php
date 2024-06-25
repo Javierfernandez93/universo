@@ -456,7 +456,7 @@ class UserLogin extends Orm {
       return false;
     }
     
-    return $this->findField("email = ? AND catalog_user_type_id = ?",[$email,$catalog_user_type_id],'user_login_id') ? false : true;
+    return $this->findField("email = ? AND catalog_user_type_id = ? AND status = '1'",[$email,$catalog_user_type_id],'user_login_id') ? false : true;
   }
 
   public function doSignup(array $data = null) 
