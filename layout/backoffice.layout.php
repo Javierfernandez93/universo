@@ -110,7 +110,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item d-none">
                         <a class="nav-link <?php if ($route == JFStudio\Router::Quoter) { ?>active<?php } ?>" href="../../apps/quoter/">
                             <i class="bi bi-chat-left"></i>
                             <span  data-translate="menu.start" class="nav-link-text ms-1 fw-semiboldx">Cotizador</span>
