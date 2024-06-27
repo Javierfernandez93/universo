@@ -109,4 +109,29 @@ class SystemVar extends Orm {
         system_var.status = '1'
     ");
   }
+  
+  public static function getValues(array $names = null) 
+  {
+    if(!isset($names))
+    {
+        return false;
+    }
+
+    $names = array_map(function($item) {
+      return "'" . $item . "'";
+    }, $names);
+    
+    $names = implode(",",$names);
+
+    return (new self)->connection()->column("
+      SELECT 
+        system_var.val
+      FROM 
+        system_var
+      WHERE 
+        system_var.name IN({$names})  
+      AND 
+        system_var.status = '1'
+    ");
+  }
 }

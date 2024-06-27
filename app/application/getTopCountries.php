@@ -2,26 +2,8 @@
 
 require_once TO_ROOT . 'system/core.php'; 
 
-$data = HCStudio\Util::getHeadersForWebService();
-
-$UserLogin = new Site\UserLogin;
-
-if(true)
-{	
-// •⁠  ⁠MÉXICO
-// •⁠  ⁠CANADÁ
-// •⁠  ⁠ESTADOS UNIDOS
-// •⁠  ⁠PUERTO RICO
-// •⁠  ⁠GUATEMALA
-// •⁠  ⁠ALEMANIA
-// •⁠  ⁠PERÚ
-// •⁠  ⁠COLOMBIA
-// •⁠  ⁠EL SALVADOR
-// •⁠  ⁠CHILE
-// •⁠  ⁠VENEZUELA
-// •⁠  ⁠ESPAÑA
-// •⁠  ⁠AUSTRIA
-    $data['members'] = [
+success(null,[
+    'members' => [
         [
             "total" => 200,
             "country" => [
@@ -99,12 +81,5 @@ if(true)
                 'country' => 'España'
             ]
         ],
-    ];
-    $data['r'] = 'DATA_OK';
-    $data['s'] = 1;
-} else {
-	$data['r'] = 'NOT_SESSION';
-	$data['s'] = 0;
-}
-
-echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
+    ]
+]);

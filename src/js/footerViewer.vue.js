@@ -56,8 +56,16 @@ const FooterViewer = {
                                     <div class="text-secondary text-xs">CONTACTO </div>
                                     <div class="text-white">{{stats.social_whatsapp}}</div>
                                 </div>
-                                <div class="col-12 col-md">
+                                <div class="col-12 col-md-auto">
                                     <div class="text-secondary text-xs">EMAIL</div>
+                                    <div class="text-white">{{stats.company_email}}</div>
+                                </div>
+                                <div class="col-12 col-md">
+                                    <div class="text-secondary text-xs">DIRECCIÓN</div>
+                                    <div class="text-white">{{stats.company_email}}</div>
+                                </div>
+                                <div class="col-12 col-md-auto">
+                                    <div class="text-secondary text-xs">REDES SOCIALES</div>
                                     <div class="text-white">{{stats.company_email}}</div>
                                 </div>
                             </div>
