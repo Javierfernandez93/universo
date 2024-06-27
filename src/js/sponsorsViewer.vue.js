@@ -1,10 +1,20 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1' 
 
 const SponsorsViewer = {
+    components: {
+        LoaderViewer,
+        PlaceHolder,
+        HighLigth
+    },
     data() {
         return {
             UserSupport : new UserSupport,
-            administrators : null,
+            administrators : [],
+            administratorsAux : [],
+            query : null,
             busy: false,
             columns: { // 0 DESC , 1 ASC 
                 user_support_id : {
@@ -24,7 +34,7 @@ const SponsorsViewer = {
         }
     },
     methods: {
-        sortData: function (column) {
+        sortData(column) {
             this.administrators.sort((a,b) => {
                 const _a = column.desc ? a : b
                 const _b = column.desc ? b : a
@@ -137,12 +147,14 @@ const SponsorsViewer = {
         },
         getAdministrators() {
             this.busy = true
-            this.administrators = null
+            this.administrators = []
+            this.administratorsAux = []
             this.UserSupport.getAdministrators({catalog_support_type_id:2},(response)=>{
                 this.busy = false
                 if(response.s == 1)
                 {
                     this.administrators = response.administrators
+                    this.administratorsAux = response.administrators
                 }
             })
         },
@@ -175,12 +187,9 @@ const SponsorsViewer = {
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
-                        <div v-if="busy == true" class="d-flex justify-content-center py-3">
-                            <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                        <div v-if="administrators" class="table-responsive-sm p-0">
+                        <HighLigth :busy="busy" :dataLength="administrators.length" :query="query"/>
+
+                        <div v-if="administrators.length > 0" class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
@@ -233,15 +242,9 @@ const SponsorsViewer = {
                                                 </ul>
                                             </div>
                                         </td>
-                                        
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div v-else-if="administrators == false" class="card-body">
-                            <div class="alert alert-secondary text-white text-center">
-                                <div>No tenemos administradores aún</div>
-                            </div>
                         </div>
                     </div>
                 </div>

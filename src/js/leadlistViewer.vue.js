@@ -1,12 +1,19 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1' 
 
 const LeadlistViewer = {
-    name : 'leadlist-viewer',
+    components: {
+        LoaderViewer,
+        PlaceHolder,
+        HighLigth
+    },
     data() {
         return {
             UserSupport: new UserSupport,
-            users: null,
-            usersAux: null,
+            users: [],
+            usersAux: [],
             busy: false,
             query: null,
             columns: { // 0 DESC , 1 ASC 
@@ -35,12 +42,10 @@ const LeadlistViewer = {
         }
     },
     watch: {
-        query:
-        {
-            handler() {
-                this.filterData()
-            },
-            deep: true
+        query() {
+            this.users = this.usersAux.filter(user => user.names.toLowerCase().includes(this.query.toLowerCase()) 
+            || user.email.toLowerCase().includes(this.query.toLowerCase()) 
+            || user.company_id.toString().includes(this.query.toLowerCase()))
         }
     },
     methods: {
@@ -54,26 +59,28 @@ const LeadlistViewer = {
 
             column.desc = !column.desc
         },
-        filterData() {
-            this.users = this.usersAux
-            this.users = this.users.filter(user =>  user.names.toLowerCase().includes(this.query.toLowerCase()) || user.email.toLowerCase().includes(this.query.toLowerCase()) || user.company_id.toString().includes(this.query.toLowerCase()))
-        },
         getInBackoffice(company_id) {
+            this.busy = true
             this.UserSupport.getInBackoffice({ company_id: company_id }, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     window.open('../../apps/backoffice')
                 }
             })
         },
         deleteUser(company_id) {
+            this.busy = true
             this.UserSupport.deleteUser({ company_id: company_id }, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     this.getUsers()
                 }
             })
         },
         setAsUserKind(company_id,catalog_user_type_id) {
+            this.busy = true
             this.UserSupport.setAsUserKind({ company_id: company_id, catalog_user_type_id:catalog_user_type_id }, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     this.users = this.users.filter(user => user.user_login_id != company_id)
                     this.usersAux = this.users
@@ -88,8 +95,8 @@ const LeadlistViewer = {
             window.location.href = '../../apps/admin-lead/edit?ulid=' + company_id
         },
         getLeads() {
-            this.users = null
-            this.usersAux = null
+            this.users = []
+            this.usersAux = []
             this.busy = true
             this.UserSupport.getLeads({}, (response) => {
                 this.busy = false
@@ -99,10 +106,7 @@ const LeadlistViewer = {
                         return user
                     })
                     this.usersAux = response.users
-                } else {
-                    this.users = false
-                    this.usersAux = false
-                }
+                } 
             })
         },
     },
@@ -126,12 +130,9 @@ const LeadlistViewer = {
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-                <div v-if="busy == true" class="d-flex justify-content-center py-3">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-                <div v-if="users" class="table-responsives p-0 overflow-y-scrolls h-100s">
+                <HighLigth :busy="busy" :dataLength="users.length" :query="query"/>
+
+                <div v-if="users.length > 0" class="table-responsives p-0 overflow-y-scrolls h-100s">
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -200,11 +201,6 @@ const LeadlistViewer = {
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div v-else-if="users == false" class="card-body">
-                    <div class="alert alert-light text-center mb-0">
-                        <div>No tenemos prospectos aún</div>
-                    </div>
                 </div>
             </div>
         </div>

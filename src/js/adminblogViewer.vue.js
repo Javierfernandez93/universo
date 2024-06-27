@@ -1,11 +1,19 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1'    
 
 const AdminblogViewer = {
+    components : {
+        LoaderViewer,
+        PlaceHolder,
+        HighLigth
+    },
     data() {
         return {
             UserSupport: new UserSupport,
-            entries: null,
-            entriesAux: null,
+            entries: [],
+            entriesAux: [],
             query: null,
             columns: { // 0 DESC , 1 ASC 
                 blog_id : {
@@ -29,21 +37,24 @@ const AdminblogViewer = {
             }
         }
     },
+    watch: {
+        query(){
+            this.entries = this.entriesAux.filter((entry) => {
+                return entry.title.toLowerCase().includes(this.query.toLowerCase())
+            })
+        }
+    },
     methods : {
         getAdminBlogs(blog_id)
         {
-            this.entries = null
-            this.entriesAux = null
+            this.entries = []
+            this.entriesAux = []
 
             this.UserSupport.getAdminBlogs({blog_id:blog_id},(response)=>{
                 if(response.s == 1)
                 {
                     this.entries = response.entries
                     this.entriesAux = response.entries
-                } else {
-                    this.entries = false
-                    this.entriesAux = false
-
                 }
             })
         },
@@ -90,11 +101,19 @@ const AdminblogViewer = {
                                 <div><a href="../../apps/admin-blog/add" type="button" class="btn shadow-none mb-0 btn-success btn-sm">Añadir entrada</a></div>
                             </div>
                             <div class="col-12 col-xl-auto">
+                                <button @click="getAdminBlogs" class="btn btn-sm px-3 mb-0 shadow-none btn-success">
+                                    <i class="bi bi-arrow-clockwise"></i>   
+                                </button>
+                            </div>
+                            <div class="col-12 col-xl-auto">
                                 <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
                     </div>
-                    <div v-if="entries" class="card-body px-0 pt-0 pb-2">
+
+                    <HighLigth :busy="busy" :dataLength="entries.length" :query="query"/>
+
+                    <div v-if="entries.length > 0" class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -177,11 +196,6 @@ const AdminblogViewer = {
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                    <div v-else-if="entries == false" class="card-body">
-                        <div class="alert alert-secondary text-white text-center">
-                            <div>No tenemos News aún</div>
                         </div>
                     </div>
                 </div>

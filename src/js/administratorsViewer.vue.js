@@ -1,11 +1,21 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1' 
 
 const AdministratorsViewer = {
+    components: {
+        LoaderViewer,
+        PlaceHolder,
+        HighLigth
+    },
     data() {
         return {
             UserSupport : new UserSupport,
-            administrators : null,
+            administrators : [],
+            administratorsAux : [],
             busy: false,
+            query : null,
             columns: { // 0 DESC , 1 ASC 
                 user_support_id : {
                     name: 'user_support_id',
@@ -21,6 +31,13 @@ const AdministratorsViewer = {
                     desc: false,
                 },
             }
+        }
+    },
+    watch: {
+        query() {
+            this.administrators = this.administratorsAux.filter(administrator => administrator.names.toLowerCase().includes(this.query.toLowerCase()) 
+            || administrator.email.toLowerCase().includes(this.query.toLowerCase()) 
+            || administrator.user_support_id.toString().includes(this.query.toLowerCase()))
         }
     },
     methods: {
@@ -141,11 +158,14 @@ const AdministratorsViewer = {
         },
         getAdministrators() {
             this.busy = true
+            this.administrators = []
+            this.administratorsAux = []
             this.UserSupport.getAdministrators({},(response)=>{
                 this.busy = false
                 if(response.s == 1)
                 {
                     this.administrators = response.administrators
+                    this.administratorsAux = response.administrators
                 }
             })
         },
@@ -176,17 +196,14 @@ const AdministratorsViewer = {
                                 </button>
                             </div>
                             <div class="col-auto text-end">
-                                <input :disabled="busy" :autofocus="true" v-model="query" type="text" class="form-control" placeholder="Buscar..."/>
+                                <input :disabled="busy" :autofocus="true" v-model="query" type="search" class="form-control" placeholder="Buscar..."/>
                             </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
-                        <div v-if="busy == true" class="d-flex justify-content-center py-3">
-                            <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                        <div v-if="administrators" class="table-responsive-sm p-0">
+                        <HighLigth :busy="busy" :dataLength="administrators.length" :query="query"/>
+                        
+                        <div v-if="administrators.length > 0" class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
@@ -239,11 +256,6 @@ const AdministratorsViewer = {
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div v-else-if="administrators == false" class="card-body">
-                            <div class="alert alert-secondary text-white text-center">
-                                <div>No tenemos administradores aún</div>
-                            </div>
                         </div>
                     </div>
                 </div>

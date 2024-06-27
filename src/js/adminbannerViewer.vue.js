@@ -129,7 +129,7 @@ const AdminbannerViewer = {
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
-                                <a href="../../apps/admin-banner/add" class="btn btn-sm px-3 mb-0 shadow-none btn-success">Agregar banner</a>
+                                <a href="../../apps/admin-banner/add" class="btn btn-sm px-3 mb-0 shadow-none btn-dark">Agregar banner</a>
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />

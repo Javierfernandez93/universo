@@ -2,28 +2,28 @@
 
 require_once TO_ROOT . 'system/core.php';
 
-$data = HCStudio\Util::getHeadersForWebService();
-
 $UserLogin = new Site\UserLogin;
 
-if($UserLogin->logged === true)
-{	
-    $Course = new Site\Course;
-    $Course->connection()->stmtQuery("SET NAMES utf8mb4");
+if(!$UserLogin->logged)
+{
+	unauthorized();
+}
 
-    if($courses = $Course->getList())
-    {   
-        $data['courses'] = format(filter($data['courses'],$UserLogin->company_id),$UserLogin->company_id);
-        
-        $data['r'] = 'DATA_OK';
-        $data['s'] = 1;
-    } else {
-        $data['r'] = 'DATA_OK';
-        $data['s'] = 1;
-    }
-} else {
-	$data['r'] = 'NOT_SESSION';
-	$data['s'] = 0;
+$Course = new Site\Course;
+$Course->connection()->stmtQuery("SET NAMES utf8mb4");
+
+$courses = $Course->getList();
+
+if(!$courses)
+{
+    error(JFStudio\Constants::RESPONSES['NOT_DATA']);   
+}
+
+$courses = format(filter($data['courses'],$UserLogin->company_id),$UserLogin->company_id);
+    
+if(!$data['courses'])
+{
+    error(JFStudio\Constants::RESPONSES['NOT_DATA']);
 }
 
 function filter(array $courses = null,int $user_login_id = null) : array
@@ -64,4 +64,6 @@ function format(array $courses = null,int $user_login_id = null) : array
     },$courses);
 }
 
-echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
+success(null,[
+    'courses' => $courses
+]); 

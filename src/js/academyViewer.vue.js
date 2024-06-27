@@ -1,13 +1,19 @@
 import { User } from '../../src/js/user.module.js?v=1.3.8'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1'    
 
 const AcademyViewer = {
+    components : {
+        LoaderViewer,
+        HighLigth
+    },
     data() {
         return {
             User: new User,
             busy: false,
             query: null,
-            courses: null,
-            coursesAux: null,
+            courses: [],
+            coursesAux: [],
             STATUS : {
                 UNPUBLISHED: 0,
                 PUBLISHED: 1
@@ -20,44 +26,33 @@ const AcademyViewer = {
         }
     },
     watch : {
-        query : {
-            handler() {
-                this.filterData()
-            },
-            deep: true
+        query() { 
+            this.courses = this.coursesAux.filter((course) => {
+                return course.title.toLowerCase().includes(this.query.toLowerCase())
+            })
         }
     },
     methods: {
-        filterData() {
-            if (this.query) {
-                this.courses = this.coursesAux.filter((course) => {
-                    return course.title.toLowerCase().includes(this.query.toLowerCase())
-                })
-            } else {
-                this.courses = this.coursesAux
-            }
-        },
         goToSessions(course_id) {
             window.location.href = `../../apps/academy/lesson?cid=${course_id}`
         },
         getCoursesList() {
             this.busy = true    
-            this.courses = null
-            this.coursesAux = null
+            this.courses = []
+            this.coursesAux = []
 
             this.User.getCoursesList({}, (response) => {
                 this.busy = false
                 if (response.s == 1) {
                     this.courses = response.courses
                     this.coursesAux = response.courses
-                } else {
-                    this.courses = false
-                    this.coursesAux = false
-                }
+                } 
             })
         },
         enrollInCourse(course_id) {
+            this.busy = true
             this.User.enrollInCourse({course_id:course_id}, (response) => {
+                this.busy = false
                 if (response.s == 1) {
                     this.goToSessions(course_id)
                 }
@@ -72,21 +67,19 @@ const AcademyViewer = {
         <div class="card bg-transparent shadow-none card-body mb-3">
             <div class="row justify-content-center align-items-center">
                 <div class="col-12 col-xl-6">
-                    <span v-if="courses" class="badge bg-primary">total cursos {{courses.length}}</span>
-                    <h3>Cursos grabados</h3>
+                    <h3>Cursos</h3>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <input v-model="query" type="text" class="form-control" placeholder="Buscar curso por nombre"/>
+                    <input v-model="query" type="search" class="form-control" placeholder="Buscar curso por nombre"/>
                 </div>
             </div>
         </div>
-        <div v-if="busy" class="d-flex justify-content-center py-3">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
+       
+        <LoaderViewer :busy="busy"/>
 
-        <div v-if="courses" class="row">
+        <HighLigth :busy="busy" :dataLength="courses.length" :query="query"/>
+
+        <div v-if="courses.length > 0" class="row">
             <div class="col-12 col-xl-4" v-for="course in courses">
                 <div class="card rounded-normal card-cover mb-3 min-height-300 border-radius-2xl overflow-hidden" :style="{ 'background-image': 'url(' + course.image + ')' }">
                     <div class="card-body row align-items-end text-white">

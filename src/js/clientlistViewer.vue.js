@@ -1,14 +1,21 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1' 
 
 const ClientlistViewer = {
-    name : 'clientlist-viewer',
     props : ['compact'],
+    components: {
+        LoaderViewer,
+        PlaceHolder,
+        HighLigth
+    },
     data() {
         return {
             UserSupport: new UserSupport,
-            users: null,
+            usersAux: [],
+            users: [],
             busy: false,
-            usersAux: null,
             query: null,
             user_login_id: null,
             columns: { // 0 DESC , 1 ASC 
@@ -55,9 +62,6 @@ const ClientlistViewer = {
 
             column.desc = !column.desc
         },
-        filterData() {
-            this.users = this.usersAux
-        },
         getInBackoffice(company_id) {
             this.UserSupport.getInBackoffice({ company_id: company_id }, (response) => {
                 if (response.s == 1) {
@@ -84,19 +88,18 @@ const ClientlistViewer = {
             window.location.href = `../../apps/admin-client/view.php?ulid=${company_id}`
         },
         getClients() {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 this.busy = true
+                this.users = []
+                this.usersAux = []
                 this.UserSupport.getClients({user_login_id:this.user_login_id}, (response) => {
                     this.busy = false
                     if (response.s == 1) {
                         this.users = response.users
                         this.usersAux = response.users
-                        resolve()
-                    } else {
-                        this.users = false
-                        this.usersAux = false
-                        reject()
-                    }
+                    } 
+
+                    resolve()
                 })
             })
         },
@@ -180,13 +183,9 @@ const ClientlistViewer = {
                 </div>
             </div>
             <div class="card-body">
-                <div v-if="busy == true" class="d-flex justify-content-center py-3">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
+                <HighLigth :busy="busy" :dataLength="users.length" :query="query"/>
 
-                <div v-if="users" class="table-responsive-sm">
+                <div v-if="users.length > 0" class="table-responsive-sm">
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr class="align-items-center">
@@ -255,10 +254,6 @@ const ClientlistViewer = {
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div v-else-if="users == false" class="alert border border-light text-center mb-0">
-                    <strong>Importante</strong>
-                    <div>No hay información de clientes todavía refresca la página o vuelve más tarde</div>
                 </div>
             </div>
         </div>

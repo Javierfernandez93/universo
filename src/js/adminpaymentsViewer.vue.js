@@ -1,11 +1,13 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
 import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
 import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1' 
 
 const AdminpaymentsViewer = {
     components: {
         LoaderViewer,
-        PlaceHolder
+        PlaceHolder,
+        HighLigth
     },
     data() {
         return {
@@ -327,10 +329,10 @@ const AdminpaymentsViewer = {
                         </div>
                         <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{payments.length}} resultados)</div>
                     </div>
-
-                    <LoaderViewer :busy="busy"/>
                     
-                    <div v-if="payments" class="card-body px-0 pt-0 pb-2">
+                    <HighLigth :busy="busy" :dataLength="payments.length" :query="query"/>
+                    
+                    <div v-if="payments.length > 0" class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive-md p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -441,14 +443,6 @@ const AdminpaymentsViewer = {
                                     </tr>
                                 </tfoot>
                             </table>
-                        </div>
-                    </div>
-                    <div v-else-if="payments === false" class="card-body">
-                        <div class="alert bg-dark text-center text-white mb-0">
-                            <strong>Aviso</strong>
-                            <div>
-                                No hay pagos, para añadir uno da click en el botón de arriba "Añadir venta".
-                            </div>
                         </div>
                     </div>
                 </div>

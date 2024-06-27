@@ -1,11 +1,19 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1'
 
 const DeveloperViewer = {
+    components : {
+        LoaderViewer,
+        PlaceHolder,
+        HighLigth
+    },
     data() {
         return {
             UserSupport: new UserSupport,
-            developers: null,
-            developersAux: null,
+            developers: [],
+            developersAux: [],
             busy: false,
             query: null,
             columns: { // 0 DESC , 1 ASC 
@@ -25,12 +33,10 @@ const DeveloperViewer = {
         }
     },
     watch: {
-        query:
-        {
-            handler() {
-                this.filterData()
-            },
-            deep: true
+        query(){
+            this.developers = this.developersAux.filter((developer) => {
+                return developer.name.toLowerCase().includes(this.query.toLowerCase())
+            })
         }
     },
     methods: {
@@ -48,15 +54,9 @@ const DeveloperViewer = {
 
             column.desc = !column.desc
         },
-        filterData() {
-            this.developers = this.developersAux
-            this.developers = this.developers.filter((developer) => {
-                return developer.name.toLowerCase().includes(this.query.toLowerCase())
-            })
-        },
         getDevelopers() {
-            this.developersAux = null
-            this.developers = null
+            this.developersAux = []
+            this.developers = []
             this.busy = true
             
             this.UserSupport.getDevelopers({}, (response) => {
@@ -64,9 +64,6 @@ const DeveloperViewer = {
                 if (response.s == 1) {
                     this.developersAux = response.developers
                     this.developers = this.developersAux
-                } else {
-                    this.developersAux = false
-                    this.developers = false
                 }
             })
         },
@@ -109,22 +106,22 @@ const DeveloperViewer = {
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
-                                <a href="../../apps/admin-developer/add" class="btn btn-sm px-3 mb-0 shadow-none btn-success">Agregar desarrolladora</a>
+                                <a href="../../apps/admin-developer/add" class="btn btn-sm px-3 mb-0 shadow-none btn-dark">Agregar desarrolladora</a>
+                            </div>
+                            <div class="col-12 col-xl-auto">
+                                <button @click="getDevelopers" class="btn btn-sm px-3 mb-0 shadow-none btn-dark">
+                                    <i class="bi bi-arrow-clockwise"></i>   
+                                </button>
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
-
-                        <div v-if="query" class="text-xs">Resultados de la búsqueda <b>{{query}}</b> ({{developers.length}} resultados)</div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
-                        <div v-if="busy == true" class="d-flex justify-content-center py-3">
-                            <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                        <div v-if="developers" class="table-responsive-sm p-0">
+                        <HighLigth :busy="busy" :dataLength="developers.length" :query="query"/>
+                        
+                        <div v-if="developers.length > 0" class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center">

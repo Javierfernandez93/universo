@@ -1,35 +1,35 @@
 import { UserSupport } from './userSupport.module.js?v=1.1.1'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1'
 
 const AdminpropertiesViewer = {
+    components : {
+        LoaderViewer,
+        PlaceHolder,
+        HighLigth   
+    },
     data() {
         return {
             UserSupport : new UserSupport,
             query: null,
             busy: false,
-            properties: null,
-            propertiesAux: null,
+            properties: [],
+            propertiesAux: [],
         }
     },
     watch : {
-        query : {
-            handler() {
-              this.filterData()
-            },
-            deep: true
-        },
-    },
-    methods: {
-        filterData() 
-        {
-            this.properties = this.propertiesAux
-            this.properties = this.properties.filter((property)=>{
+        query() {
+            this.properties = this.propertiesAux.filter((property)=>{
                 return property.name.toLowerCase().includes(this.query.toLowerCase())
             })
         },
+    },
+    methods: {
         getPropertiesByAdmin() 
         {
-            this.properties = null
-            this.propertiesAux = null
+            this.properties = []
+            this.propertiesAux = []
             this.busy = true
             this.UserSupport.getPropertiesByAdmin({},(response)=>{
                 this.busy = false
@@ -37,9 +37,6 @@ const AdminpropertiesViewer = {
                 {
                     this.properties = response.properties
                     this.propertiesAux = response.properties
-                } else {
-                    this.properties = false
-                    this.propertiesAux = false
                 }
             })
         },
@@ -94,17 +91,19 @@ const AdminpropertiesViewer = {
                         <div><a href="../../apps/admin-properties/add" type="button" class="btn shadow-none mb-0 btn-success px-3 btn-sm">Añadir propiedad</a></div>
                     </div>
                     <div class="col-auto text-end">
+                        <button @click="getPropertiesByAdmin" class="btn btn-success btn-sm px-3 mb-0 shadow-none">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </div>
+                    <div class="col-auto text-end">
                         <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-                <div v-if="busy == true" class="d-flex justify-content-center py-3">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-                <div v-if="properties" class="table-responsive-sm p-0 overflow-y-scroll h-100">
+                <HighLigth :busy="busy" :dataLength="properties.length" :query="query"/>
+
+                <div v-if="properties.length > 0" class="table-responsive-sm p-0 overflow-y-scroll h-100">
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr class="align-items-center">
@@ -170,11 +169,6 @@ const AdminpropertiesViewer = {
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div v-else-if="users == false" class="card-body">
-                    <div class="alert alert-warning text-white text-center">
-                        <div>No tenemos asesores aún</div>
-                    </div>
                 </div>
             </div>
         </div>

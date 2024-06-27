@@ -1,9 +1,11 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
 import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.1'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
 
 const AddsponsorViewer = {
     components : {
-        BackViewer
+        BackViewer,
+        LoaderViewer
     },
     data() {
         return {
@@ -57,7 +59,7 @@ const AddsponsorViewer = {
                     this.$refs.button.innerText = "Guardado"
 
                     toastInfo({
-                        message: 'Guardado',
+                        message: `Hemos guardado el líder ${this.administrator.names} correctamente`,
                     })
                 } else if (response.r == 'MAIL_ALREADY_EXISTS') {
                     this.feedback = 'El correo proporcionado ya está registrado'
@@ -139,6 +141,9 @@ const AddsponsorViewer = {
                     </div>
                 </div>
             </div>
+
+            <LoaderViewer :busy="busy"/>
+
             <div class="card-body">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-12 col-md">

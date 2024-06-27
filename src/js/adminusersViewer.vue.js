@@ -1,18 +1,20 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
 import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
 import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1' 
 
 const AdminusersViewer = {
     components: {
         LoaderViewer,
-        PlaceHolder
+        PlaceHolder,
+        HighLigth
     },  
     data() {
         return {
             UserSupport: new UserSupport,
-            busy: false,
-            users: null,
-            usersAux: null,
+            busy: null,
+            users: [],
+            usersAux: [],
             query: null,
             checkAll: false,
             columns: { // 0 DESC , 1 ASC 
@@ -110,8 +112,8 @@ const AdminusersViewer = {
         },
         getUsers() {
             this.busy = true
-            this.users = null
-            this.usersAux = null
+            this.users = []
+            this.usersAux = []
             this.UserSupport.getUsers({}, (response) => {
                 this.busy = false
                 if (response.s == 1) {
@@ -128,6 +130,9 @@ const AdminusersViewer = {
         <div class="card">
             <div class="card-header pb-0">
                 <div class="row align-items-center">
+                    <div class="col col-xl-auto">
+                        <LoaderViewer :busy="busy"/>
+                    </div>
                     <div class="col fs-4 fw-sembold text-primary">
                         <div v-if="users" class="mb-n2"><span class="badge p-0 text-secondary text-xxs">Total {{users.length}}</span></div>
                         <h6>Asesores</h6>
@@ -136,9 +141,14 @@ const AdminusersViewer = {
                         <div><a href="../../apps/admin-users/add" type="button" class="btn shadow-none mb-0 btn-success px-3 btn-sm">Añadir asesor</a></div>
                     </div>
                     <div class="col-auto text-end">
+                        <button @click="getUsers" class="btn shadow-none mb-0 btn-success px-3 btn-sm">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </div>
+                    <div class="col-auto text-end">
                         <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
-                    <div v-if="users.some(user => user.checked)" class="col-auto text-end">
+                    <div v-if="users?.some(user => user.checked)" class="col-auto text-end">
                         <div class="dropdown">
                             <button type="button" class="btn btn-dark mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -151,9 +161,9 @@ const AdminusersViewer = {
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-                <LoaderViewer :busy="busy"/>
+                <HighLigth :busy="busy" :dataLength="users.length" :query="query"/>
 
-                <div v-if="users" class="table-responsive-sm p-0 h-100">
+                <div v-if="users.length > 0" class="table-responsive-sm p-0 h-100">
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr class="text-secondary text-xxs font-weight-bolder opacity-7">
@@ -221,11 +231,7 @@ const AdminusersViewer = {
                         </tbody>
                     </table>
                 </div>
-                <div v-else-if="users == false" class="card-body">
-                    <div class="alert alert-warning text-white text-center">
-                        <div>No tenemos asesores aún</div>
-                    </div>
-                </div>
+
             </div>
         </div>
     `,

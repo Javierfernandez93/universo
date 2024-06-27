@@ -1,11 +1,19 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?t=5'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1'
 
 const AdmintoolsViewer = {
+    components : {
+        LoaderViewer,
+        PlaceHolder,
+        HighLigth
+    },
     data() {
         return {
             UserSupport : new UserSupport,
-            tools : null,
-            toolsAux : null,
+            tools : [],
+            toolsAux : [],
             busy : null,
             query : null,
             columns: { // 0 DESC , 1 ASC 
@@ -31,12 +39,10 @@ const AdmintoolsViewer = {
         }
     },
     watch : {
-        query : 
-        {
-            handler() {
-                this.filterData()
-            },
-            deep : true
+        query(){
+            this.tools = this.toolsAux.filter((tool)=>{
+                return tool.title.toLowerCase().includes(this.query.toLowerCase()) ||tool.create_date.formatDate().toLowerCase().includes(this.query.toLowerCase())
+            })
         },
     },
     methods: {
@@ -83,15 +89,10 @@ const AdmintoolsViewer = {
                 }
             })
         },
-        filterData() {
-            this.tools = this.toolsAux
-            
-            this.tools = this.toolsAux.filter((tool)=>{
-                return tool.title.toLowerCase().includes(this.query.toLowerCase()) ||tool.create_date.formatDate().toLowerCase().includes(this.query.toLowerCase())
-            })
-        },
         getAdminTools() {
             this.busy = true
+            this.tools = []
+            this.toolsAux = []
             this.UserSupport.getAdminTools({},(response)=>{
                 this.busy = false
                 if(response.s == 1)
@@ -124,7 +125,10 @@ const AdmintoolsViewer = {
                             </div>
                         </div>
                     </div>
-                    <div v-if="tools" class="card-body px-0 pt-0 pb-2">
+
+                    <HighLigth :busy="busy" :dataLength="tools.length" :query="query"/>
+
+                    <div v-if="tools.length > 0" class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -217,11 +221,6 @@ const AdmintoolsViewer = {
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                    <div v-else-if="tools == false" class="card-body">
-                        <div class="alert alert-secondary text-white text-center">
-                            <div>No tenemos herramientas aún</div>
                         </div>
                     </div>
                 </div>

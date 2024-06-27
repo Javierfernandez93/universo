@@ -1,11 +1,19 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.1' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1'
 
 const AffiliationViewer = {
+    components: {
+        LoaderViewer,
+        PlaceHolder,
+        HighLigth
+    },
     data() {
         return {
             UserSupport: new UserSupport,
-            affiliations: null,
-            affiliationsAux: null,
+            affiliations: [],
+            affiliationsAux: [],
             busy: false,
             query: null,
             columns: { // 0 DESC , 1 ASC 
@@ -25,12 +33,10 @@ const AffiliationViewer = {
         }
     },
     watch: {
-        query:
-        {
-            handler() {
-                this.filterData()
-            },
-            deep: true
+        query() {
+            this.affiliations = this.affiliationsAux.filter((payment) => {
+                return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
+            })
         }
     },
     methods: {
@@ -48,15 +54,9 @@ const AffiliationViewer = {
 
             column.desc = !column.desc
         },
-        filterData() {
-            this.affiliations = this.affiliationsAux
-            this.affiliations = this.affiliations.filter((payment) => {
-                return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
-            })
-        },
         getAffiliations() {
-            this.affiliationsAux = null
-            this.affiliations = null
+            this.affiliationsAux = []
+            this.affiliations = []
             this.busy = true
             
             this.UserSupport.getAffiliations({}, (response) => {
@@ -64,9 +64,6 @@ const AffiliationViewer = {
                 if (response.s == 1) {
                     this.affiliationsAux = response.affiliations
                     this.affiliations = this.affiliationsAux
-                } else {
-                    this.affiliationsAux = false
-                    this.affiliations = false
                 }
             })
         },
@@ -109,23 +106,17 @@ const AffiliationViewer = {
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
-                                <a href="../../apps/admin-affiliation/add" class="btn btn-sm px-3 mb-0 shadow-none btn-success">Agregar afiliación</a>
+                                <a href="../../apps/admin-affiliation/add" class="btn btn-sm px-3 mb-0 shadow-none btn-dark">Agregar afiliación</a>
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                             </div>
                         </div>
-
-
-                        <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{affiliations.length}} resultados)</div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
-                        <div v-if="busy == true" class="d-flex justify-content-center py-3">
-                            <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                        <div v-if="affiliations" class="table-responsive-sm p-0">
+                        <HighLigth :busy="busy" :dataLength="affiliations.length" :query="query"/>
+
+                        <div v-if="affiliations.length > 0" class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center">

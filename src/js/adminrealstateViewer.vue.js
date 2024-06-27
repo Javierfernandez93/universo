@@ -1,17 +1,19 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
 import Status from '../../src/js/components/Status.vue.js?v=1.1.1'
 import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1'
 
 const AdminrealstateViewer = {
     components : {
         LoaderViewer,
-        Status
+        Status,
+        HighLigth
     },
     data() {
         return {
             UserSupport: new UserSupport,
-            realStates: null,
-            realStatesAux: null,
+            realStates: [],
+            realStatesAux: [],
             busy: false,
             query: null,
             columns: { // 0 DESC , 1 ASC 
@@ -31,12 +33,10 @@ const AdminrealstateViewer = {
         }
     },
     watch: {
-        query:
-        {
-            handler() {
-                this.filterData()
-            },
-            deep: true
+        query(){
+            this.realStates = this.realStatesAux.filter((payment) => {
+                return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
+            })
         }
     },
     methods: {
@@ -54,15 +54,9 @@ const AdminrealstateViewer = {
 
             column.desc = !column.desc
         },
-        filterData() {
-            this.realStates = this.realStatesAux
-            this.realStates = this.realStates.filter((payment) => {
-                return payment.seller.toLowerCase().includes(this.query.toLowerCase()) || payment.title.toLowerCase().includes(this.query.toLowerCase()) || payment.last_payment_number.toString().includes(this.query.toLowerCase())
-            })
-        },
         getRealStates() {
-            this.realStatesAux = null
-            this.realStates = null
+            this.realStatesAux = []
+            this.realStates = []
             this.busy = true
             
             this.UserSupport.getRealStates({}, (response) => {
@@ -70,10 +64,7 @@ const AdminrealstateViewer = {
                 if (response.s == 1) {
                     this.realStatesAux = response.realStates
                     this.realStates = this.realStatesAux
-                } else {
-                    this.realStatesAux = false
-                    this.realStates = false
-                }
+                } 
             })
         },
         editRealState(realState) {
@@ -115,7 +106,12 @@ const AdminrealstateViewer = {
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
-                                <a href="../../apps/admin-realstate/add" class="btn btn-sm px-3 mb-0 shadow-none btn-success">Agregar proyecto</a>
+                                <a href="../../apps/admin-realstate/add" class="btn btn-sm px-3 mb-0 shadow-none btn-dark">Agregar proyecto</a>
+                            </div>
+                            <div class="col-12 col-xl-auto">
+                                <button @click="getRealStates" class="btn btn-sm px-3 mb-0 shadow-none btn-dark">
+                                    <i class="bi bi-arrow-clockwise"></i>   
+                                </button>
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
@@ -125,9 +121,9 @@ const AdminrealstateViewer = {
                         <div v-if="query" class="text-xs">Resultados de la búsqueda <b>{{query}}</b> ({{realStates.length}} resultados)</div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
-                        <LoaderViewer :busy="busy"/>
+                        <HighLigth :busy="busy" :dataLength="realStates.length" :query="query"/>
                         
-                        <div v-if="realStates" class="table-responsive-sm p-0">
+                        <div v-if="realStates.length > 0" class="table-responsive-sm p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr class="align-items-center">
