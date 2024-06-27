@@ -23,6 +23,12 @@ const FooterViewer = {
         }
     },
     methods : {
+        getValueByName(name)
+        {
+            return this.stats.find((stat)=>{
+                return stat.name == name
+            }).val
+        },
         getConfigVarsStats()
         {
             this.User.getConfigVarsStats({},(response)=>{
@@ -50,23 +56,42 @@ const FooterViewer = {
                         </div>
                     </div>
                     <div class="row align-items-center">
-                        <div class="col-12 col-md-8">
+                        <div class="col-12">
                             <div class="row gx-5">
                                 <div class="col-12 col-md-auto">
                                     <div class="text-secondary text-xs">CONTACTO </div>
-                                    <div class="text-white">{{stats.social_whatsapp}}</div>
+                                    <div class="text-white">
+                                        <a class="text-white text-decoration-underline" :href="getValueByName('social_whatsapp').sendWhatsApp('Hola, soy de Universo de Jade')" target="_blank">
+                                            <i class="bi text-white bi-whatsapp"></i>
+
+                                            {{getValueByName('social_whatsapp')}}
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-auto">
                                     <div class="text-secondary text-xs">EMAIL</div>
-                                    <div class="text-white">{{stats.company_email}}</div>
+                                    <div class="text-white">
+                                        <a class="text-white text-decoration-underline" :href="'mailto:' + getValueByName('company_email')" target="_blank">
+                                            <i class="bi text-white bi-envelope"></i>
+                                            
+                                            {{getValueByName('company_email')}}
+                                        </a>    
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md">
                                     <div class="text-secondary text-xs">DIRECCIÓN</div>
-                                    <div class="text-white">{{stats.company_email}}</div>
+                                    <div class="text-white">
+                                        <i class="bi text-white bi-map"></i>
+                                        {{getValueByName('company_address')}}
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-auto">
                                     <div class="text-secondary text-xs">REDES SOCIALES</div>
-                                    <div class="text-white">{{stats.company_email}}</div>
+                                    <div class="text-white text-end">
+                                        <a :href="getValueByName('social_instagram')" target="_blank">
+                                            <i class="bi h3 text-white bi-instagram"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -123,8 +123,9 @@ class SystemVar extends Orm {
     
     $names = implode(",",$names);
 
-    return (new self)->connection()->column("
+    return (new self)->connection()->rows("
       SELECT 
+        system_var.name,
         system_var.val
       FROM 
         system_var
