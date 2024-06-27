@@ -1,4 +1,4 @@
-import { UserSupport } from './userSupport.module.js?v=1.1.2'   
+import { UserSupport } from './userSupport.module.js?v=1.0.0'   
 
 const AddpropertyViewer = {
     data() {

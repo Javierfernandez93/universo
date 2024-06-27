@@ -1,6 +1,6 @@
-import { User } from '../../src/js/user.module.js?v=1.1.2'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.2' 
-import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.1.2'
+import { User } from '../../src/js/user.module.js?v=1.0.0'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.0' 
+import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.0'
  
 const SellerclientsaddViewer = {
     components : {

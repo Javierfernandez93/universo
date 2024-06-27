@@ -1,4 +1,4 @@
-import { ApieditcustomerViewer } from './apieditcustomerViewer.vue.js?v=1.1.2'
+import { ApieditcustomerViewer } from './apieditcustomerViewer.vue.js?v=1.0.0'
 
 Vue.createApp({
     components : { 

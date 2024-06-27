@@ -1,7 +1,7 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.2'   
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.2'
-import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.2' 
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.2'    
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.0'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.0' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.0'    
 
 const AdminblogViewer = {
     components : {

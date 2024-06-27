@@ -227,12 +227,12 @@
     <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
     
-    <script src="../../src/js/constants.js?v=1.1.2" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.1.2" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.1.2" type="text/javascript"></script>
+    <script src="../../src/js/constants.js?v=1.0.0" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.0.0" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.0.0" type="text/javascript"></script>
     <script fetchpriority="high" src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
 
-    <script src="../../src/js/general.js?v=1.1.2" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.0.0" type="text/javascript"></script>
     <!-- Github buttons -->
     
 
@@ -259,14 +259,14 @@
 
     <!-- Github buttons -->
     <script src="../../src/js/buttons.js" type="text/javascript"></script>
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.2"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.0"></script>
     <!-- <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script> -->
     
     <script src="https://unpkg.com/axios/dist/axios.min.js" type="module"></script>
-    <script src="../../src/js/vue.js?v=1.1.2" type="text/javascript"></script>
-    <script src="../../src/js/top.vue.js?v=1.1.2" type="module"></script>
-    <script src="../../src/js/notice.vue.js?v=1.1.2" type="module"></script>
-    <script src="../../src/js/chat.vue.js?v=1.1.2" type="module"></script>
+    <script src="../../src/js/vue.js?v=1.0.0" type="text/javascript"></script>
+    <script src="../../src/js/top.vue.js?v=1.0.0" type="module"></script>
+    <script src="../../src/js/notice.vue.js?v=1.0.0" type="module"></script>
+    <script src="../../src/js/chat.vue.js?v=1.0.0" type="module"></script>
     <link rel="stylesheet" href="../../src/css/general.css?v=1.2.8" />
 
 
