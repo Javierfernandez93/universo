@@ -1,7 +1,6 @@
 import { User } from '../../src/js/user.module.js?v=1.0.0'   
 
 const BlogViewer = {
-    name : 'blog-viewer',
     data() {
         return {
             User: new User,
@@ -9,8 +8,7 @@ const BlogViewer = {
         }
     },
     methods : {
-        back()
-        {
+        back() {
             window.history.back()
         },
         getBlog(blog_id)

@@ -62,7 +62,7 @@ const BloglistViewer = {
                             <li v-for="(entry,index) in entries" :class="index < entries.length-1 ? 'border-bottom border-secondary' : ''" class="list-group-item border-0 bg-transparent list-item-entry mb-3">
                                 <div class="row align-items-center">
                                     <div class="col-12 col-md-2">
-                                        <img :src="entry.image" :alt="entry.title_sanitized" :alt="entry.title_sanitized" class="w-100 rounded border border-secondary"/>
+                                        <img :src="entry.image" :alt="entry.title_sanitized" class="w-100 rounded border border-secondary"/>
                                     </div>
                                     <div class="col-12 col-md">
                                         <h3 class="text-white fw-semibold">{{entry.title_sanitized}}</h3>
