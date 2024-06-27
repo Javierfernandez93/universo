@@ -1,5 +1,5 @@
-import { UserwidgetViewer } from '../../src/js/userwidgetViewer.vue.js?v=1.1.1'
-import { ClientlistViewer } from '../../src/js/clientlistViewer.vue.js?v=1.1.1'
+import { UserwidgetViewer } from '../../src/js/userwidgetViewer.vue.js?v=1.1.2'
+import { ClientlistViewer } from '../../src/js/clientlistViewer.vue.js?v=1.1.2'
 
 Vue.createApp({
     components : { 

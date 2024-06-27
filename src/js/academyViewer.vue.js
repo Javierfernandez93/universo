@@ -1,6 +1,6 @@
 import { User } from '../../src/js/user.module.js?v=1.3.8'   
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.1'    
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.2'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.2'    
 
 const AcademyViewer = {
     components : {

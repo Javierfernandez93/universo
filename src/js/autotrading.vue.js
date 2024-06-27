@@ -1,6 +1,6 @@
 /* vue */
-import { AutotradingViewer } from '../../src/js/autotradingViewer.vue.js?v=1.1.1'
-import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=1.1.1'
+import { AutotradingViewer } from '../../src/js/autotradingViewer.vue.js?v=1.1.2'
+import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=1.1.2'
 
 Vue.createApp({
     components: {

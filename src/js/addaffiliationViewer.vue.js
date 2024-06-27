@@ -1,5 +1,5 @@
-import { UserSupport } from './userSupport.module.js?v=1.1.1'   
-import { BackViewer } from './backViewer.vue.js?v=1.1.1'   
+import { UserSupport } from './userSupport.module.js?v=1.1.2'   
+import { BackViewer } from './backViewer.vue.js?v=1.1.2'   
 
 const AddaffiliationViewer = {
     components : {

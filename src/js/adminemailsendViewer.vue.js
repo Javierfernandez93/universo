@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.2'
 
 const AdminemailsendViewer = {
     name : 'adminemailsend-viewer',
