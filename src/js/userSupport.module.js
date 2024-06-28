@@ -1,4 +1,4 @@
-import HttpMemoized from '../../src/js/httpMemoized.module.js?v=1.0.2';
+import HttpMemoized from '../../src/js/httpMemoized.module.js?v=1.0.3';
 
 class UserSupport extends HttpMemoized {
     constructor() {

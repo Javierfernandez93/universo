@@ -1,6 +1,6 @@
-import { ViewclientViewer } from '../../src/js/viewclientViewer.vue.js?v=1.0.2'
-import { ViewuserwidgetViewer } from '../../src/js/viewuserwidgetViewer.vue.js?v=1.0.2'
-import { ViewtasklistwidgetViewer } from '../../src/js/viewtasklistwidgetViewer.vue.js?v=1.0.2'
+import { ViewclientViewer } from '../../src/js/viewclientViewer.vue.js?v=1.0.3'
+import { ViewuserwidgetViewer } from '../../src/js/viewuserwidgetViewer.vue.js?v=1.0.3'
+import { ViewtasklistwidgetViewer } from '../../src/js/viewtasklistwidgetViewer.vue.js?v=1.0.3'
 
 Vue.createApp({
     components : { 

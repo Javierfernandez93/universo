@@ -1,4 +1,4 @@
-import { AddaffiliationViewer } from '../../src/js/addaffiliationViewer.vue.js?v=1.0.2'
+import { AddaffiliationViewer } from '../../src/js/addaffiliationViewer.vue.js?v=1.0.3'
 
 Vue.createApp({
     components : { 

@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.0.2'   
+import { User } from '../../src/js/user.module.js?v=1.0.3'   
 
 const POP_UP = 1
 const NEW = 2

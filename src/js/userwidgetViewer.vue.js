@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.2'   
-import OffCanvasViewer from './offcanvasViewer.vue.js?v=1.0.2'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.3'   
+import OffCanvasViewer from './offcanvasViewer.vue.js?v=1.0.3'
 
 const UserwidgetViewer = {
     components : {
