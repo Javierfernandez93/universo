@@ -1,6 +1,6 @@
 <?php define('TO_ROOT', '../../');
 
-require_once TO_ROOT . 'system/core.php'; 
+require_once TO_ROOT. "system/core.php";
 
 $data = HCStudio\Util::getHeadersForWebService();
 
@@ -32,10 +32,14 @@ if($UserLogin->logged === true)
 
 function format(array $sessions = null,int $user_login_id = null) : array
 {	
+    $SessionPerCourse = new Site\SessionPerCourse;
     $SessionTakeByUserPerCourse = new Site\SessionTakeByUserPerCourse;
     
-	return array_map(function ($session) use($SessionTakeByUserPerCourse,$user_login_id) {
+	return array_map(function ($session) use($SessionTakeByUserPerCourse,$SessionPerCourse,$user_login_id) {
         $session['sessionTaked'] = $SessionTakeByUserPerCourse->getSessionInfo($session['session_per_course_id'],$user_login_id);
+        $sessions = $SessionPerCourse->getListAttach($session['session_per_course_id'],$user_login_id);
+        $session['sessions'] = sizeof($session) > 0 ? $sessions : [];
+        $session['hasChilds'] = $session['sessions'] != false;
 
         return $session;
     },$sessions);

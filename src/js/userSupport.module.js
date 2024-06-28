@@ -102,13 +102,13 @@ class UserSupport extends HttpMemoized {
         return this.call('../../app/application/add_performance.php', data, callback);
     }
     deleteDeposit(data, callback) {
-        return this.call('../../app/application/delete_deposit.php', data, callback, null, null, 'POST');
+        return this.call('../../app/application/delete_deposit.php', data, callback);
     }
     viewCoinpaymentsTXNId(data, callback) {
-        return this.call('../../app/application/viewCoinpaymentsTXNId.php', data, callback, null, null, 'POST');
+        return this.call('../../app/application/viewCoinpaymentsTXNId.php', data, callback);
     }
     closeOperation(data, callback) {
-        return this.call('../../app/application/close_operation.php', data, callback, null, null, 'POST');
+        return this.call('../../app/application/close_operation.php', data, callback);
     }
     deleteCapital(data, callback) {
         return this.call('../../app/application/delete_capital.php', data, callback);
@@ -195,10 +195,10 @@ class UserSupport extends HttpMemoized {
         return this.call('../../app/application/get_notices.php', data, callback);
     }
     saveNotice(data, callback) {
-        return this.call('../../app/application/save_notice.php', data, callback, null, null, 'POST');
+        return this.call('../../app/application/save_notice.php', data, callback);
     }
     updateNotice(data, callback) {
-        return this.call('../../app/application/update_notice.php', data, callback, null, null, 'POST');
+        return this.call('../../app/application/update_notice.php', data, callback);
     }
     getNotice(data, callback) {
         return this.call('../../app/application/get_notice.php', data, callback);
@@ -459,7 +459,7 @@ class UserSupport extends HttpMemoized {
         return this.call('../../app/application/saveCourse.php', data, callback);
     }
     updateCourse(data, callback) {
-        return this.call('../../app/application/updateCourse.php', data, callback, null, null, 'POST');
+        return this.call('../../app/application/updateCourse.php', data, callback);
     }
     getCourses(data, callback) {
         return this.call('../../app/application/getCourses.php', data, callback);
@@ -618,7 +618,7 @@ class UserSupport extends HttpMemoized {
         return this.call('../../app/application/getBlogCategories.php', data, callback);
     }
     saveBlog(data, callback) {
-        return this.call('../../app/application/saveBlog.php', data, callback, null, null, 'POST');
+        return this.call('../../app/application/saveBlog.php', data, callback);
     }
     getAdminBlogs(data, callback) {
         return this.call('../../app/application/getAdminBlogs.php', data, callback);

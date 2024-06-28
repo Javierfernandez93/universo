@@ -1,12 +1,12 @@
 <?php define('TO_ROOT', '../../');
 
-require_once TO_ROOT . 'system/core.php';
+require_once TO_ROOT . 'system/core.php'; 
 
 $UserLogin = new Site\UserLogin;
 
 if(!$UserLogin->logged)
 {
-	unauthorized();
+    unauthorized();
 }
 
 $Course = new Site\Course;
@@ -16,15 +16,11 @@ $courses = $Course->getList();
 
 if(!$courses)
 {
-    error(JFStudio\Constants::RESPONSES['NOT_DATA']);   
-}
-
-$courses = format(filter($data['courses'],$UserLogin->company_id),$UserLogin->company_id);
-    
-if(!$data['courses'])
-{
     error(JFStudio\Constants::RESPONSES['NOT_DATA']);
 }
+
+$courses = format(filter($courses,$UserLogin->company_id),$UserLogin->company_id);
+
 
 function filter(array $courses = null,int $user_login_id = null) : array
 {
@@ -33,10 +29,10 @@ function filter(array $courses = null,int $user_login_id = null) : array
     return array_filter($courses,function($course) use($BuyPerUser,$user_login_id) {
         $aviable = true;
         
-        if($course['target'] != Site\Course::ALL)
-        {    
-            $aviable = $BuyPerUser->hasPackageBuy($user_login_id,$course['target']);
-        }
+        // if($course['target'] != Site\Course::ALL)
+        // {    
+        //     $aviable = $BuyPerUser->hasPackageBuy($user_login_id,$course['target']);
+        // }
 
         return $aviable;
     }); 
@@ -65,5 +61,5 @@ function format(array $courses = null,int $user_login_id = null) : array
 }
 
 success(null,[
-    'courses' => $courses
-]); 
+    'courses' => $courses,
+]);

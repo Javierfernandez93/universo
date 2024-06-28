@@ -1,7 +1,11 @@
 import { isLessonType } from '../utils/courseEditorUtils.js';
 import { UserSupport } from './../userSupport.module.js'
+import OffCanvasViewer from '../../../src/js/offcanvasViewer.vue.js?v=1.0.2'
 
 const CourseEditorLessonSidebar = {
+    components : {
+        OffCanvasViewer
+    },
     emits: ['onSave'],
     data(){
         return {
@@ -61,18 +65,17 @@ const CourseEditorLessonSidebar = {
 
             this.$emit("onSave", this.lessonData);
     
-            this.canvas.hide();
+            this.$refs.myOffCanvas.hide();
         },
         open(lessonData, parentId = null){
             this.parentId = parentId;
             this.lessonData = lessonData === null || lessonData === undefined
                     ? this.getEmptyLessonData()
                     : lessonData;
-            this.canvas.show();
+            this.$refs.myOffCanvas.show();
         },
     },
     mounted(){
-        this.canvas = new bootstrap.Offcanvas(this.$refs.offcanvasRight);
         this.getLessonTypes().then(() => {
             this.initEditor();
           });
@@ -95,58 +98,52 @@ const CourseEditorLessonSidebar = {
         },
     },
     template: `
-        <div class="offcanvas offcanvas-end" tabindex="-1" ref="offcanvasRight" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Lección del curso</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <OffCanvasViewer title="Lección del curso" ref="myOffCanvas">
+            <div class="form-floating mb-3">
+                <input v-model="lessonData.title" :class="lessonData?.title ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.course.focus()" type="text" class="form-control" ref="title" placeholder="Título">
+                <label for="title">
+                    <t>Título</t>
+                </label>
             </div>
-            <div class="offcanvas-body">
-                <div class="form-floating mb-3">
-                    <input v-model="lessonData.title" :class="lessonData?.title ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.course.focus()" type="text" class="form-control" ref="title" placeholder="Título">
-                    <label for="title">
-                        <t>Título</t>
-                    </label>
-                </div>
 
-                <div class="form-floating mb-3">
-                    <select :class="lessonData?.catalog_multimedia_id ? 'is-valid' : ''" class="form-select" ref="lessonType" v-model="lessonData.catalog_multimedia_id" aria-label="Selecciona el tipo de sessión">
-                        <option v-for="type in lessonTypes" :value="type.id">
-                            {{ type.description }}
-                        </option>
-                    </select>
-                    <label for="lessonType">
-                        <t>Tipo de lecciön</t>
-                    </label>
-                </div>
-
-                <div class="mb-3">
-                    <div v-show="isType('text')">
-                        <label for="course">
-                            <t>Descripción</t>
-                        </label>
-                        <div ref="editor" style="height:120px;"></div>
-                    </div>
-                    <div v-if="isType('audio')" class="form-floating">
-                        Audio
-                    </div>
-                    <div v-if="isType('video')">
-                        <div class="form-floating mb-3">
-                        <input v-model="lessonData.courseValue" :class="lessonData.courseValue ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.course.focus()" type="text" class="form-control" ref="video" placeholder="Video">
-                        <label for="video">
-                            <t>Video</t>
-                        </label>
-                        </div>
-                        <span class="frame-video" v-html="lessonData?.course"></span>
-                    </div>
-                    <div v-if="isType('html')">
-                        <textarea placeholder="Escribe el código HTML aquí" class="form-control" v-model="lessonData.course" style="height:400px">
-                        </textarea>
-                    </div>
-                </div>
-
-                <button :disabled="!isCompleted()" class="btn btn-dark" @click="onSave"><t>Guardar Lección</t></button>
+            <div class="form-floating mb-3">
+                <select :class="lessonData?.catalog_multimedia_id ? 'is-valid' : ''" class="form-select" ref="lessonType" v-model="lessonData.catalog_multimedia_id" aria-label="Selecciona el tipo de sessión">
+                    <option v-for="type in lessonTypes" :value="type.id">
+                        {{ type.description }}
+                    </option>
+                </select>
+                <label for="lessonType">
+                    <t>Tipo de lecciön</t>
+                </label>
             </div>
-        </div>
+
+            <div class="mb-3">
+                <div v-show="isType('text')">
+                    <label for="course">
+                        <t>Descripción</t>
+                    </label>
+                    <div ref="editor" style="height:120px;"></div>
+                </div>
+                <div v-if="isType('audio')" class="form-floating">
+                    Audio
+                </div>
+                <div v-if="isType('video')">
+                    <div class="form-floating mb-3">
+                    <input v-model="lessonData.courseValue" :class="lessonData.courseValue ? 'is-valid' : ''" @keydown.enter.exact.prevent="$refs.course.focus()" type="text" class="form-control" ref="video" placeholder="Video">
+                    <label for="video">
+                        <t>Video</t>
+                    </label>
+                    </div>
+                    <span class="frame-video" v-html="lessonData?.course"></span>
+                </div>
+                <div v-if="isType('html')">
+                    <textarea placeholder="Escribe el código HTML aquí" class="form-control" v-model="lessonData.course" style="height:400px">
+                    </textarea>
+                </div>
+            </div>
+
+            <button :disabled="!isCompleted()" class="btn btn-dark" @click="onSave"><t>Guardar Lección</t></button>
+        </OffCanvasViewer>
     `,
 };
 

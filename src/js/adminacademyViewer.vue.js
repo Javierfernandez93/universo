@@ -1,10 +1,14 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.2'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.2'
 
 const AdminacademyViewer = {
-    name : 'adminacademy-viewer',
+    components: {
+        LoaderViewer
+    },
     data() {
         return {
             UserSupport : new UserSupport,
+            busy: false,    
             query : null,
             courses : null,
             coursesAux: null,
@@ -12,81 +16,53 @@ const AdminacademyViewer = {
         }
     },
     watch : {
-        query: {
-            handler()
-            {
-                this.filterData()
-            },
-            deep: true
-        },
-    },
-    methods: {
-        filterData() {
-            this.courses = this.coursesAux
-            this.courses = this.courses.filter((course) => {
+        query(){
+            this.courses = this.coursesAux.filter((course) => {
                 return course.title.toLowerCase().includes(this.query.toLowerCase()) || course.price.toString().includes(this.query)
             })
         },
-        toggleGrid()
-        {
+    },
+    methods: {
+        toggleGrid() {
             this.grid = !this.grid
         },
-        toggleGrid()
-        {
-            this.grid = !this.grid
-        },
-        goToPreview(course_id)
-        {
-            window.open(`../../apps/academy/lesson.php?cid=${course_id}`)
-        },
-        edit(course_id)
-        {
-            window.location.href = `../../apps/admin-academy/edit.php?cid=${course_id}`
-        },
-        toggleEditingRoute(sheet)
-        {
+        toggleEditingRoute(sheet) {
             sheet.editingRoute = !sheet.editingRoute
         },
-        goToSheet(proyect_id)
-        {
-            window.location.href = `../../apps/proyects/sheets?pid=${proyect_id}`
-        },
-        goToVConfigureCard(sheet_per_proyect_id)
-        {
-            window.location.href = `../../apps/v-card/config?sppid=${sheet_per_proyect_id}`
-        },
-        unpublish(course)
-        {
-            this.UserSupport.changeCourseStatus({course_id:course.course_id,status:0},(response)=>{
+        setCourseStatusAs(course,status) {
+            this.busy = true    
+            this.UserSupport.setCourseStatusAs({course_id:course.course_id,status:status},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
-                    course.status = response.status
+                    course.status = status
+
+                    toastInfo({
+                        message: `Actualizamos tu curso ${course.title}`,
+                    })
+
+                    if(status == -1)
+                    {
+                        this.getCourses()
+                    }
                 }
             })
         },
-        publish(course)
-        {
-            this.UserSupport.changeCourseStatus({course_id:course.course_id,status:1},(response)=>{
-                if(response.s == 1)
-                {
-                    course.status = response.status
-                }
-            })
-        },
-        delete(course)
-        {
-            this.UserSupport.changeCourseStatus({course_id:course.course_id,status:-1},(response)=>{
-                if(response.s == 1)
-                {
-                    course.status = response.status
-                }
-            })
-        },
-        getCourses() 
-        {
+        getCourses() {
+            this.busy = true
+            this.coursesAux = null  
+            this.courses = null
+
             this.UserSupport.getCourses({},(response)=>{
-                this.coursesAux = response.courses
-                this.courses = this.coursesAux
+                this.busy = false
+
+                if(response.s == 1)
+                {
+                    this.courses = response.courses
+                    this.coursesAux = response.courses
+                }
+
+                console.log(this.courses)
             })
         }
     },
@@ -95,38 +71,37 @@ const AdminacademyViewer = {
         this.getCourses()
     },
     template : `
+        <LoaderViewer :busy="busy"/>
 
-        <div class="row mb-3">
-            <div class="col-12 col-xl">
-                <input :disabled="busy" :autofocus="true" v-model="query" type="text" class="form-control border-0 shadow-lg" placeholder="Buscar curso por nombre o precio...">
-            </div>
+        <div class="card card-body mb-3">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-xl">
+                    <span class="text-xxs text-secondary">
+                        {{courses ? courses.length : 0}} cursos 
+                    </span>
+                    <div class="h4">Lista de cursos</div>
+                </div>
+                <div class="col-12 col-xl-auto">
+                    <input :disabled="busy" :autofocus="true" v-model="query" type="search" class="form-control" placeholder="Buscar curso por nombre o precio...">
+                </div>
 
-            <div class="col-12 col-xl-auto">
-                <button
-                    @click="toggleGrid"
-                    class="btn btn-dark">
-                    <span v-if="grid">
-                        <i class="bi bi-list"></i>
-                    </span>
-                    <span v-else>
-                        <i class="bi bi-grid-fill"></i>
-                    </span>
-                </button>
-                <a
-                    href="../../apps/admin-academy/add"
-                    class="btn btn-dark">
-                    añadir
-                </a>
+                <div class="col-12 col-xl-auto">
+                    <button @click="getCourses" class="btn btn-light mb-0 shadow-none">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </button>
+                </div>
+                <div class="col-12 col-xl-auto">
+                    <a href="../../apps/admin-academy/add" class="btn btn-dark mb-0 shadow-none">
+                        Añadir
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="row">
-            <div    
-                :class="grid ? 'col-6' : 'col-12'"
-                v-for="course in courses"> 
-                
-                <div class="card mb-3">
-                    <div class="card-body">
+        <div class="card card-body">
+            <div v-if="courses">
+                <ul class="list-group list-group-flush list-group-focus">
+                    <li v-for="course in courses" class="list-group-item">
                         <div class="row align-items-center">
                             <div class="col-12 col-xl-auto">
                                 <div class="avatar">
@@ -135,30 +110,25 @@ const AdminacademyViewer = {
                             </div>
                             <div class="col-12 col-xl">
                                 <div>
-                                    <span class="badge bg-secondary me-2">Creado hace {{course.create_date.timeSince()}}</span>
-                                    <span v-if="course.status == 0" class="badge bg-secondary me-2">
-                                        Despublicado
-                                    </span>
-                                    <span v-else-if="course.status == 1" class="badge bg-success me-2"> 
-                                        Publicado
-                                    </span>
-                                </div>
-                                <div class="h4 text-dark" @click="goToSheet(proyect.proyect_id)">
-                                    {{course.title}} 
-                                </div>
-                                <div>
+                                    <span class="badge text-xxs border border-secondary text-secondary me-2">Creado hace {{course.create_date.timeSince()}}</span>
+
+                                    <span v-text="course.status == 1 ? 'Publicado' : 'Despublicado'" :class="course.status == 1 ? 'border border-success text-success' : 'border border-secondary text-secondary'" class="badge text-xxs me-2"></span>
                                     
                                     <span v-if="course.price > 0" class="badge bg-gradient-success me-2">
                                         {{ course.currency }} $ {{ course.price.numberFormat(2) }}
                                     </span>
-                                    <span v-else class="badge bg-primary me-2">
-                                        <t>Gratis</t>
+                                    <span v-else class="badge text-xxs border border-primary text-primary me-2">
+                                        Gratis
                                     </span>
-
-
-                                    <span class="badge bg-warning">
+    
+    
+                                    <span class="badge text-xxs border border-dark text-dark">
                                         {{course.type}}
                                     </span>
+                                </div>
+
+                                <div class="h4 text-dark">
+                                    {{course.title}} 
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -186,21 +156,21 @@ const AdminacademyViewer = {
                             </div>
                             <div class="col-auto">
                                 <div class="dropdown">
-                                    <button type="button" class="btn btn-outline-primary px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button type="button" class="btn btn-dark shadow-none btn-sm px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
                                     </button>
                                     <ul class="dropdown-menu shadow">
-                                        <li><button class="dropdown-item"@click="goToPreview(course.course_id)"><t>Ver previo</t></button></li>
-                                        <li><button class="dropdown-item"@click="edit(course.course_id)"><t>Editar</t></button></li>
-                                        <li v-if="course.status == 1"><button class="dropdown-item"@click="unpublish(course)"><t>Despublicar</t></button></li>
-                                        <li v-if="course.status == 0"><button class="dropdown-item"@click="publish(course)"><t>Publicar</t></button></li>
-                                        <li><button class="dropdown-item"@click="delete(course)"><t>Eliminar</t></button></li>
+                                        <li><a class="dropdown-item" :href="'../../apps/academy/lesson.php?cid='+course.course_id">Ver previo</a></li>
+                                        <li><a class="dropdown-item" :href="'../../apps/admin-academy/edit.php?cid='+course.course_id">Editar</a></li>
+                                        <li v-if="course.status == 1"><button class="dropdown-item"@click="setCourseStatusAs(course,0)">Despublicar</button></li>
+                                        <li v-if="course.status == 0"><button class="dropdown-item"@click="setCourseStatusAs(course,1)">Publicar</button></li>
+                                        <li><button class="dropdown-item"@click="setCourseStatusAs(course,-1)">Eliminar</button></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
     `,

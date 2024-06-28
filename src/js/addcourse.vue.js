@@ -1,4 +1,3 @@
-/* vue */
 import CourseEditorViewer from './CourseEditorViewer.vue.js'
 
 Vue.createApp({

@@ -59,10 +59,11 @@ class Course extends Orm {
         // TODO: Set a default value either via database or by class without using magic numbers
         $default_currency_id = 8; // USD
 
+        $Course->attach_session_per_course_id = isset($data['attach_session_per_course_id']) && !empty($data['attach_session_per_course_id']) ? $data['attach_session_per_course_id'] : 0;
         $Course->catalog_course_id = $data['catalog_course_id'];
-        $Course->catalog_currency_id = $data['catalog_currency_id'] ?? $default_currency_id;
+        $Course->catalog_currency_id = isset($data['catalog_currency_id']) && !empty($data['catalog_currency_id']) ? $data['catalog_currency_id'] : $default_currency_id;   
         $Course->tag = $data['tag'];
-        
+
         if($Course->save())
         {
             foreach($data['sessions'] as $key => $session)
@@ -73,11 +74,14 @@ class Course extends Orm {
                 SessionPerCourse::addSession($session);
             }
 
-            foreach($data['deleted_lessons'] as $lesson_id){
-                if (!is_numeric($lesson_id)) {
-                    continue;
+            if(isset($data['deleted_lessons']))
+            {
+                foreach($data['deleted_lessons'] as $lesson_id){
+                    if (!is_numeric($lesson_id)) {
+                        continue;
+                    }
+                    $_was_removed = SessionPerCourse::removeSingleSession($data['course_id'], $lesson_id);
                 }
-                $_was_removed = SessionPerCourse::removeSingleSession($data['course_id'], $lesson_id);
             }
         }
 
@@ -86,7 +90,7 @@ class Course extends Orm {
 
 	public function getList()
     {
-        $sql = "SELECT 
+        return $this->connection()->rows("SELECT 
                     {$this->tblName}.{$this->tblName}_id,
                     {$this->tblName}.title,
                     {$this->tblName}.description,
@@ -114,9 +118,7 @@ class Course extends Orm {
                     user_support.user_support_id = {$this->tblName}.user_support_id
                 WHERE 
                     {$this->tblName}.status = '".Constants::AVIABLE."'
-                ";
-        
-        return $this->connection()->rows($sql);
+                ");
 	}
 
     public function getFormatted(array $data = null) 
@@ -180,8 +182,8 @@ class Course extends Orm {
 	}
 
     public function getCourses()
-    {
-        $sql = "SELECT 
+    {   
+        return $this->connection()->rows("SELECT 
                     {$this->tblName}.{$this->tblName}_id,
                     {$this->tblName}.title,
                     {$this->tblName}.description,
@@ -212,37 +214,50 @@ class Course extends Orm {
                 ON
                     catalog_currency.catalog_currency_id = {$this->tblName}.catalog_currency_id
                 WHERE 
-                    {$this->tblName}.status = '".Constants::AVIABLE."'
-                ";
-        
-        return $this->connection()->rows($sql);
+                    {$this->tblName}.status != '".Constants::DELETE."'
+                ");
     }
     
     public function getCourse(int $course_id = null)
     {
-        if(isset($course_id))
+        if(!isset($course_id))
         {
-            $course = $this->_getCourse($course_id);
-            $course['free'] = (int)($course['price']) <= 0 ? 1 : 0;
-            $course['tag'] = json_decode($course['tag'],true);
-            $course['sessions'] = (new SessionPerCourse)->getList($course_id);
-            foreach($course['sessions'] as $key => $lesson){
-                if ($lesson['catalog_multimedia_id'] === 5) { // module
-                    $subLessons = (new SessionPerCourse)->getList($course_id,$lesson['session_per_course_id']);
-                    $course['sessions'][$key]['sessions'] = $subLessons;
-                }
-            }
-            return $course;
+            return false;
+        }
+           
+        $course = $this->_getCourse($course_id);
+
+        if(!$course)
+        {
+            return false;
         }
 
-        return false;
+        $course['free'] = (int)($course['price']) <= 0 ? 1 : 0;
+        $course['tag'] = json_decode($course['tag'],true);
+
+        $SessionPerCourse = new SessionPerCourse;
+        
+        $course['sessions'] = $SessionPerCourse->getList($course_id);
+
+        foreach($course['sessions'] as $key => $lesson)
+        {
+            if ($lesson['catalog_multimedia_id'] === 5) { // module
+                $subLessons = $SessionPerCourse->getList($course_id,$lesson['session_per_course_id']);
+                $course['sessions'][$key]['sessions'] = $subLessons;
+            }
+        }
+
+        return $course;
     }
     
     public function _getCourse(int $course_id = null)
     {
-        if(isset($course_id))
+        if(!isset($course_id))
         {
-            $sql = "SELECT 
+            return false;
+        }
+        
+        return $this->connection()->row("SELECT 
                         {$this->tblName}.{$this->tblName}_id,
                         {$this->tblName}.title,
                         {$this->tblName}.description,
@@ -280,14 +295,9 @@ class Course extends Orm {
                     ON
                         catalog_currency.catalog_currency_id = {$this->tblName}.catalog_currency_id
                     WHERE 
-                        {$this->tblName}.status = '".Constants::AVIABLE."'
+                        {$this->tblName}.status != '".Constants::DELETE."'
                     AND 
                         {$this->tblName}.course_id = '{$course_id}'
-                    ";
-            
-            return $this->connection()->row($sql);
-        }
-
-        return false;
+                    ");
     }
 }

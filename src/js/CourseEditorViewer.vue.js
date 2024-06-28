@@ -135,10 +135,13 @@ const CourseEditorViewer = {
             });
         },
         saveLesson(lessonData){
-            const {attach_session_per_course_id: parentId} = lessonData;
-            const isChild = parentId > 0;
-            if(isChild){
+            const { attach_session_per_course_id: parentId } = lessonData;
+            const isChild = parentId != 0;
+
+            if(isChild)
+            {
                 const parentKey = this.findLessonByID(parentId);
+
                 if (parentKey !== false) {
                     const childKey = this.findLessonByID(lessonData.unique_id, this.courseData.sessions[parentKey]);
                     if(childKey !== false){
@@ -166,6 +169,7 @@ const CourseEditorViewer = {
     },
     async mounted(){
         this.courseID = parseInt(getParam("cid")) > 0 ? parseInt(getParam("cid")) : null;
+
         if(this.courseID !== null){
             await this.loadCourseData();
         } else {
