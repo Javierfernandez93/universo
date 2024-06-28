@@ -329,8 +329,9 @@ const HomeViewer = {
               },
             });
           },
-          playVideo()
+          playVideo(element)
           {
+            console.log(element)
             this.showing = false
             document.getElementById('videoBoss').play();
           },
@@ -365,10 +366,14 @@ const HomeViewer = {
     },
     template : `
         <section id="section-1" class="d-flex vh-100 align-items-center">
-            <video width="320" height="240" class="video-floating" controls autoplay muted loop>
+            <video ref="videoIntro" width="320" height="240" class="video-floating" controls autoplay muted loop>
                 <source src="../../src/files/video/home.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+
+            <div class="d-none d-flex align-items-center justify-content-center w-100 h-100 z-zoom-element z-index-1">
+                <span @click="playVideo($refs.videoIntro)" class="btn-pla cursor-pointer z-zoom-element"><i class="bi fs-1 bi-play-fill text-white"></i></span>
+            </div>
 
             <div class="mask bg-dark-translucid"></div>
         </section>
@@ -377,16 +382,15 @@ const HomeViewer = {
             <div class="container">
                 <div class="row align-items-center justify-content-center g-5 py-5 expand" style="--delay:500ms">
                     <div class="col-12 col-md-12 col-xl-7 position-relative mb-3 mb-md-0">
-                        <div @click="playVideo" v-show="showing" class="mask cursor-pointer z-zoom-element bg-dark rounded opacity-total z-index-1" style="background-image:url(../../src/img/home/video.png)">
+                        <div @click="playVideo($refs.videoPromotional)" v-show="showing" class="mask cursor-pointer z-zoom-element bg-dark rounded opacity-total z-index-1" style="background-image:url(../../src/img/home/video.png)">
                             <div class="justify-content-center d-flex align-items-center h-100">
                                 <span class="btn-play d-flex justify-content-center align-items-center cursor-pointer z-zoom-element"><i class="bi fs-1 bi-play-fill text-white"></i></span>
                             </div>
                         </div>
-                        <video id="videoBoss" class="rounded" style="width:100%;height:30rem" poster="../../src/img/home/video.png" controls>
+                        <video id="videoBoss" ref="videoPromotional" class="rounded overflow-hidden" style="width:100%;height:30rem" poster="../../src/img/home/video.png" controls>
                             <source src="../../src/files/video/video.mp4" type="video/mp4">
             
                             <object data="../../src/files/video/video.mp4" width="470" height="255">
-                                
                             </object>
                         </video>
                     </div>
