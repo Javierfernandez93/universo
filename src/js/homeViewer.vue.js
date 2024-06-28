@@ -1,14 +1,18 @@
 import { Translator } from '../../src/js/translator.module.js?v=1.0.1'   
 import { Guest } from '../../src/js/guest.module.js?v=1.0.1'   
+import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.1'   
 
 const HomeViewer = {
+    components : {
+        ModalViewer
+    },
     data() {
         return {
             Guest: new Guest,
             Translator: new Translator,
             showing: true,
             language_code: null,
-            affiliates: null,
+            currentAffiliate: null,
             members: null,
             stats: {
                 experience: 0,
@@ -217,7 +221,18 @@ const HomeViewer = {
     },
     methods : {
         getSponsors(affilliateName) {
-            this.affiliates = shuffle(this.affiliatesList[affilliateName])
+            this.currentAffiliate = this.affiliatesList[affilliateName] ? shuffle(this.affiliatesList[affilliateName]) : []
+
+            if(this.currentAffiliate.length == 0)
+            {
+                toastInfo({
+                    message: 'No hay afiliados para mostrar',
+                })
+
+                return 
+            }
+            
+            this.$refs.myModal.show()
         },
         viewVideo(video) {
             alertHtml(`
@@ -346,29 +361,6 @@ const HomeViewer = {
         this.testimonials = shuffle(this.testimonialsAux)
 
         this.getTopCountries();
-
-        // window.onload = function(){
-        //     await sleep(1500)
-            
-        //     $('#preloader').addClass("showout");
-
-        //     const elementsToExpand = document.querySelectorAll(".expand")
-    
-        //     let expansionObserver = new IntersectionObserver(entries => {
-        //         entries.forEach(entry => {
-        //             if (entry.intersectionRatio > 0) {
-        //                 entry.target.classList.add("animation-fall-down");
-        //             } else {
-        //                 entry.target.classList.remove("animation-fall-down");
-        //             }
-        //         })
-        //     })
-
-        //     elementsToExpand.forEach(element => {
-        //         expansionObserver.observe(element)
-        //     })
-        // };
-
         this.getConfigVarsStats()
     },
     template : `
@@ -593,44 +585,6 @@ const HomeViewer = {
                                     </div>
                                 </div>
                             </div>
-
-                            <div v-if="affiliates" class="position-absolute animation-fall-down d-flex align-items-center top-0 start-0 w-100 h-100 bg-dark-translucid-x text-white" style="--delay:100ms">
-                                <div class="position-absolute top-0 end-0 me-3 mt-3 z-index-3">
-                                    <button @click="affiliates = null" class="btn btn-outline-light z-index-2">Cerrar</button>
-                                </div>
-                                <div id="carouselExampleControls" class="carousel carousel-sponsors w-100 slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div v-for="(affiliate,index) in affiliates" class="carousel-item" :class="index == 0 ? 'active' : ''">
-                                            <div class="row carousel-container align-items-center justify-content-center">
-                                                <div class="col-10 col-md-5">   
-                                                    <div class="row justify-content-end">   
-                                                        <div class="col-12 position-relative">   
-                                                            <div class="card bg-transparent rounded overflow-hidden shadow-lg">   
-                                                                <img :src="affiliate.image" class="card-img-top"/>
-                                                                
-                                                                <div class="card-body bg-sponsor p-3">   
-                                                                    <h3 class="text-success mb-1">{{affiliate.name}}</h3>
-                                                                    <div class="text-white">
-                                                                        <span v-html="affiliate.text"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="d-none carousel-control-prev w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="d-none carousel-control-next w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -784,6 +738,46 @@ const HomeViewer = {
             </div>
         </section>
 
+        <ModalViewer ref="myModal" theme="dark" size="modal-fullscreen" title="Afiliados">
+            <div v-if="currentAffiliate" class="position-absolute animation-fall-down d-flex align-items-center top-0 start-0 w-100 h-100 bg-dark-translucid-x text-white" style="--delay:100ms">
+                <div id="carouselExampleControls" class="carousel carousel-sponsors w-100 slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div v-for="(affiliate,index) in currentAffiliate" class="carousel-item" :class="index == 0 ? 'active' : ''">
+                            <div class="row carousel-container align-items-center justify-content-center">
+                                <div class="col-10 col-md-4">   
+                                    <div class="row justify-content-end">   
+                                        <div class="col-12 position-relative">   
+                                            <div class="card bg-transparent rounded overflow-hidden shadow-lg position-relative">   
+                                                <img :src="affiliate.image" class="card-img-top"/>
+
+                                                <button type="button" class="btn-close position-absolute top-0 end-0 m-3 mt-3" data-bs-dismiss="modal" aria-label="Close">
+                                                    <i class="bi bi-x-lg text-white"></i>
+                                                </button>
+                                                
+                                                <div class="card-body bg-sponsor">   
+                                                    <h3 class="text-success mb-1">{{affiliate.name}}</h3>
+                                                    <div class="text-white">
+                                                        <span v-html="affiliate.text"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="d-none carousel-control-prev w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="d-none carousel-control-next w-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </ModalViewer>
     `
 }
 
