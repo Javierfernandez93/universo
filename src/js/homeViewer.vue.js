@@ -318,18 +318,9 @@ const HomeViewer = {
           {
             this.showing = false
             document.getElementById('videoBoss').play();
-          }
-    },
-    mounted() 
-    {       
-        this.testimonials = shuffle(this.testimonialsAux)
-
-        this.getTopCountries();
-
-        window.onload = function(){
-            setTimeout(()=>{
-                $('#preloader').addClass("showout");
-            },1500)
+          },
+          async init() {            
+            $('#preloader').addClass("showout");
 
             const elementsToExpand = document.querySelectorAll(".expand")
     
@@ -346,7 +337,37 @@ const HomeViewer = {
             elementsToExpand.forEach(element => {
                 expansionObserver.observe(element)
             })
-        };
+          }
+    },
+    async mounted() 
+    {       
+        await this.init()   
+
+        this.testimonials = shuffle(this.testimonialsAux)
+
+        this.getTopCountries();
+
+        // window.onload = function(){
+        //     await sleep(1500)
+            
+        //     $('#preloader').addClass("showout");
+
+        //     const elementsToExpand = document.querySelectorAll(".expand")
+    
+        //     let expansionObserver = new IntersectionObserver(entries => {
+        //         entries.forEach(entry => {
+        //             if (entry.intersectionRatio > 0) {
+        //                 entry.target.classList.add("animation-fall-down");
+        //             } else {
+        //                 entry.target.classList.remove("animation-fall-down");
+        //             }
+        //         })
+        //     })
+
+        //     elementsToExpand.forEach(element => {
+        //         expansionObserver.observe(element)
+        //     })
+        // };
 
         this.getConfigVarsStats()
     },
