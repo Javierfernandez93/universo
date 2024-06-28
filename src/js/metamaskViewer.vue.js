@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.0.0'   
+import { User } from '../../src/js/user.module.js?v=1.0.1'   
 
 const MetamaskViewer = {
     name : 'metamask-viewer',

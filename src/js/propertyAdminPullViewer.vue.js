@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.0'   
-import LoaderViewer from './loaderViewer.vue.js?v=1.0.0'
-import OffCanvasViewer from './offcanvasViewer.vue.js?v=1.0.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.1'   
+import LoaderViewer from './loaderViewer.vue.js?v=1.0.1'
+import OffCanvasViewer from './offcanvasViewer.vue.js?v=1.0.1'
 
 const PropertyAdminPullViewer = {
     components : {

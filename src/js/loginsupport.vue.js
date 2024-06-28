@@ -1,4 +1,4 @@
-import { LoginsupportViewer } from '../../src/js/loginsupportViewer.vue.js?v=1.0.0'
+import { LoginsupportViewer } from '../../src/js/loginsupportViewer.vue.js?v=1.0.1'
 
 Vue.createApp({
     components : { 

@@ -1,4 +1,4 @@
-import { UserSupport } from '../userSupport.module.js?v=1.0.0';
+import { UserSupport } from '../userSupport.module.js?v=1.0.1';
 
 const AdminUsersHeader = {
     props: [
