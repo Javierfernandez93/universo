@@ -49,8 +49,12 @@
 <body>
     <div id="preloader" class="start-0 top-0 d-flex align-items-center justify-content-center position-fixed vh-100 w-100">
         <div class="row align-items-center justify-content-center text-center">
-            <div class="col-9 col-md-4 text-center text-dark animation-fall-down" style="--delay:300ms">
+            <div class="col-9 col-md-6 text-center text-dark animation-fall-down" style="--delay:300ms">
                 <img src="../../src/img/green-light-vertical.png" class="w-100" alt="logo" title="logo" />
+
+                <div class="spinner spinner-border text-success mt-3" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
         </div>
     </div>

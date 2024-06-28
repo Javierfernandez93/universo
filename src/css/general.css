@@ -32,13 +32,6 @@ body {
   font-variation-settings: "slnt" 0;
 }
 
-#section-1 {
-  background-image: url(../../src/img/home/section-1.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 .animate-section {
   animation: sectionIncrease linear both;
   animation-timeline: scroll(root);
