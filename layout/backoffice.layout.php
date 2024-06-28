@@ -82,7 +82,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item d-none">
                         <a class="nav-link <?php if ($route == JFStudio\Router::Commissions) { ?>active<?php } ?>" href="../../apps/commissions">
                             <i class="bi bi-percent"></i>
                             <span  data-translate="menu.start" class="nav-link-text ms-1 fw-semiboldx">Mis comisiones</span>
