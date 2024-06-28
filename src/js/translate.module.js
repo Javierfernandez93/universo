@@ -1,4 +1,4 @@
-import { Cookie } from '../../src/js/cookie.module.js?v=1.0.1';
+import { Cookie } from '../../src/js/cookie.module.js?v=1.0.2';
 
 class Translate extends Cookie {
     constructor() {
