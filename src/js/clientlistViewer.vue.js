@@ -48,7 +48,10 @@ const ClientlistViewer = {
     watch: {
         query: {
             handler() {
-                this.users = this.usersAux.filter(user =>  user.names.toLowerCase().includes(this.query.toLowerCase()) || user.email.toLowerCase().includes(this.query.toLowerCase()) || user.company_id.toString().includes(this.query.toLowerCase()))
+                this.users = this.usersAux.filter(user => user.names.toLowerCase().includes(this.query.toLowerCase()) 
+                || user.email.toLowerCase().includes(this.query.toLowerCase()) 
+                || user.referral_name?.toLowerCase().includes(this.query.toLowerCase()) 
+                || user.company_id.toString().includes(this.query.toLowerCase()))
             },
             deep: true
         }
@@ -175,12 +178,12 @@ const ClientlistViewer = {
                         <button @click="addClient" type="button" class="btn me-2 shadow-none mb-0 btn-success px-3 btn-sm">Añadir cliente</button>
                     </div>
                     <div class="col-auto text-end">
-                        <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
-                    </div>
-                    <div class="col-auto text-end">
-                        <button @click="getClients" type="button" class="btn shadow-none mb-0 btn-dark px-3 btn-sm">
+                        <button @click="getClients" type="button" class="btn shadow-none mb-0 btn-success px-3 btn-sm">
                             <i class="fa fa-sync"></i>
                         </button>
+                    </div>
+                    <div class="col-auto text-end">
+                        <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
                     </div>
                 </div>
             </div>
@@ -223,7 +226,7 @@ const ClientlistViewer = {
                                     </div>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <PlaceHolder placeholder="-" :value="user.referral_name" type="text" />
+                                    <PlaceHolder placeholder="-" :value="user.referral_name" type="text" myClass="text-decoration-underline cursor-pointer fw-bold" @click="query = user.referral_name" />
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     {{user.signup_date.formatFullDate()}}

@@ -1,11 +1,11 @@
 export default {
-    props: ['value','type','postfix','placeholder','empty'],
+    props: ['value','type','postfix','placeholder','empty','myClass'],
     template : `
         <span v-if="value != null">
-            <span v-if="type == 'number'">
+            <span v-if="type == 'number'" :class="myClass">
                 $ {{value.numberFormat(2)}} {{postfix ? postfix : ''}}
             </span>
-            <span v-else>
+            <span v-else :class="myClass">
                 {{value}} {{postfix ? postfix : ''}}
             </span>
         </span>

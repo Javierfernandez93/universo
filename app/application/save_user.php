@@ -24,11 +24,11 @@ if(!$data['user']['user_login']['user_login_id'])
     {
         error('MAIL_ALREADY_EXISTS');
     }
-}
-
-if(!$UserLogin->isUniqueLanding($data['user']['user_account']['landing']))
-{
-    error('USER_NAME_EXIST');
+    
+    if(!$UserLogin->isUniqueLanding($data['user']['user_account']['landing']))
+    {
+        error('USER_NAME_EXIST');
+    }
 }
 
 $user_login_id = $UserLogin->doSignup($data['user']);

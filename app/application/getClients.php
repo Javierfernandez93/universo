@@ -13,9 +13,9 @@ $data = HCStudio\Util::getHeadersForWebService();
 
 $filter = "AND user_login.catalog_user_type_id = '".Site\CatalogUserType::CLIENT."' ";
 
-if(isset($data['user_login_id']))
+if(isset($data['user_login_id']) && $data['user_login_id'])
 {
-    $filter .= " AND user_referral.referral_id = '{$data['user_login_id']}'";
+    $filter .= " AND user_login.user_login_id = '{$data['user_login_id']}'";
 }
 
 $users = $UserSupport->getUsers($filter);
