@@ -198,7 +198,6 @@ const AdminusersViewer = {
                                 <th class="text-uppercase">
                                     USUARIO
                                 </th>
-                                <th class="text-center text-uppercase">Tipo de usuario</th>
                                 <th class="text-center text-uppercase">Líder</th>
                                 <th class="text-center text-uppercase">Afiliación</th>
                                 <th class="text-center text-uppercase">Características</th>
@@ -222,9 +221,6 @@ const AdminusersViewer = {
                                             <p class="text-xs text-secondary mb-0">{{user.email}}</p>
                                         </div>
                                     </div>
-                                </td>
-                                <td class="align-middle text-sm">
-                                    <span class="badge bg-primary">asesor</span>
                                 </td>
                                 <td class="align-middle cursor-pointer text-decoration-underline" @click="query = user.sponsor_name">
                                     <PlaceHolder placeholder="-" :value="user.sponsor_name" type="text" />

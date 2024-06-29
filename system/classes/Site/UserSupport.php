@@ -497,6 +497,15 @@ class UserSupport extends Orm {
       return $this->connection()->field($sql); 
     }
   }
+
+  public function getName() 
+  {
+    if (!$this->logged) {
+      return false;
+    }
+      
+    return $this->names;
+  }
   
   public function getPhone(int $user_support_id = null) 
   {
