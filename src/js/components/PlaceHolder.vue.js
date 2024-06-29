@@ -1,5 +1,5 @@
-const PlaceHolder = {
-    props: ['value','type','postfix','placeholder'],
+export default {
+    props: ['value','type','postfix','placeholder','empty'],
     template : `
         <span v-if="value != null">
             <span v-if="type == 'number'">
@@ -13,11 +13,12 @@ const PlaceHolder = {
             <p v-if="placeholder" class="text-secondary">
                 {{placeholder}}
             </p>
-            <p v-else class="placeholder-glow mb-0">
+            <p v-else-if="empty" class="text-secondary">
+                -
+            </p>
+            <p v-else class="lead text-dark">
                 <span class="placeholder col-12"></span>
             </p>
         </span>
     `,
 }
-
-export default PlaceHolder

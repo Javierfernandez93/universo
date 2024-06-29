@@ -8,6 +8,10 @@ if($UserLogin->logged === false) {
 	HCStudio\Util::redirectTo(TO_ROOT."/apps/login/");
 }
 
+if(!$UserLogin->hasAcademy()) {
+	HCStudio\Util::redirectTo(TO_ROOT."/apps/backoffice/");
+}
+
 $UserLogin->checkRedirection();
 
 $Layout = JFStudio\Layout::getInstance();

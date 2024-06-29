@@ -1,13 +1,20 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.3'
+import { FollowpagesViewer } from '../../src/js/followpagesViewer.vue.js?v=1.0.3'  
+
 import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.3'
 import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.3' 
 import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.3' 
+import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.0.3'
+import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.3'
 
 const AdminusersViewer = {
     components: {
         LoaderViewer,
         PlaceHolder,
-        HighLigth
+        HighLigth,
+        IconHolder,
+        FollowpagesViewer,
+        ModalViewer
     },  
     data() {
         return {
@@ -76,6 +83,21 @@ const AdminusersViewer = {
                 }
             })
         },
+        setAcademyAs(user,status) {
+            this.busy = true
+            this.UserSupport.setAcademyAs({user_login_id:user.user_login_id,status:status},(response) =>{ 
+                this.busy = false
+
+                if(response.s == 1)
+                {
+                    user.has_academy = status
+    
+                    toastInfo({
+                        message: `✅ Cambio de ${status ? '' : 'no'} Academia`
+                    })
+                }
+            })
+        },
         deleteUsers() {
             this.busy = true
 
@@ -108,7 +130,8 @@ const AdminusersViewer = {
             window.location.href = '../../apps/admin-users/clients?ulid=' + company_id
         },
         viewFollowPages(company_id) {
-            window.location.href = '../../apps/admin-users/followPages?ulid=' + company_id
+            this.$refs.pages.getFollowPages(company_id)
+            this.$refs.myModal.show(company_id)
         },
         getUsers() {
             this.busy = true
@@ -178,7 +201,7 @@ const AdminusersViewer = {
                                 <th class="text-center text-uppercase">Tipo de usuario</th>
                                 <th class="text-center text-uppercase">Líder</th>
                                 <th class="text-center text-uppercase">Afiliación</th>
-                                <th class="text-center text-uppercase">INGRESO</th>
+                                <th class="text-center text-uppercase">Características</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -209,8 +232,8 @@ const AdminusersViewer = {
                                 <td class="align-middle cursor-pointer text-decoration-underline" @click="query = user.affiliation">
                                     <PlaceHolder placeholder="-" :value="user.affiliation" type="text" />
                                 </td>
-                                <td class="align-middle">
-                                    {{user.signup_date.formatFullDate()}}
+                                <td class="align-middle text-center text-sm">
+                                    <IconHolder :value="user.has_academy" icon="bi-laptop" :tooltip="user.has_academy ? 'Tiene la Academia' : 'No tiene la Academia'" />
                                 </td>
                                 <td class="align-middle text-sm">
                                     <div class="dropdown">
@@ -223,6 +246,9 @@ const AdminusersViewer = {
                                             <li><button class="dropdown-item" @click="viewClients(user.user_login_id)">Ver clientes</button></li>
                                             <li><button class="dropdown-item" @click="viewFollowPages(user.user_login_id)">Páginas visitadas</button></li>
                                             
+                                            <li v-if="user.has_academy"><button class="dropdown-item" @click="setAcademyAs(user,0)">Quitar Academia</button></li>
+                                            <li v-else><button class="dropdown-item" @click="setAcademyAs(user,1)">Habilitar en Academia</button></li>
+
                                             <li><button class="dropdown-item" @click="deleteUser(user.user_login_id)">Eliminar</button></li>
                                         </ul>
                                     </div>
@@ -231,9 +257,12 @@ const AdminusersViewer = {
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
+
+        <ModalViewer ref="myModal" title="Páginas visitadas" size="modal-fullscreen">
+            <FollowpagesViewer ref="pages"/>
+        </ModalViewer>
     `,
 }
 

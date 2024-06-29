@@ -1165,6 +1165,7 @@ class UserSupport extends Orm {
       user_login.company_id,
       user_login.email,
       user_account.image,
+      user_account.has_academy,
       user_account.on_manivela,
       user_data.names,
       user_address.country_id,
@@ -1743,5 +1744,16 @@ class UserSupport extends Orm {
     }
 
     return (new UserLogin(false,false))->find($user_login_id)->updateStatus(Constants::DELETE); 
+  }
+
+  public function setAcademyAs(int $user_login_id,int $status)
+  {
+    if(!$this->logged || !$user_login_id)
+    {
+      return false;
+    }
+
+
+    return (new UserAccount)->where("user_login_id","=",$user_login_id)->updateField("has_academy",$status); 
   }
 }

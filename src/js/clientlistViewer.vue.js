@@ -1,6 +1,7 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.3'   
 import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.3'
 import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.3' 
+import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.0.3' 
 import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.3' 
 
 const ClientlistViewer = {
@@ -8,6 +9,7 @@ const ClientlistViewer = {
     components: {
         LoaderViewer,
         PlaceHolder,
+        IconHolder,
         HighLigth
     },
     data() {
@@ -186,7 +188,7 @@ const ClientlistViewer = {
                 <HighLigth :busy="busy" :dataLength="users.length" :query="query"/>
 
                 <div v-if="users.length > 0" class="table-responsive-sm">
-                    <table class="table align-items-center mb-0">
+                    <table class="table align-items-center table-striped table-hover table-borderless mb-0">
                         <thead>
                             <tr class="align-items-center">
                                 <th class="header-sticky text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="width:4rem">
@@ -199,10 +201,7 @@ const ClientlistViewer = {
                                     Asesor
                                 </th>
                                 <th class="header-sticky text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    fecha de registro
-                                </th>
-                                <th class="header-sticky text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Tipo de usuario
+                                    registro
                                 </th>
                                 <th class="header-sticky text-center text-uppercase text-xxs font-weight-bolder opacity-7"></th>
                             </tr>
@@ -210,9 +209,7 @@ const ClientlistViewer = {
                         <tbody>
                             <tr v-for="user in users">
                                 <td class="align-middle text-center">
-                                    <span v-if="user.on_manivela" class="text-success">
-                                        <i class="bi bi-check-square-fill"></i>
-                                    </span>
+                                    <IconHolder :value="user.on_manivela" icon="bi-check" :tooltip="user.on_manivela ? 'En manivela' : 'No esta en manivela'" />
                                 </td>
                                 <td class="align-middle cursor-pointer" @click="viewDetail(user.user_login_id)">
                                     <div class="d-flex px-2 py-1">
@@ -226,14 +223,10 @@ const ClientlistViewer = {
                                     </div>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    {{user.referral_name}}
+                                    <PlaceHolder placeholder="-" :value="user.referral_name" type="text" />
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     {{user.signup_date.formatFullDate()}}
-                                </td>
-
-                                <td class="align-middle text-center text-sm">
-                                    <span class="badge bg-primary">Cliente</span>
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <div class="dropdown">

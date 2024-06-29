@@ -1689,4 +1689,14 @@ class UserLogin extends Orm {
 
     return strtolower(str_replace(" ",".",$names))."@".Connection::proyect_name.".com";
   }
+
+  public function hasAcademy()
+  {
+    if(!$this->logged)
+    {
+      return false;
+    }
+
+    return $this->_data['user_account']['has_academy'] ? true : false;
+  }
 }

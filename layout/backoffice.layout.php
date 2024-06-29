@@ -89,12 +89,14 @@
                         </a>
                     </li>
                     
-                    <li class="nav-item">
-                        <a class="nav-link <?php if (in_array($route,[JFStudio\Router::Academy,JFStudio\Router::AcademyLesson])) { ?>active<?php } ?>" href="../../apps/academy">
-                            <i class="bi bi-youtube"></i>
-                            <span  data-translate="menu.start" class="nav-link-text ms-1 fw-semiboldx">Academia</span>
-                        </a>
-                    </li>
+                    <?php if($UserLogin->hasAcademy()) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?php if (in_array($route,[JFStudio\Router::Academy,JFStudio\Router::AcademyLesson])) { ?>active<?php } ?>" href="../../apps/academy">
+                                <i class="bi bi-youtube"></i>
+                                <span  data-translate="menu.start" class="nav-link-text ms-1 fw-semiboldx">Academia</span>
+                            </a>
+                        </li>
+                    <?php } ?>
 
                     <li class="nav-item">
                         <a class="nav-link <?php if ($route == JFStudio\Router::Tools) { ?>active<?php } ?>" href="../../apps/backoffice/tools">

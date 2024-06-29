@@ -1,9 +1,14 @@
 import { UserSupport } from './userSupport.module.js?v=1.0.3'   
+import LoaderViewer from './loaderViewer.vue.js?v=1.0.3'
 
 const FollowpagesViewer = {
+    components : {
+        LoaderViewer
+    },
     data() {
         return {
             UserSupport : new UserSupport,
+            busy : false,
             pages: null,
             total : 0
         }
@@ -19,7 +24,9 @@ const FollowpagesViewer = {
     methods: {
         getFollowPages(user_login_id) 
         {
+            this.busy = true
             this.UserSupport.getFollowPages({user_login_id:user_login_id},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     this.pages = response.pages
@@ -38,6 +45,8 @@ const FollowpagesViewer = {
         } 
     },
     template : `
+        <LoaderViewer :busy="busy"/>
+
         <div class="card">
             <div class="card-header"> 
                 <div class="row justify-content-center align-items-center"> 
@@ -50,8 +59,8 @@ const FollowpagesViewer = {
                     </div>
                 </div>
             </div>
-            <div v-if="pages">
-                <div v-for="page in pages" class="card card-body">
+            <ul v-if="pages" class="list-group list-group-flush">
+                <li v-for="page in pages" class="list-group-item">
                     <div class="row justify-content-center align-items-center">
                         <div class="col-12 col-xl">
                             <div class="text-xs text-secondary">Página</div>
