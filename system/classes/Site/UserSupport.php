@@ -1765,4 +1765,20 @@ class UserSupport extends Orm {
 
     return (new UserAccount)->where("user_login_id","=",$user_login_id)->updateField("has_academy",$status); 
   }
+
+  public function getSystemVars()
+  {
+    if(!$this->logged)
+    {
+      return false;
+    }
+
+    $catalog_system_var = (new CatalogSystemVar)->findAll("status = 1");
+    $SystemVar = new SystemVar; 
+
+    return array_map(function($catalog_system_var) use($SystemVar){
+      $catalog_system_var['vars'] = $SystemVar->findAll("catalog_system_var_id = ? AND status = 1",$catalog_system_var['catalog_system_var_id']); 
+      return $catalog_system_var;
+    },$catalog_system_var);
+  }
 }
