@@ -3,12 +3,14 @@ import { WidgetPayments } from '../../src/js/widgetPayments.vue.js?v=1.0.3'
 import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.3'
 import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.3'
 import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.3' 
+import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.0.3'
 
 const AdminpaymentsViewer = {
     components: {
         LoaderViewer,
         PlaceHolder,
         WidgetPayments,
+        IconHolder,
         HighLigth
     },
     data() {
@@ -385,9 +387,7 @@ const AdminpaymentsViewer = {
                                 <tbody>
                                     <tr v-for="payment in payments" class="text-center text-sm fw-bold text-capitalize">
                                         <td class="align-middle text-capitalize text-center">
-                                            <span v-if="payment.on_manivela" class="text-success">
-                                                <i class="bi bi-check-square-fill"></i>
-                                            </span>
+                                            <IconHolder :value="payment.on_manivela" icon="bi-check-square" :tooltip="payment.on_manivela ? 'Enviado a Manivela' : 'No enviado a Manivela'" />
                                         </td>
                                         <td class="align-middle text-capitalize ">
                                             <PlaceHolder :value="payment.names" placeholder="-"/>
