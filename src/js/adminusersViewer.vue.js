@@ -220,7 +220,7 @@ const AdminusersViewer = {
                     <table class="table align-items-center table-borderless table-hover table-striped mb-0">
                         <thead>
                             <tr class="text-secondary text-xxs font-weight-bolder opacity-7">
-                                <th class="text-uppercase">
+                                <th class="text-uppercase border-end">
                                     <div class="form-check d-flex justify-content-center">
                                         <input v-model="checkAll" class="form-check-input" type="checkbox" id="checkAll">
                                     </div>
@@ -236,7 +236,7 @@ const AdminusersViewer = {
                         </thead>
                         <tbody>
                             <tr v-for="(user,index) in users" class="text-center text-sm fw-bold text-dark text-uppercase">
-                                <td>
+                                <td class="border-end">
                                     <div class="form-check d-flex justify-content-center">
                                         <input v-model="user.checked" class="form-check-input" type="checkbox" :id="'user'+index">
                                     </div> 
