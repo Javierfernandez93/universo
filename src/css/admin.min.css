@@ -26,11 +26,11 @@ td span {
   display: block !important;
 }
 
-td {
+.table-break-word td {
   white-space: normal !important;
   word-wrap: break-word;
 }
-table {
+.table-break-word {
   table-layout: fixed;
 }
 .bg-gradient-special-x {
@@ -55,4 +55,17 @@ table {
 
 .table {
   border-collapse: collapse;
+}
+
+.card-hover {
+  border: 1px solid transparent;
+}
+.card-hover,
+.card-hover:hover {
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.card-hover:hover {
+  border-color: var(--bs-primary) !important;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15) !important;
 }

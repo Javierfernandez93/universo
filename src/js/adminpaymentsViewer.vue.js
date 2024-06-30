@@ -1,4 +1,5 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.3'
+import { WidgetPayments } from '../../src/js/widgetPayments.vue.js?v=1.0.3'
 import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.3'
 import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.3'
 import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.3' 
@@ -7,6 +8,7 @@ const AdminpaymentsViewer = {
     components: {
         LoaderViewer,
         PlaceHolder,
+        WidgetPayments,
         HighLigth
     },
     data() {
@@ -329,7 +331,11 @@ const AdminpaymentsViewer = {
                         </div>
                         <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{payments.length}} resultados)</div>
                     </div>
-                    
+
+                    <div class="card-body">
+                        <WidgetPayments/>
+                    </div>
+
                     <HighLigth :busy="busy" :dataLength="payments.length" :query="query"/>
                     
                     <div v-if="payments.length > 0" class="card-body px-0 pt-0 pb-2">

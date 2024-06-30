@@ -20,6 +20,7 @@ const AdminusersViewer = {
         return {
             UserSupport: new UserSupport,
             busy: null,
+            affiliations: [],
             users: [],
             usersAux: [],
             query: null,
@@ -145,9 +146,19 @@ const AdminusersViewer = {
                 }
             })
         },
+        getAffiliations() {
+            this.busy = true
+            this.UserSupport.getAffiliations({}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.affiliations = response.affiliations
+                }
+            })
+        }
     },
     mounted() {
         this.getUsers()
+        this.getAffiliations()
     },
     template : `
         <div class="card">
@@ -168,8 +179,26 @@ const AdminusersViewer = {
                             <i class="bi bi-arrow-clockwise"></i>
                         </button>
                     </div>
+                    <div v-if="query" class="col-auto text-end">
+                        <button @click="query = ''" class="btn btn-light shadow-none mb-0 px-3 btn-sm">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+                    <div v-if="affiliations" class="col-auto text-end">
+                        <div class="form-floating">
+                            <select class="form-select" v-model="query" aria-label="Selecciona tu tipo de usuario">
+                                <option v-for="affiliation in affiliations" v-bind:value="affiliation.name">
+                                    {{ affiliation.name }}
+                                </option>
+                            </select>
+                            <label for="floatingInput">Afiliación</label>
+                        </div>
+                    </div>
                     <div class="col-auto text-end">
-                        <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
+                        <div class="form-floating">
+                            <input :disabled="busy" v-model="query" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
+                            <label for="floatingInput">Buscar</label>
+                        </div>
                     </div>
                     <div v-if="users?.some(user => user.checked)" class="col-auto text-end">
                         <div class="dropdown">
@@ -183,11 +212,12 @@ const AdminusersViewer = {
                     </div>
                 </div>
             </div>
-            <div class="card-body px-0 pt-0 pb-2">
+            
+            <div class="card-body">
                 <HighLigth :busy="busy" :dataLength="users.length" :query="query"/>
 
-                <div v-if="users.length > 0" class="table-responsive-sm p-0 h-100">
-                    <table class="table align-items-center mb-0">
+                <div v-if="users.length > 0" class="table-responsive-sm p-0 h-100 border border-light rounded">
+                    <table class="table align-items-center table-borderless table-hover table-striped mb-0">
                         <thead>
                             <tr class="text-secondary text-xxs font-weight-bolder opacity-7">
                                 <th class="text-uppercase">

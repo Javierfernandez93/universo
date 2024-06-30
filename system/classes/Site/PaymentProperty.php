@@ -229,4 +229,123 @@ class PaymentProperty extends Orm {
 
         return $PaymentProperty->save();
     }
+
+    public function getStatsPaymentsResume(int $catalog_payment_type_id) 
+    {
+        if(!$catalog_payment_type_id)
+        {
+            return false;
+        }
+
+        return $this->connection()->row("
+            SELECT 
+                COUNT({$this->tblName}.{$this->tblName}_id) as total,
+                catalog_payment_type.catalog_payment_type_id,
+                catalog_payment_type.title
+            FROM
+                {$this->tblName} 
+            LEFT JOIN 
+                catalog_payment_type    
+            ON 
+                {$this->tblName}.catalog_payment_type_id = catalog_payment_type.catalog_payment_type_id
+            WHERE 
+                {$this->tblName}.catalog_payment_type_id = '{$catalog_payment_type_id}'
+            AND 
+                {$this->tblName}.status = '1'
+        ");
+    }
+
+    public function getPaymentResumeExtend(int $catalog_payment_type_id) 
+    {
+        if(!$catalog_payment_type_id)
+        {
+            return false;
+        }
+
+        $affiliations = $this->getPaymentsByAffiliations($catalog_payment_type_id); 
+
+        if(!$affiliations)
+        {
+            return false;
+        }
+
+        return array_map(function($affiliation) use($catalog_payment_type_id){
+            $sellers = $this->getPaymentsBySeller($catalog_payment_type_id,$affiliation['user_support_id']);
+
+            $affiliation['sellers'] = $sellers ? $sellers : [];
+
+            return $affiliation;
+        },$affiliations);   
+
+    }
+    
+    public function getPaymentsBySeller(int $catalog_payment_type_id,int $user_support_id)
+    {
+        if(!$catalog_payment_type_id || !$user_support_id)
+        {
+            return false;
+        }
+
+        return $this->connection()->rows("  
+            SELECT 
+                COUNT({$this->tblName}.{$this->tblName}_id) as total,
+                {$this->tblName}.{$this->tblName}_id,
+                {$this->tblName}.user_login_id,
+                affiliation.name,
+                user_data_seller.names
+            FROM
+                {$this->tblName} 
+            LEFT JOIN 
+                user_referral 
+            ON 
+                user_referral.user_login_id = {$this->tblName}.user_login_id
+            LEFT JOIN 
+                user_data as user_data_seller
+            ON 
+                user_data_seller.user_login_id = user_referral.referral_id
+            LEFT JOIN 
+                affiliation
+            ON 
+                affiliation.user_support_id = user_referral.user_support_id
+            WHERE 
+                {$this->tblName}.status = '1'
+            AND 
+                {$this->tblName}.catalog_payment_type_id = '{$catalog_payment_type_id}'
+            AND 
+                user_referral.user_support_id = '{$user_support_id}'
+            GROUP BY 
+                user_referral.referral_id
+        ");
+    }
+
+    public function getPaymentsByAffiliations(int $catalog_payment_type_id) 
+    {
+        if(!$catalog_payment_type_id)
+        {
+            return false;
+        }
+
+        return $this->connection()->rows("  
+            SELECT 
+                COUNT({$this->tblName}.{$this->tblName}_id) as total,
+                user_referral.user_support_id,  
+                affiliation.name
+            FROM
+                {$this->tblName} 
+            LEFT JOIN 
+                user_referral 
+            ON 
+                user_referral.user_login_id = {$this->tblName}.user_login_id
+            LEFT JOIN 
+                affiliation
+            ON 
+                affiliation.user_support_id = user_referral.user_support_id
+            WHERE 
+                {$this->tblName}.status = '1'
+            AND 
+                {$this->tblName}.catalog_payment_type_id = '{$catalog_payment_type_id}'
+            GROUP BY 
+                user_referral.user_support_id
+        ");
+    }
 }

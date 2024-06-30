@@ -190,8 +190,8 @@ const ClientlistViewer = {
             <div class="card-body">
                 <HighLigth :busy="busy" :dataLength="users.length" :query="query"/>
 
-                <div v-if="users.length > 0" class="table-responsive-sm">
-                    <table class="table align-items-center table-striped table-hover table-borderless mb-0">
+                <div v-if="users.length > 0" class="table-responsive-sm border border-light rounded">
+                    <table class="table align-items-center table-borderless table-hover table-striped mb-0">
                         <thead>
                             <tr class="align-items-center">
                                 <th class="header-sticky text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="width:4rem">
@@ -221,7 +221,7 @@ const ClientlistViewer = {
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
                                             <h6 class="mb-0 text-sm">{{user.names}}</h6>
-                                            <p class="text-xs text-secondary mb-0">{{user.email}}</p>
+                                            <p class="text-xs text-secondary text-lowercase mb-0">{{user.email}}</p>
                                         </div>
                                     </div>
                                 </td>

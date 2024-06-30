@@ -727,7 +727,13 @@ class UserSupport extends HttpMemoized {
         return this.call('../../app/application/manivela/updatePayment.php', data, callback);
     }
     setAcademyAs(data, callback) {
-        return this.call('../../app/application/manivela/setAcademyAs.php', data, callback);
+        return this.call('../../app/application/setAcademyAs.php', data, callback);
+    }
+    getStatsPaymentsResume(data, callback) {
+        return this.memoizedCall('../../app/application/getStatsPaymentsResume.php', data, callback);
+    }
+    getPaymentResumeExtend(data, callback) {
+        return this.memoizedCall('../../app/application/getPaymentResumeExtend.php', data, callback);
     }
 }
 
