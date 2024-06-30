@@ -9,6 +9,13 @@ if(!$UserSupport->logged)
     unauthorized();
 }
 
+$loggs = (new Site\Logger)->getAll();
+
+if(!$loggs)
+{
+    error(Constants::RESPONSES['NOT_DATA']);
+}
+
 success(null,[
-    'loggs' => (new Site\Logger)->getAll(),
+    'loggs' => $loggs,
 ]);

@@ -36,7 +36,7 @@ $sales = array_values(array_filter($sales,function($sale) use($data){
 
 if(!$sales)
 {
-    error("NO_SALES_FOUND");
+    error("NO_SALES_FOUND",null,true);
 }
 
 $sale = $sales[0];

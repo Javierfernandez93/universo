@@ -1,24 +1,32 @@
 import { UserSupport } from './userSupport.module.js?v=1.0.3'   
 import LoaderViewer from './loaderViewer.vue.js?v=1.0.3'   
+import HighLigth from './components/HighLigth.vue.js?v=1.0.3'
+import PlaceHolder from './components/PlaceHolder.vue.js?v=1.0.3'
+import Badge from './components/Badge.vue.js?v=1.0.3'
 
 const LoggsViewer = {
     components : {
-        LoaderViewer
+        LoaderViewer,
+        HighLigth,
+        PlaceHolder,
+        Badge
     },
     data() {
         return {
             UserSupport : new UserSupport,
             busy: false,
-            loggs: null,
-            loggsAux: null,
+            query: null,
+            loggs: [],
+            loggsAux: [],
         }
     },
     watch : {
-        query : {
-            handler() {
-              this.filled = this.user.title != null && this.user.names != null && this.user.investor.number != null 
-            },
-            deep: true
+        query() {
+            this.loggs = this.loggsAux.filter(logg => logg.names.toLowerCase().includes(this.query.toLowerCase()) 
+            || logg.data.table.toLowerCase().includes(this.query.toLowerCase()) 
+            || logg.data.field.toLowerCase().includes(this.query.toLowerCase()) 
+            || logg.data.action.toLowerCase().includes(this.query.toLowerCase()) 
+            || logg.data.value.toLowerCase().includes(this.query.toLowerCase()))
         },
     },
     methods: {
@@ -32,9 +40,6 @@ const LoggsViewer = {
         },
         setLoggerStatus(logger,status) 
         { 
-            this.loggs = null
-            this.loggsAux = null
-
             this.UserSupport.setLoggerStatus({logger_id:logger.logger_id,status:status},(response)=>{
                 if(response.s == 1)
                 {
@@ -47,17 +52,14 @@ const LoggsViewer = {
         getLoggs() 
         { 
             this.busy = true
-            this.loggs = null
-            this.loggsAux = null
+            this.loggs = []
+            this.loggsAux = []
             this.UserSupport.getLoggs({},(response)=>{
                 this.busy = false
                 if(response.s == 1)
                 {
                     this.loggs = response.loggs
                     this.loggsAux = response.loggs
-                } else {
-                    this.loggs = false
-                    this.loggsAux = false
                 }
             })
         },
@@ -71,7 +73,7 @@ const LoggsViewer = {
             <div class="card-header pb-0">
                 <div class="row align-items-center">
                     <div class="col fs-4 fw-sembold text-primary">
-                        <div v-if="loggs" class="mb-n2"><span class="badge p-0 text-secondary text-xxs">Total {{loggs.length}}</span></div>
+                        <div class="mb-n2"><span class="badge p-0 text-secondary text-xxs">Total {{loggs ? loggs.length : 0}}</span></div>
                         <h6>Logs</h6>
                     </div>
                     <div class="col-auto text-end">
@@ -84,14 +86,20 @@ const LoggsViewer = {
                     </div>
                 </div>
             </div>
-            <div class="card-body px-0 pt-0 pb-2">
+            <div class="card-body">
                 <LoaderViewer v-if="busy" />
-                <div v-if="loggs" class="table-responsive-sm p-0">
-                    <table class="table align-items-center mb-0">
+
+                <HighLigth :busy="busy" :dataLength="loggs.length" :query="query"/>
+
+                <div class="table-responsive-sm p-0">
+                    <table v-if="loggs.length > 0" class="table align-items-center mb-0">
                         <thead>
                             <tr class="align-items-center">
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="text-center border-end text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Usuario
+                                </th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Método
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Tabla
@@ -113,27 +121,35 @@ const LoggsViewer = {
                         </thead>
                         <tbody>
                             <tr v-for="logg in loggs" class="text-center">
-                                <td>
+                                <td class="border-end text-dark">
                                     {{logg.names}}
                                 </td>
-                                <td>
-                                    {{logg.data.table}}
+                                <td class="text-xs">
+                                    <div>
+                                        <Badge :value="logg.data.type" :myClass="logg.data.type == 'success' ? 'bg-success' : 'bg-danger'" @click="query = logg.data.method" />
+                                    </div>
+                                    <PlaceHolder :value="logg.data.method" empty="true" type="text" myClass="text-decoration-underline cursor-pointer fw-bold" @click="query = logg.data.method" />
                                 </td>
-                                <td>
-                                    {{logg.data.field}}
+                                <td class="text-xs">
+                                    <PlaceHolder :value="logg.data.table" empty="true" type="text" myClass="text-decoration-underline cursor-pointer fw-bold" @click="query = logg.data.table" />
                                 </td>
-                                <td>
-                                    {{logg.data.action}}
+                                <td class="text-xs">
+                                    <PlaceHolder :value="logg.data.field" empty="true" type="text" myClass="text-decoration-underline cursor-pointer fw-bold" @click="query = logg.data.field" />
                                 </td>
-                                <td>
-                                    {{logg.data.value.length}} / size
+                                <td class="text-xs">
+                                    <span class="badge bg-primary">
+                                        {{logg.data.action}}
+                                    </span>
                                 </td>
-                                <td>
+                                <td class="text-xs">
+                                    {{logg.data.value ? logg.data.value.length : 0}} / size
+                                </td>
+                                <td class="text-xs">
                                     {{logg.create_date.formatFullDate()}}
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <div class="dropdown">
-                                        <button type="button" class="btn btn-dark shadow-none mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button type="button" class="btn btn-outline-dark shadow-none mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 
                                         </button>
                                         <ul class="dropdown-menu shadow">
@@ -145,11 +161,6 @@ const LoggsViewer = {
                             </tr>
                         </tbody>
                     </table>
-                </div>
-                <div v-else-if="logs == false" class="card-body">
-                    <div class="alert alert-warning text-white text-center">
-                        <div>No tenemos logs aún</div>
-                    </div>
                 </div>
             </div>
         </div>

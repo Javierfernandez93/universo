@@ -84,12 +84,27 @@ function badRequest(string $response = null,array $additional_data = null) : voi
 	die;
 }
 
-function error(string $response = null,array $additional_data = null) : void
+function error(string $response = null,array $additional_data = null,bool $logg = false) : void
 {
 	webServiceResponse([
 		's' => 0,
 		'r' => $response ?? Constants::RESPONSES['WEB_SERVICE_ERROR']
 	],$additional_data);
+
+	if($logg === true)
+	{
+		$UserSupport = new Site\UserSupport;
+
+		Site\Logger::add([
+			'method' => 'web_request',
+			'field' => '',
+			'type' => 'error',
+			'action' => $response,
+			'value' => json_encode($additional_data ?? null),
+			'user_support_id' => $UserSupport->logged ? $UserSupport->getId() : 0,
+			'create_date' => time(),
+		]);		
+	}
 
 	http_response_code(200);
 

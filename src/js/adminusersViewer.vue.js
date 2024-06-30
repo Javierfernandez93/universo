@@ -91,7 +91,7 @@ const AdminusersViewer = {
 
                 if(response.s == 1)
                 {
-                    user.has_academy = status
+                    user.has_academy = status == 1 ? true : false
     
                     toastInfo({
                         message: `✅ Cambio de ${status ? '' : 'no'} Academia`

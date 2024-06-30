@@ -31,7 +31,7 @@ $users = array_filter($users, function($user) use ($data) {
 
 if(!count($users))
 {
-    error('NOT_USER');
+    error('NOT_USER',null,true);
 }
 
 $users = array_values($users);

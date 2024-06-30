@@ -19,6 +19,17 @@ if(!$users)
     error('NOT_SALES');
 }
 
+Site\Logger::add([
+    'method' => 'request',
+    'field' => '',
+    'action' => 'api_request',
+    'value' => json_encode([
+        'users' => count($users)
+    ]),  
+    'user_support_id' => $UserSupport->getId(),
+    'create_date' => time(),
+]);
+
 success(Constants::RESPONSES['DATA_OK'],[
     'users' => $users
 ]);
