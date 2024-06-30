@@ -31,13 +31,8 @@ class Connection
 	private static $instances = [];
 
 	private $connection;
-	private $mysqlSettings;
-	private $debug;
 	private $mysqli;
-	const protocol = 'http';
-	// const $proyect_url = '192.168.100.237:8888/mizuum';
-	const proyect_url = 'localhost:8888/universo/';
-	const proyect_name = 'DummieTrading';
+	private $debug;
 
 	public function getConnectioName()
 	{
@@ -45,8 +40,20 @@ class Connection
 	}
 
 	public static function getMainPath(): string
-	{
-		return self::protocol . "://" . self::proyect_url;
+	{	
+		return $_ENV['PROJECT_PROTOCOL']."://".$_ENV['PROJECT_URL'];
+	}
+
+	public function getProjectProtocol(): string {
+		return $_ENV['PROJECT_PROTOCOL'];
+	}
+
+	public function getProjectURL(): string {
+		return $_ENV['PROJECT_URL'];
+	}
+
+	public function getProjectName(): string {
+		return $_ENV['PROJECT_NAME'];
 	}
 
 	public static function getInstance($connection = null)
@@ -71,8 +78,9 @@ class Connection
 		# Shared mysql settings 
 		$mysqlSettings = [$_ENV['MYSQL_HOSTNAME'], $_ENV['MYSQL_ROOT_USER'], $_ENV['MYSQL_ROOT_PASSWORD']];
 		$connections = [
-			'default' => [...$mysqlSettings, 'app_universo'],
-			'world' => [...$mysqlSettings, 'app_world'],
+			'default' => [...$mysqlSettings, $_ENV['DEFAULT_DB'] ?? 'apps_dummytrader'],
+			'world' => [...$mysqlSettings, $_ENV['WORLD_DB'] ?? 'app_worlds'],
+			'blockchain' => [...$mysqlSettings, $_ENV['BLOCKCHAIN_DB'] ?? 'app_blockchain']
 		];
 
 		if (isset($debug) && $debug === 'true') {
@@ -128,7 +136,7 @@ class Connection
 			'integer' => 'i',
 			'blob' => 'b',
 			'double' => 'd',
-			default => ''
+			default => 's'
 		};
 	}
 
