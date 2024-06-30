@@ -62,5 +62,6 @@
   "filter": "Filter",
   "whatsapp_default_message": "¡Hola! te escribimos desde Site",
   "start_now": "Empezar ahora",
-  "email.welcome_admin": "¡Bienvenid@ a Jade!"
+  "email.welcome_admin": "¡Bienvenid@ a Jade!",
+  "email.welcome_academy": "¡Bienvenid@ a la Academia de Jade!"
 }

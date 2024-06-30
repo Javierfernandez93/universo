@@ -9,6 +9,7 @@ if($UserLogin->logged === false) {
 }
 
 $UserLogin->checkRedirection();
+$UserLogin->addFollowPage('academy');
 
 $Layout = JFStudio\Layout::getInstance();
 

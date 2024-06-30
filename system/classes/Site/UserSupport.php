@@ -1313,20 +1313,15 @@ class UserSupport extends Orm {
 
     return $user;
   }
+  
   public function getUserEmail(int $user_login_id = null)
   {
-    if(isset($user_login_id) === true)
+    if(!isset($user_login_id))
     {
-      $sql = "SELECT
-                user_login.email
-              FROM
-                user_login
-              WHERE 
-                user_login.user_login_id = '{$user_login_id}'
-                ";
-
-      return $this->connection()->field($sql);
+      return false;
     }
+
+    return $this->connection()->field("SELECT user_login.email FROM user_login WHERE user_login.user_login_id = '{$user_login_id}'");
   }
 
   public function getAdministrators(string $filter = '')

@@ -11,6 +11,7 @@ if($UserLogin->logged === false) {
 }
 
 $UserLogin->checkRedirection();
+$UserLogin->addFollowPage('academy_session');
 
 $Layout = JFStudio\Layout::getInstance();
 $Layout->init(JFStudio\Router::getName($route),'lesson',"backoffice",'',TO_ROOT.'/');

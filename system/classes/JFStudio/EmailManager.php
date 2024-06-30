@@ -34,6 +34,10 @@ class EmailManager
                 'view' => 'welcome-admin',
                 'subject' => Parser::doParser($this->Translator->t('email.welcome_admin'),$data),
             ],
+            'welcome_academy' => [
+                'view' => 'welcome-academy',
+                'subject' => Parser::doParser($this->Translator->t('email.welcome_academy'),$data),
+            ],
         };
     }
 
