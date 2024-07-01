@@ -286,12 +286,12 @@ const AddclientViewer = {
                     <div class="col-12 col-md-4 mb-3">
                         <label>Estado civil</label>
                         <select v-model="user.user_data.fiscal_status" class="form-control">
-                            <option value="business_activity">Actividad Empresarial</option>
-                            <option value="leasing">Arrendamiento</option>
-                            <option value="salaried">Asalariado</option>
-                            <option value="interests">Intereses</option>
-                            <option value="professional_services">Servicios profesionales</option>
-                            <option value="fiscal_incorporation">Incorporación Fiscal</option>
+                            <option value="single">Soltero/a</option>
+                            <option value="Married">Casado/a</option>
+                            <option value="divorced">Divorciado/a</option>
+                            <option value="separated_in_process">Separado/a en proceso judicial</option>
+                            <option value="widower">Viudo/a</option>
+                            <option value="concubinage">Concubinato</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-4 mb-3">
