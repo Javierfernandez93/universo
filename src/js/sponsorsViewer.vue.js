@@ -33,6 +33,13 @@ const SponsorsViewer = {
             }
         }
     },
+    watch: {
+        query() {
+            this.administrators = this.administratorsAux.filter((administrator) => {
+                return administrator.names.toLowerCase().includes(this.query.toLowerCase())
+            })
+        }
+    },
     methods: {
         sortData(column) {
             this.administrators.sort((a,b) => {
