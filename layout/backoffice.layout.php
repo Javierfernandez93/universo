@@ -32,10 +32,9 @@
     <!-- CSS Files -->
     
     <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
-    
     <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.0.7" />
-
     <link id="pagestyle" href="../../src/css/admin.min.css?v=1.0.7" rel="stylesheet" />
+
     {{css_scripts}}
 </head>
 
@@ -221,23 +220,6 @@
         </footer>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
-    <!--   Core JS Files   -->
-    <script src="../../src/js/plugins/perfect-scrollbar.min.js" type="text/javascript"></script>
-    <script src="../../src/js/plugins/smooth-scrollbar.min.js" type="text/javascript"></script>
-    <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
-    <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
-    
-    <script src="../../src/js/constants.js?v=1.0.3" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.0.3" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.0.3" type="text/javascript"></script>
-    <script fetchpriority="high" src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
-
-    <script src="../../src/js/general.js?v=1.0.3" type="text/javascript"></script>
-    <!-- Github buttons -->
-    
-
     <script type="module">
         import { ZuppiBot } from 'https://www.zuppi.io/src/js/chatbot.js?t=3';
         
@@ -246,33 +228,28 @@
         });
     </script>
     <div id="appChatBot"></div>
-    
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+    <script src="../../src/js/core/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <!--   Core JS Files   -->
+    <script fetchpriority="high" src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
+    <script fetchpriority="high" src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
+
+    <script src="../../src/js/plugins/perfect-scrollbar.min.js" type="text/javascript"></script>
+    <script src="../../src/js/plugins/smooth-scrollbar.min.js" type="text/javascript"></script>
+    <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
+    <script src="../../src/js/42d5adcbca.min.js" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.0.3" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.0.3" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.0.3" type="text/javascript"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
 
     <!-- Github buttons -->
-    <script src="../../src/js/buttons.js" type="text/javascript"></script>
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-    <!-- <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script> -->
-    
-    <script src="https://unpkg.com/axios/dist/axios.min.js" type="module"></script>
-    <script src="../../src/js/vue.js?v=1.0.3" type="text/javascript"></script>
-    <script src="../../src/js/top.vue.js?v=1.0.3" type="module"></script>
-    <script src="../../src/js/notice.vue.js?v=1.0.3" type="module"></script>
-    <script src="../../src/js/chat.vue.js?v=1.0.3" type="module"></script>
-    <link rel="stylesheet" href="../../src/css/general.css?v=1.2.8" />
+    <script async defer src="../../src/js/buttons.min.js"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.3.6"></script>
 
+    <script src="../../src/js/vue.js"></script>
 
     {{js_scripts}}
-    {{css_scripts}}
 </body>
 </html>

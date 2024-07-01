@@ -25,11 +25,11 @@
 
     <link href="../../src/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../src/css/z-loader.css" />
-    <link rel="stylesheet" href="../../src/css/general.css?v=1.2.8" />
+    <link rel="stylesheet" href="../../src/css/general.css?v=1.0.3" />
     <link rel="stylesheet" href="../../src/css/nucleo-svg.css" />
     <!-- CSS Files -->
 
-    <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.2.8" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
 </head>
 
 <body class="bg-dark">

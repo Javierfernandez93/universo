@@ -39,3 +39,7 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+.navbar-vertical .navbar-nav > .nav-item .nav-link.active i,
+.navbar-vertical .navbar-nav>.nav-item .nav-link.active {
+    color: #000;
+}

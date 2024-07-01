@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.0.7" />
 
     <link id="pagestyle" href="../../src/css/admin.min.css?v=1.0.7" rel="stylesheet" />
+
     {{css_scripts}}
 </head>
 
@@ -646,7 +647,6 @@
     <script src="../../src/js/vue.js"></script>
 
     {{js_scripts}}
-
 </body>
 
 </html>
