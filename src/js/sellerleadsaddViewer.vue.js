@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=2.4.7'   
+import { User } from '../../src/js/user.module.js?v=1.0.3'   
 
 const SellerleadsaddViewer = {
     emits : ['update'],
@@ -135,7 +135,7 @@ const SellerleadsaddViewer = {
             <div class="offcanvas-body">
                 <div class="row">
                     <div class="col-12 mb-3">
-                        <label class="">Usuario *</label>
+                        <label class="">Nombre de prospecto *</label>
                         <input 
                             :autofocus="true"
                             :class="user.user_data.names ? 'is-valid' : 'is-invalid'"
