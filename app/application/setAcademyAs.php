@@ -26,6 +26,7 @@ $UserSupport->setAcademyAs($data['user_login_id'],$data['status']);
 if($data['status'] == 1)
 {
     JFStudio\EmailManager::getInstance()->dispatch('welcome_academy',[
+        'names' => $UserSupport->getNames($data['user_login_id']),
         'email' => $UserSupport->getUserEmail($data['user_login_id']),
     ]);
 }
