@@ -89,7 +89,7 @@ const SellerclientsaddViewer = {
                     this.$refs.button.innerText = "Guardado"
                     
                     toastInfo({
-                        message: 'Cliente guardado correctamente. Redireccionando...',
+                        message: 'Cliente guardado correctamente. Actualizando...',
                     })
 
                     this.$refs.modal.hide()
