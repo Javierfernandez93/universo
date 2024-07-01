@@ -10,7 +10,6 @@ const AddclientViewer = {
             UserSupport: new UserSupport,
             filled: false,
             sellers: null,
-            sellersAux: null,
             query: null,
             feedback: null,
             countries: {},
@@ -73,12 +72,6 @@ const AddclientViewer = {
         }
     },
     watch: {
-        query: {
-            handler() {
-                this.filterData()
-            },
-            deep: true
-        },
         user: {
             handler() {
                 this.filled = this.user.user_data.names != null && this.user.user_login.email.isValidMail() && this.user.user_contact.phone
@@ -87,12 +80,6 @@ const AddclientViewer = {
         }
     },
     methods: {
-        filterData() {
-            this.sellers = this.sellersAux
-            this.sellers = this.sellers.filter((seller) => {
-                return seller.names.toLowerCase().includes(this.query.toLowerCase())
-            })
-        },
         saveUser() {
             this.feedback = null
 
@@ -151,7 +138,6 @@ const AddclientViewer = {
                     this.busy = false
                     if (response.s == 1) {
                         this.sellers = response.users
-                        this.sellersAux = response.users
 
                         await sleep(100)
                         
@@ -184,6 +170,7 @@ const AddclientViewer = {
         $(this.$refs.phone).mask('(00) 0000-0000');
 
         this.getCountries()
+
         await this.getSellers()
 
         if(getParam('ulid'))
@@ -466,7 +453,7 @@ const AddclientViewer = {
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div v-if="sellers" class="row">
                     <div class="col-12 col-md-6 mb-3">
                         <label>Asignar a asesor</label>
                         <select class="selectpicker form-control" data-live-search="true" data-style="border shadow-none">
