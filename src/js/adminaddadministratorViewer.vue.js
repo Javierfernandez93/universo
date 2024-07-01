@@ -20,7 +20,7 @@ const AdminaddadministratorViewer = {
                 names: null,
                 password: null,
                 email: '',
-                permissions:null,
+                permissions: [],
             },
         }
     },
@@ -87,7 +87,7 @@ const AdminaddadministratorViewer = {
                         Añadir administrador
                     </div>
                     <div class="col-12 col-md-auto">
-                        <button :disabled="!fil˙led" ref="button" type="submit" class="btn btn-dark mb-0 shadow-none btn-sm px-3" @click="saveAdministrator">Guardar adminsitrador</button>
+                        <button :disabled="!filled" ref="button" type="submit" class="btn btn-dark mb-0 shadow-none btn-sm px-3" @click="saveAdministrator">Guardar adminsitrador</button>
                     </div>
                 </div>
             </div>
