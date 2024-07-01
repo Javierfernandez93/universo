@@ -20,7 +20,6 @@ $Layout->init(JFStudio\Router::getName($route),'index',"backoffice",'',TO_ROOT.'
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
 	'chart.js',
-	'banner.css',
 	'backoffice.vue.js',
 ]);
 

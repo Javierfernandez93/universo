@@ -34,6 +34,7 @@
     <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
     <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.0.7" />
     <link id="pagestyle" href="../../src/css/admin.min.css?v=1.0.7" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/backoffice.css?v=1.0.7" rel="stylesheet" />
 
     {{css_scripts}}
 </head>
@@ -76,7 +77,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link <?php if (in_array($route,[JFStudio\Router::Lead])) { ?>active<?php } ?>" href="../../apps/clients/leads">
-                            <i class="bi bi-people-fill"></i>
+                            <i class="bi bi-rocket-takeoff-fill"></i>
                             <span  data-translate="menu.start" class="nav-link-text ms-1 fw-semiboldx">Mis prospectos</span>
                         </a>
                     </li>
@@ -166,12 +167,12 @@
                         <ul class="navbar-nav justify-content-end">
                             <li class="nav-item dropdown pe-3 d-flex align-items-center">
                                 <a href="../../apps/backoffice/notifications" class="nav-link p-0 text-body">
-                                    <i class="fa fa-bell cursor-pointer lead text-white" aria-hidden="true"></i>
+                                    <i class="fa fa-bell cursor-pointer lead" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li class="nav-item dropdown pe-3 d-flex align-items-center">
                                 <a href="../../apps/backoffice/?logout=true" class="nav-link p-0 text-body">
-                                    <i class="bi bi-box-arrow-right lead text-white"></i>
+                                    <i class="bi bi-box-arrow-right lead"></i>
                                 </a>
                             </li>
                             <li class="nav-item d-xl-none ps-3 pe-0 d-flex align-items-center">
@@ -220,15 +221,6 @@
         </footer>
     </main>
 
-    <script type="module">
-        import { ZuppiBot } from 'https://www.zuppi.io/src/js/chatbot.js?t=3';
-        
-        let zuppiBot = new ZuppiBot({
-            api_key: '<?php echo Site\SystemVar::_getValue("key")?>',
-        });
-    </script>
-    <div id="appChatBot"></div>
-
     <script src="../../src/js/core/bootstrap.bundle.min.js" type="text/javascript"></script>
     <!--   Core JS Files   -->
     <script fetchpriority="high" src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
@@ -247,7 +239,6 @@
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.min.js"></script>
     <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.3.6"></script>
-
     <script src="../../src/js/vue.js"></script>
 
     {{js_scripts}}
