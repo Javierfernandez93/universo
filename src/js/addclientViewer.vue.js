@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.3'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.3' 
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.4'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.4' 
  
 const AddclientViewer = {
     components : {
@@ -271,14 +271,14 @@ const AddclientViewer = {
                         </select>
                     </div>
                     <div class="col-12 col-md-4 mb-3">
-                        <label>Estado civil</label>
+                        <label>Actividad económica</label>
                         <select v-model="user.user_data.fiscal_status" class="form-control">
-                            <option value="single">Soltero/a</option>
-                            <option value="Married">Casado/a</option>
-                            <option value="divorced">Divorciado/a</option>
-                            <option value="separated_in_process">Separado/a en proceso judicial</option>
-                            <option value="widower">Viudo/a</option>
-                            <option value="concubinage">Concubinato</option>
+                            <option value="business_activity">Actividad Empresarial</option>
+                            <option value="leasing">Arrendamiento</option>
+                            <option value="salaried">Asalariado</option>
+                            <option value="interests">Intereses</option>
+                            <option value="professional_services">Servicios profesionales</option>
+                            <option value="fiscal_incorporation">Incorporación Fiscal</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-4 mb-3">

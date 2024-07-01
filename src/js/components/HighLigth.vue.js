@@ -1,4 +1,4 @@
-import LoaderViewer from '../../../src/js/loaderViewer.vue.js?v=1.0.3'
+import LoaderViewer from '../../../src/js/loaderViewer.vue.js?v=1.0.4'
 
 export default {
     components : {

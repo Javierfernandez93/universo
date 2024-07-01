@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.3'
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.3'
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.3'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.4'
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.0.4'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.4'
 
 const AddsponsorViewer = {
     components : {

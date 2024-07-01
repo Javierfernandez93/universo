@@ -1,4 +1,4 @@
-import { Http } from "../../src/js/http.module.js?v=1.0.3";
+import { Http } from "../../src/js/http.module.js?v=1.0.4";
 
 class HttpMemoized extends Http {
     static instances = new Map();

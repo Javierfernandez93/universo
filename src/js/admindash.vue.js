@@ -1,5 +1,5 @@
-import { AdmindashViewer } from '../../src/js/admindashViewer.vue.js?v=1.0.3'
-import { LeadershipStatsViewer } from '../../src/js/leadershipStatsViewer.vue.js?v=1.0.3'
+import { AdmindashViewer } from '../../src/js/admindashViewer.vue.js?v=1.0.4'
+import { LeadershipStatsViewer } from '../../src/js/leadershipStatsViewer.vue.js?v=1.0.4'
 
 Vue.createApp({
     components: { 
