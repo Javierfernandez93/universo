@@ -271,7 +271,7 @@ const AddclientViewer = {
                         </select>
                     </div>
                     <div class="col-12 col-md-4 mb-3">
-                        <label>Actividad económica</label>
+                        <label>Fuente de ingresos</label>
                         <select v-model="user.user_data.fiscal_status" class="form-control">
                             <option value="business_activity">Actividad Empresarial</option>
                             <option value="leasing">Arrendamiento</option>
