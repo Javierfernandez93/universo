@@ -1,3 +1,3 @@
-<div id="app" class="py-5">
+<div id="app" class="container py-5">
     <adminconfig-viewer></adminconfig-viewer>
 </div>

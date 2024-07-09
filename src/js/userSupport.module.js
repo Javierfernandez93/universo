@@ -4,7 +4,6 @@ class UserSupport extends HttpMemoized {
     constructor() {
         super();
     }
-
     getUsers(data, callback) {
         return this.call('../../app/application/get_users.php', data, callback);
     }

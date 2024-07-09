@@ -241,7 +241,7 @@ const ClientlistViewer = {
                                             <li><button class="dropdown-item" @click="viewDetail(user.user_login_id)">Ver expediente</button></li>
                                             
                                             <li v-if="!user.on_manivela"><button class="dropdown-item" @click="findUser(user)">Verificar existencia manivela</button></li>
-                                            <li v-if="!user.on_manivela"><button class="dropdown-item" @click="requiredGeneral(user)">Mandar registro manivela</button></li>
+                                            <li v-else><button class="dropdown-item" @click="requiredGeneral(user)">Actualizar info en manivela</button></li>
                                             
                                             <li><button class="dropdown-item" @click="deleteUser(user.user_login_id)">Eliminar</button></li>
                                         </ul>
