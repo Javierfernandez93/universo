@@ -138,7 +138,7 @@ const ClientlistViewer = {
         },
         requiredGeneral(user) {
             this.validateIfExistBeforeSend(user).then((exist) => {
-                if(!exist)
+                if(exist)
                 {
                     this.busy = true
                     this.UserSupport.requiredGeneral({user_login_id:user.user_login_id}, (response) => {
@@ -148,6 +148,10 @@ const ClientlistViewer = {
                                 message: `✅ Usuario registrado en manivela`
                             })
                         }
+                    })
+                } else {
+                    toastInfo({
+                        message: `❌ Usuario no es un cliente`
                     })
                 }
             })
