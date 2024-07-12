@@ -92,6 +92,8 @@ class Api extends Curl {
         $this->post($this->getApiUrlMonday('required_general.php'),json_encode($data));
 
         $respose = $this->_getResponse();
+
+        return $respose;
     }
 
     public function test(array $data = null) { 

@@ -229,9 +229,11 @@ $response = $Api->requiredGeneral($event);
 
 if(!$response)
 {
-    error('DATA_NOT_FOUND');
+    error('DATA_NOT_FOUND',[
+        'response' => $response
+    ],true);
 }
 
 success(Constants::RESPONSES['DATA_OK'], [
-    $response => $response
+    'response' => $response
 ]);

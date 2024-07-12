@@ -37,6 +37,7 @@ const SponsorsViewer = {
         query() {
             this.administrators = this.administratorsAux.filter((administrator) => {
                 return administrator.names.toLowerCase().includes(this.query.toLowerCase())
+                || administrator.email.toLowerCase().includes(this.query.toLowerCase())
             })
         }
     },
