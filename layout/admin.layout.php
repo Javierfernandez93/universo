@@ -286,7 +286,7 @@
                     </ul>
                 <?php } ?>
 
-                <?php if ($UserSupport->hasPermission('list_payments')) { ?>
+                <?php if ($UserSupport->hasPermission('list_payments') || $UserSupport->hasPermission('add_payment')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#payments" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminPayments,JFStudio\Router::AdminAddPayment])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
@@ -295,18 +295,22 @@
                         </a>
                         <div class="collapse" id="payments">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="../../apps/admin-payments">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Listar </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="../../apps/admin-payments/add">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Añadir </span>
-                                </a>
-                            </li>
+                            <?php if ($UserSupport->hasPermission('list_payments')) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-payments">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Listar </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if ($UserSupport->hasPermission('add_payment')) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-payments/add">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Añadir </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </ul>
                 <?php } ?>
