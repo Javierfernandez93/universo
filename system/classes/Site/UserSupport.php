@@ -820,14 +820,11 @@ class UserSupport extends Orm {
 
   public function getUserType() 
   {
-    if($this->logged === true)
-    {
-      $CatalogUserType = new CatalogUserType;
-      
-      return ucfirst($CatalogUserType->getUserType($this->catalog_user_type_id));
+    if(!$this->logged) {
+      return false;
     }
 
-    return false;
+    return ucfirst((new CatalogSupportType)->findField('catalog_support_type_id = ? AND status = 1',[$this->catalog_support_type_id],"name")) ?? 'admin';
   }
 
   public function getImageForProfile() {
@@ -1763,8 +1760,7 @@ class UserSupport extends Orm {
 
   public function getSystemVars()
   {
-    if(!$this->logged)
-    {
+    if(!$this->logged) {
       return false;
     }
 

@@ -49,6 +49,11 @@
             </a>
         </div>
     
+        <div class="d-flex justify-content-center align-items-center py-3">
+            <span class="badge bg-success text-white text-uppercase me-2">
+                <?php echo $UserSupport->getUserType(); ?>
+            </span>
+        </div>
 
         <div class="collapse navbar-collapse w-auto h-100" id="sidenav-collapse-main">
             <ul class="navbar-nav nav-admin">
