@@ -33,7 +33,7 @@ var toastCtrl = {
 
         this.settings = {...defaults, ...options};
         
-        var $toastContainer = $("<div />").addClass("toast-container position-fixed bottom-0 end-0 p-3 sans")
+        var $toastContainer = $("<div />").addClass("toast-container position-fixed bottom-0 start-0 p-3 sans")
         var $toast = $("<div />").attr("id", 'liveToast').attr("role", "alert").attr("aria-live", "assertive").attr("aria-atomic", "true").addClass(`toast align-items-center text-white border-0 ${this.settings.bgClass}`)
         var $toastFlex = $("<div />").addClass("d-flex")
         

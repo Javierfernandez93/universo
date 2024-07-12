@@ -75,3 +75,9 @@ td span {
 .sidenav-header {
   height: 7rem;
 }
+
+.tag .btn-delete {
+  width: 18px !important;
+  height: 16px !important;
+  padding: 0px;
+}

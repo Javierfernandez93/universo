@@ -36,7 +36,7 @@ class HttpMemoized extends Http {
         const wrapperCallback = response => {
             const {s, r, error} = response;
             if(s === 0 && (r !== undefined || error !== undefined)){
-                toastInfo({message: 'Se encontro un error:' + r ?? error})
+                // toastInfo({message: 'Se encontro un error:' + r ?? error})
             }
             callback(response);
         }

@@ -1,46 +1,16 @@
-.avatar {
-    object-fit: cover;
+:root {
+    --bs-primary: #28a97d;
 }
-.conference-overlay::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    filter: blur(10px);
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.8);
-}
-.conference-overlay {
-    height: 100%;
-    width: 100%;
-    z-index: 10;
-    position: absolute;
-    left: 0;
+.bg-primary {
+    background-color: var(--bs-primary) !important;
 }
 
-.navbar-vertical .navbar-nav .nav-link[data-bs-toggle=collapse][aria-expanded=true]:after, .navbar-vertical .navbar-nav .nav-item .collapse .nav .nav-item .nav-link, .navbar-vertical .navbar-nav .nav-item .collapsing .nav .nav-item .nav-link {
-    color: #222;
+.btn-success {
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
 }
-.myChart-nogains {
-    height: 15rem;
+body {
+    background-image: url(../../src/img/pattern/green.png) !important;
+    background-repeat: repeat-x repeat-y;
 }
-.badge-round {
-    height: 3rem;
-    width: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.card-special {
-    min-height: 200px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.navbar-vertical .navbar-nav > .nav-item .nav-link.active i,
-.navbar-vertical .navbar-nav > .nav-item .nav-link.active .nav-link-text,
-.navbar-vertical .navbar-nav>.nav-item .nav-link.active {
-    color: var(--bs-primary) !important;
-}
+

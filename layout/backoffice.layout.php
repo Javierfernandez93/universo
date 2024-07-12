@@ -33,6 +33,7 @@
     
     <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
     <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.0.7" />
+    <link rel="stylesheet" href="../../src/css/backoffice.css?v=1.0.7" />
     <link id="pagestyle" href="../../src/css/admin.min.css?v=1.0.7" rel="stylesheet" />
     <link id="pagestyle" href="../../src/css/backoffice.css?v=1.0.7" rel="stylesheet" />
 

@@ -198,14 +198,14 @@ const SellerleadsViewer = {
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <div v-if="user.tags">
-                                            <span v-for="tag in user.tags" :style="{'--color':tag.color}" @click="deleteUserTag(tag)" class="tag position-relative me-2 pe-3 py-1 rounded-pill text-xs">
+                                            <span v-for="tag in user.tags" :style="{'--color':tag.color}" @click="deleteUserTag(tag)" class="tag position-relative me-2 pe-4 py-1 rounded-pill text-xs">
                                                 <span class="tag-dot position-absolute start-0" :style="{'background-color':tag.color}"></span>
 
                                                 <span class="text-dark">
                                                     {{tag.tag}}
                                                 </span>
 
-                                                <button class="btn btn-delete btn-danger">x</button>
+                                                <button class="btn btn-delete btn-danger position-absolute end-0 top-0 mt-1 me-1">x</button>
                                             </span>
                                         </div>
                                         <h6 class="mb-0 text-sm">{{user.names}}</h6>

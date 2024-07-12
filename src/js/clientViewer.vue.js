@@ -211,7 +211,7 @@ const ClientViewer = {
             </div>
             <div class="row">
                 <div class="col-12 animation-fall-down" style="--delay:800ms">
-                    <div class="card overflow-hidden">
+                    <div class="card">
                         <div class="card-header">
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-12 col-md">
