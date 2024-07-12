@@ -139,7 +139,7 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="../../apps/admin-client/add">
                                     <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Añadir </span>
+                                    <span class="sidenav-normal"> Añadir cliente</span>
                                 </a>
                             </li>
                             <li class="nav-item">
