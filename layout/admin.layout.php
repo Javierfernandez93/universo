@@ -310,7 +310,7 @@
                         </ul>
                     </ul>
                 <?php } ?>
-                <?php if ($UserSupport->hasPermission('list_tools')) { ?>
+                <?php if ($UserSupport->hasPermission('list_tools') || $UserSupport->hasPermission('view_tools')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a data-bs-toggle="collapse" href="#tools" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTools, JFStudio\Router::AdminToolsAdd, JFStudio\Router::AdminToolsEdit])) { ?>active<?php } ?>" aria-controls="tools" role="button" aria-expanded="false">
@@ -319,18 +319,29 @@
                         </a>
                         <div class="collapse" id="tools">
                         <ul class="nav ms-4 ps-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="../../apps/admin-tools">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Listar herramientas </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="../../apps/admin-tools/add">
-                                    <span class="sidenav-mini-icon"> D </span>
-                                    <span class="sidenav-normal"> Añadir herramienta </span>
-                                </a>
-                            </li>
+                            <?php if ($UserSupport->hasPermission('view_tools')) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-tools/view.php">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Ver herramientas </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+
+                            <?php if ($UserSupport->hasPermission('list_banners')) { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-tools">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Listar herramientas </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-tools/add">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Añadir herramienta </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
 
                             <?php if ($UserSupport->hasPermission('list_banners')) { ?>
                                 <li class="nav-item">
