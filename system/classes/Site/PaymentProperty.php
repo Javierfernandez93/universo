@@ -247,10 +247,15 @@ class PaymentProperty extends Orm {
                 catalog_payment_type    
             ON 
                 {$this->tblName}.catalog_payment_type_id = catalog_payment_type.catalog_payment_type_id
+            LEFT JOIN 
+                user_referral
+            ON 
+                user_referral.user_login_id = {$this->tblName}.user_login_id
             WHERE 
                 {$this->tblName}.catalog_payment_type_id = '{$catalog_payment_type_id}'
             AND 
                 {$this->tblName}.status = '1'
+                {$filter}
                 
         ");
     }

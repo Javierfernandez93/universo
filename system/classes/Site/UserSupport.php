@@ -1819,11 +1819,16 @@ class UserSupport extends Orm {
       return false;
     }
 
+    $sellersIds = (new UserReferral)->getSellersFromSupportId($this->getId());
+
+    if(!$sellersIds) {
+      return;
+    }
+
     $filter = '';
 
     if($this->affiliation_id)
     {
-      self::appendSupportFilter($filter,$this->getId());
       self::appendSupportSellersFilter($filter,$this->getId());
     }
     
