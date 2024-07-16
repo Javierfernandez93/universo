@@ -490,4 +490,20 @@ class UserReferral extends Orm {
         user_login.catalog_user_type_id = '{$catalog_user_type_id}'
       "); 
   }
+
+  public function getSellersFromSupportId(int $user_support_id = null) 
+  {
+    if(!$user_support_id) {
+      return false;
+    }
+    
+    return $this->connection()->column("
+      SELECT 
+        {$this->tblName}.user_login_id
+      FROM 
+        {$this->tblName} 
+      WHERE 
+        {$this->tblName}.user_support_id = '{$user_support_id}'
+      "); 
+  }
 }

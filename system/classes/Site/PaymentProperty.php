@@ -230,10 +230,9 @@ class PaymentProperty extends Orm {
         return $PaymentProperty->save();
     }
 
-    public function getStatsPaymentsResume(int $catalog_payment_type_id) 
+    public function getStatsPaymentsResume(int $catalog_payment_type_id,string $filter = '')
     {
-        if(!$catalog_payment_type_id)
-        {
+        if(!$catalog_payment_type_id) {
             return false;
         }
 
@@ -252,6 +251,7 @@ class PaymentProperty extends Orm {
                 {$this->tblName}.catalog_payment_type_id = '{$catalog_payment_type_id}'
             AND 
                 {$this->tblName}.status = '1'
+                
         ");
     }
 

@@ -1754,7 +1754,6 @@ class UserSupport extends Orm {
       return false;
     }
 
-
     return (new UserAccount)->where("user_login_id","=",$user_login_id)->updateField("has_academy",$status); 
   }
 
@@ -1772,4 +1771,63 @@ class UserSupport extends Orm {
       return $catalog_system_var;
     },$catalog_system_var);
   }
+
+  public static function appendSupportFilter(string &$filter,int $user_support_id) : void
+  {
+    if($user_support_id)
+    {
+      $filter .= " AND user_referral.user_support_id = '{$user_support_id}'";
+    }
+  }
+
+  public static function appendSupportSellersFilter(string &$filter,int $user_support_id) : void
+  {
+    $sellersIds = (new UserReferral)->getSellersFromSupportId($user_support_id);
+    
+    if(!$sellersIds) {
+      return;
+    }
+    
+    $sellersIds = implode(",",$sellersIds);
+    
+    $filter .= " AND user_referral.referral_id IN({$sellersIds})";
+  }
+
+  public function getPayments(string $filter = '')
+  {
+    if(!$this->logged) {
+      return false;
+    }
+
+    $sellersIds = (new UserReferral)->getSellersFromSupportId($this->getId());
+
+    if(!$sellersIds) {
+      return;
+    }
+
+    if($this->affiliation_id)
+    {
+      self::appendSupportSellersFilter($filter,$this->getId());
+    }
+
+    return (new PaymentProperty)->getPayments($filter);
+  }
+
+  public function getStatsPaymentsResume(int $catalog_payment_type_id) 
+  {
+    if(!$this->logged) {
+      return false;
+    }
+
+    $filter = '';
+
+    if($this->affiliation_id)
+    {
+      self::appendSupportFilter($filter,$this->getId());
+      self::appendSupportSellersFilter($filter,$this->getId());
+    }
+    
+    return (new PaymentProperty)->getStatsPaymentsResume($catalog_payment_type_id,$filter);
+  }
+
 }

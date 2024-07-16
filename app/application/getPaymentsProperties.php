@@ -23,7 +23,7 @@ if(isset($data['query']) && !empty($data['query']))
     $filter = "AND (user_data.names LIKE '%{$data['query']}%' OR property.title LIKE '%{$data['query']}%' OR user_login.email LIKE '%{$data['query']}%' OR real_state.title LIKE '%{$data['query']}%')";
 }
 
-$payments = (new Site\PaymentProperty)->getPayments($filter);
+$payments = $UserSupport->getPayments($filter);
 
 if(!$payments)
 {

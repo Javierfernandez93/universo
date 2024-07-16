@@ -9,13 +9,11 @@ if(!$UserSupport->logged)
     unauthorized();
 }
 
-$PaymentProperty = new Site\PaymentProperty;
-
 success(null,[
     'payments' => [
-        $PaymentProperty->getStatsPaymentsResume(1),
-        $PaymentProperty->getStatsPaymentsResume(6),
-        $PaymentProperty->getStatsPaymentsResume(7),
-        $PaymentProperty->getStatsPaymentsResume(8),
+        $UserSupport->getStatsPaymentsResume(1),
+        $UserSupport->getStatsPaymentsResume(6),
+        $UserSupport->getStatsPaymentsResume(7),
+        $UserSupport->getStatsPaymentsResume(8),
     ]
 ]);
