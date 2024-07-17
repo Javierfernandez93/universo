@@ -314,3 +314,8 @@ nav {
 .embed-responsive-16by9 iframe {
   height: 100% !important;
 }
+
+
+.vimeo-video iframe {
+  height: 400px !important;
+}
