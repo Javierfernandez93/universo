@@ -314,6 +314,26 @@
                         </ul>
                     </ul>
                 <?php } ?>
+
+                <?php if ($UserSupport->hasPermission('view_academy_from_sponsor')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#academyLessons" class="nav-link <?php if (in_array($route, [JFStudio\Router::Academy,JFStudio\Router::AcademyLesson])) { ?>active<?php } ?>" aria-controls="administrators" role="button" aria-expanded="false">
+                            <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-laptop"></i></span>
+                            <span class="nav-link-text ms-1"><?php echo JFStudio\Router::getName(JFStudio\Router::Academy); ?></span>
+                        </a>
+                        <div class="collapse" id="academyLessons">
+                        <ul class="nav ms-4 ps-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../apps/admin-academy/courses">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Listar </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+                <?php } ?>
+
                 <?php if ($UserSupport->hasPermission('list_tools') || $UserSupport->hasPermission('view_tools')) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">

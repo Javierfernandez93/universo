@@ -3,9 +3,9 @@
 require_once TO_ROOT . 'system/core.php'; 
 
 $UserLogin = new Site\UserLogin;
+$UserSupport = new Site\UserSupport;
 
-if(!$UserLogin->logged)
-{
+if(!$UserLogin->logged && !$UserSupport->logged) {
     unauthorized();
 }
 

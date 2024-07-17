@@ -5,8 +5,9 @@ require_once TO_ROOT. "system/core.php";
 $data = HCStudio\Util::getHeadersForWebService();
 
 $UserLogin = new Site\UserLogin;
+$UserSupport = new Site\UserSupport;
 
-if($UserLogin->logged === true)
+if($UserLogin->logged === true || $UserSupport->logged === true)
 {	
     if($data['course_id'])
     {
@@ -14,7 +15,9 @@ if($UserLogin->logged === true)
         
         if($sessions = $SessionPerCourse->getList($data['course_id']))
         {
-            $data['sessions'] = format($sessions,$UserLogin->company_id);
+            $user_login_id = $UserLogin->logged ? $UserLogin->getId() : $UserSupport->user_login_id;
+            
+            $data['sessions'] = format($sessions,$user_login_id);
             $data['r'] = 'DATA_OK';
             $data['s'] = 1;
         } else {

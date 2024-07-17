@@ -1905,4 +1905,43 @@ class UserSupport extends Orm {
     return (new PaymentProperty)->getStatsPaymentsResume($catalog_payment_type_id,$filter);
   }
 
+  public function addAsessorFromLeadership()
+  {
+    if(!$this->logged) {
+      return false;
+    }
+
+    if($this->user_login_id)
+    {
+      return true;
+    }
+
+    $user_login_id = (new UserLogin(false,false))->doSignup([
+      'user_login' => [
+        'user_login_id' => $this->company_id,
+        'email' => $this->email,
+        'password' => $this->password,
+        'catalog_user_type_id' => CatalogUserType::SELLER
+      ],
+      'user_data' => [
+        'names' => $this->names,
+        'last_name' => $this->last_name,
+        'sur_name' => $this->sur_name,
+      ],
+      'user_referral' => [
+        'user_support_id' => $this->getId()
+      ],
+      'user_contact' => [
+        'phone' => $this->phone,
+      ],
+      'user_account' => [
+        
+      ],
+    ],false);
+
+    $this->user_login_id = $user_login_id;
+
+    return $this->save();
+  }
+
 }

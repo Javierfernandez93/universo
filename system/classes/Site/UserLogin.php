@@ -459,7 +459,7 @@ class UserLogin extends Orm {
     return $this->findField("email = ? AND catalog_user_type_id = ? AND status = '1'",[$email,$catalog_user_type_id],'user_login_id') ? false : true;
   }
 
-  public function doSignup(array $data = null) 
+  public function doSignup(array $data = null,bool $encrypt = true)
   {
     $UserLogin = new UserLogin(false,false);
 
@@ -475,7 +475,7 @@ class UserLogin extends Orm {
     
     if(isset($data['user_login']['user_login_id']) && !$data['user_login']['user_login_id'])
     {
-      $UserLogin->password = sha1($data['user_login']['password']);
+      $UserLogin->password = $encrypt ? sha1($data['user_login']['password']) : $data['user_login']['password'];
       $UserLogin->signup_date = time();
       $UserLogin->verified_mail = self::VERIFIED_MAIL;
     }
