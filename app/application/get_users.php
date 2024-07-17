@@ -15,8 +15,7 @@ $data['catalog_user_type_id'] = isset($data['catalog_user_type_id']) ? $data['ca
 
 $users = $UserSupport->getUsers("AND user_login.catalog_user_type_id = '".$data['catalog_user_type_id']."'");
 
-if(!$users)
-{
+if(!$users) {
     error(Constants::RESPONSES['NOT_DATA']);
 }
 

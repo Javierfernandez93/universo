@@ -1159,9 +1159,79 @@ class UserSupport extends Orm {
       return false;
     }
 
-    if($this->affiliation_id)
-    {
+    if($this->affiliation_id) {
       $filter .= " AND user_support.affiliation_id = '{$this->affiliation_id}'";
+    }
+    
+    return $this->connection()->rows("SELECT
+      user_login.user_login_id,
+      user_login.catalog_campaing_id,
+      user_login.signup_date,
+      user_login.company_id,
+      user_login.email,
+      user_account.image,
+      user_account.has_academy,
+      user_account.on_manivela,
+      user_data.names,
+      user_address.country_id,
+      user_contact.phone,
+      affiliation.name as affiliation,
+      user_referral.referral_id,
+      user_support.names as sponsor_name,
+      user_referral_data.names as referral_name
+    FROM
+      user_login
+    LEFT JOIN 
+      user_data
+    ON 
+      user_data.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_account
+    ON 
+      user_account.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_contact
+    ON 
+      user_contact.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_address
+    ON 
+      user_address.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_referral
+    ON 
+      user_referral.user_login_id = user_login.user_login_id
+    LEFT JOIN 
+      user_data as user_referral_data
+    ON 
+      user_referral_data.user_login_id = user_referral.referral_id
+    LEFT JOIN 
+      user_support
+    ON 
+      user_support.user_support_id = user_referral.user_support_id
+    LEFT JOIN 
+      affiliation
+    ON 
+      affiliation.affiliation_id = user_support.affiliation_id
+    WHERE 
+      user_login.status = '1'
+      {$filter}
+    GROUP BY user_login.user_login_id
+    ORDER BY 
+      user_login.signup_date
+    DESC
+    ");
+  }
+  
+  public function getClients(string $filter = '')
+  {
+    if(!$this->getId())
+    {
+      return false;
+    }
+
+    if($this->affiliation_id) {
+      self::appendSupportSellersFilter($filter,$this->getId());
     }
     
     return $this->connection()->rows("SELECT

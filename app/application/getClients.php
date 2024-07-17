@@ -18,7 +18,7 @@ if(isset($data['user_login_id']) && $data['user_login_id'])
     $filter .= " AND user_login.user_login_id = '{$data['user_login_id']}'";
 }
 
-$users = $UserSupport->getUsers($filter);
+$users = $UserSupport->getClients($filter);
 
 if(!$users)
 {
