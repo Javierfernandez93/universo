@@ -118,6 +118,10 @@ const ClientlistViewer = {
                         toastInfo({
                             message: `✅ Usuario encontrado ${response.user.Cliente}`
                         })
+                    } else {
+                        toastInfo({
+                            message: `❌ Usuario no encontrado`
+                        })
                     }
                     
                     resolve()
