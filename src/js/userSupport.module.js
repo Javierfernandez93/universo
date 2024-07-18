@@ -561,6 +561,9 @@ class UserSupport extends HttpMemoized {
     setRealStatStatus(data, callback) {
         return this.call('../../app/application/setRealStatStatus.php', data, callback);
     }
+    getCourseForEdit(data, callback) {
+        return this.call('../../app/application/getCourseForEdit.php', data, callback);
+    }
     setPaymentStatusAs(data, callback) {
         return this.call('../../app/application/setPaymentStatusAs.php', data, callback);
     }
