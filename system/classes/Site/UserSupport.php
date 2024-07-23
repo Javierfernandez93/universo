@@ -1869,14 +1869,14 @@ class UserSupport extends Orm {
       return false;
     }
 
-    $sellersIds = (new UserReferral)->getSellersFromSupportId($this->getId());
-
-    if(!$sellersIds) {
-      return;
-    }
-
     if($this->affiliation_id)
     {
+      $sellersIds = (new UserReferral)->getSellersFromSupportId($this->getId());
+
+      if(!$sellersIds) {
+        return;
+      }
+
       self::appendSupportSellersFilter($filter,$this->getId());
     }
 
