@@ -1944,4 +1944,20 @@ class UserSupport extends Orm {
     return $this->save();
   }
 
+
+  public function saveCommission(array $data = null) {
+    if(!$this->logged)
+    {
+      return false;
+    }
+
+    if(!$data) {
+      return false;
+    }
+    
+    $data['user_support_id'] = $this->getId();
+    $data['skype'] = true;
+
+    return CommissionPerUser::add($data);
+  } 
 }

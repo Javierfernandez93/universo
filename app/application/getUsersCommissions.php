@@ -6,22 +6,19 @@ $data = HCStudio\Util::getHeadersForWebService();
 
 $UserSupport = new Site\UserSupport;
 
-if($UserSupport->logged === true)
+if(!$UserSupport->logged)
 {
-    $filter = isset($data['status']) ? " WHERE commission_per_user.status = '{$data['status']}'" : "";
-    
-    if($commissions = (new Site\CommissionPerUser)->getAllWithData($filter))
-    {
-        $data["commissions"] = $commissions;
-        $data["s"] = 1;
-        $data["r"] = "DATA_OK";
-    } else {
-        $data['r'] = "DATA_ERROR";
-        $data['s'] = 0;
-    }
-} else {
-	$data["s"] = 0;
-	$data["r"] = "NOT_FIELD_SESSION_DATA";
+    unauthorized();
 }
 
-echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
+$filter = isset($data['status']) ? " WHERE commission_per_user.status = '{$data['status']}'" : "";
+
+$commissions = (new Site\CommissionPerUser)->getAllWithData($filter);
+
+if(!$commissions) {
+    error(Constants::RESPONSES['NOT_DATA']);
+}
+
+success(null,[
+    'commissions' => $commissions
+]);

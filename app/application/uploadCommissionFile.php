@@ -25,24 +25,28 @@ if($UserSupport->logged === true)
 				
 				if($ImageResize->save($target_path))
 				{
-					if(uploadCommissionFile($data['commission_per_user_id'],$target_path))
-					{
-						Site\Logger::add([
-							'table' => Site\Logger::COMMISSION_PER_USER,
-							'field' => 'image',
-							'action' => 'add',
-							'value' => $target_path,
-							'user_support_id' => $UserSupport->getId(),
-							'create_date' => time(),
-						]);
+					// if(uploadCommissionFile($data['commission_per_user_id'],$target_path))
+					// {
+					// 	Site\Logger::add([
+					// 		'table' => Site\Logger::COMMISSION_PER_USER,
+					// 		'field' => 'image',
+					// 		'action' => 'add',
+					// 		'value' => $target_path,
+					// 		'user_support_id' => $UserSupport->getId(),
+					// 		'create_date' => time(),
+					// 	]);
 
-						$data['target_path'] = $target_path.'?t='.time();
-						$data['r'] = 'SAVE_OK';
-						$data['s'] = 1;
-					} else {
-						$data['r'] = 'NOT_UPLOAD';
-						$data['s'] = 0;
-					}
+					// 	$data['target_path'] = $target_path.'?t='.time();
+					// 	$data['r'] = 'SAVE_OK';
+					// 	$data['s'] = 1;
+					// } else {
+					// 	$data['r'] = 'NOT_UPLOAD';
+					// 	$data['s'] = 0;
+					// }
+
+					$data['target_path'] = $target_path.'?t='.time();
+					$data['r'] = 'SAVE_OK';
+					$data['s'] = 1;
 				} else {
 					$data['r'] = 'NOT_SAVE';
 					$data['s'] = 0;

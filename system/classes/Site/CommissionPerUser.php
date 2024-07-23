@@ -33,12 +33,13 @@ class CommissionPerUser extends Orm
 			{$this->tblName}.deposit_date,
 			{$this->tblName}.transaction_per_wallet_id,
 			{$this->tblName}.user_login_id_from,
+			{$this->tblName}.catalog_commission_id,
 			{$this->tblName}.create_date,
 			{$this->tblName}.signature,
 			{$this->tblName}.file,
 			catalog_currency.currency,
 			catalog_commission.name,
-			user_data.names,
+			user_support.names,
 			{$this->tblName}.status,
 			{$this->tblName}.amount
 		FROM 
@@ -52,9 +53,9 @@ class CommissionPerUser extends Orm
 		ON 
 			catalog_commission.catalog_commission_id = {$this->tblName}.catalog_commission_id 
 		LEFT JOIN
-			user_data 
+			user_support 
 		ON 
-			user_data.user_login_id = {$this->tblName}.user_login_id_from 
+			user_support.user_support_id = {$this->tblName}.user_login_id
 			{$filter}
 		");
 	}
@@ -128,25 +129,31 @@ class CommissionPerUser extends Orm
 	{
 		$CommissionPerUser = new CommissionPerUser;
 
-		if (isset($data['skype']) && $data['skype'] == false) {
-			$CommissionPerUser->loadWhere("buy_per_user_id = ? AND user_login_id = ? ", [$data['buy_per_user_id'], $data['user_login_id']]);
+		$skype = isset($data['skype']) && $data['skype'] == false ? false : true;
+
+		if (!$skype) {
+			if($CommissionPerUser->findField("buy_per_user_id = ? AND user_login_id = ? ", [$data['buy_per_user_id'], $data['user_login_id']],"buy_per_user_id"))
+			{
+				return false;
+			}
 		}
 
-		if ($CommissionPerUser->getId() == 0) {
-			$CommissionPerUser->user_login_id = $data['user_login_id'];
-			$CommissionPerUser->buy_per_user_id = $data['buy_per_user_id'] ?? 0;
-			$CommissionPerUser->catalog_commission_type_id = $data['catalog_commission_type_id'];
-			$CommissionPerUser->user_login_id_from = $data['user_login_id_from'];
-			$CommissionPerUser->amount = $data['amount'];
-			$CommissionPerUser->catalog_currency_id = CatalogCurrency::USD;
-			$CommissionPerUser->package_id = $data['package_id'];
-			$CommissionPerUser->status = self::PENDING_FOR_DISPERSION;
-			$CommissionPerUser->create_date = time();
-
-			return $CommissionPerUser->save();
+		if(isset($data['commission_per_user_id']) && $data['commission_per_user_id'] > 0)
+		{
+			$CommissionPerUser->loadWhere("commission_per_user_id = ?",[$data['commission_per_user_id']]);
 		}
 
-		return false;
+		$CommissionPerUser->user_login_id = $data['user_login_id'];
+		$CommissionPerUser->buy_per_user_id = $data['buy_per_user_id'] ?? 0;
+		$CommissionPerUser->catalog_commission_id = $data['catalog_commission_id'];
+		$CommissionPerUser->user_login_id_from = $data['user_login_id_from'];
+		$CommissionPerUser->amount = $data['amount'];
+		$CommissionPerUser->catalog_currency_id = CatalogCurrency::USD;
+		$CommissionPerUser->package_id = $data['package_id'];
+		$CommissionPerUser->status = isset($data['file']) && !empty($data['file']) ? self::PENDING_FOR_SIGNATURE : self::PENDING_FOR_FILE;
+		$CommissionPerUser->create_date = time();
+
+		return $CommissionPerUser->save();
 	}
 
 	public static function addFromGain(array $data = null): bool

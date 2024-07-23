@@ -457,16 +457,35 @@
                         </ul>
                     </ul>
                 <?php } ?>
-
-
-                <?php if ($UserSupport->hasPermission('list_commissions')) { ?>
-                    <li class="nav-item">
-                        <a class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTransactions])) { ?>active<?php } ?>" href="../../apps/admin-transactions/">
+                
+        
+                <?php if ($UserSupport->hasPermission('list_commissions') || $UserSupport->hasPermission('view_commissions')) { ?>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a data-bs-toggle="collapse" href="#commissions" class="nav-link <?php if (in_array($route, [JFStudio\Router::AdminTransactions])) { ?>active<?php } ?>" aria-controls="commissions" role="button" aria-expanded="false">
                             <span class="badge me-2 d-flex justify-content-center align-items-center icon"><i class="bi bi-credit-card"></i></span>
-                            <span class="nav-link-text text-dark ms-1">Comisiones</span>
+                            <span class="nav-link-text ms-1">Comisiones</span>
                         </a>
-                    </li>
+                        <div class="collapse" id="commissions">
+                        <ul class="nav ms-4 ps-3">
+                            <?php if($UserSupport->hasPermission('view_commissions')) { ?>    
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="../../apps/admin-transactions/view">
+                                        <span class="sidenav-mini-icon"> D </span>
+                                        <span class="sidenav-normal"> Mis comisiones </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="../../apps/admin-transactions/">
+                                    <span class="sidenav-mini-icon"> D </span>
+                                    <span class="sidenav-normal"> Comisiones </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
                 <?php } ?>
+
 
                 <?php if ($UserSupport->hasPermission('list_tickets')) { ?>
                     <li class="nav-item">

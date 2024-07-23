@@ -19,7 +19,7 @@ $Layout->init(JFStudio\Router::getName($route),"list","admin","",TO_ROOT."/");
 
 $Layout->setScriptPath(TO_ROOT . '/src/');
 $Layout->setScript([
-	'adminTransactionsList.vue.js',
+	'adminCommissions.vue.js'
 ]);
 
 $Layout->setVar([

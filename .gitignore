@@ -1,3 +1,4 @@
 .env
 bd.sql
 .DS_Store
+src/files/img/user/

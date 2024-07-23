@@ -731,6 +731,12 @@ class UserSupport extends HttpMemoized {
     setAcademyAs(data, callback) {
         return this.call('../../app/application/setAcademyAs.php', data, callback);
     }
+    saveCommission(data, callback) {
+        return this.call('../../app/application/saveCommission.php', data, callback);
+    }
+    getCatalogCommission(data, callback) {
+        return this.call('../../app/application/getCatalogCommission.php', data, callback);
+    }
     getStatsPaymentsResume(data, callback) {
         return this.memoizedCall('../../app/application/getStatsPaymentsResume.php', data, callback);
     }
