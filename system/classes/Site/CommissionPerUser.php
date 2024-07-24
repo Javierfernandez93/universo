@@ -231,8 +231,7 @@ class CommissionPerUser extends Orm
 
 	public function getAll(int $user_login_id = null, string $filter = '')
 	{
-		if (!$user_login_id) 
-		{
+		if (!$user_login_id) {
 			return false;
 		}
 

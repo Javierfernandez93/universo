@@ -4,13 +4,13 @@ require_once TO_ROOT. "/system/core.php";
 
 $data = HCStudio\Util::getHeadersForWebService();
 
-$UserLogin = new Site\UserLogin;
+$UserSupport = new Site\UserSupport;
 
-if($UserLogin->logged === true)
+if($UserSupport->logged === true)
 {   
     if($data['commission_per_user_id'])
     {
-        if($file = (new Site\CommissionPerUser)->findField("commission_per_user_id = ? AND user_login_id = ?",[$data['commission_per_user_id'],$UserLogin->company_id],"file"))
+        if($file = (new Site\CommissionPerUser)->findField("commission_per_user_id = ? AND user_login_id = ?",[$data['commission_per_user_id'],$UserSupport->company_id],"file"))
         {
             $data['file'] = $file;
             $data["s"] = 1;

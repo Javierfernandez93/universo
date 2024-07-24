@@ -2,34 +2,31 @@
 
 require_once TO_ROOT. "/system/core.php";
 
-$data = HCStudio\Util::getHeadersForWebService();
+$UserSupport = new Site\UserSupport;
 
-$UserLogin = new Site\UserLogin;
-
-if($UserLogin->logged === true)
-{   
-    $filter = "";
-
-    if($data['filter']['start_date'] != "")
-    {
-        $data['filter']['start_date'] = strtotime($data['filter']['start_date']);
-        $data['filter']['end_date'] = strtotime($data['filter']['end_date']);
-
-        $filter .= " AND commission_per_user.create_date BETWEEN '".$data['filter']['start_date']."' AND '".$data['filter']['end_date']."'";
-    }
-
-    if($commissions = (new Site\CommissionPerUser)->getAll($UserLogin->company_id,$filter))
-    {
-        $data['commissions'] = $commissions;
-        $data["s"] = 1;
-        $data["r"] = "DATA_OK";
-    } else {
-        $data["s"] = 0;
-        $data["r"] = "NOT_DATA";
-    }
-} else {
-	$data["s"] = 0;
-	$data["r"] = "INVALID_CREDENTIALS";
+if(!$UserSupport->logged) {    
+    unauthorized();
 }
 
-echo json_encode(HCStudio\Util::compressDataForPhone($data)); 
+$data = HCStudio\Util::getHeadersForWebService();
+
+$filter = "";
+
+if($data['filter']['start_date'] != "")
+{
+    $data['filter']['start_date'] = strtotime($data['filter']['start_date']);
+    $data['filter']['end_date'] = strtotime($data['filter']['end_date']);
+
+    $filter .= " AND commission_per_user.create_date BETWEEN '".$data['filter']['start_date']."' AND '".$data['filter']['end_date']."'";
+}
+
+$commissions = (new Site\CommissionPerUser)->getAll($UserSupport->getId(),$filter);
+
+if(!$commissions)
+{
+    error(Constants::RESPONSES['NOT_DATA']);
+}
+
+success(null,[
+    'commissions' => $commissions
+]);

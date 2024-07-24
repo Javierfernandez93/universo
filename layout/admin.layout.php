@@ -470,7 +470,7 @@
                         <ul class="nav ms-4 ps-3">
                             <?php if($UserSupport->hasPermission('view_commissions')) { ?>    
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="../../apps/admin-transactions/view">
+                                    <a class="nav-link active" href="../../apps/admin-transactions/view.php">
                                         <span class="sidenav-mini-icon"> D </span>
                                         <span class="sidenav-normal"> Mis comisiones </span>
                                     </a>
