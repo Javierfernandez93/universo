@@ -1,5 +1,5 @@
 /* vue */ 
-import { ToolsViewer } from '../../src/js/toolsViewer.vue.js?v=1.0.4'
+import { ToolsViewer } from '../../src/js/toolsViewer.vue.js?v=1.0.5'
 
 Vue.createApp({
     components : { 

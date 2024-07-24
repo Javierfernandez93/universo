@@ -1,4 +1,4 @@
-import { CommissionsViewer } from '../../src/js/commissionsViewer.vue.js?v=1.0.4'
+import { CommissionsViewer } from '../../src/js/commissionsViewer.vue.js?v=1.0.5'
 
 Vue.createApp({
     components : { 

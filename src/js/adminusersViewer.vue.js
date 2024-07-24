@@ -1,11 +1,11 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.4'
-import { FollowpagesViewer } from '../../src/js/followpagesViewer.vue.js?v=1.0.4'  
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.5'
+import { FollowpagesViewer } from '../../src/js/followpagesViewer.vue.js?v=1.0.5'  
 
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.4'
-import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.4' 
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.4' 
-import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.0.4'
-import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.4'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.5'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.5' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.5' 
+import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.0.5'
+import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.5'
 
 const AdminusersViewer = {
     components: {

@@ -1,7 +1,7 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.4'
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.4'
-import OffCanvasViewer from '../../src/js/offcanvasViewer.vue.js?v=1.0.4'
-import CommissionModel from '../../src/js/models/commission.module.js?v=1.0.4'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.5'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.5'
+import OffCanvasViewer from '../../src/js/offcanvasViewer.vue.js?v=1.0.5'
+import CommissionModel from '../../src/js/models/commission.module.js?v=1.0.5'
 
 const AdminCommissionsViewer = {
     components : {

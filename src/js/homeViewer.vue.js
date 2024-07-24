@@ -1,6 +1,6 @@
-import { Translator } from '../../src/js/translator.module.js?v=1.0.4'   
-import { Guest } from '../../src/js/guest.module.js?v=1.0.4'   
-import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.4'   
+import { Translator } from '../../src/js/translator.module.js?v=1.0.5'   
+import { Guest } from '../../src/js/guest.module.js?v=1.0.5'   
+import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.5'   
 
 const HomeViewer = {
     components : {
@@ -14,12 +14,7 @@ const HomeViewer = {
             language_code: null,
             currentAffiliate: null,
             members: null,
-            stats: {
-                experience: 0,
-                real_state: 0,
-                sales: 0,
-                families: 0,
-            },
+            stats: [],
             testimonials : null,
             testimonialsAux : [
                 {
@@ -335,6 +330,14 @@ const HomeViewer = {
             this.showing = false
             document.getElementById('videoBoss').play();
           },
+          getVar(name) 
+          {
+            let value = this.stats.find((stat)=>{
+              return stat.name == name
+            })
+
+            return value != undefined ? value.val : 0
+          },
           async init() {            
             $('#preloader').addClass("showout");
 
@@ -592,7 +595,8 @@ const HomeViewer = {
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center py-5 expand" style="--delay:500ms">
+                <div class="row justify-content-center py-5 expand" style="--delay:500ms" v-if="stats.length > 0">
+                    {{stats}}
                     <div class="col-12">
                         <div class="py-5">
                             <div class="h1 maldives mb-n1 text-white">Nuestra</div>
@@ -602,7 +606,7 @@ const HomeViewer = {
                             <div class="row align-items-center text-center">
                                 <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="h1 text-white sans fw-bold">{{stats.experience}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{getVar('experience')}}</div>
                                         
                                         <div class="mt-3">
                                             <div>Años de</div>
@@ -612,7 +616,7 @@ const HomeViewer = {
                                 </div>
                                 <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="h1 text-white sans fw-bold">{{stats.real_state}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{getVar('real_state')}}</div>
 
                                         <div class="mt-3">
                                             <div>Desarrollos</div> 
@@ -622,7 +626,7 @@ const HomeViewer = {
                                 </div>
                                 <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="h1 text-white sans fw-bold">{{stats.sales}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{getVar('sales')}}</div>
 
                                         <div class="mt-3">
                                             <div>Terrenos</div> 
@@ -632,7 +636,7 @@ const HomeViewer = {
                                 </div>
                                 <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="h1 text-white sans fw-bold">{{stats.countries}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{getVar('countries')}}</div>
 
                                         <div class="mt-3">
                                             <div>Paises</div>
@@ -641,7 +645,7 @@ const HomeViewer = {
                                 </div>
                                 <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="h1 text-white sans fw-bold">{{stats.families}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{getVar('families')}}</div>
 
                                         <div class="mt-3">
                                             <div>Familias</div>
@@ -650,7 +654,7 @@ const HomeViewer = {
                                 </div>
                                 <div class="col-6 col-md-4">
                                     <div class="card card-body bg-transparent p-0 p-md-5 shadow-none">
-                                        <div class="h1 text-white sans fw-bold">{{stats.people}}</div>
+                                        <div class="h1 text-white sans fw-bold">{{getVar('people')}}</div>
 
                                         <div class="mt-3">
                                             <div>Personas impactadas por el movimiento</div>
