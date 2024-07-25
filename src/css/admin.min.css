@@ -114,3 +114,16 @@ td span {
 .vimeo-video iframe {
   height: 400px !important;
 }
+
+
+.text-hover-underline {
+  cursor: pointer;
+}
+.text-hover-underline,
+.text-hover-underline:hover {
+  transition: color text-decoration 0.3s ease-in-out;
+}
+.text-hover-underline:hover  {
+  text-decoration: underline;
+  color: var(--bs-primary);
+}

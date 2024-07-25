@@ -110,6 +110,8 @@ const AdminpaymentsViewer = {
                 || payment.names?.toLowerCase().includes(self.query.toLowerCase()) 
                 || payment.title?.toLowerCase().includes(self.query.toLowerCase()) 
                 || payment.last_payment_number?.toString().includes(self.query.toLowerCase())
+                || payment.support_name?.toLowerCase().includes(self.query.toLowerCase())
+                || payment.affiliation_name?.toLowerCase().includes(self.query.toLowerCase())
             })
 
             if(self.payments.length == 0)
@@ -119,6 +121,11 @@ const AdminpaymentsViewer = {
 
             self.getTotals()
         },500),
+        queryBy(query) {
+            this.query = query 
+
+            this.searchProperties(this)
+        },
         viewPayments(property_id) {
             window.location.href = `../../apps/admin-payments/view.php?pid=${property_id}`
         },
@@ -392,13 +399,13 @@ const AdminpaymentsViewer = {
                                         <td class="align-middle text-capitalize ">
                                             <PlaceHolder :value="payment.names" placeholder="-"/>
                                         </td>
-                                        <td @click="query = payment.seller" class="align-middle text-decoration-underline text-primary">
+                                        <td @click="queryBy(payment.seller)" class="align-middle text-hover-underline">
                                             <PlaceHolder :value="payment.seller" placeholder="-"/>
                                         </td>
-                                        <td @click="query = payment.support_name" class="align-middle">
+                                        <td @click="queryBy(payment.support_name)" class="align-middle text-hover-underline">
                                             <PlaceHolder :value="payment.support_name" placeholder="-"/>
                                         </td>
-                                        <td @click="query = payment.affiliation_name" class="align-middle">
+                                        <td @click="queryBy(payment.affiliation_name)" class="align-middle text-hover-underline">
                                             <PlaceHolder :value="payment.affiliation_name" placeholder="-"/>
                                         </td>
                                         <td class="align-middle">
