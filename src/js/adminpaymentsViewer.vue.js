@@ -18,9 +18,11 @@ const AdminpaymentsViewer = {
             UserSupport: new UserSupport,
             payments: [],
             paymentsAux: [],
+            toggleFilter: false,
             busy: false,
             catalog_payment_type_id: 1,
-            query: null,
+            query: '',
+            extraQuery: '',
             catalogPaymentTypes: [],
             columns: { // 0 DESC , 1 ASC 
                 company_id: {
@@ -55,6 +57,14 @@ const AdminpaymentsViewer = {
                     name: 'create_date',
                     desc: false,
                 },
+                start_date: {
+                    name: 'start_date',
+                    desc: false,
+                },
+                end_date: {
+                    name: 'end_date',
+                    desc: false,
+                },
                 price: {
                     name: 'price',
                     desc: false,
@@ -83,8 +93,14 @@ const AdminpaymentsViewer = {
     watch: {
         catalog_payment_type_id: {
             async handler() {
-                this.query = null
+                this.query = ''
                 await this.getPaymentsProperties()
+            },
+            deep: true
+        },
+        extraQuery: {
+            async handler() {
+                this.searchProperties(this)
             },
             deep: true
         }
@@ -104,25 +120,42 @@ const AdminpaymentsViewer = {
 
             column.desc = !column.desc
         },
+        extraQueryFilter()
+        {
+            this.payments = this.paymentsAux
+
+            if(this.extraQuery != '') {
+                this.payments = this.paymentsAux.filter((payment) => {
+                    console.log(payment.on_manivela,this.extraQuery)
+                    return payment.on_manivela_text.includes(this.extraQuery)
+                })
+            }
+        },
         searchProperties: _debounce((self) => {
-            self.payments = self.paymentsAux.filter((payment) => {
-                return payment.seller?.toLowerCase().includes(self.query.toLowerCase()) 
+            self.extraQueryFilter()
+
+            console.log(self.payments)
+
+            self.payments.filter((payment) => {
+                return (payment.seller?.toLowerCase().includes(self.query.toLowerCase()) 
                 || payment.names?.toLowerCase().includes(self.query.toLowerCase()) 
                 || payment.title?.toLowerCase().includes(self.query.toLowerCase()) 
                 || payment.last_payment_number?.toString().includes(self.query.toLowerCase())
                 || payment.support_name?.toLowerCase().includes(self.query.toLowerCase())
                 || payment.affiliation_name?.toLowerCase().includes(self.query.toLowerCase())
+                || payment.start_date?.toLowerCase().includes(self.query.toLowerCase())
+                || payment.end_date?.toLowerCase().includes(self.query.toLowerCase())
+                || payment.on_manivela_text?.toLowerCase().includes(self.query.toLowerCase()))
             })
 
-            if(self.payments.length == 0)
-            {
+            if(self.payments.length == 0 && self.extraQuery == '') {
                 self.getPaymentsProperties(self.query)
             }
 
             self.getTotals()
         },500),
         queryBy(query) {
-            this.query = query 
+            this.query = query
 
             this.searchProperties(this)
         },
@@ -150,8 +183,14 @@ const AdminpaymentsViewer = {
                 this.UserSupport.getPaymentsProperties({catalog_payment_type_id:this.catalog_payment_type_id,query:this.query}, (response) => {
                     this.busy = false
                     if (response.s == 1) {
-                        this.payments = response.payments
-                        this.paymentsAux = response.payments
+                        this.payments = response.payments.map(payment => {
+                            payment.start_date = typeof payment.start_date == 'number' ? payment.start_date.formatDate() : payment.start_date
+                            payment.end_date = typeof payment.end_date == 'number' ? payment.end_date.formatDate() : payment.end_date
+                            payment.on_manivela_text = payment.on_manivela == 1 ? 'on_manivela' : 'off_manivela'
+
+                            return payment
+                        })
+                        this.paymentsAux = this.payments
 
                         this.getTotals()
                     } 
@@ -220,6 +259,7 @@ const AdminpaymentsViewer = {
                     this.busy = false
                     if (response.s == 1) {
                         property.on_manivela = true
+                        property.on_manivela_text = 'on_manivela'
                         toastInfo({
                             message: `✅ Usuario encontrado ${response.user.Cliente}`
                         })
@@ -272,6 +312,10 @@ const AdminpaymentsViewer = {
                     alertCtrl.present(alert.modal);
                 }
             })
+        },
+        clearFilter() {
+            this.query = ''
+            this.extraQuery = ''
         },
         requiredApart(property) {
             this.validateIfExistBeforeSend(property).then((exist) => {
@@ -334,11 +378,39 @@ const AdminpaymentsViewer = {
                                     <i class="bi bi-arrow-clockwise"></i>
                                 </button>
                             </div>
+                            <div v-if="query || extraQuery" class="col-12 col-xl-auto">
+                                <button @click="clearFilter" class="btn btn-dark btn-sm mb-0 shadow-none px-3">
+                                    Borrar filtro
+                                </button>
+                            </div>
                             <div class="col-12 col-xl-auto">
                                 <a href="../../apps/admin-payments/add" class="btn btn-dark btn-sm mb-0 shadow-none px-3">Añadir venta</a>
                             </div>
+                            <div class="col-12 col-xl-auto">
+                                <button @click="toggleFilter = !toggleFilter" class="btn btn-dark btn-sm mb-0 shadow-none px-3">
+                                    <i class="bi bi-filter"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div v-if="query" class="alert alert-light text-center text-dark">Resultados de la búsqueda <b>{{query}}</b> ({{payments.length}} resultados)</div>
+                    </div>
+                    <div class="card-header py-0" v-if="toggleFilter">
+                        {{extraQuery}}
+                        <div class="row align-items-center justify-content-end">
+                            <div class="col-12 col-xl-auto">
+                                <div class="form-check form-check-inline">
+                                    <input v-model="extraQuery" class="form-check-input" type="radio" name="extraQuery" id="all" value="" checked>
+                                    <label class="form-check-label" for="all">Todos</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input v-model="extraQuery" class="form-check-input" type="radio" value="on_manivela" name="extraQuery" id="on_manivela">
+                                    <label class="form-check-label" for="on_manivela">Enviados a Manivela</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input v-model="extraQuery" class="form-check-input" type="radio" value="off_manivela" name="extraQuery" id="off_manivela">
+                                    <label class="form-check-label" for="off_manivela">No enviados a Manivela</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card-body">
@@ -375,9 +447,17 @@ const AdminpaymentsViewer = {
                                             <span :class="columns.title.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
                                             Propiedad
                                         </th>
-                                        <th @click="sortData(columns.last_payment_number)" class="cursor-pointer text-uppercase">
+                                        <th @click="sortData(columns.last_payment_number)" class="cursor-pointer text-uppercase d-none">
                                             <span :class="columns.last_payment_number.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
                                             Núm pago
+                                        </th>
+                                        <th @click="sortData(columns.start_date)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.start_date.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            apertura
+                                        </th>
+                                        <th @click="sortData(columns.end_date)" class="cursor-pointer text-uppercase">
+                                            <span :class="columns.end_date.desc ? 'bi-arrow-up-square-fill' : 'bi-arrow-down-square-fill'"></span>    
+                                            cierre
                                         </th>
 
                                         <th @click="sortData(columns.status)" class="cursor-pointer text-uppercase">
@@ -411,8 +491,14 @@ const AdminpaymentsViewer = {
                                         <td class="align-middle">
                                             <PlaceHolder :value="payment.title" placeholder="-"/>
                                         </td>
-                                        <td class="align-middle">
+                                        <td class="align-middle d-none">
                                             <PlaceHolder :value="payment.last_payment_number" placeholder="-"/>
+                                        </td>
+                                        <td @click="queryBy(payment.start_date)" class="align-middle text-hover-underline">
+                                            {{payment.start_date}}
+                                        </td>
+                                        <td @click="queryBy(payment.end_date)" class="align-middle text-hover-underline">
+                                            {{payment.end_date}}
                                         </td>
                                         <td class="align-middle">
                                             <span class="badge bg-secondary break-words">{{payment.payment_type}}</span>

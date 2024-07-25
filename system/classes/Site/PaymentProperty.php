@@ -110,6 +110,8 @@ class PaymentProperty extends Orm {
                 {$this->tblName}.{$this->tblName}_id,
                 {$this->tblName}.user_login_id,
                 {$this->tblName}.status,
+                {$this->tblName}.start_date,
+                {$this->tblName}.end_date,
                 {$this->tblName}.on_manivela,
                 {$this->tblName}.property_id,
                 property.title,
