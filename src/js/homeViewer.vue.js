@@ -1,6 +1,6 @@
-import { Translator } from '../../src/js/translator.module.js?v=1.0.5'   
-import { Guest } from '../../src/js/guest.module.js?v=1.0.5'   
-import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.5'   
+import { Translator } from '../../src/js/translator.module.js?v=1.0.6'   
+import { Guest } from '../../src/js/guest.module.js?v=1.0.6'   
+import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.6'   
 
 const HomeViewer = {
     components : {
@@ -505,10 +505,12 @@ const HomeViewer = {
                             <div class="h1 maldives text-success">Afiliados</div>
                         </div>
                         <div class="card overflow-hidden position-relative card-body p-5 bg-dark text-center text-white">
-                            <div class="row g-5 align-items-center justify-content-center mb-5">
-                                <div class="col-12 col-md-4 animation-fall-down" style="--delay:500ms">
-                                    <img src="../../src/img/afilliates/boss.png" class="img-thumbnail rounded" alt="Boss" title="Boss"/>
+                            <div class="row">
+                                <div class="col-12 animation-fall-down" style="--delay:500ms">
+                                    <img src="../../src/img/background-new.png" class="w-75" alt="Boss" title="Boss"/>
                                 </div>
+                            </div>
+                            <div class="row g-5 align-items-center justify-content-center mb-5">
                                 <div class="col-12 col-md-8 animation-fall-down" style="--delay:500ms">
                                     <div class="maldives text-uppercase mb-3 text-white h3">¿Qué nos hace <strong class="text-success">únicos?</strong></div>
                                     <p class="text-white lead my-2">En Universo de Jade, nos destacamos por fomentar el desarrollo personal en nuestra comunidad y ofrecer oportunidades de crecimiento dentro de la empresa basadas en resultados extraordinarios.</p>
@@ -596,7 +598,6 @@ const HomeViewer = {
                     </div>
                 </div>
                 <div class="row justify-content-center py-5 expand" style="--delay:500ms" v-if="stats.length > 0">
-                    {{stats}}
                     <div class="col-12">
                         <div class="py-5">
                             <div class="h1 maldives mb-n1 text-white">Nuestra</div>
