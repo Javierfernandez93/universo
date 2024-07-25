@@ -1,6 +1,6 @@
-import { UserSupport } from './userSupport.module.js?v=1.0.7'   
-import LoaderViewer from './loaderViewer.vue.js?v=1.0.7'
-import BackButton from './components/backButton.vue.js?v=1.0.7'
+import { UserSupport } from './userSupport.module.js?v=1.0.8'   
+import LoaderViewer from './loaderViewer.vue.js?v=1.0.8'
+import BackButton from './components/backButton.vue.js?v=1.0.8'
 
 const AddrealstateViewer = {
     components : {

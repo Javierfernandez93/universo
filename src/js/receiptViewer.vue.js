@@ -1,4 +1,4 @@
-import { Receipt } from './receipt.module.js?v=1.0.7'   
+import { Receipt } from './receipt.module.js?v=1.0.8'   
 
 const ReceiptViewer = {
     props: ['backoffice'],

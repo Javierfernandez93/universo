@@ -1,4 +1,4 @@
-import { AdminpropertiesViewer } from '../../src/js/adminpropertiesViewer.vue.js?v=1.0.7'
+import { AdminpropertiesViewer } from '../../src/js/adminpropertiesViewer.vue.js?v=1.0.8'
 
 Vue.createApp({
     components : { 

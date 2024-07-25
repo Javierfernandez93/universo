@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.7'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.8'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.8'
 
 const AdminacademyViewer = {
     components: {
