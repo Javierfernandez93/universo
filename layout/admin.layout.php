@@ -31,11 +31,11 @@
     <link rel="stylesheet" href="../../src/css/nucleo-svg.css" />
     <!-- CSS Files -->
     
-    <link id="pagestyle" href="../../src/css/soft-ui-dashboard-admin.css?v=1.0.7" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/soft-ui-dashboard-admin.css?v=1.0.6" rel="stylesheet" />
     
-    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.0.7" />
+    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.0.6" />
 
-    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.0.7" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.0.6" rel="stylesheet" />
 
     {{css_scripts}}
 </head>
