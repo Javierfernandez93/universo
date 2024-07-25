@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.6'   
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.6' 
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.6'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.7' 
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.7'
 
 const AdminconfigViewer = {
     components : {

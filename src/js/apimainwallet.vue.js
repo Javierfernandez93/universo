@@ -1,4 +1,4 @@
-import { ApimainwalletViewer } from './apimainwalletViewer.vue.js?v=1.0.6'
+import { ApimainwalletViewer } from './apimainwalletViewer.vue.js?v=1.0.7'
 
 Vue.createApp({
     components : { 

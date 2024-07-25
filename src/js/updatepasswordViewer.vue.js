@@ -1,5 +1,5 @@
 import { User } from './user.module.js?t=4'
-import { Translator } from '../../src/js/translator.module.js?v=1.0.6'   
+import { Translator } from '../../src/js/translator.module.js?v=1.0.7'   
 
 const UpdatepasswordViewer = {
     name: 'updatepassword-viewer',

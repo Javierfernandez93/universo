@@ -1,9 +1,9 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.6'
-import { WidgetPayments } from '../../src/js/widgetPayments.vue.js?v=1.0.6'
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.6'
-import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.6'
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.6' 
-import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.0.6'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.7'
+import { WidgetPayments } from '../../src/js/widgetPayments.vue.js?v=1.0.7'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.7'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.7'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.7' 
+import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.0.7'
 
 const AdminpaymentsViewer = {
     components: {
@@ -134,9 +134,7 @@ const AdminpaymentsViewer = {
         searchProperties: _debounce((self) => {
             self.extraQueryFilter()
 
-            console.log(self.payments)
-
-            self.payments.filter((payment) => {
+            self.payments = self.payments.filter((payment) => {
                 return (payment.seller?.toLowerCase().includes(self.query.toLowerCase()) 
                 || payment.names?.toLowerCase().includes(self.query.toLowerCase()) 
                 || payment.title?.toLowerCase().includes(self.query.toLowerCase()) 
@@ -476,7 +474,7 @@ const AdminpaymentsViewer = {
                                         <td class="align-middle text-capitalize text-center">
                                             <IconHolder :value="payment.on_manivela" icon="bi-check-square" :tooltip="payment.on_manivela ? 'Enviado a Manivela' : 'No enviado a Manivela'" />
                                         </td>
-                                        <td class="align-middle text-capitalize ">
+                                        <td @click="queryBy(payment.names)" class="align-middle text-hover-underline">
                                             <PlaceHolder :value="payment.names" placeholder="-"/>
                                         </td>
                                         <td @click="queryBy(payment.seller)" class="align-middle text-hover-underline">
