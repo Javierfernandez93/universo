@@ -314,6 +314,8 @@ const AdminpaymentsViewer = {
         clearFilter() {
             this.query = ''
             this.extraQuery = ''
+
+            this.getPaymentsProperties()
         },
         requiredApart(property) {
             this.validateIfExistBeforeSend(property).then((exist) => {
