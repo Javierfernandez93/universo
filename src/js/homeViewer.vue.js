@@ -593,6 +593,11 @@ const HomeViewer = {
                                         <img class="w-100" src="../../src/img/afilliates/4.png" alt="afiliados" title="afiliados"/>
                                     </div>
                                 </div>
+                                <div class="col-6 z-zoom-element cursor-pointer col-md-2" @click="getSponsors('conexion')">
+                                    <div class="card card-body bg-gray">
+                                        <img class="w-100" src="../../src/img/afilliates/15.png" alt="afiliados" title="afiliados"/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
