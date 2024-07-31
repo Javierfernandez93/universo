@@ -1,9 +1,9 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.9'
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.9'
-import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.9'
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.9' 
-import Card from '../../src/js/components/Card.vue.js?v=1.0.9'
-import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.0.9'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.0'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.0'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.0' 
+import Card from '../../src/js/components/Card.vue.js?v=1.1.0'
+import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.1.0'
 
 const WidgetPayments = {
     components: {

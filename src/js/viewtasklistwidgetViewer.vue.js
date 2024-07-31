@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=1.0.9'   
-import Loader from '../../src/js/components/Loader.vue.js?v=1.0.9'
+import { User } from '../../src/js/user.module.js?v=1.1.0'   
+import Loader from '../../src/js/components/Loader.vue.js?v=1.1.0'
 
 const ViewtasklistwidgetViewer = {
     components: { Loader },
@@ -50,7 +50,7 @@ const ViewtasklistwidgetViewer = {
     },
     template : `
         <Loader :busy="busy" />
-        
+
         <div class="offcanvas offcanvas-end overflow-scroll" tabindex="-1" ref="offcanvasRight" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div>
                 <div class="offcanvas-header">

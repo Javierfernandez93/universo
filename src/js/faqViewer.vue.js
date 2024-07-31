@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.0.9'   
+import { User } from '../../src/js/user.module.js?v=1.1.0'   
 
 const FaqViewer = {
     name : 'faq-viewer',
@@ -103,20 +103,6 @@ const FaqViewer = {
                                 <div class="col-12">
                                     <div class="text-secondary lead">
                                         <span v-html="faq.description"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container text-center bg-light p-3 rounded-2">
-                                <div class="row">
-                                    <div class="mb-3">Si aún tienes dudas no dudes en contactarnos en nuestros diferentes canales</div>
-                                    <div class="col-12 col-xl">
-                                        <a class="btn shadow-none" href="https://zuum.link/VG02FH"><i class="bi fs-1 bi-whatsapp text-success"></i></a>
-                                    </div>
-                                    <div class="col-12 col-xl">
-                                        <a class="btn shadow-none" href="https://t.me/+jafg4UHmyHYyNGZh"><i class="bi fs-1 text-danger bi-telegram"></i></a>
-                                    </div>
-                                    <div class="col-12 col-xl">
-                                        <button class="btn shadow-none" @click="toggleMakeTicket(faq)"><i class="bi fs-1 text-success bi-chat-left-fill"></i></button>
                                     </div>
                                 </div>
                             </div>
