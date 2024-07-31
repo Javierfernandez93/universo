@@ -1700,12 +1700,6 @@ class UserSupport extends Orm {
 
   public function getUserToEdit(int $user_login_id = null) : array
   {
-
-    if(!$this->logged)
-    {
-      return false;
-    }
-
     if(!$user_login_id)
     {
       return false;
