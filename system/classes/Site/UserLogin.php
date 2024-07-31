@@ -1687,7 +1687,7 @@ class UserLogin extends Orm {
       return false;
     }
 
-    return strtolower(str_replace(" ",".",$names))."@".Connection::proyect_name.".com";
+    return strtolower(str_replace(" ",".",$names))."@".$_ENV['PROJECT_NAME'].".com";
   }
 
   public function hasAcademy()

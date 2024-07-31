@@ -21,6 +21,7 @@ if(!isset($data['status']))
     error(JFStudio\Constants::RESPONSES['NOT_PARAM']);
 }
 
+d($data);
 $UserSupport->setAcademyAs($data['user_login_id'],$data['status']);
 
 if($data['status'] == 1)
