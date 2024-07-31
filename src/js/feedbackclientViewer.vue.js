@@ -1,6 +1,8 @@
 import { User } from '../../src/js/user.module.js?v=1.0.9'   
+import Loader from '../../src/js/components/Loader.vue.js?v=1.0.9'
 
 const FeedbackclientViewer = {
+    components: { Loader },
     props: ['hide'],
     emit: ['pull'],
     data() {
@@ -8,6 +10,7 @@ const FeedbackclientViewer = {
             User: new User,
             real_state: null,
             query: null,
+            busy: false,
             user: null,
             real_states: null
         }
@@ -29,7 +32,9 @@ const FeedbackclientViewer = {
     methods : {
         getUserDetail(user_login_id)
         {
+            this.busy = true
             this.User.getUserDetail({user_login_id:user_login_id},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     this.user = response.user
@@ -41,7 +46,9 @@ const FeedbackclientViewer = {
         },
         updateKycFields()
         {
+            this.busy = true
             this.User.updateKycFields({user_kyc:this.user.user_kyc},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     toastInfo({
@@ -52,7 +59,9 @@ const FeedbackclientViewer = {
         },
         getCatalogRealState()
         {
+            this.busy = true
             this.User.getCatalogRealState({},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     this.real_states = response.real_states
@@ -61,7 +70,9 @@ const FeedbackclientViewer = {
         },
         setFeedbackAsFromSeller(feedback,status,message)
         {
+            this.busy = true
             this.User.setFeedbackAsFromSeller({user_feedback_id:feedback.user_feedback_id,status:status},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     feedback.status = status
@@ -120,55 +131,51 @@ const FeedbackclientViewer = {
         this.refresh()
     },
     template : `
-        <div v-if="user">
-            <div class="row">
-                <div class="col-12 animation-fall-down" style="--delay:800ms">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row justify-content-center align-items-center">
-                                <div class="col-12 col-md">
-                                    <div v-if="user.user_feedback" class="text-xs text-secondary">total {{user.user_feedback.length}}</div>
-                                    <div class="h5">FeedBack de tu cliente</div>
+        <Loader :busy="busy" />
+
+        <div v-if="user" class="card card-body border border-light">
+            <div class="card-header">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-md">
+                        <div v-if="user.user_feedback" class="text-xs text-secondary">total {{user.user_feedback.length}}</div>
+                        <div class="h5">FeedBack de tu cliente</div>
+                    </div>
+                </div>
+            </div>
+        
+            <ul v-if="user.user_feedback" class="list-group list-group-flush">
+                <div v-for="feedback in user.user_feedback">
+                    <li v-if="feedback.status != -1" class="list-group-item p-3">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-xl-auto">
+                                <span class="avatar avatar-sm bg-dark">FB</span>
+                            </div>
+                            <div class="col-12 col-xl">
+                                <span v-if="feedback.status == 1" class="badge text-xxs bg-primary">Cumplido</span>
+                                <span v-else-if="feedback.status == 2" class="badge text-xxs bg-warning">Pendiente</span>
+                                <span v-else-if="feedback.status == 3" class="badge text-xxs bg-secondary">Realizado</span>
+                                <div class="h5">
+                                    {{feedback.message}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-auto">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-dark shadow-none mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            
+                                    </button>
+                                    <ul class="dropdown-menu shadow">
+                                        <li v-if="feedback.status == 2"><button class="dropdown-item" @click="setFeedbackAsFromSeller(feedback,3)">Marcar como realizado</button></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    
-                        <ul v-if="user.user_feedback" class="list-group list-group-flush">
-                            <div v-for="feedback in user.user_feedback">
-                                <li v-if="feedback.status != -1" class="list-group-item p-3">
-                                    <div class="row align-items-center">
-                                        <div class="col-12 col-xl-auto">
-                                            <span class="avatar avatar-sm bg-dark">FB</span>
-                                        </div>
-                                        <div class="col-12 col-xl">
-                                            <span v-if="feedback.status == 1" class="badge text-xxs bg-primary">Cumplido</span>
-                                            <span v-else-if="feedback.status == 2" class="badge text-xxs bg-warning">Pendiente</span>
-                                            <span v-else-if="feedback.status == 3" class="badge text-xxs bg-secondary">Realizado</span>
-                                            <div class="h5">
-                                                {{feedback.message}}
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-xl-auto">
-                                            <div class="dropdown">
-                                                <button type="button" class="btn btn-dark shadow-none mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        
-                                                </button>
-                                                <ul class="dropdown-menu shadow">
-                                                    <li v-if="feedback.status == 2"><button class="dropdown-item" @click="setFeedbackAsFromSeller(feedback,3)">Marcar como realizado</button></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </div>
-                        </ul>
-                        <div v-else class="card-body">
-                            <div class="alert alert-info text-white text-center mb-0">
-                                <strong>Importante</strong>
-                                <div>Aquí podrás visualizar todo lo referente a tu cliente, si requerimos algún documento adicional o un comentario sobre el proceso o incluso tu cliente lo haremos por éste medio</div>
-                            </div>
-                        </div>
-                    </div>
+                    </li>
+                </div>
+            </ul>
+            <div v-else class="card-body">
+                <div class="alert alert-info text-white text-center mb-0">
+                    <strong>Importante</strong>
+                    <div>Aquí podrás visualizar todo lo referente a tu cliente, si requerimos algún documento adicional o un comentario sobre el proceso o incluso tu cliente lo haremos por éste medio</div>
                 </div>
             </div>
         </div>

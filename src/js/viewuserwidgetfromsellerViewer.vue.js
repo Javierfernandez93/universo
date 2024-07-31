@@ -1,17 +1,22 @@
 import { User } from '../../src/js/user.module.js?v=1.0.9'   
+import Loader from '../../src/js/components/Loader.vue.js?v=1.0.9'
 
 const ViewuserwidgetfromsellerViewer = {
+    components: { Loader },
     props: ['type'],
     data() {
         return {
             User: new User,
-            user: null
+            user: null,
+            busy: false
         }
     },
     methods : {
         getUser(user_login_id)
         {
+            this.busy = true
             this.User.getUser({user_login_id:user_login_id},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     this.user = response.user
@@ -20,7 +25,9 @@ const ViewuserwidgetfromsellerViewer = {
         },
         deleteUserFromSeller(user_login_id)
         {
+            this.busy = true
             this.User.deleteUserFromSeller({user_login_id:user_login_id},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     toastInfo({
@@ -42,7 +49,8 @@ const ViewuserwidgetfromsellerViewer = {
         }
     },
     template : `
-        <div v-if="user" class="card card-body mb-3">
+        <Loader :busy="busy" />
+        <div v-if="user" class="card card-body mb-3 border border-light">
             <div class="row justify-content-center align-items-center">
                 <div class="col-12 col-xl-auto">
                     <div class="avatar avatar-md">

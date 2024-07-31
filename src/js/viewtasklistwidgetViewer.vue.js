@@ -1,10 +1,13 @@
 import { User } from '../../src/js/user.module.js?v=1.0.9'   
+import Loader from '../../src/js/components/Loader.vue.js?v=1.0.9'
 
 const ViewtasklistwidgetViewer = {
+    components: { Loader },
     emit : ['refresh'],
     data() {
         return {
             User: new User,
+            busy: false,
             feedback: {
                 user_login_id: null,
                 message: null
@@ -24,7 +27,9 @@ const ViewtasklistwidgetViewer = {
         },
         addUserFeedback()
         {
+            this.busy = true
             this.User.addUserFeedback({feedback:this.feedback},(response)=>{
+                this.busy = false
                 if(response.s == 1)
                 {
                     this.user = response.user
@@ -44,6 +49,8 @@ const ViewtasklistwidgetViewer = {
     {       
     },
     template : `
+        <Loader :busy="busy" />
+        
         <div class="offcanvas offcanvas-end overflow-scroll" tabindex="-1" ref="offcanvasRight" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div>
                 <div class="offcanvas-header">
