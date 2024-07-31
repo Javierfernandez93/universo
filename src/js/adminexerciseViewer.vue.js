@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.0'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.1'
 
 const AdminexerciseViewer = {
     name : 'adminexercise-viewer',

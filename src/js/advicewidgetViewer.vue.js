@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=1.1.0'   
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.0'
+import { User } from '../../src/js/user.module.js?v=1.1.1'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.1'
 
 const AdvicewidgetViewer = {
     components : {

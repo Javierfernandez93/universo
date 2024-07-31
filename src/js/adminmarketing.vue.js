@@ -1,5 +1,5 @@
 /* vue */
-import { AdminmarketingViewer } from '../../src/js/adminmarketingViewer.vue.js?v=1.1.0'
+import { AdminmarketingViewer } from '../../src/js/adminmarketingViewer.vue.js?v=1.1.1'
 
 Vue.createApp({
     components: {

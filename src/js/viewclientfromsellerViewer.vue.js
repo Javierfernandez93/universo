@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=1.1.0'   
-import Loader from '../../src/js/components/Loader.vue.js?v=1.1.0'
+import { User } from '../../src/js/user.module.js?v=1.1.1'   
+import Loader from '../../src/js/components/Loader.vue.js?v=1.1.1'
 
 const ViewclientfromsellerViewer = {
     components: { Loader },

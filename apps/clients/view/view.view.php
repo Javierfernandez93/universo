@@ -13,6 +13,4 @@
     </div>
 
     <viewtasklistwidget-viewer @refresh="refresh" ref="task"></viewtasklistwidget-viewer>
-
-    <propertypull-viewer @refresh="refresh" ref="property"></propertypull-viewer>
 </div>
