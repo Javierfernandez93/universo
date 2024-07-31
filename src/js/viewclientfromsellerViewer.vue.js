@@ -9,9 +9,7 @@ const ViewclientfromsellerViewer = {
             real_state: null,
             query: null,
             user: null,
-            real_states: null,
-            properties: null,
-            propertiesAux: null,
+            real_states: null
         }
     },
     watch : {
@@ -29,25 +27,6 @@ const ViewclientfromsellerViewer = {
         }
     },
     methods : {
-        filterData()
-        {
-            this.properties = this.propertiesAux
-            this.properties = this.propertiesAux.filter((property)=>{
-                return property.title.toLowerCase().includes(this.query.toLowerCase())
-                || property.real_state.toLowerCase().includes(this.query.toLowerCase())
-            })
-
-        },
-        getProperties()
-        {
-            this.User.getProperties({},(response)=>{
-                if(response.s == 1)
-                {
-                    this.properties = response.properties
-                    this.propertiesAux = response.properties
-                } 
-            })
-        },
         getUserDetail(user_login_id)
         {
             this.User.getUserDetail({user_login_id:user_login_id},(response)=>{
@@ -128,7 +107,6 @@ const ViewclientfromsellerViewer = {
         },
         refresh()
         {
-            this.getProperties()
             this.getCatalogRealState()
 
             if(getParam("ulid"))

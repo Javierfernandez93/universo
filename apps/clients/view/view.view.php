@@ -1,7 +1,7 @@
 <div class="container-fluid py-4" id="app">
     <viewuserwidgetfromseller-viewer type="clientes" :seller="true"></viewuserwidgetfromseller-viewer>
     
-    <propertieslist-viewer ref="client" @pull="pull" @show="show"></propertieslist-viewer>
+    <!-- <propertieslist-viewer ref="client" @pull="pull" @show="show"></propertieslist-viewer> -->
 
     <div class="row mt-3">
         <div class="col-12 col-md-6">

@@ -1,5 +1,4 @@
 import { ViewclientfromsellerViewer } from '../../src/js/viewclientfromsellerViewer.vue.js?v=1.0.8'
-import { PropertieslistViewer } from '../../src/js/propertieslistViewer.vue.js?v=1.0.8'
 import { ViewuserwidgetfromsellerViewer } from '../../src/js/viewuserwidgetfromsellerViewer.vue.js?v=1.0.8'
 import { ViewtasklistwidgetViewer } from '../../src/js/viewtasklistwidgetViewer.vue.js?v=1.0.8'
 import { FeedbackclientViewer } from '../../src/js/feedbackclientViewer.vue.js?v=1.0.8'
@@ -10,7 +9,6 @@ Vue.createApp({
         ViewclientfromsellerViewer, 
         ViewuserwidgetfromsellerViewer, 
         ViewtasklistwidgetViewer, 
-        PropertieslistViewer,
         FeedbackclientViewer,
         PropertypullViewer
     },
