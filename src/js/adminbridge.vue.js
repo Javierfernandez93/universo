@@ -1,4 +1,4 @@
-import { AdminbridgeViewer } from '../../src/js/adminbridgeViewer.vue.js?v=1.0.8'
+import { AdminbridgeViewer } from '../../src/js/adminbridgeViewer.vue.js?v=1.0.9'
 
 Vue.createApp({
     components : { 

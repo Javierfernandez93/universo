@@ -1,6 +1,6 @@
 /* vue */
-import { MentoryViewer } from '../../src/js/mentoryViewer.vue.js?v=1.0.8'
-import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=1.0.8'
+import { MentoryViewer } from '../../src/js/mentoryViewer.vue.js?v=1.0.9'
+import { FlyerViewer } from '../../src/js/flyerViewer.vue.js?v=1.0.9'
 
 Vue.createApp({
     components: {

@@ -1,4 +1,4 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.8'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.9'
 
 const AdminmarketingviewViewer = {
     name : 'adminmarketingview-viewer',

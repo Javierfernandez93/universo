@@ -1,5 +1,5 @@
-import { TestViewer } from '../../src/js/testViewer.vue.js?v=1.0.8'
-import { TestprogressViewer } from '../../src/js/testprogressViewer.vue.js?v=1.0.8'
+import { TestViewer } from '../../src/js/testViewer.vue.js?v=1.0.9'
+import { TestprogressViewer } from '../../src/js/testprogressViewer.vue.js?v=1.0.9'
 
 Vue.createApp({
     components : { 

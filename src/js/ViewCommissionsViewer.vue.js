@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=1.0.8'   
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.8'
+import { User } from '../../src/js/user.module.js?v=1.0.9'   
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.9'
 
 const ViewCommissionsViewer = {
     components : {

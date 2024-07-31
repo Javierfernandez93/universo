@@ -1,9 +1,9 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.8'
-import { WidgetPayments } from '../../src/js/widgetPayments.vue.js?v=1.0.8'
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.8'
-import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.8'
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.8' 
-import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.0.8'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.0.9'
+import { WidgetPayments } from '../../src/js/widgetPayments.vue.js?v=1.0.9'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.0.9'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.0.9'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.0.9' 
+import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.0.9'
 
 const AdminpaymentsViewer = {
     components: {

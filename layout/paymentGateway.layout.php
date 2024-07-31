@@ -25,11 +25,11 @@
 
     <link href="../../src/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../src/css/z-loader.css" />
-    <link rel="stylesheet" href="../../src/css/general.css?v=1.0.8" />
+    <link rel="stylesheet" href="../../src/css/general.css?v=1.0.9" />
     <link rel="stylesheet" href="../../src/css/nucleo-svg.css" />
     <!-- CSS Files -->
 
-    <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.8" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.9" rel="stylesheet" />
 </head>
 
 <body class="bg-dark">
@@ -69,10 +69,10 @@
     <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
     
-    <script src="../../src/js/constants.js?v=1.0.8" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.0.8" type="text/javascript"></script>
+    <script src="../../src/js/constants.js?v=1.0.9" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.0.9" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.5.1.min.js" type="text/javascript"></script>
-    <script src="../../src/js/general.js?v=1.0.8" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.0.9" type="text/javascript"></script>
     <!-- Github buttons -->
     
     <script>
@@ -88,9 +88,9 @@
 
     <!-- Github buttons -->
     <script src="../../src/js/buttons.js" type="text/javascript"></script>
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.8"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.0.9"></script>
     
-    <script src="../../src/js/vue.js?v=1.0.8" type="text/javascript"></script>
+    <script src="../../src/js/vue.js?v=1.0.9" type="text/javascript"></script>
 
     {{js_scripts}}
     {{css_scripts}}
