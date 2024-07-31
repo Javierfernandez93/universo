@@ -175,7 +175,7 @@ const FeedbackclientViewer = {
             <div v-else class="card-body">
                 <div class="alert alert-info text-white text-center mb-0">
                     <strong>Importante</strong>
-                    <div>Aquí podrás visualizar todo lo referente a tu cliente, si requerimos algún documento adicional o un comentario sobre el proceso o incluso tu cliente lo haremos por éste medio</div>
+                    <div>Aquí podrás visualizar todo lo referente a tu cliente, si requerimos algún documento adicional o un comentario sobre el proceso lo haremos por éste medio</div>
                 </div>
             </div>
         </div>
