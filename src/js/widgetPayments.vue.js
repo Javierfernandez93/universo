@@ -52,7 +52,7 @@ const WidgetPayments = {
     template: `
         <div v-if="payments.length > 0" class="row">
             <div v-for="payment in payments" class="col-12 col-md">
-                <Card myClass="card-hover cursor-pointer" :title="payment.title" @click="showPaymentsResume(payment.catalog_payment_type_id)" :value="payment.total"/>
+                <Card myClass="card-hover cursor-pointer" :title="payment.title ? payment.title : '-'" @click="showPaymentsResume(payment.catalog_payment_type_id)" :value="payment.total"/>
             </div>
         </div>
 

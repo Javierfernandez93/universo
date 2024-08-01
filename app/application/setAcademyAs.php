@@ -6,22 +6,18 @@ $data = HCStudio\Util::getParam();
 
 $UserSupport = new Site\UserSupport;
 
-if(!$UserSupport->logged)
-{
+if(!$UserSupport->logged) {
     unauthorized();
 }
 
-if(!isset($data['user_login_id']))
-{
+if(!isset($data['user_login_id'])) {
     error(JFStudio\Constants::RESPONSES['NOT_PARAM']);
 }
 
-if(!isset($data['status']))
-{
+if(!isset($data['status'])) {
     error(JFStudio\Constants::RESPONSES['NOT_PARAM']);
 }
 
-d($data);
 $UserSupport->setAcademyAs($data['user_login_id'],$data['status']);
 
 if($data['status'] == 1)

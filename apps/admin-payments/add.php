@@ -8,7 +8,7 @@ if($UserSupport->_loaded === false) {
 	HCStudio\Util::redirectTo('../../apps/admin-login/');
 }
 
-if($UserSupport->hasPermission('list_payments') === false) {
+if($UserSupport->hasPermission('add_payment') === false) {
 	HCStudio\Util::redirectTo('../../apps/admin/invalid_permission');
 }
 

@@ -358,7 +358,7 @@ const AdminpaymentsViewer = {
                             <div class="col-12 col-xl">
                                 <span v-if="payments" class="badge text-secondary p-0">Total {{payments.length}}</span>
                                 <div class="h5">
-                                    Pagos
+                                    Lista de ventas
                                 </div>
                             </div>
                             <div class="col-12 col-xl-auto">
