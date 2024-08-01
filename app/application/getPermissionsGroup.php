@@ -11,8 +11,7 @@ if(!$UserSupport->logged)
 
 $data = HCStudio\Util::getHeadersForWebService();
 
-if(!isset($data['code']))
-{
+if(!isset($data['code'])) {
     error(JFStudio\Constants::RESPONSES['NOT_PARAM']);
 }
 
