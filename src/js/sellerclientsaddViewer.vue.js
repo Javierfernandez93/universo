@@ -100,10 +100,12 @@ const SellerclientsaddViewer = {
 
                     await sleep(1000)
 
-                    console.log(this.user.user_referral.user_login_id)
-
                     $(".selectpicker").val(this.user.user_referral.referral_id)
                     $(".selectpicker").selectpicker("refresh")
+
+                    if(!response.user.user_reference) {
+                        this.user.user_reference = ClientModel.user_reference
+                    }
                 }
             })
         },
