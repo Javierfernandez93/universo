@@ -182,8 +182,8 @@ const AdminpaymentsViewer = {
                     this.busy = false
                     if (response.s == 1) {
                         this.payments = response.payments.map(payment => {
-                            payment.start_date = typeof payment.start_date == 'number' ? payment.start_date.formatDate() : payment.start_date
-                            payment.end_date = typeof payment.end_date == 'number' ? payment.end_date.formatDate() : payment.end_date
+                            payment.start_date = typeof payment.start_date == 'number' && payment.start_date != 0 ? payment.start_date.formatDate() : payment.start_date
+                            payment.end_date = typeof payment.end_date == 'number' && payment.end_date != 0 ? payment.end_date.formatDate() : payment.end_date
                             payment.on_manivela_text = payment.on_manivela == 1 ? 'on_manivela' : 'off_manivela'
 
                             return payment
@@ -495,10 +495,10 @@ const AdminpaymentsViewer = {
                                             <PlaceHolder :value="payment.last_payment_number" placeholder="-"/>
                                         </td>
                                         <td @click="queryBy(payment.start_date)" class="align-middle text-hover-underline">
-                                            {{payment.start_date}}
+                                            <PlaceHolder :value="payment.start_date != 0 ? payment.start_date : '-'" placeholder="-"/>
                                         </td>
                                         <td @click="queryBy(payment.end_date)" class="align-middle text-hover-underline">
-                                            {{payment.end_date}}
+                                            <PlaceHolder :value="payment.end_date != 0 ? payment.end_date : '-'" placeholder="-"/>
                                         </td>
                                         <td class="align-middle">
                                             <span class="badge bg-secondary break-words">{{payment.payment_type}}</span>
