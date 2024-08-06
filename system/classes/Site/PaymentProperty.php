@@ -355,4 +355,24 @@ class PaymentProperty extends Orm {
                 user_referral.user_support_id
         ");
     }
+
+ 
+    public static function duplicateById(int $payment_property_id)
+    {
+        if(!$payment_property_id) {
+            return false;
+        }
+
+        $PaymentProperty = new self;
+
+        if(!$PaymentProperty->loadWhere("payment_property_id = ?",$payment_property_id)) {
+            return false;
+        }
+
+        $PaymentProperty->property_id = 0;
+        $PaymentProperty->create_date = time();
+        $PaymentProperty->on_manivela = 0;
+
+        return (new self)->clone($PaymentProperty->attr());
+    }
 }

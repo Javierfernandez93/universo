@@ -127,7 +127,6 @@ const AdminpaymentsViewer = {
 
             if(this.extraQuery != '') {
                 this.payments = this.paymentsAux.filter((payment) => {
-                    console.log(payment.on_manivela,this.extraQuery)
                     return payment.on_manivela_text.includes(this.extraQuery)
                 })
             }
@@ -174,7 +173,7 @@ const AdminpaymentsViewer = {
                 this.totals.price += parseFloat(payment.price)
             })
         },
-        getPaymentsProperties() {
+        getPaymentsProperties(force = false) {
             return new Promise((resolve) => {
                 this.busy = true
                 this.payments = []
@@ -183,8 +182,8 @@ const AdminpaymentsViewer = {
                     this.busy = false
                     if (response.s == 1) {
                         this.payments = response.payments.map(payment => {
-                            payment.start_date = typeof payment.start_date == 'number' && payment.start_date != 0 ? payment.start_date.formatDate() : payment.start_date
-                            payment.end_date = typeof payment.end_date == 'number' && payment.end_date != 0 ? payment.end_date.formatDate() : payment.end_date
+                            payment.start_date = typeof payment.start_date == 'number' && payment.start_date != 0 ? payment.start_date.formatDate() : "0"
+                            payment.end_date = typeof payment.end_date == 'number' && payment.end_date != 0 ? payment.end_date.formatDate() : "0"
                             payment.on_manivela_text = payment.on_manivela == 1 ? 'on_manivela' : 'off_manivela'
 
                             return payment
@@ -195,7 +194,7 @@ const AdminpaymentsViewer = {
                     } 
 
                     resolve()
-                })
+                },force)
             })
         },
         getCatalogPaymentTypes() {
@@ -340,6 +339,21 @@ const AdminpaymentsViewer = {
                             })
                         }
                     })
+                }
+            })
+        },
+        duplicatePayment(payment_property_id) {
+            this.busy = true
+            this.UserSupport.duplicatePayment({payment_property_id:payment_property_id}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    toastInfo({
+                        message: `✅ Se duplicó la venta`
+                    })
+
+                    this.getPaymentsProperties(true)
+
+                    this.editPayment(response.payment_property_id)
                 }
             })
         },
@@ -520,7 +534,7 @@ const AdminpaymentsViewer = {
                                             <span class="badge bg-secondary break-words">{{payment.payment_type}}</span>
                                         </td>
                                         <td class="align-middle">
-                                            $ {{payment.price.numberFormat(2)}}
+                                            $ {{payment.price ? payment.price.numberFormat(2) : '-'}}
                                         </td>
                                         <td class="align-middle">
                                             <div class="btn-group">
@@ -532,6 +546,7 @@ const AdminpaymentsViewer = {
                                                         <button v-if="user_type_id == 1" class="dropdown-item" @click="editPayment(payment.payment_property_id)">Editar</button>
                                                         <button v-if="user_type_id == 1" class="dropdown-item" @click="setPaymentPropertyAs(payment.payment_property_id,-1)">Eliminar</button>
                                                         <button class="dropdown-item" @click="viewPayments(payment.property_id)">Ver pagos</button>
+                                                        <button v-if="user_type_id == 1" class="dropdown-item" @click="duplicatePayment(payment.payment_property_id)">Duplicar</button>
                                                         <button v-if="user_type_id == 1" class="dropdown-item" @click="requiredApart(payment)">Enviar a manivela</button>
                                                         <button v-if="user_type_id == 1" class="dropdown-item" @click="updateManivelaPayment(payment)">Actualizar información de manivela</button>
                                                         <div v-if="user_type_id == 1">

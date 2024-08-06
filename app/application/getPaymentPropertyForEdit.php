@@ -11,9 +11,12 @@ if(!$UserSupport->hasPermission('add_client'))
     error(Constants::RESPONSES['INVALID_PERMISSION']);
 }
 
-if(!$data['payment_property_id'])
-{
+if(!$data['payment_property_id']) {
     error('NOT_PAYMENT_PROPERTY_ID');
+}
+
+if(!isset($data['property_id'])) {
+    error('NOT_PROPERTY_ID');
 }
 
 $data['payment_property'] = (new Site\PaymentProperty)->findRow("payment_property_id = ?",$data['payment_property_id']);

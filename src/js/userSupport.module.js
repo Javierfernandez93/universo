@@ -570,8 +570,8 @@ class UserSupport extends HttpMemoized {
     getPropertyUserInfo(data, callback) {
         return this.call('../../app/application/getPropertyUserInfo.php', data, callback);
     }
-    getPaymentsProperties(data, callback) {
-        return this.memoizedCall('../../app/application/getPaymentsProperties.php', data, callback);
+    getPaymentsProperties(data, callback, force = false) {
+        return force ? this.call('../../app/application/getPaymentsProperties.php', data, callback) : this.memoizedCall('../../app/application/getPaymentsProperties.php', data, callback);
     }
     getPropertyPayments(data, callback) {
         return this.call('../../app/application/getPropertyPayments.php', data, callback);
@@ -748,6 +748,9 @@ class UserSupport extends HttpMemoized {
     }
     getUserTypeId(data, callback) {
         return this.memoizedCall('../../app/application/getUserTypeId.php', data, callback);
+    }
+    duplicatePayment(data, callback) {
+        return this.call('../../app/application/duplicatePayment.php', data, callback);
     }
 }
 

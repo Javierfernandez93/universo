@@ -537,4 +537,11 @@ abstract class Orm
 
 		return false;
 	}
+
+	public function clone(array $data = [])
+	{
+		$this->loadArray($data);
+
+		return $this->save() ? $this->getId() : false;
+	}
 }
