@@ -127,7 +127,8 @@ class PaymentProperty extends Orm {
                 catalog_payment_type.title as payment_type,
                 user_data_seller.names as seller_names,
                 affiliation.name as affiliation_name,
-                user_referral_seller.user_support_id 
+                user_referral_seller.user_support_id ,
+                real_state_developer.name as real_state_developer
             FROM
                 {$this->tblName} 
             LEFT JOIN 
@@ -174,6 +175,10 @@ class PaymentProperty extends Orm {
                 affiliation 
             ON 
                 affiliation.affiliation_id = user_support.affiliation_id
+            LEFT JOIN 
+                real_state_developer
+            ON 
+                real_state_developer.real_state_developer_id = real_state.real_state_developer_id
             WHERE 
                 {$this->tblName}.status = '1'
                 {$filter}

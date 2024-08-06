@@ -17,6 +17,8 @@ const AdminpaymentsViewer = {
         return {
             UserSupport: new UserSupport,
             payments: [],
+            real_state_developer: null,
+            real_state_developers: [],
             user_type_id: null,
             paymentsAux: [],
             toggleFilter: false,
@@ -92,6 +94,13 @@ const AdminpaymentsViewer = {
         }
     },
     watch: {
+        real_state_developer: {
+            async handler() {
+                this.query = this.real_state_developer
+
+                await this.searchProperties(this)
+            },
+        },
         catalog_payment_type_id: {
             async handler() {
                 this.query = ''
@@ -142,6 +151,7 @@ const AdminpaymentsViewer = {
                 || payment.support_name?.toLowerCase().includes(self.query.toLowerCase())
                 || payment.affiliation_name?.toLowerCase().includes(self.query.toLowerCase())
                 || payment.start_date?.toLowerCase().includes(self.query.toLowerCase())
+                || payment.real_state_developer?.toLowerCase().includes(self.query.toLowerCase())
                 || payment.end_date?.toLowerCase().includes(self.query.toLowerCase())
                 || payment.on_manivela_text?.toLowerCase().includes(self.query.toLowerCase()))
             })
@@ -371,9 +381,20 @@ const AdminpaymentsViewer = {
                 })
             })
         },
+        getRealStateDevelopers() {
+            this.busy = true
+            this.UserSupport.getRealStateDevelopers({ }, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.real_state_developers = response.real_state_developers
+                }
+            })
+        },
     },
     async mounted() {
         await this.getUserTypeId()
+        
+        this.getRealStateDevelopers() 
         this.getCatalogPaymentTypes()
     },
     template: `
@@ -402,6 +423,13 @@ const AdminpaymentsViewer = {
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <input :disabled="busy" v-model="query" @input="searchProperties(this)" :autofocus="true" type="search" class="form-control" placeholder="Buscar..." />
+                            </div>
+                            <div v-if="real_state_developers.length > 0" class="col-12 col-xl-auto">
+                                <select class="form-select" v-model="real_state_developer" id="" aria-label="">
+                                    <option v-for="real_state_developer in real_state_developers" v-bind:value="real_state_developer.name">
+                                        {{ real_state_developer.name }}
+                                    </option>
+                                </select>
                             </div>
                             <div class="col-12 col-xl-auto">
                                 <button @click="getPaymentsProperties" class="btn btn-dark btn-sm mb-0 shadow-none px-3">
@@ -519,7 +547,12 @@ const AdminpaymentsViewer = {
                                             <PlaceHolder :value="payment.affiliation_name" placeholder="-"/>
                                         </td>
                                         <td class="align-middle">
-                                            <PlaceHolder :value="payment.title" placeholder="-"/>
+                                            <span class="badge bg-primary">
+                                                {{payment.real_state_developer}}
+                                            </span>
+                                            <div>
+                                                <PlaceHolder :value="payment.title" placeholder="-"/>
+                                            </div>
                                         </td>
                                         <td class="align-middle d-none">
                                             <PlaceHolder :value="payment.last_payment_number" placeholder="-"/>
