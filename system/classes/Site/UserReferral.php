@@ -2,7 +2,6 @@
 
 namespace Site;
 
-use BadFunctionCallException;
 use HCStudio\Orm;
 use Constants;
 

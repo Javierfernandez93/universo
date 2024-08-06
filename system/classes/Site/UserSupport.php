@@ -826,7 +826,7 @@ class UserSupport extends Orm {
 
     return ucfirst((new CatalogSupportType)->findField('catalog_support_type_id = ? AND status = 1',[$this->catalog_support_type_id],"name")) ?? 'admin';
   }
-
+  
   public function getImageForProfile() {
     return isset($this->image) === true ? $this->image : '../../src/img/no-image.png';
   }

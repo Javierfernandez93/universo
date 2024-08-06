@@ -17,6 +17,7 @@ const AdminpaymentsViewer = {
         return {
             UserSupport: new UserSupport,
             payments: [],
+            user_type_id: null,
             paymentsAux: [],
             toggleFilter: false,
             busy: false,
@@ -342,8 +343,23 @@ const AdminpaymentsViewer = {
                 }
             })
         },
+        getUserTypeId() {
+            return new Promise((resolve) => {
+                this.busy = true
+                this.UserSupport.getUserTypeId({},(response)=>{
+                    this.busy = false
+                    if(response.s == 1)
+                    {
+                        this.user_type_id = response.user_type_id
+                    }
+
+                    resolve()
+                })
+            })
+        },
     },
-    mounted() {
+    async mounted() {
+        await this.getUserTypeId()
         this.getCatalogPaymentTypes()
     },
     template: `
@@ -513,13 +529,15 @@ const AdminpaymentsViewer = {
                                                 </button>
                                                 <ul class="dropdown-menu shadow">
                                                     <li>
-                                                        <button class="dropdown-item" @click="editPayment(payment.payment_property_id)">Editar</button>
-                                                        <button class="dropdown-item" @click="setPaymentPropertyAs(payment.payment_property_id,-1)">Eliminar</button>
+                                                        <button v-if="user_type_id == 1" class="dropdown-item" @click="editPayment(payment.payment_property_id)">Editar</button>
+                                                        <button v-if="user_type_id == 1" class="dropdown-item" @click="setPaymentPropertyAs(payment.payment_property_id,-1)">Eliminar</button>
                                                         <button class="dropdown-item" @click="viewPayments(payment.property_id)">Ver pagos</button>
-                                                        <button class="dropdown-item" @click="requiredApart(payment)">Enviar a manivela</button>
-                                                        <button class="dropdown-item" @click="updateManivelaPayment(payment)">Actualizar información de manivela</button>
-                                                        <div v-for="catalogPaymentType in catalogPaymentTypes">
-                                                            <button v-if="catalogPaymentType.catalog_payment_type_id != payment.catalog_payment_type_id" class="dropdown-item" @click="setPaymentPropertyTypeAs(payment.payment_property_id,catalogPaymentType.catalog_payment_type_id,catalogPaymentType.title)">{{catalogPaymentType.title}}</button>
+                                                        <button v-if="user_type_id == 1" class="dropdown-item" @click="requiredApart(payment)">Enviar a manivela</button>
+                                                        <button v-if="user_type_id == 1" class="dropdown-item" @click="updateManivelaPayment(payment)">Actualizar información de manivela</button>
+                                                        <div v-if="user_type_id == 1">
+                                                            <div v-for="catalogPaymentType in catalogPaymentTypes">
+                                                                <button v-if="catalogPaymentType.catalog_payment_type_id != payment.catalog_payment_type_id" class="dropdown-item" @click="setPaymentPropertyTypeAs(payment.payment_property_id,catalogPaymentType.catalog_payment_type_id,catalogPaymentType.title)">{{catalogPaymentType.title}}</button>
+                                                            </div>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -529,6 +547,7 @@ const AdminpaymentsViewer = {
                                 </tbody>
                                 <tfoot>
                                     <tr class="text-center text-sm fw-bold text-capitalize">
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

@@ -743,6 +743,12 @@ class UserSupport extends HttpMemoized {
     getPaymentResumeExtend(data, callback) {
         return this.memoizedCall('../../app/application/getPaymentResumeExtend.php', data, callback);
     }
+    getUserType(data, callback) {
+        return this.memoizedCall('../../app/application/getUserType.php', data, callback);
+    }
+    getUserTypeId(data, callback) {
+        return this.memoizedCall('../../app/application/getUserTypeId.php', data, callback);
+    }
 }
 
 export { UserSupport }
