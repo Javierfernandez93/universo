@@ -1,7 +1,7 @@
-import { ViewclientfromsellerViewer } from '../../src/js/viewclientfromsellerViewer.vue.js?v=1.1.2'
-import { ViewuserwidgetfromsellerViewer } from '../../src/js/viewuserwidgetfromsellerViewer.vue.js?v=1.1.2'
-import { ViewtasklistwidgetViewer } from '../../src/js/viewtasklistwidgetViewer.vue.js?v=1.1.2'
-import { FeedbackclientViewer } from '../../src/js/feedbackclientViewer.vue.js?v=1.1.2'
+import { ViewclientfromsellerViewer } from '../../src/js/viewclientfromsellerViewer.vue.js?v=1.1.3'
+import { ViewuserwidgetfromsellerViewer } from '../../src/js/viewuserwidgetfromsellerViewer.vue.js?v=1.1.3'
+import { ViewtasklistwidgetViewer } from '../../src/js/viewtasklistwidgetViewer.vue.js?v=1.1.3'
+import { FeedbackclientViewer } from '../../src/js/feedbackclientViewer.vue.js?v=1.1.3'
 
 Vue.createApp({
     components : { 

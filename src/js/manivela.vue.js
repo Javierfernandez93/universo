@@ -1,4 +1,4 @@
-import { ManivelaViewer } from '../../src/js/manivelaViewer.vue.js?v=1.1.2'
+import { ManivelaViewer } from '../../src/js/manivelaViewer.vue.js?v=1.1.3'
 
 Vue.createApp({
     components : { 

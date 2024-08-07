@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=1.1.2'   
-import Loader from '../../src/js/components/Loader.vue.js?v=1.1.2'
+import { User } from '../../src/js/user.module.js?v=1.1.3'   
+import Loader from '../../src/js/components/Loader.vue.js?v=1.1.3'
 
 const FeedbackclientViewer = {
     components: { Loader },

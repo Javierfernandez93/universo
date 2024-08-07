@@ -1,4 +1,4 @@
-import { LessonLeaderViewer } from '../../src/js/LessonLeaderViewer.vue.js?v=1.1.2'
+import { LessonLeaderViewer } from '../../src/js/LessonLeaderViewer.vue.js?v=1.1.3'
 
 Vue.createApp({
     components: {

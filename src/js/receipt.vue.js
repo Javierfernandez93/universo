@@ -1,4 +1,4 @@
-import { ReceiptViewer } from './ReceiptViewer.vue.js?v=1.1.2'
+import { ReceiptViewer } from './ReceiptViewer.vue.js?v=1.1.3'
 
 Vue.createApp({
     components : { 

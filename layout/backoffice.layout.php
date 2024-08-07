@@ -31,11 +31,11 @@
     <link rel="stylesheet" href="../../src/css/nucleo-svg.css" />
     <!-- CSS Files -->
     
-    <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.1.2" rel="stylesheet" />
-    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.1.2" />
-    <link rel="stylesheet" href="../../src/css/backoffice.css?v=1.1.2" />
-    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.1.2" rel="stylesheet" />
-    <link id="pagestyle" href="../../src/css/backoffice.css?v=1.1.2" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.1.3" rel="stylesheet" />
+    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.1.3" />
+    <link rel="stylesheet" href="../../src/css/backoffice.css?v=1.1.3" />
+    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.1.3" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/backoffice.css?v=1.1.3" rel="stylesheet" />
 
     {{css_scripts}}
 </head>
@@ -231,15 +231,15 @@
     <script src="../../src/js/plugins/smooth-scrollbar.min.js" type="text/javascript"></script>
     <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
     <script src="../../src/js/42d5adcbca.min.js" type="text/javascript"></script>
-    <script src="../../src/js/general.js?v=1.1.2" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.1.2" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.1.2" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.1.3" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.1.3" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.1.3" type="text/javascript"></script>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
 
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.min.js"></script>
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.2.6"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.3.6"></script>
     <script src="../../src/js/vue.js"></script>
 
     {{js_scripts}}

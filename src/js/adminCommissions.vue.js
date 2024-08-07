@@ -1,4 +1,4 @@
-import { AdminCommissionsViewer } from '../../src/js/AdminCommissionsViewer.vue.js?v=1.1.2'
+import { AdminCommissionsViewer } from '../../src/js/AdminCommissionsViewer.vue.js?v=1.1.3'
 
 Vue.createApp({
     components: {

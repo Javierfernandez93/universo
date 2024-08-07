@@ -1,8 +1,8 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.2'   
-import OffCanvasViewer from './offcanvasViewer.vue.js?v=1.1.2'
-import feedBackModel from './models/feedback.module.js?v=1.1.2'
-import LoaderViewer from './loaderViewer.vue.js?v=1.1.2'
-import { PropertiesAdminListViewer } from '../../src/js/propertiesAdminListViewer.vue.js?v=1.1.2'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.3'   
+import OffCanvasViewer from './offcanvasViewer.vue.js?v=1.1.3'
+import feedBackModel from './models/feedback.module.js?v=1.1.3'
+import LoaderViewer from './loaderViewer.vue.js?v=1.1.3'
+import { PropertiesAdminListViewer } from '../../src/js/propertiesAdminListViewer.vue.js?v=1.1.3'
 
 const ClientViewer = {
     components : {
@@ -154,10 +154,10 @@ const ClientViewer = {
 
         <div v-if="user">
             <div class="row mb-3">
-                <div class="col-12 col-xl-8 animation-fall-down" style="--delay:500ms">
+                <div class="col-12 d-none col-xl-8 animation-fall-down" style="--delay:500ms">
                     <PropertiesAdminListViewer/>
                 </div>
-                <div class="col-12 col-xl-4 animation-fall-down" style="--delay:600ms">
+                <div class="col-12 col-xl animation-fall-down" style="--delay:600ms">
                     <div class="card">
                         <div class="card-header pb-0">
                             <div class="h6">

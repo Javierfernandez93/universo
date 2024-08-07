@@ -1,4 +1,4 @@
-import { AdddeveloperViewer } from '../../src/js/adddeveloperViewer.vue.js?v=1.1.2'
+import { AdddeveloperViewer } from '../../src/js/adddeveloperViewer.vue.js?v=1.1.3'
 
 Vue.createApp({
     components : { 

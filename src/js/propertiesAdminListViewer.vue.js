@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.2'   
-import LoaderViewer from './loaderViewer.vue.js?v=1.1.2'
-import { PropertyAdminPullViewer } from './propertyAdminPullViewer.vue.js?v=1.1.2'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.3'   
+import LoaderViewer from './loaderViewer.vue.js?v=1.1.3'
+import { PropertyAdminPullViewer } from './propertyAdminPullViewer.vue.js?v=1.1.3'
 
 const PropertiesAdminListViewer = {
     components : {
@@ -146,8 +146,8 @@ const PropertiesAdminListViewer = {
         },
         refresh()
         {
-            this.getProperties()
-            this.getCatalogRealState()
+            // this.getProperties()
+            // this.getCatalogRealState()
 
             if(getParam("ulid"))
             {

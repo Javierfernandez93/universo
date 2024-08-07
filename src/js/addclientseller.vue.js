@@ -1,4 +1,4 @@
-import { AddclientsellerViewer } from '../../src/js/addclientsellerViewer.vue.js?v=1.1.2'
+import { AddclientsellerViewer } from '../../src/js/addclientsellerViewer.vue.js?v=1.1.3'
 
 Vue.createApp({
     components: {

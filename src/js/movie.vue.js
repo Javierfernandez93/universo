@@ -1,5 +1,5 @@
 /* vue */
-import { MovieViewer } from '../../src/js/movieViewer.vue.js?v=1.1.2'
+import { MovieViewer } from '../../src/js/movieViewer.vue.js?v=1.1.3'
 
 Vue.createApp({
     components: {

@@ -1,4 +1,4 @@
-import { AdminblogViewer } from '../../src/js/adminblogViewer.vue.js?v=1.1.2'
+import { AdminblogViewer } from '../../src/js/adminblogViewer.vue.js?v=1.1.3'
 
 Vue.createApp({
     components : { 
