@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.3'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.3' 
-import LeadModel from '../../src/js/models/lead.module.js?v=1.1.3'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.4'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.4' 
+import LeadModel from '../../src/js/models/lead.module.js?v=1.1.4'
 
 const AddleadViewer = {
     components : {

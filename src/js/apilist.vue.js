@@ -1,4 +1,4 @@
-import { ApilistViewer } from './apilistViewer.vue.js?v=1.1.3'
+import { ApilistViewer } from './apilistViewer.vue.js?v=1.1.4'
 
 Vue.createApp({
     components : { 

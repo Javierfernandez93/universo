@@ -95,13 +95,13 @@
 
     <script src="../../src/js/42d5adcbca.min.js" type="text/javascript"></script>
 
-    <script src="../../src/js/alertCtrl.min.js?v=1.1.3" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.min.js?v=1.1.4" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.5.1.min.js" type="text/javascript"></script>
-    <script src="../../src/js/general.js?v=1.1.3" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.1.4" type="text/javascript"></script>
 
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.min.js"></script>
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.3"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.4"></script>
 
     <script src="../../src/js/core/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="../../src/js/vue.js"></script>

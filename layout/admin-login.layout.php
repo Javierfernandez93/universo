@@ -26,7 +26,7 @@
         <link href="../../src/css/nucleo-svg.css" rel="stylesheet" />
         <link href="../../src/css/animate.css" rel="stylesheet" />
         
-        <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.1.3" rel="stylesheet" />
+        <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.1.4" rel="stylesheet" />
         <link href="../../src/css/general.css?v=1-3-1" rel="stylesheet" type="text/css">
         {{css_scripts}}
     </head>
@@ -38,7 +38,7 @@
         <script src="../../src/js/general.js" type="text/javascript"></script>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-        <script src="../../src/js/vue.js?v=1.1.3" type="text/javascript"></script>
+        <script src="../../src/js/vue.js?v=1.1.4" type="text/javascript"></script>
 
         {{js_scripts}}
 

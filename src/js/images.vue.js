@@ -1,4 +1,4 @@
-import { ImagesViewer } from '../../src/js/imagesViewer.vue.js?v=1.1.3'   
+import { ImagesViewer } from '../../src/js/imagesViewer.vue.js?v=1.1.4'   
 
 Vue.createApp({
     components : { 

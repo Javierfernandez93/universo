@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=1.1.3'   
-import Loader from '../../src/js/components/Loader.vue.js?v=1.1.3'
+import { User } from '../../src/js/user.module.js?v=1.1.4'   
+import Loader from '../../src/js/components/Loader.vue.js?v=1.1.4'
 
 const ViewtasklistwidgetViewer = {
     components: { Loader },

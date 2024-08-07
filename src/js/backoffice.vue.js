@@ -1,7 +1,7 @@
-import { Translator } from '../../src/js/translator.module.js?v=1.1.3'   
-import { SellerstatswidgetViewer } from '../../src/js/sellerstatswidgetViewer.vue.js?v=1.1.3'   
-import { AdvicewidgetViewer } from '../../src/js/advicewidgetViewer.vue.js?v=1.1.3'   
-import { SellerstatschartwidgetViewer } from '../../src/js/sellerstatschartwidgetViewer.vue.js?v=1.1.3'   
+import { Translator } from '../../src/js/translator.module.js?v=1.1.4'   
+import { SellerstatswidgetViewer } from '../../src/js/sellerstatswidgetViewer.vue.js?v=1.1.4'   
+import { AdvicewidgetViewer } from '../../src/js/advicewidgetViewer.vue.js?v=1.1.4'   
+import { SellerstatschartwidgetViewer } from '../../src/js/sellerstatschartwidgetViewer.vue.js?v=1.1.4'   
 
 Vue.createApp({
     components : { 
