@@ -20,6 +20,7 @@ const ClientlistViewer = {
             busy: false,
             query: null,
             user_login_id: null,
+            user_type_id: null,
             columns: { // 0 DESC , 1 ASC 
                 company_id: {
                     name: 'company_id',
@@ -160,8 +161,24 @@ const ClientlistViewer = {
                 }
             })
         },
+        getUserTypeId() {
+            return new Promise((resolve) => {
+                this.busy = true
+                this.UserSupport.getUserTypeId({},(response)=>{
+                    this.busy = false
+                    if(response.s == 1)
+                    {
+                        this.user_type_id = response.user_type_id
+                    }
+
+                    resolve()
+                })
+            })
+        },
     },
     async mounted() {
+        await this.getUserTypeId()
+
         if(getParam("ulid"))
         {
             this.user_login_id = getParam("ulid")
@@ -248,8 +265,10 @@ const ClientlistViewer = {
                                             <li><button class="dropdown-item" @click="goToEdit(user.user_login_id)">Editar</button></li>
                                             <li><button class="dropdown-item" @click="viewDetail(user.user_login_id)">Ver expediente</button></li>
                                             
-                                            <li v-if="!user.on_manivela"><button class="dropdown-item" @click="findUser(user)">Verificar existencia manivela</button></li>
-                                            <li v-else><button class="dropdown-item" @click="requiredGeneral(user)">Actualizar info en manivela</button></li>
+                                            <div v-if="user_type_id == 1">
+                                                <li v-if="!user.on_manivela"><button class="dropdown-item" @click="findUser(user)">Verificar existencia manivela</button></li>
+                                                <li v-else><button class="dropdown-item" @click="requiredGeneral(user)">Actualizar info en manivela</button></li>
+                                            </div>
                                             
                                             <li><button class="dropdown-item" @click="deleteUser(user.user_login_id)">Eliminar</button></li>
                                         </ul>
