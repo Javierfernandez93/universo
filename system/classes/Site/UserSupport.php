@@ -1818,7 +1818,16 @@ class UserSupport extends Orm {
       return false;
     }
 
-    return (new UserAccount)->where("user_login_id","=",$user_login_id)->updateField("has_academy",$status); 
+    $UserAccount = new UserAccount;
+
+    if(!$UserAccount->loadWhere("user_login_id = ?",$user_login_id))
+    {
+      $UserAccount->user_login_id = $user_login_id;
+    }
+    
+    $UserAccount->has_academy = $status;
+
+    return $UserAccount->save();
   }
 
   public function getSystemVars()
