@@ -1905,8 +1905,7 @@ class UserSupport extends Orm {
       return false;
     }
 
-    if($this->user_login_id)
-    {
+    if($this->user_login_id) {
       return true;
     }
 
