@@ -6,19 +6,18 @@ $data = HCStudio\Util::getHeadersForWebService();
 
 $UserSupport = new Site\UserSupport;
 
-if(!$UserSupport->logged)
-{
+if(!$UserSupport->logged) {
     unauthorized(JFStudio\Constants::RESPONSES['INVALID_CREDENTIALS']);
 }
 
-if(!$data['user']['user_login']['email'])
-{
+if(!$data['user']['user_login']['email']) {
     error(JFStudio\Constants::RESPONSES['INVALID_DATA']);
 }
 
+
 $UserLogin = new Site\UserLogin(false,false);
 
-if(!$data['user']['user_login']['user_login_id'])
+if(!isset($data['user']['user_login']['user_login_id']))
 {
     if(!$UserLogin->isUniqueMail($data['user']['user_login']['email'],$data['user']['user_login']['catalog_user_type_id']))
     {

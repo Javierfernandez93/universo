@@ -572,17 +572,24 @@ class UserLogin extends Orm {
 
     $Class = new $class;
 
+
     if($id > 0)
     {
       $Class->loadWhere($Class->getTblPrimary().' = ?',$id);
     } else if($user_login_id > 0) {
-      $Class->loadWhere("user_login_id = ?",$user_login_id);
-      $Class->user_login_id = $user_login_id;
+      if(!$Class->loadWhere("user_login_id = ?",$user_login_id))
+      {
+        $Class->user_login_id = $user_login_id;
+      }
     }
 
     $data['create_date'] = isset($data['create_date']) ? $data['create_date'] : time();
-    
+
     $Class->loadArray($data);
+
+    if(!$Class->getId()) {
+      $Class->user_login_id = $user_login_id;
+    }
 
     if(!$Class->save())
     {

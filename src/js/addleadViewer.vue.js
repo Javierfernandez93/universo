@@ -1,5 +1,6 @@
 import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.3'   
 import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.3' 
+import LeadModel from '../../src/js/models/lead.module.js?v=1.1.3'
 
 const AddleadViewer = {
     components : {
@@ -11,28 +12,7 @@ const AddleadViewer = {
             filled: false,
             feedback: null,
             countries: {},
-            user: {
-                user_data: {
-                    names: null,
-                },
-                user_login : {
-                    password: null,
-                    email: '',
-                    catalog_user_type_id: 2, // lead
-                },
-                user_contact : {
-                    phone: '',
-                },
-                user_address : {
-                    country_id: 159,
-                },
-                user_account: {
-                    landing: null,
-                },
-                user_referral: {
-                    user_login_id: null
-                }
-            },
+            user: LeadModel,
         }
     },
     watch: {
