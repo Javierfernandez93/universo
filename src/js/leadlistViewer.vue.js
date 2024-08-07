@@ -15,6 +15,7 @@ const LeadlistViewer = {
             users: [],
             usersAux: [],
             busy: false,
+            catalog_tags : [],
             query: null,
             columns: { // 0 DESC , 1 ASC 
                 company_id: {
@@ -91,8 +92,29 @@ const LeadlistViewer = {
                 }
             })
         },
+        addTagToUser(user,catalog_tag) {
+            this.UserSupport.addTagToUser({user_login_id:user.user_login_id,catalog_tag_id:catalog_tag.catalog_tag_id}, (response) => {
+                if (response.s == 1) {
+
+                    toastInfo({
+                        message: 'Se ha añadido el tag al prospecto',
+                    })
+
+                    this.getLeads()
+                }
+            })
+        },
         goToEdit(company_id) {
             window.location.href = '../../apps/admin-lead/edit?ulid=' + company_id
+        },
+        getCatalogTags() {
+            this.busy = true
+            this.UserSupport.getCatalogTags({}, (response) => {
+                this.busy = false
+                if (response.s == 1) {
+                    this.catalog_tags = response.catalog_tags
+                }
+            })
         },
         getLeads() {
             this.users = []
@@ -111,6 +133,7 @@ const LeadlistViewer = {
         },
     },
     mounted() {
+        this.getCatalogTags()
         this.getLeads()
     },
     template : `
@@ -170,6 +193,15 @@ const LeadlistViewer = {
                                             </div>
                                             <h6 class="mb-0 text-sm">{{user.names}}</h6>
                                             <p class="text-xs text-secondary mb-0">{{user.email}}</p>
+
+                                            <div v-if="user.view_tags" class="mt-3 pt-3 border-top">
+                                                <div class="text-xs mb-2 text-secondary d-none">Añade un tag:</div>
+                                                <div v-if="catalog_tags">
+                                                    <span v-for="catalog_tag in catalog_tags">
+                                                        <button class="btn btn-sm btn-light px-2 mb-0 me-2 shadow-none" @click="addTagToUser(user,catalog_tag)">Añadir tag {{catalog_tag.tag}}</button>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -195,6 +227,9 @@ const LeadlistViewer = {
                                             <li><button class="dropdown-item" @click="deleteUser(user.user_login_id)">Eliminar</button></li>
                                             
                                             <li><button class="dropdown-item" @click="setAsUserKind(user.user_login_id,3)">Cambiar a cliente</button></li>
+
+                                            <li v-if="user.view_tags"><button class="dropdown-item" @click="user.view_tags = false">Ocultar tags</button></li>
+                                                <li v-else><button class="dropdown-item" @click="user.view_tags = true">Ver tags</button></li>
                                         </ul>
                                     </div>
                                 </td>

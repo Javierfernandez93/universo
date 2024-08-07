@@ -752,6 +752,12 @@ class UserSupport extends HttpMemoized {
     duplicatePayment(data, callback) {
         return this.call('../../app/application/duplicatePayment.php', data, callback);
     }
+    getCatalogTags(data, callback) {
+        return this.call('../../app/application/getCatalogTags.php', data, callback);
+    }
+    addTagToUser(data, callback) {
+        return this.call('../../app/application/addTagToUser.php', data, callback);
+    }
 }
 
 export { UserSupport }
