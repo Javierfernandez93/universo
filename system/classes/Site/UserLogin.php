@@ -467,7 +467,9 @@ class UserLogin extends Orm {
       $UserLogin->loadWhere("user_login_id = ?",$data['user_login']['user_login_id']);
     }
 
-    $UserLogin->loadWhere("email = ?",$data['user_login']['email']);
+    if(isset($data['user_login']['email']) && !empty($data['user_login']['email'])) {
+      $UserLogin->loadWhere("email = ?",$data['user_login']['email']);
+    }
 
     $UserLogin->email = strtolower(Util::sanitizeString(trim($data['user_login']['email'])));
 
