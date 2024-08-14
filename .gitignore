@@ -1,4 +1,4 @@
 .env
-bd.sql
+*.sql
 .DS_Store
 src/files/img/user/

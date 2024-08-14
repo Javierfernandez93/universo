@@ -512,7 +512,7 @@ class UserLogin extends Orm {
       $UserLogin->company_id
     );
 
-    if(isset($data['user_address']))
+    if(isset($data['user_address']) && is_array($data['user_address']))
     {
       self::saveSafeClass(
         UserAddress::class,

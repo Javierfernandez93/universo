@@ -59,7 +59,7 @@ const AddclientsellerViewer = {
                     this.$refs.button.innerText = "Guardado"
                     
                     toastInfo({
-                        message: 'asesor guardado correctamente. Redireccionando...',
+                        message: 'Asesor guardado correctamente. Redireccionando...',
                     })
 
                     setTimeout(()=>{

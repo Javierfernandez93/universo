@@ -14,7 +14,6 @@ if(!$data['user']['user_login']['email']) {
     error(JFStudio\Constants::RESPONSES['INVALID_DATA']);
 }
 
-
 $UserLogin = new Site\UserLogin(false,false);
 
 if(!isset($data['user']['user_login']['user_login_id']))
