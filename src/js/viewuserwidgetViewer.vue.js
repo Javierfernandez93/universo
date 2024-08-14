@@ -1,5 +1,5 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.5'   
-import { User } from '../../src/js/user.module.js?v=1.1.5'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.6'   
+import { User } from '../../src/js/user.module.js?v=1.1.6'   
 
 const ViewuserwidgetViewer = {
     props: ['type','seller'],

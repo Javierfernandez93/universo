@@ -1,8 +1,8 @@
-import { UserSupport } from './userSupport.module.js?v=1.1.5'   
-import LoaderViewer from './loaderViewer.vue.js?v=1.1.5'   
-import HighLigth from './components/HighLigth.vue.js?v=1.1.5'
-import PlaceHolder from './components/PlaceHolder.vue.js?v=1.1.5'
-import Badge from './components/Badge.vue.js?v=1.1.5'
+import { UserSupport } from './userSupport.module.js?v=1.1.6'   
+import LoaderViewer from './loaderViewer.vue.js?v=1.1.6'   
+import HighLigth from './components/HighLigth.vue.js?v=1.1.6'
+import PlaceHolder from './components/PlaceHolder.vue.js?v=1.1.6'
+import Badge from './components/Badge.vue.js?v=1.1.6'
 
 const LoggsViewer = {
     components : {

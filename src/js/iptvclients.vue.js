@@ -1,4 +1,4 @@
-import { IptvclientsViewer } from './iptvclientsViewer.vue.js?v=1.1.5'
+import { IptvclientsViewer } from './iptvclientsViewer.vue.js?v=1.1.6'
 
 Vue.createApp({
     components : { 

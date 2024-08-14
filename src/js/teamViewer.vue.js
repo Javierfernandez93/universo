@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.1.5'   
+import { User } from '../../src/js/user.module.js?v=1.1.6'   
 
 const TeamViewer = {
     name : 'team-viewer',

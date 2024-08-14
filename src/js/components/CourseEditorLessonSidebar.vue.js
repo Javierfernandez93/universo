@@ -1,6 +1,6 @@
 import { isLessonType } from '../utils/courseEditorUtils.js';
 import { UserSupport } from './../userSupport.module.js'
-import OffCanvasViewer from '../../../src/js/offcanvasViewer.vue.js?v=1.1.5'
+import OffCanvasViewer from '../../../src/js/offcanvasViewer.vue.js?v=1.1.6'
 
 const CourseEditorLessonSidebar = {
     components : {

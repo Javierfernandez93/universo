@@ -298,12 +298,17 @@ const AdminpaymentsViewer = {
 
                     let alert = alertCtrl.create({
                         title: "Aviso",
-                        subTitle: "¿Estás seguro de que deseas enviar el apartado a Manivela?",
+                        size: 'modal-md',
+                        subTitle: `
+                            ¿Estás seguro de que deseas enviar la unidad <strong>#${property.title}</strong> a Manivela?
+                        `,
                         buttons: [
                             {
                                 text: "Sí, enviar",
                                 class: 'btn-success',
                                 handler: (data) => {
+                                    alert.modal.dismiss();
+
                                     resolve(false)
                                 }
                             },
@@ -328,8 +333,6 @@ const AdminpaymentsViewer = {
             this.getPaymentsProperties()
         },
         requiredApart(property) {
-            console.log(property)
-
             this.validateIfExistBeforeSend(property).then((exist) => {
                 if(!exist)
                 {
@@ -349,7 +352,7 @@ const AdminpaymentsViewer = {
 
                         if (response.s == 1) {
                             toastInfo({
-                                message: `✅ Pago registrado en manivela`
+                                message: `✅ Enviado a manivela`
                             })
                         }
                     })

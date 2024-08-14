@@ -1,4 +1,4 @@
-import { LanguageViewer } from '../../src/js/languageViewer.vue.js?v=1.1.5'
+import { LanguageViewer } from '../../src/js/languageViewer.vue.js?v=1.1.6'
 
 Vue.createApp({
     components: {

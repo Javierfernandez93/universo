@@ -221,22 +221,22 @@
     <script src="../../src/js/plugins/chartjs.min.js" type="text/javascript"></script>
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
     
-    <script src="../../src/js/constants.js?v=1.1.5" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.min.js?v=1.1.5" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.1.5" type="text/javascript"></script>
+    <script src="../../src/js/constants.js?v=1.1.6" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.min.js?v=1.1.6" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.1.6" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.5.1.min.js" type="text/javascript"></script>
-    <script src="../../src/js/general.js?v=1.1.5" type="text/javascript"></script>
+    <script src="../../src/js/general.js?v=1.1.6" type="text/javascript"></script>
     <!-- Github buttons -->
 
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <!-- Github buttons -->
     <script src="../../src/js/buttons.min.js" type="text/javascript"></script>
-    <script src="../../src/js/soft-ui-dashboard.js?v=1.1.5"></script>
+    <script src="../../src/js/soft-ui-dashboard.js?v=1.1.6"></script>
     
-    <script src="../../src/js/cookie.min.js?v=1.1.5" type="text/javascript"></script>
-    <script src="../../src/js/vue.js?v=1.1.5" type="text/javascript"></script>
-    <script src="../../src/js/language.vue.js?v=1.1.5" type="module"></script>
+    <script src="../../src/js/cookie.min.js?v=1.1.6" type="text/javascript"></script>
+    <script src="../../src/js/vue.js?v=1.1.6" type="text/javascript"></script>
+    <script src="../../src/js/language.vue.js?v=1.1.6" type="module"></script>
     
     {{js_scripts}}
     {{css_scripts}}

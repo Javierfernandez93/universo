@@ -1,5 +1,5 @@
-import { FollowpagesViewer } from '../../src/js/followpagesViewer.vue.js?v=1.1.5'
-import { UserwidgetViewer } from '../../src/js/userwidgetViewer.vue.js?v=1.1.5'
+import { FollowpagesViewer } from '../../src/js/followpagesViewer.vue.js?v=1.1.6'
+import { UserwidgetViewer } from '../../src/js/userwidgetViewer.vue.js?v=1.1.6'
 
 Vue.createApp({
     components: {
