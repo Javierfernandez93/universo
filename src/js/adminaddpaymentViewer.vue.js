@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.4'   
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.4'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.4'   
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.5'   
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.5'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.5'   
 
 const AdminaddpaymentViewer = {
     components : {

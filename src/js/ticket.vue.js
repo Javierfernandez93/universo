@@ -1,6 +1,6 @@
-import { TicketViewer } from '../../src/js/ticketViewer.vue.js?v=1.1.4'
-import { AddticketViewer } from '../../src/js/addticketViewer.vue.js?v=1.1.4'
-import { FaqViewer } from '../../src/js/faqViewer.vue.js?v=1.1.4'
+import { TicketViewer } from '../../src/js/ticketViewer.vue.js?v=1.1.5'
+import { AddticketViewer } from '../../src/js/addticketViewer.vue.js?v=1.1.5'
+import { FaqViewer } from '../../src/js/faqViewer.vue.js?v=1.1.5'
 
 Vue.createApp({
     components: {

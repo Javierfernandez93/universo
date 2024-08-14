@@ -1,9 +1,9 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.4'
-import { WidgetPayments } from '../../src/js/widgetPayments.vue.js?v=1.1.4'
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.4'
-import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.4'
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.4' 
-import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.1.4'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.5'
+import { WidgetPayments } from '../../src/js/widgetPayments.vue.js?v=1.1.5'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.5'
+import PlaceHolder from '../../src/js/components/PlaceHolder.vue.js?v=1.1.5'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.5' 
+import IconHolder from '../../src/js/components/IconHolder.vue.js?v=1.1.5'
 
 const AdminpaymentsViewer = {
     components: {
@@ -328,6 +328,8 @@ const AdminpaymentsViewer = {
             this.getPaymentsProperties()
         },
         requiredApart(property) {
+            console.log(property)
+
             this.validateIfExistBeforeSend(property).then((exist) => {
                 if(!exist)
                 {
@@ -337,12 +339,14 @@ const AdminpaymentsViewer = {
                         user_login_id: property.user_login_id,
                         property : {
                             property_id: property.property_id,
+                            property_title: property.title,
                             month_finance: property.month_finance,
                             affiliation_name: property.affiliation_name,
                             real_state: property.real_state
                         }
                     }, (response) => {
                         this.busy = false
+
                         if (response.s == 1) {
                             toastInfo({
                                 message: `✅ Pago registrado en manivela`

@@ -1,7 +1,7 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.4'
-import Status from '../../src/js/components/Status.vue.js?v=1.1.4'
-import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.4'
-import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.4'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.5'
+import Status from '../../src/js/components/Status.vue.js?v=1.1.5'
+import LoaderViewer from '../../src/js/loaderViewer.vue.js?v=1.1.5'
+import HighLigth from '../../src/js/components/HighLigth.vue.js?v=1.1.5'
 
 const AdminrealstateViewer = {
     components : {

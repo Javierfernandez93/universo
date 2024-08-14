@@ -1,4 +1,4 @@
-import { AdmineditsponsorViewer } from '../../src/js/admineditsponsorViewer.vue.js?v=1.1.4'
+import { AdmineditsponsorViewer } from '../../src/js/admineditsponsorViewer.vue.js?v=1.1.5'
 
 Vue.createApp({
     components : {

@@ -1,6 +1,6 @@
 /* vue */
-import { EditvcardViewer } from '../../src/js/editvcardViewer.vue.js?v=1.1.4'
-import { StorageViewer } from '../../src/js/storageViewer.vue.js?v=1.1.4'
+import { EditvcardViewer } from '../../src/js/editvcardViewer.vue.js?v=1.1.5'
+import { StorageViewer } from '../../src/js/storageViewer.vue.js?v=1.1.5'
 
 Vue.createApp({
     components: {

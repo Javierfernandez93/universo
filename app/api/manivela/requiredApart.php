@@ -2,35 +2,30 @@
 
 require_once TO_ROOT. "system/core.php";
 
-$data = HCStudio\Util::getParam();
-
 $UserSupport = new Site\UserSupport;
 
-if(!$UserSupport->logged)
-{
+if(!$UserSupport->logged) {
     error(Constants::RESPONSES['INVALID_PERMISSION']);
 }
 
-if(!isset($data['user_login_id']))
-{
+$data = HCStudio\Util::getParam();
+
+if(!isset($data['user_login_id'])) {
     error('USER_LOGIN_ID_NOT_FOUND');
 }
 
-if(!isset($data['property']))
-{
+if(!isset($data['property'])) {
     error('PROPERTY_ID_NOT_FOUND');
 }
 
 $user = $UserSupport->getUserToEdit($data['user_login_id']);
 
-if(!$user)
-{
+if(!$user) {
     error('USER_NOT_FOUND');
 }
 
 $event = [
     'event' => [
-
         'userId' => -6,
         'originalTriggerUuid' => '',
         'boardId' => 2906482119,
@@ -54,7 +49,7 @@ $event = [
                 'phone' => $user['user_contact']['phone']
             ],
             'n_meros3' => [
-                'value' => '1220',
+                'value' => $data['property']['property_title'],
                 'unit' => ''
             ],
             'estado_114' => [

@@ -1,8 +1,8 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.4'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.5'
 
 /* vue */
 import { StatsViewer } from '../../src/js/statsViewer.vue.js'
-import { ProfitViewer } from '../../src/js/profitViewer.vue.js?v=1.1.4'
+import { ProfitViewer } from '../../src/js/profitViewer.vue.js?v=1.1.5'
 
 Vue.createApp({
     components : {

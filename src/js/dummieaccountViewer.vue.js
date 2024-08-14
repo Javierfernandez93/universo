@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=1.1.4'   
-import { Translator } from '../../src/js/translator.module.js?v=1.1.4'   
+import { User } from '../../src/js/user.module.js?v=1.1.5'   
+import { Translator } from '../../src/js/translator.module.js?v=1.1.5'   
 
 const DummieaccountViewer = {
     name : 'dummieaccount-viewer',

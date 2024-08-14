@@ -20,11 +20,11 @@
     <link rel="stylesheet" href="../../src/css/nucleo-svg.css" />
     <!-- CSS Files -->
     
-    <link id="pagestyle" href="../../src/css/soft-ui-dashboard-admin.css?v=1.1.4" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/soft-ui-dashboard-admin.css?v=1.1.5" rel="stylesheet" />
     
-    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.1.4" />
+    <link rel="stylesheet" href="../../src/css/admin-general.css?v=1.1.5" />
 
-    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.1.4" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/admin.min.css?v=1.1.5" rel="stylesheet" />
     {{css_scripts}}
 </head>
 
@@ -251,8 +251,8 @@
     <script src="../../src/js/42d5adcbca.js" type="text/javascript"></script>
     <script src="../../src/js/jquery-3.1.1.js" type="text/javascript"></script>
     <script src="../../src/js/general.js?t=3" type="text/javascript"></script>
-    <script src="../../src/js/toastCtrl.js?v=1.1.4" type="text/javascript"></script>
-    <script src="../../src/js/alertCtrl.js?v=1.1.4" type="text/javascript"></script>
+    <script src="../../src/js/toastCtrl.js?v=1.1.5" type="text/javascript"></script>
+    <script src="../../src/js/alertCtrl.js?v=1.1.5" type="text/javascript"></script>
 
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
@@ -266,7 +266,7 @@
     <!-- Github buttons -->
     <script async defer src="../../src/js/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.4.6"></script>
+    <script src="../../src/js/soft-ui-dashboard.min.js?v=1.1.5.6"></script>
 
     <script src="../../src/js/vue.js"></script>
 
