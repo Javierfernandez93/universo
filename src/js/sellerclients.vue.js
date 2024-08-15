@@ -1,5 +1,5 @@
-import { SellerclientsViewer } from '../../src/js/sellerclientsViewer.vue.js?v=1.1.6'
-import { SellerclientsaddViewer } from '../../src/js/sellerclientsaddViewer.vue.js?v=1.1.6'
+import { SellerclientsViewer } from '../../src/js/sellerclientsViewer.vue.js?v=1.1.7'
+import { SellerclientsaddViewer } from '../../src/js/sellerclientsaddViewer.vue.js?v=1.1.7'
 
 Vue.createApp({
     components : { 

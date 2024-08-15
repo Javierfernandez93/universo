@@ -1,4 +1,4 @@
-import { BoxLoader } from "../../src/js/boxloader.module.js?v=1.1.6";
+import { BoxLoader } from "../../src/js/boxloader.module.js?v=1.1.7";
 
 class Http {
   async call(e, a, t, o, s, n, r) {

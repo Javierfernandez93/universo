@@ -1,4 +1,4 @@
-import { AddleadViewer } from '../../src/js/addleadViewer.vue.js?v=1.1.6'
+import { AddleadViewer } from '../../src/js/addleadViewer.vue.js?v=1.1.7'
 
 Vue.createApp({
     components: {

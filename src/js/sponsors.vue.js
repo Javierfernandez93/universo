@@ -1,4 +1,4 @@
-import { SponsorsViewer } from '../../src/js/sponsorsViewer.vue.js?v=1.1.6'
+import { SponsorsViewer } from '../../src/js/sponsorsViewer.vue.js?v=1.1.7'
 
 Vue.createApp({
     components : { 

@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.1.6'   
+import { User } from '../../src/js/user.module.js?v=1.1.7'   
 
 const NoticewidgetViewer = {
     name : 'noticewidget-viewer',

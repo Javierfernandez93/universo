@@ -1,6 +1,6 @@
-import { Translator } from '../../src/js/translator.module.js?v=1.1.6'   
-import { Guest } from '../../src/js/guest.module.js?v=1.1.6'   
-import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.1.6'   
+import { Translator } from '../../src/js/translator.module.js?v=1.1.7'   
+import { Guest } from '../../src/js/guest.module.js?v=1.1.7'   
+import ModalViewer from '../../src/js/modalViewer.vue.js?v=1.1.7'   
 
 const HomeViewer = {
     components : {

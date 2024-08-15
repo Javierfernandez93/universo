@@ -42,10 +42,10 @@ $event = [
         'isTopGroup' => 1,
         'columnValues' => [
             'texto' => [
-                'value' => $data['real_state']['title'] ?? 'Zukum 2' // Nombre del proyecto,
+                'value' => $data['property']['real_state'] // Nombre del proyecto,
             ],
             'n_meros' => [
-                'value' => 404, // ID de la propiedad
+                'value' => $data['property']['property_title'], // ID de la propiedad
                 'unit' => ''
             ],
             'texto06' => [
@@ -200,24 +200,24 @@ $event = [
                 'changed_at' => '2024-03-27T15:21:35.110Z'
             ],
             'texto1' => [
-                'value' => $user['user_reference'] ? $user['user_reference'][0]['names'] . ' ' . $user['user_reference'][0]['last_name'] . ' ' . $user['user_reference'][0]['sur_name'] : "",// Nombre completo
+                'value' => isset($user['user_reference'][0]) ? $user['user_reference'][0]['names'] . ' ' . $user['user_reference'][0]['last_name'] . ' ' . $user['user_reference'][0]['sur_name'] : "",// Nombre completo
             ],
             'tel_fono0' => [
-                'phone' =>  $user['user_reference'] ? $user['user_reference'][0]['phone'] : "", // Teléfono
+                'phone' =>  $user['user_reference'][0] ? $user['user_reference'][0]['phone'] : "", // Teléfono
             ],
             'correo_electr_nico_1' => [
-                'email' => $user['user_reference'] ? $user['user_reference'][0]['email'] : "", // Email
-                'text' => $user['user_reference'] ? $user['user_reference'][0]['email'] : ""   // Texto
+                'email' => isset($user['user_reference'][0]) ? $user['user_reference'][0]['email'] : "", // Email
+                'text' => isset($user['user_reference'][0]) ? $user['user_reference'][0]['email'] : ""   // Texto
             ],
             'texto31' => [
-                'value' =>  $user['user_reference'] ? $user['user_reference'][0]['names'] . ' ' . $user['user_reference'][0]['last_name'] . ' ' . $user['user_reference'][0]['sur_name'] : "", // Nombre completo
+                'value' => isset($user['user_reference'][0]) ? $user['user_reference'][0]['names'] . ' ' . $user['user_reference'][0]['last_name'] . ' ' . $user['user_reference'][0]['sur_name'] : "", // Nombre completo
             ],
             'tel_fono8' => [
-                'phone' =>  $user['user_reference'] ? $user['user_reference'][1]['phone'] : "", // Teléfono 
+                'phone' => isset($user['user_reference'][1]) ? $user['user_reference'][1]['phone'] : "", // Teléfono 
             ],
             'correo_electr_nico_16' => [
-                'email' =>  $user['user_reference'] ? $user['user_reference'][1]['email'] : "", // Email
-                'text' =>  $user['user_reference'] ? $user['user_reference'][1]['email'] : "" // Texto
+                'email' => isset($user['user_reference'][1]) ? $user['user_reference'][1]['email'] : "", // Email
+                'text' => isset($user['user_reference'][1]) ? $user['user_reference'][1]['email'] : "" // Texto
             ]
         ],
         'triggerUuid' => '565b84e3ae3e3390c1544d4aeed35539'

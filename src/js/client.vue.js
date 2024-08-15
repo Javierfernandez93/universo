@@ -1,7 +1,7 @@
-import { ClientViewer } from '../../src/js/clientViewer.vue.js?v=1.1.6'
-import { UserwidgetViewer } from '../../src/js/userwidgetViewer.vue.js?v=1.1.6'
-import { TasklistwidgetViewer } from '../../src/js/tasklistwidgetViewer.vue.js?v=1.1.6'
-import { PropertyAdminPullViewer } from '../../src/js/propertyAdminPullViewer.vue.js?v=1.1.6'
+import { ClientViewer } from '../../src/js/clientViewer.vue.js?v=1.1.7'
+import { UserwidgetViewer } from '../../src/js/userwidgetViewer.vue.js?v=1.1.7'
+import { TasklistwidgetViewer } from '../../src/js/tasklistwidgetViewer.vue.js?v=1.1.7'
+import { PropertyAdminPullViewer } from '../../src/js/propertyAdminPullViewer.vue.js?v=1.1.7'
 
 Vue.createApp({
     components : { 

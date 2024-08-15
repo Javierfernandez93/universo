@@ -1,4 +1,4 @@
-import { UserSupport } from './userSupport.module.js?v=1.1.6'   
+import { UserSupport } from './userSupport.module.js?v=1.1.7'   
 
 const PermissionsViewer = {
     data() {
