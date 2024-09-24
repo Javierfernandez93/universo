@@ -1,0 +1,21 @@
+#hero {
+    background-image: url(../../src/img/landing/nayal.png);
+    background-size: cover;
+    background-position: center;
+    mask-image: linear-gradient(top bottom, dark 22%, transparent 100%);
+}
+
+#luxorios {
+    background-image: url(../../src/img/landing/nayal-2.png);
+}
+
+.navbar .nav-link.active {
+    color: white;
+    opacity: 1;
+    font-weight: bold;
+}
+.navbar .nav-link {
+    font-size: 1.175rem;
+    color: white;
+    opacity: 0.67;
+}

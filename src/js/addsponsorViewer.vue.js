@@ -99,6 +99,7 @@ const AddsponsorViewer = {
         },
         getPermissionsGroup() {
             this.busy = true
+
             this.UserSupport.getPermissionsGroup({code:'leader'}, (response) => {
                 this.busy = false
                 if (response.s == 1) {

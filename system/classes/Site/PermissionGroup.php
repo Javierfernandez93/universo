@@ -4,7 +4,6 @@ namespace Site;
 
 use HCStudio\Orm;
 
-use Site\CatalogPermission;
 use Site\PermissionGroupItem;
 
 class PermissionGroup extends Orm {

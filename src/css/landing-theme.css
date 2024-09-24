@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script&family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.oleo {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+:root {
+  --bs-dark: #000;
+  --bs-white: #fff;
+  --bs-bg: #f1f0ed;
+  --bs-primary: #f54662;
+  --bs-light: #f1f0ed;
+  --bs-font-color: #000;
+}
+
+[data-bs-theme="dark"] {
+  --bs-bg: var(--bs-dark);
+  --text-color: var(--bs-white);
+}
+
+[data-bs-theme="light"] {
+  --bs-bg: var(--bs-light);
+  --text-color: var(--bs-dark);
+}
+
+.font-color {
+  color: var(--text-color);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: var(--text-color);
+  background-color: var(--bs-bg);
+  overflow-x: hidden;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
+}
+.text-primary {
+  color: var(--bs-primary) !important;
+}
+.bg-light {
+  background-color: var(--bs-light) !important;
+}
+.btn {
+  border-radius: 0.2rem;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+.vh-25 {
+  height: 25vh;
+}
+.vh-50 {
+  height: 50vh;
+}
+.vh-75 {
+  height: 75vh;
+}
+
+nav {
+  animation: enhace-header linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 300px;
+}
+
+.reveal-item {
+  animation: reveal linear both;
+  animation-timeline: view();
+  animation-range: entry 100% cover 30;
+}
+.btn-outline-primary {
+  border-color: var(--bs-primary);
+  color: var(--bs-primary);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0.7;
+    translate: 0 50px;
+    scale: 0.95;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@keyframes enhace-header {
+  to {
+    background-color: #000000c6;
+    backdrop-filter: blur(25px);
+    padding: 0 5rem;
+    scale: 1.05;
+  }
+}
+
+
+.bg-dark {
+  background-color: var(--bs-dark) !important;
+}
