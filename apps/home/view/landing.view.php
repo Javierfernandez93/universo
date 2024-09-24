@@ -1,6 +1,6 @@
 <section class="border-bottom border-secondary border-secondary text-center d-flex justify-content-center align-items-center vh-50" style="height: 50vh;">
     <div class="container expand animation-fall-down" style="--delay:150ms">
-        <div class="text-center">
+        <div class="text-center oleo">
             <span class="px-3">Conoce</span>
             <span class="px-3">
                 <i class="bi bi-star-fill text-primary"></i>
@@ -21,7 +21,7 @@
     </div>
 </section>
 
-<div class="row g-5 py-3 text-uppercase letter-spacing-3 expand animation-fall-down" style="--delay:350ms" id="imagine">
+<div class="row g-5 py-3 text-uppercase letter-spacing-3 expand animation-fall-down oleo" style="--delay:350ms" id="imagine">
     <div class="col-xl-auto mx-5">
         <i class="bi bi-star-fill text-primary"></i>
     </div>
@@ -44,7 +44,7 @@
         <div class="col-12 col-xl-4 text-center">
             <div class="card bg-dark card-body p-5">
                 <div class="card-body px-0">
-                    <div class="h3 text-white mb-3">Imagina Nayal</div>
+                    <div class="h3 oleo text-white mb-3">Imagina <span class="text-primary">Nayal</span></div>
                     <div class="text-light lead">
                         Imagina despertar cada día rodeado de áreas verdes, caminos diseñados para disfrutar del aire puro y un ambiente que fomenta la tranquilidad. Nayal te ofrece la oportunidad de vivir de manera consciente, integrando el respeto por la naturaleza y la modernidad en cada rincón.
                     </div>
@@ -60,7 +60,7 @@
     </div>
 </section>
 
-<section class="my-5 border-secondary text-center d-flex align-items-center vh-75 expand animation-fall-down" style="--delay:750ms">
+<section class="my-5 border-secondary text-center d-flex align-items-center vh-75 expand animation-fall-down" style="--delay:750ms" id="meaning">
     <div class="container">
         <div class="row w-100 justify-content-end align-items-center mb-n3">
             <div class="col-12 col-xl-6">
@@ -69,9 +69,9 @@
                 </div>
             </div>
             <div class="col-12 col-xl-4 text-end">
-                <button class="btn btn-primary shadow-none">
-                    Entre sueños
-                </button>
+                <a href="mailto:contacto@nayalmid.com?subject=¡Hola! Necesito información de Nayal" class="btn btn-primary shadow-none">
+                    Envíanos un correo
+                </a>
             </div>
         </div>
         <div class="row w-100 justify-content-end align-items-center">
@@ -101,8 +101,8 @@
                             <div class="display-4 text-primary mb-3">
                                 <i class="bi bi-sun"></i>
                             </div>
-                            <div class="text-light fw-bold text-uppercase mb-3">
-                                El mundo de Nayal
+                            <div class="text-light oleo h3 fw-bold text-uppercase mb-3">
+                                El mundo de <span class="text-primary">Nayal</span>
                             </div>
                             <div class="text-md mb-3">
                                 Nayal te invita a descubrir una vida en equilibrio entre la comodidad y el contacto con la naturaleza. Nuestras amenidades están diseñadas para quienes buscan un estilo de vida cómodo y consciente:

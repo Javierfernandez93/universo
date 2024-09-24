@@ -57,6 +57,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#imagine">Imagina Nayal</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#meaning">¿Qué significa Nayal?</a>
+                    </li>
                     <li class="nav-item dropdown d-none">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
