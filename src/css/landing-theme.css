@@ -89,7 +89,7 @@
   --bs-white: #fff;
   --bs-bg: #f1f0ed;
   --bs-primary: #d5ae32;
-  --bs-light: #f1f0ed;
+  --bs-light: #444444;
   --bs-font-color: #000;
 }
 
@@ -178,10 +178,12 @@ nav {
   }
 }
 
-
 .bg-dark {
   background-color: var(--bs-dark) !important;
 }
 .bg-primary {
   background-color: var(--bs-primary) !important;
+}
+.border-secondary { 
+    border-color: var(--bs-light) !important;
 }

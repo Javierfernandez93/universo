@@ -22,19 +22,19 @@
 </section>
 
 <div class="row g-5 py-3 text-uppercase letter-spacing-3 expand animation-fall-down oleo" style="--delay:350ms" id="imagine">
-    <div class="col-xl-auto mx-5">
+    <div class="col-xl-auto mx-5 d-md-block d-none">
         <i class="bi bi-star-fill text-primary"></i>
     </div>
     <div class="col-xl text-center font-color">
         La naturaleza es el centro de nuestra vida
     </div>
-    <div class="col-xl-auto mx-5">
+    <div class="col-xl-auto mx-5 d-md-block d-none">
         <i class="bi bi-star-fill text-primary"></i>
     </div>
     <div class="col-xl text-center font-color">
         Y Nayal es el lugar donde vivimos
     </div>
-    <div class="col-xl-auto mx-5">
+    <div class="col-xl-auto mx-5 d-md-block d-none">
         <i class="bi bi-star-fill text-primary"></i>
     </div>
 </div>
@@ -68,7 +68,7 @@
                      <span class="text-primary">Nayal</span> Significa
                 </div>
             </div>
-            <div class="col-12 col-xl-4 text-end">
+            <div class="col-12 col-xl-4 text-end d-md-block d-none">
                 <a href="mailto:contacto@nayalmid.com?subject=¡Hola! Necesito información de Nayal" class="btn btn-primary shadow-none">
                     Envíanos un correo
                 </a>
@@ -92,21 +92,27 @@
 </section>
 
 <section class="bg-primary py-5 animation-fall-down" style="--delay:650ms">
-    <div class="d-flex justify-content-center text-center">
-        <button class="btn btn-lg btn-primary shadow-none me-3">
-            <i class="bi me-2 bi-whatsapp"></i>
-            Contáctanos por WhatsApp
-        </button>
-        <button class="btn btn-primary btn-lg shadow-none">
-            <i class="bi me-2 bi-envelope"></i>
-            Contáctanos por Correo electrónico
-        </button>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-xl-auto">
+                <button class="btn btn-lg btn-primary shadow-none me-3">
+                    <i class="bi me-2 bi-whatsapp"></i>
+                    Contáctanos por WhatsApp
+                </button>
+            </div>
+            <div class="col-12 col-xl-auto">
+                <button class="btn btn-primary btn-lg shadow-none">
+                    <i class="bi me-2 bi-envelope"></i>
+                    Contáctanos por Correo electrónico
+                </button>
+            </div>
+        </div>
     </div>
-
 </section>
 
-<section class="d-flex py-5 align-items-center expand animation-fall-down" style="--delay:950ms" id="amenities"> 
-    <div class="container">
+<section class="d-flex mb-5 py-6 align-items-center expand animation-fall-down" style="--delay:950ms" id="amenities"> 
+    <div class="mask bg-dark position-absolute z-index-0" style="background-image: url(../../src/img/landing/nayal-2.png);"></div>
+    <div class="container position-relative z-index-1">
         <div class="d-flex g-5 row align-items-stretch">
             <div class="col-12 col-xl-6 d-flex">
                 <div class="card card-body shadow-none bg-transparent rounded-2" id="">
