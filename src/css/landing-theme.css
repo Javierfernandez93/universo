@@ -182,3 +182,6 @@ nav {
 .bg-dark {
   background-color: var(--bs-dark) !important;
 }
+.bg-primary {
+  background-color: var(--bs-primary) !important;
+}

@@ -5,8 +5,10 @@
     mask-image: linear-gradient(top bottom, dark 22%, transparent 100%);
 }
 
-#luxorios {
+#amenities {
     background-image: url(../../src/img/landing/nayal-2.png);
+    background-size: cover;
+    background-position: center;
 }
 
 .navbar .nav-link.active {

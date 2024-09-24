@@ -91,11 +91,25 @@
     </div>
 </section>
 
-<section class="my-5 d-flex align-items-center vh-50 expand animation-fall-down" style="--delay:950ms" id="amenities"> 
+<section class="bg-primary py-5 animation-fall-down" style="--delay:650ms">
+    <div class="d-flex justify-content-center text-center">
+        <button class="btn btn-lg btn-primary shadow-none me-3">
+            <i class="bi me-2 bi-whatsapp"></i>
+            Contáctanos por WhatsApp
+        </button>
+        <button class="btn btn-primary btn-lg shadow-none">
+            <i class="bi me-2 bi-envelope"></i>
+            Contáctanos por Correo electrónico
+        </button>
+    </div>
+
+</section>
+
+<section class="d-flex py-5 align-items-center expand animation-fall-down" style="--delay:950ms" id="amenities"> 
     <div class="container">
         <div class="d-flex g-5 row align-items-stretch">
             <div class="col-12 col-xl-6 d-flex">
-                <div class="card card-body shadow-none border border-secondary rounded-2" id="luxorios">
+                <div class="card card-body shadow-none bg-transparent rounded-2" id="">
                     <div class="container d-flex align-items-center h-100">
                         <div class="card card-body bg-dark">
                             <div class="display-4 text-primary mb-3">
@@ -144,11 +158,11 @@
                             <div class="mb-n3 h1 text-white">
                                 Casa del
                             </div>
-                            <div class="text-primary h2">
+                            <div class="text-primary h3">
                                 pensamiento
                             </div>
                         </div>
-                        <div class="row mt-5 pt-5">
+                        <div class="row pt-5">
                             <i class="bi bi-star-fill text-primary mb-3"></i>
                             <div>
                                 Bienvenido a la casa del pensamiento, un  que te transportará al microcosmos del universo Nayal, ubicado en la entrada del desarrollo, esta maravillosa amenidad es una ventana al contacto con los elementos y sonidos de la naturaleza, invitándote a estar presente y sumergirte en un ambiente natural.
