@@ -21,3 +21,10 @@
     color: white;
     opacity: 0.67;
 }
+.meaning-bg {
+    background-image: url(../../src/img/landing/bg-nayal.png);
+    opacity: 0.2;
+    background-size: cover;
+    background-position: center;
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);  
+}

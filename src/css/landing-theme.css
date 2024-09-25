@@ -90,6 +90,7 @@
   --bs-bg: #f1f0ed;
   --bs-primary: #d5ae32;
   --bs-light: #444444;
+  --bs-dark-special: #000000c6;
   --bs-font-color: #000;
 }
 
@@ -171,12 +172,14 @@ nav {
 
 @keyframes enhace-header {
   to {
-    background-color: #000000c6;
+    background-color: var(--bs-dark-special);
     backdrop-filter: blur(25px);
     padding: 0 5rem;
     scale: 1.05;
   }
 }
+
+
 
 .bg-dark {
   background-color: var(--bs-dark) !important;
@@ -186,4 +189,14 @@ nav {
 }
 .border-secondary { 
     border-color: var(--bs-light) !important;
+}
+.bg-dark-special {
+  background-color: var(--bs-dark) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .bg-dark-special {
+    background-color: #0000009c !important;
+    backdrop-filter: blur(25px);
+  } 
 }

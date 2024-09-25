@@ -12,6 +12,7 @@ $Translator = JFStudio\Translator::getInstance();
 $Translator->init();
 
 $Layout->setScript([
+	'ShortLanding.vue.js',
 	'nayal.css'
 ]);
 

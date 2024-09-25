@@ -46,8 +46,9 @@
             <a class="navbar-brand" href="#">
                 <img  src="../../src/img/logos/nayal-logo-dark.png" alt="logo" style="width: 12rem;filter: invert(100%);"/>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler border border-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                
+                <i class="bi bi-list-nested text-white"></i>
             </button>
             <div class="collapse oleo navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
