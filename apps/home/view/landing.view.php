@@ -1,5 +1,5 @@
 <div id="app">
-    <section class="border-bottom border-secondary text-center d-flex justify-content-center align-items-center vh-50" style="height: 50vh;">
+    <section class="border-bottom border-secondary text-center d-flex justify-content-center align-items-center h-500">
         <div class="container expand animation-fall-down" style="--delay:150ms">
             <div class="text-center oleo">
                 <span class="px-3">Conoce</span>
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <section class="border-bottom border-secondary d-flex justify-content-center align-items-center vh-75" id="hero">
+    <section class="border-bottom border-secondary d-flex justify-content-center align-items-center h-850" id="hero">
         <div class="row justify-content-center w-100 expand animation-fall-down" style="--delay:550ms">
             <div class="col-12 col-md-6 col-xl-4 text-center">
                 <div class="card bg-dark-special card-body p-5">
@@ -62,7 +62,7 @@
         </div>
     </section>
 
-    <section class="text-center d-flex align-items-center position-relative vh-75" id="meaning">
+    <section class="text-center d-flex align-items-center position-relative h-850" id="meaning">
         <div class="mask bg-primary meaning-bg"></div>
 
         <div class="container position-absolute z-index-1 expand animation-fall-down" style="--delay:750ms">
