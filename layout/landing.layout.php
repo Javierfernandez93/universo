@@ -35,8 +35,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <!-- plugin css -->
-    <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.0" rel="stylesheet" />
-    <link id="pagestyle" href="../../src/css/landing-theme.css?v=1.0.0" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/soft-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+    <link id="pagestyle" href="../../src/css/landing-theme.css?v=1.0.1" rel="stylesheet" />
 </head>
 
 <!-- <body data-bs-theme="dark"> -->
