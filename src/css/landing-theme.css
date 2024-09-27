@@ -207,3 +207,12 @@ nav {
 .h-850 {
   min-height: 850px;
 }
+
+.hero-section {
+  height: 800px;
+  background-size: cover;
+  background-position: center;
+}
+.invert-image {
+  filter: invert(100%);
+}

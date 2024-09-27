@@ -1,4 +1,14 @@
 <div id="app">
+    <section class="hero-section m-5 drop-filter-from-top d-flex align-items-end justify-content-start rounded-3 overflow-hidden" :class="currentImage.className" :style="{'background-image':'url('+currentImage.path+')'}">
+        <div class="overlay filter-in-top"></div>
+        <div class="ms-4 mb-4 mb-xl-6 ms-xl-6 position-absolute">
+            <div style="--delay:600ms" class="animation-fall-left text-white display-1 mb-1 mb-xl-n3">
+                <img src="../../src/img/logos/nayal-logo-dark.png" alt="logo" class="w-25 invert-image">
+            </div>
+            <div style="--delay:820ms" class="animation-fall-left fw-bold display-6" :class="currentImage.sloganClass"></div>
+        </div>
+    </section>
+    
     <section class="border-bottom border-secondary text-center d-flex justify-content-center align-items-center h-500">
         <div class="container expand animation-fall-down" style="--delay:150ms">
             <div class="text-center oleo">
