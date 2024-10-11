@@ -2,14 +2,17 @@
     --bs-dark: #000;
     --bs-white: #fff;
     --bs-bg: #f1f0ed;
-    --bs-primary: #d5ae32;
+    --bs-primary: #33AAB4;
+    --bs-primary-dark: #108C97;
+    --bs-secondary: #38372B;
+    --bs-secondary-soft: #757464;
     --bs-light: #444444;
     --bs-dark-special: #000000c6;
     --bs-font-color: #000;
 }
 
 #hero {
-    background-image: url(../../src/img/landing/nayal.png);
+    background-image: url(../../src/img/landing/nuuktal.png);
     background-size: cover;
     background-position: center;
     mask-image: linear-gradient(top bottom, dark 22%, transparent 100%);
@@ -32,9 +35,16 @@
     opacity: 0.67;
 }
 .meaning-bg {
-    background-image: url(../../src/img/landing/bg-nayal.png);
+    background-image: url(../../src/img/landing/bg-nuuktal.png);
     opacity: 0.2;
     background-size: cover;
     background-position: center;
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);  
+}
+.bg-secondary {
+    background-color: var(--bs-secondary) !important;
+}
+
+.bg-secondary-soft {
+    background-color: var(--bs-secondary-soft) !important;
 }

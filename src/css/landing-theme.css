@@ -84,16 +84,6 @@
   font-style: italic;
 }
 
-:root {
-  --bs-dark: #000;
-  --bs-white: #fff;
-  --bs-bg: #f1f0ed;
-  --bs-primary: #d5ae32;
-  --bs-light: #444444;
-  --bs-dark-special: #000000c6;
-  --bs-font-color: #000;
-}
-
 [data-bs-theme="dark"] {
   --bs-bg: var(--bs-dark);
   --text-color: var(--bs-white);
