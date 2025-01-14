@@ -1,9 +1,9 @@
-import OtochViewer from '../../src/js/OtochViewer.vue.js?v=1.1.1'
+import KelayaViewer from '../../src/js/KelayaViewer.vue.js?v=1.1.1'
 
 async function init() {
     const app = Vue.createApp({
         components : { 
-            OtochViewer
+            KelayaViewer
         },
     })
     app.mount('#app')

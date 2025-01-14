@@ -65,7 +65,7 @@ class UserLogin extends Orm {
     parent::__construct();
     
     $this->save_class = $save_class;
-    $this->Session = new Session($this->tblName);
+    $this->Session = new Session($this->tblName.$_ENV['PROJECT_NAME']);
     $this->Token = new Token;
 
     if($autoLoad === true)

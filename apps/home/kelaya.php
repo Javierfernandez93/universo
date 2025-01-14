@@ -6,14 +6,14 @@ $Layout = JFStudio\Layout::getInstance();
 
 $route = JFStudio\Router::Home;
 
-$Layout->init(JFStudio\Router::getName($route),'otoch',"otoch",'',TO_ROOT.'/');
+$Layout->init(JFStudio\Router::getName($route),'kelaya',"kelaya",'',TO_ROOT.'/');
 
 $Translator = JFStudio\Translator::getInstance();
 $Translator->init();
 
 $Layout->setScript([
-	'Otoch.vue.js',
-	'otoch.css'
+	'Kelaya.vue.js',
+	'kelaya.css'
 ]);
 
 $Layout->setVar([

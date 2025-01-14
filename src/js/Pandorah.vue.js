@@ -1,9 +1,9 @@
-import OtochViewer from '../../src/js/OtochViewer.vue.js?v=1.1.1'
+import PandoraViewer from '../../src/js/PandoraViewer.vue.js?v=1.1.1'
 
 async function init() {
     const app = Vue.createApp({
         components : { 
-            OtochViewer
+            PandoraViewer
         },
     })
     app.mount('#app')

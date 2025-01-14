@@ -6,14 +6,14 @@ $Layout = JFStudio\Layout::getInstance();
 
 $route = JFStudio\Router::Home;
 
-$Layout->init(JFStudio\Router::getName($route),'otoch',"otoch",'',TO_ROOT.'/');
+$Layout->init(JFStudio\Router::getName($route),'pandorah',"pandorah",'',TO_ROOT.'/');
 
 $Translator = JFStudio\Translator::getInstance();
 $Translator->init();
 
 $Layout->setScript([
-	'Otoch.vue.js',
-	'otoch.css'
+	'Pandorah.vue.js',
+	'pandorah.css'
 ]);
 
 $Layout->setVar([
