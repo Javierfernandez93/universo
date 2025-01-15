@@ -73,6 +73,7 @@ const PropertypullViewer = {
     {       
         this.getCatalogPaymentMethods()
     },
+    /* html */
     template : `
         <div class="offcanvas offcanvas-end" tabindex="-1" ref="offcanvasRight3" id="offcanvasRight3" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">

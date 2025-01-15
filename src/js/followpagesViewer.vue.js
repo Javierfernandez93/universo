@@ -44,6 +44,7 @@ const FollowpagesViewer = {
             this.getFollowPages(getParam("ulid"))
         } 
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy"/>
 

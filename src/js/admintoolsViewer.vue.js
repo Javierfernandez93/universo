@@ -107,6 +107,7 @@ const AdmintoolsViewer = {
     {
         this.getAdminTools()
     },
+    /* html */
     template : `
         <div class="row">
             <div class="col-12">

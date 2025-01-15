@@ -96,6 +96,7 @@ const SellerstatschartwidgetViewer = {
     {       
         this.getSellerStatsForChart()
     },
+    /* html */
     template : `
         <div class="card card-body shadow-none border">   
             <canvas v-show="stats" ref="myChart" id="myChart"></canvas>

@@ -157,6 +157,7 @@ const AtiaccountViewer = {
 
         this.getAtiAccount()
     },
+    /* html */
     template : `     
 
         <div v-if="!hasDerivAccount" class="alert alert-primary text-white text-center">

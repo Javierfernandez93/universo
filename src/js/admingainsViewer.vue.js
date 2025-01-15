@@ -114,6 +114,7 @@ const AdmingainsViewer = {
     mounted() {
         this.getAdminUserGainsMain()
     },
+    /* html */
     template : `
         <div class="card mb-3">
             <div class="card-header">  

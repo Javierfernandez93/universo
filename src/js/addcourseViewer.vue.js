@@ -148,6 +148,7 @@ const AddcourseViewer = {
             this.initEditor()
         })
     },
+    /* html */
     template : `
         <div class="row mb-3 align-items-center">
             <div class="col-12 col-xl">

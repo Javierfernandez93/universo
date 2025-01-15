@@ -208,6 +208,7 @@ const AdminbuysViewer = {
     mounted() {
         this.status = this.STATUS.PENDING
     },
+    /* html */
     template : `
         <div v-if="buys" class="card mb-3">
             <div class="card-header">

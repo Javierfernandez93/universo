@@ -79,6 +79,7 @@ const TeamViewer = {
             _this.getBinaryTree(user_login_id)
         }
     },
+    /* html */
     template : `
         <div v-if="busy" class="justify-content-center text-center py-5">
             <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>

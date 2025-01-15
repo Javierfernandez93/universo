@@ -67,9 +67,6 @@ body {
   background-position: center;
   height: 20rem;
 }
-.card-jade {
-  /* height: 30rem; */
-}
 .bg-repeat {
   background-image: url(../../src/img/home/repeat.png);
   background-repeat: repeat-y;
@@ -193,7 +190,7 @@ nav {
   to {
     background-color: #000000c6;
     backdrop-filter: blur(25px);
-    scale: 1.05;
+    scale: 1;
   }
 }
 

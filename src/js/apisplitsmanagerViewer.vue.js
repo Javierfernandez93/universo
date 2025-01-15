@@ -110,6 +110,7 @@ const ApisplitsmanagerViewer = {
             this._getSplitsByCustomer()
         }
     },
+    /* html */
     template : `
         <div v-if="items">
             <div v-for="item in items" class="card mb-3">

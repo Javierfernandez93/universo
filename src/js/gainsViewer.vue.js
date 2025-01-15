@@ -111,6 +111,7 @@ const GainsViewer = {
             this.catalog_commission_types = catalog_commission_types
         })
     },
+    /* html */
     template : `
         <div class="row">
             <div class="col-12">

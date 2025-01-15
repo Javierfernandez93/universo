@@ -62,6 +62,7 @@ const AcademyViewer = {
     mounted() {
         this.getCoursesList()
     },
+    /* html */
     template : `
         
         <div class="card bg-transparent shadow-none card-body mb-3">

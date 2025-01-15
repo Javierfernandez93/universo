@@ -70,6 +70,7 @@ const AdminacademyViewer = {
     {   
         this.getCourses()
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy"/>
 

@@ -92,6 +92,7 @@ const MetamaskViewer = {
         console.log(this.chainId)
         console.log(this.chainId == this.NETWORKS.ETHERUM)
     },
+    /* html */
     template : `
         current Network {{chainId}}
         <div v-if="accounts">

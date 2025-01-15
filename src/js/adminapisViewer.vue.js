@@ -126,6 +126,7 @@ const AdminapisViewer = {
             this.apisAux = apis
         })
     },
+    /* html */
     template : `
     <div class="card border-radius-2xl mb-4">
         <div class="card-header pb-0">

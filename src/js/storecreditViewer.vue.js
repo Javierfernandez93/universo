@@ -50,6 +50,7 @@ const StorecreditViewer = {
     mounted() {
         this.getProduct()
     },
+    /* html */
     template : `
         <div v-if="product" class="row justify-content-center">
             <div class="col-12 col-xl-4">

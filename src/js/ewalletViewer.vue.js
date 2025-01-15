@@ -110,6 +110,7 @@ const EwalletViewer = {
         this.getLastWithdraws()
         this.getCommissionPerUserByType()
     },
+    /* html */
     template : `
         <div v-if="ewallet" class="row py-5">
             <div class="col-12 col-md-6 col-xl-5 mb-xl-0 mb-4">

@@ -18,6 +18,7 @@ const AboutViewer = {
     mounted() {
         this.initScroll()
     },
+    /* html */
     template : `
         <div class="container py-5">
 

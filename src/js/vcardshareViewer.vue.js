@@ -38,6 +38,7 @@ const VcardshareViewer = {
     },
     mounted() {
     },
+    /* html */
     template : `
         <div v-if="vcard.route != null" class="card mt-3" id="card-share">
             <div class="card-body">

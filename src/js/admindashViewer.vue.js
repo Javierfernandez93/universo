@@ -127,6 +127,7 @@ const AdmindashViewer = {
             this.stats = false 
         })
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-body">

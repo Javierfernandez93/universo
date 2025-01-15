@@ -67,6 +67,7 @@ const ReferralsViewer = {
             this.getTotals()
         }).catch((error) => {this.referrals = false})
     },
+    /* html */
     template : `
         <div
             v-if="referralsAux"

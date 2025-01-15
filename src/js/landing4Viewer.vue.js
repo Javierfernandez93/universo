@@ -159,6 +159,7 @@ const Landing4Viewer = {
             this.addVisitPerLanding(getLastUrlPart())
         })
     },
+    /* html */
     template : `
         <div class="row justify-content-center vh-100 align-items-center" id="main">
             <div class="col-11 col-xl-6 B612 text-center">

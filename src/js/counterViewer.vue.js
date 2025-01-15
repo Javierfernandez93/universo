@@ -28,6 +28,7 @@ const CounterViewer = {
             this.reamingTime = reamingTime
         })  
     },
+    /* html */
     template : `
         <div v-if="reamingTime">
             <div class="row justify-content-center">

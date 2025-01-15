@@ -124,6 +124,7 @@ const ViewCommissionsViewer = {
     mounted() {
         this.getCommissions()
     },
+    /* html */
     template : `
         <div class="card card-body mb-3">
             <div class="row align-items-center">

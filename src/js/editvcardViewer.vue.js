@@ -178,6 +178,7 @@ const EditvcardViewer = {
 
         }
     },
+    /* html */
     template : `
         <div v-if="step == STEPS.CONFIGURE_BASICS">
             <div class="card">

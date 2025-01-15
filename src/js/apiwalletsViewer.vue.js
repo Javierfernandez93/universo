@@ -166,6 +166,7 @@ const ApiwalletsViewer = {
     {       
         this._getUserApiWallets()
     },
+    /* html */
     template : `
         <div v-if="busy" class="d-flex justify-content-center">
             <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">

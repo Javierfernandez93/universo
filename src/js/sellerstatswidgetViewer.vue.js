@@ -29,6 +29,7 @@ const SellerstatswidgetViewer = {
     {       
         this.getSellerStats()
     },
+    /* html */
     template : `
         <div class="row">   
             <div class="col-12 col-xl mb-3">   

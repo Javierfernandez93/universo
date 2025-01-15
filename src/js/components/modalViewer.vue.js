@@ -29,6 +29,7 @@ const ModalViewer = {
     {       
         
     },
+    /* html */
     template : `
         <Teleport to="body">
             <div class="modal fade" ref="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

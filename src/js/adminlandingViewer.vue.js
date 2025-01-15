@@ -77,6 +77,7 @@ const AdminlandingViewer = {
             this.landings = false
         })
     },
+    /* html */
     template : `
         <div v-if="landingsAux"
             class="card mb-4 overflow-hidden">

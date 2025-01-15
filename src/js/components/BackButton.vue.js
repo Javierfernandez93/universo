@@ -13,6 +13,7 @@ const BackButton = {
     mounted() {
         this.defaultClass = this.myClass != undefined ? this.myClass : this.defaultClass
     },
+    /* html */
     template : `
         <button @click="back" class="btn btn-sm px-3 shadow-none mb-0" :class="defaultClass">
             <i class="bi bi-arrow-left-short"></i>

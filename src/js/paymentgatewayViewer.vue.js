@@ -87,6 +87,7 @@ const PaymentgatewayViewer = {
             }).catch(() => this.invoice = false)
         }
     },
+    /* html */
     template : `
         <div v-if="invoice" class="row justify-content-center">
             <div class="col-10 col-xl-7">

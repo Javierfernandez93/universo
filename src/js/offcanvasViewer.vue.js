@@ -29,6 +29,7 @@ const OffCanvasViewer = {
     {       
         
     },
+    /* html */
     template : `
         <Teleport to="body">
             <div class="offcanvas offcanvas-end" ref="intertnalOffcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">

@@ -28,6 +28,7 @@ const TransactionViewer = {
             this.getTransactionInfo(getParam('txn'))
         }
     },
+    /* html */
     template : `
         <div v-if="transaction" class="row">
             <div class="col-12 mb-3">

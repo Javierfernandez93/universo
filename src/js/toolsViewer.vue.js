@@ -39,6 +39,7 @@ const ToolsViewer = {
     {   
         this.getToolsList()
     },
+    /* html */
     template : `
         <div v-if="tools" class="container">
             <div class="card mb-3 overflow-hidden">

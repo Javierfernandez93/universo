@@ -60,6 +60,7 @@ const StorepaymentmethodsViewer = {
     mounted() {
         this.getPaymentMethods().then(catalogPaymentMethods => this.catalogPaymentMethods = catalogPaymentMethods)
     },
+    /* html */
     template : `
         <div v-if="catalogPaymentMethods" class="row justify-content-center">
            <div class="col-12">

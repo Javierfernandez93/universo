@@ -38,6 +38,7 @@ const VcardqrViewer = {
     },
     mounted() {
     },
+    /* html */
     template : `
         <div v-if="vcard.route != null" class="card bg-dark" id="card-qr">
             <div class="card-body">

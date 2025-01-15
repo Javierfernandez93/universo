@@ -108,6 +108,7 @@ const TicketViewer = {
             this.ticketsAux = tickets
         }).catch(() => this.tickets = false)
     },
+    /* html */
     template : `
         <div class="card bg-transparent shadow-none">
             <div class="card-header bg-transparent">

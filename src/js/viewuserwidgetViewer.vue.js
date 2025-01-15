@@ -49,6 +49,7 @@ const ViewuserwidgetViewer = {
             this.getUser(getParam("ulid"))
         }
     },
+    /* html */
     template : `
         <div v-if="user" class="card card-body mb-3">
             <div class="row justify-content-center align-items-center">

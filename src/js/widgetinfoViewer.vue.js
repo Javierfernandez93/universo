@@ -9,6 +9,7 @@ const WidgetinfoViewer = {
     mounted() 
     {   
     },
+    /* html */
     template : `
         <div class="card bg-gradient-primary rounded shadow">
             <div class="card-body p-0">

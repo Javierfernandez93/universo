@@ -38,6 +38,7 @@ const ApimainwalletViewer = {
             this._getMainWallet(getParam('uaid'))
         }
     },
+    /* html */
     template : `
     
         <div v-if="wallet" class="card">

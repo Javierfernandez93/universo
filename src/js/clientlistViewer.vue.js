@@ -191,6 +191,7 @@ const ClientlistViewer = {
             this.query = getParam("query")
         }
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header">

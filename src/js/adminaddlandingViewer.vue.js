@@ -127,6 +127,7 @@ const AdminaddlandingViewer = {
             this.catalog_landing_actions = catalog_landing_actions
         })
     },
+    /* html */
     template : `
         <div class="row">
            <div class="col-12">

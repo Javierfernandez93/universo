@@ -114,6 +114,7 @@ const AdminedituserViewer = {
             })
         }
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header"> 

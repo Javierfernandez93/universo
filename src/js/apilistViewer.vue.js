@@ -256,6 +256,7 @@ const ApilistViewer = {
     {       
         this._getUserApiList()
     },
+    /* html */
     template : `
         <div v-if="apis">
             <div class="card mb-3 animation-fall-down" style="--delay:0.5s">

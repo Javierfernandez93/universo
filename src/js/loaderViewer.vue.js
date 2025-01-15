@@ -10,6 +10,7 @@ const LoaderViewer = {
     {       
      
     },
+    /* html */
     template : `
         <div v-if="busy" class="text-center">
             <div class="spinner-border text-primary" role="status">

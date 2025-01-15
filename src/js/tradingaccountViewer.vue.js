@@ -57,6 +57,7 @@ const TradingaccountViewer = {
             this.user = user
         }).catch(()=> this.user = false)
     },
+    /* html */
     template : `
         <div v-if="user" class="card overflow-hidden mt-3">
             <div class="card-header h4">

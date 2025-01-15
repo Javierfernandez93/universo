@@ -28,6 +28,7 @@ const WidgainsViewer = {
             this.amount = amount
         })
     },
+    /* html */
     template : `
         <div class="card bg-blue rounded shadow">
             <div class="card-body p-0">

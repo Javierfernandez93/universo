@@ -222,6 +222,7 @@ const IptvclientsViewer = {
             this.clientsAux = clients
         }).catch(() => this.clients = false)
     },
+    /* html */
     template : `
     <div
         v-if="clientsAux"

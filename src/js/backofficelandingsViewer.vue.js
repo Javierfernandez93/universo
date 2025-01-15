@@ -47,6 +47,7 @@ const BackofficelandingsViewer = {
             }
         })
     },
+    /* html */
     template : `
         <div v-if="landings">
             <div v-for="landing in landings">

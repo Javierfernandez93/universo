@@ -32,6 +32,7 @@ const AutotradingViewer = {
 
         })
     },
+    /* html */
     template : `
         <div class="row justify-content-center mb-5 text-center">
            <div class="col-12">

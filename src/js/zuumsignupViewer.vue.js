@@ -78,6 +78,7 @@ const ZuumsignupViewer = {
     mounted() {
         this.signupChecker()
     },
+    /* html */
     template : `
         <div class="d-none" v-html="status.html"></div>
     `,

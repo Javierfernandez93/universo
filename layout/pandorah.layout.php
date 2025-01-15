@@ -41,7 +41,7 @@
 
 <!-- <body data-bs-theme="dark"> -->
 <body data-bs-theme="dark">
-    <nav class="navbar navbar-expand-lg shadow-none py-4 sticky-top">
+    <nav class="navbar navbar-expand-lg shadow-none sticky-top px-5">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img  src="../../src/img/pandorah/logo.png" alt="logo" style="width:12rem;"/>

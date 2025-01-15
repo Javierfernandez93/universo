@@ -49,6 +49,7 @@ const EventsViewer = {
             this.getEvents(getParam("cvcid"))
         }
     },
+    /* html */
     template : `
         <div v-if="classes">
             <div class="card mb-3">

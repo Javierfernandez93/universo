@@ -142,6 +142,7 @@ const DirectsViewer = {
             this.gains = false 
         })
     },
+    /* html */
     template : `
         <div v-if="busy" class="justify-content-center text-center">
             <div class="spinner-grow text-primary" role="status">

@@ -149,6 +149,7 @@ const ClientViewer = {
             this.getUserDetail()
         }
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy" />
 

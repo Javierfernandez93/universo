@@ -28,6 +28,7 @@ const AdvicewidgetViewer = {
     {       
         this.getBanners()
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy"/>
 

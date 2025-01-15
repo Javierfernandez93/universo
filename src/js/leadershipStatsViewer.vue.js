@@ -28,6 +28,7 @@ const LeadershipStatsViewer = {
     {     
         this.getLeadershipStats()
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy"/>
 

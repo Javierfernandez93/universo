@@ -85,6 +85,7 @@ const AdminblogViewer = {
     {       
         this.getAdminBlogs(getParam("bid"))
     },
+    /* html */
     template : `
         <div class="row">
             <div class="col-12">

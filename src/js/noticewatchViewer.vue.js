@@ -31,6 +31,7 @@ const NoticewatchViewer = {
             }).catch(() => this.notice = false)
         }
     },
+    /* html */
     template : `
         <div v-if="notice" class="card">
             <div class="card-header">

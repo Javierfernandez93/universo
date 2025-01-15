@@ -161,6 +161,7 @@ const PropertiesAdminListViewer = {
     {       
         this.refresh()
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy" />
 

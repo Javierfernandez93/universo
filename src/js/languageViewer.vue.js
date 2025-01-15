@@ -43,6 +43,7 @@ const LanguageViewer = {
     {       
         await this.Translator.init()
     },
+    /* html */
     template : `
         <div class="dropdown">
             <button type="button" class="btn btn-primary mb-0 px-3 btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

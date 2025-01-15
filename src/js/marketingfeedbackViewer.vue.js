@@ -31,6 +31,7 @@ const MarketingfeedbackViewer = {
     mounted() {
         this.getAllMarketingFeedBacksMain()
     },
+    /* html */
     template : `
         <div v-if="marketingFields">
             <div v-for="field in marketingFields">

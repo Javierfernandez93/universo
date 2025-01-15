@@ -65,6 +65,7 @@ const ProcessViewer = {
             })
         }
     },
+    /* html */
     template : `
         <div v-if="ewallet" class="row justify-content-center py-5">
             <div class="col-xl-4 mb-xl-0 mb-4">

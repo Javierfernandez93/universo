@@ -48,6 +48,7 @@ const ViewtasklistwidgetViewer = {
     mounted() 
     {       
     },
+    /* html */
     template : `
         <Loader :busy="busy" />
 

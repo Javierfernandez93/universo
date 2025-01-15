@@ -94,6 +94,7 @@ const BridgefundsgainsViewer = {
             this.commissions = false
         })
     },
+    /* html */
     template : `
         <div v-if="commissions" class="row">
             <div class="card bg-transparent shadow-none mb-3">

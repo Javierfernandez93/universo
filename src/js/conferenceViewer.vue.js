@@ -34,6 +34,7 @@ const ConferenceViewer = {
             this.timezoneConfigurated = timezoneConfigurated
         })
     },
+    /* html */
     template : `
         <h3>Próximas clases</h3>
         <div v-if="conferences" class="row mt-3">

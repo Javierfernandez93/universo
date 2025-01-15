@@ -38,6 +38,7 @@ const VcardsocialViewer = {
     },
     mounted() {
     },
+    /* html */
     template : `
         <div v-if="socials" class="card mt-3" id="card-social">
             <div class="card-body">

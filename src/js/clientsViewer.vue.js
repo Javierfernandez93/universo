@@ -26,6 +26,7 @@ const ClientsViewer = {
             this.getBlog(getParam("ulid"))
         }
     },
+    /* html */
     template : `
         as
     `

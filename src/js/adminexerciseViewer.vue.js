@@ -386,6 +386,7 @@ const AdminexerciseViewer = {
     mounted() {
         this.status = this.STATUS.WAITING
     },
+    /* html */
     template : `
         <div class="card mb-3">
             <div class="input-group input-group-lg input-group-merge">

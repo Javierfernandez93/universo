@@ -45,6 +45,7 @@ const LastsignedwidgetViewer = {
     {   
         this.getLastSigned()
     },
+    /* html */
     template : `
         <div class="card shadow-none bg-transparent">
             <div v-if="busy" class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">

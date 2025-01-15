@@ -64,6 +64,7 @@ const FollowUser = {
     mounted() {
 
     },
+    /* html */
     template : `
         <OffCanvasViewer ref="myOffcanvas" :title="t('follow_user')">
             <div class="card card-body">

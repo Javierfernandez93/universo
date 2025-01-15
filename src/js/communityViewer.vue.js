@@ -10,6 +10,7 @@ const CommunityViewer = {
     mounted() {
         
     },
+    /* html */
     template : `
         <div class="mb-3 h3 fw-sembold text-dark">Síguenos en nuestras redes sociales y entérate de todos los beneficios que tenemos para ti</div>
         <ul class="list-group list-group-flush bg-transparent">

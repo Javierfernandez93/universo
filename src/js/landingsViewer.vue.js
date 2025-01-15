@@ -66,6 +66,7 @@ const LandingsViewer = {
             }
         }
     },
+    /* html */
     template : `
         <div class="d-flex bg-dark vh-100 align-items-center">
             <div class="row w-100 justify-content-center">

@@ -55,6 +55,7 @@ const BridgefundsViewer = {
         
         this.initScroll()
     },
+    /* html */
     template : `
         <div class="row justify-content-center">
             <div class="col-12 col-xl-5 text-center">

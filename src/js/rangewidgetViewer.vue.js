@@ -24,6 +24,7 @@ const RangewidgetViewer = {
     {   
         this.getLastMembers()
     },
+    /* html */
     template : `
         <div v-if="members" class="card shadow-none border">
             <div class="card-header">

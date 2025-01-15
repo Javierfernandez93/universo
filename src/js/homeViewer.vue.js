@@ -367,6 +367,7 @@ const HomeViewer = {
         this.getTopCountries();
         this.getConfigVarsStats()
     },
+    /* html */
     template : `
         <section id="section-1" class="d-flex vh-100 align-items-center">
             <video ref="videoIntro" width="320" height="240" class="video-floating" controls autoplay muted loop>

@@ -40,6 +40,7 @@ const BannerleftViewer = {
             this.Banner.setBanners(banners)
         })
     },
+    /* html */
     template : `
         <div v-if="Banner.banners" class="row mt-3">
             <div class="col-12 banner banner-position-3">

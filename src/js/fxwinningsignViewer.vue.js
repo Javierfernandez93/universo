@@ -127,6 +127,7 @@ const FxwinningsignViewer = {
             this.remote_pel_sign_id = false
         })
     },
+    /* html */
     template : `           
         <div v-if="remote_pel_sign_id">
             <div v-if="!saved">

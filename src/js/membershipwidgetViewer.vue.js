@@ -21,6 +21,7 @@ const MembershipwidgetViewer = {
     {   
         this.getProductPermissions()
     },
+    /* html */
     template : `
         <div v-if="productPermissions" class="card shadow-none border">
             <div class="card-body text-center text-center">

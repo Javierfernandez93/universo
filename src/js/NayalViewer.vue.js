@@ -10,6 +10,7 @@ export default {
     components : { 
         SliderViewer
     },
+    /* html */
     template : `
         <SliderViewer logo="../../src/img/logos/nayal-logo-dark.png" :imagesSlider="imagesSlider"/>
     `

@@ -81,6 +81,7 @@ const DocumentationViewer = {
             this.documentation = documentation
         })
     },
+    /* html */
     template : `
         <div v-if="documentation">
             <h1>{{documentation.title}}</h1>

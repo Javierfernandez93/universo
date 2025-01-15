@@ -44,6 +44,7 @@ const ComingViewer = {
     {       
         this.getComingClasses()
     },
+    /* html */
     template : `
         <div v-if="classes">
             <div class="card card-body mb-3 shadow-none bg-transparent">

@@ -151,6 +151,7 @@ const ProfileViewer = {
             })
         })
     },
+    /* html */
     template : `
         <div v-if="user" class="card card-body p-5">
             <div class="row justify-content-center">

@@ -42,6 +42,7 @@ const NoticewidgetViewer = {
     {   
         this.getLastNoticesShort()
     },
+    /* html */
     template : `
         <div v-if="notice" class="container mt-5 animation-fall-right" style="--delay:500ms">
             <div class="card card-body bg-dark">

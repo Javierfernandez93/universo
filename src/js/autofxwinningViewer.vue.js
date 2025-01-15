@@ -191,6 +191,7 @@ const AutofxwinningViewer = {
             this.init()
         })
     },
+    /* html */
     template : `
         <div v-if="user.sponsor" class="row justify-content-center">
             <div v-if="user.sponsor" class="col-12 col-xl-6 animate__animated animate__bounceInRight">

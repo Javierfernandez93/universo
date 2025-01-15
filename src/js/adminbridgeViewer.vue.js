@@ -261,6 +261,7 @@ const AdminbridgeViewer = {
     mounted() {
         this.getAllBuyPerBridgeMain()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header">

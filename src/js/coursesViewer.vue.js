@@ -64,6 +64,7 @@ const CoursesViewer = {
             this.courses = false
         })
     },
+    /* html */
     template : `
         <div v-if="courses" class="row">
             <div class="card mb-3">

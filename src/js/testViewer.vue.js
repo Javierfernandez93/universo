@@ -63,6 +63,7 @@ const TestViewer = {
             this.getTestStatus()
         },this.INTERVAL_TIMER)
     },
+    /* html */
     template : `
         <div v-if="status">
             <div class="alert" :class="status.statusInfo._class">

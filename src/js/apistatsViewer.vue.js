@@ -105,6 +105,7 @@ const ApistatsViewer = {
             })
         }
     },
+    /* html */
     template : `
         <div class="row animation-fall-down" style="--delay:1.5s">
            <div class="col-12">

@@ -70,6 +70,7 @@ const AddleadViewer = {
 
         this.getCountries()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header"> 

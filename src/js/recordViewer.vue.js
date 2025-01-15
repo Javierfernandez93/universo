@@ -44,6 +44,7 @@ const RecordViewer = {
     {       
         this.getRecordClasses()
     },
+    /* html */
     template : `
         <div v-if="classes">
             <div class="card mb-3">

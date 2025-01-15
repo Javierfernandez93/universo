@@ -130,6 +130,7 @@ const ViewclientfromsellerViewer = {
     {       
         this.refresh()
     },
+    /* html */
     template : `
         <Loader :busy="busy" />
         <div v-if="user" class="card border border-light">

@@ -159,6 +159,7 @@ const AcademycreateViewer = {
     mounted() {
         this.getAllPendingFieldsMain()
     },
+    /* html */
     template : `
         <div v-if="marketingFields" class="row justify-content-center">
            <div class="col-12">

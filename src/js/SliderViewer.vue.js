@@ -63,6 +63,7 @@ export default {
             this.initSlider()
         }
     },
+    /* html */
     template : `
         <section class="hero-section m-5 drop-filter-from-top d-flex align-items-end justify-content-start rounded-3 overflow-hidden" :class="currentImage.className" :style="{'background-image':'url('+currentImage.path+')'}">
             <div class="overlay filter-in-top"></div>

@@ -43,6 +43,7 @@ const WithdrawmethodsViewer = {
             this.withdrawMethods = withdrawMethods
         }).catch((error) => { this.withdrawMethods = false })
     },
+    /* html */
     template : `
         <div class="card bg-transparent shadow-none mt-4 overflow-hidden border-radius-xl">
             <div class="card-header bg-transparent">

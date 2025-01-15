@@ -110,6 +110,7 @@ const ChatViewer = {
         this.getBotName()
         this.getChatIaFirstMessage()
     },
+    /* html */
     template : `
         <div class="position-fixed end-0 bottom-0 mb-3 me-3 z-index-3">
             <div v-if="open" class="card rounded chat-ia-box">

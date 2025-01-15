@@ -47,6 +47,7 @@ const AirtmViewer = {
             }).catch(() => this.invoice = false)
         }
     },
+    /* html */
     template : `
         <div v-if="invoice" class="row justify-content-center">
             <div class="col-xl-4 mb-xl-0 mb-4">

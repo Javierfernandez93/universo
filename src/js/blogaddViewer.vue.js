@@ -150,6 +150,7 @@ const BlogaddViewer = {
             this.initEditor()
         });
     },
+    /* html */
     template : `
         <div class="row">
             <div class="col-12">

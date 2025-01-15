@@ -28,6 +28,7 @@ export default {
     components : { 
         SliderViewer
     },
+    /* html */
     template : `
         <SliderViewer logo="../../src/img/logos/nuuktal.png" :imagesSlider="imagesSlider"/>
     `

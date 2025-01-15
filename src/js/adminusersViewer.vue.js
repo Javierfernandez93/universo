@@ -160,6 +160,7 @@ const AdminusersViewer = {
         this.getUsers()
         this.getAffiliations()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header pb-0">

@@ -116,6 +116,7 @@ const AdminbannerViewer = {
     {   
         this.getBanners()
     },
+    /* html */
     template : `
         <div class="row">
             <div class="col-12">

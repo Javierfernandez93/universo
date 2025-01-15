@@ -31,6 +31,7 @@ const RealstateViewer = {
     {       
         this.getRealStateIntros()
     },
+    /* html */
     template : `
         <div v-if="realStates" class="container py-6">
             <div class="row g-5 py-5">

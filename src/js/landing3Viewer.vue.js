@@ -153,6 +153,7 @@ const Landing3Viewer = {
             this.addVisitPerLanding(getLastUrlPart())
         })
     },
+    /* html */
     template : `
         <div class="bg-dark">
             <div class="container">

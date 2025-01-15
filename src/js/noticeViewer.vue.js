@@ -73,6 +73,7 @@ const NoticeViewer = {
     {   
         this.getNoticesList()
     },
+    /* html */
     template : `
         <div
             v-if="notices"

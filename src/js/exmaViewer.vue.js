@@ -15,6 +15,7 @@ const ExmaViewer = {
     mounted() 
     {       
     },
+    /* html */
     template : `
         <div class="row justify-content-center">
             <div class="col-12 col-xl-6">

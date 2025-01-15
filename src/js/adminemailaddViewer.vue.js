@@ -77,6 +77,7 @@ const AdminemailaddViewer = {
     mounted() {
         this.initEditor()
     },
+    /* html */
     template : `
         <div class="row mb-3">
            <div class="col-12">

@@ -77,6 +77,7 @@ const EditcampaignViewer = {
             }).catch(() => this.campaign = false)
         }
     },
+    /* html */
     template : `
         <div class="card mb-3">
             <div class="card-header">

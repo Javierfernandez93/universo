@@ -88,6 +88,7 @@ const StatsViewer = {
         this.UserSupport = new UserSupport
         this.getBrokersData()
     },
+    /* html */
     template : `
         <div class="card mb-3">
             <div class="card-header pb-0">

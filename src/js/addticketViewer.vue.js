@@ -74,6 +74,7 @@ const AddticketViewer = {
             this.catalogTopics = catalogTopics
         })
     },
+    /* html */
     template : `
         <div class="card bg-transparent shadow-none">
             <div class="card-header bg-transparent">

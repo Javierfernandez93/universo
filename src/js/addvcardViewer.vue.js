@@ -188,6 +188,7 @@ const AddvcardViewer = {
         this.step = this.STEPS.SELECT_VCARD
         // this.step = this.STEPS.CONFIGURE_BASICS
     },
+    /* html */
     template : `
         <div v-if="step == STEPS.SELECT_VCARD">
             <div class="card mb-3">

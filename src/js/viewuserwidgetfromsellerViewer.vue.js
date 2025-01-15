@@ -48,6 +48,7 @@ const ViewuserwidgetfromsellerViewer = {
             this.getUser(getParam("ulid"))
         }
     },
+    /* html */
     template : `
         <Loader :busy="busy" />
         <div v-if="user" class="card card-body mb-3 border border-light">

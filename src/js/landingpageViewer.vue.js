@@ -63,6 +63,7 @@ const LandingpageViewer = {
     {   
         this.getLandings()
     },
+    /* html */
     template : `
         <div v-if="landings" class="row justify-content-center">
             <div class="col-11 col-xl-12">

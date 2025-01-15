@@ -174,6 +174,7 @@ const PaymentsViewer = {
             })
         }
     },
+    /* html */
     template : `
         <div v-if="paymentsAux" class="card mb-4 overflow-hidden">
             <div class="card-header bg-light">

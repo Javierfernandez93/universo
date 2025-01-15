@@ -21,6 +21,7 @@ const FlyerViewer = {
     mounted() {
         this.getBanners()
     },
+    /* html */
     template : `
         <div class="flyer-container gx-0 row justify-content-center mb-5 flyer-container gx-0 row rounded overflow-hidden">
            <div @click="goToEvent(banner)" v-for="banner in banners" class="col-12 col-xl-6 cursor-pointer">

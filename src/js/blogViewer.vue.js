@@ -28,6 +28,7 @@ const BlogViewer = {
             this.getBlog(getParam("bid"))
         }
     },
+    /* html */
     template : `
         <div v-if="blog" class="pb-5">
             <section class="d-flex bg-animated position-relative vh-75 align-items-center animate-section" :style="{'background-image':'url('+blog.image_bg+')','--delay':(index*250)+'ms'}">

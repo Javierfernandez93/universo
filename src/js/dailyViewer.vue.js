@@ -89,6 +89,7 @@ const DailyViewer = {
     {   
         this.getIncome()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header h4">

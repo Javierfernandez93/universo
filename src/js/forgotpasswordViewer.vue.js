@@ -38,6 +38,7 @@ const ForgotpasswordViewer = {
     mounted() 
     {
     },
+    /* html */
     template : `
         <div class="row d-flex justify-content-center align-items-center vh-100">
             <div class="col-11 col-xl-4">

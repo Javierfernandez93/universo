@@ -13,6 +13,7 @@ const WidgetbottelegramViewer = {
             console.log("translator",this.translator)
         }, 3000);
     },
+    /* html */
     template : `
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-xl-7 align-items-center">

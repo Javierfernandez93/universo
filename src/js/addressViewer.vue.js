@@ -35,6 +35,7 @@ const AddressViewer = {
             this.getEwalletAddressInfo(getParam('address'))
         }
     },
+    /* html */
     template : `
         <div v-if="ewallet" class="row">
             <div class="col-xl-4">

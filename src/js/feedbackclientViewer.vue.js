@@ -130,6 +130,7 @@ const FeedbackclientViewer = {
     {       
         this.refresh()
     },
+    /* html */
     template : `
         <Loader :busy="busy" />
 

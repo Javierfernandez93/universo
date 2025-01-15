@@ -66,6 +66,7 @@ const MapViewer = {
     { 
         this.getTopCountries()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header h4">

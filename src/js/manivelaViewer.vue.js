@@ -90,6 +90,7 @@ const ManivelaViewer = {
     mounted() {
         this.getManivelaSales()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header">

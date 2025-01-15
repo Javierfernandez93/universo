@@ -333,6 +333,7 @@ const AdminaddpaymentViewer = {
             this.getPaymentPropertyForEdit(getParam("ppid"))
         }
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy"/>
 

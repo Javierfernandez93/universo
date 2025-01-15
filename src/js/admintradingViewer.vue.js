@@ -370,6 +370,7 @@ const AdmintradingViewer = {
     mounted() {
         this.status = this.STATUS.IN_PROGRESS
     },
+    /* html */
     template : `
         <div class="card mb-3">
             <div class="input-group input-group-lg input-group-merge">

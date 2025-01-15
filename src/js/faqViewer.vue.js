@@ -69,6 +69,7 @@ const FaqViewer = {
             }
         }).catch(() => this.faqs = false)
     },
+    /* html */
     template : `
         <div class="card bg-transparent shadow-none">
             <div class="card-header bg-transparent">

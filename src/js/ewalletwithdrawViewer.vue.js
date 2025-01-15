@@ -156,6 +156,7 @@ const EwalletwithdrawViewer = {
             
         })
     },
+    /* html */
     template : `
         <div class="offcanvas offcanvas-end" tabindex="-1" ref="offcanvasRight" id="offcanvasRight" aria-labelledby="offcanvasWithBackdropLabel">
             <div>

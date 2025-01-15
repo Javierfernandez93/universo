@@ -82,6 +82,7 @@ const AdminemailsendViewer = {
             })
         }
     },
+    /* html */
     template : `
         <div v-if="campaign" class="card mb-3">
             <div class="card-header">

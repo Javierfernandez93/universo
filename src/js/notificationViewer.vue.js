@@ -28,6 +28,7 @@ const NotificationViewer = {
             this.notifications = notifications
         }).catch(() => this.notifications = false )
     },
+    /* html */
     template : `
         <div class="card mt-3 overflow-hidden">
             <div class="card-header h4">

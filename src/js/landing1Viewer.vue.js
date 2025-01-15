@@ -29,6 +29,7 @@ const Landing1Viewer = {
     {   
 
     },
+    /* html */
     template : `
         <div class="row d-flex justify-content-center">
             <section class="row justify-content-center container section-1 align-items-center py-5 position-relative">

@@ -7,6 +7,7 @@ const AtiViewer = {
             User: new User,
         }
     },
+    /* html */
     template : `
         <div class="row justify-content-center">
             <div class="col-12 text-center">

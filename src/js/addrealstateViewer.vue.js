@@ -117,6 +117,7 @@ const AddrealstateViewer = {
             this.loaded = true
         }
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy" />
 

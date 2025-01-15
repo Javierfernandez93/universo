@@ -68,6 +68,7 @@ const LoggsViewer = {
     {   
         this.getLoggs()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header pb-0">

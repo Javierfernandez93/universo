@@ -41,6 +41,7 @@ const StoreinvoiceViewer = {
     mounted() {
         this.getInvoice()
     },
+    /* html */
     template : `
         <div v-if="cart.buy_per_user" class="row justify-content-center">
             <div class="col-12 col-xl-5">

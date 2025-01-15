@@ -50,6 +50,7 @@ const StorecheckoutViewer = {
     mounted() {
         this.getCartResume().then(resume => this.cart.resume = resume).catch( (error) => { })
     },
+    /* html */
     template : `
         <div v-if="cart.resume" class="row justify-content-center">
             <div class="col-12 col-xl-5">

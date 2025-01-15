@@ -84,6 +84,7 @@ const VcardViewer = {
             this.vcards = response.vcards
         }).catch(() => this.vcards = false)
     },
+    /* html */
     template : `
         <div class="card mb-3">
             <div class="card-body">

@@ -181,6 +181,7 @@ const ReceiptViewer = {
             })
         }
     },
+    /* html */
     template : `
         <div v-if="user" class="row justify-content-center">
             <div v-if="user.file" class="col-12 col-xl-6 animate__animated animate__bounceInRight">

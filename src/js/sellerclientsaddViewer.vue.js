@@ -133,6 +133,7 @@ const SellerclientsaddViewer = {
             this.getUserToEdit()
         }
     },
+    /* html */
     template : `
         <ModalViewer title="Añadir cliente" ref="modal" size="modal-fullscreen">
             <div class="card">

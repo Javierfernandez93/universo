@@ -81,6 +81,7 @@ const PropertyAdminPullViewer = {
     {       
         this.getCatalogPaymentMethods()
     },
+    /* html */
     template : `
         <OffCanvasViewer title="Comprar propiedad" ref="myOffCanvas">
             <div v-if="property" class="card card-body">

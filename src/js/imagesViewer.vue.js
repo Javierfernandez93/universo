@@ -26,6 +26,7 @@ const ImagesViewer = {
             this.images = images
         })
     },
+    /* html */
     template : `
        <div v-if="images" class="row">
             <div v-for="image in images" class="col-12 col-md-6 col-xl-4 p-3">

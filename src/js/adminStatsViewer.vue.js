@@ -173,6 +173,7 @@ const StatsViewer = {
             this.initChart(gains)
         })
     },
+    /* html */
     template : `
         <div class="row mb-3">
             <div class="col-8">

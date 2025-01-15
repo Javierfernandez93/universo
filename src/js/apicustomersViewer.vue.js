@@ -278,6 +278,7 @@ const ApicustomersViewer = {
             this._getUserApiCustomers()
         }
     },
+    /* html */
     template : `
         <div class="container animation-fall-down" style="--delay:0.5s">
             <div v-if="customers">

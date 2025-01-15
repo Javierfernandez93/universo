@@ -62,6 +62,7 @@ const AdminmarketingviewViewer = {
             })
         }
     },
+    /* html */
     template : `
         <div v-if="marketingData">
             <div v-for="data in marketingData" class="card mb-3">

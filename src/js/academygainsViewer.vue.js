@@ -59,6 +59,7 @@ const AcademygainsViewer = {
             this.commissions = false
         })
     },
+    /* html */
     template : `
         <div v-if="commissions" class="row">
             <div class="card shadow-none bg-transparent mb-3">

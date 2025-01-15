@@ -55,6 +55,7 @@ const TestprogressViewer = {
             this.getTestProgress()
         },this.INTERVAL_TIMER)
     },
+    /* html */
     template : `
         <div v-if="progress && status > 0" class="card">
             <div class="card-body">

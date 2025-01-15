@@ -13,6 +13,7 @@ const WidgetforexViewer = {
     mounted() 
     {   
     },
+    /* html */
     template : `
         <div class="row">
             <h2>Sistemas automatizados</h2>

@@ -7,6 +7,7 @@ const MarketingViewer = {
             User: new User
         }
     },
+    /* html */
     template : `
         <div class="row align-items-top">
             <div class="col-12 col-xl-6">

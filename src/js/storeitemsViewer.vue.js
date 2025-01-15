@@ -164,6 +164,7 @@ const StoreitemsViewer = {
             this.getPackages(this.catalog_package_type_id)
         }
     },
+    /* html */
     template : `
         <ul class="nav nav-pills mb-5 bg-transparent" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">

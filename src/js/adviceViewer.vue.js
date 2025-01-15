@@ -80,6 +80,7 @@ const AdviceViewer = {
             this.showAdvices()
         })
     },
+    /* html */
     template : `
         <div v-show="advice" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
             <div id="liveToast" ref="toast" class="toast hide shadow-xl bg-gradient-dark text-white" role="alert" aria-live="assertive" aria-atomic="true">

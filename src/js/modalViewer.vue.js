@@ -24,6 +24,7 @@ export default {
     mounted() {       
         
     },
+    /* html */
     template : `
         <Teleport to="body">
             <div class="modal fade" ref="modal" :class="theme == 'dark' ? 'bg-dark' : 'bg-white'" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

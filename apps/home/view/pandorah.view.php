@@ -1,5 +1,5 @@
 <div id="app">
-    <Pandorah-viewer></Pandorah-viewer>
+    <pandorah-viewer></pandorah-viewer>
     
     <section class="border-bottom border-secondary text-center d-flex justify-content-center align-items-center h-500">
         <div class="container expand animation-fall-down" style="--delay:150ms">
@@ -118,7 +118,7 @@
     </section>
 
     <section class="d-flex mb-5 py-6 align-items-center expand animation-fall-down" style="--delay:950ms" id="amenities"> 
-        <div class="mask bg-dark position-absolute z-index-0" style="background-image: url(../../src/img/landing/Pandorah-2.png);"></div>
+        <div class="mask bg-dark position-absolute z-index-0" style="background-image: url(../../src/img/slider/pandorah/1.png);"></div>
         <div class="container position-relative z-index-1">
             <div class="d-flex g-5 row align-items-stretch">
                 <div class="col-12 d-flex">

@@ -62,6 +62,7 @@ const NewpasswordViewer = {
             this.getAuthToChangePassword()
         }
     },
+    /* html */
     template : `
         <div class="row d-flex justify-content-center align-items-center vh-100">
             <div class="col-12 col-xl-4">

@@ -42,6 +42,7 @@ const TeamselectorViewer = {
     {   
         this.getTeamPending()
     },
+    /* html */
     template : `
         <div v-if="users" class="card mb-3">
             <div class="card-header h4">

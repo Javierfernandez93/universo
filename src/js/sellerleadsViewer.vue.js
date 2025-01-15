@@ -147,6 +147,7 @@ const SellerleadsViewer = {
         this.getCatalogTags()
         this.getSellerClients()
     },
+    /* html */
     template : `
         <div v-if="busy" class="d-flex justify-content-center align-items-center py-5">
             <div class="spinner-border " role="status">

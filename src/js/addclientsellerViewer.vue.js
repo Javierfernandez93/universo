@@ -102,6 +102,7 @@ const AddclientsellerViewer = {
 
         this.getCountries()
     },
+    /* html */
     template : `
         <div class="card card-header shadow-none mb-3 bg-transparent"> 
             <div class="row justify-content-center align-items-center"> 

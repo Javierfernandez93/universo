@@ -92,6 +92,7 @@ const KeyViewer = {
             this.licencesAux = licences
         }).catch(() => this.licences = false)
     },
+    /* html */
     template : `
         <div v-if="licencesAux">
             <div class="card shadow-xs mb-3 overflow-auto">

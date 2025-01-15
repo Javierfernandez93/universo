@@ -43,6 +43,7 @@ const PromoViewer = {
     {       
         this.init()
     },
+    /* html */
     template : `
         <div ref="promo" class="position-fixed start-0 bottom-0 mx-3 mb-5">
             <div :class="showing ? 'd-none' : ''" @click="toggle">

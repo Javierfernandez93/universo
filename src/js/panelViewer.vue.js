@@ -209,6 +209,7 @@ const PanelViewer = {
             }
         })
     },
+    /* html */
     template : `
         <div v-if="proyect" class="row">
             <div class="col-12">

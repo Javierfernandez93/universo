@@ -61,6 +61,7 @@ const MoviesViewer = {
         this._getMovies()
         
     },
+    /* html */
     template : `
         <div v-if="movies" class="mb-5">
             <div class="mb-3">

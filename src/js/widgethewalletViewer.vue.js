@@ -43,6 +43,7 @@ const WidgethewalletViewer = {
         })
         this.getProfitStats()
     },
+    /* html */
     template : `
         <div v-if="profile" class="card mb-3">
             <div class="card-body">

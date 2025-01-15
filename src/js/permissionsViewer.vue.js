@@ -129,6 +129,7 @@ const PermissionsViewer = {
     { 
         this.getPermissions()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header pb-0">

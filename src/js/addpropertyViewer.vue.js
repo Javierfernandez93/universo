@@ -62,6 +62,7 @@ const AddpropertyViewer = {
     {   
         this.getCatalogRealState()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header"> 

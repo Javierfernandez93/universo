@@ -45,6 +45,7 @@ const ZuumtoolsViewer = {
             this.toolsAux = tools
         }).catch(error => this.tools = false )
     },
+    /* html */
     template : `
         <div class="row">
             <div class="col-12">

@@ -79,6 +79,7 @@ const AddbannerViewer = {
             this.loaded = true
         }
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header"> 

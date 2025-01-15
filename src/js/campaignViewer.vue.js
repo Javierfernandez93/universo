@@ -87,6 +87,7 @@ const CampaignViewer = {
     mounted() {
         this._getCampaigns()
     },
+    /* html */
     template : `
         <div>
             <div class="card mb-3 bg-dark">

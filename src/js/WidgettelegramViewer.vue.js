@@ -12,6 +12,7 @@ const WidgettelegramViewer = {
     {   
         
     },
+    /* html */
     template : `
         <div class="card bg-gradient-info position-relative overflow-hidden">
             <div class="bg-telegram position-absolute bottom-0 end-0"></div>

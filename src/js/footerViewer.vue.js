@@ -40,6 +40,7 @@ const FooterViewer = {
     {       
         this.getConfigVarsStats()
     },
+    /* html */
     template : `
         <footer v-if="stats" class="bg-dark p-5 expand" style="--delay:500ms">
             <div class="pb-4 mb-4 border-bottom border-secondary">

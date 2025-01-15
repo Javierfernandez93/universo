@@ -65,6 +65,7 @@ const AdminconfigViewer = {
     {   
         this.getSystemVars()
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy"/>
         

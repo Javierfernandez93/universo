@@ -138,6 +138,7 @@ const AdminadduserViewer = {
         }
 
     },
+    /* html */
     template : `
         <LoaderViewer :busy="busy"/>
         <div class="card">

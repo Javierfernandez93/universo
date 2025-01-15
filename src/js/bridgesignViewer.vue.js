@@ -268,6 +268,7 @@ const BridgesignViewer = {
             this.hasAccount = false
         })
     },
+    /* html */
     template : `
         <div v-if="hasAccount">
             <div class="row">

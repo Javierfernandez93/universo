@@ -31,6 +31,7 @@ const WidgetnetworkViewer = {
             this.networkInfo = networkInfo
         })
     },
+    /* html */
     template : `
         <div class="card bg-purple rounded shadow">
             <div class="card-body p-0">

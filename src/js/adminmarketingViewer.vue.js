@@ -102,6 +102,7 @@ const AdminmarketingViewer = {
             this.usersAux = false
         })
     },
+    /* html */
     template : `
         <div class="card border-radius-2xl mb-4">
             <div class="card-header pb-0">

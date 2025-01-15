@@ -71,6 +71,7 @@ const ExmaaccountViewer = {
 
         this.getAllUserBridgeAccounts()
     },
+    /* html */
     template : `
         <div class="alert alert-primary text-white text-center">
             <div class="text-white h4">

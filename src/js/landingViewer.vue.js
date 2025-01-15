@@ -35,6 +35,7 @@ const LandingViewer = {
     {   
         this.getReferralLanding()
     },
+    /* html */
     template : `
         <div class="card shadow-none border">
             <div class="card-body text-center">

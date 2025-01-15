@@ -24,6 +24,7 @@ const NextlevelwidgetViewer = {
     {   
         this.getCurrentRange()
     },
+    /* html */
     template : `
         <div v-if="range" class="card shadow-none border">
             <div class="card-body text-center">

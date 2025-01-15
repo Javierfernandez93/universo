@@ -141,6 +141,7 @@ const PropertieslistViewer = {
     {       
         this.refresh()
     },
+    /* html */
     template : `
         <div class="card" v-if="properties">
             <div class="card-header">

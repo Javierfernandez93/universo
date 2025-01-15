@@ -57,6 +57,7 @@ const ViewclientViewer = {
             this.getUserDetail(getParam("ulid"))
         }
     },
+    /* html */
     template : `
         <div v-if="user">
             <div class="row mb-3">

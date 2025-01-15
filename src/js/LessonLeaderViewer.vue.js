@@ -198,6 +198,7 @@ const LessonLeaderViewer = {
             })
         })
     },
+    /* html */
     template : `
         <div v-if="course" class="row g-5 align-items-top">
             <div v-if="sessions" :class="fullMode ? 'order-1' : ''" class="col-12 col-xl-4 animation-fall-down" style="--delay:500ms">

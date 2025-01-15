@@ -55,6 +55,7 @@ const InvoicesViewer = {
             this.invoicesAux = invoices
         }).catch((err) => { this.invoices = false })
     },
+    /* html */
     template : `
         <div v-if="busy" class="justify-content-center text-center">
             <div class="spinner-grow text-primary" role="status">

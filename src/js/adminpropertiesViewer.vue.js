@@ -79,6 +79,7 @@ const AdminpropertiesViewer = {
     {   
         this.getPropertiesByAdmin()
     },
+    /* html */
     template : `
         <div class="card">
             <div class="card-header pb-0">

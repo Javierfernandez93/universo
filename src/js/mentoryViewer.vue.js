@@ -12,6 +12,7 @@ const MentoryViewer = {
     mounted() {
       
     },
+    /* html */
     template : `
         <div class="row align-items-top">
             <div class="col-12 col-xl-6">

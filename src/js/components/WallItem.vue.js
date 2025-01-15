@@ -46,6 +46,7 @@ const WallItem = {
     mounted() {
 
     },
+    /* html */
     template : `
         <div class="card card-signal cursor-pointer z-zoom-element bg-dark" :class="signal.data.side == 'buy' ? 'bg-fade-gradient-success': 'bg-fade-gradient-danger'">
             <div class="mask candle"></div>

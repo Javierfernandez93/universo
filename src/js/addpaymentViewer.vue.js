@@ -212,6 +212,7 @@ const AddpaymentViewer = {
             }
         }).catch(error => console.log(error))
     },
+    /* html */
     template : `
         <div v-if="active && aviable">
             <div class="alert alert-danger border-0 text-center text-white">

@@ -127,6 +127,7 @@ const Landing2Viewer = {
             this.addVisitPerLanding(getLastUrlPart())
         })
     },
+    /* html */
     template : `
         <div class="container" id="main">
             <header class="d-flex flex-wrap justify-content-center py-3 align-items-center">

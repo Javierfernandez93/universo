@@ -45,6 +45,7 @@ const TasklistwidgetViewer = {
     {       
         
     },
+    /* html */
     template : `
         <div class="offcanvas offcanvas-end overflow-scroll" tabindex="-1" ref="offcanvasRight2" id="offcanvasRight2" aria-labelledby="offcanvasRightLabel">
             <div>

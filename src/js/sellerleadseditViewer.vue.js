@@ -104,6 +104,7 @@ const SellerleadseditViewer = {
 
         this.getCountries()
     },
+    /* html */
     template : `
         <div class="offcanvas offcanvas-end" tabindex="-1" ref="offcanvasRight" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">

@@ -52,6 +52,7 @@ const CountryViewer = {
             this.countries = this.countriesAux
         })
     },
+    /* html */
     template : `
         <div v-if="countries && viewcountries">
             <div class="card mb-3">

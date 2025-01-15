@@ -44,6 +44,7 @@ const MovieViewer = {
             })
         }).catch(() => this.movie = false)
     },
+    /* html */
     template : `
         <div v-if="movie">
             <div class="mb-3">

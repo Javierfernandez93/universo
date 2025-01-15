@@ -34,6 +34,7 @@ const PaybusinesswidgetViewer = {
     {   
         this.getCurrentMembership()
     },
+    /* html */
     template : `
         <div v-if="membership" class="card shadow-none border">
             <div class="card-body text-center">

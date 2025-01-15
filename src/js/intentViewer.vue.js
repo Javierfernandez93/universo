@@ -48,6 +48,7 @@ const IntentViewer = {
     {   
         this.getAllIntents()
     },
+    /* html */
     template : `
         <div class="row d-flex justify-content-center">
            <div class="col-12">

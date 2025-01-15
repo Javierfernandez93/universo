@@ -163,6 +163,7 @@ const AdminsignalsViewer = {
     mounted() {
         this.getAllTradingSingalsMain()
     },
+    /* html */
     template : `
         <div v-if="signals" class="card">
             <div class="card-header">
