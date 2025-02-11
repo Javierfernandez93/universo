@@ -1,4 +1,4 @@
-import { MetamaskViewer } from './metamaskViewer.vue.js?v=1.1.7'
+import { MetamaskViewer } from './metamaskViewer.vue.js?v=1.1.8'
 
 Vue.createApp({
     components : { 

@@ -1,4 +1,4 @@
-import { AdminpaymentsViewer } from '../../src/js/adminpaymentsViewer.vue.js?v=1.1.7'
+import { AdminpaymentsViewer } from '../../src/js/adminpaymentsViewer.vue.js?v=1.1.8'
 
 Vue.createApp({
     components: {

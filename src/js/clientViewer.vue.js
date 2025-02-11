@@ -1,8 +1,8 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.7'   
-import OffCanvasViewer from './offcanvasViewer.vue.js?v=1.1.7'
-import feedBackModel from './models/feedback.module.js?v=1.1.7'
-import LoaderViewer from './loaderViewer.vue.js?v=1.1.7'
-import { PropertiesAdminListViewer } from '../../src/js/propertiesAdminListViewer.vue.js?v=1.1.7'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.8'   
+import OffCanvasViewer from './offcanvasViewer.vue.js?v=1.1.8'
+import feedBackModel from './models/feedback.module.js?v=1.1.8'
+import LoaderViewer from './loaderViewer.vue.js?v=1.1.8'
+import { PropertiesAdminListViewer } from '../../src/js/propertiesAdminListViewer.vue.js?v=1.1.8'
 
 const ClientViewer = {
     components : {

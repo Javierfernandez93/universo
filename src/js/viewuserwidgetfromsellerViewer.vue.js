@@ -1,5 +1,5 @@
-import { User } from '../../src/js/user.module.js?v=1.1.7'   
-import Loader from '../../src/js/components/Loader.vue.js?v=1.1.7'
+import { User } from '../../src/js/user.module.js?v=1.1.8'   
+import Loader from '../../src/js/components/Loader.vue.js?v=1.1.8'
 
 const ViewuserwidgetfromsellerViewer = {
     components: { Loader },

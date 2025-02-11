@@ -1,4 +1,4 @@
-import { User } from '../../src/js/user.module.js?v=1.1.7'   
+import { User } from '../../src/js/user.module.js?v=1.1.8'   
 
 const InvoicesViewer = {
     name : 'invoices-viewer',

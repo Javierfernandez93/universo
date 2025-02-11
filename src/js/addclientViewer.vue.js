@@ -1,6 +1,6 @@
-import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.7'   
-import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.7' 
-import ClientModel from '../../src/js/models/client.module.js?v=1.1.7'
+import { UserSupport } from '../../src/js/userSupport.module.js?v=1.1.8'   
+import { BackViewer } from '../../src/js/backViewer.vue.js?v=1.1.8' 
+import ClientModel from '../../src/js/models/client.module.js?v=1.1.8'
 
 const AddclientViewer = {
     components : {
